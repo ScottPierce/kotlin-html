@@ -1,6 +1,4 @@
-package io.ktor.html
-
-import java.util.*
+package dev.scottpierce.html.ktor
 
 /**
  * A template that expands inside [TOuter]

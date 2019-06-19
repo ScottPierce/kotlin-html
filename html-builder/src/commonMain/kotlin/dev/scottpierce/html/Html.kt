@@ -1,16 +1,27 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package dev.scottpierce.html
 
 @DslMarker
 annotation class HtmlTag
 
 @HtmlTag
-class Html : ParentTag {
+class Html(val docType: DocType = DocType.None) : ParentTag {
     override val attributes: MutableAttributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
-    override fun write(writer: Writer) {
+    override fun write(writer: HtmlWriter) {
+        docType.type?.let {
+            writer.write("<!DOCTYPE $it>\n")
+        }
         writer.writeTag("html", this)
     }
+}
+
+sealed class DocType(val type: String?) {
+    object None : DocType(null)
+    object Html : DocType("html")
+    class Custom(type: String) : DocType(type)
 }
 
 @HtmlTag
@@ -18,7 +29,7 @@ class Head : ParentTag, HeadContent {
     override val attributes: MutableAttributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
-    override fun write(writer: Writer) {
+    override fun write(writer: HtmlWriter) {
         writer.writeTag("head", this)
     }
 }
@@ -28,7 +39,7 @@ class Body : ParentTag, BodyContent {
     override val attributes: MutableAttributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
-    override fun write(writer: Writer) {
+    override fun write(writer: HtmlWriter) {
         writer.writeTag("body", this)
     }
 }
@@ -38,7 +49,7 @@ class Section : ParentTag, BodyContent {
     override val attributes: MutableAttributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
-    override fun write(writer: Writer) {
+    override fun write(writer: HtmlWriter) {
         writer.writeTag("section", this)
     }
 }
@@ -48,7 +59,7 @@ class Div : ParentTag, BodyContent {
     override val attributes: MutableAttributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
-    override fun write(writer: Writer) {
+    override fun write(writer: HtmlWriter) {
         writer.writeTag("div", this)
     }
 }
@@ -64,8 +75,8 @@ inline fun <T : Tag> ParentTag.addChild(child: T, id: String?, classes: String?,
     return child.apply(func)
 }
 
-inline fun html(vararg attrs: Pair<String, String?>, func: Html.() -> Unit = {}): Html {
-    return Html().apply(func)
+inline fun html(vararg attrs: Pair<String, String?>, doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
+    return Html(doctype).apply(func)
 }
 
 inline fun Html.head(func: Head.() -> Unit = {}): Head =
@@ -87,7 +98,7 @@ inline fun <T> T.div(
 ): Div where T : ParentTag, T : BodyContent = addChild(child = Div(), id = id, classes = classes, func = func)
 
 fun test() {
-    val html = html(doctype = "") {
+    val html = html(doctype = DocType.Html) {
 
         head {
 
@@ -100,6 +111,6 @@ fun test() {
         }
     }
 
-    val writer = StringBuilderWriter(true)
+    val writer = StringBuilderHtmlWriter(true)
     html.write(writer)
 }

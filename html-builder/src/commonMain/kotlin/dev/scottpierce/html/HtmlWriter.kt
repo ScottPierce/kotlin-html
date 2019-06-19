@@ -1,25 +1,27 @@
 package dev.scottpierce.html
 
-import java.lang.StringBuilder
+interface HtmlWriter {
+    companion object {
+        const val INDENT = "  "
+    }
 
-interface Writer {
     val isDebug: Boolean
 
-    fun write(code: String): Writer
+    fun write(code: String): HtmlWriter
     fun newLine()
     fun indent()
     fun deindent()
 }
 
-fun Writer.writeTag(name: String, tag: ParentTag) {
+fun HtmlWriter.writeTag(name: String, tag: ParentTag) {
     writeTag(name = name, attributes = tag.attributes, children = tag.children)
 }
 
-fun Writer.writeTag(name: String, tag: Tag) {
+fun HtmlWriter.writeTag(name: String, tag: Tag) {
     writeTag(name = name, attributes = tag.attributes)
 }
 
-fun Writer.writeTag(name: String, attributes: Attributes = Attributes.EMPTY, children: List<Tag> = emptyList()) {
+fun HtmlWriter.writeTag(name: String, attributes: Attributes = Attributes.EMPTY, children: List<Tag> = emptyList()) {
     write("<$name ")
 
     for (i in attributes.indices) {
@@ -45,25 +47,24 @@ fun Writer.writeTag(name: String, attributes: Attributes = Attributes.EMPTY, chi
     write("</$name>")
 }
 
-fun Writer.newLineIfDebug() {
+fun HtmlWriter.newLineIfDebug() {
     if (isDebug) {
         newLine()
     }
 }
 
-class StringBuilderWriter(override val isDebug: Boolean) : Writer {
-    companion object {
-        private const val INDENT = "  "
-    }
-
-    private val sb = StringBuilder()
+class StringBuilderHtmlWriter(
+    override val isDebug: Boolean = false,
+    initialCapacity: Int = 16
+) : HtmlWriter {
+    private val sb = StringBuilder(initialCapacity)
 
     private var indent = 0
 
     override fun newLine() {
         sb.append('\n')
         for (i in 1..indent) {
-            sb.append(INDENT)
+            sb.append(HtmlWriter.INDENT)
         }
     }
 
@@ -75,8 +76,8 @@ class StringBuilderWriter(override val isDebug: Boolean) : Writer {
         indent--
     }
 
-    override fun write(code: String): Writer {
-        sb.append(code)
+    override fun write(html: String): HtmlWriter {
+        sb.append(html)
         return this
     }
 

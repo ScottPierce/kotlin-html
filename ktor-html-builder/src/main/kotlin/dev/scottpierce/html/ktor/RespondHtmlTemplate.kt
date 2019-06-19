@@ -1,10 +1,14 @@
-package io.ktor.html
+package dev.scottpierce.html.ktor
 
-import kotlinx.html.*
-import io.ktor.application.*
-import io.ktor.http.*
+import dev.scottpierce.html.Html
+import io.ktor.application.ApplicationCall
+import io.ktor.http.HttpStatusCode
 
-suspend fun <TTemplate : Template<HTML>> ApplicationCall.respondHtmlTemplate(template: TTemplate, status: HttpStatusCode = HttpStatusCode.OK, body: TTemplate.() -> Unit) {
+suspend fun <TTemplate : Template<Html>> ApplicationCall.respondHtmlTemplate(
+    template: TTemplate,
+    status: HttpStatusCode = HttpStatusCode.OK,
+    body: TTemplate.() -> Unit
+) {
     template.body()
     respondHtml(status) { with(template) { apply() } }
 }

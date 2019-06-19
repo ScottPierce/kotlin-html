@@ -4,7 +4,7 @@ package dev.scottpierce.html
  * The lowest level interface that designates that it can output code
  */
 interface Writable {
-    fun write(writer: Writer)
+    fun write(writer: HtmlWriter)
 }
 
 /**
