@@ -92,6 +92,7 @@ inline fun <T : Tag> ParentTag.addChild(
     if (id != null) a["id"] = id
     if (classes != null) a["classes"] = classes
     if (style != null) a["style"] = style
+    for (attr in attrs) a.add(attr)
 
     val tag: T = provider(a)
     children += tag

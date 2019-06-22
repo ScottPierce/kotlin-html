@@ -30,7 +30,8 @@ fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), chi
                 throw IllegalArgumentException("Not allowed to have blank attribute for tag $name.")
             }
 
-            if (key.indices.all { !key[it].isWhitespace() }) {
+            val hasWhitespace = !key.indices.all { !key[it].isWhitespace() }
+            if (hasWhitespace) {
                 throw IllegalArgumentException("Not allowed to have whitespace characters for attribute '$key' inside" +
                         " tag '$name'.")
             }

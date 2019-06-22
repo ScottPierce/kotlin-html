@@ -190,10 +190,6 @@ var Attributes.classes: String
         this[AttributeConstants.ID] = value
     }
 
-operator fun Attributes.set(key: String, value: String) {
-    plus(key to value)
-}
-
 data class Attribute(
     override val key: String,
     override var value: String?
