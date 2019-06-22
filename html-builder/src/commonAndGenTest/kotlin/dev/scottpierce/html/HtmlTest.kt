@@ -7,12 +7,12 @@ import kotlin.test.Test
 class HtmlTest {
     @Test
     fun emptyHtmlTest() {
-        writeHtml().assertEquals("<html></html>")
+        writeHtml(options = WriteOptions.minified).assertEquals("<html></html>")
     }
 
     @Test
     fun docTypeHtmlTest() {
-        writeHtml(docType = DocType.Html).assertEquals {
+        writeHtml(docType = DocType.Html, options = WriteOptions.minified).assertEquals {
             """
             <!DOCTYPE html>
             <html></html>
@@ -22,7 +22,7 @@ class HtmlTest {
 
     @Test
     fun docTypeCustomTest() {
-        writeHtml(docType = DocType.Custom("custom")).assertEquals {
+        writeHtml(docType = DocType.Custom("custom"), options = WriteOptions.minified).assertEquals {
             """
             <!DOCTYPE custom>
             <html></html>
@@ -32,7 +32,7 @@ class HtmlTest {
 
     @Test
     fun debugTest() {
-        writeHtml(isDebug = true).assertEquals {
+        writeHtml().assertEquals {
             """
             <html>
             </html>
@@ -42,7 +42,7 @@ class HtmlTest {
 
     @Test
     fun debugWithChildTest() {
-        writeHtml(isDebug = true) {
+        writeHtml {
             head()
             body {
                 div()

@@ -8,7 +8,7 @@ import kotlin.test.assertTrue
 class AttributeTest {
     @Test
     fun singleAttribute() {
-        writeHtml(isDebug = true) {
+        writeHtml {
             head(id = "head")
             body(id = "body") {
                 div(id = "div")
@@ -30,7 +30,7 @@ class AttributeTest {
     @Test
     fun noWhitespaceInAttributes() {
         val errorThrown: Boolean = try {
-            writeHtml(isDebug = true) {
+            writeHtml {
                 head("foo bar" by "test")
             }
             false
@@ -44,7 +44,7 @@ class AttributeTest {
     @Test
     fun emptyAttribute() {
         val errorThrown: Boolean = try {
-            writeHtml(isDebug = true) {
+            writeHtml {
                 head("" by "test")
             }
             false
@@ -58,7 +58,7 @@ class AttributeTest {
     @Test
     fun blankAttribute() {
         val errorThrown: Boolean = try {
-            writeHtml(isDebug = true) {
+            writeHtml {
                 head("   " by "test")
             }
             false
@@ -71,7 +71,7 @@ class AttributeTest {
 
     @Test
     fun multipleAttributes() {
-        writeHtml(isDebug = true) {
+        writeHtml {
             head("test1" by "value1", id = "head")
             body("test2" by "value2", id = "body") {
                 div("test3" by "value3", "test4" by "value4", id = "div")

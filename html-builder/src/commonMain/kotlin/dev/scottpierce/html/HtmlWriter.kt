@@ -1,11 +1,7 @@
 package dev.scottpierce.html
 
 interface HtmlWriter {
-    companion object {
-        const val INDENT = "    "
-    }
-
-    val isDebug: Boolean
+    val options: WriteOptions
 
     fun write(code: String): HtmlWriter
     fun newLine()
@@ -50,33 +46,27 @@ fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), chi
 
     indent()
     for (child in children) {
-        newLineIfDebug()
+        newLine()
         child.write(this)
     }
     deindent()
 
-    newLineIfDebug() // End tag should be on a new line
+    newLine() // End tag should be on a new line
     write("</$name>")
 }
 
-fun HtmlWriter.newLineIfDebug() {
-    if (isDebug) {
-        newLine()
-    }
-}
-
 class StringBuilderHtmlWriter(
-    override val isDebug: Boolean = false,
-    initialCapacity: Int = 16
+    initialCapacity: Int = 16,
+    override val options: WriteOptions = WriteOptions.default
 ) : HtmlWriter {
     private val sb = StringBuilder(initialCapacity)
 
     private var indent = 0
 
     override fun newLine() {
-        sb.append('\n')
+        sb.append(options.newLine)
         for (i in 1..indent) {
-            sb.append(HtmlWriter.INDENT)
+            sb.append(options.indent)
         }
     }
 
@@ -88,10 +78,20 @@ class StringBuilderHtmlWriter(
         indent--
     }
 
-    override fun write(html: String): HtmlWriter {
-        sb.append(html)
+    override fun write(code: String): HtmlWriter {
+        sb.append(code)
         return this
     }
 
     override fun toString(): String = sb.toString()
+}
+
+data class WriteOptions(
+    val indent: String = "  ",
+    val newLine: String = "\n"
+) {
+    companion object {
+        val default = WriteOptions()
+        val minified = WriteOptions(indent = "", newLine = "")
+    }
 }
