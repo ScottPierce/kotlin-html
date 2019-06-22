@@ -11,7 +11,7 @@ interface Writable {
  * A HTML tag
  */
 interface Tag : Writable {
-    val attributes: MutableAttributes
+    val attrs: Attributes
 }
 
 /**

@@ -1,15 +1,17 @@
 object Versions {
-    const val kotlin = "1.3.31"
+    const val kotlin = "1.3.40"
     const val ktor = "1.2.1"
 }
 
 object Plugins {
-    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
 object Libs {
     val kotlin = KotlinDeps()
+    val kotlinPoet = "com.squareup:kotlinpoet:1.3.0"
     val ktorServerCore = "io.ktor:ktor-server-core:${Versions.ktor}"
+    val okio = "com.squareup.okio:okio:2.2.2"
 }
 
 class KotlinDeps internal constructor() {

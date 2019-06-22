@@ -1,4 +1,4 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
 package dev.scottpierce.html
 
@@ -7,7 +7,7 @@ annotation class HtmlTag
 
 @HtmlTag
 class Html(val docType: DocType = DocType.None) : ParentTag {
-    override val attributes: MutableAttributes = ArrayAttributes()
+    override val attrs: Attributes = ArrayAttributes()
     override val children: MutableList<Tag> = ArrayList()
 
     override fun write(writer: HtmlWriter) {
@@ -24,93 +24,93 @@ sealed class DocType(val type: String?) {
     class Custom(type: String) : DocType(type)
 }
 
+inline fun html(vararg attrs: Pair<String, String?>, doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
+    return Html(doctype).apply(func)
+}
+
 @HtmlTag
-class Head : ParentTag, HeadContent {
-    override val attributes: MutableAttributes = ArrayAttributes()
-    override val children: MutableList<Tag> = ArrayList()
+class Head(
+    override val attrs: Attributes
+) : ParentTag, BodyContent {
+    override val children: MutableList<Tag> = ArrayList(8)
 
     override fun write(writer: HtmlWriter) {
         writer.writeTag("head", this)
     }
 }
 
+inline fun Html.head(
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: Head.() -> Unit = {}
+): Head = addChild(attrs, id, classes, style, func) { Head(it) }
+
+inline fun Html.head(
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: Head.() -> Unit = {}
+): Head = addChild(id, classes, style, func) { Head(it) }
+
 @HtmlTag
-class Body : ParentTag, BodyContent {
-    override val attributes: MutableAttributes = ArrayAttributes()
-    override val children: MutableList<Tag> = ArrayList()
+class Body(
+    override val attrs: Attributes
+) : ParentTag, BodyContent {
+    override val children: MutableList<Tag> = ArrayList(8)
 
     override fun write(writer: HtmlWriter) {
         writer.writeTag("body", this)
     }
 }
 
-@HtmlTag
-class Section : ParentTag, BodyContent {
-    override val attributes: MutableAttributes = ArrayAttributes()
-    override val children: MutableList<Tag> = ArrayList()
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeTag("section", this)
-    }
-}
-
-@HtmlTag
-class Div : ParentTag, BodyContent {
-    override val attributes: MutableAttributes = ArrayAttributes()
-    override val children: MutableList<Tag> = ArrayList()
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeTag("div", this)
-    }
-}
-
-inline fun <T : Tag> ParentTag.addChild(child: T, id: String?, classes: String?, func: T.() -> Unit): T {
-    children += child
-    if (id != null) {
-        attributes["id"] = id
-    }
-    if (classes != null) {
-        attributes["classes"] = classes
-    }
-    return child.apply(func)
-}
-
-inline fun html(vararg attrs: Pair<String, String?>, doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
-    return Html(doctype).apply(func)
-}
-
-inline fun Html.head(func: Head.() -> Unit = {}): Head =
-    addChild(child = Head(), id = null, classes = null, func = func)
-
-inline fun Html.body(func: Body.() -> Unit = {}): Body =
-    addChild(child = Body(), id = null, classes = null, func = func)
-
-inline fun <T> T.section(
+inline fun Html.body(
+    vararg attrs: Attribute,
     id: String? = null,
     classes: String? = null,
-    func: Section.() -> Unit = {}
-): Section where T : ParentTag, T : BodyContent = addChild(child = Section(), id = id, classes = classes, func = func)
+    style: String? = null,
+    func: Body.() -> Unit = {}
+): Body = addChild(attrs, id, classes, style, func) { Body(it) }
 
-inline fun <T> T.div(
+inline fun Html.body(
     id: String? = null,
     classes: String? = null,
-    func: Div.() -> Unit = {}
-): Div where T : ParentTag, T : BodyContent = addChild(child = Div(), id = id, classes = classes, func = func)
+    style: String? = null,
+    func: Body.() -> Unit = {}
+): Body = addChild(id, classes, style, func) { Body(it) }
 
-fun test() {
-    val html = html(doctype = DocType.Html) {
+inline fun <T : Tag> ParentTag.addChild(
+    attrs: Array<out Attribute>,
+    id: String?,
+    classes: String?,
+    style: String?,
+    func: T.() -> Unit,
+    provider: (attrs: Attributes) -> T
+): T {
+    val a = ArrayAttributes(attrs.size + 3)
+    if (id != null) a["id"] = id
+    if (classes != null) a["classes"] = classes
+    if (style != null) a["style"] = style
 
-        head {
+    val tag: T = provider(a)
+    children += tag
+    return tag.apply(func)
+}
 
-        }
+inline fun <T : Tag> ParentTag.addChild(
+    id: String?,
+    classes: String?,
+    style: String?,
+    func: T.() -> Unit,
+    provider: (attrs: Attributes) -> T
+): T {
+    val a = ArrayAttributes(3)
+    if (id != null) a["id"] = id
+    if (classes != null) a["classes"] = classes
+    if (style != null) a["style"] = style
 
-        body {
-            div {
-
-            }
-        }
-    }
-
-    val writer = StringBuilderHtmlWriter(true)
-    html.write(writer)
+    val tag: T = provider(a)
+    children += tag
+    return tag.apply(func)
 }

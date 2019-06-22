@@ -2,7 +2,7 @@ package dev.scottpierce.html
 
 interface HtmlWriter {
     companion object {
-        const val INDENT = "  "
+        const val INDENT = "    "
     }
 
     val isDebug: Boolean
@@ -14,22 +14,32 @@ interface HtmlWriter {
 }
 
 fun HtmlWriter.writeTag(name: String, tag: ParentTag) {
-    writeTag(name = name, attributes = tag.attributes, children = tag.children)
+    writeTag(name = name, attrs = tag.attrs, children = tag.children)
 }
 
 fun HtmlWriter.writeTag(name: String, tag: Tag) {
-    writeTag(name = name, attributes = tag.attributes)
+    writeTag(name = name, attrs = tag.attrs)
 }
 
-fun HtmlWriter.writeTag(name: String, attributes: Attributes = Attributes.EMPTY, children: List<Tag> = emptyList()) {
-    write("<$name ")
+fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), children: List<Tag> = emptyList()) {
+    write("<$name")
 
-    for (i in attributes.indices) {
-        val key: String = attributes.getKey(i)
-        val value: String? = attributes[i]
+    for (attr in attrs) {
+        val key: String = attr.key.also { key ->
+            if (key.isEmpty()) {
+                throw IllegalArgumentException("Not allowed to have blank attribute for tag $name.")
+            }
 
+            if (key.indices.all { !key[it].isWhitespace() }) {
+                throw IllegalArgumentException("Not allowed to have whitespace characters for attribute '$key' inside" +
+                        " tag '$name'.")
+            }
+        }
+        val value: String? = attr.value
+
+        write(" ")
         if (value == null) {
-            write(key).write(" ")
+            write(key)
         } else {
             write(key).write("=\"").write(value).write("\"")
         }
@@ -44,6 +54,7 @@ fun HtmlWriter.writeTag(name: String, attributes: Attributes = Attributes.EMPTY,
     }
     deindent()
 
+    newLineIfDebug() // End tag should be on a new line
     write("</$name>")
 }
 

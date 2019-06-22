@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
-
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("maven-publish")
@@ -12,17 +10,22 @@ kotlin {
             kotlinOptions.jvmTarget = "1.8"
         }
     }
-    js()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
-        commonMain {
+        val commonMain by getting {
             dependencies {
                 implementation(Libs.kotlin.stdlib.common)
             }
         }
 
-        commonTest {
+        val genMain = create("genMain") {
+            dependsOn(getByName("commonMain"))
+        }
+
+        val commonAndGenTest = create("commonAndGenTest") {
+            dependsOn(genMain)
+
             dependencies {
                 for (lib in Libs.kotlin.test.common) {
                     implementation(lib)
@@ -31,8 +34,18 @@ kotlin {
         }
 
         val jvmMain by getting {
+            dependsOn(genMain)
+
             dependencies {
                 implementation(Libs.kotlin.stdlib.jvm)
+            }
+        }
+
+        val jvmTest by getting {
+            dependsOn(commonAndGenTest)
+
+            dependencies {
+                implementation(Libs.kotlin.test.jvm)
             }
         }
 
