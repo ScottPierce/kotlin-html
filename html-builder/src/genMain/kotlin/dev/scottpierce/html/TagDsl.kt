@@ -8,6 +8,7 @@ import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import kotlin.collections.ArrayList
+import kotlin.collections.List
 import kotlin.collections.MutableList
 
 @HtmlTag
@@ -22,6 +23,13 @@ class Section(
 }
 
 inline fun <T> T.section(
+  id: String? = null,
+  classes: String? = null,
+  style: String? = null,
+  func: Section.() -> Unit = {}
+): Section where T : BodyContent, T : ParentTag = addChild(id, classes, style, func) { Section(it) }
+
+inline fun <T> T.section(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
@@ -31,11 +39,13 @@ inline fun <T> T.section(
     Section(it) }
 
 inline fun <T> T.section(
+  attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
   func: Section.() -> Unit = {}
-): Section where T : BodyContent, T : ParentTag = addChild(id, classes, style, func) { Section(it) }
+): Section where T : BodyContent, T : ParentTag = addChild(attrs, id, classes, style, func) {
+    Section(it) }
 
 @HtmlTag
 class Div(
@@ -49,6 +59,13 @@ class Div(
 }
 
 inline fun <T> T.div(
+  id: String? = null,
+  classes: String? = null,
+  style: String? = null,
+  func: Div.() -> Unit = {}
+): Div where T : BodyContent, T : ParentTag = addChild(id, classes, style, func) { Div(it) }
+
+inline fun <T> T.div(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
@@ -57,8 +74,9 @@ inline fun <T> T.div(
 ): Div where T : BodyContent, T : ParentTag = addChild(attrs, id, classes, style, func) { Div(it) }
 
 inline fun <T> T.div(
+  attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
   func: Div.() -> Unit = {}
-): Div where T : BodyContent, T : ParentTag = addChild(id, classes, style, func) { Div(it) }
+): Div where T : BodyContent, T : ParentTag = addChild(attrs, id, classes, style, func) { Div(it) }

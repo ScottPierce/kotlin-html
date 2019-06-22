@@ -24,7 +24,7 @@ sealed class DocType(val type: String?) {
     class Custom(type: String) : DocType(type)
 }
 
-inline fun html(vararg attrs: Pair<String, String?>, doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
+inline fun html(doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
     return Html(doctype).apply(func)
 }
 
@@ -66,7 +66,14 @@ class Body(
 }
 
 inline fun Html.body(
-    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: Body.() -> Unit = {}
+): Body = addChild(id, classes, style, func) { Body(it) }
+
+inline fun Html.body(
+    attrs: List<Attribute>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
@@ -74,14 +81,34 @@ inline fun Html.body(
 ): Body = addChild(attrs, id, classes, style, func) { Body(it) }
 
 inline fun Html.body(
+    vararg attrs: Attribute,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: Body.() -> Unit = {}
-): Body = addChild(id, classes, style, func) { Body(it) }
+): Body = addChild(attrs, id, classes, style, func) { Body(it) }
 
 inline fun <T : Tag> ParentTag.addChild(
     attrs: Array<out Attribute>,
+    id: String?,
+    classes: String?,
+    style: String?,
+    func: T.() -> Unit,
+    provider: (attrs: Attributes) -> T
+): T {
+    val a = ArrayAttributes(attrs.size + 3)
+    if (id != null) a["id"] = id
+    if (classes != null) a["classes"] = classes
+    if (style != null) a["style"] = style
+    for (attr in attrs) a.add(attr)
+
+    val tag: T = provider(a)
+    children += tag
+    return tag.apply(func)
+}
+
+inline fun <T : Tag> ParentTag.addChild(
+    attrs: List<Attribute>,
     id: String?,
     classes: String?,
     style: String?,
