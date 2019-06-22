@@ -6,8 +6,10 @@ package dev.scottpierce.html
 annotation class HtmlTag
 
 @HtmlTag
-class Html(val docType: DocType = DocType.None) : ParentTag {
+class Html(
+    val docType: DocType = DocType.None,
     override val attrs: Attributes = ArrayAttributes()
+) : ParentTag {
     override val children: MutableList<Tag> = ArrayList()
 
     override fun write(writer: HtmlWriter) {
@@ -24,8 +26,11 @@ sealed class DocType(val type: String?) {
     class Custom(type: String) : DocType(type)
 }
 
-inline fun html(doctype: DocType = DocType.None, func: Html.() -> Unit = {}): Html {
-    return Html(doctype).apply(func)
+inline fun html(doctype: DocType = DocType.None, attrs: List<Attribute> = listOf(), func: Html.() -> Unit = {}): Html {
+    val a = ArrayAttributes(attrs.size)
+
+
+    return Html(doctype, attrs = a).apply(func)
 }
 
 @HtmlTag
@@ -40,7 +45,14 @@ class Head(
 }
 
 inline fun Html.head(
-    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: Head.() -> Unit = {}
+): Head = addChild(id, classes, style, func) { Head(it) }
+
+inline fun Html.head(
+    attrs: List<Attribute>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
@@ -48,11 +60,12 @@ inline fun Html.head(
 ): Head = addChild(attrs, id, classes, style, func) { Head(it) }
 
 inline fun Html.head(
+    vararg attrs: Attribute,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: Head.() -> Unit = {}
-): Head = addChild(id, classes, style, func) { Head(it) }
+): Head = addChild(attrs, id, classes, style, func) { Head(it) }
 
 @HtmlTag
 class Body(

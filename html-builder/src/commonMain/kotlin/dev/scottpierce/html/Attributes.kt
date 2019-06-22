@@ -48,3 +48,15 @@ data class Attribute(
 infix fun String.by(that: String?): Attribute = Attribute(this, that)
 
 fun String.byNoValue(): Attribute = Attribute(this, null)
+
+fun <K, V> MutableMap<K, V>.putAll(entries: List<MutableMap.MutableEntry<K, V>>) {
+    for ((key, value) in entries) {
+        put(key, value)
+    }
+}
+
+fun <K, V> MutableMap<K, V>.putAll(entries: Array<MutableMap.MutableEntry<K, V>>) {
+    for ((key, value) in entries) {
+        put(key, value)
+    }
+}

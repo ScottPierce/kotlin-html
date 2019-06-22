@@ -155,16 +155,6 @@ fun generateTags(srcFolder: File) {
                         }
                     }
                 }
-//                .addCode("""
-//                    ${if (hasAttrs) "val a = %T(attrs.size + 3)" else "val a = %T(3)"}
-//                    if (id != null) a["id"] = id
-//                    if (classes != null) a["classes"] = classes
-//                    if (style != null) a["style"] = style
-//
-//                    val tag = %T(a)
-//                    children += tag
-//                    return tag.apply(func)
-//                """.trimIndent(), ArrayAttributes, tagClassName)
                 .addCode("\n")
                 .returns(tagClassName)
                 .build()
