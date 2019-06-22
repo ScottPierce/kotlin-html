@@ -17,7 +17,7 @@ fun HtmlWriter.writeTag(name: String, tag: Tag) {
     writeTag(name = name, attrs = tag.attrs)
 }
 
-fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), children: List<Tag> = emptyList()) {
+fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), children: List<Writable> = emptyList()) {
     write("<$name")
 
     for (attr in attrs) {
@@ -87,7 +87,7 @@ class StringBuilderHtmlWriter(
 }
 
 data class WriteOptions(
-    val indent: String = "  ",
+    val indent: String = "\t",
     val newLine: String = "\n"
 ) {
     companion object {

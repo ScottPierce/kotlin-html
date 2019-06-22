@@ -18,7 +18,7 @@ interface Tag : Writable {
  * A HTML tag that has children
  */
 interface ParentTag : Tag {
-    val children: MutableList<Tag>
+    val children: MutableList<Writable>
 }
 
 interface Content

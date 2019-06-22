@@ -2,6 +2,7 @@ package dev.scottpierce.html.generate
 
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
@@ -13,6 +14,9 @@ import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.TypeVariableName
 import java.io.File
 
+// ################################
+// ###### Start Class Names
+// ################################
 private val MutableMap = ClassName("kotlin.collections", "MutableMap")
 private val List = ClassName("kotlin.collections", "List")
 private val MutableList = ClassName("kotlin.collections", "MutableList")
@@ -28,8 +32,11 @@ private val Attribute = ClassName("dev.scottpierce.html", "Attribute")
 private val Attributes = ClassName("dev.scottpierce.html", "Attributes")
 private val ArrayAttributes = ClassName("dev.scottpierce.html", "ArrayAttributes")
 private val AttributeMutableMap = MutableMap.parameterizedBy(TString, TString.copy(nullable = true))
-private val TagMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html", "Tag"))
+private val TagMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html", "Writable"))
 private val AttributeList = List.parameterizedBy(Attribute)
+// ################################
+// ###### End Class Names
+// ################################
 
 private val filePackage = "dev.scottpierce.html"
 

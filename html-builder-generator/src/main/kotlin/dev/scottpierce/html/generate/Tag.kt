@@ -8,7 +8,9 @@ enum class Tag(
     val isParent: Boolean
 ) {
     SECTION(tagName = "section", contentType = ContentType.BODY, isParent = true),
-    DIV(tagName = "div", contentType = ContentType.BODY, isParent = true)
+    DIV(tagName = "div", contentType = ContentType.BODY, isParent = true),
+    SPAN(tagName = "span", contentType = ContentType.BODY, isParent = true),
+    P(tagName = "p", contentType = ContentType.BODY, isParent = true),
 }
 
 val DEFAULT_ATTRIBUTES: List<String> = listOf("id", "classes", "style")

@@ -10,7 +10,7 @@ class Html(
     val docType: DocType = DocType.None,
     override val attrs: Attributes = ArrayAttributes()
 ) : ParentTag {
-    override val children: MutableList<Tag> = ArrayList()
+    override val children: MutableList<Writable> = ArrayList()
 
     override fun write(writer: HtmlWriter) {
         docType.type?.let {
@@ -37,7 +37,7 @@ inline fun html(doctype: DocType = DocType.None, attrs: List<Attribute> = listOf
 class Head(
     override val attrs: Attributes
 ) : ParentTag, BodyContent {
-    override val children: MutableList<Tag> = ArrayList(8)
+    override val children: MutableList<Writable> = ArrayList(8)
 
     override fun write(writer: HtmlWriter) {
         writer.writeTag("head", this)
@@ -71,7 +71,7 @@ inline fun Html.head(
 class Body(
     override val attrs: Attributes
 ) : ParentTag, BodyContent {
-    override val children: MutableList<Tag> = ArrayList(8)
+    override val children: MutableList<Writable> = ArrayList(8)
 
     override fun write(writer: HtmlWriter) {
         writer.writeTag("body", this)
@@ -100,6 +100,41 @@ inline fun Html.body(
     style: String? = null,
     func: Body.() -> Unit = {}
 ): Body = addChild(attrs, id, classes, style, func) { Body(it) }
+
+@HtmlTag
+class Br(
+    override val attrs: Attributes
+) : Tag {
+    override fun write(writer: HtmlWriter) {
+        if (attrs.isEmpty()) {
+            writer.write("<br>")
+        } else {
+            writer.write("<br")
+            for (attr in attrs) {
+                writer.write(attr.key).write("=\"").write(attr.key).write("\"")
+            }
+            writer.write(">")
+        }
+    }
+}
+
+inline fun ParentTag.br(
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: Br.() -> Unit = {}
+): Br = addChild(attrs, id, classes, style, func) { Br(it) }
+
+fun ParentTag.br(attrs: List<Attribute> = listOf()): Br {
+    val a = ArrayAttributes(0)
+    for (attr in attrs) {
+        a.add(attr)
+    }
+    val tag = Br(a)
+    children += tag
+    return tag
+}
 
 inline fun <T : Tag> ParentTag.addChild(
     attrs: Array<out Attribute>,
@@ -144,6 +179,7 @@ inline fun <T : Tag> ParentTag.addChild(
     classes: String?,
     style: String?,
     func: T.() -> Unit,
+
     provider: (attrs: Attributes) -> T
 ): T {
     val a = ArrayAttributes(3)
