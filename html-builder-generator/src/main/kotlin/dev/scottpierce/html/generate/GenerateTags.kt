@@ -2,17 +2,18 @@ package dev.scottpierce.html.generate
 
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.LambdaTypeName
+import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.TypeVariableName
 import java.io.File
+import java.lang.RuntimeException
 
 // ################################
 // ###### Start Class Names
@@ -21,49 +22,58 @@ private val MutableMap = ClassName("kotlin.collections", "MutableMap")
 private val List = ClassName("kotlin.collections", "List")
 private val MutableList = ClassName("kotlin.collections", "MutableList")
 private val ArrayList = ClassName("kotlin.collections", "ArrayList")
-private val HtmlTag = ClassName("dev.scottpierce.html", "HtmlTag")
-private val ParentTag = ClassName("dev.scottpierce.html", "ParentTag")
-private val HeadContent = ClassName("dev.scottpierce.html", "HeadContent")
-private val BodyContent = ClassName("dev.scottpierce.html", "BodyContent")
-private val HtmlWriter = ClassName("dev.scottpierce.html", "HtmlWriter")
+private val HtmlTag = ClassName("dev.scottpierce.html.element", "HtmlTag")
+private val TElement = ClassName("dev.scottpierce.html.element", "Element")
+private val ContentElement = ClassName("dev.scottpierce.html.element", "ContentElement")
+private val HeadContent = ClassName("dev.scottpierce.html.element", "HeadContent")
+private val BodyContent = ClassName("dev.scottpierce.html.element", "BodyContent")
+private val HtmlWriter = ClassName("dev.scottpierce.html.write", "HtmlWriter")
 private val TUnit = ClassName("kotlin", "Unit")
 private val TString = ClassName("kotlin", "String")
-private val Attribute = ClassName("dev.scottpierce.html", "Attribute")
-private val Attributes = ClassName("dev.scottpierce.html", "Attributes")
+private val Attribute = ClassName("dev.scottpierce.html.element", "Attribute")
+private val Attributes = ClassName("dev.scottpierce.html.element", "Attributes")
 private val ArrayAttributes = ClassName("dev.scottpierce.html", "ArrayAttributes")
 private val AttributeMutableMap = MutableMap.parameterizedBy(TString, TString.copy(nullable = true))
-private val TagMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html", "Writable"))
+private val TagMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html.write", "Writable"))
 private val AttributeList = List.parameterizedBy(Attribute)
 // ################################
 // ###### End Class Names
 // ################################
 
-private val filePackage = "dev.scottpierce.html"
+val writeElement = MemberName("dev.scottpierce.html.write", "writeElement")
+val writeVoidElement = MemberName("dev.scottpierce.html.write", "writeVoidElement")
+
+private val filePackage = "dev.scottpierce.html.element"
 
 fun generateTags(srcFolder: File) {
-    val file = FileSpec.builder(filePackage, "TagDsl")
+    for (element in Element.values()) {
+        val elementName = element.tagName.capitalize()
+        val elementClassName = ClassName(filePackage, elementName)
 
-    file.addComment("This file was generated using the `html-builder-generator` module. Instead of modifying it, " +
-            "modify the\n`html-builder-generator` and run it again.")
+        val file = FileSpec.builder(filePackage, elementName)
 
-    file.addAnnotation(
-        AnnotationSpec.builder(Suppress::class)
-            .addMember("\"unused\"")
-            .build()
-    )
+        file.addAnnotation(
+            AnnotationSpec.builder(Suppress::class)
+                .addMember("\"unused\"")
+                .build()
+        )
 
-    for (tag in Tag.values()) {
-        val tagClassName = ClassName(filePackage, tag.tagName.capitalize())
+        file.addComment("This file was generated using the `html-builder-generator` module. Instead of modifying it, " +
+                "modify the\n`html-builder-generator` and run it again.")
 
         // Generate DSL Class
-        val tagType = TypeSpec.classBuilder(tagClassName).apply {
+        val tagType = TypeSpec.classBuilder(elementClassName).apply {
             addAnnotation(HtmlTag)
 
-            if (tag.isParent) {
-                addSuperinterface(ParentTag)
+            val isParent: Boolean = if (element.type is ElementType.Void) {
+                addSuperinterface(TElement)
+                false
+            } else {
+                addSuperinterface(ContentElement)
+                true
             }
 
-            when (tag.contentType) {
+            when (element.contentType) {
                 ContentType.HEAD -> addSuperinterface(HeadContent)
                 ContentType.BODY -> addSuperinterface(BodyContent)
             }
@@ -80,10 +90,10 @@ fun generateTags(srcFolder: File) {
                     .build()
             )
 
-            if (tag.isParent) {
+            if (isParent) {
                 addProperty(
                     PropertySpec.builder("children", TagMutableList, KModifier.OVERRIDE)
-                        .initializer("%T(8)", ArrayList)
+                        .initializer("%T(${element.childrenListInitialCapacity})", ArrayList)
                         .build()
                 )
             }
@@ -92,7 +102,13 @@ fun generateTags(srcFolder: File) {
                 FunSpec.builder("write")
                     .addModifiers(KModifier.OVERRIDE)
                     .addParameter("writer", HtmlWriter)
-                    .addCode("writer.writeTag(\"${tag.tagName}\", this)\n")
+                    .apply {
+                        when (element.type) {
+                            is ElementType.Normal -> addCode("writer.%M(\"${element.tagName}\", this)\n", writeElement)
+                            is ElementType.Void -> addCode("writer.%M(\"${element.tagName}\", this)\n", writeVoidElement)
+                            else -> throw RuntimeException("Unsupported Tag Type")
+                        }
+                    }
                     .build()
             )
         }.build()
@@ -101,21 +117,27 @@ fun generateTags(srcFolder: File) {
         file.addType(tagType)
 
         fun createDslFunction(type: DslFunction): FunSpec {
-            val contentType: ClassName = when (tag.contentType) {
+            val contentType: ClassName = when (element.contentType) {
                 ContentType.HEAD -> HeadContent
                 ContentType.BODY -> BodyContent
             }
 
-            return FunSpec.builder(tag.tagName)
+            return FunSpec.builder(element.tagName)
                 .addTypeVariable(
                     TypeVariableName.invoke(
                         name = "T",
-                        bounds = *arrayOf(contentType, ParentTag)
+                        bounds = *arrayOf(contentType, ContentElement)
                     )
                 )
                 .receiver(TypeVariableName.invoke("T"))
-                .addModifiers(KModifier.INLINE)
                 .apply {
+                    val isParent = element.type !is ElementType.Void
+
+                    // No reason to inline if there is no lambda
+                    if (isParent) {
+                        addModifiers(KModifier.INLINE)
+                    }
+
                     if (type == DslFunction.ATTR_VARARG) {
                         addParameter(
                             ParameterSpec.builder(
@@ -132,10 +154,8 @@ fun generateTags(srcFolder: File) {
                             ).build()
                         )
                     }
-                }
-                .apply {
 
-                    for (attr in tag.supportedAttributes) {
+                    for (attr in element.supportedAttributes) {
                         addParameter(
                             ParameterSpec.builder(attr, TString.copy(nullable = true))
                                 .defaultValue("null")
@@ -143,27 +163,29 @@ fun generateTags(srcFolder: File) {
                         )
                     }
 
-                }
-                .addParameter(
-                    ParameterSpec.builder("func", LambdaTypeName.get(receiver = tagClassName, returnType = TUnit))
-                        .defaultValue("{}")
-                        .build()
-                )
-                .apply {
+                    if (isParent) {
+                        addParameter(
+                            ParameterSpec.builder("func", LambdaTypeName.get(receiver = elementClassName, returnType = TUnit))
+                                .defaultValue("{}")
+                                .build()
+                        )
+                    }
+
                     when (type) {
                         DslFunction.NONE -> {
-                            addCode("return addChild(id, classes, style, func) { %T(it) }", tagClassName)
+                            addCode("return addChild(id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
                         }
                         DslFunction.ATTR_LIST -> {
-                            addCode("return addChild(attrs, id, classes, style, func) { %T(it) }", tagClassName)
+                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
                         }
                         DslFunction.ATTR_VARARG -> {
-                            addCode("return addChild(attrs, id, classes, style, func) { %T(it) }", tagClassName)
+                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
                         }
                     }
+
+                    addCode("\n")
                 }
-                .addCode("\n")
-                .returns(tagClassName)
+                .returns(elementClassName)
                 .build()
         }
 
@@ -171,10 +193,10 @@ fun generateTags(srcFolder: File) {
         file.addFunction(createDslFunction(DslFunction.NONE))
         file.addFunction(createDslFunction(DslFunction.ATTR_VARARG))
         file.addFunction(createDslFunction(DslFunction.ATTR_LIST))
-    }
 
-    file.build()
-        .writeTo(srcFolder)
+        file.build()
+            .writeTo(srcFolder)
+    }
 }
 
 private enum class DslFunction {

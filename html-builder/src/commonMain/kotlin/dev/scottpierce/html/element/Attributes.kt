@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package dev.scottpierce.html
+package dev.scottpierce.html.element
 
 typealias Attributes = MutableMap<String, String?>
 

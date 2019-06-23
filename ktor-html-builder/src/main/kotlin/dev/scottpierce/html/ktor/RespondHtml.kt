@@ -4,6 +4,7 @@ package dev.scottpierce.html.ktor
 
 import dev.scottpierce.html.DocType
 import dev.scottpierce.html.Html
+import dev.scottpierce.html.write.WriteOptions
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -18,17 +19,22 @@ import kotlinx.coroutines.io.ByteWriteChannel
  */
 suspend fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
+    options: WriteOptions = WriteOptions.minified,
     docType: DocType,
     block: Html.() -> Unit
 ) {
-    respond(DynamicHtmlContent(status, docType, block))
+    respond(DynamicHtmlContent(status, docType, options, block))
 }
 
 /**
  * Responds to a client with a HTML response, using the given [html]
  */
-suspend fun ApplicationCall.respondHtml(status: HttpStatusCode = HttpStatusCode.OK, html: Html) {
-    respond(StaticHtmlContent(status, html))
+suspend fun ApplicationCall.respondHtml(
+    status: HttpStatusCode = HttpStatusCode.OK,
+    options: WriteOptions = WriteOptions.minified,
+    html: Html
+) {
+    respond(StaticHtmlContent(status, options, html))
 }
 
 /**
@@ -37,6 +43,7 @@ suspend fun ApplicationCall.respondHtml(status: HttpStatusCode = HttpStatusCode.
 class DynamicHtmlContent(
     override val status: HttpStatusCode? = null,
     private val docType: DocType,
+    private val options: WriteOptions,
     private val builder: Html.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
@@ -44,7 +51,7 @@ class DynamicHtmlContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            val writer = ChannelHtmlWriter(it)
+            val writer = ChannelHtmlWriter(it, options)
             val html = Html(docType = docType).apply(builder)
             html.write(writer)
         }
@@ -56,6 +63,7 @@ class DynamicHtmlContent(
  */
 class StaticHtmlContent(
     override val status: HttpStatusCode? = null,
+    private val options: WriteOptions,
     private val html: Html
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
@@ -63,7 +71,7 @@ class StaticHtmlContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            val writer = ChannelHtmlWriter(it)
+            val writer = ChannelHtmlWriter(it, options)
             html.write(writer)
         }
     }

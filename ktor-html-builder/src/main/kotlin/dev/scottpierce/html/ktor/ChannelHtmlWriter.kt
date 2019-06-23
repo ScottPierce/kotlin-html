@@ -1,18 +1,19 @@
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.HtmlWriter
+import dev.scottpierce.html.write.HtmlWriter
+import dev.scottpierce.html.write.WriteOptions
 import java.io.BufferedWriter
 
 class ChannelHtmlWriter(
     private val writer: BufferedWriter,
-    override val isDebug: Boolean = false
+    override val options: WriteOptions = WriteOptions.default
 ) : HtmlWriter {
     private var indent = 0
 
     override fun newLine() {
         writer.append('\n')
         for (i in 1..indent) {
-            writer.append(HtmlWriter.INDENT)
+            writer.append(options.indent)
         }
     }
 

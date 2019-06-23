@@ -1,40 +1,42 @@
 package dev.scottpierce.html
 
-class ArrayAttributes private constructor(
-    private val attributes: MutableList<MutableMap.MutableEntry<String, String?>>
+import dev.scottpierce.html.element.by
+
+class ArrayMap private constructor(
+    private val entryList: MutableList<MutableMap.MutableEntry<String, String?>>
 ) : MutableMap<String, String?>, Iterable<MutableMap.MutableEntry<String, String?>> {
     constructor() : this(ArrayList(6))
     constructor(initialCapacity: Int) : this(ArrayList(initialCapacity))
 
     override val size: Int
-        get() = attributes.size
+        get() = entryList.size
 
     override val entries: MutableSet<MutableMap.MutableEntry<String, String?>>
-        get() = AttributeSet(this)
+        get() = ArraySet(this)
 
     override val keys: MutableSet<String>
         get() {
-            val set = HashSet<String>(attributes.size)
-            for (pair in attributes) {
-                set += pair.key
+            val set = HashSet<String>(entryList.size)
+            for (entry in entryList) {
+                set += entry.key
             }
             return set
         }
 
     override val values: MutableCollection<String?>
         get() {
-            val list = ArrayList<String?>(attributes.size)
-            for (pair in attributes) {
-                list += pair.value
+            val list = ArrayList<String?>(entryList.size)
+            for (entry in entryList) {
+                list += entry.value
             }
             return list
         }
 
-    override fun isEmpty(): Boolean = attributes.isEmpty()
+    override fun isEmpty(): Boolean = entryList.isEmpty()
 
     override fun containsKey(key: String): Boolean {
-        for (pair in attributes) {
-            if (pair.key == key) {
+        for (entry in entryList) {
+            if (entry.key == key) {
                 return true
             }
         }
@@ -43,8 +45,8 @@ class ArrayAttributes private constructor(
     }
 
     override fun containsValue(value: String?): Boolean {
-        for (pair in attributes) {
-            if (pair.value == value) {
+        for (entry in entryList) {
+            if (entry.value == value) {
                 return true
             }
         }
@@ -53,9 +55,9 @@ class ArrayAttributes private constructor(
     }
 
     override fun get(key: String): String? {
-        for (pair in attributes) {
-            if (pair.key == key) {
-                return pair.value
+        for (entry in entryList) {
+            if (entry.key == key) {
+                return entry.value
             }
         }
 
@@ -63,31 +65,31 @@ class ArrayAttributes private constructor(
     }
 
     override fun clear() {
-        attributes.clear()
+        entryList.clear()
     }
 
     override fun put(key: String, value: String?): String? {
-        for (attribute in attributes) {
+        for (attribute in entryList) {
             if (attribute.key == key) {
                 return attribute.setValue(value)
             }
         }
 
-        attributes += key by value
+        entryList += key by value
         return null
     }
 
     override fun putAll(from: Map<out String, String?>) {
-        for (pair in from) {
-            put(pair.key, pair.value)
+        for (entry in from) {
+            put(entry.key, entry.value)
         }
     }
 
     override fun remove(key: String): String? {
-        for (i in attributes.indices) {
-            val attribute = attributes[i]
+        for (i in entryList.indices) {
+            val attribute = entryList[i]
             if (attribute.key == key) {
-                attributes.removeAt(i)
+                entryList.removeAt(i)
                 return attribute.value
             }
         }
@@ -95,10 +97,10 @@ class ArrayAttributes private constructor(
         return null
     }
 
-    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String?>> = attributes.listIterator()
+    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String?>> = entryList.listIterator()
 
     fun add(element: MutableMap.MutableEntry<String, String?>): Boolean {
-        for (attribute in attributes) {
+        for (attribute in entryList) {
             if (attribute.key == element.key) {
                 val isChanged = attribute.value != element.value
                 attribute.setValue(element.value)
@@ -106,14 +108,14 @@ class ArrayAttributes private constructor(
             }
         }
 
-        attributes.add(element)
+        entryList.add(element)
         return false
     }
 }
 
-private class AttributeSet(private val attributes: ArrayAttributes) : MutableSet<MutableMap.MutableEntry<String, String?>> {
+private class ArraySet(private val entries: ArrayMap) : MutableSet<MutableMap.MutableEntry<String, String?>> {
     override fun add(element: MutableMap.MutableEntry<String, String?>): Boolean {
-        return attributes.add(element)
+        return entries.add(element)
     }
 
     override fun addAll(elements: Collection<MutableMap.MutableEntry<String, String?>>): Boolean {
@@ -125,13 +127,13 @@ private class AttributeSet(private val attributes: ArrayAttributes) : MutableSet
     }
 
     override fun clear() {
-        attributes.clear()
+        entries.clear()
     }
 
-    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String?>> = attributes.iterator()
+    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String?>> = entries.iterator()
 
     override fun remove(element: MutableMap.MutableEntry<String, String?>): Boolean {
-        return attributes.remove(element.key) != null
+        return entries.remove(element.key) != null
     }
 
     override fun removeAll(elements: Collection<MutableMap.MutableEntry<String, String?>>): Boolean {
@@ -147,10 +149,10 @@ private class AttributeSet(private val attributes: ArrayAttributes) : MutableSet
     }
 
     override val size: Int
-        get() = attributes.size
+        get() = entries.size
 
     override fun contains(element: MutableMap.MutableEntry<String, String?>): Boolean {
-        return !attributes.containsKey(element.key) || attributes[element.key] != element.value
+        return !entries.containsKey(element.key) || entries[element.key] != element.value
     }
 
     override fun containsAll(elements: Collection<MutableMap.MutableEntry<String, String?>>): Boolean {
@@ -162,5 +164,5 @@ private class AttributeSet(private val attributes: ArrayAttributes) : MutableSet
         return true
     }
 
-    override fun isEmpty(): Boolean = attributes.isEmpty()
+    override fun isEmpty(): Boolean = entries.isEmpty()
 }

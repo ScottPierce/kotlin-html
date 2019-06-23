@@ -1,18 +1,30 @@
 package dev.scottpierce.html
 
+import dev.scottpierce.html.element.DocType
+import dev.scottpierce.html.element.body
+import dev.scottpierce.html.element.div
+import dev.scottpierce.html.element.head
+import dev.scottpierce.html.element.html
 import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeHtml
+import dev.scottpierce.html.write.WriteOptions
 import kotlin.test.Test
 
 class HtmlTest {
     @Test
     fun emptyHtmlTest() {
-        writeHtml(options = WriteOptions.minified).assertEquals("<html></html>")
+        writeHtml(options = WriteOptions.minified) {
+            html()
+        } assertEquals {
+            "<html></html>"
+        }
     }
 
     @Test
     fun docTypeHtmlTest() {
-        writeHtml(docType = DocType.Html, options = WriteOptions.minified).assertEquals {
+        writeHtml(options = WriteOptions.minified) {
+            html(docType = DocType.Html)
+        } assertEquals {
             """
             <!DOCTYPE html>
             <html></html>
@@ -22,7 +34,9 @@ class HtmlTest {
 
     @Test
     fun docTypeCustomTest() {
-        writeHtml(docType = DocType.Custom("custom"), options = WriteOptions.minified).assertEquals {
+        writeHtml(options = WriteOptions.minified) {
+            html(docType = DocType.Custom("custom"))
+        } assertEquals {
             """
             <!DOCTYPE custom>
             <html></html>
@@ -32,7 +46,10 @@ class HtmlTest {
 
     @Test
     fun debugTest() {
-        writeHtml().assertEquals {
+        writeHtml {
+            html {
+            }
+        } assertEquals {
             """
             <html>
             </html>
@@ -43,9 +60,11 @@ class HtmlTest {
     @Test
     fun debugWithChildTest() {
         writeHtml {
-            head()
-            body {
-                div()
+            html {
+                head()
+                body {
+                    div()
+                }
             }
         } assertEquals {
             """

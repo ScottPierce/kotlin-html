@@ -1,5 +1,10 @@
 package dev.scottpierce.html
 
+import dev.scottpierce.html.element.body
+import dev.scottpierce.html.element.by
+import dev.scottpierce.html.element.div
+import dev.scottpierce.html.element.head
+import dev.scottpierce.html.element.html
 import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeHtml
 import kotlin.test.Test
@@ -9,9 +14,11 @@ class AttributeTest {
     @Test
     fun singleAttribute() {
         writeHtml {
-            head(id = "head")
-            body(id = "body") {
-                div(id = "div")
+            html {
+                head(id = "head")
+                body(id = "body") {
+                    div(id = "div")
+                }
             }
         } assertEquals {
             """
@@ -31,7 +38,9 @@ class AttributeTest {
     fun noWhitespaceInAttributes() {
         val errorThrown: Boolean = try {
             writeHtml {
-                head("foo bar" by "test")
+                html {
+                    head("foo bar" by "test")
+                }
             }
             false
         } catch (t: IllegalArgumentException) {
@@ -45,7 +54,9 @@ class AttributeTest {
     fun emptyAttribute() {
         val errorThrown: Boolean = try {
             writeHtml {
-                head("" by "test")
+                html {
+                    head("" by "test")
+                }
             }
             false
         } catch (t: IllegalArgumentException) {
@@ -59,7 +70,9 @@ class AttributeTest {
     fun blankAttribute() {
         val errorThrown: Boolean = try {
             writeHtml {
-                head("   " by "test")
+                html {
+                    head("   " by "test")
+                }
             }
             false
         } catch (t: IllegalArgumentException) {
@@ -72,9 +85,11 @@ class AttributeTest {
     @Test
     fun multipleAttributes() {
         writeHtml {
-            head("test1" by "value1", id = "head")
-            body("test2" by "value2", id = "body") {
-                div("test3" by "value3", "test4" by "value4", id = "div")
+            html {
+                head("test1" by "value1", id = "head")
+                body("test2" by "value2", id = "body") {
+                    div("test3" by "value3", "test4" by "value4", id = "div")
+                }
             }
         } assertEquals {
             """

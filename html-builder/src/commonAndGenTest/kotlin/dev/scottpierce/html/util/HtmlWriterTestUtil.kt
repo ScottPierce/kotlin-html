@@ -1,19 +1,15 @@
 package dev.scottpierce.html.util
 
-import dev.scottpierce.html.DocType
 import dev.scottpierce.html.Html
-import dev.scottpierce.html.StringBuilderHtmlWriter
-import dev.scottpierce.html.WriteOptions
+import dev.scottpierce.html.write.StringBuilderHtmlWriter
+import dev.scottpierce.html.write.WriteOptions
 
 fun writeHtml(
     options: WriteOptions = WriteOptions(indent = "    "),
-    docType: DocType = DocType.None,
-    builder: Html.() -> Unit = {}
+    builder: () -> Html
 ): StringBuilderHtmlWriter {
     val writer = StringBuilderHtmlWriter(options = options)
-    Html(docType = docType)
-        .apply(builder)
-        .write(writer)
+    builder().write(writer)
     return writer
 }
 

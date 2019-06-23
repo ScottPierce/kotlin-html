@@ -1,4 +1,8 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.write
+
+import dev.scottpierce.html.element.ContentElement
+import dev.scottpierce.html.element.Element
+import dev.scottpierce.html.element.Writable
 
 interface HtmlWriter {
     val options: WriteOptions
@@ -9,27 +13,27 @@ interface HtmlWriter {
     fun deindent()
 }
 
-fun HtmlWriter.writeTag(name: String, tag: ParentTag) {
-    writeTag(name = name, attrs = tag.attrs, children = tag.children)
+fun HtmlWriter.writeElement(tag: String, element: ContentElement) {
+    writeElement(tag = tag, attrs = element.attrs, children = element.children)
 }
 
-fun HtmlWriter.writeTag(name: String, tag: Tag) {
-    writeTag(name = name, attrs = tag.attrs)
+fun HtmlWriter.writeElement(tag: String, element: Element) {
+    writeElement(tag = tag, attrs = element.attrs)
 }
 
-fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), children: List<Writable> = emptyList()) {
-    write("<$name")
+fun HtmlWriter.writeElement(tag: String, attrs: Map<String, String?> = mapOf(), children: List<Writable> = emptyList()) {
+    write("<$tag")
 
     for (attr in attrs) {
         val key: String = attr.key.also { key ->
             if (key.isEmpty()) {
-                throw IllegalArgumentException("Not allowed to have blank attribute for tag $name.")
+                throw IllegalArgumentException("Not allowed to have blank attribute for tag $tag.")
             }
 
             val hasWhitespace = !key.indices.all { !key[it].isWhitespace() }
             if (hasWhitespace) {
                 throw IllegalArgumentException("Not allowed to have whitespace characters for attribute '$key' inside" +
-                        " tag '$name'.")
+                        " tag '$tag'.")
             }
         }
         val value: String? = attr.value
@@ -52,7 +56,17 @@ fun HtmlWriter.writeTag(name: String, attrs: Map<String, String?> = mapOf(), chi
     deindent()
 
     newLine() // End tag should be on a new line
-    write("</$name>")
+    write("</$tag>")
+}
+
+fun HtmlWriter.writeVoidElement(name: String, element: Element) {
+    write("<").write(name)
+    if (element.attrs.isNotEmpty()) {
+        for (attr in element.attrs) {
+            write(" ").write(attr.key).write("=\"").write(attr.key).write("\"")
+        }
+    }
+    write(">")
 }
 
 class StringBuilderHtmlWriter(
