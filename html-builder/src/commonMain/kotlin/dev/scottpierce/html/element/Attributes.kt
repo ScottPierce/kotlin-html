@@ -2,7 +2,8 @@
 
 package dev.scottpierce.html.element
 
-typealias Attributes = MutableMap<String, String?>
+typealias Attributes = Map<String, String?>
+typealias MutableAttributes = MutableMap<String, String?>
 
 object AttributeConstants {
     const val ID = "id"
@@ -10,7 +11,7 @@ object AttributeConstants {
     const val STYLE = "style"
 }
 
-var Attributes.id: String?
+var MutableAttributes.id: String?
     get() = this[AttributeConstants.ID]
     set(value) {
         if (value == null) {
@@ -20,11 +21,11 @@ var Attributes.id: String?
         }
     }
 
-var Attributes.classes: String
+var MutableAttributes.classes: String
     get() = this[AttributeConstants.CLASSES] ?: ""
     set(value) { this[AttributeConstants.ID] = value }
 
-var Attributes.style: String?
+var MutableAttributes.style: String?
     get() = this[AttributeConstants.STYLE] ?: ""
     set(value) {
         if (value == null) {

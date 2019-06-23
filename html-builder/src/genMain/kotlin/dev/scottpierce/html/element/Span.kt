@@ -15,9 +15,11 @@ import kotlin.collections.List
 import kotlin.collections.MutableList
 
 @HtmlTag
-class Span(
-  override val attrs: Attributes
-) : ContentElement, BodyContent {
+interface Span : ContentElement, BodyContent
+
+class SpanBuilder(
+  override val attrs: MutableAttributes
+) : Span, MutableContentElement {
   override val children: MutableList<Writable> = ArrayList(16)
 
   override fun write(writer: HtmlWriter) {
@@ -25,27 +27,25 @@ class Span(
   }
 }
 
-inline fun <T> T.span(
+inline fun <T : MutableContentElement> T.span(
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Span.() -> Unit = {}
-): Span where T : BodyContent, T : ContentElement = addChild(id, classes, style, func) { Span(it) }
+  func: SpanBuilder.() -> Unit = {}
+): Span = addChild(id, classes, style, func) { SpanBuilder(it) }
 
-inline fun <T> T.span(
+inline fun <T : MutableContentElement> T.span(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Span.() -> Unit = {}
-): Span where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) {
-    Span(it) }
+  func: SpanBuilder.() -> Unit = {}
+): Span = addChild(attrs, id, classes, style, func) { SpanBuilder(it) }
 
-inline fun <T> T.span(
+inline fun <T : MutableContentElement> T.span(
   attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Span.() -> Unit = {}
-): Span where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) {
-    Span(it) }
+  func: SpanBuilder.() -> Unit = {}
+): Span = addChild(attrs, id, classes, style, func) { SpanBuilder(it) }

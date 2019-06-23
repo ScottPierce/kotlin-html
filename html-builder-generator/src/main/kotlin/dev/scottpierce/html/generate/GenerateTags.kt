@@ -24,7 +24,9 @@ private val MutableList = ClassName("kotlin.collections", "MutableList")
 private val ArrayList = ClassName("kotlin.collections", "ArrayList")
 private val HtmlTag = ClassName("dev.scottpierce.html.element", "HtmlTag")
 private val TElement = ClassName("dev.scottpierce.html.element", "Element")
+private val TMutableElement = ClassName("dev.scottpierce.html.element", "MutableElement")
 private val ContentElement = ClassName("dev.scottpierce.html.element", "ContentElement")
+private val MutableContentElement = ClassName("dev.scottpierce.html.element", "MutableContentElement")
 private val HeadContent = ClassName("dev.scottpierce.html.element", "HeadContent")
 private val BodyContent = ClassName("dev.scottpierce.html.element", "BodyContent")
 private val HtmlWriter = ClassName("dev.scottpierce.html.write", "HtmlWriter")
@@ -32,9 +34,10 @@ private val TUnit = ClassName("kotlin", "Unit")
 private val TString = ClassName("kotlin", "String")
 private val Attribute = ClassName("dev.scottpierce.html.element", "Attribute")
 private val Attributes = ClassName("dev.scottpierce.html.element", "Attributes")
+private val MutableAttributes = ClassName("dev.scottpierce.html.element", "MutableAttributes")
 private val ArrayAttributes = ClassName("dev.scottpierce.html", "ArrayAttributes")
 private val AttributeMutableMap = MutableMap.parameterizedBy(TString, TString.copy(nullable = true))
-private val TagMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html.write", "Writable"))
+private val WritableMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html.write", "Writable"))
 private val AttributeList = List.parameterizedBy(Attribute)
 // ################################
 // ###### End Class Names
@@ -49,6 +52,8 @@ fun generateTags(srcFolder: File) {
     for (element in Element.values()) {
         val elementName = element.tagName.capitalize()
         val elementClassName = ClassName(filePackage, elementName)
+        val elementBuilderName = "${elementName}Builder"
+        val elementBuilderClassName = ClassName(filePackage, elementBuilderName)
 
         val file = FileSpec.builder(filePackage, elementName)
 
@@ -61,38 +66,45 @@ fun generateTags(srcFolder: File) {
         file.addComment("This file was generated using the `html-builder-generator` module. Instead of modifying it, " +
                 "modify the\n`html-builder-generator` and run it again.")
 
-        // Generate DSL Class
-        val tagType = TypeSpec.classBuilder(elementClassName).apply {
+        val isParent: Boolean = element.type !is ElementType.Void
+
+        // Generate functionally immutable interface
+        val elementType = TypeSpec.interfaceBuilder(elementClassName).apply {
             addAnnotation(HtmlTag)
 
-            val isParent: Boolean = if (element.type is ElementType.Void) {
-                addSuperinterface(TElement)
-                false
-            } else {
-                addSuperinterface(ContentElement)
-                true
-            }
+            addSuperinterface(ContentElement)
 
             when (element.contentType) {
                 ContentType.HEAD -> addSuperinterface(HeadContent)
                 ContentType.BODY -> addSuperinterface(BodyContent)
             }
+        }.build()
+
+        // Generate mutable builder class
+        val elementBuilderType = TypeSpec.classBuilder(elementBuilderClassName).apply {
+            addSuperinterface(elementClassName)
+
+            if (isParent) {
+                addSuperinterface(MutableContentElement)
+            } else {
+                addSuperinterface(TMutableElement)
+            }
 
             primaryConstructor(
                 FunSpec.constructorBuilder()
-                    .addParameter("attrs", Attributes)
+                    .addParameter("attrs", MutableAttributes)
                     .build()
             )
 
             addProperty(
-                PropertySpec.builder("attrs", Attributes, KModifier.OVERRIDE)
+                PropertySpec.builder("attrs", MutableAttributes, KModifier.OVERRIDE)
                     .initializer("attrs")
                     .build()
             )
 
             if (isParent) {
                 addProperty(
-                    PropertySpec.builder("children", TagMutableList, KModifier.OVERRIDE)
+                    PropertySpec.builder("children", WritableMutableList, KModifier.OVERRIDE)
                         .initializer("%T(${element.childrenListInitialCapacity})", ArrayList)
                         .build()
                 )
@@ -114,7 +126,8 @@ fun generateTags(srcFolder: File) {
         }.build()
 
 
-        file.addType(tagType)
+        file.addType(elementType)
+        file.addType(elementBuilderType)
 
         fun createDslFunction(type: DslFunction): FunSpec {
             val contentType: ClassName = when (element.contentType) {
@@ -126,7 +139,7 @@ fun generateTags(srcFolder: File) {
                 .addTypeVariable(
                     TypeVariableName.invoke(
                         name = "T",
-                        bounds = *arrayOf(contentType, ContentElement)
+                        bounds = *arrayOf(MutableContentElement)
                     )
                 )
                 .receiver(TypeVariableName.invoke("T"))
@@ -165,7 +178,7 @@ fun generateTags(srcFolder: File) {
 
                     if (isParent) {
                         addParameter(
-                            ParameterSpec.builder("func", LambdaTypeName.get(receiver = elementClassName, returnType = TUnit))
+                            ParameterSpec.builder("func", LambdaTypeName.get(receiver = elementBuilderClassName, returnType = TUnit))
                                 .defaultValue("{}")
                                 .build()
                         )
@@ -173,13 +186,13 @@ fun generateTags(srcFolder: File) {
 
                     when (type) {
                         DslFunction.NONE -> {
-                            addCode("return addChild(id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
+                            addCode("return addChild(id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementBuilderClassName)
                         }
                         DslFunction.ATTR_LIST -> {
-                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
+                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementBuilderClassName)
                         }
                         DslFunction.ATTR_VARARG -> {
-                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementClassName)
+                            addCode("return addChild(attrs, id, classes, style${if (isParent) ", func" else ""}) { %T(it) }", elementBuilderClassName)
                         }
                     }
 

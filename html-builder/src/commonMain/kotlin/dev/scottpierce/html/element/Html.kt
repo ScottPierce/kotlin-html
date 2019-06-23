@@ -4,13 +4,16 @@ package dev.scottpierce.html.element
 
 import dev.scottpierce.html.ArrayMap
 import dev.scottpierce.html.write.HtmlWriter
+import dev.scottpierce.html.write.Writable
 import dev.scottpierce.html.write.writeElement
 
+interface Html : ContentElement
+
 @HtmlTag
-class Html(
+class HtmlBuilder(
     val docType: DocType = DocType.None,
-    override val attrs: Attributes = ArrayMap()
-) : ContentElement {
+    override val attrs: MutableAttributes = ArrayMap()
+) : Html, MutableContentElement {
     override val children: MutableList<Writable> = ArrayList()
 
     override fun write(writer: HtmlWriter) {
@@ -27,7 +30,11 @@ sealed class DocType(val type: String?) {
     class Custom(type: String) : DocType(type)
 }
 
-inline fun html(docType: DocType = DocType.None, attrs: List<Attribute> = listOf(), func: Html.() -> Unit = {}): Html {
+inline fun html(
+    docType: DocType = DocType.None,
+    attrs: List<Attribute> = listOf(),
+    func: HtmlBuilder.() -> Unit = {}
+): Html {
     val a = ArrayMap(attrs.size)
-    return Html(docType, attrs = a).apply(func)
+    return HtmlBuilder(docType, attrs = a).apply(func)
 }

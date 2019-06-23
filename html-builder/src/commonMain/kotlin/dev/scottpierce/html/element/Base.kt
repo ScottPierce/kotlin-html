@@ -10,11 +10,19 @@ interface Element : Writable {
     val attrs: Attributes
 }
 
+interface MutableElement : Element {
+    override val attrs: MutableAttributes
+}
+
+interface ContentElement : Element {
+    val children: List<Writable>
+}
+
 /**
  * A HTML element that has content
  */
-interface ContentElement : Element {
-    val children: MutableList<Writable>
+interface MutableContentElement : ContentElement, MutableElement {
+    override val children: MutableList<Writable>
 
     operator fun String.unaryPlus() {
         children += TextWritable(this)

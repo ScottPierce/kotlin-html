@@ -5,13 +5,13 @@ import dev.scottpierce.html.ArrayMap
 @DslMarker
 annotation class HtmlTag
 
-inline fun <T : Element> ContentElement.addChild(
+inline fun <T : MutableElement> MutableContentElement.addChild(
     attrs: Array<out Attribute>,
     id: String?,
     classes: String?,
     style: String?,
     func: T.() -> Unit = {},
-    provider: (attrs: Attributes) -> T
+    provider: (attrs: MutableAttributes) -> T
 ): T {
     val a = ArrayMap(attrs.size + 3)
     if (id != null) a["id"] = id
@@ -24,13 +24,13 @@ inline fun <T : Element> ContentElement.addChild(
     return tag.apply(func)
 }
 
-inline fun <T : Element> ContentElement.addChild(
+inline fun <T : MutableElement> MutableContentElement.addChild(
     attrs: List<Attribute>,
     id: String?,
     classes: String?,
     style: String?,
     func: T.() -> Unit = {},
-    provider: (attrs: Attributes) -> T
+    provider: (attrs: MutableAttributes) -> T
 ): T {
     val a = ArrayMap(attrs.size + 3)
     if (id != null) a["id"] = id
@@ -43,12 +43,12 @@ inline fun <T : Element> ContentElement.addChild(
     return tag.apply(func)
 }
 
-inline fun <T : Element> ContentElement.addChild(
+inline fun <T : MutableElement> MutableContentElement.addChild(
     id: String?,
     classes: String?,
     style: String?,
     func: T.() -> Unit = {},
-    provider: (attrs: Attributes) -> T
+    provider: (attrs: MutableAttributes) -> T
 ): T {
     val a = ArrayMap(3)
     if (id != null) a["id"] = id

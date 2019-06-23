@@ -11,30 +11,32 @@ import kotlin.Suppress
 import kotlin.collections.List
 
 @HtmlTag
-class Br(
-  override val attrs: Attributes
-) : Element, BodyContent {
+interface Br : ContentElement, BodyContent
+
+class BrBuilder(
+  override val attrs: MutableAttributes
+) : Br, MutableElement {
   override fun write(writer: HtmlWriter) {
     writer.writeVoidElement("br", this)
   }
 }
 
-fun <T> T.br(
+fun <T : MutableContentElement> T.br(
   id: String? = null,
   classes: String? = null,
   style: String? = null
-): Br where T : BodyContent, T : ContentElement = addChild(id, classes, style) { Br(it) }
+): Br = addChild(id, classes, style) { BrBuilder(it) }
 
-fun <T> T.br(
+fun <T : MutableContentElement> T.br(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
   style: String? = null
-): Br where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style) { Br(it) }
+): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }
 
-fun <T> T.br(
+fun <T : MutableContentElement> T.br(
   attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null
-): Br where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style) { Br(it) }
+): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }

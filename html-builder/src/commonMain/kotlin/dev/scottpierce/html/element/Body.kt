@@ -1,12 +1,15 @@
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
+import dev.scottpierce.html.write.Writable
 import dev.scottpierce.html.write.writeElement
 
 @HtmlTag
-class Body(
-    override val attrs: Attributes
-) : ContentElement, BodyContent {
+interface Body : ContentElement, BodyContent
+
+class BodyBuilder(
+    override val attrs: MutableAttributes
+) : Body, MutableContentElement {
     override val children: MutableList<Writable> = ArrayList(8)
 
     override fun write(writer: HtmlWriter) {
@@ -14,25 +17,25 @@ class Body(
     }
 }
 
-inline fun Html.body(
+inline fun HtmlBuilder.body(
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: Body.() -> Unit = {}
-): Body = addChild(id, classes, style, func) { Body(it) }
+    func: BodyBuilder.() -> Unit = {}
+): Body = addChild(id, classes, style, func) { BodyBuilder(it) }
 
-inline fun Html.body(
+inline fun HtmlBuilder.body(
     attrs: List<Attribute>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: Body.() -> Unit = {}
-): Body = addChild(attrs, id, classes, style, func) { Body(it) }
+    func: BodyBuilder.() -> Unit = {}
+): Body = addChild(attrs, id, classes, style, func) { BodyBuilder(it) }
 
-inline fun Html.body(
+inline fun HtmlBuilder.body(
     vararg attrs: Attribute,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: Body.() -> Unit = {}
-): Body = addChild(attrs, id, classes, style, func) { Body(it) }
+    func: BodyBuilder.() -> Unit = {}
+): Body = addChild(attrs, id, classes, style, func) { BodyBuilder(it) }

@@ -15,9 +15,11 @@ import kotlin.collections.List
 import kotlin.collections.MutableList
 
 @HtmlTag
-class P(
-  override val attrs: Attributes
-) : ContentElement, BodyContent {
+interface P : ContentElement, BodyContent
+
+class PBuilder(
+  override val attrs: MutableAttributes
+) : P, MutableContentElement {
   override val children: MutableList<Writable> = ArrayList(16)
 
   override fun write(writer: HtmlWriter) {
@@ -25,25 +27,25 @@ class P(
   }
 }
 
-inline fun <T> T.p(
+inline fun <T : MutableContentElement> T.p(
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: P.() -> Unit = {}
-): P where T : BodyContent, T : ContentElement = addChild(id, classes, style, func) { P(it) }
+  func: PBuilder.() -> Unit = {}
+): P = addChild(id, classes, style, func) { PBuilder(it) }
 
-inline fun <T> T.p(
+inline fun <T : MutableContentElement> T.p(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: P.() -> Unit = {}
-): P where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) { P(it) }
+  func: PBuilder.() -> Unit = {}
+): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }
 
-inline fun <T> T.p(
+inline fun <T : MutableContentElement> T.p(
   attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: P.() -> Unit = {}
-): P where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) { P(it) }
+  func: PBuilder.() -> Unit = {}
+): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }

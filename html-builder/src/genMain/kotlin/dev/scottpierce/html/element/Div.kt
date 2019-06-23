@@ -15,9 +15,11 @@ import kotlin.collections.List
 import kotlin.collections.MutableList
 
 @HtmlTag
-class Div(
-  override val attrs: Attributes
-) : ContentElement, BodyContent {
+interface Div : ContentElement, BodyContent
+
+class DivBuilder(
+  override val attrs: MutableAttributes
+) : Div, MutableContentElement {
   override val children: MutableList<Writable> = ArrayList(16)
 
   override fun write(writer: HtmlWriter) {
@@ -25,27 +27,25 @@ class Div(
   }
 }
 
-inline fun <T> T.div(
+inline fun <T : MutableContentElement> T.div(
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Div.() -> Unit = {}
-): Div where T : BodyContent, T : ContentElement = addChild(id, classes, style, func) { Div(it) }
+  func: DivBuilder.() -> Unit = {}
+): Div = addChild(id, classes, style, func) { DivBuilder(it) }
 
-inline fun <T> T.div(
+inline fun <T : MutableContentElement> T.div(
   vararg attrs: Attribute,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Div.() -> Unit = {}
-): Div where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) {
-    Div(it) }
+  func: DivBuilder.() -> Unit = {}
+): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
 
-inline fun <T> T.div(
+inline fun <T : MutableContentElement> T.div(
   attrs: List<Attribute>,
   id: String? = null,
   classes: String? = null,
   style: String? = null,
-  func: Div.() -> Unit = {}
-): Div where T : BodyContent, T : ContentElement = addChild(attrs, id, classes, style, func) {
-    Div(it) }
+  func: DivBuilder.() -> Unit = {}
+): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
