@@ -72,7 +72,11 @@ fun generateTags(srcFolder: File) {
         val elementType = TypeSpec.interfaceBuilder(elementClassName).apply {
             addAnnotation(HtmlTag)
 
-            addSuperinterface(ContentElement)
+            if (isParent) {
+                addSuperinterface(ContentElement)
+            } else {
+                addSuperinterface(TElement)
+            }
 
             when (element.contentType) {
                 ContentType.HEAD -> addSuperinterface(HeadContent)

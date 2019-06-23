@@ -1,6 +1,6 @@
 package dev.scottpierce.html.util
 
-import dev.scottpierce.html.Html
+import dev.scottpierce.html.element.Html
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 

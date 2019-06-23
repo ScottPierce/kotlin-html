@@ -11,7 +11,7 @@ import kotlin.Suppress
 import kotlin.collections.List
 
 @HtmlTag
-interface Br : ContentElement, BodyContent
+interface Br : Element, BodyContent
 
 class BrBuilder(
   override val attrs: MutableAttributes

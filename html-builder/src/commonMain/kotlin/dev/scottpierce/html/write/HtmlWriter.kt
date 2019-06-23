@@ -2,7 +2,6 @@ package dev.scottpierce.html.write
 
 import dev.scottpierce.html.element.ContentElement
 import dev.scottpierce.html.element.Element
-import dev.scottpierce.html.element.Writable
 
 interface HtmlWriter {
     val options: WriteOptions
