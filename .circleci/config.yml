@@ -51,7 +51,7 @@ jobs:
           keys:
             - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :html-builder:build --stacktrace
+      - run: ./gradlew :html-builder:assemble --stacktrace
 
       - save_cache:
           paths:
@@ -73,7 +73,7 @@ jobs:
           keys:
             - unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :html-builder:build --stacktrace
+      - run: ./gradlew :html-builder:jvmTest --stacktrace
 
       - save_cache:
           paths:
