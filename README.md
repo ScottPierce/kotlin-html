@@ -21,11 +21,23 @@ been made for several years.
 
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
-    * You can easily add your own by looking at an existing tag and using it as a template. I recommend using 
-    [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as an example.
+    * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
+    [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template.
     * PRs are welcome. If you add an element, please make sure you add it via the [generator module](https://github.com/ScottPierce/kotlin-html-builder/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/Element.kt).
     
 ## Pull Requests Welcome
 * If I haven't built out proper element generation for the `ElementType` you want, and don't feel like trying yourself, 
 create an issue.
 * Please talk to me in an issue before you do any major changes / refactors
+
+## Examples
+```kotlin
+html {
+    head("test1" by "value1", id = "head")
+    body("test2" by "value2", id = "body") {
+        div("test3" by "value3", "test4" by "value4", id = "div")
+    }
+}
+```
+
+## Understanding the Codebase
