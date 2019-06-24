@@ -19,7 +19,7 @@ been made for several years.
 * Support for Ktor
 
 ## Missing Features
-* Complete list of all HTML elements
+* Complete list of all HTML elements, and style attributes
     * You can easily add your own by looking at an existing tag and using it as a template. I recommend using 
     [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as an example.
     * PRs are welcome. If you add an element, please make sure you add it via the [generator module](https://github.com/ScottPierce/kotlin-html-builder/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/Element.kt).
