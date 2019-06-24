@@ -13,9 +13,9 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - "d2:8e:dc:b4:1c:14:25:31:4c:04:e8:3f:ef:b4:b0:9b"
+#      - add_ssh_keys:
+#          fingerprints:
+#            -
 
       - run:
           name: Configure GIT
