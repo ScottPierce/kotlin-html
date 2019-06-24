@@ -1,5 +1,6 @@
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
+    id("jacoco")
     id("maven-publish")
     id("signing")
 }
@@ -57,5 +58,26 @@ kotlin {
                 implementation(Libs.kotlin.test.jvm)
             }
         }
+    }
+}
+
+tasks.register<JacocoReport>("jvmCodeCoverageReport") {
+    executionData(tasks.getByName("jvmTest"))
+
+    sourceDirectories.setFrom(
+        "src/commonMain/kotlin"
+    )
+    
+    classDirectories.setFrom(
+        "build/classes/kotlin/jvm/main"
+    )
+
+    @Suppress("UnstableApiUsage")
+    reports {
+        csv.isEnabled = false
+        xml.isEnabled = true
+        xml.destination = file("${rootProject.buildDir}/jacoco/html-builder-jvm.xml")
+        html.isEnabled = true
+        html.destination = file("${buildDir}/jacocoHtml")
     }
 }
