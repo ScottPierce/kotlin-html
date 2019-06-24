@@ -18,34 +18,34 @@ import kotlin.collections.MutableList
 interface Div : ContentElement, BodyContent
 
 class DivBuilder(
-  override val attrs: MutableAttributes
+    override val attrs: MutableAttributes
 ) : Div, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(8)
+    override val children: MutableList<Writable> = ArrayList(8)
 
-  override fun write(writer: HtmlWriter) {
-    writer.writeElement("div", this)
-  }
+    override fun write(writer: HtmlWriter) {
+        writer.writeElement("div", this)
+    }
 }
 
 inline fun <T : MutableContentElement> T.div(
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: DivBuilder.() -> Unit = {}
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: DivBuilder.() -> Unit = {}
 ): Div = addChild(id, classes, style, func) { DivBuilder(it) }
 
 inline fun <T : MutableContentElement> T.div(
-  vararg attrs: Attribute,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: DivBuilder.() -> Unit = {}
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: DivBuilder.() -> Unit = {}
 ): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
 
 inline fun <T : MutableContentElement> T.div(
-  attrs: List<Attribute>,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: DivBuilder.() -> Unit = {}
+    attrs: List<Attribute>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: DivBuilder.() -> Unit = {}
 ): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }

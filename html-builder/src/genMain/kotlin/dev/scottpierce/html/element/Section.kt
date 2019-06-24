@@ -18,34 +18,34 @@ import kotlin.collections.MutableList
 interface Section : ContentElement, BodyContent
 
 class SectionBuilder(
-  override val attrs: MutableAttributes
+    override val attrs: MutableAttributes
 ) : Section, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(16)
+    override val children: MutableList<Writable> = ArrayList(16)
 
-  override fun write(writer: HtmlWriter) {
-    writer.writeElement("section", this)
-  }
+    override fun write(writer: HtmlWriter) {
+        writer.writeElement("section", this)
+    }
 }
 
 inline fun <T : MutableContentElement> T.section(
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: SectionBuilder.() -> Unit = {}
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: SectionBuilder.() -> Unit = {}
 ): Section = addChild(id, classes, style, func) { SectionBuilder(it) }
 
 inline fun <T : MutableContentElement> T.section(
-  vararg attrs: Attribute,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: SectionBuilder.() -> Unit = {}
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: SectionBuilder.() -> Unit = {}
 ): Section = addChild(attrs, id, classes, style, func) { SectionBuilder(it) }
 
 inline fun <T : MutableContentElement> T.section(
-  attrs: List<Attribute>,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: SectionBuilder.() -> Unit = {}
+    attrs: List<Attribute>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: SectionBuilder.() -> Unit = {}
 ): Section = addChild(attrs, id, classes, style, func) { SectionBuilder(it) }

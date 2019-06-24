@@ -84,6 +84,6 @@ data class GridColumn internal constructor(
 }
 
 val Int.span: Span
-  get() = Span(this)
+    get() = Span(this)
 
 class Span(val count: Int)

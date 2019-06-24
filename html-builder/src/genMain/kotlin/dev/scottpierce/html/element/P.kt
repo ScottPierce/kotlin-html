@@ -18,34 +18,34 @@ import kotlin.collections.MutableList
 interface P : ContentElement, BodyContent
 
 class PBuilder(
-  override val attrs: MutableAttributes
+    override val attrs: MutableAttributes
 ) : P, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(8)
+    override val children: MutableList<Writable> = ArrayList(8)
 
-  override fun write(writer: HtmlWriter) {
-    writer.writeElement("p", this)
-  }
+    override fun write(writer: HtmlWriter) {
+        writer.writeElement("p", this)
+    }
 }
 
 inline fun <T : MutableContentElement> T.p(
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: PBuilder.() -> Unit = {}
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: PBuilder.() -> Unit = {}
 ): P = addChild(id, classes, style, func) { PBuilder(it) }
 
 inline fun <T : MutableContentElement> T.p(
-  vararg attrs: Attribute,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: PBuilder.() -> Unit = {}
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: PBuilder.() -> Unit = {}
 ): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }
 
 inline fun <T : MutableContentElement> T.p(
-  attrs: List<Attribute>,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null,
-  func: PBuilder.() -> Unit = {}
+    attrs: List<Attribute>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: PBuilder.() -> Unit = {}
 ): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }

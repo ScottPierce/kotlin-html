@@ -14,29 +14,29 @@ import kotlin.collections.List
 interface Br : Element, BodyContent
 
 class BrBuilder(
-  override val attrs: MutableAttributes
+    override val attrs: MutableAttributes
 ) : Br, MutableElement {
-  override fun write(writer: HtmlWriter) {
-    writer.writeVoidElement("br", this)
-  }
+    override fun write(writer: HtmlWriter) {
+        writer.writeVoidElement("br", this)
+    }
 }
 
 fun <T : MutableContentElement> T.br(
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
 ): Br = addChild(id, classes, style) { BrBuilder(it) }
 
 fun <T : MutableContentElement> T.br(
-  vararg attrs: Attribute,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null
+    vararg attrs: Attribute,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
 ): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }
 
 fun <T : MutableContentElement> T.br(
-  attrs: List<Attribute>,
-  id: String? = null,
-  classes: String? = null,
-  style: String? = null
+    attrs: List<Attribute>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
 ): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }

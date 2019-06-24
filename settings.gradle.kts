@@ -1,3 +1,5 @@
+enableFeaturePreview("GRADLE_METADATA")
+
 rootProject.name = "html-builder"
 
 include(

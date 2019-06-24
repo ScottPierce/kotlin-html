@@ -37,7 +37,7 @@ private val Attributes = ClassName("dev.scottpierce.html.element", "Attributes")
 private val MutableAttributes = ClassName("dev.scottpierce.html.element", "MutableAttributes")
 private val ArrayAttributes = ClassName("dev.scottpierce.html", "ArrayAttributes")
 private val AttributeMutableMap = MutableMap.parameterizedBy(TString, TString.copy(nullable = true))
-private val WritableMutableList =  MutableList.parameterizedBy(ClassName("dev.scottpierce.html.write", "Writable"))
+private val WritableMutableList = MutableList.parameterizedBy(ClassName("dev.scottpierce.html.write", "Writable"))
 private val AttributeList = List.parameterizedBy(Attribute)
 // ################################
 // ###### End Class Names
@@ -56,6 +56,7 @@ fun generateTags(srcFolder: File) {
         val elementBuilderClassName = ClassName(filePackage, elementBuilderName)
 
         val file = FileSpec.builder(filePackage, elementName)
+            .indent("    ")
 
         file.addAnnotation(
             AnnotationSpec.builder(Suppress::class)
@@ -128,7 +129,6 @@ fun generateTags(srcFolder: File) {
                     .build()
             )
         }.build()
-
 
         file.addType(elementType)
         file.addType(elementBuilderType)

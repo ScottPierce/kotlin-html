@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+apply {
+    from(project.file("./gradle/ktlint.gradle"))
+}
+
 allprojects {
     group = "dev.scottpierce.html"
     version = "0.1.0"
