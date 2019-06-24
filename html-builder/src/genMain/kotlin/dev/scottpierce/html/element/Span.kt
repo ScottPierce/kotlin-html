@@ -20,7 +20,7 @@ interface Span : ContentElement, BodyContent
 class SpanBuilder(
   override val attrs: MutableAttributes
 ) : Span, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(16)
+  override val children: MutableList<Writable> = ArrayList(4)
 
   override fun write(writer: HtmlWriter) {
     writer.writeElement("span", this)

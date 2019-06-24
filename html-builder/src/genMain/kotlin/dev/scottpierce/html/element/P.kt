@@ -20,7 +20,7 @@ interface P : ContentElement, BodyContent
 class PBuilder(
   override val attrs: MutableAttributes
 ) : P, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(16)
+  override val children: MutableList<Writable> = ArrayList(8)
 
   override fun write(writer: HtmlWriter) {
     writer.writeElement("p", this)

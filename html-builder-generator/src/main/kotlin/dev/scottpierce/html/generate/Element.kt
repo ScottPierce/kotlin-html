@@ -1,7 +1,7 @@
 package dev.scottpierce.html.generate
 
 private const val CAPACITY_LARGE = 16
-private const val CAPACITY_MEDIUM = 16
+private const val CAPACITY_MEDIUM = 8
 private const val CAPACITY_SMALL = 4
 
 @Suppress("unused")
@@ -30,7 +30,8 @@ enum class Element(
     SPAN(
         tagName = "span",
         type = ElementType.Normal(),
-        contentType = ContentType.BODY
+        contentType = ContentType.BODY,
+        childrenListInitialCapacity = CAPACITY_SMALL
     ),
     P(
         tagName = "p",

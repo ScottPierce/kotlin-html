@@ -20,7 +20,7 @@ interface Div : ContentElement, BodyContent
 class DivBuilder(
   override val attrs: MutableAttributes
 ) : Div, MutableContentElement {
-  override val children: MutableList<Writable> = ArrayList(16)
+  override val children: MutableList<Writable> = ArrayList(8)
 
   override fun write(writer: HtmlWriter) {
     writer.writeElement("div", this)
