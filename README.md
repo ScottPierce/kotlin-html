@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
+
 # Why this library?
 I was seeking a simple Kotlin server templating DSL that I could use for a project, 
 [https://www.arseldrivingschool.com](https://www.arseldrivingschool.com). I found 

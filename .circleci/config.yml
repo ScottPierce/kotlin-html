@@ -1,0 +1,118 @@
+job_config: &job_config
+  working_directory: ~/workspace
+  docker:
+    - image: circleci/openjdk:8u212-jdk-stretch
+
+version: 2.1
+jobs:
+  code style:
+    <<: *job_config
+    environment:
+      GRADLE_OPTS: -Xmx3g
+    resource_class: medium
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
+
+      - run:
+          name: Configure GIT
+          command: |
+            git config user.email "circleci@circleci.com"
+            git config user.name "CircleCI"
+            git push --set-upstream origin ${CIRCLE_BRANCH}
+
+      - restore_cache:
+          keys:
+            - codestyle-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+      - run:
+          name: Perform code style check
+          command: ./gradlew ktlintFormat
+
+      - run:
+          name: Commit code style changes
+          command: scripts/git-commit-if-changes.sh "code style"
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: codestyle-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+  build:
+    <<: *job_config
+    resource_class: large
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+      - run: ./gradlew :html-builder:assemble --stacktrace
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - html-builder/build/libs
+
+  unit test:
+    <<: *job_config
+    resource_class: large
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+      - run: ./gradlew :html-builder:jvmTest --stacktrace
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+  upload:
+    <<: *job_config
+    environment:
+      GRADLE_OPTS: -Xmx1536m
+    resource_class: small
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+      - attach_workspace:
+          at: .
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
+workflows:
+  version: 2
+  Build and Check:
+    jobs:
+      - code style
+      - build
+      - unit test
+#      - upload:
+#          requires:
+#            - code style
+#            - build
+#            - unit test
+#          filters:
+#            branches:
+#              only:
+#                - master
