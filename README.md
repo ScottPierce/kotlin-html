@@ -1,7 +1,7 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
 
 # Why this library?
-I was seeking a simple Kotlin server templating DSL that I could use for a project, 
+I was seeking a simple Kotlin templating DSL that I could use for a project, 
 [https://www.arseldrivingschool.com](https://www.arseldrivingschool.com). I found 
 [kotlinx.html](https://github.com/Kotlin/kotlinx.html), but upon initial use, I found that it's API was clunky, lacking 
 in features that I needed (i.e. styles), and lacking in features that I wanted (i.e. immutability). I also found that 
