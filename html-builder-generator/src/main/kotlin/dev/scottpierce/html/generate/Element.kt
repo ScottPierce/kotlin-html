@@ -18,24 +18,24 @@ enum class Element(
 ) {
     SECTION(
         tagName = "section",
-        type = ElementType.Normal(),
+        type = ElementType.Normal,
         contentType = ContentType.BODY,
         childrenListInitialCapacity = CAPACITY_LARGE
     ),
     DIV(
         tagName = "div",
-        type = ElementType.Normal(),
+        type = ElementType.Normal,
         contentType = ContentType.BODY
     ),
     SPAN(
         tagName = "span",
-        type = ElementType.Normal(),
+        type = ElementType.Normal,
         contentType = ContentType.BODY,
         childrenListInitialCapacity = CAPACITY_SMALL
     ),
     P(
         tagName = "p",
-        type = ElementType.Normal(),
+        type = ElementType.Normal,
         contentType = ContentType.BODY
     ),
     BR(
@@ -60,6 +60,5 @@ sealed class ElementType {
     object RawText : ElementType()
     object EscapableRawText : ElementType()
     object Foreign : ElementType()
-
-    class Normal : ElementType()
+    object Normal : ElementType()
 }

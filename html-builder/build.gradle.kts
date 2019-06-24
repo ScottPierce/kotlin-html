@@ -19,11 +19,20 @@ kotlin {
             }
         }
 
+        val commonTest by getting {
+            dependencies {
+                for (lib in Libs.kotlin.test.common) {
+                    implementation(lib)
+                }
+            }
+        }
+
         val genMain = create("genMain") {
             dependsOn(getByName("commonMain"))
         }
 
         val commonAndGenTest = create("commonAndGenTest") {
+            dependsOn(commonTest)
             dependsOn(genMain)
 
             dependencies {
@@ -48,14 +57,5 @@ kotlin {
                 implementation(Libs.kotlin.test.jvm)
             }
         }
-
-//        jvm {
-//            compilations["main"].defaultSourceSet.dependencies {
-//                api(kotlin("stdlib-jdk8"))
-//            }
-//            compilations["test"].defaultSourceSet.dependencies {
-//                implementation(kotlin("test-junit"))
-//            }
-//        }
     }
 }
