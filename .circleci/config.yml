@@ -75,7 +75,7 @@ jobs:
 
       - run:
           name: Run Tests
-          command: ./gradlew :html-builder:jvmTest --stacktrace
+          command: ./gradlew :html-builder:jvmTest :html-builder:jvmCodeCoverageReport --stacktrace
 
       - run:
           name: Upload to CodeCov

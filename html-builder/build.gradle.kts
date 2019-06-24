@@ -60,3 +60,15 @@ kotlin {
         }
     }
 }
+
+tasks.register<JacocoReport>("jvmCodeCoverageReport") {
+    executionData(tasks.getByName("jvmTest"))
+
+    sourceDirectories.setFrom(
+        "src/commonMain/kotlin"
+    )
+    
+    classDirectories.setFrom(
+        "build/classes/kotlin/jvm/main"
+    )
+}
