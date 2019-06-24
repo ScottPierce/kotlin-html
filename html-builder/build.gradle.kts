@@ -65,7 +65,8 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))
 
     sourceDirectories.setFrom(
-        "src/commonMain/kotlin"
+        "src/commonMain/kotlin",
+        "src/genMain/kotlin"
     )
     
     classDirectories.setFrom(
