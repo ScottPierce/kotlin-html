@@ -71,4 +71,13 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     classDirectories.setFrom(
         "build/classes/kotlin/jvm/main"
     )
+
+    @Suppress("UnstableApiUsage")
+    reports {
+        csv.isEnabled = false
+        xml.isEnabled = true
+        xml.destination = file("${rootProject.buildDir}/jacoco/html-builder-jvm.xml")
+        html.isEnabled = true
+        html.destination = file("${buildDir}/jacocoHtml")
+    }
 }
