@@ -73,7 +73,13 @@ jobs:
           keys:
             - unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :html-builder:jvmTest --stacktrace
+      - run:
+          name: Run Tests
+          command: ./gradlew :html-builder:jvmTest --stacktrace
+
+      - run:
+          name: Upload to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
 
       - save_cache:
           paths:

@@ -1,5 +1,6 @@
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
+    id("jacoco")
     id("maven-publish")
     id("signing")
 }
