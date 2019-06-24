@@ -13,9 +13,9 @@ jobs:
     steps:
       - checkout
 
-#      - add_ssh_keys:
-#          fingerprints:
-#            -
+      - add_ssh_keys:
+          fingerprints:
+            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
 
       - run:
           name: Configure GIT
@@ -104,7 +104,7 @@ workflows:
   version: 2
   Build and Check:
     jobs:
-#      - code style
+      - code style
       - build
       - unit test
 #      - upload:
