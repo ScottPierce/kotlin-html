@@ -2,6 +2,8 @@
 
 package dev.scottpierce.html.element
 
+import dev.scottpierce.html.ArrayEntry
+
 typealias Attributes = Map<String, String?>
 typealias MutableAttributes = MutableMap<String, String?>
 
@@ -35,20 +37,9 @@ var MutableAttributes.style: String?
         }
     }
 
-data class Attribute(
-    override val key: String,
-    override var value: String?
-) : MutableMap.MutableEntry<String, String?> {
-    override fun setValue(newValue: String?): String? {
-        val oldValue = value
-        value = newValue
-        return oldValue
-    }
-}
+typealias Attribute = MutableMap.MutableEntry<String, String?>
 
-infix fun String.by(that: String?): Attribute = Attribute(this, that)
-
-fun String.byNoValue(): Attribute = Attribute(this, null)
+fun String.byNoValue(): Attribute = ArrayEntry(this, null)
 
 fun <K, V> MutableMap<K, V>.putAll(entries: List<MutableMap.MutableEntry<K, V>>) {
     for ((key, value) in entries) {

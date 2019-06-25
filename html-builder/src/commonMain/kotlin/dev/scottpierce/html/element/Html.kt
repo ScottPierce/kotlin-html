@@ -35,6 +35,7 @@ inline fun html(
     attrs: List<Attribute> = listOf(),
     func: HtmlBuilder.() -> Unit = {}
 ): Html {
-    val a = ArrayMap(attrs.size)
+    val a = ArrayMap<String, String?>(attrs.size)
+    a.addAll(attrs)
     return HtmlBuilder(docType, attrs = a).apply(func)
 }

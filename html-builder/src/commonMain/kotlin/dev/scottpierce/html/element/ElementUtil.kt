@@ -13,7 +13,7 @@ inline fun <T : MutableElement> MutableContentElement.addChild(
     func: T.() -> Unit = {},
     provider: (attrs: MutableAttributes) -> T
 ): T {
-    val a = ArrayMap(attrs.size + 3)
+    val a = ArrayMap<String, String?>(attrs.size + 3)
     if (id != null) a["id"] = id
     if (classes != null) a["classes"] = classes
     if (style != null) a["style"] = style
@@ -32,7 +32,7 @@ inline fun <T : MutableElement> MutableContentElement.addChild(
     func: T.() -> Unit = {},
     provider: (attrs: MutableAttributes) -> T
 ): T {
-    val a = ArrayMap(attrs.size + 3)
+    val a = ArrayMap<String, String?>(attrs.size + 3)
     if (id != null) a["id"] = id
     if (classes != null) a["classes"] = classes
     if (style != null) a["style"] = style
@@ -50,7 +50,7 @@ inline fun <T : MutableElement> MutableContentElement.addChild(
     func: T.() -> Unit = {},
     provider: (attrs: MutableAttributes) -> T
 ): T {
-    val a = ArrayMap(3)
+    val a = ArrayMap<String, String?>(3)
     if (id != null) a["id"] = id
     if (classes != null) a["classes"] = classes
     if (style != null) a["style"] = style

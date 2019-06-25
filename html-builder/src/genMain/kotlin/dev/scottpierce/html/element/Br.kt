@@ -9,6 +9,7 @@ import dev.scottpierce.html.write.writeVoidElement
 import kotlin.String
 import kotlin.Suppress
 import kotlin.collections.List
+import kotlin.collections.MutableMap.MutableEntry
 
 @HtmlTag
 interface Br : Element, BodyContent
@@ -28,14 +29,14 @@ fun <T : MutableContentElement> T.br(
 ): Br = addChild(id, classes, style) { BrBuilder(it) }
 
 fun <T : MutableContentElement> T.br(
-    vararg attrs: Attribute,
+    vararg attrs: MutableEntry<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null
 ): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }
 
 fun <T : MutableContentElement> T.br(
-    attrs: List<Attribute>,
+    attrs: List<MutableEntry<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null

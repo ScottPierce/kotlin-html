@@ -2,13 +2,44 @@
 
 package dev.scottpierce.html.style
 
-inline fun style(block: StyleBuilder.() -> Unit): Style {
-    val builder = StyleBuilder()
-    builder.block()
-    return builder.build()
+import dev.scottpierce.html.ArrayMap
+import dev.scottpierce.html.by
+import dev.scottpierce.html.write.HtmlWriter
+import dev.scottpierce.html.write.Writable
+import dev.scottpierce.html.write.writeStyle
+import kotlin.Unit
+
+interface Style : Writable {
+    val size: Int
+
+    operator fun get(property: String): Any?
+    operator fun iterator(): Iterator<Map.Entry<String, Any?>>
+
+    operator fun plus(style: Style): Style {
+        val propertiesList = ArrayList<MutableMap.MutableEntry<String, Any?>>(size + style.size)
+
+        for (prop in this) {
+            propertiesList += prop.key by prop.value
+        }
+
+        for (prop in style) {
+            propertiesList += prop.key by prop.value
+        }
+
+        return StyleBuilder(ArrayMap(propertiesList))
+    }
 }
 
-inline class StyleBuilder(override val properties: MutableMap<String, Any?> = mutableMapOf()) : Style {
+class StyleBuilder(
+    internal val properties: MutableMap<String, Any?> = ArrayMap(16)
+) : Style {
+    override val size: Int
+        get() = properties.size
+
+    override fun get(property: String): Any? = properties[property]
+
+    override fun iterator(): Iterator<Map.Entry<String, Any?>> = properties.iterator()
+
     operator fun set(property: String, value: Any?) {
         properties[property] = value
     }
@@ -20,36 +51,19 @@ inline class StyleBuilder(override val properties: MutableMap<String, Any?> = mu
         return StyleBuilder(properties)
     }
 
-    fun build(): Style = StyleImpl(properties)
+    operator fun Style.unaryPlus() {
 
-    override fun toString() = toStyleString()
-}
-
-interface Style {
-    val properties: Map<String, Any?>
-
-    operator fun get(property: String): Any? = properties[property]
-
-    operator fun plus(style: Style): Style {
-        return StyleImpl(properties + style.properties)
     }
 
-    fun toStyleString(): String {
-        val sb = StringBuilder()
+    operator fun StyleBuilder.unaryPlus() {
+        properties.putAll(this.properties)
+    }
 
-        for ((property, value) in properties) {
-            if (value != null) {
-                sb.append(property)
-                    .append(":")
-                    .append(value.toString())
-                    .append(";")
-            }
-        }
-
-        return sb.toString()
+    override fun write(writer: HtmlWriter) {
+        writer.writeStyle(this)
     }
 }
 
-internal class StyleImpl(override val properties: Map<String, Any?>) : Style {
-    override fun toString() = toStyleString()
+inline fun style(func: StyleBuilder.() -> Unit): Style {
+    return StyleBuilder().apply(func)
 }

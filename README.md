@@ -17,7 +17,7 @@ been made for several years.
     * CSS
 * Functionally Immutable
 * Multiplatform
-* Support for Ktor
+* Integration with Ktor
 
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
@@ -33,11 +33,9 @@ create an issue.
 ## Examples
 ```kotlin
 html {
-    head("test1" by "value1", id = "head")
-    body("test2" by "value2", id = "body") {
-        div("test3" by "value3", "test4" by "value4", id = "div")
+    head("custom-attribute" by "attribute-value")
+    body {
+        div(id = "divId", classes = "class1 class2")
     }
 }
 ```
-
-## Understanding the Codebase

@@ -25,6 +25,11 @@ class ChannelHtmlWriter(
         indent--
     }
 
+    override fun write(c: Char): HtmlWriter {
+        writer.append(c)
+        return this
+    }
+
     override fun write(code: String): HtmlWriter {
         writer.append(code)
         return this

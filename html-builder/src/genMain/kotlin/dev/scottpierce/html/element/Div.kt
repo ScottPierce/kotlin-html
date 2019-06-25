@@ -13,6 +13,7 @@ import kotlin.Unit
 import kotlin.collections.ArrayList
 import kotlin.collections.List
 import kotlin.collections.MutableList
+import kotlin.collections.MutableMap.MutableEntry
 
 @HtmlTag
 interface Div : ContentElement, BodyContent
@@ -35,7 +36,7 @@ inline fun <T : MutableContentElement> T.div(
 ): Div = addChild(id, classes, style, func) { DivBuilder(it) }
 
 inline fun <T : MutableContentElement> T.div(
-    vararg attrs: Attribute,
+    vararg attrs: MutableEntry<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
@@ -43,7 +44,7 @@ inline fun <T : MutableContentElement> T.div(
 ): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
 
 inline fun <T : MutableContentElement> T.div(
-    attrs: List<Attribute>,
+    attrs: List<MutableEntry<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,

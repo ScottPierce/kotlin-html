@@ -26,7 +26,7 @@ inline fun HtmlBuilder.head(
 ): Head = addChild(id, classes, style, func) { HeadBuilder(it) }
 
 inline fun HtmlBuilder.head(
-    attrs: List<Attribute>,
+    attrs: List<MutableMap.MutableEntry<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
@@ -34,7 +34,7 @@ inline fun HtmlBuilder.head(
 ): Head = addChild(attrs, id, classes, style, func) { HeadBuilder(it) }
 
 inline fun HtmlBuilder.head(
-    vararg attrs: Attribute,
+    vararg attrs: MutableMap.MutableEntry<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,

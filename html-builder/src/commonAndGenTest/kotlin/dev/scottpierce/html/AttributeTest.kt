@@ -1,7 +1,6 @@
 package dev.scottpierce.html
 
 import dev.scottpierce.html.element.body
-import dev.scottpierce.html.element.by
 import dev.scottpierce.html.element.div
 import dev.scottpierce.html.element.head
 import dev.scottpierce.html.element.html

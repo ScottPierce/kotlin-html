@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
@@ -61,6 +63,11 @@ kotlin {
     }
 }
 
+tasks.withType(KotlinCompile::class)
+    .forEach {
+        it.kotlinOptions { freeCompilerArgs = listOf("-Xnew-inference") }
+    }
+
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))
 
@@ -68,7 +75,7 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
         "src/commonMain/kotlin",
         "src/genMain/kotlin"
     )
-    
+
     classDirectories.setFrom(
         "build/classes/kotlin/jvm/main"
     )

@@ -19,6 +19,7 @@ import java.lang.RuntimeException
 // ###### Start Class Names
 // ################################
 private val MutableMap = ClassName("kotlin.collections", "MutableMap")
+private val MutableEntry = ClassName("kotlin.collections.MutableMap", "MutableEntry")
 private val List = ClassName("kotlin.collections", "List")
 private val MutableList = ClassName("kotlin.collections", "MutableList")
 private val ArrayList = ClassName("kotlin.collections", "ArrayList")
@@ -32,7 +33,7 @@ private val BodyContent = ClassName("dev.scottpierce.html.element", "BodyContent
 private val HtmlWriter = ClassName("dev.scottpierce.html.write", "HtmlWriter")
 private val TUnit = ClassName("kotlin", "Unit")
 private val TString = ClassName("kotlin", "String")
-private val Attribute = ClassName("dev.scottpierce.html.element", "Attribute")
+private val Attribute = MutableEntry.parameterizedBy(TString, TString.copy(nullable = true))
 private val Attributes = ClassName("dev.scottpierce.html.element", "Attributes")
 private val MutableAttributes = ClassName("dev.scottpierce.html.element", "MutableAttributes")
 private val ArrayAttributes = ClassName("dev.scottpierce.html", "ArrayAttributes")
