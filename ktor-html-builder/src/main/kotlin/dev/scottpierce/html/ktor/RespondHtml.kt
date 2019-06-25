@@ -2,8 +2,9 @@
 
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.DocType
-import dev.scottpierce.html.Html
+import dev.scottpierce.html.element.DocType
+import dev.scottpierce.html.element.Html
+import dev.scottpierce.html.element.HtmlBuilder
 import dev.scottpierce.html.write.WriteOptions
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
@@ -52,7 +53,7 @@ class DynamicHtmlContent(
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
             val writer = ChannelHtmlWriter(it, options)
-            val html = Html(docType = docType).apply(builder)
+            val html = HtmlBuilder(docType = docType).apply(builder)
             html.write(writer)
         }
     }
