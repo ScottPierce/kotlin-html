@@ -52,7 +52,6 @@ class StyleBuilder(
     }
 
     operator fun Style.unaryPlus() {
-
     }
 
     operator fun StyleBuilder.unaryPlus() {
