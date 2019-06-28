@@ -1,43 +1,60 @@
 // This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
-@file:Suppress("unused")
-
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.writeVoidElement
+import kotlin.Pair
 import kotlin.String
-import kotlin.Suppress
-import kotlin.collections.List
-import kotlin.collections.MutableMap.MutableEntry
+import kotlin.collections.Iterable
 
-@HtmlTag
-interface Br : Element, BodyContent
-
-class BrBuilder(
-    override val attrs: MutableAttributes
-) : Br, MutableElement {
-    override fun write(writer: HtmlWriter) {
-        writer.writeVoidElement("br", this)
-    }
+fun HtmlWriter.br(
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
+) {
+    this.writeVoidElement("br", id, classes, style)
 }
 
-fun <T : MutableContentElement> T.br(
+fun HtmlWriter.br(
+    vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null
-): Br = addChild(id, classes, style) { BrBuilder(it) }
+) {
+    this.writeVoidElement("br", id, classes, style, attrs)
+}
 
-fun <T : MutableContentElement> T.br(
-    vararg attrs: MutableEntry<String, String?>,
+fun HtmlWriter.br(
+    attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null
-): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }
+) {
+    this.writeVoidElement("br", id, classes, style, attrs)
+}
 
-fun <T : MutableContentElement> T.br(
-    attrs: List<MutableEntry<String, String?>>,
+fun BodyContext.br(
     id: String? = null,
     classes: String? = null,
     style: String? = null
-): Br = addChild(attrs, id, classes, style) { BrBuilder(it) }
+) {
+    writer.writeVoidElement("br", id, classes, style)
+}
+
+fun BodyContext.br(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
+) {
+    writer.writeVoidElement("br", id, classes, style, attrs)
+}
+
+fun BodyContext.br(
+    attrs: Iterable<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null
+) {
+    writer.writeVoidElement("br", id, classes, style, attrs)
+}

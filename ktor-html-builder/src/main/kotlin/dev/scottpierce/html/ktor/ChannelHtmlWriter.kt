@@ -30,7 +30,7 @@ class ChannelHtmlWriter(
         return this
     }
 
-    override fun write(code: String): HtmlWriter {
+    override fun write(code: CharSequence): HtmlWriter {
         writer.append(code)
         return this
     }

@@ -1,52 +1,79 @@
 // This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
-@file:Suppress("unused")
-
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.Writable
-import dev.scottpierce.html.write.writeElement
+import kotlin.Pair
 import kotlin.String
-import kotlin.Suppress
 import kotlin.Unit
-import kotlin.collections.ArrayList
-import kotlin.collections.List
-import kotlin.collections.MutableList
-import kotlin.collections.MutableMap.MutableEntry
+import kotlin.collections.Iterable
 
-@HtmlTag
-interface Section : ContentElement, BodyContent
-
-class SectionBuilder(
-    override val attrs: MutableAttributes
-) : Section, MutableContentElement {
-    override val children: MutableList<Writable> = ArrayList(16)
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeElement("section", this)
-    }
+inline fun HtmlWriter.section(
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("section", id, classes, style)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("section")
 }
 
-inline fun <T : MutableContentElement> T.section(
+inline fun HtmlWriter.section(
+    vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: SectionBuilder.() -> Unit = {}
-): Section = addChild(id, classes, style, func) { SectionBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("section", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("section")
+}
 
-inline fun <T : MutableContentElement> T.section(
-    vararg attrs: MutableEntry<String, String?>,
+inline fun HtmlWriter.section(
+    attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: SectionBuilder.() -> Unit = {}
-): Section = addChild(attrs, id, classes, style, func) { SectionBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("section", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("section")
+}
 
-inline fun <T : MutableContentElement> T.section(
-    attrs: List<MutableEntry<String, String?>>,
+inline fun BodyContext.section(
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: SectionBuilder.() -> Unit = {}
-): Section = addChild(attrs, id, classes, style, func) { SectionBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("section", id, classes, style)
+    func()
+    writer.writeNormalElementEnd("section")
+}
+
+inline fun BodyContext.section(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("section")
+}
+
+inline fun BodyContext.section(
+    attrs: Iterable<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("section")
+}

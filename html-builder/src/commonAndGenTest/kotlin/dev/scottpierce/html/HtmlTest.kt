@@ -3,9 +3,11 @@ package dev.scottpierce.html
 import dev.scottpierce.html.element.DocType
 import dev.scottpierce.html.element.body
 import dev.scottpierce.html.element.div
+import dev.scottpierce.html.element.docType
 import dev.scottpierce.html.element.head
 import dev.scottpierce.html.element.html
 import dev.scottpierce.html.util.assertEquals
+import dev.scottpierce.html.util.writeFile
 import dev.scottpierce.html.util.writeHtml
 import dev.scottpierce.html.write.WriteOptions
 import kotlin.test.Test
@@ -13,7 +15,7 @@ import kotlin.test.Test
 class HtmlTest {
     @Test
     fun emptyHtmlTest() {
-        writeHtml(options = WriteOptions.minified) {
+        writeFile(options = WriteOptions.minified) {
             html()
         } assertEquals {
             "<html></html>"
@@ -22,31 +24,31 @@ class HtmlTest {
 
     @Test
     fun docTypeHtmlTest() {
-        writeHtml(options = WriteOptions.minified) {
-            html(docType = DocType.Html)
+        writeFile(options = WriteOptions.minified) {
+            docType(DocType.Html)
+            html()
         } assertEquals {
             """
-            <!DOCTYPE html>
-            <html></html>
+            <!DOCTYPE html><html></html>
             """.trimIndent()
         }
     }
 
     @Test
     fun docTypeCustomTest() {
-        writeHtml(options = WriteOptions.minified) {
-            html(docType = DocType.Custom("custom"))
+        writeFile(options = WriteOptions.minified) {
+            docType(DocType.Custom("custom"))
+            html()
         } assertEquals {
             """
-            <!DOCTYPE custom>
-            <html></html>
+            <!DOCTYPE custom><html></html>
             """.trimIndent()
         }
     }
 
     @Test
     fun debugTest() {
-        writeHtml {
+        writeFile {
             html {
             }
         } assertEquals {
@@ -59,7 +61,7 @@ class HtmlTest {
 
     @Test
     fun debugWithChildTest() {
-        writeHtml {
+        writeFile {
             html {
                 head()
                 body {

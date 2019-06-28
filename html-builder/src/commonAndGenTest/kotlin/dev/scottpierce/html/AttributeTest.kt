@@ -5,14 +5,14 @@ import dev.scottpierce.html.element.div
 import dev.scottpierce.html.element.head
 import dev.scottpierce.html.element.html
 import dev.scottpierce.html.util.assertEquals
-import dev.scottpierce.html.util.writeHtml
+import dev.scottpierce.html.util.writeFile
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class AttributeTest {
     @Test
     fun singleAttribute() {
-        writeHtml {
+        writeFile {
             html {
                 head(id = "head")
                 body(id = "body") {
@@ -36,9 +36,9 @@ class AttributeTest {
     @Test
     fun noWhitespaceInAttributes() {
         val errorThrown: Boolean = try {
-            writeHtml {
+            writeFile {
                 html {
-                    head("foo bar" by "test")
+                    head("foo bar" to "test")
                 }
             }
             false
@@ -52,9 +52,9 @@ class AttributeTest {
     @Test
     fun emptyAttribute() {
         val errorThrown: Boolean = try {
-            writeHtml {
+            writeFile {
                 html {
-                    head("" by "test")
+                    head("" to "test")
                 }
             }
             false
@@ -68,9 +68,9 @@ class AttributeTest {
     @Test
     fun blankAttribute() {
         val errorThrown: Boolean = try {
-            writeHtml {
+            writeFile {
                 html {
-                    head("   " by "test")
+                    head("   " to "test")
                 }
             }
             false
@@ -83,11 +83,11 @@ class AttributeTest {
 
     @Test
     fun multipleAttributes() {
-        writeHtml {
+        writeFile {
             html {
-                head("test1" by "value1", id = "head")
-                body("test2" by "value2", id = "body") {
-                    div("test3" by "value3", "test4" by "value4", id = "div")
+                head("test1" to "value1", id = "head")
+                body("test2" to "value2", id = "body") {
+                    div("test3" to "value3", "test4" to "value4", id = "div")
                 }
             }
         } assertEquals {

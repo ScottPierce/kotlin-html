@@ -2,26 +2,36 @@ package dev.scottpierce.html.write
 
 interface HtmlWriter {
     val options: WriteOptions
+    val isEmpty: Boolean
 
     fun write(c: Char): HtmlWriter
-    fun write(code: String): HtmlWriter
+    fun write(code: CharSequence): HtmlWriter
     fun newLine()
     fun indent()
     fun deindent()
 }
 
 class StringBuilderHtmlWriter(
-    initialCapacity: Int = 16,
+    initialCapacity: Int = 128,
     override val options: WriteOptions = WriteOptions.default
 ) : HtmlWriter {
     private val sb = StringBuilder(initialCapacity)
-
     private var indent = 0
+    private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
+    private val newLineString: String? = if (options.newLine.isEmpty()) null else options.newLine
+
+    override val isEmpty: Boolean
+        get() = sb.isEmpty()
 
     override fun newLine() {
-        sb.append(options.newLine)
-        for (i in 1..indent) {
-            sb.append(options.indent)
+        if (newLineString != null) {
+            sb.append(newLineString)
+        }
+
+        if (indentString != null) {
+            for (i in 1..indent) {
+                sb.append(indentString)
+            }
         }
     }
 
@@ -38,7 +48,7 @@ class StringBuilderHtmlWriter(
         return this
     }
 
-    override fun write(code: String): HtmlWriter {
+    override fun write(code: CharSequence): HtmlWriter {
         sb.append(code)
         return this
     }

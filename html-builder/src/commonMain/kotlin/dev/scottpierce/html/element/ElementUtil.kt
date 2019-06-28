@@ -1,61 +1,136 @@
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.ArrayMap
+import dev.scottpierce.html.write.HtmlWriter
 
-@DslMarker
-annotation class HtmlTag
-
-inline fun <T : MutableElement> MutableContentElement.addChild(
-    attrs: Array<out Attribute>,
+fun HtmlWriter.writeNormalElementStart(
+    tag: String,
     id: String?,
     classes: String?,
-    style: String?,
-    func: T.() -> Unit = {},
-    provider: (attrs: MutableAttributes) -> T
-): T {
-    val a = ArrayMap<String, String?>(attrs.size + 3)
-    if (id != null) a["id"] = id
-    if (classes != null) a["classes"] = classes
-    if (style != null) a["style"] = style
-    for (attr in attrs) a.add(attr)
-
-    val tag: T = provider(a)
-    children += tag
-    return tag.apply(func)
+    style: String?
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    write('>')
+    indent()
 }
 
-inline fun <T : MutableElement> MutableContentElement.addChild(
-    attrs: List<Attribute>,
+fun HtmlWriter.writeNormalElementStart(
+    tag: String,
     id: String?,
     classes: String?,
     style: String?,
-    func: T.() -> Unit = {},
-    provider: (attrs: MutableAttributes) -> T
-): T {
-    val a = ArrayMap<String, String?>(attrs.size + 3)
-    if (id != null) a["id"] = id
-    if (classes != null) a["classes"] = classes
-    if (style != null) a["style"] = style
-    for (attr in attrs) a.add(attr)
+    attrs: Array<out Pair<String, String?>>
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    writeAttributes(attrs)
 
-    val tag: T = provider(a)
-    children += tag
-    return tag.apply(func)
+    write('>')
+    indent()
 }
 
-inline fun <T : MutableElement> MutableContentElement.addChild(
+fun HtmlWriter.writeNormalElementStart(
+    tag: String,
     id: String?,
     classes: String?,
     style: String?,
-    func: T.() -> Unit = {},
-    provider: (attrs: MutableAttributes) -> T
-): T {
-    val a = ArrayMap<String, String?>(3)
-    if (id != null) a["id"] = id
-    if (classes != null) a["classes"] = classes
-    if (style != null) a["style"] = style
+    attrs: Iterable<Pair<String, String?>>
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    writeAttributes(attrs)
 
-    val tag: T = provider(a)
-    children += tag
-    return tag.apply(func)
+    write('>')
+    indent()
+}
+
+fun HtmlWriter.writeNormalElementEnd(tag: String) {
+    deindent()
+    newLine()
+    write("</").write(tag).write('>')
+}
+
+fun HtmlWriter.writeVoidElement(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: String?
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    write('>')
+}
+
+fun HtmlWriter.writeVoidElement(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: String?,
+    attrs: Array<out Pair<String, String?>>
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    writeAttributes(attrs)
+    write('>')
+}
+
+fun HtmlWriter.writeVoidElement(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: String?,
+    attrs: Iterable<Pair<String, String?>>
+) {
+    writeTag(tag)
+    writeBasicAttributes(id, classes, style)
+    writeAttributes(attrs)
+    write('>')
+}
+
+private fun HtmlWriter.writeTag(tag: String) {
+    if (!isEmpty) newLine()
+    write('<').write(tag)
+}
+
+private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style: String?) {
+    if (id != null) write(" id=\"").write(id).write('"')
+    if (classes != null) write(" classes=\"").write(classes).write('"')
+    if (style != null) write(" style=\"").write(style).write('"')
+}
+
+private fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
+    for (attr in attrs) {
+        attr.checkAttributeKey()
+        write(' ').write(attr.first)
+        val value: String? = attr.second
+        if (value != null) {
+            write("=\"").write(value).write('"')
+        }
+    }
+}
+
+private fun HtmlWriter.writeAttributes(attrs: Iterable<Pair<String, String?>>) {
+    for (attr in attrs) {
+        attr.checkAttributeKey()
+        write(' ').write(attr.first)
+        val value: String? = attr.second
+        if (value != null) {
+            write("=\"").write(value).write('"')
+        }
+    }
+}
+
+private fun Pair<String, String?>.checkAttributeKey() {
+    val attributeKey = first
+
+    if (attributeKey.isEmpty()) {
+        throw IllegalArgumentException("Attribute name must not be empty. Has value: '$second'")
+    }
+
+    for (c in attributeKey) {
+        if (c.isWhitespace()) {
+            throw IllegalArgumentException("Attribute name must not contain whitespace character. Attribute: " +
+                    "'$attributeKey' with value: '$second'")
+        }
+    }
 }

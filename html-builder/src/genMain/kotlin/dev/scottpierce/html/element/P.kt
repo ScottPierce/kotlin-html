@@ -1,52 +1,79 @@
 // This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
-@file:Suppress("unused")
-
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.Writable
-import dev.scottpierce.html.write.writeElement
+import kotlin.Pair
 import kotlin.String
-import kotlin.Suppress
 import kotlin.Unit
-import kotlin.collections.ArrayList
-import kotlin.collections.List
-import kotlin.collections.MutableList
-import kotlin.collections.MutableMap.MutableEntry
+import kotlin.collections.Iterable
 
-@HtmlTag
-interface P : ContentElement, BodyContent
-
-class PBuilder(
-    override val attrs: MutableAttributes
-) : P, MutableContentElement {
-    override val children: MutableList<Writable> = ArrayList(8)
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeElement("p", this)
-    }
+inline fun HtmlWriter.p(
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("p", id, classes, style)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("p")
 }
 
-inline fun <T : MutableContentElement> T.p(
+inline fun HtmlWriter.p(
+    vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: PBuilder.() -> Unit = {}
-): P = addChild(id, classes, style, func) { PBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("p", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("p")
+}
 
-inline fun <T : MutableContentElement> T.p(
-    vararg attrs: MutableEntry<String, String?>,
+inline fun HtmlWriter.p(
+    attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: PBuilder.() -> Unit = {}
-): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("p", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("p")
+}
 
-inline fun <T : MutableContentElement> T.p(
-    attrs: List<MutableEntry<String, String?>>,
+inline fun BodyContext.p(
     id: String? = null,
     classes: String? = null,
     style: String? = null,
-    func: PBuilder.() -> Unit = {}
-): P = addChild(attrs, id, classes, style, func) { PBuilder(it) }
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("p", id, classes, style)
+    func()
+    writer.writeNormalElementEnd("p")
+}
+
+inline fun BodyContext.p(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("p", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("p")
+}
+
+inline fun BodyContext.p(
+    attrs: Iterable<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("p", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("p")
+}

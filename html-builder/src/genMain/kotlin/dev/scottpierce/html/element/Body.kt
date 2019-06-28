@@ -8,72 +8,72 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Iterable
 
-inline fun HtmlWriter.span(
+inline fun HtmlWriter.body(
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style)
+    this.writeNormalElementStart("body", id, classes, style)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun HtmlWriter.span(
+inline fun HtmlWriter.body(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style, attrs)
+    this.writeNormalElementStart("body", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun HtmlWriter.span(
+inline fun HtmlWriter.body(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style, attrs)
+    this.writeNormalElementStart("body", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.span(
+inline fun HtmlContext.body(
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("span", id, classes, style)
-    func()
-    writer.writeNormalElementEnd("span")
+    writer.writeNormalElementStart("body", id, classes, style)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.span(
+inline fun HtmlContext.body(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("span", id, classes, style, attrs)
-    func()
-    writer.writeNormalElementEnd("span")
+    writer.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.span(
+inline fun HtmlContext.body(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("span", id, classes, style, attrs)
-    func()
-    writer.writeNormalElementEnd("span")
+    writer.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }

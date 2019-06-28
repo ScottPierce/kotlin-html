@@ -1,15 +1,25 @@
 package dev.scottpierce.html.util
 
-import dev.scottpierce.html.element.Html
+import dev.scottpierce.html.element.FileContext
+import dev.scottpierce.html.element.HtmlContext
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
-fun writeHtml(
+fun writeFile(
     options: WriteOptions = WriteOptions(indent = "    "),
-    builder: () -> Html
+    func: FileContext.() -> Unit
 ): StringBuilderHtmlWriter {
     val writer = StringBuilderHtmlWriter(options = options)
-    builder().write(writer)
+    FileContext(writer).apply(func)
+    return writer
+}
+
+fun writeHtml(
+    options: WriteOptions = WriteOptions(indent = "    "),
+    func: HtmlContext.() -> Unit
+): StringBuilderHtmlWriter {
+    val writer = StringBuilderHtmlWriter(options = options)
+    HtmlContext(writer).apply(func)
     return writer
 }
 
