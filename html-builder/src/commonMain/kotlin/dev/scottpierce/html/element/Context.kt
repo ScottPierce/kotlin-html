@@ -19,7 +19,12 @@ class FileContext(override val writer: HtmlWriter) : Context
 class HtmlContext(override val writer: HtmlWriter) : Context
 
 @HtmlTag
-class BodyContext(override val writer: HtmlWriter) : Context
+class BodyContext(override val writer: HtmlWriter) : Context {
+    operator fun String.unaryPlus() {
+        writer.newLine()
+        writer.write(this)
+    }
+}
 
 @HtmlTag
 class HeadContext(override val writer: HtmlWriter) : Context
