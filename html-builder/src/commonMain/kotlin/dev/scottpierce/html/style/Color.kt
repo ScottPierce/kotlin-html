@@ -56,3 +56,4 @@ private fun Char.encodedHexToChar(): Char = when (this) {
     0xF.toChar() -> 'F'
     else -> throw UnsupportedOperationException()
 }
+
