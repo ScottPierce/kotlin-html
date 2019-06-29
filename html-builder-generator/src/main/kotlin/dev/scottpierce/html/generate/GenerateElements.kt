@@ -8,13 +8,11 @@ import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.UNIT
 import java.io.File
-import java.lang.RuntimeException
 
-
-//val writeElement = MemberName("dev.scottpierce.html.write", "writeElement")
-//val writeVoidElement = MemberName("dev.scottpierce.html.write", "writeVoidElement")
+// val writeElement = MemberName("dev.scottpierce.html.write", "writeElement")
+// val writeVoidElement = MemberName("dev.scottpierce.html.write", "writeVoidElement")
 //
-//fun generateTags(srcFolder: File) {
+// fun generateTags(srcFolder: File) {
 //    for (element in Element.values()) {
 //        val elementName = element.tagName.capitalize()
 //        val elementClassName = ClassName(filePackage, elementName)
@@ -180,11 +178,11 @@ import java.lang.RuntimeException
 //        file.build()
 //            .writeTo(srcFolder)
 //    }
-//}
+// }
 //
-//private enum class DslFunction {
+// private enum class DslFunction {
 //    NO_ATTR, ATTR_VARARG, ATTR_LIST
-//}
+// }
 
 fun generateElements(srcFolder: File): Unit = Element.values.forEach { element ->
     val elementName = element.tagName.capitalize()

@@ -8,7 +8,6 @@ import dev.scottpierce.html.element.head
 import dev.scottpierce.html.element.html
 import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeFile
-import dev.scottpierce.html.util.writeHtml
 import dev.scottpierce.html.write.WriteOptions
 import kotlin.test.Test
 
