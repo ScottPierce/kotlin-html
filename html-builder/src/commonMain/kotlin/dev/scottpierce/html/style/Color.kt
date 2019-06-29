@@ -1,3 +1,5 @@
+@file:Suppress("EXPERIMENTAL_FEATURE_WARNING")
+
 package dev.scottpierce.html.style
 
 fun color(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color =
@@ -11,7 +13,7 @@ inline class Color(val hexString: String) {
             val hexR = red.twoDigitHex()
             val hexG = green.twoDigitHex()
             val hexB = blue.twoDigitHex()
-            val hexA = if (alpha == 1.0f) null else (alpha * (255 + 0.5f)).toInt().twoDigitHex()
+            val hexA = if (alpha == 1f) null else (alpha * (255 + 0.5f)).toInt().twoDigitHex()
 
             return "#$hexR$hexG$hexB${hexA.orEmpty()}"
         }

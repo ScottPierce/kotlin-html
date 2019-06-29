@@ -65,7 +65,12 @@ kotlin {
 
 tasks.withType(KotlinCompile::class)
     .forEach {
-        it.kotlinOptions { freeCompilerArgs = listOf("-Xnew-inference") }
+        it.kotlinOptions {
+            freeCompilerArgs = listOf(
+                "-Xnew-inference",
+                "-XXLanguage:+InlineClasses"
+            )
+        }
     }
 
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
