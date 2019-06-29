@@ -9,26 +9,32 @@ import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.UNIT
 import java.io.File
 
-fun generateElements(srcFolder: File): Unit = Element.values.forEach { element ->
-    val elementName = element.tagName.capitalize()
+private val GENERATED_SOURCE_FOLDER = File("./html-builder/src/genMain/kotlin")
 
-    val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
-        .indent("    ")
-        .addComment(Constants.GENERATED_FILE_COMMENT)
+fun generateElements() {
+    GENERATED_SOURCE_FOLDER.deleteRecursively()
 
-    for (i in 0..1) {
-        val isWriter = (i % 2) == 0
+    Element.values.forEach { element ->
+        val elementName = element.tagName.capitalize()
 
-        for (type in DslFunction.values()) {
-            file.addFunction(createDslFunction(element, isWriter, type))
+        val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
+            .indent("    ")
+            .addComment(Constants.GENERATED_FILE_COMMENT)
+
+        for (i in 0..1) {
+            val isWriter = (i % 2) == 0
+
+            for (type in DslFunction.values()) {
+                file.addFunction(createDslFunction(element, isWriter, type))
+            }
         }
-    }
 
-    file.build()
-        .writeTo(srcFolder)
+        file.build()
+            .writeTo(GENERATED_SOURCE_FOLDER)
+    }
 }
 
-fun createDslFunction(
+private fun createDslFunction(
     element: Element,
     isWriter: Boolean,
     functionType: DslFunction

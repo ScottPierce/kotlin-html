@@ -1,9 +1,7 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.element
 
-import dev.scottpierce.html.element.BodyContext
-import dev.scottpierce.html.element.div
-import dev.scottpierce.html.util.assertEquals
-import dev.scottpierce.html.util.createWriter
+import dev.scottpierce.html.write.StringBuilderHtmlWriter
+import dev.scottpierce.html.write.WriteOptions
 import kotlin.test.Test
 
 class DivTest {
@@ -83,5 +81,13 @@ class DivTest {
                 </div>
             """.trimIndent()
         }
+    }
+
+    private fun createWriter(): StringBuilderHtmlWriter {
+        return StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))
+    }
+
+    private infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
+        kotlin.test.assertEquals(expected(), this.toString())
     }
 }

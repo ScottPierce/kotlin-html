@@ -3,9 +3,10 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":html-builder"))
+
     implementation(Libs.kotlin.stdlib.jvm)
     implementation(Libs.ktorServerCore)
-    implementation(project(":html-builder"))
 }
 
 //kotlin {

@@ -30,5 +30,3 @@ fun StringBuilderHtmlWriter.assertEquals(expected: String) {
 infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
     kotlin.test.assertEquals(expected(), this.toString())
 }
-
-fun createWriter(): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))

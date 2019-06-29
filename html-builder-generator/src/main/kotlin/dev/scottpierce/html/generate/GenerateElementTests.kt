@@ -1,22 +1,31 @@
 package dev.scottpierce.html.generate
 
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.TypeSpec
 import java.io.File
 
-fun generateElementTests(srcFolder: File): Unit = Element.values.forEach { element ->
-    val elementName = element.tagName.capitalize()
-    val testName = "${elementName}Tests"
+private val TEMPLATE_NORMAL_FILE = File("html-builder/src/commonAndGenTest/kotlin/dev/scottpierce/html/element/DivTest.kt")
 
-    val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, testName)
-        .indent("    ")
-        .addComment(Constants.GENERATED_FILE_COMMENT)
+fun generateElementTests() {
+    File("html-builder/src/genTest/kotlin/dev/scottpierce/html/element/").deleteRecursively()
 
-    val testType = TypeSpec.classBuilder(testName).apply {
-    }.build()
+    val normalTemplate = TEMPLATE_NORMAL_FILE.bufferedReader().readText()
 
-    file.addType(testType)
+    Element.values.forEach { element ->
+        val capitalizedTag = element.tagName.capitalize()
 
-    file.build()
-        .writeTo(srcFolder)
+        when (element) {
+            is Element.Normal -> {
+                val testString = normalTemplate
+                    .replace("Div", capitalizedTag)
+                    .replace("div", element.tagName)
+                    .replace("BodyContext", element.callingContext.contextClassName.simpleName)
+
+                File("html-builder/src/genTest/kotlin/dev/scottpierce/html/element/${capitalizedTag}Test.kt").apply {
+                    parentFile.mkdirs()
+                    createNewFile()
+                }.bufferedWriter().use {
+                    it.write(testString)
+                }
+            }
+        }
+    }
 }

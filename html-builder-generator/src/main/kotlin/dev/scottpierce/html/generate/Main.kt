@@ -1,14 +1,22 @@
 package dev.scottpierce.html.generate
 
-import java.io.File
-
-private val GENERATED_SOURCE_FOLDER = File("./html-builder/src/genMain/kotlin")
-private val GENERATED_ELEMENT_TEST_FOLDER = File("./html-builder/src/genMain/kotlin")
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
 
 fun main() {
-    GENERATED_SOURCE_FOLDER.deleteRecursively()
+    val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
+    val latch = CountDownLatch(2)
 
-//    generateContexts(GENERATED_SOURCE_FOLDER)
-    generateElements(GENERATED_SOURCE_FOLDER)
-    generateElementTests(GENERATED_ELEMENT_TEST_FOLDER)
+    executor.execute {
+        generateElements()
+        latch.countDown()
+    }
+
+    executor.execute {
+        generateElementTests()
+        latch.countDown()
+    }
+
+    latch.await()
+    executor.shutdownNow()
 }
