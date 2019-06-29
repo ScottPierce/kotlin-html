@@ -13,7 +13,6 @@ fun generateElementTests(srcFolder: File): Unit = Element.values.forEach { eleme
         .addComment(Constants.GENERATED_FILE_COMMENT)
 
     val testType = TypeSpec.classBuilder(testName).apply {
-
     }.build()
 
     file.addType(testType)
