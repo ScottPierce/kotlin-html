@@ -103,4 +103,27 @@ class AttributeTest {
             """.trimIndent()
         }
     }
+
+    @Test
+    fun multipleListAttributes() {
+        writeFile {
+            html {
+                head(listOf("test1" to "value1"), id = "head")
+                body(listOf("test2" to "value2"), id = "body") {
+                    div(listOf("test3" to "value3", "test4" to "value4"), id = "div")
+                }
+            }
+        } assertEquals {
+            """
+            <html>
+                <head id="head" test1="value1">
+                </head>
+                <body id="body" test2="value2">
+                    <div id="div" test3="value3" test4="value4">
+                    </div>
+                </body>
+            </html>
+            """.trimIndent()
+        }
+    }
 }
