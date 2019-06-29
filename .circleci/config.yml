@@ -9,7 +9,6 @@ jobs:
     <<: *job_config
     environment:
       GRADLE_OPTS: -Xmx3g
-    resource_class: medium
     steps:
       - checkout
 
@@ -43,7 +42,6 @@ jobs:
 
   build:
     <<: *job_config
-    resource_class: large
     steps:
       - checkout
 
@@ -65,7 +63,6 @@ jobs:
 
   unit test:
     <<: *job_config
-    resource_class: large
     steps:
       - checkout
 
@@ -90,7 +87,6 @@ jobs:
     <<: *job_config
     environment:
       GRADLE_OPTS: -Xmx1536m
-    resource_class: small
     steps:
       - checkout
 
