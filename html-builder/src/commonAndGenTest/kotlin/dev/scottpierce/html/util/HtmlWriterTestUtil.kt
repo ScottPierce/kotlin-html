@@ -1,7 +1,9 @@
 package dev.scottpierce.html.util
 
+import dev.scottpierce.html.element.Context
 import dev.scottpierce.html.element.FileContext
 import dev.scottpierce.html.element.HtmlContext
+import dev.scottpierce.html.write.HtmlWriter
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
@@ -30,3 +32,5 @@ fun StringBuilderHtmlWriter.assertEquals(expected: String) {
 infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
     kotlin.test.assertEquals(expected(), this.toString())
 }
+
+fun createWriter(): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))

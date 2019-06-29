@@ -34,8 +34,17 @@ kotlin {
             dependsOn(getByName("commonMain"))
         }
 
+        val genTest = create("genTest") {
+            dependsOn(genMain)
+            
+            dependencies {
+                for (lib in Libs.kotlin.test.common) {
+                    implementation(lib)
+                }
+            }
+        }
+
         val commonAndGenTest = create("commonAndGenTest") {
-            dependsOn(commonTest)
             dependsOn(genMain)
 
             dependencies {
