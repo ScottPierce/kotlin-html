@@ -18,7 +18,7 @@ class StyleBuilder(
     override val properties: MutableMap<String, Any?> = LinkedHashMap()
 ) : Style {
     operator fun Style.unaryPlus() {
-        properties.putAll(this.properties)
+        this@StyleBuilder.properties.putAll(properties)
     }
 }
 
