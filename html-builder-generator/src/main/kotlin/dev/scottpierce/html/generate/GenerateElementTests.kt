@@ -9,7 +9,7 @@ private val TEMPLATE_NORMAL_FILE = File("$BASE_TEMPLATE_DIR/DivTest.kt")
 private val TEMPLATE_VOID_FILE = File("$BASE_TEMPLATE_DIR/BrTest.kt")
 
 fun generateElementTests() {
-    File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element/").deleteRecursively()
+    File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/element/").deleteRecursively()
 
     val normalTemplate = TEMPLATE_NORMAL_FILE.bufferedReader().readText()
     val voidTemplate = TEMPLATE_VOID_FILE.bufferedReader().readText()
@@ -40,7 +40,7 @@ fun generateElementTests() {
             }
         }
 
-        File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element/${capitalizedTag}Test.kt").apply {
+        File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/element/${capitalizedTag}Test.kt").apply {
             parentFile.mkdirs()
             createNewFile()
         }.bufferedWriter().use {
