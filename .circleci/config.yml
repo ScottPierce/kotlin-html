@@ -49,7 +49,7 @@ jobs:
           keys:
             - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :html-builder:assemble --stacktrace
+      - run: ./gradlew :kotlin-html:assemble --stacktrace
 
       - save_cache:
           paths:
@@ -72,7 +72,7 @@ jobs:
 
       - run:
           name: Run Tests
-          command: ./gradlew :html-builder:jvmTest :html-builder:jvmCodeCoverageReport --stacktrace
+          command: ./gradlew :kotlin-html:jvmTest :kotlin-html:jvmCodeCoverageReport --stacktrace
 
       - run:
           name: Upload to CodeCov
