@@ -2,8 +2,10 @@
 
 package dev.scottpierce.html.style
 
+import dev.scottpierce.html.element.HtmlDsl
 import dev.scottpierce.html.write.HtmlWriter
 
+@HtmlDsl
 interface Style {
     val properties: MutableMap<String, Any?>
 
@@ -20,7 +22,7 @@ class StyleBuilder(
     }
 }
 
-inline fun style(func: StyleBuilder.() -> Unit): Style {
+inline fun style(func: StyleBuilder.() -> kotlin.Unit): Style {
     val builder = StyleBuilder()
     builder.func()
     return builder
