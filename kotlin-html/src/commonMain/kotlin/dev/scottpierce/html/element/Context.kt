@@ -5,20 +5,20 @@ package dev.scottpierce.html.element
 import dev.scottpierce.html.write.HtmlWriter
 
 @DslMarker
-annotation class HtmlTag
+annotation class HtmlDsl
 
-@HtmlTag
+@HtmlDsl
 interface Context {
     val writer: HtmlWriter
 }
 
-@HtmlTag
+@HtmlDsl
 class FileContext(override val writer: HtmlWriter) : Context
 
-@HtmlTag
+@HtmlDsl
 class HtmlContext(override val writer: HtmlWriter) : Context
 
-@HtmlTag
+@HtmlDsl
 class BodyContext(override val writer: HtmlWriter) : Context {
     operator fun String.unaryPlus() {
         writer.newLine()
@@ -26,5 +26,5 @@ class BodyContext(override val writer: HtmlWriter) : Context {
     }
 }
 
-@HtmlTag
+@HtmlDsl
 class HeadContext(override val writer: HtmlWriter) : Context

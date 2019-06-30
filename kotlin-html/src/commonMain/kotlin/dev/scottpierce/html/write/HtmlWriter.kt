@@ -1,5 +1,8 @@
 package dev.scottpierce.html.write
 
+import dev.scottpierce.html.element.HtmlDsl
+
+@HtmlDsl
 interface HtmlWriter {
     val options: WriteOptions
     val isEmpty: Boolean
