@@ -92,7 +92,10 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     )
 
     classDirectories.setFrom(
-        "build/classes/kotlin/jvm/main"
+        "build/classes/kotlin/jvm/main/dev/scottpierce/html/style",
+        "build/classes/kotlin/jvm/main/dev/scottpierce/html/write"
+        // Excluding dev.scottpierce.html.element package, even though we have almost 100% test coverage
+        // because of https://github.com/jacoco/jacoco/issues/654
     )
 
     @Suppress("UnstableApiUsage")
