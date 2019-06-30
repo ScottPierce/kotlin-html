@@ -3,31 +3,27 @@
 package dev.scottpierce.html.style
 
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.Writable
-import kotlin.Unit
 
-interface Style : Writable {
+interface Style {
     val properties: MutableMap<String, Any?>
 
-    override fun write(writer: HtmlWriter) {
-        writer.writeStyle(this)
+    fun write(writer: HtmlWriter, isInline: Boolean) {
+        writer.writeStyle(this, isInline)
     }
 }
 
 class StyleBuilder(
     override val properties: MutableMap<String, Any?> = LinkedHashMap()
 ) : Style {
-    operator fun set(property: String, value: Any?) {
-        properties[property] = value
-    }
-
     operator fun Style.unaryPlus() {
         properties.putAll(this.properties)
     }
 }
 
 inline fun style(func: StyleBuilder.() -> Unit): Style {
-    return StyleBuilder().apply(func)
+    val builder = StyleBuilder()
+    builder.func()
+    return builder
 }
 
 operator fun Style.get(property: String): Any? = properties[property]

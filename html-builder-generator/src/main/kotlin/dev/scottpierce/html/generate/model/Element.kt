@@ -1,28 +1,6 @@
-package dev.scottpierce.html.generate
+package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.ClassName
-
-object Constants {
-    const val ELEMENT_PACKAGE = "dev.scottpierce.html.element"
-    const val GENERATED_FILE_COMMENT = "This file was generated using the `html-builder-generator` module. Instead of modifying it, " +
-            "modify the\n`html-builder-generator` and run it again."
-}
-
-enum class Context {
-    File,
-    Html,
-    Body,
-    Head,
-    ;
-
-    companion object {
-        val className = ClassName("dev.scottpierce.html.element", "Context")
-    }
-
-    val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
-}
-
-private val DEFAULT_ATTRIBUTES: List<String> = listOf("id", "classes", "style")
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
 sealed class Element(
@@ -95,3 +73,19 @@ sealed class Element(
         supportedAttributes
     )
 }
+
+enum class Context {
+    File,
+    Html,
+    Body,
+    Head,
+    ;
+
+    companion object {
+        val className = ClassName("dev.scottpierce.html.element", "Context")
+    }
+
+    val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
+}
+
+private val DEFAULT_ATTRIBUTES: List<String> = listOf("id", "classes", "style")

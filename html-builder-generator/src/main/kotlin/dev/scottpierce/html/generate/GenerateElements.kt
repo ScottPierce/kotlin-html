@@ -7,12 +7,19 @@ import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.UNIT
+import dev.scottpierce.html.generate.model.ATTRIBUTE
+import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
+import dev.scottpierce.html.generate.model.Constants
+import dev.scottpierce.html.generate.model.Context
+import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.HTML_WRITER
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
+import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
 import java.io.File
 
-private val GENERATED_SOURCE_FOLDER = File("./html-builder/src/genMain/kotlin")
-
 fun generateElements() {
-    GENERATED_SOURCE_FOLDER.deleteRecursively()
+    File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element").deleteRecursively()
 
     Element.values.forEach { element ->
         val elementName = element.tagName.capitalize()
@@ -30,7 +37,7 @@ fun generateElements() {
         }
 
         file.build()
-            .writeTo(GENERATED_SOURCE_FOLDER)
+            .writeTo(Constants.BASE_GEN_DIR)
     }
 }
 
@@ -42,16 +49,10 @@ private fun createDslFunction(
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val indent: String
-    val deindent: String
     val writer: String
     if (isWriter) {
-        indent = "indent"
-        deindent = "deindent"
         writer = "this"
     } else {
-        indent = "writer.indent"
-        deindent = "writer.deindent"
         writer = "writer"
     }
 
@@ -113,9 +114,13 @@ private fun createDslFunction(
     when (element) {
         is Element.Normal -> {
             if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)", WRITE_NORMAL_ELEMENT_START)
+                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)",
+                    WRITE_NORMAL_ELEMENT_START
+                )
             } else {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)", WRITE_NORMAL_ELEMENT_START)
+                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)",
+                    WRITE_NORMAL_ELEMENT_START
+                )
             }
 
             if (isParent) {
@@ -126,14 +131,20 @@ private fun createDslFunction(
                 }
             }
 
-            addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
+            addStatement("$writer.%M(\"${element.tagName}\")",
+                WRITE_NORMAL_ELEMENT_END
+            )
         }
 
         is Element.Void -> {
             if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)", WRITE_VOID_ELEMENT)
+                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)",
+                    WRITE_VOID_ELEMENT
+                )
             } else {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)", WRITE_VOID_ELEMENT)
+                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)",
+                    WRITE_VOID_ELEMENT
+                )
             }
         }
     }
