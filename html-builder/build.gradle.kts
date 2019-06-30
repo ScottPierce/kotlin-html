@@ -64,6 +64,7 @@ kotlin {
 
         val jvmTest by getting {
             dependsOn(commonAndGenTest)
+            dependsOn(genTest)
 
             dependencies {
                 implementation(Libs.kotlin.test.jvm)
@@ -100,6 +101,6 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
         xml.isEnabled = true
         xml.destination = file("${rootProject.buildDir}/jacoco/html-builder-jvm.xml")
         html.isEnabled = true
-        html.destination = file("${buildDir}/jacocoHtml")
+        html.destination = file("$buildDir/jacocoHtml")
     }
 }

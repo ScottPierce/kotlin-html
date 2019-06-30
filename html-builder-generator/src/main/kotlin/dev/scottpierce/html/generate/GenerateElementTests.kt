@@ -9,7 +9,14 @@ fun generateElementTests() {
 
     val normalTemplate = TEMPLATE_NORMAL_FILE.bufferedReader().readText()
 
-    Element.values.forEach { element ->
+    for (i in Element.values.indices) {
+        val element = Element.values[i]
+
+        // These are the template tests
+        if (element.tagName == "div") {
+            continue
+        }
+
         val capitalizedTag = element.tagName.capitalize()
 
         when (element) {
