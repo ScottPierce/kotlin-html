@@ -9,7 +9,7 @@ interface HtmlWriter {
 
     fun write(c: Char): HtmlWriter
     fun write(code: CharSequence): HtmlWriter
-    fun newLine()
+    fun newLine(): HtmlWriter
     fun indent()
     fun deindent()
 }
@@ -26,7 +26,7 @@ class StringBuilderHtmlWriter(
     override val isEmpty: Boolean
         get() = sb.isEmpty()
 
-    override fun newLine() {
+    override fun newLine(): HtmlWriter {
         if (newLineString != null) {
             sb.append(newLineString)
         }
@@ -36,6 +36,8 @@ class StringBuilderHtmlWriter(
                 sb.append(indentString)
             }
         }
+
+        return this
     }
 
     override fun indent() {

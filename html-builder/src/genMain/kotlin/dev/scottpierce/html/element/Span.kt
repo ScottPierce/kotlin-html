@@ -1,4 +1,4 @@
-// This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
+// This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
@@ -9,72 +9,72 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Iterable
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.span(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style)
+    this.writeNormalElementStart("span", id, classes, style)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("span")
 }
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.span(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("span", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("span")
 }
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.span(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("span", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("span")
 }
 
-inline fun BodyContext.section(
+inline fun BodyContext.span(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style)
+    writer.writeNormalElementStart("span", id, classes, style)
     func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("span")
 }
 
-inline fun BodyContext.section(
+inline fun BodyContext.span(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("span")
 }
 
-inline fun BodyContext.section(
+inline fun BodyContext.span(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("span")
 }

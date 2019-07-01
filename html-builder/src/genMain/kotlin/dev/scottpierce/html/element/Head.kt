@@ -1,4 +1,4 @@
-// This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
+// This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 

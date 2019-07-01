@@ -1,12 +1,13 @@
 package dev.scottpierce.html.element
 
+import dev.scottpierce.html.style.Style
 import dev.scottpierce.html.write.HtmlWriter
 
 fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?
+    style: Style?
 ) {
     writeTag(tag)
     writeBasicAttributes(id, classes, style)
@@ -18,7 +19,7 @@ fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?,
+    style: Style?,
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -33,7 +34,7 @@ fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?,
+    style: Style?,
     attrs: Iterable<Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -54,7 +55,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?
+    style: Style?
 ) {
     writeTag(tag)
     writeBasicAttributes(id, classes, style)
@@ -65,7 +66,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?,
+    style: Style?,
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -78,7 +79,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: String?,
+    style: Style?,
     attrs: Iterable<Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -92,10 +93,14 @@ private fun HtmlWriter.writeTag(tag: String) {
     write('<').write(tag)
 }
 
-private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style: String?) {
+private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style: Style?) {
     if (id != null) write(" id=\"").write(id).write('"')
     if (classes != null) write(" classes=\"").write(classes).write('"')
-    if (style != null) write(" style=\"").write(style).write('"')
+    if (style != null) {
+        write(" style=\"")
+        style.write(this, true)
+        write('"')
+    }
 }
 
 private fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {

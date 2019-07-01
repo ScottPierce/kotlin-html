@@ -1,7 +1,7 @@
 package dev.scottpierce.html.style
 
 sealed class Dimension {
-    class Size(val value: Float, val unit: Unit) : Dimension() {
+    class Size(val value: Float, val unit: DimensionUnit) : Dimension() {
         override fun toString(): String {
             return "$value$unit"
         }
@@ -14,7 +14,7 @@ sealed class Dimension {
     }
 }
 
-enum class Unit(private val value: String) {
+enum class DimensionUnit(private val value: String) {
     // Relative units
     PX("px"),
     EM("em"),
@@ -34,46 +34,46 @@ enum class Unit(private val value: String) {
 }
 
 val Int.px: Dimension
-    get() = Dimension.Size(toFloat(), Unit.PX)
+    get() = Dimension.Size(toFloat(), DimensionUnit.PX)
 
 val Int.em: Dimension
-    get() = Dimension.Size(toFloat(), Unit.EM)
+    get() = Dimension.Size(toFloat(), DimensionUnit.EM)
 
 val Int.ex: Dimension
-    get() = Dimension.Size(toFloat(), Unit.EX)
+    get() = Dimension.Size(toFloat(), DimensionUnit.EX)
 
 val Int.percent: Dimension
-    get() = Dimension.Size(toFloat(), Unit.PERCENT)
+    get() = Dimension.Size(toFloat(), DimensionUnit.PERCENT)
 
 val Int.rem: Dimension
-    get() = Dimension.Size(toFloat(), Unit.REM)
+    get() = Dimension.Size(toFloat(), DimensionUnit.REM)
 
 val Float.px: Dimension
-    get() = Dimension.Size(this, Unit.PX)
+    get() = Dimension.Size(this, DimensionUnit.PX)
 
 val Float.em: Dimension
-    get() = Dimension.Size(this, Unit.EM)
+    get() = Dimension.Size(this, DimensionUnit.EM)
 
 val Float.ex: Dimension
-    get() = Dimension.Size(this, Unit.EX)
+    get() = Dimension.Size(this, DimensionUnit.EX)
 
 val Float.percent: Dimension
-    get() = Dimension.Size(this, Unit.PERCENT)
+    get() = Dimension.Size(this, DimensionUnit.PERCENT)
 
 val Float.rem: Dimension
-    get() = Dimension.Size(this, Unit.REM)
+    get() = Dimension.Size(this, DimensionUnit.REM)
 
 val Double.px: Dimension
-    get() = Dimension.Size(toFloat(), Unit.PX)
+    get() = Dimension.Size(toFloat(), DimensionUnit.PX)
 
 val Double.em: Dimension
-    get() = Dimension.Size(toFloat(), Unit.EM)
+    get() = Dimension.Size(toFloat(), DimensionUnit.EM)
 
 val Double.ex: Dimension
-    get() = Dimension.Size(toFloat(), Unit.EX)
+    get() = Dimension.Size(toFloat(), DimensionUnit.EX)
 
 val Double.percent: Dimension
-    get() = Dimension.Size(toFloat(), Unit.PERCENT)
+    get() = Dimension.Size(toFloat(), DimensionUnit.PERCENT)
 
 val Double.rem: Dimension
-    get() = Dimension.Size(toFloat(), Unit.REM)
+    get() = Dimension.Size(toFloat(), DimensionUnit.REM)

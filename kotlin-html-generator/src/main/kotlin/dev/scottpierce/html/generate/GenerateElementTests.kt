@@ -4,7 +4,7 @@ import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Element
 import java.io.File
 
-private val BASE_TEMPLATE_DIR = File("html-builder/src/commonAndGenTest/kotlin/dev/scottpierce/html/element")
+private val BASE_TEMPLATE_DIR = File("kotlin-html/src/commonAndGenTest/kotlin/dev/scottpierce/html/element")
 private val TEMPLATE_NORMAL_FILE = File("$BASE_TEMPLATE_DIR/DivTest.kt")
 private val TEMPLATE_VOID_FILE = File("$BASE_TEMPLATE_DIR/BrTest.kt")
 

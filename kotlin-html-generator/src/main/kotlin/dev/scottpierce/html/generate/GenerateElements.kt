@@ -1,5 +1,6 @@
 package dev.scottpierce.html.generate
 
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
@@ -13,6 +14,7 @@ import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Context
 import dev.scottpierce.html.generate.model.Element
 import dev.scottpierce.html.generate.model.HTML_WRITER
+import dev.scottpierce.html.generate.model.STYLE
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
@@ -85,8 +87,14 @@ private fun createDslFunction(
     }
 
     for (attr in element.supportedAttributes) {
+        val attrClassName: ClassName = if (attr == "style") {
+            STYLE.copy(nullable = true)
+        } else {
+            STRING.copy(nullable = true)
+        }
+
         addParameter(
-            ParameterSpec.builder(attr, STRING.copy(nullable = true))
+            ParameterSpec.builder(attr, attrClassName)
                 .defaultValue("null")
                 .build()
         )

@@ -28,3 +28,19 @@ fun HtmlWriter.writeStyle(style: Style, isInline: Boolean) {
         }
     }
 }
+
+fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
+    val minifyStyles = options.minifyStyles
+
+    for ((selector, style) in styleSheet.styles) {
+        write(selector)
+        if (!minifyStyles) write(' ')
+        write('{').newLine()
+        indent()
+
+        writeStyle(style, minifyStyles)
+
+        deindent()
+        newLine().write('}')
+    }
+}

@@ -102,7 +102,7 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     reports {
         csv.isEnabled = false
         xml.isEnabled = true
-        xml.destination = file("${rootProject.buildDir}/jacoco/html-builder-jvm.xml")
+        xml.destination = file("${rootProject.buildDir}/jacoco/kotlin-html-jvm.xml")
         html.isEnabled = true
         html.destination = file("$buildDir/jacocoHtml")
     }

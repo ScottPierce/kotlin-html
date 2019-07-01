@@ -7,6 +7,7 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.STRING
 
 val HTML_WRITER = ClassName("dev.scottpierce.html.write", "HtmlWriter")
+val STYLE = ClassName("dev.scottpierce.html.style", "Style")
 val ATTRIBUTE = ClassName("kotlin", "Pair").parameterizedBy(STRING, STRING.copy(nullable = true))
 val ATTRIBUTE_LIST = ITERABLE.parameterizedBy(ATTRIBUTE)
 
