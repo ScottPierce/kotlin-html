@@ -32,16 +32,8 @@ fun HtmlWriter.writeStyle(style: Style, isInline: Boolean) {
 fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
     val minifyStyles = options.minifyStyles
 
-    newLine() // for after the <style>
-
-    var isFirst = true
-
     for ((selector, style) in styleSheet.styles) {
-        if (isFirst) {
-            isFirst = false
-        } else {
-            newLine() // new line for after a style is written
-        }
+        newLine() // new line for after a style is written
 
         write(selector)
         if (!minifyStyles) write(' ')
