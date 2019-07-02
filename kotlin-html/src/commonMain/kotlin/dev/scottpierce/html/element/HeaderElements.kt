@@ -1,7 +1,6 @@
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.style.StyleSheet
-import dev.scottpierce.html.style.StyleSheetBuilder
 import dev.scottpierce.html.style.writeStyleSheet
 
 fun HeadContext.styleSheet(styleSheet: StyleSheet) {
