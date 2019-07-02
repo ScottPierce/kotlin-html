@@ -29,8 +29,8 @@ been made for several years.
     * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
     [span](/kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
     * PRs are welcome. If you add an element, please make sure you add it via the generator module
-        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
-        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
+        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
+        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
     
 ## Pull Requests Welcome
 * If I haven't added the HTML element or CSS Property you want, you can add it yourself via the generation module 
