@@ -39,7 +39,7 @@ yourself, please create an issue.
 ```Kotlin
 fun main() {
     // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
-    val writer: HtmlWriter = StringBuilderHtmlWriter(WriterOptions.default)
+    val writer: HtmlWriter = StringBuilderHtmlWriter(options = WriteOptions.default)
     
     // Writes the main page to the HtmlWriter
     writer.mainPage()
