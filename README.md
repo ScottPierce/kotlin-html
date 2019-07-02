@@ -35,7 +35,7 @@ been made for several years.
 yourself, please create an issue.
 * Please talk to me in an issue before you do any major changes / refactors
 
-## Basic Sample
+# Basic Sample
 ```Kotlin
 fun main() {
     // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
