@@ -9,72 +9,72 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Iterable
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.body(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style)
+    this.writeNormalElementStart("body", id, classes, style)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.body(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("body", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.body(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("body", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.section(
+inline fun HtmlContext.body(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style)
-    func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementStart("body", id, classes, style)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.section(
+inline fun HtmlContext.body(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
-    func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }
 
-inline fun BodyContext.section(
+inline fun HtmlContext.body(
     attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
-    func()
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("body")
 }

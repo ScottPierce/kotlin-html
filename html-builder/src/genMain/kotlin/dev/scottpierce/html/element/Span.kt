@@ -1,52 +1,80 @@
 // This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
-@file:Suppress("unused")
-
 package dev.scottpierce.html.element
 
+import dev.scottpierce.html.style.Style
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.Writable
-import dev.scottpierce.html.write.writeElement
+import kotlin.Pair
 import kotlin.String
-import kotlin.Suppress
 import kotlin.Unit
-import kotlin.collections.ArrayList
-import kotlin.collections.List
-import kotlin.collections.MutableList
-import kotlin.collections.MutableMap.MutableEntry
+import kotlin.collections.Iterable
 
-@HtmlTag
-interface Span : ContentElement, BodyContent
-
-class SpanBuilder(
-    override val attrs: MutableAttributes
-) : Span, MutableContentElement {
-    override val children: MutableList<Writable> = ArrayList(4)
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeElement("span", this)
-    }
+inline fun HtmlWriter.span(
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("span", id, classes, style)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("span")
 }
 
-inline fun <T : MutableContentElement> T.span(
+inline fun HtmlWriter.span(
+    vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: SpanBuilder.() -> Unit = {}
-): Span = addChild(id, classes, style, func) { SpanBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("span", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("span")
+}
 
-inline fun <T : MutableContentElement> T.span(
-    vararg attrs: MutableEntry<String, String?>,
+inline fun HtmlWriter.span(
+    attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: SpanBuilder.() -> Unit = {}
-): Span = addChild(attrs, id, classes, style, func) { SpanBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("span", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("span")
+}
 
-inline fun <T : MutableContentElement> T.span(
-    attrs: List<MutableEntry<String, String?>>,
+inline fun BodyContext.span(
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: SpanBuilder.() -> Unit = {}
-): Span = addChild(attrs, id, classes, style, func) { SpanBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("span", id, classes, style)
+    func()
+    writer.writeNormalElementEnd("span")
+}
+
+inline fun BodyContext.span(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("span", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("span")
+}
+
+inline fun BodyContext.span(
+    attrs: Iterable<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("span", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("span")
+}

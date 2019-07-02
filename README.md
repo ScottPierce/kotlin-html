@@ -1,5 +1,8 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
+<!---
+This entire library is inline functions, and Jacoco doesn't show inline functions code coverage correctly: https://github.com/jacoco/jacoco/issues/654
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
+-->
 
 # Why this library?
 I was seeking a simple Kotlin templating DSL that I could use for a project, 
@@ -12,8 +15,10 @@ been made for several years.
 ## Features
 * HTML DSL
     * Explicit support for common html attributes for a cleaner api (i.e. id, classes, and attr)
+    * Lightweight streaming API
+        * Doesn't create a lot of unnecessary objects to represent the DOM. i.e. DOM introspection isn't possible
 * Style DSL
-    * Inlining style to header or individual element
+    * Allows inlining style to the header or individual elements
     * CSS
 * Functionally Immutable
 * Multiplatform
@@ -22,20 +27,71 @@ been made for several years.
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
     * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
-    [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template.
-    * PRs are welcome. If you add an element, please make sure you add it via the [generator module](https://github.com/ScottPierce/kotlin-html-builder/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/Element.kt).
+    [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
+    * PRs are welcome. If you add an element, please make sure you add it via the generator module
+        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
+        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
     
 ## Pull Requests Welcome
-* If I haven't built out proper element generation for the `ElementType` you want, and don't feel like trying yourself, 
-create an issue.
+* If I haven't added the HTML element or CSS Property you want, you can add it yourself via the generation module 
+[here](/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/Model.kt). If you don't feel like trying 
+yourself, please create an issue.
 * Please talk to me in an issue before you do any major changes / refactors
 
-## Examples
-```kotlin
-html {
-    head("custom-attribute" by "attribute-value")
-    body {
-        div(id = "divId", classes = "class1 class2")
+# Basic Sample
+```Kotlin
+fun main() {
+    // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
+    val writer: HtmlWriter = StringBuilderHtmlWriter(options = WriteOptions.default)
+    
+    // Writes the main page to the HtmlWriter
+    writer.mainPage()
+    
+    // Prints out the written page
+    println(writer)
+}
+
+fun HtmlWriter.mainPage() {
+    docType(DocType.Html)
+    html {
+        head {
+            styleSheet {
+                style(".class1") {
+                    // TODO
+                }
+                style(".class2") {
+                    // TODO
+                }
+            }
+        }
+        body {
+            navigation()
+            aboutSection()
+            footer()
+        }
+    }
+}
+
+fun BodyContext.navigation() {
+    div(
+        id = "navigation",
+        style = style {
+            // Inline style here
+        }
+    ) {
+        // Navigation HTML here
+    }
+}
+
+fun BodyContext.aboutSection() {
+    section(id = "about", classes = "class1 class2") {
+        // About section HTML here
+    }
+}
+
+fun BodyContext.footer() {
+    span(style = style { /* Inline span style here */ }) {
+        +"Footer Text"
     }
 }
 ```

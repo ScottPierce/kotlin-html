@@ -1,52 +1,80 @@
 // This file was generated using the `html-builder-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
-@file:Suppress("unused")
-
 package dev.scottpierce.html.element
 
+import dev.scottpierce.html.style.Style
 import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.Writable
-import dev.scottpierce.html.write.writeElement
+import kotlin.Pair
 import kotlin.String
-import kotlin.Suppress
 import kotlin.Unit
-import kotlin.collections.ArrayList
-import kotlin.collections.List
-import kotlin.collections.MutableList
-import kotlin.collections.MutableMap.MutableEntry
+import kotlin.collections.Iterable
 
-@HtmlTag
-interface Div : ContentElement, BodyContent
-
-class DivBuilder(
-    override val attrs: MutableAttributes
-) : Div, MutableContentElement {
-    override val children: MutableList<Writable> = ArrayList(8)
-
-    override fun write(writer: HtmlWriter) {
-        writer.writeElement("div", this)
-    }
+inline fun HtmlWriter.div(
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("div", id, classes, style)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("div")
 }
 
-inline fun <T : MutableContentElement> T.div(
+inline fun HtmlWriter.div(
+    vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: DivBuilder.() -> Unit = {}
-): Div = addChild(id, classes, style, func) { DivBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("div", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("div")
+}
 
-inline fun <T : MutableContentElement> T.div(
-    vararg attrs: MutableEntry<String, String?>,
+inline fun HtmlWriter.div(
+    attrs: Iterable<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: DivBuilder.() -> Unit = {}
-): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeNormalElementStart("div", id, classes, style, attrs)
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("div")
+}
 
-inline fun <T : MutableContentElement> T.div(
-    attrs: List<MutableEntry<String, String?>>,
+inline fun BodyContext.div(
     id: String? = null,
     classes: String? = null,
-    style: String? = null,
-    func: DivBuilder.() -> Unit = {}
-): Div = addChild(attrs, id, classes, style, func) { DivBuilder(it) }
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("div", id, classes, style)
+    func()
+    writer.writeNormalElementEnd("div")
+}
+
+inline fun BodyContext.div(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("div", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("div")
+}
+
+inline fun BodyContext.div(
+    attrs: Iterable<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeNormalElementStart("div", id, classes, style, attrs)
+    func()
+    writer.writeNormalElementEnd("div")
+}

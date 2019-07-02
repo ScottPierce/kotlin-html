@@ -1,9 +1,9 @@
 enableFeaturePreview("GRADLE_METADATA")
 
-rootProject.name = "html-builder"
+rootProject.name = "kotlin-html"
 
 include(
-    ":html-builder",
-    ":ktor-html-builder",
-    ":html-builder-generator"
+    ":kotlin-html",
+    ":kotlin-html-ktor",
+    ":kotlin-html-generator"
 )
