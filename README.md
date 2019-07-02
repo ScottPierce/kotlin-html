@@ -35,13 +35,63 @@ been made for several years.
 yourself, please create an issue.
 * Please talk to me in an issue before you do any major changes / refactors
 
-## Examples
-```kotlin
-val htmlWriter: HtmlWriter = StringBuilderHtmlWriter() 
-htmlWriter.html {
-    head("custom-attribute" by "attribute-value")
-    body {
-        div(id = "divId", classes = "class1 class2")
+## Basic Sample
+```Kotlin
+fun main() {
+    // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
+    val writer: HtmlWriter = StringBuilderHtmlWriter(WriterOptions.default)
+    
+    // Writes the main page to the HtmlWriter
+    writer.mainPage()
+    
+    // Prints out the written page
+    println(writer)
+}
+
+fun HtmlWriter.mainPage() {
+    docType(DocType.Html)
+    html {
+        head {
+            styleSheet {
+                style(".class1") {
+                    // TODO
+                }
+                style(".class2") {
+                    // TODO
+                }
+            }
+        }
+        body {
+            navigation()
+            aboutSection()
+            footer()
+        }
+    }
+}
+
+fun BodyContext.navigation() {
+    div(
+        id = "navigation",
+        style = style {
+            // Inline style here
+        }
+    ) {
+        // Navigation HTML here
+    }
+}
+
+fun BodyContext.aboutSection() {
+    section(id = "about", classes = "class1 class2") {
+        // About section HTML here
+    }
+}
+
+fun BodyContext.footer() {
+    span(style = style { /* Inline span style here */ }) {
+        +"Footer Text"
     }
 }
 ```
+
+# Benchmarks
+// TODO
