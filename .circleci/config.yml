@@ -59,7 +59,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - html-builder/build/libs
+            - kotlin-html/build/libs
 
   unit test:
     <<: *job_config
