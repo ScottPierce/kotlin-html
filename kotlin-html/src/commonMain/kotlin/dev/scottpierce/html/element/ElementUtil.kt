@@ -1,6 +1,7 @@
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.writeStyle
 import dev.scottpierce.html.write.HtmlWriter
 
 fun HtmlWriter.writeNormalElementStart(
@@ -98,7 +99,7 @@ private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style
     if (classes != null) write(" classes=\"").write(classes).write('"')
     if (style != null) {
         write(" style=\"")
-        style.write(this, true)
+        writeStyle(style, true)
         write('"')
     }
 }

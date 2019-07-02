@@ -7,6 +7,7 @@ interface StyleSheet {
     val styles: List<Pair<String, Style>>
 }
 
+@HtmlDsl
 class StyleSheetBuilder : StyleSheet {
     override val styles: MutableList<Pair<String, Style>> = mutableListOf()
 
@@ -15,4 +16,4 @@ class StyleSheetBuilder : StyleSheet {
     }
 }
 
-inline fun styleSheet(func: StyleSheetBuilder.() -> Unit): StyleSheet = StyleSheetBuilder().apply(func)
+inline fun styleSheet(func: StyleSheetBuilder.() -> Unit = {}): StyleSheet = StyleSheetBuilder().apply(func)

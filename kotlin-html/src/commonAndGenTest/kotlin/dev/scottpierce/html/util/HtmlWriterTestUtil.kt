@@ -3,6 +3,7 @@ package dev.scottpierce.html.util
 import dev.scottpierce.html.element.FileContext
 import dev.scottpierce.html.element.HtmlContext
 import dev.scottpierce.html.style.StyleBuilder
+import dev.scottpierce.html.style.writeStyle
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
@@ -39,6 +40,6 @@ fun writeStyle(
     val writer = StringBuilderHtmlWriter(options = options)
     val style = StyleBuilder()
     style.func()
-    style.write(writer, options.minifyStyles)
+    writer.writeStyle(style, options.minifyStyles)
     return writer
 }

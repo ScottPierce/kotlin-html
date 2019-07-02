@@ -3,15 +3,10 @@
 package dev.scottpierce.html.style
 
 import dev.scottpierce.html.element.HtmlDsl
-import dev.scottpierce.html.write.HtmlWriter
 
 @HtmlDsl
 interface Style {
     val properties: MutableMap<String, Any?>
-
-    fun write(writer: HtmlWriter, isInline: Boolean) {
-        writer.writeStyle(this, isInline)
-    }
 }
 
 class StyleBuilder(
