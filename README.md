@@ -34,7 +34,6 @@ been made for several years.
     
 ## Pull Requests Welcome
 * If I haven't added the HTML element or CSS Property you want, you can add it yourself via the generation module 
-[here](/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/Model.kt). If you don't feel like trying 
 yourself, please create an issue.
 * Please talk to me in an issue before you do any major changes / refactors
 
