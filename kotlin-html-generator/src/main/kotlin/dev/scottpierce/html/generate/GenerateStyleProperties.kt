@@ -13,5 +13,4 @@ fun generateStyleProperties() {
 }
 
 private fun generateProperty(property: StyleProperty) {
-
 }
