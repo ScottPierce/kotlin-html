@@ -6,9 +6,9 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 
 # Why this library?
 I was seeking a simple Kotlin templating DSL that I could use for a project, 
-[https://www.arseldrivingschool.com](https://www.arseldrivingschool.com). I found 
+[https://www.arseldrivingschool.com](https://www.arseldrivingschool.com). I knew about 
 [kotlinx.html](https://github.com/Kotlin/kotlinx.html), but upon initial use, I found that it's API was clunky, lacking 
-in features that I needed (i.e. styles), and lacking in features that I wanted (i.e. immutability). I also found that 
+in features that I needed (i.e. styles), and lacking in features that I wanted. I also found that 
 other users identified [similar issues](https://github.com/Kotlin/kotlinx.html/issues/31), and that no progress had 
 been made for several years.
 
@@ -27,7 +27,7 @@ been made for several years.
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
     * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
-    [span](/html-builder/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
+    [span](/kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
     * PRs are welcome. If you add an element, please make sure you add it via the generator module
         * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
         * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/html-builder-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
