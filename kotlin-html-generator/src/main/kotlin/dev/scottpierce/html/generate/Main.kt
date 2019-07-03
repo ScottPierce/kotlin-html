@@ -1,44 +1,41 @@
 package dev.scottpierce.html.generate
 
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.Executors
+import dev.scottpierce.html.generate.task.GenerateElementTestsTask
+import dev.scottpierce.html.generate.task.GenerateElementsTask
+import dev.scottpierce.html.generate.task.GenerateStylePropertiesTask
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
 
 fun main() {
-    val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()) {
-        Thread(it).apply {
-            // Set all the threads as daemons so that the program can exit when all work is complete
-            isDaemon = true
-        }
-    }
-
     // Generation tasks
     val tasks: List<Task> = listOf(
-        Task("Generate Elements") { generateElements() },
-        Task("Generate Element Tests") { generateElementTests() },
-        Task("Generate Style Properties") { generateStyleProperties() }
+        GenerateElementsTask(),
+        GenerateElementTestsTask(),
+        GenerateStylePropertiesTask()
     )
 
-    // When this latch completes, all generation tasks are done
-    val latch = CountDownLatch(tasks.size)
-
-    // Run the actual tasks
-    for (task in tasks) {
-        executor.execute {
-            println("Starting Task: ${task.name}")
-            val millis = measureTimeMillis {
-                task.execute()
+    val job = GlobalScope.launch {
+        // Run the actual tasks
+        for (task in tasks) {
+            launch {
+                println("Starting Task: ${task.name}")
+                val millis = measureTimeMillis {
+                    task.execute()
+                }
+                println("Completed Task: ${task.name}, took $millis millis.")
             }
-            println("Completed Task: ${task.name}, took $millis millis.")
-            latch.countDown()
         }
     }
 
     // Await until all tasks are done and then exit the process
-    latch.await()
+    runBlocking {
+        job.join()
+    }
 }
 
-data class Task(
-    val name: String,
-    val execute: () -> Unit
-)
+interface Task {
+    val name: String
+    suspend fun execute()
+}

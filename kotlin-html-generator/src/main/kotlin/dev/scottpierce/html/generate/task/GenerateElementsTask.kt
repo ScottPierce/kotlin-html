@@ -1,4 +1,4 @@
-package dev.scottpierce.html.generate
+package dev.scottpierce.html.generate.task
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
@@ -8,6 +8,7 @@ import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.UNIT
+import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.ATTRIBUTE
 import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
 import dev.scottpierce.html.generate.model.Constants
@@ -18,28 +19,42 @@ import dev.scottpierce.html.generate.model.STYLE
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
 import java.io.File
+import java.util.concurrent.Executor
 
-fun generateElements() {
-    File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element").deleteRecursively()
+class GenerateElementsTask : Task {
+    override val name: String = "Generate Elements"
 
-    Element.values.forEach { element ->
-        val elementName = element.tagName.capitalize()
+    override suspend fun execute() {
+        GlobalScope.launch(Dispatchers.IO) {
+            File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element").deleteRecursively()
+        }.join()
 
-        val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
-            .indent("    ")
-            .addComment(Constants.GENERATED_FILE_COMMENT)
+        Element.values.map { element ->
+            val elementName = element.tagName.capitalize()
 
-        for (i in 0..1) {
-            val isWriter = (i % 2) == 0
+            val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
+                .indent("    ")
+                .addComment(Constants.GENERATED_FILE_COMMENT)
 
-            for (type in DslFunction.values()) {
-                file.addFunction(createDslFunction(element, isWriter, type))
+            for (i in 0..1) {
+                val isWriter = (i % 2) == 0
+
+                for (type in DslFunction.values()) {
+                    file.addFunction(createDslFunction(element, isWriter, type))
+                }
             }
-        }
 
-        file.build()
-            .writeTo(Constants.BASE_GEN_DIR)
+            GlobalScope.launch(Dispatchers.IO) {
+                file.build()
+                    .writeTo(Constants.BASE_GEN_DIR)
+            }
+        }.joinAll()
     }
 }
 
@@ -113,11 +128,6 @@ private fun createDslFunction(
             // Do Nothing
         }
     }
-
-//    if (!isWriter) {
-//        // Writers are the entry point DSL functions. We don't need new lines at the very beginning
-//        addStatement("$writer.newLine()")
-//    }
 
     when (element) {
         is Element.Normal -> {
