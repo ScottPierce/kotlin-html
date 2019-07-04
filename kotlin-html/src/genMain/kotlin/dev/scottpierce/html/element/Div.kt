@@ -7,7 +7,7 @@ import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
 inline fun HtmlWriter.div(
     id: String? = null,
@@ -33,7 +33,7 @@ inline fun HtmlWriter.div(
 }
 
 inline fun HtmlWriter.div(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
@@ -68,7 +68,7 @@ inline fun BodyContext.div(
 }
 
 inline fun BodyContext.div(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,

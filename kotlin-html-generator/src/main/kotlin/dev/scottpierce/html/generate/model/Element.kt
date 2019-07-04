@@ -48,6 +48,11 @@ sealed class Element(
             Void(
                 tagName = "br",
                 callingContext = Context.Body
+            ),
+            Void(
+                tagName = "meta",
+                callingContext = Context.Head,
+                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
             )
         )
     }
@@ -56,7 +61,7 @@ sealed class Element(
         tagName: String,
         callingContext: Context,
         val childrenContext: Context,
-        supportedAttributes: List<String> = DEFAULT_ATTRIBUTES
+        supportedAttributes: List<String> = STANDARD_ATTRIBUTES
     ) : Element(
         tagName,
         callingContext,
@@ -66,7 +71,7 @@ sealed class Element(
     class Void(
         tagName: String,
         callingContext: Context,
-        supportedAttributes: List<String> = DEFAULT_ATTRIBUTES
+        supportedAttributes: List<String> = STANDARD_ATTRIBUTES
     ) : Element(
         tagName,
         callingContext,
@@ -88,4 +93,4 @@ enum class Context {
     val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
 }
 
-private val DEFAULT_ATTRIBUTES: List<String> = listOf("id", "classes", "style")
+val STANDARD_ATTRIBUTES: List<String> = listOf("id", "classes", "style")

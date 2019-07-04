@@ -3,6 +3,7 @@ package dev.scottpierce.html.generate.task
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -42,6 +43,10 @@ class GenerateElementTestsTask : Task {
 
         elementLoop@ for (i in Element.values.indices) {
             val element = Element.values[i]
+
+            if (!element.supportedAttributes.containsAll(STANDARD_ATTRIBUTES)) {
+                continue@elementLoop
+            }
 
             // These are the template tests. Generating them again would be duplicate
             when (element.tagName) {

@@ -36,7 +36,7 @@ fun HtmlWriter.writeNormalElementStart(
     id: String?,
     classes: String?,
     style: Style?,
-    attrs: Iterable<Pair<String, String?>>
+    attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
     writeBasicAttributes(id, classes, style)
@@ -81,7 +81,7 @@ fun HtmlWriter.writeVoidElement(
     id: String?,
     classes: String?,
     style: Style?,
-    attrs: Iterable<Pair<String, String?>>
+    attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
     writeBasicAttributes(id, classes, style)
@@ -115,7 +115,7 @@ private fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) 
     }
 }
 
-private fun HtmlWriter.writeAttributes(attrs: Iterable<Pair<String, String?>>) {
+private fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
     for (attr in attrs) {
         attr.checkAttributeKey()
         write(' ').write(attr.first)

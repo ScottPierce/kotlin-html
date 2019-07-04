@@ -6,7 +6,7 @@ import dev.scottpierce.html.style.Style
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
 fun HtmlWriter.br(
     id: String? = null,
@@ -26,7 +26,7 @@ fun HtmlWriter.br(
 }
 
 fun HtmlWriter.br(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null
@@ -52,7 +52,7 @@ fun BodyContext.br(
 }
 
 fun BodyContext.br(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null

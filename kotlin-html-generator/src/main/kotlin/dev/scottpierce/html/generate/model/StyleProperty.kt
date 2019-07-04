@@ -14,21 +14,7 @@ enum class StyleProperty(
     FLEX_DIRECTION("flex-direction", PropertyType.ALIGN_ITEMS),
     ;
 
-    val propertyName: String = run {
-        val sb = StringBuilder()
-
-        var isFirst = true
-        for (part in cssName.split("-")) {
-            if (isFirst) {
-                isFirst = false
-                sb.append(part)
-            } else {
-                sb.append(part.capitalize())
-            }
-        }
-
-        sb.toString()
-    }
+    val propertyName: String = cssName.snakeCaseToCamelCase()
 }
 
 enum class PropertyType(val className: ClassName) {

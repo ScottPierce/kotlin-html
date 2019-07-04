@@ -19,6 +19,7 @@ import dev.scottpierce.html.generate.model.STYLE
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
+import dev.scottpierce.html.generate.model.snakeCaseToCamelCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
@@ -64,11 +65,10 @@ private fun createDslFunction(
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val writer: String
-    if (isWriter) {
-        writer = "this"
+    val writer: String = if (isWriter) {
+        "this"
     } else {
-        writer = "writer"
+        "writer"
     }
 
     if (isWriter) {
@@ -107,7 +107,7 @@ private fun createDslFunction(
         }
 
         addParameter(
-            ParameterSpec.builder(attr, attrClassName)
+            ParameterSpec.builder(attr.snakeCaseToCamelCase(), attrClassName)
                 .defaultValue("null")
                 .build()
         )
@@ -127,16 +127,78 @@ private fun createDslFunction(
         }
     }
 
+    val attributeParametersString: String = run {
+        val sb = StringBuilder()
+
+        val remainingAttributes: MutableList<String> = element.supportedAttributes.toMutableList()
+
+        if (remainingAttributes.contains("id")) {
+            remainingAttributes.remove("id")
+            sb.append("id")
+        } else {
+            sb.append("null")
+        }
+
+        sb.append(", ")
+
+        if (element.supportedAttributes.contains("classes")) {
+            remainingAttributes.remove("classes")
+            sb.append("classes")
+        } else {
+            sb.append("null")
+        }
+
+        sb.append(", ")
+
+        if (element.supportedAttributes.contains("style")) {
+            remainingAttributes.remove("style")
+            sb.append("style")
+        } else {
+            sb.append("null")
+        }
+
+        // TODO This is inefficient. This can avoid array allocation by writing custom write functions
+        if (remainingAttributes.isNotEmpty()) {
+            sb.append(", ")
+
+            sb.append("arrayOf(")
+            var isFirst = true
+
+            if (functionType == DslFunction.ATTR_VARARG) {
+                isFirst = false
+                sb.append("*attrs")
+            } else if (functionType == DslFunction.ATTR_LIST) {
+                isFirst = false
+                sb.append("*attrs.toTypedArray()")
+            }
+
+            for (attr in remainingAttributes) {
+                if (isFirst) {
+                    isFirst = false
+                } else {
+                    sb.append(", ")
+                }
+                sb.append("\"$attr\" to ${attr.snakeCaseToCamelCase()}")
+            }
+
+            sb.append(")")
+        } else {
+            if (functionType != DslFunction.NO_ATTR) {
+                sb.append(", attrs")
+            }
+        }
+
+        sb.toString()
+    }
+
     when (element) {
         is Element.Normal -> {
             if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)",
-                    WRITE_NORMAL_ELEMENT_START
-                )
+                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)",
+                    WRITE_NORMAL_ELEMENT_START)
             } else {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)",
-                    WRITE_NORMAL_ELEMENT_START
-                )
+                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)",
+                    WRITE_NORMAL_ELEMENT_START)
             }
 
             if (isParent) {
@@ -147,20 +209,14 @@ private fun createDslFunction(
                 }
             }
 
-            addStatement("$writer.%M(\"${element.tagName}\")",
-                WRITE_NORMAL_ELEMENT_END
-            )
+            addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
         }
 
         is Element.Void -> {
             if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style)",
-                    WRITE_VOID_ELEMENT
-                )
+                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)", WRITE_VOID_ELEMENT)
             } else {
-                addStatement("$writer.%M(\"${element.tagName}\", id, classes, style, attrs)",
-                    WRITE_VOID_ELEMENT
-                )
+                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)", WRITE_VOID_ELEMENT)
             }
         }
     }
