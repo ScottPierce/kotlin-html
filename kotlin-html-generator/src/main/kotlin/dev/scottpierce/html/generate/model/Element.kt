@@ -11,13 +11,47 @@ sealed class Element(
     companion object {
         val values: List<Element> = listOf(
             Normal(
-                tagName = "html",
-                callingContext = Context.File,
-                childrenContext = Context.Html
-            ),
-            Normal(
                 tagName = "body",
                 callingContext = Context.Html,
+                childrenContext = Context.Body
+            ),
+            Void(
+                tagName = "br",
+                callingContext = Context.Body
+            ),
+            Normal(
+                tagName = "div",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h1",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h2",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h3",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h4",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h5",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "h6",
+                callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
             Normal(
@@ -26,12 +60,22 @@ sealed class Element(
                 childrenContext = Context.Head
             ),
             Normal(
-                tagName = "section",
+                tagName = "html",
+                callingContext = Context.File,
+                childrenContext = Context.Html
+            ),
+            Void(
+                tagName = "meta",
+                callingContext = Context.Head,
+                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
+            ),
+            Normal(
+                tagName = "p",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
             Normal(
-                tagName = "div",
+                tagName = "section",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
@@ -39,20 +83,6 @@ sealed class Element(
                 tagName = "span",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
-            ),
-            Normal(
-                tagName = "p",
-                callingContext = Context.Body,
-                childrenContext = Context.Body
-            ),
-            Void(
-                tagName = "br",
-                callingContext = Context.Body
-            ),
-            Void(
-                tagName = "meta",
-                callingContext = Context.Head,
-                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
             )
         )
     }

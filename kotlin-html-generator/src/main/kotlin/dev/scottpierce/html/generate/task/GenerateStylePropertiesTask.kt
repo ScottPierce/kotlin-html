@@ -119,8 +119,10 @@ class GenerateStylePropertiesTask : Task {
                 val expected: CodeBlock = when (property.type) {
                     PropertyType.COLOR -> CodeBlock.of("color(\"#555555\")")
                     PropertyType.DISPLAY -> CodeBlock.of("Display.BLOCK")
+                    PropertyType.DIMENSION -> CodeBlock.of("Dimension.Size(1f, DimensionUnit.PX")
                     PropertyType.ALIGN_ITEMS -> CodeBlock.of("AlignItems.BASELINE")
                     PropertyType.FLEX_DIRECTION -> CodeBlock.of("FlexDirection.COLUMN")
+                    PropertyType.JUSTIFY_CONTENT -> CodeBlock.of("JustifyContent.CENTER")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

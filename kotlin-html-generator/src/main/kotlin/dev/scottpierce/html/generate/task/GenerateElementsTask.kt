@@ -14,6 +14,7 @@ import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Context
 import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
 import dev.scottpierce.html.generate.model.STYLE
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
@@ -81,6 +82,8 @@ private fun createDslFunction(
     if (isParent) {
         addModifiers(KModifier.INLINE)
     }
+
+    addAnnotation(HTML_DSL)
 
     if (functionType == DslFunction.ATTR_VARARG) {
         addParameter(

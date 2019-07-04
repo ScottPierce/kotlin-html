@@ -4,15 +4,15 @@ import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 import kotlin.test.Test
 
-class BodyTest {
+class DivTest {
     @Test
     fun writerNoCustomAttributeTest() {
         createWriter().apply {
-            body(id = "test-id", classes = "test-class")
+            div(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class">
-            </body>
+            <div id="test-id" classes="test-class">
+            </div>
             """.trimIndent()
         }
     }
@@ -20,11 +20,11 @@ class BodyTest {
     @Test
     fun writerVarArgAttributeTest() {
         createWriter().apply {
-            body("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+            div("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-            </body>
+            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </div>
             """.trimIndent()
         }
     }
@@ -32,11 +32,11 @@ class BodyTest {
     @Test
     fun writerListAttributeTest() {
         createWriter().apply {
-            body(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
+            div(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-            </body>
+            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </div>
             """.trimIndent()
         }
     }
@@ -45,12 +45,12 @@ class BodyTest {
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
 
-        HtmlContext(writer).body(id = "test-id", classes = "test-class")
+        BodyContext(writer).div(id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class">
-            </body>
+            <div id="test-id" classes="test-class">
+            </div>
             """.trimIndent()
         }
     }
@@ -59,12 +59,12 @@ class BodyTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        HtmlContext(writer).body("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        BodyContext(writer).div("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-            </body>
+            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </div>
             """.trimIndent()
         }
     }
@@ -73,12 +73,12 @@ class BodyTest {
     fun contextListAttributeTest() {
         val writer = createWriter()
 
-        HtmlContext(writer).body(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
+        BodyContext(writer).div(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-            </body>
+            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </div>
             """.trimIndent()
         }
     }

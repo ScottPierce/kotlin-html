@@ -2,10 +2,12 @@ package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
 
+@HtmlDsl
 fun HtmlWriter.docType(docType: DocType) {
     write("<!DOCTYPE ").write(docType.type!!).write('>')
 }
 
+@HtmlDsl
 fun FileContext.docType(docType: DocType) {
     writer.docType(docType)
 }

@@ -7,20 +7,29 @@ enum class StyleProperty(
     val cssName: String,
     val type: PropertyType
 ) {
+    ALIGN_ITEMS("align-items", PropertyType.ALIGN_ITEMS),
     BACKGROUND("background", PropertyType.COLOR),
     COLOR("color", PropertyType.COLOR),
     DISPLAY("display", PropertyType.DISPLAY),
-    ALIGN_ITEMS("align-items", PropertyType.ALIGN_ITEMS),
     FLEX_DIRECTION("flex-direction", PropertyType.ALIGN_ITEMS),
+    JUSTIFY_CONTENT("justify-content", PropertyType.JUSTIFY_CONTENT),
+    PADDING("padding", PropertyType.DIMENSION),
+    PADDING_LEFT("padding-left", PropertyType.DIMENSION),
+    PADDING_RIGHT("padding-right", PropertyType.DIMENSION),
+    PADDING_TOP("padding-top", PropertyType.DIMENSION),
+    PADDING_BOTTOM("padding-bottom", PropertyType.DIMENSION),
+    MARGIN("margin", PropertyType.DIMENSION),
     ;
 
     val propertyName: String = cssName.snakeCaseToCamelCase()
 }
 
 enum class PropertyType(val className: ClassName) {
-    COLOR(ClassName("dev.scottpierce.html.style", "Color")),
-    DISPLAY(ClassName("dev.scottpierce.html.style", "Display")),
     ALIGN_ITEMS(ClassName("dev.scottpierce.html.style", "AlignItems")),
+    COLOR(ClassName("dev.scottpierce.html.style", "Color")),
+    DIMENSION(ClassName("dev.scottpierce.html.style", "Dimension")),
+    DISPLAY(ClassName("dev.scottpierce.html.style", "Display")),
     FLEX_DIRECTION(ClassName("dev.scottpierce.html.style", "FlexDirection")),
+    JUSTIFY_CONTENT(ClassName("dev.scottpierce.html.style", "JustifyContent")),
     ;
 }

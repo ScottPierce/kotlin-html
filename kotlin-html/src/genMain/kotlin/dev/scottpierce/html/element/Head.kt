@@ -9,6 +9,7 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
+@HtmlDsl
 inline fun HtmlWriter.head(
     id: String? = null,
     classes: String? = null,
@@ -20,6 +21,7 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.head(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -32,6 +34,7 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.head(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
@@ -44,6 +47,7 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
     id: String? = null,
     classes: String? = null,
@@ -55,6 +59,7 @@ inline fun HtmlContext.head(
     writer.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -67,6 +72,7 @@ inline fun HtmlContext.head(
     writer.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
     attrs: List<Pair<String, String?>>,
     id: String? = null,

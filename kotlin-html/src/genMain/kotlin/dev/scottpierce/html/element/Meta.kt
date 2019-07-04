@@ -7,6 +7,7 @@ import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
+@HtmlDsl
 fun HtmlWriter.meta(
     name: String? = null,
     content: String? = null,
@@ -17,6 +18,7 @@ fun HtmlWriter.meta(
             "charset" to charset, "http-equiv" to httpEquiv))
 }
 
+@HtmlDsl
 fun HtmlWriter.meta(
     vararg attrs: Pair<String, String?>,
     name: String? = null,
@@ -28,6 +30,7 @@ fun HtmlWriter.meta(
             content, "charset" to charset, "http-equiv" to httpEquiv))
 }
 
+@HtmlDsl
 fun HtmlWriter.meta(
     attrs: List<Pair<String, String?>>,
     name: String? = null,
@@ -39,6 +42,7 @@ fun HtmlWriter.meta(
             "content" to content, "charset" to charset, "http-equiv" to httpEquiv))
 }
 
+@HtmlDsl
 fun HeadContext.meta(
     name: String? = null,
     content: String? = null,
@@ -49,6 +53,7 @@ fun HeadContext.meta(
             "charset" to charset, "http-equiv" to httpEquiv))
 }
 
+@HtmlDsl
 fun HeadContext.meta(
     vararg attrs: Pair<String, String?>,
     name: String? = null,
@@ -60,6 +65,7 @@ fun HeadContext.meta(
             content, "charset" to charset, "http-equiv" to httpEquiv))
 }
 
+@HtmlDsl
 fun HeadContext.meta(
     attrs: List<Pair<String, String?>>,
     name: String? = null,

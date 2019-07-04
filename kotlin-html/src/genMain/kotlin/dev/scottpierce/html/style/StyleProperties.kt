@@ -2,6 +2,15 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.style
 
+val Style.alignItems: AlignItems?
+    get() = properties["align-items"] as AlignItems?
+
+var StyleBuilder.alignItems: AlignItems?
+    get() = properties["align-items"] as AlignItems?
+    set(value) {
+        properties["align-items"] = value
+    }
+
 val Style.background: Color?
     get() = properties["background"] as Color?
 
@@ -29,15 +38,6 @@ var StyleBuilder.display: Display?
         properties["display"] = value
     }
 
-val Style.alignItems: AlignItems?
-    get() = properties["align-items"] as AlignItems?
-
-var StyleBuilder.alignItems: AlignItems?
-    get() = properties["align-items"] as AlignItems?
-    set(value) {
-        properties["align-items"] = value
-    }
-
 val Style.flexDirection: AlignItems?
     get() = properties["flex-direction"] as AlignItems?
 
@@ -45,4 +45,67 @@ var StyleBuilder.flexDirection: AlignItems?
     get() = properties["flex-direction"] as AlignItems?
     set(value) {
         properties["flex-direction"] = value
+    }
+
+val Style.justifyContent: JustifyContent?
+    get() = properties["justify-content"] as JustifyContent?
+
+var StyleBuilder.justifyContent: JustifyContent?
+    get() = properties["justify-content"] as JustifyContent?
+    set(value) {
+        properties["justify-content"] = value
+    }
+
+val Style.padding: Dimension?
+    get() = properties["padding"] as Dimension?
+
+var StyleBuilder.padding: Dimension?
+    get() = properties["padding"] as Dimension?
+    set(value) {
+        properties["padding"] = value
+    }
+
+val Style.paddingLeft: Dimension?
+    get() = properties["padding-left"] as Dimension?
+
+var StyleBuilder.paddingLeft: Dimension?
+    get() = properties["padding-left"] as Dimension?
+    set(value) {
+        properties["padding-left"] = value
+    }
+
+val Style.paddingRight: Dimension?
+    get() = properties["padding-right"] as Dimension?
+
+var StyleBuilder.paddingRight: Dimension?
+    get() = properties["padding-right"] as Dimension?
+    set(value) {
+        properties["padding-right"] = value
+    }
+
+val Style.paddingTop: Dimension?
+    get() = properties["padding-top"] as Dimension?
+
+var StyleBuilder.paddingTop: Dimension?
+    get() = properties["padding-top"] as Dimension?
+    set(value) {
+        properties["padding-top"] = value
+    }
+
+val Style.paddingBottom: Dimension?
+    get() = properties["padding-bottom"] as Dimension?
+
+var StyleBuilder.paddingBottom: Dimension?
+    get() = properties["padding-bottom"] as Dimension?
+    set(value) {
+        properties["padding-bottom"] = value
+    }
+
+val Style.margin: Dimension?
+    get() = properties["margin"] as Dimension?
+
+var StyleBuilder.margin: Dimension?
+    get() = properties["margin"] as Dimension?
+    set(value) {
+        properties["margin"] = value
     }

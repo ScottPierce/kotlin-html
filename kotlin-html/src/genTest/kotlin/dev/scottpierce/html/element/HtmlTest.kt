@@ -11,8 +11,8 @@ class HtmlTest {
             html(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <html id="test-id" classes="test-class">
-                </html>
+            <html id="test-id" classes="test-class">
+            </html>
             """.trimIndent()
         }
     }
@@ -23,8 +23,8 @@ class HtmlTest {
             html("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </html>
+            <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </html>
             """.trimIndent()
         }
     }
@@ -35,8 +35,8 @@ class HtmlTest {
             html(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </html>
+            <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </html>
             """.trimIndent()
         }
     }
@@ -49,8 +49,8 @@ class HtmlTest {
 
         writer assertEquals {
             """
-                <html id="test-id" classes="test-class">
-                </html>
+            <html id="test-id" classes="test-class">
+            </html>
             """.trimIndent()
         }
     }
@@ -63,8 +63,8 @@ class HtmlTest {
 
         writer assertEquals {
             """
-                <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </html>
+            <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </html>
             """.trimIndent()
         }
     }
@@ -77,8 +77,8 @@ class HtmlTest {
 
         writer assertEquals {
             """
-                <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </html>
+            <html id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </html>
             """.trimIndent()
         }
     }

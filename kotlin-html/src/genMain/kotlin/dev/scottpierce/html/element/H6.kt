@@ -10,77 +10,77 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.p(
+inline fun HtmlWriter.h6(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("p", id, classes, style)
+    this.writeNormalElementStart("h6", id, classes, style)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("p")
+    this.writeNormalElementEnd("h6")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.p(
+inline fun HtmlWriter.h6(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("p", id, classes, style, attrs)
+    this.writeNormalElementStart("h6", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("p")
+    this.writeNormalElementEnd("h6")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.p(
+inline fun HtmlWriter.h6(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("p", id, classes, style, attrs)
+    this.writeNormalElementStart("h6", id, classes, style, attrs)
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("p")
+    this.writeNormalElementEnd("h6")
 }
 
 @HtmlDsl
-inline fun BodyContext.p(
+inline fun BodyContext.h6(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("p", id, classes, style)
+    writer.writeNormalElementStart("h6", id, classes, style)
     func()
-    writer.writeNormalElementEnd("p")
+    writer.writeNormalElementEnd("h6")
 }
 
 @HtmlDsl
-inline fun BodyContext.p(
+inline fun BodyContext.h6(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("p", id, classes, style, attrs)
+    writer.writeNormalElementStart("h6", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("p")
+    writer.writeNormalElementEnd("h6")
 }
 
 @HtmlDsl
-inline fun BodyContext.p(
+inline fun BodyContext.h6(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("p", id, classes, style, attrs)
+    writer.writeNormalElementStart("h6", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("p")
+    writer.writeNormalElementEnd("h6")
 }

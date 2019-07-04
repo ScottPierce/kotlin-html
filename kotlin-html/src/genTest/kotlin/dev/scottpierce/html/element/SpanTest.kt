@@ -11,8 +11,8 @@ class SpanTest {
             span(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <span id="test-id" classes="test-class">
-                </span>
+            <span id="test-id" classes="test-class">
+            </span>
             """.trimIndent()
         }
     }
@@ -23,8 +23,8 @@ class SpanTest {
             span("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </span>
+            <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </span>
             """.trimIndent()
         }
     }
@@ -35,8 +35,8 @@ class SpanTest {
             span(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </span>
+            <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </span>
             """.trimIndent()
         }
     }
@@ -49,8 +49,8 @@ class SpanTest {
 
         writer assertEquals {
             """
-                <span id="test-id" classes="test-class">
-                </span>
+            <span id="test-id" classes="test-class">
+            </span>
             """.trimIndent()
         }
     }
@@ -63,8 +63,8 @@ class SpanTest {
 
         writer assertEquals {
             """
-                <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </span>
+            <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </span>
             """.trimIndent()
         }
     }
@@ -77,8 +77,8 @@ class SpanTest {
 
         writer assertEquals {
             """
-                <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </span>
+            <span id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </span>
             """.trimIndent()
         }
     }
