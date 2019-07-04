@@ -21,11 +21,9 @@ import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import java.io.File
-import java.util.concurrent.Executor
 
 class GenerateElementsTask : Task {
     override val name: String = "Generate Elements"
