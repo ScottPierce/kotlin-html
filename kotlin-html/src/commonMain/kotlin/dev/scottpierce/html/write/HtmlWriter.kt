@@ -14,48 +14,64 @@ interface HtmlWriter {
     fun deindent()
 }
 
-class StringBuilderHtmlWriter(
-    initialCapacity: Int = 128,
-    override val options: WriteOptions = WriteOptions.default
-) : HtmlWriter {
-    private val sb = StringBuilder(initialCapacity)
+abstract class AbstractHtmlWriter(final override val options: WriteOptions) : HtmlWriter {
     private var indent = 0
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
     private val newLineString: String? = if (options.newLine.isEmpty()) null else options.newLine
 
-    override val isEmpty: Boolean
-        get() = sb.isEmpty()
+    final override var isEmpty: Boolean = true
+        private set
 
-    override fun newLine(): HtmlWriter {
+    final override fun newLine(): HtmlWriter {
         if (newLineString != null) {
-            sb.append(newLineString)
+            write(newLineString)
         }
 
         if (indentString != null) {
             for (i in 1..indent) {
-                sb.append(indentString)
+                write(indentString)
             }
         }
 
         return this
     }
 
-    override fun indent() {
+    final override fun indent() {
         indent++
     }
 
-    override fun deindent() {
+    final override fun deindent() {
         indent--
     }
 
-    override fun write(c: Char): HtmlWriter {
-        sb.append(c)
+    final override fun write(c: Char): HtmlWriter {
+        isEmpty = false
+        writeChar(c)
         return this
     }
 
-    override fun write(code: CharSequence): HtmlWriter {
-        sb.append(code)
+    final override fun write(code: CharSequence): HtmlWriter {
+        isEmpty = false
+        writeCharSequence(code)
         return this
+    }
+
+    abstract fun writeChar(c: Char)
+    abstract fun writeCharSequence(code: CharSequence)
+}
+
+class StringBuilderHtmlWriter(
+    initialCapacity: Int = 128,
+    options: WriteOptions = WriteOptions.default
+) : AbstractHtmlWriter(options) {
+    private val sb = StringBuilder(initialCapacity)
+
+    override fun writeChar(c: Char) {
+        sb.append(c)
+    }
+
+    override fun writeCharSequence(code: CharSequence) {
+        sb.append(code)
     }
 
     override fun toString(): String = sb.toString()

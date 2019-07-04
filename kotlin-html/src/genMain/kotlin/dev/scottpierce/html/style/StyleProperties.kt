@@ -28,3 +28,21 @@ var StyleBuilder.display: Display?
     set(value) {
         properties["display"] = value
     }
+
+val Style.alignItems: AlignItems?
+    get() = properties["align-items"] as AlignItems?
+
+var StyleBuilder.alignItems: AlignItems?
+    get() = properties["align-items"] as AlignItems?
+    set(value) {
+        properties["align-items"] = value
+    }
+
+val Style.flexDirection: AlignItems?
+    get() = properties["flex-direction"] as AlignItems?
+
+var StyleBuilder.flexDirection: AlignItems?
+    get() = properties["flex-direction"] as AlignItems?
+    set(value) {
+        properties["flex-direction"] = value
+    }

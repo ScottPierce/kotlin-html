@@ -20,7 +20,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import java.io.File
-import java.lang.RuntimeException
 
 class GenerateStylePropertiesTask : Task {
     companion object {
@@ -80,7 +79,7 @@ class GenerateStylePropertiesTask : Task {
                 .receiver(STYLE)
                 .getter(
                     FunSpec.getterBuilder()
-                        .addStatement("return properties[\"${property.propertyName}\"] as %T", propertyClassName)
+                        .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)
                         .build()
                 )
                 .build()
@@ -97,13 +96,13 @@ class GenerateStylePropertiesTask : Task {
                 .receiver(STYLE_BUILDER)
                 .getter(
                     FunSpec.getterBuilder()
-                        .addStatement("return properties[\"${property.propertyName}\"] as %T", propertyClassName)
+                        .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)
                         .build()
                 )
                 .setter(
                     FunSpec.setterBuilder()
                         .addParameter("value", propertyClassName)
-                        .addStatement("properties[\"${property.propertyName}\"] = value", propertyClassName)
+                        .addStatement("properties[\"${property.cssName}\"] = value", propertyClassName)
                         .build()
                 )
                 .build()
@@ -120,6 +119,8 @@ class GenerateStylePropertiesTask : Task {
                 val expected: CodeBlock = when (property.type) {
                     PropertyType.COLOR -> CodeBlock.of("color(\"#555555\")")
                     PropertyType.DISPLAY -> CodeBlock.of("Display.BLOCK")
+                    PropertyType.ALIGN_ITEMS -> CodeBlock.of("AlignItems.BASELINE")
+                    PropertyType.FLEX_DIRECTION -> CodeBlock.of("FlexDirection.COLUMN")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

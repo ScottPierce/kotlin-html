@@ -32,4 +32,22 @@ class StylePropertyTests {
         }
         assertEquals(Display.BLOCK, style.display)
     }
+
+    @Test
+    fun alignItems() {
+        val style = style {
+            alignItems = AlignItems.BASELINE
+            assertEquals(AlignItems.BASELINE, alignItems)
+        }
+        assertEquals(AlignItems.BASELINE, style.alignItems)
+    }
+
+    @Test
+    fun flexDirection() {
+        val style = style {
+            flexDirection = AlignItems.BASELINE
+            assertEquals(AlignItems.BASELINE, flexDirection)
+        }
+        assertEquals(AlignItems.BASELINE, style.flexDirection)
+    }
 }
