@@ -96,12 +96,12 @@ fun BodyContext.footer() {
 ```
 
 # Benchmark
-![kotlin-html vs kotlinx.html benchmark](./images/kotlin-html_vs_kotlinx.html_benchmark.png)
+![kotlin-html vs kotlinx.html benchmark](https://docs.google.com/spreadsheets/d/e/2PACX-1vSzaUiakNFkWywUTO63oSOg1uMoHrs62wju4oDyzeAcK7RsPfyuS4S7OsVp7sba007QVYf3GoE0nA9j/pubchart?oid=492427110&format=image)
 
 \<Insert obligatory disclaimer about microbenchmarks here\>
 
-kotlin-html averages 457.26 millis to create a page 100k times and kotlinx.html averages 1186 millis to create the 
-same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html.
+**kotlin-html averages 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html averages 1186 millis to create the 
+same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html.**
  
 The test was performed by creating the same html page in kotlin-html and kotlinx.html, and then running the page creation 100k 
 times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 

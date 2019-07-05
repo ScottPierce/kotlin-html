@@ -30,9 +30,7 @@ object HtmlBenchmark {
 
         // Run Tests
         println("Running Benchmark for kotlinx.html")
-        benchmark(true) {
-            kotlinxHtml().length
-        }
+        benchmark(true) { kotlinxHtml().length }
     }
 
     private fun benchmark(print: Boolean, func: () -> Int) {
