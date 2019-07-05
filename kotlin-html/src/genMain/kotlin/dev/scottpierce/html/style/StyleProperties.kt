@@ -38,11 +38,11 @@ var StyleBuilder.display: Display?
         properties["display"] = value
     }
 
-val Style.flexDirection: AlignItems?
-    get() = properties["flex-direction"] as AlignItems?
+val Style.flexDirection: FlexDirection?
+    get() = properties["flex-direction"] as FlexDirection?
 
-var StyleBuilder.flexDirection: AlignItems?
-    get() = properties["flex-direction"] as AlignItems?
+var StyleBuilder.flexDirection: FlexDirection?
+    get() = properties["flex-direction"] as FlexDirection?
     set(value) {
         properties["flex-direction"] = value
     }
@@ -108,4 +108,40 @@ var StyleBuilder.margin: Dimension?
     get() = properties["margin"] as Dimension?
     set(value) {
         properties["margin"] = value
+    }
+
+val Style.marginLeft: Dimension?
+    get() = properties["margin-left"] as Dimension?
+
+var StyleBuilder.marginLeft: Dimension?
+    get() = properties["margin-left"] as Dimension?
+    set(value) {
+        properties["margin-left"] = value
+    }
+
+val Style.marginRight: Dimension?
+    get() = properties["margin-right"] as Dimension?
+
+var StyleBuilder.marginRight: Dimension?
+    get() = properties["margin-right"] as Dimension?
+    set(value) {
+        properties["margin-right"] = value
+    }
+
+val Style.marginTop: Dimension?
+    get() = properties["margin-top"] as Dimension?
+
+var StyleBuilder.marginTop: Dimension?
+    get() = properties["margin-top"] as Dimension?
+    set(value) {
+        properties["margin-top"] = value
+    }
+
+val Style.marginBottom: Dimension?
+    get() = properties["margin-bottom"] as Dimension?
+
+var StyleBuilder.marginBottom: Dimension?
+    get() = properties["margin-bottom"] as Dimension?
+    set(value) {
+        properties["margin-bottom"] = value
     }

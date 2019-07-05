@@ -15,22 +15,17 @@ apply {
 }
 
 allprojects {
-    group = "dev.scottpierce.html"
+    group = "dev.scottpierce.kotlin-html"
     version = "0.1.0"
 }
 
 subprojects {
     repositories {
-        mavenCentral()
-        jcenter()
 
         maven {
             url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
-            content {
-                includeModule("org.jetbrains.kotlinx", "kotlinx-html")
-                includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
-            }
         }
+        jcenter()
         maven {
             url = uri("https://kotlin.bintray.com/ktor")
             content {

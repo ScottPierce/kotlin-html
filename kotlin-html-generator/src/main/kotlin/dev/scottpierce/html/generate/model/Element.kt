@@ -11,8 +11,18 @@ sealed class Element(
     companion object {
         val values: List<Element> = listOf(
             Normal(
+                tagName = "a",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
                 tagName = "body",
                 callingContext = Context.Html,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "button",
+                callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
             Void(
@@ -63,11 +73,6 @@ sealed class Element(
                 tagName = "html",
                 callingContext = Context.File,
                 childrenContext = Context.Html
-            ),
-            Void(
-                tagName = "meta",
-                callingContext = Context.Head,
-                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
             ),
             Normal(
                 tagName = "p",

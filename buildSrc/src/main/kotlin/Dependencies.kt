@@ -1,5 +1,5 @@
 object Versions {
-    const val kotlin = "1.3.40"
+    const val kotlin = "1.3.41"
     const val ktor = "1.2.1"
 }
 
@@ -36,6 +36,7 @@ class KotlinTestLibs internal constructor() {
 
 class KotlinxDeps internal constructor() {
     val coroutines = CoroutineDeps()
+    val html = "org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.12"
 }
 
 class CoroutineDeps internal constructor() {

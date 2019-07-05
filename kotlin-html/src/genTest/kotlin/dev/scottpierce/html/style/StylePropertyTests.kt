@@ -45,10 +45,10 @@ class StylePropertyTests {
     @Test
     fun flexDirection() {
         val style = style {
-            flexDirection = AlignItems.BASELINE
-            assertEquals(AlignItems.BASELINE, flexDirection)
+            flexDirection = FlexDirection.COLUMN
+            assertEquals(FlexDirection.COLUMN, flexDirection)
         }
-        assertEquals(AlignItems.BASELINE, style.flexDirection)
+        assertEquals(FlexDirection.COLUMN, style.flexDirection)
     }
 
     @Test
@@ -63,54 +63,90 @@ class StylePropertyTests {
     @Test
     fun padding() {
         val style = style {
-            padding = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, padding)
+            padding = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), padding)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.padding)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.padding)
     }
 
     @Test
     fun paddingLeft() {
         val style = style {
-            paddingLeft = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, paddingLeft)
+            paddingLeft = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), paddingLeft)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.paddingLeft)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.paddingLeft)
     }
 
     @Test
     fun paddingRight() {
         val style = style {
-            paddingRight = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, paddingRight)
+            paddingRight = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), paddingRight)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.paddingRight)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.paddingRight)
     }
 
     @Test
     fun paddingTop() {
         val style = style {
-            paddingTop = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, paddingTop)
+            paddingTop = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), paddingTop)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.paddingTop)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.paddingTop)
     }
 
     @Test
     fun paddingBottom() {
         val style = style {
-            paddingBottom = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, paddingBottom)
+            paddingBottom = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), paddingBottom)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.paddingBottom)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.paddingBottom)
     }
 
     @Test
     fun margin() {
         val style = style {
-            margin = Dimension.Size(1f, DimensionUnit.PX
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX, margin)
+            margin = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), margin)
         }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX, style.margin)
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.margin)
+    }
+
+    @Test
+    fun marginLeft() {
+        val style = style {
+            marginLeft = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginLeft)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginLeft)
+    }
+
+    @Test
+    fun marginRight() {
+        val style = style {
+            marginRight = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginRight)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginRight)
+    }
+
+    @Test
+    fun marginTop() {
+        val style = style {
+            marginTop = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginTop)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginTop)
+    }
+
+    @Test
+    fun marginBottom() {
+        val style = style {
+            marginBottom = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBottom)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBottom)
     }
 }

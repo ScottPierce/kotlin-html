@@ -11,7 +11,7 @@ enum class StyleProperty(
     BACKGROUND("background", PropertyType.COLOR),
     COLOR("color", PropertyType.COLOR),
     DISPLAY("display", PropertyType.DISPLAY),
-    FLEX_DIRECTION("flex-direction", PropertyType.ALIGN_ITEMS),
+    FLEX_DIRECTION("flex-direction", PropertyType.FLEX_DIRECTION),
     JUSTIFY_CONTENT("justify-content", PropertyType.JUSTIFY_CONTENT),
     PADDING("padding", PropertyType.DIMENSION),
     PADDING_LEFT("padding-left", PropertyType.DIMENSION),
@@ -19,6 +19,10 @@ enum class StyleProperty(
     PADDING_TOP("padding-top", PropertyType.DIMENSION),
     PADDING_BOTTOM("padding-bottom", PropertyType.DIMENSION),
     MARGIN("margin", PropertyType.DIMENSION),
+    MARGIN_LEFT("margin-left", PropertyType.DIMENSION),
+    MARGIN_RIGHT("margin-right", PropertyType.DIMENSION),
+    MARGIN_TOP("margin-top", PropertyType.DIMENSION),
+    MARGIN_BOTTOM("margin-bottom", PropertyType.DIMENSION),
     ;
 
     val propertyName: String = cssName.snakeCaseToCamelCase()

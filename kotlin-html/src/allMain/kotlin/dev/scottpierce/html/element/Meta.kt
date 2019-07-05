@@ -3,9 +3,6 @@
 package dev.scottpierce.html.element
 
 import dev.scottpierce.html.write.HtmlWriter
-import kotlin.Pair
-import kotlin.String
-import kotlin.collections.List
 
 @HtmlDsl
 fun HtmlWriter.meta(
@@ -14,8 +11,9 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeVoidElement("meta", null, null, null, arrayOf("name" to name, "content" to content,
-            "charset" to charset, "http-equiv" to httpEquiv))
+    writeTag("meta")
+    writeMetaAttributes(name, content, charset, httpEquiv)
+    write('>')
 }
 
 @HtmlDsl
@@ -26,8 +24,10 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeVoidElement("meta", null, null, null, arrayOf(*attrs, "name" to name, "content" to
-            content, "charset" to charset, "http-equiv" to httpEquiv))
+    writeTag("meta")
+    writeMetaAttributes(name, content, charset, httpEquiv)
+    writeAttributes(attrs)
+    write('>')
 }
 
 @HtmlDsl
@@ -38,8 +38,10 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeVoidElement("meta", null, null, null, arrayOf(*attrs.toTypedArray(), "name" to name,
-            "content" to content, "charset" to charset, "http-equiv" to httpEquiv))
+    writeTag("meta")
+    writeMetaAttributes(name, content, charset, httpEquiv)
+    writeAttributes(attrs)
+    write('>')
 }
 
 @HtmlDsl
@@ -49,8 +51,7 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeVoidElement("meta", null, null, null, arrayOf("name" to name, "content" to content,
-            "charset" to charset, "http-equiv" to httpEquiv))
+    writer.meta(name, content, charset, httpEquiv)
 }
 
 @HtmlDsl
@@ -61,8 +62,10 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeVoidElement("meta", null, null, null, arrayOf(*attrs, "name" to name, "content" to
-            content, "charset" to charset, "http-equiv" to httpEquiv))
+    writer.writeTag("meta")
+    writer.writeMetaAttributes(name, content, charset, httpEquiv)
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -73,6 +76,12 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeVoidElement("meta", null, null, null, arrayOf(*attrs.toTypedArray(), "name" to name,
-            "content" to content, "charset" to charset, "http-equiv" to httpEquiv))
+    writer.meta(attrs, name, content, charset, httpEquiv)
+}
+
+private fun HtmlWriter.writeMetaAttributes(name: String?, content: String?, charset: String?, httpEquiv: String?) {
+    if (name != null) write(" name=\"").write(name).write('"')
+    if (content != null) write(" content=\"").write(content).write('"')
+    if (charset != null) write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) write(" http-equiv=\"").write(httpEquiv).write('"')
 }
