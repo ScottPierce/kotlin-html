@@ -190,7 +190,7 @@ private fun createDslFunction(
             }
 
             for (remainingAttribute in supportedAttributes) {
-                addStatement("""if ($remainingAttribute != null) $writer.write(" $remainingAttribute=\"").write($remainingAttribute).write('"')""")
+                addStatement("""if (${remainingAttribute.snakeCaseToCamelCase()} != null) $writer.write(" $remainingAttribute=\"").write(${remainingAttribute.snakeCaseToCamelCase()}).write('"')""")
             }
         }
 

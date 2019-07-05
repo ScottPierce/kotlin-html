@@ -74,6 +74,11 @@ sealed class Element(
                 callingContext = Context.File,
                 childrenContext = Context.Html
             ),
+            Void(
+                tagName = "meta",
+                callingContext = Context.Head,
+                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
+            ),
             Normal(
                 tagName = "option",
                 callingContext = Context.Select,
