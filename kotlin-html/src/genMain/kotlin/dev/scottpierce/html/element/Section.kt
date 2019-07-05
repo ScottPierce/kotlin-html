@@ -14,10 +14,10 @@ inline fun HtmlWriter.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("section", id, classes, style)
-    SelectContext(this).apply(func)
+    BodyContext(this).apply(func)
     this.writeNormalElementEnd("section")
 }
 
@@ -27,10 +27,10 @@ inline fun HtmlWriter.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("section", id, classes, style, attrs)
-    SelectContext(this).apply(func)
+    BodyContext(this).apply(func)
     this.writeNormalElementEnd("section")
 }
 
@@ -40,10 +40,10 @@ inline fun HtmlWriter.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("section", id, classes, style, attrs)
-    SelectContext(this).apply(func)
+    BodyContext(this).apply(func)
     this.writeNormalElementEnd("section")
 }
 
@@ -52,10 +52,10 @@ inline fun BodyContext.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("section", id, classes, style)
-    SelectContext(writer).apply(func)
+    func()
     writer.writeNormalElementEnd("section")
 }
 
@@ -65,10 +65,10 @@ inline fun BodyContext.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("section", id, classes, style, attrs)
-    SelectContext(writer).apply(func)
+    func()
     writer.writeNormalElementEnd("section")
 }
 
@@ -78,9 +78,9 @@ inline fun BodyContext.section(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    func: SelectContext.() -> Unit = {}
+    func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("section", id, classes, style, attrs)
-    SelectContext(writer).apply(func)
+    func()
     writer.writeNormalElementEnd("section")
 }

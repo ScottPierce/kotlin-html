@@ -93,7 +93,7 @@ sealed class Element(
             Normal(
                 tagName = "section",
                 callingContext = Context.Body,
-                childrenContext = Context.Select
+                childrenContext = Context.Body
             ),
             Normal(
                 tagName = "select",
