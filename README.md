@@ -15,12 +15,20 @@ been made for several years.
 ## Should I use this Library?
 You should only use this library if you are comfortable with the following:
 * Potential API Changes - Until 1.0 the API is potentially unstable
-* Missing HTML Elements - Until I mark the API as 1.0 there is a good chance there are missing html elements that you
+* Missing HTML Elements / Style Properties - Until I mark the API as 1.0 there is a good chance there are missing html elements that you
 need. You may need to contribute a PR or 2. I'll do my best to be responsive and won't let a PR sit for weeks.
+    * If you add an element, please make sure you add it via the generator module
+        * Add an [Element](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
+        * Add a [Style Property](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
+* You don't need a read / introspection API for the DOM.
+    * Reading the DOM, and making decisions in your algorithm based 
+on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
+containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
+model
 
 ## Features
 * HTML DSL
-    * Explicit support for common html attributes for a cleaner api (i.e. id, classes, and attr)
+    * Explicit support for common html attributes in element functions for a cleaner api (i.e. id, classes, and attr)
     * Lightweight streaming API
         * Doesn't create a lot of unnecessary objects to represent the DOM. i.e. DOM introspection isn't possible
 * Style DSL
@@ -28,14 +36,7 @@ need. You may need to contribute a PR or 2. I'll do my best to be responsive and
     * CSS
 * Multi-platform
 * Integration with [Ktor](https://ktor.io/)
-
-## Missing Features
-* Complete list of all HTML elements, and style attributes
-    * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
-    [span](./kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template for normal elements
-    * PRs are welcome. If you add an element, please make sure you add it via the generator module
-        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
-        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
+* Simple Architecture - easy to understand and contribute to, especially relative to kotlinx.html
     
 ## Pull Requests Welcome
 * If I haven't added the HTML element or CSS Property you want, you can add it yourself via the generation module 
