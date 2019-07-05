@@ -4,12 +4,6 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
 -->
 
-# Why this library and not kotlinx.html?
-There is a need for a simple Kotlin templating DSL. kotlinx.html exposes a clunky API (in my opinion), lacks features 
-that many users need (i.e. styles), and lacks features that many users want 
-(i.e. common html attributes as optional function parameters). Other users identified 
-[similar issues](https://github.com/Kotlin/kotlinx.html/issues/31), and no progress had been made for several years.
-
 ## Should I use this Library?
 You should only use this library if you are comfortable with the following:
 * Potential API Changes - Until 1.0 the API is potentially unstable
@@ -40,6 +34,13 @@ need. You may need to contribute a PR or two. I'll do my best to be responsive a
 * If the HTML element or CSS Property you need doesn't exist, you can add it yourself via the generation module, 
 or you can create an issue
 * Please create an issue to discuss any major changes / refactors
+
+## Why does this library exist when kotlinx.html exists?
+There is a need for a simple Kotlin HTML templating DSL. kotlinx.html exposes an API that can be a little clunky at 
+times, lacks features that many users need (i.e. styles), and lacks features that many users want. 
+The community filed issues for some of these issues [years ago](https://github.com/Kotlin/kotlinx.html/issues/31), 
+and no progress had been made. The values and goals of this library differentiate enough that it constituted a fresh 
+start instead of attempting contribution.
 
 # Basic Sample
 ```Kotlin
@@ -107,8 +108,9 @@ fun BodyContext.footer() {
 
 \<Insert obligatory disclaimer about microbenchmarks here\>
 
-**kotlin-html (this library) averaged 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html averaged 1186 millis to create the 
-same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html in this test case.**
+**kotlin-html (this library) averaged 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html 
+stream averaged 1186 millis to create the same page page 100k times. That means that kotlin-html enjoys 2.6X performance 
+improvement over kotlinx.html in this test case.**
  
 The test was performed by creating the same html page in kotlin-html and kotlinx.html, and then running the page creation 100k 
 times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 

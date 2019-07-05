@@ -14,7 +14,7 @@ object HtmlBenchmark {
         System.gc()
         Thread.sleep(5000)
 
-        // Run Tests
+        // Run Benchmark
         println("Running Benchmark for kotlin-html")
         benchmark(true) { kotlinHtml().length }
 
@@ -22,15 +22,29 @@ object HtmlBenchmark {
         Thread.sleep(5000)
 
         // Warmup
-        println("Running a warm-up pass for kotlinx.html")
-        benchmark(false) { kotlinxHtml().length }
+        println("Running a warm-up pass for streaming kotlinx.html")
+        benchmark(false) { kotlinxHtmlStream().length }
 
         System.gc()
         Thread.sleep(5000)
 
-        // Run Tests
-        println("Running Benchmark for kotlinx.html")
-        benchmark(true) { kotlinxHtml().length }
+        // Run Benchmark
+        println("Running Benchmark for kotlinx.html Stream API")
+        benchmark(true) { kotlinxHtmlStream().length }
+
+        System.gc()
+        Thread.sleep(5000)
+
+        // Warmup
+        println("Running a warm-up pass for kotlinx.html DOM API")
+        benchmark(true) { kotlinxHtmlDom().length }
+
+        System.gc()
+        Thread.sleep(5000)
+
+        // Run Benchmark
+        println("Running Benchmark for kotlinx.html DOM API")
+        benchmark(true) { kotlinxHtmlDom().length }
     }
 
     private fun benchmark(print: Boolean, func: () -> Int) {
