@@ -5,7 +5,7 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 -->
 
 ## Should I use this Library?
-You should only use this library if you are comfortable with the following:
+**You should only use this library if you are comfortable with the following:**
 * Potential API Changes - Until 1.0 the API is potentially unstable
 * Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
 need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
