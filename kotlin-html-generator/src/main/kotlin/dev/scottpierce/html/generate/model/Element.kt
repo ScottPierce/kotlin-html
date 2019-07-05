@@ -74,6 +74,17 @@ sealed class Element(
                 callingContext = Context.File,
                 childrenContext = Context.Html
             ),
+            Void(
+                tagName = "meta",
+                callingContext = Context.Head,
+                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
+            ),
+            Normal(
+                tagName = "option",
+                callingContext = Context.Select,
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + "value"
+            ),
             Normal(
                 tagName = "p",
                 callingContext = Context.Body,
@@ -83,6 +94,11 @@ sealed class Element(
                 tagName = "section",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "select",
+                callingContext = Context.Body,
+                childrenContext = Context.Select
             ),
             Normal(
                 tagName = "span",
@@ -117,8 +133,9 @@ sealed class Element(
 enum class Context {
     File,
     Html,
-    Body,
     Head,
+    Body,
+    Select,
     ;
 
     companion object {

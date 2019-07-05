@@ -1,26 +1,8 @@
 package dev.scottpierce.html.generate.task
 
-import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.LambdaTypeName
-import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.STRING
-import com.squareup.kotlinpoet.UNIT
+import com.squareup.kotlinpoet.*
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.ATTRIBUTE
-import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
-import dev.scottpierce.html.generate.model.Constants
-import dev.scottpierce.html.generate.model.Context
-import dev.scottpierce.html.generate.model.Element
-import dev.scottpierce.html.generate.model.HTML_DSL
-import dev.scottpierce.html.generate.model.HTML_WRITER
-import dev.scottpierce.html.generate.model.STYLE
-import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
-import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
-import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
-import dev.scottpierce.html.generate.model.snakeCaseToCamelCase
+import dev.scottpierce.html.generate.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
@@ -130,98 +112,107 @@ private fun createDslFunction(
         }
     }
 
-    val attributeParametersString: String = run {
-        val sb = StringBuilder()
+    // TODO if this is not a writer function, we should call the writer function directly
+    // if (!isWriter) {
+    //     return
+    // }
 
-        val remainingAttributes: MutableList<String> = element.supportedAttributes.toMutableList()
+    val hasOnlyStandardAttributes = STANDARD_ATTRIBUTES.size == element.supportedAttributes.size &&
+            STANDARD_ATTRIBUTES.containsAll(element.supportedAttributes)
 
-        if (remainingAttributes.contains("id")) {
-            remainingAttributes.remove("id")
-            sb.append("id")
-        } else {
-            sb.append("null")
+    // Write Tag Start
+    if (hasOnlyStandardAttributes) {
+        val tagStartMember: MemberName = when (element) {
+            is Element.Normal -> WRITE_NORMAL_ELEMENT_START
+            is Element.Void -> WRITE_VOID_ELEMENT
         }
 
-        sb.append(", ")
+        // Write Tag Start
+        addCode("$writer.%M(\"${element.tagName}\", id, classes, style", tagStartMember)
 
-        if (element.supportedAttributes.contains("classes")) {
-            remainingAttributes.remove("classes")
-            sb.append("classes")
-        } else {
-            sb.append("null")
+        if (functionType != DslFunction.NO_ATTR) {
+            addCode(", attrs")
         }
 
-        sb.append(", ")
+        addCode(")\n")
+    } else {
+        val WRITE_TAG = MemberName("dev.scottpierce.html.element", "writeTag")
+        val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeStandardAttributes")
+        val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeAttributes")
 
-        if (element.supportedAttributes.contains("style")) {
-            remainingAttributes.remove("style")
-            sb.append("style")
-        } else {
-            sb.append("null")
-        }
+        // writeTag("option")
+        // writeStandardAttributes(id, classes, style)
+        // // writeAttributes(attrs)
+        // // TODO write custom attributes
+        // write('>')
+        // indent()
+        // BodyContext(this).apply(func)
+        // writeNormalElementEnd("option")
 
-        // TODO This is inefficient. This can avoid array allocation by writing custom write functions
-        if (remainingAttributes.isNotEmpty()) {
-            sb.append(", ")
+        addStatement("$writer.%M(\"${element.tagName}\")", WRITE_TAG)
 
-            sb.append("arrayOf(")
-            var isFirst = true
+        run { // Supported Attributes
+            val supportedAttributes = element.supportedAttributes.toMutableList()
+            val hasStandardAttributes: Boolean = run {
+                var hasStandardAttributes = false
 
-            if (functionType == DslFunction.ATTR_VARARG) {
-                isFirst = false
-                sb.append("*attrs")
-            } else if (functionType == DslFunction.ATTR_LIST) {
-                isFirst = false
-                sb.append("*attrs.toTypedArray()")
-            }
-
-            for (attr in remainingAttributes) {
-                if (isFirst) {
-                    isFirst = false
-                } else {
-                    sb.append(", ")
+                for (attr in supportedAttributes) {
+                    if (STANDARD_ATTRIBUTES.contains(attr)) {
+                        hasStandardAttributes = true
+                    }
                 }
-                sb.append("\"$attr\" to ${attr.snakeCaseToCamelCase()}")
+
+                hasStandardAttributes
             }
 
-            sb.append(")")
-        } else {
-            if (functionType != DslFunction.NO_ATTR) {
-                sb.append(", attrs")
+            if (hasStandardAttributes) {
+                addCode("$writer.%M(", WRITE_STANDARD_ATTRIBUTES)
+
+                if (supportedAttributes.remove("id")) {
+                    addCode("id")
+                } else {
+                    addCode("null")
+                }
+
+                if (supportedAttributes.remove("classes")) {
+                    addCode(", classes")
+                } else {
+                    addCode(", null")
+                }
+
+                if (supportedAttributes.remove("style")) {
+                    addCode(", style")
+                } else {
+                    addCode(", null")
+                }
+
+                addCode(")\n")
+            }
+
+            for (remainingAttribute in supportedAttributes) {
+                addStatement("""if (${remainingAttribute.snakeCaseToCamelCase()} != null) $writer.write(" $remainingAttribute=\"").write(${remainingAttribute.snakeCaseToCamelCase()}).write('"')""")
             }
         }
 
-        sb.toString()
+        if (functionType != DslFunction.NO_ATTR) {
+            addStatement("$writer.%M(attrs)", WRITE_ATTRIBUTES)
+        }
+
+        addStatement("$writer.write('>')")
+        if (isParent) {
+            addStatement("$writer.indent()")
+        }
     }
 
-    when (element) {
-        is Element.Normal -> {
-            if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)",
-                    WRITE_NORMAL_ELEMENT_START)
-            } else {
-                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)",
-                    WRITE_NORMAL_ELEMENT_START)
-            }
-
-            if (isParent) {
-                when {
-                    isWriter -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
-                    childrenContext == element.callingContext -> addStatement("func()")
-                    else -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
-                }
-            }
-
-            addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
+    // Write Content and End
+    if (isParent) {
+        when {
+            isWriter -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
+            childrenContext == element.callingContext -> addStatement("func()")
+            else -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
         }
 
-        is Element.Void -> {
-            if (functionType == DslFunction.NO_ATTR) {
-                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)", WRITE_VOID_ELEMENT)
-            } else {
-                addStatement("$writer.%M(\"${element.tagName}\", $attributeParametersString)", WRITE_VOID_ELEMENT)
-            }
-        }
+        addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
     }
 }.build()
 

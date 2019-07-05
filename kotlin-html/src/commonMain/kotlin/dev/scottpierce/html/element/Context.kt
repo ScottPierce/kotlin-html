@@ -28,9 +28,6 @@ class FileContext(override val writer: HtmlWriter) : Context
 class HtmlContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class BodyContext(override val writer: HtmlWriter) : Context, HasText
-
-@HtmlDsl
 class HeadContext(override val writer: HtmlWriter) : Context {
     /**
      * Creates a [StyleSheet] and writes it to the current `head` element.
@@ -44,3 +41,9 @@ class HeadContext(override val writer: HtmlWriter) : Context {
         this.styleSheet(builder)
     }
 }
+
+@HtmlDsl
+class BodyContext(override val writer: HtmlWriter) : Context, HasText
+
+@HtmlDsl
+class SelectContext(override val writer: HtmlWriter) : Context
