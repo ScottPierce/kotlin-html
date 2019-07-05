@@ -4,27 +4,25 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
 -->
 
-# Why this library?
-I was seeking a simple Kotlin templating DSL that I could use for a project, 
-[https://www.arseldrivingschool.com](https://www.arseldrivingschool.com). I knew about 
-[kotlinx.html](https://github.com/Kotlin/kotlinx.html), but upon initial use, I found that it's API was clunky, lacking 
-in features that I needed (i.e. styles), and lacking in features that I wanted. I also found that 
-other users identified [similar issues](https://github.com/Kotlin/kotlinx.html/issues/31), and that no progress had 
-been made for several years.
+# Why this library and not kotlinx.html?
+There is a need for a simple Kotlin templating DSL. kotlinx.html exposes a clunky API (in my opinion), lacks features 
+that many users need (i.e. styles), and lacks features that many users want 
+(i.e. common html attributes as optional function parameters). Other users identified 
+[similar issues](https://github.com/Kotlin/kotlinx.html/issues/31), and no progress had been made for several years.
 
 ## Should I use this Library?
 You should only use this library if you are comfortable with the following:
 * Potential API Changes - Until 1.0 the API is potentially unstable
-* Missing HTML Elements / Style Properties - Until I mark the API as 1.0 there is a good chance there are missing html elements that you
-need. You may need to contribute a PR or 2. I'll do my best to be responsive and won't let a PR sit for weeks.
+* Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
+need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
     * If you add an element, please make sure you add it via the generator module
         * Add an [Element](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
         * Add a [Style Property](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
 * You don't need a read / introspection API for the DOM.
     * Reading the DOM, and making decisions in your algorithm based 
-on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
-containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
-model
+    on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
+    containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
+    model
 
 ## Features
 * HTML DSL
@@ -39,9 +37,9 @@ model
 * Simple Architecture - easy to understand and contribute to, especially relative to kotlinx.html
     
 ## Pull Requests Welcome
-* If I haven't added the HTML element or CSS Property you want, you can add it yourself via the generation module 
-yourself, please create an issue.
-* Please talk to me in an issue before you do any major changes / refactors
+* If the HTML element or CSS Property you need doesn't exist, you can add it yourself via the generation module, 
+or you can create an issue
+* Please create an issue to discuss any major changes / refactors
 
 # Basic Sample
 ```Kotlin
