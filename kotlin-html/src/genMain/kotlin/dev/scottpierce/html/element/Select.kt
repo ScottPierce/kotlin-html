@@ -10,77 +10,77 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.select(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style)
+    this.writeNormalElementStart("select", id, classes, style)
     SelectContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.select(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("select", id, classes, style, attrs)
     SelectContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.section(
+inline fun HtmlWriter.select(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("section", id, classes, style, attrs)
+    this.writeNormalElementStart("select", id, classes, style, attrs)
     SelectContext(this).apply(func)
-    this.writeNormalElementEnd("section")
+    this.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
-inline fun BodyContext.section(
+inline fun BodyContext.select(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style)
+    writer.writeNormalElementStart("select", id, classes, style)
     SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
-inline fun BodyContext.section(
+inline fun BodyContext.select(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("select", id, classes, style, attrs)
     SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
-inline fun BodyContext.section(
+inline fun BodyContext.select(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("select", id, classes, style, attrs)
     SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("select")
 }
