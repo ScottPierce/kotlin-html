@@ -12,6 +12,12 @@ in features that I needed (i.e. styles), and lacking in features that I wanted. 
 other users identified [similar issues](https://github.com/Kotlin/kotlinx.html/issues/31), and that no progress had 
 been made for several years.
 
+## Should I use this Library?
+You should only use this library if you are comfortable with the following:
+* Potential API Changes - Until 1.0 the API is potentially unstable
+* Missing HTML Elements - Until I mark the API as 1.0 there is a good chance there are missing html elements that you
+need. You may need to contribute a PR or 2. I'll do my best to be responsive and won't let a PR sit for weeks.
+
 ## Features
 * HTML DSL
     * Explicit support for common html attributes for a cleaner api (i.e. id, classes, and attr)
