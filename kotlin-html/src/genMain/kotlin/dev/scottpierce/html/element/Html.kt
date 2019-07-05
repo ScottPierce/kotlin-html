@@ -7,8 +7,9 @@ import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
+@HtmlDsl
 inline fun HtmlWriter.html(
     id: String? = null,
     classes: String? = null,
@@ -20,6 +21,7 @@ inline fun HtmlWriter.html(
     this.writeNormalElementEnd("html")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.html(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -32,8 +34,9 @@ inline fun HtmlWriter.html(
     this.writeNormalElementEnd("html")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.html(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
@@ -44,6 +47,7 @@ inline fun HtmlWriter.html(
     this.writeNormalElementEnd("html")
 }
 
+@HtmlDsl
 inline fun FileContext.html(
     id: String? = null,
     classes: String? = null,
@@ -55,6 +59,7 @@ inline fun FileContext.html(
     writer.writeNormalElementEnd("html")
 }
 
+@HtmlDsl
 inline fun FileContext.html(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -67,8 +72,9 @@ inline fun FileContext.html(
     writer.writeNormalElementEnd("html")
 }
 
+@HtmlDsl
 inline fun FileContext.html(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,

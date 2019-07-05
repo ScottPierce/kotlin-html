@@ -7,8 +7,9 @@ import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
+@HtmlDsl
 inline fun HtmlWriter.head(
     id: String? = null,
     classes: String? = null,
@@ -20,6 +21,7 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.head(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -32,8 +34,9 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.head(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
@@ -44,6 +47,7 @@ inline fun HtmlWriter.head(
     this.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
     id: String? = null,
     classes: String? = null,
@@ -55,6 +59,7 @@ inline fun HtmlContext.head(
     writer.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -67,8 +72,9 @@ inline fun HtmlContext.head(
     writer.writeNormalElementEnd("head")
 }
 
+@HtmlDsl
 inline fun HtmlContext.head(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,

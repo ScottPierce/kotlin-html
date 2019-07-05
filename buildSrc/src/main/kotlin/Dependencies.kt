@@ -1,5 +1,5 @@
 object Versions {
-    const val kotlin = "1.3.40"
+    const val kotlin = "1.3.41"
     const val ktor = "1.2.1"
 }
 
@@ -9,6 +9,7 @@ object Plugins {
 
 object Libs {
     val kotlin = KotlinDeps()
+    val kotlinx = KotlinxDeps()
     val kotlinPoet = "com.squareup:kotlinpoet:1.3.0"
     val ktorServerCore = "io.ktor:ktor-server-core:${Versions.ktor}"
     val okio = "com.squareup.okio:okio:2.2.2"
@@ -31,4 +32,13 @@ class KotlinTestLibs internal constructor() {
     )
 
     val jvm = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
+}
+
+class KotlinxDeps internal constructor() {
+    val coroutines = CoroutineDeps()
+    val html = "org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.12"
+}
+
+class CoroutineDeps internal constructor() {
+    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-M2"
 }

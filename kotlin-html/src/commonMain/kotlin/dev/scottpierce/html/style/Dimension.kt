@@ -1,7 +1,7 @@
 package dev.scottpierce.html.style
 
 sealed class Dimension {
-    class Size(val value: Float, val unit: DimensionUnit) : Dimension() {
+    data class Size(val value: Float, val unit: DimensionUnit) : Dimension() {
         override fun toString(): String {
             return "$value$unit"
         }

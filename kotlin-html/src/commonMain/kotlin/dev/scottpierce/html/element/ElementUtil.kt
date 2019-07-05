@@ -11,7 +11,7 @@ fun HtmlWriter.writeNormalElementStart(
     style: Style?
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     write('>')
     indent()
 }
@@ -24,7 +24,7 @@ fun HtmlWriter.writeNormalElementStart(
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     writeAttributes(attrs)
 
     write('>')
@@ -36,10 +36,10 @@ fun HtmlWriter.writeNormalElementStart(
     id: String?,
     classes: String?,
     style: Style?,
-    attrs: Iterable<Pair<String, String?>>
+    attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     writeAttributes(attrs)
 
     write('>')
@@ -59,7 +59,7 @@ fun HtmlWriter.writeVoidElement(
     style: Style?
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     write('>')
 }
 
@@ -71,7 +71,7 @@ fun HtmlWriter.writeVoidElement(
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     writeAttributes(attrs)
     write('>')
 }
@@ -81,20 +81,20 @@ fun HtmlWriter.writeVoidElement(
     id: String?,
     classes: String?,
     style: Style?,
-    attrs: Iterable<Pair<String, String?>>
+    attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
-    writeBasicAttributes(id, classes, style)
+    writeStandardAttributes(id, classes, style)
     writeAttributes(attrs)
     write('>')
 }
 
-private fun HtmlWriter.writeTag(tag: String) {
+fun HtmlWriter.writeTag(tag: String) {
     if (!isEmpty) newLine()
     write('<').write(tag)
 }
 
-private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style: Style?) {
+fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: Style?) {
     if (id != null) write(" id=\"").write(id).write('"')
     if (classes != null) write(" classes=\"").write(classes).write('"')
     if (style != null) {
@@ -104,29 +104,29 @@ private fun HtmlWriter.writeBasicAttributes(id: String?, classes: String?, style
     }
 }
 
-private fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
+fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
     for (attr in attrs) {
         attr.checkAttributeKey()
         write(' ').write(attr.first)
         val value: String? = attr.second
         if (value != null) {
-            write("=\"").write(value).write('"')
+            write("=\"").write(value.escapeForHtml()).write('"')
         }
     }
 }
 
-private fun HtmlWriter.writeAttributes(attrs: Iterable<Pair<String, String?>>) {
+fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
     for (attr in attrs) {
         attr.checkAttributeKey()
         write(' ').write(attr.first)
         val value: String? = attr.second
         if (value != null) {
-            write("=\"").write(value).write('"')
+            write("=\"").write(value.escapeForHtml()).write('"')
         }
     }
 }
 
-private fun Pair<String, String?>.checkAttributeKey() {
+fun Pair<String, String?>.checkAttributeKey() {
     val attributeKey = first
 
     if (attributeKey.isEmpty()) {
@@ -139,4 +139,32 @@ private fun Pair<String, String?>.checkAttributeKey() {
                     "'$attributeKey' with value: '$second'")
         }
     }
+}
+
+fun String.escapeForHtml(): String {
+    return if (this.needsToBeEscapedForHtml()) {
+        val sb = StringBuilder(length + 16)
+
+        for (c in this) {
+            if (c == '"') {
+                sb.append("&quot;")
+            } else {
+                sb.append(c)
+            }
+        }
+
+        sb.toString()
+    } else {
+        this
+    }
+}
+
+fun String.needsToBeEscapedForHtml(): Boolean {
+    for (c in this) {
+        if (c == '"') {
+            return true
+        }
+    }
+
+    return false
 }

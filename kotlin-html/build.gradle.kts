@@ -44,7 +44,17 @@ kotlin {
             }
         }
 
-        val commonAndGenTest = create("commonAndGenTest") {
+        val allMain = create("allMain") {
+            dependsOn(genMain)
+
+            dependencies {
+                for (lib in Libs.kotlin.test.common) {
+                    implementation(lib)
+                }
+            }
+        }
+
+        val allTest = create("allTest") {
             dependsOn(genMain)
 
             dependencies {
@@ -55,7 +65,7 @@ kotlin {
         }
 
         val jvmMain by getting {
-            dependsOn(genMain)
+            dependsOn(allMain)
 
             dependencies {
                 implementation(Libs.kotlin.stdlib.jvm)
@@ -63,8 +73,8 @@ kotlin {
         }
 
         val jvmTest by getting {
-            dependsOn(commonAndGenTest)
             dependsOn(genTest)
+            dependsOn(allTest)
 
             dependencies {
                 implementation(Libs.kotlin.test.jvm)

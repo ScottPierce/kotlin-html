@@ -6,7 +6,7 @@ import dev.scottpierce.html.element.HtmlDsl
 
 @HtmlDsl
 interface Style {
-    val properties: MutableMap<String, Any?>
+    val properties: Map<String, Any?>
 }
 
 class StyleBuilder(

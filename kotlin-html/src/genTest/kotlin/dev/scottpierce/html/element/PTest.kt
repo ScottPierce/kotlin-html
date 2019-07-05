@@ -11,8 +11,8 @@ class PTest {
             p(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <p id="test-id" classes="test-class">
-                </p>
+            <p id="test-id" classes="test-class">
+            </p>
             """.trimIndent()
         }
     }
@@ -23,8 +23,8 @@ class PTest {
             p("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </p>
+            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </p>
             """.trimIndent()
         }
     }
@@ -35,8 +35,8 @@ class PTest {
             p(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </p>
+            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </p>
             """.trimIndent()
         }
     }
@@ -49,8 +49,8 @@ class PTest {
 
         writer assertEquals {
             """
-                <p id="test-id" classes="test-class">
-                </p>
+            <p id="test-id" classes="test-class">
+            </p>
             """.trimIndent()
         }
     }
@@ -63,8 +63,8 @@ class PTest {
 
         writer assertEquals {
             """
-                <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </p>
+            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </p>
             """.trimIndent()
         }
     }
@@ -77,8 +77,8 @@ class PTest {
 
         writer assertEquals {
             """
-                <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </p>
+            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </p>
             """.trimIndent()
         }
     }

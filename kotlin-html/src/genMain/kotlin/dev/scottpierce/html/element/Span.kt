@@ -7,8 +7,9 @@ import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
+@HtmlDsl
 inline fun HtmlWriter.span(
     id: String? = null,
     classes: String? = null,
@@ -20,6 +21,7 @@ inline fun HtmlWriter.span(
     this.writeNormalElementEnd("span")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.span(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -32,8 +34,9 @@ inline fun HtmlWriter.span(
     this.writeNormalElementEnd("span")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.span(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
@@ -44,6 +47,7 @@ inline fun HtmlWriter.span(
     this.writeNormalElementEnd("span")
 }
 
+@HtmlDsl
 inline fun BodyContext.span(
     id: String? = null,
     classes: String? = null,
@@ -55,6 +59,7 @@ inline fun BodyContext.span(
     writer.writeNormalElementEnd("span")
 }
 
+@HtmlDsl
 inline fun BodyContext.span(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -67,8 +72,9 @@ inline fun BodyContext.span(
     writer.writeNormalElementEnd("span")
 }
 
+@HtmlDsl
 inline fun BodyContext.span(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,

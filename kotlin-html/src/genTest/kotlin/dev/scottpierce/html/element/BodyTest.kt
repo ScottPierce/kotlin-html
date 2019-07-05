@@ -11,8 +11,8 @@ class BodyTest {
             body(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <body id="test-id" classes="test-class">
-                </body>
+            <body id="test-id" classes="test-class">
+            </body>
             """.trimIndent()
         }
     }
@@ -23,8 +23,8 @@ class BodyTest {
             body("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </body>
+            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </body>
             """.trimIndent()
         }
     }
@@ -35,8 +35,8 @@ class BodyTest {
             body(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </body>
+            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </body>
             """.trimIndent()
         }
     }
@@ -49,8 +49,8 @@ class BodyTest {
 
         writer assertEquals {
             """
-                <body id="test-id" classes="test-class">
-                </body>
+            <body id="test-id" classes="test-class">
+            </body>
             """.trimIndent()
         }
     }
@@ -63,8 +63,8 @@ class BodyTest {
 
         writer assertEquals {
             """
-                <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </body>
+            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </body>
             """.trimIndent()
         }
     }
@@ -77,8 +77,8 @@ class BodyTest {
 
         writer assertEquals {
             """
-                <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </body>
+            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </body>
             """.trimIndent()
         }
     }

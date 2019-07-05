@@ -11,8 +11,8 @@ class SectionTest {
             section(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <section id="test-id" classes="test-class">
-                </section>
+            <section id="test-id" classes="test-class">
+            </section>
             """.trimIndent()
         }
     }
@@ -23,8 +23,8 @@ class SectionTest {
             section("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </section>
+            <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </section>
             """.trimIndent()
         }
     }
@@ -35,8 +35,8 @@ class SectionTest {
             section(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </section>
+            <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </section>
             """.trimIndent()
         }
     }
@@ -49,8 +49,8 @@ class SectionTest {
 
         writer assertEquals {
             """
-                <section id="test-id" classes="test-class">
-                </section>
+            <section id="test-id" classes="test-class">
+            </section>
             """.trimIndent()
         }
     }
@@ -63,8 +63,8 @@ class SectionTest {
 
         writer assertEquals {
             """
-                <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </section>
+            <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </section>
             """.trimIndent()
         }
     }
@@ -77,8 +77,8 @@ class SectionTest {
 
         writer assertEquals {
             """
-                <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
-                </section>
+            <section id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            </section>
             """.trimIndent()
         }
     }

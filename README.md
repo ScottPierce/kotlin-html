@@ -21,13 +21,13 @@ been made for several years.
     * Allows inlining style to the header or individual elements
     * CSS
 * Functionally Immutable
-* Multiplatform
-* Integration with Ktor
+* Multi-platform
+* Integration with [Ktor](https://ktor.io/)
 
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
     * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
-    [span](/kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
+    [span](./kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template for normal elements
     * PRs are welcome. If you add an element, please make sure you add it via the generator module
         * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
         * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
@@ -94,3 +94,26 @@ fun BodyContext.footer() {
     }
 }
 ```
+
+# Benchmark
+![kotlin-html vs kotlinx.html benchmark](https://docs.google.com/spreadsheets/d/e/2PACX-1vSzaUiakNFkWywUTO63oSOg1uMoHrs62wju4oDyzeAcK7RsPfyuS4S7OsVp7sba007QVYf3GoE0nA9j/pubchart?oid=492427110&format=image)
+
+\<Insert obligatory disclaimer about microbenchmarks here\>
+
+**kotlin-html (this library) averaged 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html averaged 1186 millis to create the 
+same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html in this test case.**
+ 
+The test was performed by creating the same html page in kotlin-html and kotlinx.html, and then running the page creation 100k 
+times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 
+libraries are fast enough that performance doesn't really matter for a normal use-case.
+
+[See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/HtmlBenchmark.kt)<br>
+[raw benchmark data](https://docs.google.com/spreadsheets/d/1Yx_RiqxU4Hm9MxfH71YqVj2fiklrUqYSDkiiFVbBKis/edit?usp=sharing)
+
+Benchmark Device:
+<pre>
+JDK 12.0.1
+2018 MacBook Pro 15"
+2.9 GHz Intel Core i9
+32 GB Memory
+</pre>

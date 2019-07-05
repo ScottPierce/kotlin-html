@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.scottpierce.html.style
 
 enum class Display(val value: String) {

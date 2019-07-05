@@ -6,8 +6,9 @@ import dev.scottpierce.html.style.Style
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
+@HtmlDsl
 fun HtmlWriter.br(
     id: String? = null,
     classes: String? = null,
@@ -16,6 +17,7 @@ fun HtmlWriter.br(
     this.writeVoidElement("br", id, classes, style)
 }
 
+@HtmlDsl
 fun HtmlWriter.br(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -25,8 +27,9 @@ fun HtmlWriter.br(
     this.writeVoidElement("br", id, classes, style, attrs)
 }
 
+@HtmlDsl
 fun HtmlWriter.br(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null
@@ -34,6 +37,7 @@ fun HtmlWriter.br(
     this.writeVoidElement("br", id, classes, style, attrs)
 }
 
+@HtmlDsl
 fun BodyContext.br(
     id: String? = null,
     classes: String? = null,
@@ -42,6 +46,7 @@ fun BodyContext.br(
     writer.writeVoidElement("br", id, classes, style)
 }
 
+@HtmlDsl
 fun BodyContext.br(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -51,8 +56,9 @@ fun BodyContext.br(
     writer.writeVoidElement("br", id, classes, style, attrs)
 }
 
+@HtmlDsl
 fun BodyContext.br(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null

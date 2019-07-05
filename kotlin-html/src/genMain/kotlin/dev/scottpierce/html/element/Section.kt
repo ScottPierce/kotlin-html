@@ -7,8 +7,9 @@ import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.Iterable
+import kotlin.collections.List
 
+@HtmlDsl
 inline fun HtmlWriter.section(
     id: String? = null,
     classes: String? = null,
@@ -20,6 +21,7 @@ inline fun HtmlWriter.section(
     this.writeNormalElementEnd("section")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.section(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -32,8 +34,9 @@ inline fun HtmlWriter.section(
     this.writeNormalElementEnd("section")
 }
 
+@HtmlDsl
 inline fun HtmlWriter.section(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
@@ -44,6 +47,7 @@ inline fun HtmlWriter.section(
     this.writeNormalElementEnd("section")
 }
 
+@HtmlDsl
 inline fun BodyContext.section(
     id: String? = null,
     classes: String? = null,
@@ -55,6 +59,7 @@ inline fun BodyContext.section(
     writer.writeNormalElementEnd("section")
 }
 
+@HtmlDsl
 inline fun BodyContext.section(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
@@ -67,8 +72,9 @@ inline fun BodyContext.section(
     writer.writeNormalElementEnd("section")
 }
 
+@HtmlDsl
 inline fun BodyContext.section(
-    attrs: Iterable<Pair<String, String?>>,
+    attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
