@@ -26,7 +26,6 @@ need. You may need to contribute a PR or 2. I'll do my best to be responsive and
 * Style DSL
     * Allows inlining style to the header or individual elements
     * CSS
-* Functionally Immutable
 * Multi-platform
 * Integration with [Ktor](https://ktor.io/)
 
@@ -48,10 +47,10 @@ yourself, please create an issue.
 fun main() {
     // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
     val writer: HtmlWriter = StringBuilderHtmlWriter(options = WriteOptions.default)
-    
+
     // Writes the main page to the HtmlWriter
     writer.mainPage()
-    
+
     // Prints out the written page
     println(writer)
 }
@@ -61,11 +60,13 @@ fun HtmlWriter.mainPage() {
     html {
         head {
             styleSheet {
-                style(".class1") {
-                    // TODO
+                style("body") {
+                    margin = 0.px
+                    padding = 0.px
+                    color = color(100, 100, 100)
                 }
                 style(".class2") {
-                    // TODO
+                    background = color("#555555")
                 }
             }
         }
@@ -82,6 +83,7 @@ fun BodyContext.navigation() {
         id = "navigation",
         style = style {
             // Inline style here
+            margin = 1.rem
         }
     ) {
         // Navigation HTML here
