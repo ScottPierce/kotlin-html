@@ -100,14 +100,12 @@ fun BodyContext.footer() {
 
 \<Insert obligatory disclaimer about microbenchmarks here\>
 
-**kotlin-html averages 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html averages 1186 millis to create the 
+**kotlin-html averaged 457 millis to create a page of ~7700 characters 100k times, and kotlinx.html averaged 1186 millis to create the 
 same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html.**
  
 The test was performed by creating the same html page in kotlin-html and kotlinx.html, and then running the page creation 100k 
 times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 
-libraries are fast enough that performance doesn't really matter for a normal use-case. I built this library initially 
-with a DOM, but realized how many short-lived HashMaps that approach requires. I started over with a 
-streaming API to maximize performance, so I'm going to choose to care about performance a little bit.
+libraries are fast enough that performance doesn't really matter for a normal use-case.
 
 [See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/HtmlBenchmark.kt)
 
