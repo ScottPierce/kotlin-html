@@ -1,4 +1,4 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.benchmark
 
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
@@ -14,7 +14,7 @@ fun kotlinxHtml(): String {
             val title = "Driver Improvement Course - ARSEL Driving School"
             title(title)
             meta(name = "title", content = title)
-            meta(name = "description", content = "\"8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA\"")
+            meta(name = "description", content = "\"8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA")
         }
 
         body {

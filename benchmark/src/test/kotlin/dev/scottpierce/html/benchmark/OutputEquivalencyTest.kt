@@ -2,9 +2,9 @@ package dev.scottpierce.html.benchmark
 
 import org.junit.Test
 
-class OutputEquivilencyTest {
+class OutputEquivalencyTest {
     @Test
-    fun equivilent() {
+    fun equivalent() {
         // Don't actually care it they are 100% equivalent. Just using it as a quick check
 //        assertEquals(kotlinHtml(), kotlinxHtml())
     }

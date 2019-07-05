@@ -1,4 +1,4 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.benchmark
 
 import dev.scottpierce.html.element.*
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
@@ -15,7 +15,7 @@ fun kotlinHtml(): String {
                 title(title)
                 metaTitle(title)
 
-                metaDescription("8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA")
+                metaDescription("\"8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA")
             }
 
             body {

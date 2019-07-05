@@ -80,8 +80,8 @@ fun HeadContext.meta(
 }
 
 private fun HtmlWriter.writeMetaAttributes(name: String?, content: String?, charset: String?, httpEquiv: String?) {
-    if (name != null) write(" name=\"").write(name).write('"')
-    if (content != null) write(" content=\"").write(content).write('"')
+    if (name != null) write(" name=\"").write(name.escapeForHtml()).write('"')
+    if (content != null) write(" content=\"").write(content.escapeForHtml()).write('"')
     if (charset != null) write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) write(" http-equiv=\"").write(httpEquiv).write('"')
+    if (httpEquiv != null) write(" http-equiv=\"").write(httpEquiv.escapeForHtml()).write('"')
 }

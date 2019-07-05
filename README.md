@@ -27,7 +27,7 @@ been made for several years.
 ## Missing Features
 * Complete list of all HTML elements, and style attributes
     * You can easily add your own by looking at an existing element and using it as a template. I recommend using 
-    [span](/kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
+    [span](./kotlin-html/src/genMain/kotlin/dev/scottpierce/html/element/Span.kt) as a template
     * PRs are welcome. If you add an element, please make sure you add it via the generator module
         * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/Element.kt)
         * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/StyleProperty.kt)
@@ -94,3 +94,31 @@ fun BodyContext.footer() {
     }
 }
 ```
+
+# Benchmark
+![kotlin-html vs kotlinx.html benchmark](./images/kotlin-html_vs_kotlinx.html_benchmark.png)
+
+\<Insert obligatory disclaimer about microbenchmarks here\>
+
+kotlin-html averages 457.26 millis to create a page 100k times and kotlinx.html averages 1186 millis to create the 
+same page page 100k times. That means that kotlin-html enjoys 2.6X performance improvement over kotlinx.html.
+ 
+The test was performed by creating the same html page in kotlin-html and kotlinx.html, and then running the page creation 100k 
+times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 
+libraries are fast enough that performance doesn't really matter for a normal use-case. I built this library initially 
+with a DOM, but realized how many short-lived HashMaps that approach requires. I started over with a 
+streaming API to maximize performance, so I'm going to choose to care about performance a little bit.
+
+[See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/HtmlBenchmark.kt)
+
+[raw benchmark data](https://docs.google.com/spreadsheets/d/1Yx_RiqxU4Hm9MxfH71YqVj2fiklrUqYSDkiiFVbBKis/edit?usp=sharing)
+
+Benchmark Device:
+<pre>
+JDK 12.0.1
+2018 MacBook Pro 15"
+2.9 GHz Intel Core i9
+32 GB Memory
+</pre>
+
+

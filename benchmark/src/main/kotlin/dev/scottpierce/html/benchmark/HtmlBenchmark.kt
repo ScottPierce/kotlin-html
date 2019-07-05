@@ -1,4 +1,4 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.benchmark
 
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -8,8 +8,7 @@ import kotlin.system.measureTimeMillis
 object HtmlBenchmark {
     fun runBenchmark() {
         // Warmup
-        println("Running 2 warm-up passes for kotlin-html")
-        benchmark(false) { kotlinHtml().length }
+        println("Running a warm-up pass for kotlin-html")
         benchmark(false) { kotlinHtml().length }
 
         System.gc()
@@ -23,8 +22,7 @@ object HtmlBenchmark {
         Thread.sleep(5000)
 
         // Warmup
-        println("Running 2 warm-up passes for kotlinx.html")
-        benchmark(false) { kotlinxHtml().length }
+        println("Running a warm-up pass for kotlinx.html")
         benchmark(false) { kotlinxHtml().length }
 
         System.gc()
@@ -32,7 +30,9 @@ object HtmlBenchmark {
 
         // Run Tests
         println("Running Benchmark for kotlinx.html")
-        benchmark(true) { kotlinxHtml().length }
+        benchmark(true) {
+            kotlinxHtml().length
+        }
     }
 
     private fun benchmark(print: Boolean, func: () -> Int) {
@@ -43,14 +43,14 @@ object HtmlBenchmark {
             println("Running benchmark with $cores cores.")
         }
 
-        repeat(10) {
+        repeat(50) {
             val executor = Executors.newFixedThreadPool(cores)
             val count = AtomicInteger()
 
             results += measureTimeMillis {
                 for (i in 0 until 100_000) {
                     executor.execute {
-                        func()
+                        count.addAndGet(func())
                     }
                 }
 

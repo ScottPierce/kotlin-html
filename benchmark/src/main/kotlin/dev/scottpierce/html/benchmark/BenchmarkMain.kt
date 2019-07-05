@@ -1,4 +1,4 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.benchmark
 
 fun main() {
     HtmlBenchmark.runBenchmark()

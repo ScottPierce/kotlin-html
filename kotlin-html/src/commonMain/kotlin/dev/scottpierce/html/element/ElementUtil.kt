@@ -110,7 +110,7 @@ fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
         write(' ').write(attr.first)
         val value: String? = attr.second
         if (value != null) {
-            write("=\"").write(value).write('"')
+            write("=\"").write(value.escapeForHtml()).write('"')
         }
     }
 }
@@ -121,7 +121,7 @@ fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
         write(' ').write(attr.first)
         val value: String? = attr.second
         if (value != null) {
-            write("=\"").write(value).write('"')
+            write("=\"").write(value.escapeForHtml()).write('"')
         }
     }
 }
@@ -139,4 +139,32 @@ fun Pair<String, String?>.checkAttributeKey() {
                     "'$attributeKey' with value: '$second'")
         }
     }
+}
+
+fun String.escapeForHtml(): String {
+    return if (this.needsToBeEscapedForHtml()) {
+        val sb = StringBuilder(length + 16)
+
+        for (c in this) {
+            if (c == '"') {
+                sb.append("&quot;")
+            } else {
+                sb.append(c)
+            }
+        }
+
+        sb.toString()
+    } else {
+        this
+    }
+}
+
+fun String.needsToBeEscapedForHtml(): Boolean {
+    for (c in this) {
+        if (c == '"') {
+            return true
+        }
+    }
+
+    return false
 }
