@@ -51,17 +51,26 @@ tasks.create("updateVersionInDocumentation") {
     doLast {
         val readMeFile = File("README.md")
 
-        val readMeString = readMeFile.bufferedReader().readText()
-        val updatedReadMe = readMeString.replace(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"), versionString)
+        val readMeLines = readMeFile.bufferedReader().readLines()
+        val updatedReadMeLines = readMeLines.map {
+            if (it.contains("[![Kotlin]")) {
+                it
+            } else {
+                it.replace(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"), versionString)
+            }
+        }
 
-        if (readMeString == updatedReadMe) {
+        if (readMeLines == updatedReadMeLines) {
             println("README had no changes")
         } else {
             println("README has changes")
         }
 
         readMeFile.bufferedWriter().use {
-            it.write(updatedReadMe)
+            for (line in updatedReadMeLines) {
+                it.write(line)
+                it.write("\n")
+            }
         }
     }
 }
