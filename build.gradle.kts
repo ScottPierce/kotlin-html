@@ -20,7 +20,6 @@ apply {
 val versionString = if (isCi && System.getenv().containsKey("CIRCLE_TAG")) {
     System.getenv("CIRCLE_TAG")
 } else {
-    "0.1.0"
 }
 
 allprojects {
@@ -52,8 +51,9 @@ tasks.create("updateVersionInDocumentation") {
         val readMeFile = File("README.md")
 
         val readMeLines = readMeFile.bufferedReader().readLines()
+
         val updatedReadMeLines = readMeLines.map {
-            if (it.contains("[![Kotlin]")) {
+            if (it.contains("[![Kotlin]") || it.contains("JDK")) {
                 it
             } else {
                 it.replace(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"), versionString)
