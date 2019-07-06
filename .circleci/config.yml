@@ -49,17 +49,12 @@ jobs:
           keys:
             - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :kotlin-html:assemble :benchmark:assemble --stacktrace
+      - run: ./gradlew :kotlin-html:assemble :kotlin-html-ktor:assemble :benchmark:assemble --stacktrace
 
       - save_cache:
           paths:
             - ~/.gradle
           key: build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
-
-      - persist_to_workspace:
-          root: .
-          paths:
-            - kotlin-html/build/libs
 
   unit test:
     <<: *job_config
@@ -90,17 +85,9 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
-
-      - attach_workspace:
-          at: .
-
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+      - run:
+          name: Upload to Bintray
+          command: ./gradlew publishAllPublicationsToBintrayRepository
 
 workflows:
   version: 2
@@ -109,12 +96,14 @@ workflows:
       - code style
       - build
       - unit test
-#      - upload:
-#          requires:
-#            - code style
-#            - build
-#            - unit test
-#          filters:
-#            branches:
-#              only:
-#                - master
+      - upload:
+          requires:
+            - code style
+            - build
+            - unit test
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              only:
+                - master
