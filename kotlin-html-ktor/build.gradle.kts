@@ -83,9 +83,14 @@ bintray {
         userOrg = "scottpierce"
         name = rootProject.name
 
+        vcsUrl = "https://github.com/ScottPierce/kotlin-html.git"
+        websiteUrl = "https://github.com/ScottPierce/kotlin-html"
+        issueTrackerUrl = "https://github.com/ScottPierce/kotlin-html"
+
         // Configure version
         version.apply {
             name = project.version.toString()
+            vcsTag = project.version.toString()
         }
     }
 }
