@@ -93,10 +93,7 @@ workflows:
   version: 2
   Build and Check:
     jobs:
-      - code style:
-          filters:
-            tags:
-              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - code style
       - build:
           filters:
             tags:
@@ -107,7 +104,6 @@ workflows:
               only: /[0-9]+\.[0-9]+\.[0-9]+/
       - upload:
           requires:
-            - code style
             - build
             - unit test
           filters:
