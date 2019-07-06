@@ -1,10 +1,6 @@
 import org.jetbrains.kotlin.cli.common.toBooleanLenient
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-plugins {
-    `maven-publish`
-}
-
 buildscript {
     repositories {
         jcenter()
@@ -21,13 +17,15 @@ apply {
     from(project.file("./gradle/ktlint.gradle"))
 }
 
+val versionString = if (isCi && System.getenv().containsKey("CIRCLE_TAG")) {
+    System.getenv("CIRCLE_TAG")
+} else {
+    "0.1.0"
+}
+
 allprojects {
     group = "dev.scottpierce.kotlin-html"
-    version = if (isCi && System.getenv().containsKey("CIRCLE_TAG")) {
-        System.getenv("CIRCLE_TAG")
-    } else {
-        "0.1.0"
-    }
+    version = versionString
 }
 
 subprojects {
@@ -47,8 +45,23 @@ subprojects {
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
     }
+}
 
-    pluginManager.withPlugin("maven-publish") {
-        publishing.configureBintray()
+tasks.create("updateVersionInDocumentation") {
+    doLast {
+        val readMeFile = File("README.md")
+
+        val readMeString = readMeFile.bufferedReader().readText()
+        val updatedReadMe = readMeString.replace(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"), versionString)
+
+        if (readMeString == updatedReadMe) {
+            println("README had no changes")
+        } else {
+            println("README has changes")
+        }
+
+        readMeFile.bufferedWriter().use {
+            it.write(updatedReadMe)
+        }
     }
 }

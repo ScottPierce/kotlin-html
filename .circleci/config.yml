@@ -61,6 +61,13 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Configure GIT
+          command: |
+            git config user.email "circleci@circleci.com"
+            git config user.name "CircleCI"
+            git push --set-upstream origin ${CIRCLE_BRANCH}
+
       - restore_cache:
           keys:
             - unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
@@ -85,9 +92,30 @@ jobs:
     steps:
       - checkout
 
+      - add_ssh_keys:
+          fingerprints:
+            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
+
+      - restore_cache:
+          keys:
+            - upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
+
       - run:
           name: Upload to Bintray
           command: ./gradlew publishAllPublicationsToBintrayRepository
+
+      - run:
+          name: Update version in documentation
+          command: ./gradlew updateVersionInDocumentation
+
+      - run:
+          name: Commit documentation changes
+          command: scripts/git-commit-if-changes.sh "version update for release"
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
 workflows:
   version: 2

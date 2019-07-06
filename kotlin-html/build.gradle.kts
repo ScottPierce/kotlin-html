@@ -6,6 +6,8 @@ plugins {
     `maven-publish`
 }
 
+publishing.configureBintray()
+
 kotlin {
     jvm {
         compilations.all {
