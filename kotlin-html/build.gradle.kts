@@ -3,8 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
-    id("maven-publish")
-    id("signing")
+    `maven-publish`
 }
 
 kotlin {
