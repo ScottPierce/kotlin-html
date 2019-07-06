@@ -99,7 +99,7 @@ jobs:
 
       - run:
           name: Checkout Master
-          command: git checkout --track origin/master
+          command: git checkout master
 
       - run:
           name: Configure GIT
