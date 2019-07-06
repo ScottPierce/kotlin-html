@@ -96,6 +96,21 @@ workflows:
       - code style
       - build
       - unit test
+
+  Build, Check, and Release:
+    jobs:
+      - code style:
+        filters:
+          tags:
+            only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - build:
+        filters:
+          tags:
+            only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - unit test:
+        filters:
+          tags:
+            only: /[0-9]+\.[0-9]+\.[0-9]+/
       - upload:
           requires:
             - code style
