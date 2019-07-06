@@ -17,9 +17,10 @@ apply {
     from(project.file("./gradle/ktlint.gradle"))
 }
 
-val versionString = if (isCi && System.getenv().containsKey("CIRCLE_TAG")) {
+val versionString: String = if (isCi && System.getenv().containsKey("CIRCLE_TAG")) {
     System.getenv("CIRCLE_TAG")
 } else {
+    "0.1.0"
 }
 
 allprojects {
