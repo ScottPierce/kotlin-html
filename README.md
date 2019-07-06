@@ -7,6 +7,32 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
 -->
 
+## JVM Usage
+```Kotlin
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm")   // HTML Library
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor")  // Only if you are using ktor
+}
+```
+
+## Multiplatform Usage
+```Kotlin
+repositories {
+    jcenter()
+}
+
+kotlin {
+    commonMain {
+        dependencies {
+            implementation("dev.scottpierce.kotlin-html:kotlin-html")
+        }    
+    }
+}
+```
 
 ## Should I use this Library?
 **You should only use this library if you are comfortable with the following:**
