@@ -106,7 +106,7 @@ jobs:
           command: |
             git config user.email "circleci@circleci.com"
             git config user.name "CircleCI"
-            git push --set-upstream origin ${CIRCLE_BRANCH}
+            git push --set-upstream origin master
 
       - run:
           name: Update version in documentation
