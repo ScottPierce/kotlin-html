@@ -54,10 +54,10 @@ tasks.create("updateVersionInDocumentation") {
         val readMeLines = readMeFile.bufferedReader().readLines()
 
         val updatedReadMeLines = readMeLines.map {
-            if (it.contains("[![Kotlin]") || it.contains("JDK")) {
-                it
-            } else {
+            if (it.contains("kotlin-html")) {
                 it.replace(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"), versionString)
+            } else {
+                it
             }
         }
 
