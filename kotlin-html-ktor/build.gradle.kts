@@ -72,7 +72,7 @@ bintray {
     key = System.getenv("BINTRAY_KEY")
 
     // Automatic publication enabled
-    publish = false
+    publish = true
 
     // Set maven publication onto bintray plugin
     setPublications("lib")
