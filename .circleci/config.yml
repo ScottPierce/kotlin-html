@@ -7,8 +7,6 @@ version: 2.1
 jobs:
   code style:
     <<: *job_config
-    environment:
-      GRADLE_OPTS: -Xmx3g
     steps:
       - checkout
 
@@ -80,8 +78,6 @@ jobs:
 
   upload:
     <<: *job_config
-    environment:
-      GRADLE_OPTS: -Xmx1536m
     steps:
       - checkout
 
