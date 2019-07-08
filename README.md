@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3.41-green.svg)](https://kotlinlang.org/)
-[![Download](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.1.4)](https://bintray.com/scottpierce/maven/kotlin-html0.1.4link)
+[![Download](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.1.5)](https://bintray.com/scottpierce/maven/kotlin-html0.1.5link)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
 This entire library is inline functions, and Jacoco doesn't show inline functions code coverage correctly: https://github.com/jacoco/jacoco/issues/654
@@ -15,10 +15,10 @@ repositories {
 
 dependencies {
     // JVM version of the HTML library
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.1.4")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.1.5")
     
     // If you are using Ktor, you can use this as well
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.1.4")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.1.5")
 }
 ```
 
@@ -31,7 +31,7 @@ repositories {
 kotlin {
     commonMain {
         dependencies {
-            implementation("dev.scottpierce.kotlin-html:kotlin-html:0.1.4")
+            implementation("dev.scottpierce.kotlin-html:kotlin-html:0.1.5")
         }    
     }
 }
