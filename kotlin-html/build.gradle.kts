@@ -14,10 +14,17 @@ kotlin {
             kotlinOptions.jvmTarget = "1.8"
         }
     }
+    js()
+    macosX64()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
         val commonMain by getting {
+            kotlin.srcDirs(
+                project.file("src/commonMain/kotlin"),
+                project.file("src/genMain/kotlin")
+            )
+
             dependencies {
                 implementation(Libs.kotlin.stdlib.common)
             }
@@ -31,32 +38,8 @@ kotlin {
             }
         }
 
-        val genMain = create("genMain") {
-            dependsOn(getByName("commonMain"))
-        }
-
-        val genTest = create("genTest") {
-            dependsOn(genMain)
-            
-            dependencies {
-                for (lib in Libs.kotlin.test.common) {
-                    implementation(lib)
-                }
-            }
-        }
-
-        val allMain = create("allMain") {
-            dependsOn(genMain)
-
-            dependencies {
-                for (lib in Libs.kotlin.test.common) {
-                    implementation(lib)
-                }
-            }
-        }
-
-        val allTest = create("allTest") {
-            dependsOn(genMain)
+        val genTest by creating {
+            dependsOn(commonMain)
 
             dependencies {
                 for (lib in Libs.kotlin.test.common) {
@@ -66,8 +49,6 @@ kotlin {
         }
 
         val jvmMain by getting {
-            dependsOn(allMain)
-
             dependencies {
                 implementation(Libs.kotlin.stdlib.jvm)
             }
@@ -75,10 +56,23 @@ kotlin {
 
         val jvmTest by getting {
             dependsOn(genTest)
-            dependsOn(allTest)
-
+            
             dependencies {
                 implementation(Libs.kotlin.test.jvm)
+            }
+        }
+
+        val jsMain by getting {
+            dependencies {
+                implementation(Libs.kotlin.stdlib.js)
+            }
+        }
+
+        val jsTest by getting {
+            dependsOn(genTest)
+
+            dependencies {
+                implementation(Libs.kotlin.test.js)
             }
         }
     }

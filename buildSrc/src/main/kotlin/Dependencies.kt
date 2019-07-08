@@ -23,6 +23,7 @@ class KotlinDeps internal constructor() {
 class KotlinStdLibLibs internal constructor() {
     val common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
     val jvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    val js = "org.jetbrains.kotlin:kotlin-stdlib-js:${Versions.kotlin}"
 }
 
 class KotlinTestLibs internal constructor() {
@@ -32,6 +33,7 @@ class KotlinTestLibs internal constructor() {
     )
 
     val jvm = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
+    val js = "org.jetbrains.kotlin:kotlin-test-js:${Versions.kotlin}"
 }
 
 class KotlinxDeps internal constructor() {
