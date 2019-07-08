@@ -95,7 +95,7 @@ jobs:
 
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
-          command: ./gradlew :kotlin-html-ktor:publishAllPublicationsToBintrayRepository
+          command: ./gradlew :kotlin-html-ktor:bintrayUpload
 
       - run:
           name: Checkout Master
