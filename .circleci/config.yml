@@ -90,8 +90,12 @@ jobs:
             - upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
       - run:
-          name: Upload to Bintray
-          command: ./gradlew publishAllPublicationsToBintrayRepository
+          name: Upload kotlin-html to Bintray
+          command: ./gradlew :kotlin-html:publishAllPublicationsToBintrayRepository
+
+      - run:
+          name: Upload kotlin-html-ktor to Bintray and Publish
+          command: ./gradlew :kotlin-html-ktor:publishAllPublicationsToBintrayRepository
 
       - run:
           name: Checkout Master
