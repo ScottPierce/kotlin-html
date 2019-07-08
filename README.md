@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.41-green.svg)](https://kotlinlang.org/)
 [![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.1.5)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.1.5?tab=overview)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.41-green.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
 This entire library is inline functions, and Jacoco doesn't show inline functions code coverage correctly: https://github.com/jacoco/jacoco/issues/654
@@ -136,6 +136,33 @@ fun BodyContext.footer() {
 }
 ```
 
+## Integration with Ktor
+``` Kotlin
+dependencies {
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.1.5")
+}
+```
+
+You can use the extension function `respondHtml` to write HTML as a response
+```Kotlin
+fun Application.mainModule() {
+    routing {
+        get("ktor-sample") {
+            call.respondHtml {
+                head {
+                    title("Ktor Sample")
+                    metaDescription("This is a Ktor sample")
+                }
+                
+                body {
+                    +"Ktor Sample"
+                }
+            }
+        }
+    }
+}
+```
+
 # Benchmark
 ![kotlin-html vs kotlinx.html benchmark](https://docs.google.com/spreadsheets/d/e/2PACX-1vSzaUiakNFkWywUTO63oSOg1uMoHrs62wju4oDyzeAcK7RsPfyuS4S7OsVp7sba007QVYf3GoE0nA9j/pubchart?oid=492427110&format=image)
 
@@ -149,7 +176,7 @@ The test was performed by creating the same html page in kotlin-html and kotlinx
 times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 
 libraries are fast enough that performance doesn't really matter for a normal use-case.
 
-[See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/HtmlBenchmark.kt)<br>
+[See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/ThreadedBenchmark.kt)<br>
 [raw benchmark data](https://docs.google.com/spreadsheets/d/1Yx_RiqxU4Hm9MxfH71YqVj2fiklrUqYSDkiiFVbBKis/edit?usp=sharing)
 
 Benchmark Device:
