@@ -24,14 +24,14 @@ import kotlinx.coroutines.io.ByteWriteChannel
 class HtmlWriterOutgoingContent(
     override val status: HttpStatusCode? = null,
     private val options: WriteOptions,
-    private val func: HtmlWriter.() -> Unit
+    private val func: suspend HtmlWriter.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
         get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlWriter(it, options).apply(func)
+            ChannelHtmlWriter(it, options).func()
         }
     }
 }
@@ -42,14 +42,14 @@ class HtmlWriterOutgoingContent(
 class HtmlFileOutgoingContent(
     override val status: HttpStatusCode? = null,
     private val options: WriteOptions,
-    private val func: FileContext.() -> Unit
+    private val func: suspend FileContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
         get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            FileContext(ChannelHtmlWriter(it, options)).apply(func)
+            FileContext(ChannelHtmlWriter(it, options)).func()
         }
     }
 }
@@ -60,7 +60,7 @@ class HtmlFileOutgoingContent(
 class HtmlOutgoingContent(
     override val status: HttpStatusCode? = null,
     private val options: WriteOptions,
-    private val func: HtmlContext.() -> Unit
+    private val func: suspend HtmlContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
         get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
@@ -83,7 +83,7 @@ class HtmlOutgoingContent(
 suspend fun ApplicationCall.respondHtmlFile(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.minified,
-    func: FileContext.() -> Unit
+    func: suspend FileContext.() -> Unit
 ): Unit = respond(HtmlFileOutgoingContent(status, options, func))
 
 /**
@@ -92,7 +92,7 @@ suspend fun ApplicationCall.respondHtmlFile(
 suspend fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.minified,
-    func: HtmlContext.() -> Unit
+    func: suspend HtmlContext.() -> Unit
 ): Unit = respond(HtmlOutgoingContent(status, options, func))
 
 /**
@@ -101,5 +101,5 @@ suspend fun ApplicationCall.respondHtml(
 suspend fun ApplicationCall.respondHtmlWriter(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.minified,
-    func: HtmlWriter.() -> Unit
+    func: suspend HtmlWriter.() -> Unit
 ): Unit = respond(HtmlWriterOutgoingContent(status, options, func))
