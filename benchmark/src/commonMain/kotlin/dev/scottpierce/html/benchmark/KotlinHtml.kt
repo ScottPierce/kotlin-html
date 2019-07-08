@@ -4,7 +4,7 @@ import dev.scottpierce.html.element.*
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
-fun kotlinHtml(): String {
+fun kotlinHtmlPage(): String {
     val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
         html {
             head {

@@ -6,7 +6,7 @@ import kotlinx.html.dom.document
 import kotlinx.html.dom.serialize
 import kotlinx.html.stream.appendHTML
 
-fun kotlinxHtmlStream(): String {
+fun kotlinxHtmlStreamPage(): String {
     val sb = StringBuilder()
 
     sb.appendHTML(prettyPrint = false).html {
@@ -119,7 +119,7 @@ fun kotlinxHtmlStream(): String {
     return sb.toString()
 }
 
-fun kotlinxHtmlDom(): String {
+fun kotlinxHtmlDomPage(): String {
     val document = document {
         append {
             html {

@@ -11,8 +11,9 @@ object SimpleBenchmark {
 
             val startTime = Platform.currentTime
 
+            // Build a simple website 20,000 times
             for (i in 0 until 20_000) {
-                val result = kotlinHtml()
+                val result = kotlinHtmlPage()
                 count += result.length
             }
 
