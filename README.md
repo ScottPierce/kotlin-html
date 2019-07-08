@@ -14,8 +14,11 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.1.4")   // HTML Library
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.1.4")  // Only if you are using ktor
+    // JVM version of the HTML library
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.1.4")
+    
+    // If you are using Ktor, you can use this as well
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.1.4")
 }
 ```
 
