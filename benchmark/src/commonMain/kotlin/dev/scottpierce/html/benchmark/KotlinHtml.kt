@@ -5,7 +5,7 @@ import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
 fun kotlinHtmlPage(): String {
-    val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
+    val writer = StringBuilderHtmlWriter(initialCapacity = 8000, options = WriteOptions.minified).apply {
         html {
             head {
                 metaCharsetUtf8()
