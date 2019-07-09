@@ -15,7 +15,7 @@ import java.io.File
 
 class GenerateElementTestsTask : Task {
     companion object {
-        private val BASE_TEMPLATE_DIR = File("kotlin-html/src/allTest/kotlin/dev/scottpierce/html/element")
+        private val BASE_TEMPLATE_DIR = File("kotlin-html/src/commonTest/kotlin/dev/scottpierce/html/element")
         private val TEMPLATE_NORMAL_FILE = File("$BASE_TEMPLATE_DIR/DivTest.kt")
         private val TEMPLATE_VOID_FILE = File("$BASE_TEMPLATE_DIR/BrTest.kt")
     }

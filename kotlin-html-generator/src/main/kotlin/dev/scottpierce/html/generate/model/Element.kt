@@ -75,6 +75,11 @@ sealed class Element(
                 childrenContext = Context.Html
             ),
             Void(
+                tagName = "link",
+                callingContext = Context.Head,
+                supportedAttributes = listOf("href", "rel", "hreflang", "media", "type", "sizes")
+            ),
+            Void(
                 tagName = "meta",
                 callingContext = Context.Head,
                 supportedAttributes = listOf("name", "content", "charset", "http-equiv")
