@@ -43,6 +43,9 @@ class HeadContext(override val writer: HtmlWriter) : Context {
 }
 
 @HtmlDsl
+class ScriptContext(override val writer: HtmlWriter) : Context
+
+@HtmlDsl
 class BodyContext(override val writer: HtmlWriter) : Context, HasText
 
 @HtmlDsl
