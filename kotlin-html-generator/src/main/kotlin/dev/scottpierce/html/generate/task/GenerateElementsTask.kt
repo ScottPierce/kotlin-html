@@ -87,7 +87,7 @@ private fun createDslFunction(
     for (attr in element.supportedAttributes) {
         addParameter(
             ParameterSpec.builder(attr.name.snakeCaseToCamelCase(), attr.className)
-                .defaultValue("null")
+                .defaultValue(attr.defaultValue)
                 .build()
         )
     }
@@ -184,7 +184,17 @@ private fun createDslFunction(
             }
 
             for (remainingAttribute in supportedAttributes) {
-                addStatement("""if (${remainingAttribute.name.snakeCaseToCamelCase()} != null) $writer.write(" $remainingAttribute=\"").write(${remainingAttribute.name.snakeCaseToCamelCase()}).write('"')""")
+                val attrCodeName = remainingAttribute.name.snakeCaseToCamelCase()
+
+                when (remainingAttribute) {
+                    is Attr.Boolean -> {
+                        addStatement("""if ($attrCodeName) $writer.write(" ${remainingAttribute.name}")""")
+                    }
+
+                    else -> {
+                        addStatement("""if ($attrCodeName != null) $writer.write(" ${remainingAttribute.name}=\"").write($attrCodeName).write('"')""")
+                    }
+                }
             }
         }
 

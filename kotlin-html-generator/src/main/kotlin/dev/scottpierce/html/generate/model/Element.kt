@@ -110,6 +110,16 @@ sealed class Element(
                 childrenContext = Context.Body
             ),
             Normal(
+                tagName = "script",
+                callingContext = Context.Head,
+                childrenContext = Context.Script,
+                supportedAttributes = listOf(
+                    Attr.Boolean("async"),
+                    Attr.Boolean("defer"),
+                    Attr.String("src")
+                )
+            ),
+            Normal(
                 tagName = "section",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
@@ -153,6 +163,7 @@ enum class Context {
     File,
     Html,
     Head,
+    Script,
     Body,
     Select,
     ;
@@ -164,18 +175,22 @@ enum class Context {
     val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
 }
 
-sealed class Attr(val name: kotlin.String, val className: ClassName) {
+sealed class Attr(
+    val name: kotlin.String,
+    val className: ClassName,
+    val defaultValue: kotlin.String
+) {
     companion object {
         val ID = String("id")
         val CLASSES = String("classes")
-        val STYLE = Custom("style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true))
+        val STYLE = Custom("style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true), "null")
     }
 
     override fun toString(): kotlin.String = name
 
-    class String(name: kotlin.String) : Attr(name, STRING.copy(nullable = true))
-    class Boolean(name: kotlin.String) : Attr(name, BOOLEAN)
-    class Custom(name: kotlin.String, className: ClassName) : Attr(name, className)
+    class String(name: kotlin.String) : Attr(name, STRING.copy(nullable = true), "null")
+    class Boolean(name: kotlin.String) : Attr(name, BOOLEAN, "false")
+    class Custom(name: kotlin.String, className: ClassName, defaultValue: kotlin.String) : Attr(name, className, defaultValue)
 }
 
 val STANDARD_ATTRIBUTES: List<Attr> = listOf(
