@@ -34,7 +34,6 @@ kotlin {
         macosX64 {
             binaries {
                 executable {
-                    freeCompilerArgs.add("-opt")
                 }
             }
         }

@@ -1,12 +1,14 @@
 package dev.scottpierce.html.generate.model
 
+import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.STRING
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
 sealed class Element(
     val tagName: String,
     val callingContext: Context,
-    val supportedAttributes: List<String>
+    val supportedAttributes: List<Attr>
 ) {
     companion object {
         val values: List<Element> = listOf(
@@ -77,18 +79,30 @@ sealed class Element(
             Void(
                 tagName = "link",
                 callingContext = Context.Head,
-                supportedAttributes = listOf("href", "rel", "hreflang", "media", "type", "sizes")
+                supportedAttributes = listOf(
+                    Attr.String("href"),
+                    Attr.String("rel"),
+                    Attr.String("hreflang"),
+                    Attr.String("media"),
+                    Attr.String("type"),
+                    Attr.String("sizes")
+                )
             ),
             Void(
                 tagName = "meta",
                 callingContext = Context.Head,
-                supportedAttributes = listOf("name", "content", "charset", "http-equiv")
+                supportedAttributes = listOf(
+                    Attr.String("name"),
+                    Attr.String("content"),
+                    Attr.String("charset"),
+                    Attr.String("http-equiv")
+                )
             ),
             Normal(
                 tagName = "option",
                 callingContext = Context.Select,
                 childrenContext = Context.Body,
-                supportedAttributes = STANDARD_ATTRIBUTES + "value"
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("value")
             ),
             Normal(
                 tagName = "p",
@@ -117,7 +131,7 @@ sealed class Element(
         tagName: String,
         callingContext: Context,
         val childrenContext: Context,
-        supportedAttributes: List<String> = STANDARD_ATTRIBUTES
+        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
     ) : Element(
         tagName,
         callingContext,
@@ -127,7 +141,7 @@ sealed class Element(
     class Void(
         tagName: String,
         callingContext: Context,
-        supportedAttributes: List<String> = STANDARD_ATTRIBUTES
+        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
     ) : Element(
         tagName,
         callingContext,
@@ -150,4 +164,22 @@ enum class Context {
     val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
 }
 
-val STANDARD_ATTRIBUTES: List<String> = listOf("id", "classes", "style")
+sealed class Attr(val name: kotlin.String, val className: ClassName) {
+    companion object {
+        val ID = String("id")
+        val CLASSES = String("classes")
+        val STYLE = Custom("style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true))
+    }
+
+    override fun toString(): kotlin.String = name
+
+    class String(name: kotlin.String) : Attr(name, STRING.copy(nullable = true))
+    class Boolean(name: kotlin.String) : Attr(name, BOOLEAN)
+    class Custom(name: kotlin.String, className: ClassName) : Attr(name, className)
+}
+
+val STANDARD_ATTRIBUTES: List<Attr> = listOf(
+    Attr.ID,
+    Attr.CLASSES,
+    Attr.STYLE
+)

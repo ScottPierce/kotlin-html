@@ -85,14 +85,8 @@ private fun createDslFunction(
     }
 
     for (attr in element.supportedAttributes) {
-        val attrClassName: ClassName = if (attr == "style") {
-            STYLE.copy(nullable = true)
-        } else {
-            STRING.copy(nullable = true)
-        }
-
         addParameter(
-            ParameterSpec.builder(attr.snakeCaseToCamelCase(), attrClassName)
+            ParameterSpec.builder(attr.name.snakeCaseToCamelCase(), attr.className)
                 .defaultValue("null")
                 .build()
         )
@@ -168,19 +162,19 @@ private fun createDslFunction(
             if (hasStandardAttributes) {
                 addCode("$writer.%M(", WRITE_STANDARD_ATTRIBUTES)
 
-                if (supportedAttributes.remove("id")) {
+                if (supportedAttributes.remove(Attr.ID)) {
                     addCode("id")
                 } else {
                     addCode("null")
                 }
 
-                if (supportedAttributes.remove("classes")) {
+                if (supportedAttributes.remove(Attr.CLASSES)) {
                     addCode(", classes")
                 } else {
                     addCode(", null")
                 }
 
-                if (supportedAttributes.remove("style")) {
+                if (supportedAttributes.remove(Attr.STYLE)) {
                     addCode(", style")
                 } else {
                     addCode(", null")
@@ -190,7 +184,7 @@ private fun createDslFunction(
             }
 
             for (remainingAttribute in supportedAttributes) {
-                addStatement("""if (${remainingAttribute.snakeCaseToCamelCase()} != null) $writer.write(" $remainingAttribute=\"").write(${remainingAttribute.snakeCaseToCamelCase()}).write('"')""")
+                addStatement("""if (${remainingAttribute.name.snakeCaseToCamelCase()} != null) $writer.write(" $remainingAttribute=\"").write(${remainingAttribute.name.snakeCaseToCamelCase()}).write('"')""")
             }
         }
 
