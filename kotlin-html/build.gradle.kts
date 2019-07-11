@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
@@ -16,6 +14,7 @@ kotlin {
     }
     js()
     macosX64()
+    linuxX64()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
@@ -78,6 +77,7 @@ kotlin {
     }
 }
 
+/*
 tasks.withType(KotlinCompile::class)
     .forEach {
         it.kotlinOptions {
@@ -87,6 +87,7 @@ tasks.withType(KotlinCompile::class)
             )
         }
     }
+*/
 
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))
