@@ -71,11 +71,26 @@ kotlin {
         }
 
         val jsTest by getting {
+            dependsOn(jsMain)
             dependsOn(genTest)
 
             dependencies {
                 implementation(Libs.kotlin.test.js)
             }
+        }
+
+        val macosX64Main by getting {
+        }
+
+        val macosX64Test by getting {
+            dependsOn(macosX64Main)
+        }
+
+        val linuxX64Main by getting {
+        }
+
+        val linuxX64Test by getting {
+            dependsOn(linuxX64Main)
         }
     }
 }
@@ -95,7 +110,8 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
 
     sourceDirectories.setFrom(
         "src/commonMain/kotlin",
-        "src/genMain/kotlin"
+        "src/genMain/kotlin",
+        "src/jvmMain/kotlin"
     )
 
     classDirectories.setFrom(
