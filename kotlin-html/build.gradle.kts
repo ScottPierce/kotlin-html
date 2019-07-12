@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
@@ -54,8 +56,9 @@ kotlin {
         }
 
         val jvmTest by getting {
+            dependsOn(jvmMain)
             dependsOn(genTest)
-            
+
             dependencies {
                 implementation(Libs.kotlin.test.jvm)
             }
@@ -77,7 +80,6 @@ kotlin {
     }
 }
 
-/*
 tasks.withType(KotlinCompile::class)
     .forEach {
         it.kotlinOptions {
@@ -87,7 +89,6 @@ tasks.withType(KotlinCompile::class)
             )
         }
     }
-*/
 
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))

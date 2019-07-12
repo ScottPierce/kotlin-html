@@ -10,111 +10,111 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlWriter.li(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("a")
+    this.writeTag("li")
     this.writeStandardAttributes(id, classes, style)
-    if (href != null) this.write(" href=\"").write(href).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("a")
+    this.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlWriter.li(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("a")
+    this.writeTag("li")
     this.writeStandardAttributes(id, classes, style)
-    if (href != null) this.write(" href=\"").write(href).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("a")
+    this.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlWriter.li(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("a")
+    this.writeTag("li")
     this.writeStandardAttributes(id, classes, style)
-    if (href != null) this.write(" href=\"").write(href).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("a")
+    this.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
-inline fun BodyContext.a(
+inline fun UlContext.li(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("a")
+    writer.writeTag("li")
     writer.writeStandardAttributes(id, classes, style)
-    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
     writer.write('>')
     writer.indent()
-    func()
-    writer.writeNormalElementEnd("a")
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
-inline fun BodyContext.a(
+inline fun UlContext.li(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("a")
+    writer.writeTag("li")
     writer.writeStandardAttributes(id, classes, style)
-    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
-    func()
-    writer.writeNormalElementEnd("a")
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
-inline fun BodyContext.a(
+inline fun UlContext.li(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    href: String? = null,
+    value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("a")
+    writer.writeTag("li")
     writer.writeStandardAttributes(id, classes, style)
-    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
-    func()
-    writer.writeNormalElementEnd("a")
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }
