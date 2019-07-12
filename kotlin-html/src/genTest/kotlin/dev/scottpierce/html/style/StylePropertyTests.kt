@@ -151,6 +151,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun position() {
+        val style = style {
+            position = Position.STATIC
+            assertEquals(Position.STATIC, position)
+        }
+        assertEquals(Position.STATIC, style.position)
+    }
+
+    @Test
     fun margin() {
         val style = style {
             margin = Dimension.Size(1f, DimensionUnit.PX)

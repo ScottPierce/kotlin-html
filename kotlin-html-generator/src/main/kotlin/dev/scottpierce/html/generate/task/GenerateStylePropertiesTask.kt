@@ -125,6 +125,7 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.JUSTIFY_CONTENT -> CodeBlock.of("JustifyContent.CENTER")
                     PropertyType.INT -> CodeBlock.of("100")
                     PropertyType.STRING -> CodeBlock.of("\"boo\"")
+                    PropertyType.POSITION -> CodeBlock.of("Position.STATIC")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

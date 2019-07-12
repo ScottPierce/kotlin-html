@@ -25,6 +25,7 @@ enum class StyleProperty(
     PADDING_RIGHT("padding-right", PropertyType.DIMENSION),
     PADDING_TOP("padding-top", PropertyType.DIMENSION),
     PADDING_BOTTOM("padding-bottom", PropertyType.DIMENSION),
+    POSITION("position", PropertyType.POSITION),
     MARGIN("margin", PropertyType.DIMENSION),
     MARGIN_LEFT("margin-left", PropertyType.DIMENSION),
     MARGIN_RIGHT("margin-right", PropertyType.DIMENSION),
@@ -45,6 +46,7 @@ enum class PropertyType(val className: ClassName) {
     FLEX_DIRECTION(ClassName("dev.scottpierce.html.style", "FlexDirection")),
     INT(com.squareup.kotlinpoet.INT),
     JUSTIFY_CONTENT(ClassName("dev.scottpierce.html.style", "JustifyContent")),
+    POSITION(ClassName("dev.scottpierce.html.style", "Position")),
     STRING(com.squareup.kotlinpoet.STRING),
     ;
 }

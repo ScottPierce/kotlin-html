@@ -149,6 +149,15 @@ var StyleBuilder.paddingBottom: Dimension?
         properties["padding-bottom"] = value
     }
 
+val Style.position: Position?
+    get() = properties["position"] as Position?
+
+var StyleBuilder.position: Position?
+    get() = properties["position"] as Position?
+    set(value) {
+        properties["position"] = value
+    }
+
 val Style.margin: Dimension?
     get() = properties["margin"] as Dimension?
 
