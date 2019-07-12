@@ -7,6 +7,7 @@ val innerLoopSize = 20_000
 
 object SimpleBenchmark {
     fun run(print: Boolean) {
+        println("start simple benchmark")
         val results = mutableListOf<Long>()
 
         val benchmarkStart = Platform.currentTime

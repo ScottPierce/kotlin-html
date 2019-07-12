@@ -9,7 +9,7 @@ interface HtmlWriter {
     val isEmpty: Boolean
 
     fun write(c: Char): HtmlWriter
-    fun write(code: CharSequence): HtmlWriter
+    fun write(code: String): HtmlWriter
     fun newLine(): HtmlWriter
     fun indent()
     fun deindent()
@@ -49,13 +49,13 @@ abstract class AbstractHtmlWriter(final override val options: WriteOptions) : Ht
         writeChar(c)
     }
 
-    final override fun write(code: CharSequence) = apply {
+    final override fun write(code: String) = apply {
         isEmpty = false
         writeCharSequence(code)
     }
 
     abstract fun writeChar(c: Char)
-    abstract fun writeCharSequence(code: CharSequence)
+    abstract fun writeCharSequence(code: String)
 }
 
 class StringBuilderHtmlWriter(
@@ -68,7 +68,7 @@ class StringBuilderHtmlWriter(
         sb.append(c)
     }
 
-    override fun writeCharSequence(code: CharSequence) {
+    override fun writeCharSequence(code: String) {
         sb.append(code)
     }
 
@@ -90,7 +90,7 @@ class NullHtmlWriter(
 ) : AbstractHtmlWriter(options) {
 
     override fun writeChar(c: Char) {}
-    override fun writeCharSequence(code: CharSequence) {}
+    override fun writeCharSequence(code: String) {}
     override fun toString() = ""
 }
 
@@ -105,7 +105,7 @@ class DeferredHtmlWriter(
 
     override fun write(c: Char): HtmlWriter = apply { deferredTask.add { delegate.write(c) } }
 
-    override fun write(code: CharSequence): HtmlWriter = apply {
+    override fun write(code: String): HtmlWriter = apply {
         deferredTask.add { delegate.write(code) }
     }
 
