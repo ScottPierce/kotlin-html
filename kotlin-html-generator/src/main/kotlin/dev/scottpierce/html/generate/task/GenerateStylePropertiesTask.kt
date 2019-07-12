@@ -123,6 +123,8 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.ALIGN_ITEMS -> CodeBlock.of("AlignItems.BASELINE")
                     PropertyType.FLEX_DIRECTION -> CodeBlock.of("FlexDirection.COLUMN")
                     PropertyType.JUSTIFY_CONTENT -> CodeBlock.of("JustifyContent.CENTER")
+                    PropertyType.INT -> CodeBlock.of("100")
+                    PropertyType.STRING -> CodeBlock.of("\"boo\"")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)
