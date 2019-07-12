@@ -15,7 +15,8 @@ sealed class Element(
             Normal(
                 tagName = "a",
                 callingContext = Context.Body,
-                childrenContext = Context.Body
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href")
             ),
             Normal(
                 tagName = "body",
@@ -74,7 +75,18 @@ sealed class Element(
             Normal(
                 tagName = "html",
                 callingContext = Context.File,
-                childrenContext = Context.Html
+                childrenContext = Context.Html,
+                supportedAttributes = listOf(
+                    Attr.CLASSES,
+                    Attr.STYLE,
+                    Attr.String("lang")
+                )
+            ),
+            Normal(
+                tagName = "li",
+                callingContext = Context.Ul,
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("value")
             ),
             Void(
                 tagName = "link",
@@ -97,6 +109,11 @@ sealed class Element(
                     Attr.String("charset"),
                     Attr.String("http-equiv")
                 )
+            ),
+            Normal(
+                tagName = "nav",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
             ),
             Normal(
                 tagName = "option",
@@ -133,6 +150,11 @@ sealed class Element(
                 tagName = "span",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "ul",
+                callingContext = Context.Body,
+                childrenContext = Context.Ul
             )
         )
     }
@@ -166,6 +188,7 @@ enum class Context {
     Script,
     Body,
     Select,
+    Ul,
     ;
 
     companion object {
