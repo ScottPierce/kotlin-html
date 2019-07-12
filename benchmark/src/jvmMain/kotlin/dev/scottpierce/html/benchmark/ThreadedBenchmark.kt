@@ -9,14 +9,14 @@ object ThreadedBenchmark {
     fun runBenchmark() {
         // Warmup
         println("Running a warm-up pass for kotlin-html")
-        benchmark(false) { kotlinHtmlPage().length }
+        benchmark(false) { kotlinHtmlPage( ).length }
 
         System.gc()
         Thread.sleep(5000)
 
         // Run Benchmark
         println("Running Benchmark for kotlin-html")
-        benchmark(true) { kotlinHtmlPage().length }
+        benchmark(true) { kotlinHtmlPage( ).length }
 
         System.gc()
         Thread.sleep(5000)

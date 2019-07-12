@@ -1,11 +1,11 @@
 package dev.scottpierce.html.benchmark
 
 import dev.scottpierce.html.element.*
+import dev.scottpierce.html.write.HtmlWriter
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
-import dev.scottpierce.html.write.WriteOptions
 
-fun kotlinHtmlPage(): String {
-    val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
+fun kotlinHtmlPage(htmlWriter: HtmlWriter=StringBuilderHtmlWriter()): String {
+    val writer = htmlWriter.apply {
         html {
             head {
                 metaCharsetUtf8()

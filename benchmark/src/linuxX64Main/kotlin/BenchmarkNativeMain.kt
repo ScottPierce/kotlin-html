@@ -1,5 +1,6 @@
 import dev.scottpierce.html.benchmark.SimpleBenchmark
+import dev.scottpierce.html.benchmark.ThreeBenchmarks
 
 fun main() {
-    SimpleBenchmark.run(true)
+    ThreeBenchmarks.run(true)
 }
