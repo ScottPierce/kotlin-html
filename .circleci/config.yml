@@ -36,6 +36,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.konan
           key: codestyle-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
   build:
@@ -52,6 +53,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.konan
           key: build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
   unit test:
@@ -74,6 +76,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.konan
           key: unittest-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
   upload:
@@ -119,6 +122,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.konan
           key: upload-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
 workflows:
