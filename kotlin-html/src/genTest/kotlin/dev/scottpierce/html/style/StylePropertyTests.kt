@@ -70,6 +70,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun fontFamily() {
+        val style = style {
+            fontFamily = "boo"
+            assertEquals("boo", fontFamily)
+        }
+        assertEquals("boo", style.fontFamily)
+    }
+
+    @Test
     fun height() {
         val style = style {
             height = Dimension.Size(1f, DimensionUnit.PX)

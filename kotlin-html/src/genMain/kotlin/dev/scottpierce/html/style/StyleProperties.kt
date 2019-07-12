@@ -68,6 +68,15 @@ var StyleBuilder.flexDirection: FlexDirection?
         properties["flex-direction"] = value
     }
 
+val Style.fontFamily: String?
+    get() = properties["font-family"] as String?
+
+var StyleBuilder.fontFamily: String?
+    get() = properties["font-family"] as String?
+    set(value) {
+        properties["font-family"] = value
+    }
+
 val Style.height: Dimension?
     get() = properties["height"] as Dimension?
 

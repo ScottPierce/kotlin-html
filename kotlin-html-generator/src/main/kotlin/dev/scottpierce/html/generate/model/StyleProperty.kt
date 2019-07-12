@@ -16,6 +16,7 @@ enum class StyleProperty(
     COLOR("color", PropertyType.COLOR),
     DISPLAY("display", PropertyType.DISPLAY),
     FLEX_DIRECTION("flex-direction", PropertyType.FLEX_DIRECTION),
+    FONT_FAMILY("font-family", PropertyType.STRING),
     HEIGHT("height", PropertyType.DIMENSION),
     JUSTIFY_CONTENT("justify-content", PropertyType.JUSTIFY_CONTENT),
     OUTLINE("outline", PropertyType.STRING),
