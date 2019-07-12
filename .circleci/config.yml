@@ -65,7 +65,7 @@ jobs:
 
       - run:
           name: Run Tests
-          command: ./gradlew :kotlin-html:jvmTest :kotlin-html:jvmCodeCoverageReport --stacktrace
+          command: ./gradlew :kotlin-html:jvmTest :kotlin-html:jsTest :kotlin-html:linuxX64Test :kotlin-html:jvmCodeCoverageReport --stacktrace
 
       - run:
           name: Upload to CodeCov
