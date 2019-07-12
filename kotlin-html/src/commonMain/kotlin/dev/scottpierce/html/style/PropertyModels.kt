@@ -49,6 +49,17 @@ enum class FlexDirection(val value: String) {
     override fun toString() = value
 }
 
+enum class Position(val value: String) {
+    STATIC("static"),
+    RELATIVE("relative"),
+    FIXED("fixed"),
+    ABSOLUTE("absolute"),
+    STICKY("sticky"),
+    ;
+
+    override fun toString(): String = value
+}
+
 data class GridColumn internal constructor(
     val start: Int,
     val isStartSpan: Boolean,

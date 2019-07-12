@@ -132,7 +132,7 @@ class DeferredHtmlWriter(
 
 data class WriteOptions(
     val indent: String = "\t",
-    val newLine: String = "\n",
+    val newLine: String = PlatformWriter.lineSeparator,
     val minifyStyles: Boolean = false
 ) {
     companion object {

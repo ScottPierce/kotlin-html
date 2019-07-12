@@ -11,12 +11,16 @@ import kotlin.collections.List
 
 @HtmlDsl
 inline fun HtmlWriter.html(
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("html", id, classes, style)
+    this.writeTag("html")
+    this.writeStandardAttributes(null, classes, style)
+    if (lang != null) this.write(" lang=\"").write(lang).write('"')
+    this.write('>')
+    this.indent()
     HtmlContext(this).apply(func)
     this.writeNormalElementEnd("html")
 }
@@ -24,12 +28,17 @@ inline fun HtmlWriter.html(
 @HtmlDsl
 inline fun HtmlWriter.html(
     vararg attrs: Pair<String, String?>,
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("html", id, classes, style, attrs)
+    this.writeTag("html")
+    this.writeStandardAttributes(null, classes, style)
+    if (lang != null) this.write(" lang=\"").write(lang).write('"')
+    this.writeAttributes(attrs)
+    this.write('>')
+    this.indent()
     HtmlContext(this).apply(func)
     this.writeNormalElementEnd("html")
 }
@@ -37,24 +46,33 @@ inline fun HtmlWriter.html(
 @HtmlDsl
 inline fun HtmlWriter.html(
     attrs: List<Pair<String, String?>>,
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("html", id, classes, style, attrs)
+    this.writeTag("html")
+    this.writeStandardAttributes(null, classes, style)
+    if (lang != null) this.write(" lang=\"").write(lang).write('"')
+    this.writeAttributes(attrs)
+    this.write('>')
+    this.indent()
     HtmlContext(this).apply(func)
     this.writeNormalElementEnd("html")
 }
 
 @HtmlDsl
 inline fun FileContext.html(
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("html", id, classes, style)
+    writer.writeTag("html")
+    writer.writeStandardAttributes(null, classes, style)
+    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
+    writer.write('>')
+    writer.indent()
     HtmlContext(writer).apply(func)
     writer.writeNormalElementEnd("html")
 }
@@ -62,12 +80,17 @@ inline fun FileContext.html(
 @HtmlDsl
 inline fun FileContext.html(
     vararg attrs: Pair<String, String?>,
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("html", id, classes, style, attrs)
+    writer.writeTag("html")
+    writer.writeStandardAttributes(null, classes, style)
+    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     HtmlContext(writer).apply(func)
     writer.writeNormalElementEnd("html")
 }
@@ -75,12 +98,17 @@ inline fun FileContext.html(
 @HtmlDsl
 inline fun FileContext.html(
     attrs: List<Pair<String, String?>>,
-    id: String? = null,
     classes: String? = null,
     style: Style? = null,
+    lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("html", id, classes, style, attrs)
+    writer.writeTag("html")
+    writer.writeStandardAttributes(null, classes, style)
+    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     HtmlContext(writer).apply(func)
     writer.writeNormalElementEnd("html")
 }

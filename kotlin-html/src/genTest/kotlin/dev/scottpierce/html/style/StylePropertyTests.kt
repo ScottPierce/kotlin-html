@@ -18,10 +18,28 @@ class StylePropertyTests {
     @Test
     fun background() {
         val style = style {
-            background = color("#555555")
-            assertEquals(color("#555555"), background)
+            background = "boo"
+            assertEquals("boo", background)
         }
-        assertEquals(color("#555555"), style.background)
+        assertEquals("boo", style.background)
+    }
+
+    @Test
+    fun backgroundColor() {
+        val style = style {
+            backgroundColor = color("#555555")
+            assertEquals(color("#555555"), backgroundColor)
+        }
+        assertEquals(color("#555555"), style.backgroundColor)
+    }
+
+    @Test
+    fun border() {
+        val style = style {
+            border = "boo"
+            assertEquals("boo", border)
+        }
+        assertEquals("boo", style.border)
     }
 
     @Test
@@ -52,12 +70,39 @@ class StylePropertyTests {
     }
 
     @Test
+    fun fontFamily() {
+        val style = style {
+            fontFamily = "boo"
+            assertEquals("boo", fontFamily)
+        }
+        assertEquals("boo", style.fontFamily)
+    }
+
+    @Test
+    fun height() {
+        val style = style {
+            height = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), height)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.height)
+    }
+
+    @Test
     fun justifyContent() {
         val style = style {
             justifyContent = JustifyContent.CENTER
             assertEquals(JustifyContent.CENTER, justifyContent)
         }
         assertEquals(JustifyContent.CENTER, style.justifyContent)
+    }
+
+    @Test
+    fun outline() {
+        val style = style {
+            outline = "boo"
+            assertEquals("boo", outline)
+        }
+        assertEquals("boo", style.outline)
     }
 
     @Test
@@ -106,6 +151,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun position() {
+        val style = style {
+            position = Position.STATIC
+            assertEquals(Position.STATIC, position)
+        }
+        assertEquals(Position.STATIC, style.position)
+    }
+
+    @Test
     fun margin() {
         val style = style {
             margin = Dimension.Size(1f, DimensionUnit.PX)
@@ -148,5 +202,23 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBottom)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBottom)
+    }
+
+    @Test
+    fun width() {
+        val style = style {
+            width = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), width)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.width)
+    }
+
+    @Test
+    fun zIndex() {
+        val style = style {
+            zIndex = 100
+            assertEquals(100, zIndex)
+        }
+        assertEquals(100, style.zIndex)
     }
 }

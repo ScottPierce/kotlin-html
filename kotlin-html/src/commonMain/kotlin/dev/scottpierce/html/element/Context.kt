@@ -50,3 +50,6 @@ class BodyContext(override val writer: HtmlWriter) : Context, HasText
 
 @HtmlDsl
 class SelectContext(override val writer: HtmlWriter) : Context
+
+@HtmlDsl
+class UlContext(override val writer: HtmlWriter) : Context

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
@@ -54,8 +56,9 @@ kotlin {
         }
 
         val jvmTest by getting {
+            dependsOn(jvmMain)
             dependsOn(genTest)
-            
+
             dependencies {
                 implementation(Libs.kotlin.test.jvm)
             }
@@ -68,16 +71,30 @@ kotlin {
         }
 
         val jsTest by getting {
+            dependsOn(jsMain)
             dependsOn(genTest)
 
             dependencies {
                 implementation(Libs.kotlin.test.js)
             }
         }
+
+        val macosX64Main by getting {
+        }
+
+        val macosX64Test by getting {
+            dependsOn(macosX64Main)
+        }
+
+        val linuxX64Main by getting {
+        }
+
+        val linuxX64Test by getting {
+            dependsOn(linuxX64Main)
+        }
     }
 }
 
-/*
 tasks.withType(KotlinCompile::class)
     .forEach {
         it.kotlinOptions {
@@ -87,14 +104,14 @@ tasks.withType(KotlinCompile::class)
             )
         }
     }
-*/
 
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))
 
     sourceDirectories.setFrom(
         "src/commonMain/kotlin",
-        "src/genMain/kotlin"
+        "src/genMain/kotlin",
+        "src/jvmMain/kotlin"
     )
 
     classDirectories.setFrom(

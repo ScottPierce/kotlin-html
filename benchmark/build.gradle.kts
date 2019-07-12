@@ -4,8 +4,18 @@ plugins {
 
 kotlin {
     jvm()
-    macosX64()
-    linuxX64()
+    macosX64 {
+        binaries {
+            executable {
+            }
+        }
+    }
+    linuxX64 {
+        binaries {
+            executable {
+            }
+        }
+    }
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
@@ -32,22 +42,7 @@ kotlin {
         val macosX64Main by getting {
         }
 
-        macosX64 {
-            binaries {
-                executable {
-                }
-            }
-        }
-
         val linuxX64Main by getting {
         }
-
-        linuxX64 {
-            binaries {
-                executable {
-                }
-            }
-        }
     }
-
 }

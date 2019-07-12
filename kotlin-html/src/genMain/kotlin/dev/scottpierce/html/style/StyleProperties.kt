@@ -2,6 +2,9 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.style
 
+import kotlin.Int
+import kotlin.String
+
 val Style.alignItems: AlignItems?
     get() = properties["align-items"] as AlignItems?
 
@@ -11,13 +14,31 @@ var StyleBuilder.alignItems: AlignItems?
         properties["align-items"] = value
     }
 
-val Style.background: Color?
-    get() = properties["background"] as Color?
+val Style.background: String?
+    get() = properties["background"] as String?
 
-var StyleBuilder.background: Color?
-    get() = properties["background"] as Color?
+var StyleBuilder.background: String?
+    get() = properties["background"] as String?
     set(value) {
         properties["background"] = value
+    }
+
+val Style.backgroundColor: Color?
+    get() = properties["background-color"] as Color?
+
+var StyleBuilder.backgroundColor: Color?
+    get() = properties["background-color"] as Color?
+    set(value) {
+        properties["background-color"] = value
+    }
+
+val Style.border: String?
+    get() = properties["border"] as String?
+
+var StyleBuilder.border: String?
+    get() = properties["border"] as String?
+    set(value) {
+        properties["border"] = value
     }
 
 val Style.color: Color?
@@ -47,6 +68,24 @@ var StyleBuilder.flexDirection: FlexDirection?
         properties["flex-direction"] = value
     }
 
+val Style.fontFamily: String?
+    get() = properties["font-family"] as String?
+
+var StyleBuilder.fontFamily: String?
+    get() = properties["font-family"] as String?
+    set(value) {
+        properties["font-family"] = value
+    }
+
+val Style.height: Dimension?
+    get() = properties["height"] as Dimension?
+
+var StyleBuilder.height: Dimension?
+    get() = properties["height"] as Dimension?
+    set(value) {
+        properties["height"] = value
+    }
+
 val Style.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
 
@@ -54,6 +93,15 @@ var StyleBuilder.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
     set(value) {
         properties["justify-content"] = value
+    }
+
+val Style.outline: String?
+    get() = properties["outline"] as String?
+
+var StyleBuilder.outline: String?
+    get() = properties["outline"] as String?
+    set(value) {
+        properties["outline"] = value
     }
 
 val Style.padding: Dimension?
@@ -101,6 +149,15 @@ var StyleBuilder.paddingBottom: Dimension?
         properties["padding-bottom"] = value
     }
 
+val Style.position: Position?
+    get() = properties["position"] as Position?
+
+var StyleBuilder.position: Position?
+    get() = properties["position"] as Position?
+    set(value) {
+        properties["position"] = value
+    }
+
 val Style.margin: Dimension?
     get() = properties["margin"] as Dimension?
 
@@ -144,4 +201,22 @@ var StyleBuilder.marginBottom: Dimension?
     get() = properties["margin-bottom"] as Dimension?
     set(value) {
         properties["margin-bottom"] = value
+    }
+
+val Style.width: Dimension?
+    get() = properties["width"] as Dimension?
+
+var StyleBuilder.width: Dimension?
+    get() = properties["width"] as Dimension?
+    set(value) {
+        properties["width"] = value
+    }
+
+val Style.zIndex: Int?
+    get() = properties["z-index"] as Int?
+
+var StyleBuilder.zIndex: Int?
+    get() = properties["z-index"] as Int?
+    set(value) {
+        properties["z-index"] = value
     }
