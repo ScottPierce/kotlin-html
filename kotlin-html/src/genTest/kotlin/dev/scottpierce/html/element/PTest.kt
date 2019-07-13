@@ -11,7 +11,7 @@ class PTest {
             p(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <p id="test-id" classes="test-class">
+            <p id="test-id" class="test-class">
             </p>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class PTest {
             p("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <p id="test-id" class="test-class" custom-attr="custom-attr-value">
             </p>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class PTest {
             p(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <p id="test-id" class="test-class" custom-attr="custom-attr-value">
             </p>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class PTest {
 
         writer assertEquals {
             """
-            <p id="test-id" classes="test-class">
+            <p id="test-id" class="test-class">
             </p>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class PTest {
 
         writer assertEquals {
             """
-            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <p id="test-id" class="test-class" custom-attr="custom-attr-value">
             </p>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class PTest {
 
         writer assertEquals {
             """
-            <p id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <p id="test-id" class="test-class" custom-attr="custom-attr-value">
             </p>
             """.trimIndent()
         }

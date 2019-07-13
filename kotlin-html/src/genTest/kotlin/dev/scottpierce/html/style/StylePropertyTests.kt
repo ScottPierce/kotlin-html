@@ -70,6 +70,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun float() {
+        val style = style {
+            float = FloatDirection.LEFT
+            assertEquals(FloatDirection.LEFT, float)
+        }
+        assertEquals(FloatDirection.LEFT, style.float)
+    }
+
+    @Test
     fun fontFamily() {
         val style = style {
             fontFamily = "boo"
@@ -211,6 +220,42 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBottom)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBottom)
+    }
+
+    @Test
+    fun maxHeight() {
+        val style = style {
+            maxHeight = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), maxHeight)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.maxHeight)
+    }
+
+    @Test
+    fun maxWidth() {
+        val style = style {
+            maxWidth = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), maxWidth)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.maxWidth)
+    }
+
+    @Test
+    fun minHeight() {
+        val style = style {
+            minHeight = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), minHeight)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.minHeight)
+    }
+
+    @Test
+    fun minWidth() {
+        val style = style {
+            minWidth = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), minWidth)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.minWidth)
     }
 
     @Test

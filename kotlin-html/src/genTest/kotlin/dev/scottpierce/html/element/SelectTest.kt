@@ -11,7 +11,7 @@ class SelectTest {
             select(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <select id="test-id" classes="test-class">
+            <select id="test-id" class="test-class">
             </select>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class SelectTest {
             select("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <select id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <select id="test-id" class="test-class" custom-attr="custom-attr-value">
             </select>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class SelectTest {
             select(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <select id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <select id="test-id" class="test-class" custom-attr="custom-attr-value">
             </select>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class SelectTest {
 
         writer assertEquals {
             """
-            <select id="test-id" classes="test-class">
+            <select id="test-id" class="test-class">
             </select>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class SelectTest {
 
         writer assertEquals {
             """
-            <select id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <select id="test-id" class="test-class" custom-attr="custom-attr-value">
             </select>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class SelectTest {
 
         writer assertEquals {
             """
-            <select id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <select id="test-id" class="test-class" custom-attr="custom-attr-value">
             </select>
             """.trimIndent()
         }

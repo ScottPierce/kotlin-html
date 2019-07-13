@@ -11,7 +11,7 @@ class BodyTest {
             body(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class">
+            <body id="test-id" class="test-class">
             </body>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class BodyTest {
             body("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <body id="test-id" class="test-class" custom-attr="custom-attr-value">
             </body>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class BodyTest {
             body(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <body id="test-id" class="test-class" custom-attr="custom-attr-value">
             </body>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class BodyTest {
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class">
+            <body id="test-id" class="test-class">
             </body>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class BodyTest {
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <body id="test-id" class="test-class" custom-attr="custom-attr-value">
             </body>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class BodyTest {
 
         writer assertEquals {
             """
-            <body id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <body id="test-id" class="test-class" custom-attr="custom-attr-value">
             </body>
             """.trimIndent()
         }

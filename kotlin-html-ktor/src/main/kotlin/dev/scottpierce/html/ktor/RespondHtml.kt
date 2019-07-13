@@ -82,7 +82,7 @@ class HtmlOutgoingContent(
  */
 suspend fun ApplicationCall.respondHtmlFile(
     status: HttpStatusCode = HttpStatusCode.OK,
-    options: WriteOptions = WriteOptions.minified,
+    options: WriteOptions = WriteOptions.default,
     func: suspend FileContext.() -> Unit
 ): Unit = respond(HtmlFileOutgoingContent(status, options, func))
 
@@ -91,7 +91,7 @@ suspend fun ApplicationCall.respondHtmlFile(
  */
 suspend fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
-    options: WriteOptions = WriteOptions.minified,
+    options: WriteOptions = WriteOptions.default,
     func: suspend HtmlContext.() -> Unit
 ): Unit = respond(HtmlOutgoingContent(status, options, func))
 
@@ -100,6 +100,6 @@ suspend fun ApplicationCall.respondHtml(
  */
 suspend fun ApplicationCall.respondHtmlWriter(
     status: HttpStatusCode = HttpStatusCode.OK,
-    options: WriteOptions = WriteOptions.minified,
+    options: WriteOptions = WriteOptions.default,
     func: suspend HtmlWriter.() -> Unit
 ): Unit = respond(HtmlWriterOutgoingContent(status, options, func))

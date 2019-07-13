@@ -96,7 +96,7 @@ fun HtmlWriter.writeTag(tag: String) {
 
 fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: Style?) {
     if (id != null) write(" id=\"").write(id).write('"')
-    if (classes != null) write(" classes=\"").write(classes).write('"')
+    if (classes != null) write(" class=\"").write(classes).write('"')
     if (style != null) {
         write(" style=\"")
         writeStyle(style, true)

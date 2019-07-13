@@ -83,7 +83,9 @@ data class WriteOptions(
     val minifyStyles: Boolean = false
 ) {
     companion object {
-        val default = WriteOptions()
+        val readable = WriteOptions()
         val minified = WriteOptions(indent = "", newLine = "", minifyStyles = true)
+
+        var default = minified
     }
 }

@@ -11,7 +11,7 @@ class LiTest {
             li(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <li id="test-id" classes="test-class">
+            <li id="test-id" class="test-class">
             </li>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class LiTest {
             li("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <li id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <li id="test-id" class="test-class" custom-attr="custom-attr-value">
             </li>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class LiTest {
             li(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <li id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <li id="test-id" class="test-class" custom-attr="custom-attr-value">
             </li>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class LiTest {
 
         writer assertEquals {
             """
-            <li id="test-id" classes="test-class">
+            <li id="test-id" class="test-class">
             </li>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class LiTest {
 
         writer assertEquals {
             """
-            <li id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <li id="test-id" class="test-class" custom-attr="custom-attr-value">
             </li>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class LiTest {
 
         writer assertEquals {
             """
-            <li id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <li id="test-id" class="test-class" custom-attr="custom-attr-value">
             </li>
             """.trimIndent()
         }

@@ -13,7 +13,7 @@ class MoreSelectTests {
             }
         } assertEquals {
             """
-            <select classes="selectClass">
+            <select class="selectClass">
                 <option id="optionId" value="testValue">
                     <span>
                         Test

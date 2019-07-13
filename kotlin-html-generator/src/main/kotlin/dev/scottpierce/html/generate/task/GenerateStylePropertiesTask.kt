@@ -127,6 +127,7 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.STRING -> CodeBlock.of("\"boo\"")
                     PropertyType.POSITION -> CodeBlock.of("Position.STATIC")
                     PropertyType.LIST_STYLE -> CodeBlock.of("ListStyle(ListStyle.Type.DISC)")
+                    PropertyType.FLOAT_DIRECTION -> CodeBlock.of("FloatDirection.LEFT")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

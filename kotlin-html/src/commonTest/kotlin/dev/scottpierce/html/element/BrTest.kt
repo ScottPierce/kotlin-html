@@ -11,7 +11,7 @@ class BrTest {
             br(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <br id="test-id" classes="test-class">
+                <br id="test-id" class="test-class">
             """.trimIndent()
         }
     }
@@ -22,7 +22,7 @@ class BrTest {
             br("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <br id="test-id" classes="test-class" custom-attr="custom-attr-value">
+                <br id="test-id" class="test-class" custom-attr="custom-attr-value">
             """.trimIndent()
         }
     }
@@ -33,7 +33,7 @@ class BrTest {
             br(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-                <br id="test-id" classes="test-class" custom-attr="custom-attr-value">
+                <br id="test-id" class="test-class" custom-attr="custom-attr-value">
             """.trimIndent()
         }
     }
@@ -46,7 +46,7 @@ class BrTest {
 
         writer assertEquals {
             """
-                <br id="test-id" classes="test-class">
+                <br id="test-id" class="test-class">
             """.trimIndent()
         }
     }
@@ -59,7 +59,7 @@ class BrTest {
 
         writer assertEquals {
             """
-                <br id="test-id" classes="test-class" custom-attr="custom-attr-value">
+                <br id="test-id" class="test-class" custom-attr="custom-attr-value">
             """.trimIndent()
         }
     }
@@ -72,7 +72,7 @@ class BrTest {
 
         writer assertEquals {
             """
-                <br id="test-id" classes="test-class" custom-attr="custom-attr-value">
+                <br id="test-id" class="test-class" custom-attr="custom-attr-value">
             """.trimIndent()
         }
     }

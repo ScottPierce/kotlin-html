@@ -68,6 +68,15 @@ var StyleBuilder.flexDirection: FlexDirection?
         properties["flex-direction"] = value
     }
 
+val Style.float: FloatDirection?
+    get() = properties["float"] as FloatDirection?
+
+var StyleBuilder.float: FloatDirection?
+    get() = properties["float"] as FloatDirection?
+    set(value) {
+        properties["float"] = value
+    }
+
 val Style.fontFamily: String?
     get() = properties["font-family"] as String?
 
@@ -210,6 +219,42 @@ var StyleBuilder.marginBottom: Dimension?
     get() = properties["margin-bottom"] as Dimension?
     set(value) {
         properties["margin-bottom"] = value
+    }
+
+val Style.maxHeight: Dimension?
+    get() = properties["max-height"] as Dimension?
+
+var StyleBuilder.maxHeight: Dimension?
+    get() = properties["max-height"] as Dimension?
+    set(value) {
+        properties["max-height"] = value
+    }
+
+val Style.maxWidth: Dimension?
+    get() = properties["max-width"] as Dimension?
+
+var StyleBuilder.maxWidth: Dimension?
+    get() = properties["max-width"] as Dimension?
+    set(value) {
+        properties["max-width"] = value
+    }
+
+val Style.minHeight: Dimension?
+    get() = properties["min-height"] as Dimension?
+
+var StyleBuilder.minHeight: Dimension?
+    get() = properties["min-height"] as Dimension?
+    set(value) {
+        properties["min-height"] = value
+    }
+
+val Style.minWidth: Dimension?
+    get() = properties["min-width"] as Dimension?
+
+var StyleBuilder.minWidth: Dimension?
+    get() = properties["min-width"] as Dimension?
+    set(value) {
+        properties["min-width"] = value
     }
 
 val Style.width: Dimension?

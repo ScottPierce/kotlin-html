@@ -11,7 +11,7 @@ class UlTest {
             ul(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <ul id="test-id" classes="test-class">
+            <ul id="test-id" class="test-class">
             </ul>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class UlTest {
             ul("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <ul id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <ul id="test-id" class="test-class" custom-attr="custom-attr-value">
             </ul>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class UlTest {
             ul(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <ul id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <ul id="test-id" class="test-class" custom-attr="custom-attr-value">
             </ul>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class UlTest {
 
         writer assertEquals {
             """
-            <ul id="test-id" classes="test-class">
+            <ul id="test-id" class="test-class">
             </ul>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class UlTest {
 
         writer assertEquals {
             """
-            <ul id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <ul id="test-id" class="test-class" custom-attr="custom-attr-value">
             </ul>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class UlTest {
 
         writer assertEquals {
             """
-            <ul id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <ul id="test-id" class="test-class" custom-attr="custom-attr-value">
             </ul>
             """.trimIndent()
         }

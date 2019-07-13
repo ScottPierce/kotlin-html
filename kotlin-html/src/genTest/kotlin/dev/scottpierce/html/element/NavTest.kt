@@ -11,7 +11,7 @@ class NavTest {
             nav(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <nav id="test-id" classes="test-class">
+            <nav id="test-id" class="test-class">
             </nav>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class NavTest {
             nav("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <nav id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <nav id="test-id" class="test-class" custom-attr="custom-attr-value">
             </nav>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class NavTest {
             nav(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <nav id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <nav id="test-id" class="test-class" custom-attr="custom-attr-value">
             </nav>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class NavTest {
 
         writer assertEquals {
             """
-            <nav id="test-id" classes="test-class">
+            <nav id="test-id" class="test-class">
             </nav>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class NavTest {
 
         writer assertEquals {
             """
-            <nav id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <nav id="test-id" class="test-class" custom-attr="custom-attr-value">
             </nav>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class NavTest {
 
         writer assertEquals {
             """
-            <nav id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <nav id="test-id" class="test-class" custom-attr="custom-attr-value">
             </nav>
             """.trimIndent()
         }

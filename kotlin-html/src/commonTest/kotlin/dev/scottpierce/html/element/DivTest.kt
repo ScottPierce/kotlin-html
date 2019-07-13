@@ -11,7 +11,7 @@ class DivTest {
             div(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <div id="test-id" classes="test-class">
+            <div id="test-id" class="test-class">
             </div>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class DivTest {
             div("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <div id="test-id" class="test-class" custom-attr="custom-attr-value">
             </div>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class DivTest {
             div(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <div id="test-id" class="test-class" custom-attr="custom-attr-value">
             </div>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class DivTest {
 
         writer assertEquals {
             """
-            <div id="test-id" classes="test-class">
+            <div id="test-id" class="test-class">
             </div>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class DivTest {
 
         writer assertEquals {
             """
-            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <div id="test-id" class="test-class" custom-attr="custom-attr-value">
             </div>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class DivTest {
 
         writer assertEquals {
             """
-            <div id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <div id="test-id" class="test-class" custom-attr="custom-attr-value">
             </div>
             """.trimIndent()
         }

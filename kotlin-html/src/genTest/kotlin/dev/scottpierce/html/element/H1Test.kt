@@ -11,7 +11,7 @@ class H1Test {
             h1(id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <h1 id="test-id" classes="test-class">
+            <h1 id="test-id" class="test-class">
             </h1>
             """.trimIndent()
         }
@@ -23,7 +23,7 @@ class H1Test {
             h1("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <h1 id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <h1 id="test-id" class="test-class" custom-attr="custom-attr-value">
             </h1>
             """.trimIndent()
         }
@@ -35,7 +35,7 @@ class H1Test {
             h1(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         } assertEquals {
             """
-            <h1 id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <h1 id="test-id" class="test-class" custom-attr="custom-attr-value">
             </h1>
             """.trimIndent()
         }
@@ -49,7 +49,7 @@ class H1Test {
 
         writer assertEquals {
             """
-            <h1 id="test-id" classes="test-class">
+            <h1 id="test-id" class="test-class">
             </h1>
             """.trimIndent()
         }
@@ -63,7 +63,7 @@ class H1Test {
 
         writer assertEquals {
             """
-            <h1 id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <h1 id="test-id" class="test-class" custom-attr="custom-attr-value">
             </h1>
             """.trimIndent()
         }
@@ -77,7 +77,7 @@ class H1Test {
 
         writer assertEquals {
             """
-            <h1 id="test-id" classes="test-class" custom-attr="custom-attr-value">
+            <h1 id="test-id" class="test-class" custom-attr="custom-attr-value">
             </h1>
             """.trimIndent()
         }

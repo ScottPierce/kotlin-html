@@ -3,9 +3,29 @@
 package dev.scottpierce.html.style
 
 enum class Display(val value: String) {
+    INLINE("inline"),
     BLOCK("block"),
+    CONTENTS("contents"),
     FLEX("flex"),
     GRID("grid"),
+    INLINE_BLOCK("inline-block"),
+    INLINE_FLEX("inline-flex"),
+    INLINE_GRID("inline-grid"),
+    INLINE_TABLE("inline-table"),
+    LIST_ITEM("list-item"),
+    RUN_IN("run-in"),
+    TABLE("table"),
+    TABLE_CAPTION("table-caption"),
+    TABLE_COLUMN_GROUP("table-column-group"),
+    TABLE_HEADER_GROUP("table-header-group"),
+    TABLE_FOOTER_GROUP("table-footer-group"),
+    TABLE_ROW_GROUP("table-row-group"),
+    TABLE_CELL("table-cell"),
+    TABLE_COLUMN("table-column"),
+    TABLE_ROW("table-row"),
+    NONE("none"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
     ;
 
     override fun toString(): String {
@@ -125,6 +145,17 @@ enum class FlexDirection(val value: String) {
     ROW("row"),
     INHERIT("inherit"),
     INITIAL("initial"),
+    ;
+
+    override fun toString() = value
+}
+
+enum class FloatDirection(val value: String) {
+    NONE("none"),
+    LEFT("left"),
+    RIGHT("right"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
     ;
 
     override fun toString() = value
