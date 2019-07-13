@@ -102,6 +102,8 @@ data class ListStyle(
         class Url(url: String) : Image("url('$url')")
         object Initial : Image("initial")
         object Inherit : Image("inherit")
+
+        override fun toString(): String = value
     }
 }
 
