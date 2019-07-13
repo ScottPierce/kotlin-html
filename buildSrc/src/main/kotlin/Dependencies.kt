@@ -1,6 +1,6 @@
 object Versions {
     const val kotlin = "1.3.41"
-    const val ktor = "1.2.1"
+    const val ktor = "1.2.2"
 }
 
 object Plugins {
