@@ -259,6 +259,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun textDecoration() {
+        val style = style {
+            textDecoration = "boo"
+            assertEquals("boo", textDecoration)
+        }
+        assertEquals("boo", style.textDecoration)
+    }
+
+    @Test
     fun textTransform() {
         val style = style {
             textTransform = TextTransform.NONE

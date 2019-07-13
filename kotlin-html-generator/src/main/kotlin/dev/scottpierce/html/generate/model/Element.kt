@@ -38,6 +38,11 @@ sealed class Element(
                 childrenContext = Context.Body
             ),
             Normal(
+                tagName = "footer",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
                 tagName = "h1",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
@@ -71,6 +76,11 @@ sealed class Element(
                 tagName = "head",
                 callingContext = Context.Html,
                 childrenContext = Context.Head
+            ),
+            Normal(
+                tagName = "header",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
             ),
             Normal(
                 tagName = "html",

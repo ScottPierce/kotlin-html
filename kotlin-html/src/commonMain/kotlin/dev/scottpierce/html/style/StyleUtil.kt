@@ -32,6 +32,10 @@ fun HtmlWriter.writeStyle(style: Style, isInline: Boolean) {
 fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
     val minifyStyles = options.minifyStyles
 
+    newLine()
+    write("<style>")
+    indent()
+
     for ((selector, style) in styleSheet.styles) {
         newLine() // new line for after a style is written
 
@@ -46,4 +50,8 @@ fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
         deindent()
         newLine().write('}')
     }
+
+    deindent()
+    newLine()
+    write("</style>")
 }

@@ -2,9 +2,9 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.StyleSheetBuilder
-import dev.scottpierce.html.write.HtmlWriter
 import dev.scottpierce.html.style.StyleSheet
+import dev.scottpierce.html.style.writeStyleSheet
+import dev.scottpierce.html.write.HtmlWriter
 
 @DslMarker
 annotation class HtmlDsl
@@ -12,6 +12,14 @@ annotation class HtmlDsl
 @HtmlDsl
 interface Context {
     val writer: HtmlWriter
+
+    /**
+     * Inline a [StyleSheet] into the current location.
+     */
+    @HtmlDsl
+    operator fun StyleSheet.unaryPlus() {
+        this@Context.writer.writeStyleSheet(this)
+    }
 }
 
 interface HasText : Context {
@@ -28,19 +36,7 @@ class FileContext(override val writer: HtmlWriter) : Context
 class HtmlContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class HeadContext(override val writer: HtmlWriter) : Context {
-    /**
-     * Creates a [StyleSheet] and writes it to the current `head` element.
-     *
-     * This function is on the [HeadContext] explicitly instead of as an extension function to prevent the confusion
-     * of creating a [StyleSheet] and having it not be written due to importing the wrong extension function.
-     */
-    @HtmlDsl
-    inline fun styleSheet(func: StyleSheetBuilder.() -> Unit = {}) {
-        val builder = StyleSheetBuilder().apply(func)
-        this.styleSheet(builder)
-    }
-}
+class HeadContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
 class ScriptContext(override val writer: HtmlWriter) : Context

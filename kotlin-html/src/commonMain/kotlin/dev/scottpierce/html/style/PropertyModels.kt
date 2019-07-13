@@ -172,6 +172,47 @@ enum class Position(val value: String) {
     override fun toString(): String = value
 }
 
+//class TextDecoration(
+//    vararg val line: Line,
+//    vararg val style: Style,
+//    val color: Color? = null
+//) {
+//    enum class Line(val value: String) {
+//        NONE("none"),
+//        UNDERLINE("underline"),
+//        OVERLINE("overline"),
+//        LINE_THROUGH("line-through"),
+//        INITIAL("initial"),
+//        INHERIT("inherit"),
+//        ;
+//
+//        override fun toString(): String = value
+//    }
+//
+//    enum class Style(val value: String) {
+//        SOLID("solid"),
+//        DOUBLE("double"),
+//        DOTTED("dotted"),
+//        DASHED("dashed"),
+//        WAVY("wavy"),
+//        INITIAL("initial"),
+//        INHERIT("inherit"),
+//        ;
+//
+//        override fun toString(): String = value
+//    }
+//
+//    override fun toString(): String {
+//        val sb = StringBuilder()
+//
+//        sb.append(line)
+//
+//        if ()
+//
+//        return sb.toString()
+//    }
+//}
+
 enum class TextTransform(val value: String) {
     NONE("none"),
     CAPITALIZE("capitalize"),
