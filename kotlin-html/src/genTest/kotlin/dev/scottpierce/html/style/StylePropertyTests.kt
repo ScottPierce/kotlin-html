@@ -97,6 +97,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun listStyle() {
+        val style = style {
+            listStyle = JustifyContent.CENTER
+            assertEquals(JustifyContent.CENTER, listStyle)
+        }
+        assertEquals(JustifyContent.CENTER, style.listStyle)
+    }
+
+    @Test
     fun outline() {
         val style = style {
             outline = "boo"

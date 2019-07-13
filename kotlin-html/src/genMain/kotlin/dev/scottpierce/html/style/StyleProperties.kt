@@ -95,6 +95,15 @@ var StyleBuilder.justifyContent: JustifyContent?
         properties["justify-content"] = value
     }
 
+val Style.listStyle: JustifyContent?
+    get() = properties["list-style"] as JustifyContent?
+
+var StyleBuilder.listStyle: JustifyContent?
+    get() = properties["list-style"] as JustifyContent?
+    set(value) {
+        properties["list-style"] = value
+    }
+
 val Style.outline: String?
     get() = properties["outline"] as String?
 

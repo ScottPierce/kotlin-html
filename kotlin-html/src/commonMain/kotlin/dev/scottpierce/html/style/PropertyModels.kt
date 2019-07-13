@@ -26,6 +26,85 @@ enum class JustifyContent(val value: String) {
     override fun toString() = value
 }
 
+data class ListStyle(
+    val type: Type,
+    val position: Position = DEFAULT_POSITION,
+    val image: Image = DEFAULT_IMAGE
+) {
+    companion object {
+        private val DEFAULT_POSITION = Position.OUTSIDE
+        private val DEFAULT_IMAGE = Image.None
+    }
+
+    override fun toString(): String {
+        val sb = StringBuilder()
+
+        sb.append(type)
+
+        val hasPosition: Boolean = position != DEFAULT_POSITION
+        val hasImage: Boolean = image !== DEFAULT_IMAGE
+
+        if (hasPosition || hasImage) {
+            sb.append(' ')
+            sb.append(position)
+
+            if (hasImage) {
+                sb.append(' ')
+                sb.append(image)
+            }
+        }
+
+        return sb.toString()
+    }
+
+    enum class Type(val value: String) {
+        DISC("disc"),
+        ARMENIAN("armenian"),
+        CIRCLE("circle"),
+        CJK_IDEOGRAPHIC("cjk-ideographic"),
+        DECIMAL("decimal"),
+        DECIMAL_LEADING_ZERO("decimal-leading-zero"),
+        GEORGIAN("georgian"),
+        HEBREW("hebrew"),
+        HIRAGANA("hiragana"),
+        HIRAGANA_IROHA("hiragana-iroha"),
+        KATAKANA("katakana"),
+        KATAKANA_IROHA("katakana-iroha"),
+        LOWER_ALPHA("lower-alpha"),
+        LOWER_GREEK("lower-greek"),
+        LOWER_LATIN("lower-latin"),
+        LOWER_ROMAN("lower-roman"),
+        NONE("none"),
+        SQUARE("square"),
+        UPPER_ALPHA("upper-alpha"),
+        UPPER_GREEK("upper-greek"),
+        UPPER_LATIN("upper-latin"),
+        UPPER_ROMAN("upper-roman"),
+        INITIAL("initial"),
+        INHERIT("inherit"),
+        ;
+
+        override fun toString(): String = value
+    }
+
+    enum class Position(val value: String) {
+        INSIDE("inside"),
+        OUTSIDE("outside"),
+        INITIAL("initial"),
+        INHERIT("inherit"),
+        ;
+
+        override fun toString(): String = value
+    }
+
+    sealed class Image(val value: String) {
+        object None : Image("none")
+        class Url(url: String) : Image("url('$url')")
+        object Initial : Image("initial")
+        object Inherit : Image("inherit")
+    }
+}
+
 enum class AlignItems(val value: String) {
     BASELINE("baseline"),
     CENTER("center"),

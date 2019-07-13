@@ -19,6 +19,7 @@ enum class StyleProperty(
     FONT_FAMILY("font-family", PropertyType.STRING),
     HEIGHT("height", PropertyType.DIMENSION),
     JUSTIFY_CONTENT("justify-content", PropertyType.JUSTIFY_CONTENT),
+    LIST_STYLE("list-style", PropertyType.JUSTIFY_CONTENT),
     OUTLINE("outline", PropertyType.STRING),
     PADDING("padding", PropertyType.DIMENSION),
     PADDING_LEFT("padding-left", PropertyType.DIMENSION),
@@ -47,6 +48,7 @@ enum class PropertyType(val className: ClassName) {
     INT(com.squareup.kotlinpoet.INT),
     JUSTIFY_CONTENT(ClassName("dev.scottpierce.html.style", "JustifyContent")),
     POSITION(ClassName("dev.scottpierce.html.style", "Position")),
+    LIST_STYLE(ClassName("dev.scottpierce.html.style", "ListStyle")),
     STRING(com.squareup.kotlinpoet.STRING),
     ;
 }
