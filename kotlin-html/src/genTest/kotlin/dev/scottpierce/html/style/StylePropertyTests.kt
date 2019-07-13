@@ -99,10 +99,10 @@ class StylePropertyTests {
     @Test
     fun listStyle() {
         val style = style {
-            listStyle = JustifyContent.CENTER
-            assertEquals(JustifyContent.CENTER, listStyle)
+            listStyle = ListStyle(ListStyle.Type.DISC)
+            assertEquals(ListStyle(ListStyle.Type.DISC), listStyle)
         }
-        assertEquals(JustifyContent.CENTER, style.listStyle)
+        assertEquals(ListStyle(ListStyle.Type.DISC), style.listStyle)
     }
 
     @Test

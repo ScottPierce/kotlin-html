@@ -95,11 +95,11 @@ var StyleBuilder.justifyContent: JustifyContent?
         properties["justify-content"] = value
     }
 
-val Style.listStyle: JustifyContent?
-    get() = properties["list-style"] as JustifyContent?
+val Style.listStyle: ListStyle?
+    get() = properties["list-style"] as ListStyle?
 
-var StyleBuilder.listStyle: JustifyContent?
-    get() = properties["list-style"] as JustifyContent?
+var StyleBuilder.listStyle: ListStyle?
+    get() = properties["list-style"] as ListStyle?
     set(value) {
         properties["list-style"] = value
     }
