@@ -172,6 +172,18 @@ enum class Position(val value: String) {
     override fun toString(): String = value
 }
 
+enum class TextTransform(val value: String) {
+    NONE("none"),
+    CAPITALIZE("capitalize"),
+    UPPERCASE("uppercase"),
+    LOWERCASE("lowercase"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
+    ;
+
+    override fun toString(): String = value
+}
+
 data class GridColumn internal constructor(
     val start: Int,
     val isStartSpan: Boolean,

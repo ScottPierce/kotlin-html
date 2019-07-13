@@ -259,6 +259,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun textTransform() {
+        val style = style {
+            textTransform = TextTransform.NONE
+            assertEquals(TextTransform.NONE, textTransform)
+        }
+        assertEquals(TextTransform.NONE, style.textTransform)
+    }
+
+    @Test
     fun width() {
         val style = style {
             width = Dimension.Size(1f, DimensionUnit.PX)

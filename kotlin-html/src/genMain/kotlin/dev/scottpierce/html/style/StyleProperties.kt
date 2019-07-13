@@ -257,6 +257,15 @@ var StyleBuilder.minWidth: Dimension?
         properties["min-width"] = value
     }
 
+val Style.textTransform: TextTransform?
+    get() = properties["text-transform"] as TextTransform?
+
+var StyleBuilder.textTransform: TextTransform?
+    get() = properties["text-transform"] as TextTransform?
+    set(value) {
+        properties["text-transform"] = value
+    }
+
 val Style.width: Dimension?
     get() = properties["width"] as Dimension?
 

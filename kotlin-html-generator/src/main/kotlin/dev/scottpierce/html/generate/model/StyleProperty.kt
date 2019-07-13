@@ -37,6 +37,7 @@ enum class StyleProperty(
     MAX_WIDTH("max-width", PropertyType.DIMENSION),
     MIN_HEIGHT("min-height", PropertyType.DIMENSION),
     MIN_WIDTH("min-width", PropertyType.DIMENSION),
+    TEXT_TRANSFORM("text-transform", PropertyType.TEXT_TRANSFORM),
     WIDTH("width", PropertyType.DIMENSION),
     Z_INDEX("z-index", PropertyType.INT),
     ;
@@ -56,5 +57,6 @@ enum class PropertyType(val className: ClassName) {
     POSITION(ClassName("dev.scottpierce.html.style", "Position")),
     LIST_STYLE(ClassName("dev.scottpierce.html.style", "ListStyle")),
     STRING(com.squareup.kotlinpoet.STRING),
+    TEXT_TRANSFORM(ClassName("dev.scottpierce.html.style", "TextTransform")),
     ;
 }
