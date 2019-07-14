@@ -41,6 +41,15 @@ var StyleBuilder.border: String?
         properties["border"] = value
     }
 
+val Style.bottom: Dimension?
+    get() = properties["bottom"] as Dimension?
+
+var StyleBuilder.bottom: Dimension?
+    get() = properties["bottom"] as Dimension?
+    set(value) {
+        properties["bottom"] = value
+    }
+
 val Style.color: Color?
     get() = properties["color"] as Color?
 
@@ -57,6 +66,42 @@ var StyleBuilder.display: Display?
     get() = properties["display"] as Display?
     set(value) {
         properties["display"] = value
+    }
+
+val Style.flex: String?
+    get() = properties["flex"] as String?
+
+var StyleBuilder.flex: String?
+    get() = properties["flex"] as String?
+    set(value) {
+        properties["flex"] = value
+    }
+
+val Style.flexGrow: String?
+    get() = properties["flex-grow"] as String?
+
+var StyleBuilder.flexGrow: String?
+    get() = properties["flex-grow"] as String?
+    set(value) {
+        properties["flex-grow"] = value
+    }
+
+val Style.flexShrink: String?
+    get() = properties["flex-shrink"] as String?
+
+var StyleBuilder.flexShrink: String?
+    get() = properties["flex-shrink"] as String?
+    set(value) {
+        properties["flex-shrink"] = value
+    }
+
+val Style.flexBasis: String?
+    get() = properties["flex-basis"] as String?
+
+var StyleBuilder.flexBasis: String?
+    get() = properties["flex-basis"] as String?
+    set(value) {
+        properties["flex-basis"] = value
     }
 
 val Style.flexDirection: FlexDirection?
@@ -86,6 +131,42 @@ var StyleBuilder.fontFamily: String?
         properties["font-family"] = value
     }
 
+val Style.gridColumnGap: Dimension?
+    get() = properties["grid-column-gap"] as Dimension?
+
+var StyleBuilder.gridColumnGap: Dimension?
+    get() = properties["grid-column-gap"] as Dimension?
+    set(value) {
+        properties["grid-column-gap"] = value
+    }
+
+val Style.gridRowGap: Dimension?
+    get() = properties["grid-row-gap"] as Dimension?
+
+var StyleBuilder.gridRowGap: Dimension?
+    get() = properties["grid-row-gap"] as Dimension?
+    set(value) {
+        properties["grid-row-gap"] = value
+    }
+
+val Style.gridTemplateColumns: String?
+    get() = properties["grid-template-columns"] as String?
+
+var StyleBuilder.gridTemplateColumns: String?
+    get() = properties["grid-template-columns"] as String?
+    set(value) {
+        properties["grid-template-columns"] = value
+    }
+
+val Style.gridTemplateRows: String?
+    get() = properties["grid-template-rows"] as String?
+
+var StyleBuilder.gridTemplateRows: String?
+    get() = properties["grid-template-rows"] as String?
+    set(value) {
+        properties["grid-template-rows"] = value
+    }
+
 val Style.height: Dimension?
     get() = properties["height"] as Dimension?
 
@@ -95,6 +176,15 @@ var StyleBuilder.height: Dimension?
         properties["height"] = value
     }
 
+val Style.justifySelf: JustifyContent?
+    get() = properties["justify-self"] as JustifyContent?
+
+var StyleBuilder.justifySelf: JustifyContent?
+    get() = properties["justify-self"] as JustifyContent?
+    set(value) {
+        properties["justify-self"] = value
+    }
+
 val Style.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
 
@@ -102,6 +192,15 @@ var StyleBuilder.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
     set(value) {
         properties["justify-content"] = value
+    }
+
+val Style.left: Dimension?
+    get() = properties["left"] as Dimension?
+
+var StyleBuilder.left: Dimension?
+    get() = properties["left"] as Dimension?
+    set(value) {
+        properties["left"] = value
     }
 
 val Style.listStyle: ListStyle?
@@ -257,6 +356,15 @@ var StyleBuilder.minWidth: Dimension?
         properties["min-width"] = value
     }
 
+val Style.right: Dimension?
+    get() = properties["right"] as Dimension?
+
+var StyleBuilder.right: Dimension?
+    get() = properties["right"] as Dimension?
+    set(value) {
+        properties["right"] = value
+    }
+
 val Style.textDecoration: String?
     get() = properties["text-decoration"] as String?
 
@@ -273,6 +381,15 @@ var StyleBuilder.textTransform: TextTransform?
     get() = properties["text-transform"] as TextTransform?
     set(value) {
         properties["text-transform"] = value
+    }
+
+val Style.top: Dimension?
+    get() = properties["top"] as Dimension?
+
+var StyleBuilder.top: Dimension?
+    get() = properties["top"] as Dimension?
+    set(value) {
+        properties["top"] = value
     }
 
 val Style.width: Dimension?

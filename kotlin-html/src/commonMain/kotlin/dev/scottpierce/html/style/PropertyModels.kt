@@ -41,6 +41,7 @@ enum class JustifyContent(val value: String) {
     INITIAL("initial"),
     SPACE_AROUND("space-around"),
     SPACE_BETWEEN("space-between"),
+    SPACE_EVENLY("space-evenly"),
     ;
 
     override fun toString() = value

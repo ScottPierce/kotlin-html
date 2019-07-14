@@ -43,6 +43,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun bottom() {
+        val style = style {
+            bottom = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), bottom)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.bottom)
+    }
+
+    @Test
     fun color() {
         val style = style {
             color = color("#555555")
@@ -58,6 +67,42 @@ class StylePropertyTests {
             assertEquals(Display.BLOCK, display)
         }
         assertEquals(Display.BLOCK, style.display)
+    }
+
+    @Test
+    fun flex() {
+        val style = style {
+            flex = "boo"
+            assertEquals("boo", flex)
+        }
+        assertEquals("boo", style.flex)
+    }
+
+    @Test
+    fun flexGrow() {
+        val style = style {
+            flexGrow = "boo"
+            assertEquals("boo", flexGrow)
+        }
+        assertEquals("boo", style.flexGrow)
+    }
+
+    @Test
+    fun flexShrink() {
+        val style = style {
+            flexShrink = "boo"
+            assertEquals("boo", flexShrink)
+        }
+        assertEquals("boo", style.flexShrink)
+    }
+
+    @Test
+    fun flexBasis() {
+        val style = style {
+            flexBasis = "boo"
+            assertEquals("boo", flexBasis)
+        }
+        assertEquals("boo", style.flexBasis)
     }
 
     @Test
@@ -88,6 +133,42 @@ class StylePropertyTests {
     }
 
     @Test
+    fun gridColumnGap() {
+        val style = style {
+            gridColumnGap = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), gridColumnGap)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.gridColumnGap)
+    }
+
+    @Test
+    fun gridRowGap() {
+        val style = style {
+            gridRowGap = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), gridRowGap)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.gridRowGap)
+    }
+
+    @Test
+    fun gridTemplateColumns() {
+        val style = style {
+            gridTemplateColumns = "boo"
+            assertEquals("boo", gridTemplateColumns)
+        }
+        assertEquals("boo", style.gridTemplateColumns)
+    }
+
+    @Test
+    fun gridTemplateRows() {
+        val style = style {
+            gridTemplateRows = "boo"
+            assertEquals("boo", gridTemplateRows)
+        }
+        assertEquals("boo", style.gridTemplateRows)
+    }
+
+    @Test
     fun height() {
         val style = style {
             height = Dimension.Size(1f, DimensionUnit.PX)
@@ -97,12 +178,30 @@ class StylePropertyTests {
     }
 
     @Test
+    fun justifySelf() {
+        val style = style {
+            justifySelf = JustifyContent.CENTER
+            assertEquals(JustifyContent.CENTER, justifySelf)
+        }
+        assertEquals(JustifyContent.CENTER, style.justifySelf)
+    }
+
+    @Test
     fun justifyContent() {
         val style = style {
             justifyContent = JustifyContent.CENTER
             assertEquals(JustifyContent.CENTER, justifyContent)
         }
         assertEquals(JustifyContent.CENTER, style.justifyContent)
+    }
+
+    @Test
+    fun left() {
+        val style = style {
+            left = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), left)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.left)
     }
 
     @Test
@@ -259,6 +358,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun right() {
+        val style = style {
+            right = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), right)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.right)
+    }
+
+    @Test
     fun textDecoration() {
         val style = style {
             textDecoration = "boo"
@@ -274,6 +382,15 @@ class StylePropertyTests {
             assertEquals(TextTransform.NONE, textTransform)
         }
         assertEquals(TextTransform.NONE, style.textTransform)
+    }
+
+    @Test
+    fun top() {
+        val style = style {
+            top = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), top)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.top)
     }
 
     @Test
