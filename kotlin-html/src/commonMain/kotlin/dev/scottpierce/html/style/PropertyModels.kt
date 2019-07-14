@@ -173,11 +173,11 @@ enum class Position(val value: String) {
     override fun toString(): String = value
 }
 
-//class TextDecoration(
+// class TextDecoration(
 //    vararg val line: Line,
 //    vararg val style: Style,
 //    val color: Color? = null
-//) {
+// ) {
 //    enum class Line(val value: String) {
 //        NONE("none"),
 //        UNDERLINE("underline"),
@@ -212,7 +212,7 @@ enum class Position(val value: String) {
 //
 //        return sb.toString()
 //    }
-//}
+// }
 
 enum class TextTransform(val value: String) {
     NONE("none"),
