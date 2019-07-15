@@ -14,6 +14,10 @@ class StyleSheetBuilder : StyleSheet {
     inline fun style(selector: String, func: StyleBuilder.() -> Unit) {
         styles += selector to StyleBuilder().apply(func)
     }
+
+    fun style(selector: String, style: Style) {
+        styles += selector to style
+    }
 }
 
 inline fun styleSheet(func: StyleSheetBuilder.() -> Unit = {}): StyleSheet = StyleSheetBuilder().apply(func)
