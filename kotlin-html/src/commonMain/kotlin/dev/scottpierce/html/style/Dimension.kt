@@ -4,11 +4,11 @@ sealed class Dimension {
     companion object {
         const val ZERO = "0"
     }
-    
+
     data class Size(val value: Float, val unit: DimensionUnit) : Dimension() {
         override fun toString(): String = if (value == 0f) ZERO else "$value$unit"
     }
-    
+
     object Auto : Dimension() {
         override fun toString(): String {
             return "auto"
