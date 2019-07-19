@@ -20,7 +20,7 @@ class HeaderStyleTest {
             """
             <html>
                 <head>
-                    <style>
+                    <style type="text/css">
                     </style>
                 </head>
             </html>
@@ -44,7 +44,7 @@ class HeaderStyleTest {
             """
             <html>
                 <head>
-                    <style>
+                    <style type="text/css">
                         .example-class {
                             example-property: example-value;
                         }
@@ -77,7 +77,7 @@ class HeaderStyleTest {
             """
             <html>
                 <head>
-                    <style>
+                    <style type="text/css">
                         .example-class {
                             example-property: example-value;
                             example-property2: example-value2;
