@@ -100,7 +100,7 @@ sealed class Element(
             ),
             Void(
                 tagName = "link",
-                callingContext = Context.Head,
+                callingContext = Context.Context,
                 supportedAttributes = listOf(
                     Attr.String("href"),
                     Attr.String("rel"),
@@ -138,7 +138,7 @@ sealed class Element(
             ),
             Normal(
                 tagName = "script",
-                callingContext = Context.Head,
+                callingContext = Context.Context,
                 childrenContext = Context.Script,
                 supportedAttributes = listOf(
                     Attr.Boolean("async"),
@@ -192,6 +192,7 @@ sealed class Element(
 }
 
 enum class Context {
+    Context,
     File,
     Html,
     Head,
@@ -201,11 +202,12 @@ enum class Context {
     Ul,
     ;
 
-    companion object {
-        val className = ClassName("dev.scottpierce.html.element", "Context")
+    val contextClassName: ClassName by lazy {
+        ClassName(
+            packageName = "dev.scottpierce.html.element",
+            simpleName = if (this == Context) "Context" else "${name}Context"
+        )
     }
-
-    val contextClassName = ClassName("dev.scottpierce.html.element", "${name}Context")
 }
 
 sealed class Attr(

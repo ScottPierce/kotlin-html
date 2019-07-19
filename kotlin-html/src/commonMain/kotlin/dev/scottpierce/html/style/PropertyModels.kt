@@ -2,6 +2,22 @@
 
 package dev.scottpierce.html.style
 
+enum class AlignSelf(val value: String) {
+    AUTO("auto"),
+    BASELINE("baseline"),
+    CENTER("center"),
+    END("end"),
+    FLEX_END("flex-end"),
+    FLEX_START("flex-start"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
+    STRETCH("stretch"),
+    START("start"),
+    ;
+
+    override fun toString() = value
+}
+
 enum class Display(val value: String) {
     INLINE("inline"),
     BLOCK("block"),
@@ -42,6 +58,16 @@ enum class JustifyContent(val value: String) {
     SPACE_AROUND("space-around"),
     SPACE_BETWEEN("space-between"),
     SPACE_EVENLY("space-evenly"),
+    ;
+
+    override fun toString() = value
+}
+
+enum class JustifySelf(val value: String) {
+    STRETCH("stretch"),
+    CENTER("center"),
+    START("start"),
+    END("end"),
     ;
 
     override fun toString() = value

@@ -129,6 +129,7 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.LIST_STYLE -> CodeBlock.of("ListStyle(ListStyle.Type.DISC)")
                     PropertyType.FLOAT_DIRECTION -> CodeBlock.of("FloatDirection.LEFT")
                     PropertyType.TEXT_TRANSFORM -> CodeBlock.of("TextTransform.NONE")
+                    PropertyType.ALIGN_SELF -> CodeBlock.of("AlignSelf.AUTO")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

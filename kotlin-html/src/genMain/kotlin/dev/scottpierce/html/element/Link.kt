@@ -69,7 +69,7 @@ fun HtmlWriter.link(
 }
 
 @HtmlDsl
-fun HeadContext.link(
+fun Context.link(
     href: String? = null,
     rel: String? = null,
     hreflang: String? = null,
@@ -88,7 +88,7 @@ fun HeadContext.link(
 }
 
 @HtmlDsl
-fun HeadContext.link(
+fun Context.link(
     vararg attrs: Pair<String, String?>,
     href: String? = null,
     rel: String? = null,
@@ -109,7 +109,7 @@ fun HeadContext.link(
 }
 
 @HtmlDsl
-fun HeadContext.link(
+fun Context.link(
     attrs: List<Pair<String, String?>>,
     href: String? = null,
     rel: String? = null,

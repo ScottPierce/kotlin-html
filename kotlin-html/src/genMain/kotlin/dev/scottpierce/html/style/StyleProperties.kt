@@ -14,6 +14,33 @@ var StyleBuilder.alignItems: AlignItems?
         properties["align-items"] = value
     }
 
+val Style.alignSelf: AlignSelf?
+    get() = properties["align-self"] as AlignSelf?
+
+var StyleBuilder.alignSelf: AlignSelf?
+    get() = properties["align-self"] as AlignSelf?
+    set(value) {
+        properties["align-self"] = value
+    }
+
+val Style.animationName: String?
+    get() = properties["animation-name"] as String?
+
+var StyleBuilder.animationName: String?
+    get() = properties["animation-name"] as String?
+    set(value) {
+        properties["animation-name"] = value
+    }
+
+val Style.animationDuration: String?
+    get() = properties["animation-duration"] as String?
+
+var StyleBuilder.animationDuration: String?
+    get() = properties["animation-duration"] as String?
+    set(value) {
+        properties["animation-duration"] = value
+    }
+
 val Style.background: String?
     get() = properties["background"] as String?
 

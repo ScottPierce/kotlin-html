@@ -65,7 +65,7 @@ inline fun HtmlWriter.script(
 }
 
 @HtmlDsl
-inline fun HeadContext.script(
+inline fun Context.script(
     async: Boolean = false,
     defer: Boolean = false,
     src: String? = null,
@@ -82,7 +82,7 @@ inline fun HeadContext.script(
 }
 
 @HtmlDsl
-inline fun HeadContext.script(
+inline fun Context.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -101,7 +101,7 @@ inline fun HeadContext.script(
 }
 
 @HtmlDsl
-inline fun HeadContext.script(
+inline fun Context.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,

@@ -33,7 +33,7 @@ fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
     val minifyStyles = options.minifyStyles
 
     newLine()
-    write("<style>")
+    write("<style type=\"text/css\">")
     indent()
 
     for ((selector, style) in styleSheet.styles) {

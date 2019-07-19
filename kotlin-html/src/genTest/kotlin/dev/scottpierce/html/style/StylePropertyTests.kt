@@ -16,6 +16,33 @@ class StylePropertyTests {
     }
 
     @Test
+    fun alignSelf() {
+        val style = style {
+            alignSelf = AlignSelf.AUTO
+            assertEquals(AlignSelf.AUTO, alignSelf)
+        }
+        assertEquals(AlignSelf.AUTO, style.alignSelf)
+    }
+
+    @Test
+    fun animationName() {
+        val style = style {
+            animationName = "boo"
+            assertEquals("boo", animationName)
+        }
+        assertEquals("boo", style.animationName)
+    }
+
+    @Test
+    fun animationDuration() {
+        val style = style {
+            animationDuration = "boo"
+            assertEquals("boo", animationDuration)
+        }
+        assertEquals("boo", style.animationDuration)
+    }
+
+    @Test
     fun background() {
         val style = style {
             background = "boo"

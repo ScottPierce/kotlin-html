@@ -10,6 +10,9 @@ enum class StyleProperty(
     val type: PropertyType
 ) {
     ALIGN_ITEMS("align-items", PropertyType.ALIGN_ITEMS),
+    ALIGN_SELF("align-self", PropertyType.ALIGN_SELF),
+    ANIMATION_NAME("animation-name", PropertyType.STRING),
+    ANIMATION_DURATION("animation-durationw", PropertyType.STRING),
     BACKGROUND("background", PropertyType.STRING),
     BACKGROUND_COLOR("background-color", PropertyType.COLOR),
     BORDER("border", PropertyType.STRING),
@@ -61,6 +64,7 @@ enum class StyleProperty(
 
 enum class PropertyType(val className: ClassName) {
     ALIGN_ITEMS(ClassName("dev.scottpierce.html.style", "AlignItems")),
+    ALIGN_SELF(ClassName("dev.scottpierce.html.style", "AlignSelf")),
     COLOR(ClassName("dev.scottpierce.html.style", "Color")),
     DIMENSION(ClassName("dev.scottpierce.html.style", "Dimension")),
     DISPLAY(ClassName("dev.scottpierce.html.style", "Display")),
