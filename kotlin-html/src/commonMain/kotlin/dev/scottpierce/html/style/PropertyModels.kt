@@ -165,6 +165,17 @@ enum class AlignItems(val value: String) {
     override fun toString() = value
 }
 
+enum class TextAlign(val value: String) {
+    LEFT("left"),
+    RIGHT("right"),
+    CENTER("center"),
+    JUSTIFY("justify"),
+    INHERIT("inherit"),
+    ;
+
+    override fun toString() = value
+}
+
 enum class FlexDirection(val value: String) {
     COLUMN("column"),
     COLUMN_REVERSE("column-reverse"),

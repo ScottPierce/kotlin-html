@@ -1,4 +1,4 @@
-package dev.scottpierce.html
+package dev.scottpierce.html.style
 
 import dev.scottpierce.html.style.style
 import dev.scottpierce.html.util.assertEquals

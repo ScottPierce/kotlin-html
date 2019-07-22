@@ -18,10 +18,11 @@ inline class Color(val hexString: String) {
             return "#$hexR$hexG$hexB${hexA.orEmpty()}"
         }
 
-        private fun String.toHex(): String = if (this[0] == '#') this else "#$this"
+        private fun String.toHex(): String = this
 
         val WHITE = Color("#ffffff")
         val BLACK = Color("#000000")
+        val INHERIT = Color("inherit")
     }
 
     constructor(red: Int, green: Int, blue: Int, alpha: Float = 1f) :

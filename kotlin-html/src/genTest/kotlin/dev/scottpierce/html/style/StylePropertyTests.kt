@@ -34,12 +34,12 @@ class StylePropertyTests {
     }
 
     @Test
-    fun animationDuration() {
+    fun animationDurationw() {
         val style = style {
-            animationDuration = "boo"
-            assertEquals("boo", animationDuration)
+            animationDurationw = "boo"
+            assertEquals("boo", animationDurationw)
         }
-        assertEquals("boo", style.animationDuration)
+        assertEquals("boo", style.animationDurationw)
     }
 
     @Test
@@ -70,6 +70,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun borderRadius() {
+        val style = style {
+            borderRadius = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), borderRadius)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.borderRadius)
+    }
+
+    @Test
     fun bottom() {
         val style = style {
             bottom = Dimension.Size(1f, DimensionUnit.PX)
@@ -85,6 +94,15 @@ class StylePropertyTests {
             assertEquals(color("#555555"), color)
         }
         assertEquals(color("#555555"), style.color)
+    }
+
+    @Test
+    fun cursor() {
+        val style = style {
+            cursor = "boo"
+            assertEquals("boo", cursor)
+        }
+        assertEquals("boo", style.cursor)
     }
 
     @Test
@@ -160,6 +178,24 @@ class StylePropertyTests {
     }
 
     @Test
+    fun fontWeight() {
+        val style = style {
+            fontWeight = "boo"
+            assertEquals("boo", fontWeight)
+        }
+        assertEquals("boo", style.fontWeight)
+    }
+
+    @Test
+    fun fontSize() {
+        val style = style {
+            fontSize = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), fontSize)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.fontSize)
+    }
+
+    @Test
     fun gridColumnGap() {
         val style = style {
             gridColumnGap = Dimension.Size(1f, DimensionUnit.PX)
@@ -229,6 +265,15 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), left)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.left)
+    }
+
+    @Test
+    fun letterSpacing() {
+        val style = style {
+            letterSpacing = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), letterSpacing)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.letterSpacing)
     }
 
     @Test
@@ -394,12 +439,30 @@ class StylePropertyTests {
     }
 
     @Test
+    fun textAlign() {
+        val style = style {
+            textAlign = TextAlign.CENTER
+            assertEquals(TextAlign.CENTER, textAlign)
+        }
+        assertEquals(TextAlign.CENTER, style.textAlign)
+    }
+
+    @Test
     fun textDecoration() {
         val style = style {
             textDecoration = "boo"
             assertEquals("boo", textDecoration)
         }
         assertEquals("boo", style.textDecoration)
+    }
+
+    @Test
+    fun textDecorationLine() {
+        val style = style {
+            textDecorationLine = "boo"
+            assertEquals("boo", textDecorationLine)
+        }
+        assertEquals("boo", style.textDecorationLine)
     }
 
     @Test

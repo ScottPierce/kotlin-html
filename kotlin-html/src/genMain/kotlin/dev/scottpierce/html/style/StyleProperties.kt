@@ -32,13 +32,13 @@ var StyleBuilder.animationName: String?
         properties["animation-name"] = value
     }
 
-val Style.animationDuration: String?
-    get() = properties["animation-duration"] as String?
+val Style.animationDurationw: String?
+    get() = properties["animation-durationw"] as String?
 
-var StyleBuilder.animationDuration: String?
-    get() = properties["animation-duration"] as String?
+var StyleBuilder.animationDurationw: String?
+    get() = properties["animation-durationw"] as String?
     set(value) {
-        properties["animation-duration"] = value
+        properties["animation-durationw"] = value
     }
 
 val Style.background: String?
@@ -68,6 +68,15 @@ var StyleBuilder.border: String?
         properties["border"] = value
     }
 
+val Style.borderRadius: Dimension?
+    get() = properties["border-radius"] as Dimension?
+
+var StyleBuilder.borderRadius: Dimension?
+    get() = properties["border-radius"] as Dimension?
+    set(value) {
+        properties["border-radius"] = value
+    }
+
 val Style.bottom: Dimension?
     get() = properties["bottom"] as Dimension?
 
@@ -84,6 +93,15 @@ var StyleBuilder.color: Color?
     get() = properties["color"] as Color?
     set(value) {
         properties["color"] = value
+    }
+
+val Style.cursor: String?
+    get() = properties["cursor"] as String?
+
+var StyleBuilder.cursor: String?
+    get() = properties["cursor"] as String?
+    set(value) {
+        properties["cursor"] = value
     }
 
 val Style.display: Display?
@@ -158,6 +176,24 @@ var StyleBuilder.fontFamily: String?
         properties["font-family"] = value
     }
 
+val Style.fontWeight: String?
+    get() = properties["font-weight"] as String?
+
+var StyleBuilder.fontWeight: String?
+    get() = properties["font-weight"] as String?
+    set(value) {
+        properties["font-weight"] = value
+    }
+
+val Style.fontSize: Dimension?
+    get() = properties["font-size"] as Dimension?
+
+var StyleBuilder.fontSize: Dimension?
+    get() = properties["font-size"] as Dimension?
+    set(value) {
+        properties["font-size"] = value
+    }
+
 val Style.gridColumnGap: Dimension?
     get() = properties["grid-column-gap"] as Dimension?
 
@@ -228,6 +264,15 @@ var StyleBuilder.left: Dimension?
     get() = properties["left"] as Dimension?
     set(value) {
         properties["left"] = value
+    }
+
+val Style.letterSpacing: Dimension?
+    get() = properties["letter-spacing"] as Dimension?
+
+var StyleBuilder.letterSpacing: Dimension?
+    get() = properties["letter-spacing"] as Dimension?
+    set(value) {
+        properties["letter-spacing"] = value
     }
 
 val Style.listStyle: ListStyle?
@@ -392,6 +437,15 @@ var StyleBuilder.right: Dimension?
         properties["right"] = value
     }
 
+val Style.textAlign: TextAlign?
+    get() = properties["text-align"] as TextAlign?
+
+var StyleBuilder.textAlign: TextAlign?
+    get() = properties["text-align"] as TextAlign?
+    set(value) {
+        properties["text-align"] = value
+    }
+
 val Style.textDecoration: String?
     get() = properties["text-decoration"] as String?
 
@@ -399,6 +453,15 @@ var StyleBuilder.textDecoration: String?
     get() = properties["text-decoration"] as String?
     set(value) {
         properties["text-decoration"] = value
+    }
+
+val Style.textDecorationLine: String?
+    get() = properties["text-decoration-line"] as String?
+
+var StyleBuilder.textDecorationLine: String?
+    get() = properties["text-decoration-line"] as String?
+    set(value) {
+        properties["text-decoration-line"] = value
     }
 
 val Style.textTransform: TextTransform?

@@ -78,7 +78,7 @@ class StringBuilderHtmlWriter(
 }
 
 data class WriteOptions(
-    val indent: String = "\t",
+    val indent: String = "  ",
     val newLine: String = PlatformWriter.lineSeparator,
     val minifyStyles: Boolean = false
 ) {

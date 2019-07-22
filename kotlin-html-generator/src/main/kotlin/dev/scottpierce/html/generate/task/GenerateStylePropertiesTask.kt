@@ -130,6 +130,7 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.FLOAT_DIRECTION -> CodeBlock.of("FloatDirection.LEFT")
                     PropertyType.TEXT_TRANSFORM -> CodeBlock.of("TextTransform.NONE")
                     PropertyType.ALIGN_SELF -> CodeBlock.of("AlignSelf.AUTO")
+                    PropertyType.TEXT_ALIGN -> CodeBlock.of("TextAlign.CENTER")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

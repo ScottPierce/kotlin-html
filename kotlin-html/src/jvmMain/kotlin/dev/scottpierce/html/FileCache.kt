@@ -5,10 +5,12 @@ import java.io.FileNotFoundException
 import java.util.LinkedHashMap
 
 object FileCache {
+    var devMode = false
+
     private val cache = LRUCache<File, List<String>>(100)
 
     fun get(file: File): List<String> {
-        var fileText = cache[file]
+        var fileText = if (devMode) null else cache[file]
 
         if (fileText == null) {
             try {

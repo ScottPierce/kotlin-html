@@ -2,22 +2,15 @@
 
 package dev.scottpierce.html.style
 
-import dev.scottpierce.html.element.HtmlDsl
-
-@HtmlDsl
-interface Style {
-    val properties: Map<String, Any?>
-}
-
 class StyleBuilder(
     override val properties: MutableMap<String, Any?> = LinkedHashMap()
-) : Style {
+) : Style() {
     operator fun Style.unaryPlus() {
         this@StyleBuilder.properties.putAll(properties)
     }
 }
 
-inline fun style(func: StyleBuilder.() -> kotlin.Unit): Style {
+inline fun style(func: StyleBuilder.() -> Unit): Style {
     val builder = StyleBuilder()
     builder.func()
     return builder

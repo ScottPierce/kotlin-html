@@ -93,6 +93,11 @@ sealed class Element(
                 )
             ),
             Normal(
+                tagName = "i",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
                 tagName = "li",
                 callingContext = Context.Ul,
                 childrenContext = Context.Body,

@@ -30,28 +30,46 @@ fun HtmlWriter.writeStyle(style: Style, isInline: Boolean) {
 }
 
 fun HtmlWriter.writeStyleSheet(styleSheet: StyleSheet) {
-    val minifyStyles = options.minifyStyles
-
-    newLine()
+    if (!isEmpty) {
+        newLine()
+    }
     write("<style type=\"text/css\">")
     indent()
 
-    for ((selector, style) in styleSheet.styles) {
-        newLine() // new line for after a style is written
-
-        write(selector)
-        if (!minifyStyles) write(' ')
-        write('{')
-        indent()
-        newLine()
-
-        writeStyle(style, minifyStyles)
-
-        deindent()
-        newLine().write('}')
-    }
+    internalWriteStyleSheet(styleSheet)
 
     deindent()
     newLine()
     write("</style>")
+}
+
+private fun HtmlWriter.internalWriteStyleSheet(styleSheet: StyleSheet) {
+    val minifyStyles = options.minifyStyles
+
+    for ((selector, styleElement) in styleSheet.styles) {
+        newLine() // new line for after a style is written
+
+        when (styleElement) {
+            is Style -> {
+                write(selector)
+                if (!minifyStyles) write(' ')
+                write('{')
+                indent()
+                newLine()
+                writeStyle(styleElement, minifyStyles)
+                deindent()
+                newLine().write('}')
+            }
+
+            is MediaQuery -> {
+                write("@media (").write(selector).write(')')
+                if (!minifyStyles) write(' ')
+                write('{')
+                indent()
+                internalWriteStyleSheet(styleElement.styleSheet)
+                deindent()
+                newLine().write('}')
+            }
+        }
+    }
 }
