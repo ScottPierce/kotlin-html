@@ -4,7 +4,7 @@ import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeStyleSheet
 import kotlin.test.Test
 
-class MediaQueryTest  {
+class MediaQueryTest {
     @Test
     fun basic() {
         writeStyleSheet {

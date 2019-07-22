@@ -1,6 +1,5 @@
 package dev.scottpierce.html.style
 
-import dev.scottpierce.html.style.style
 import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeStyle
 import dev.scottpierce.html.write.WriteOptions
