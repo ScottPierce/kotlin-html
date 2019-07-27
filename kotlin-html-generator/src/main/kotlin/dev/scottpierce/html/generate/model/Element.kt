@@ -97,6 +97,16 @@ sealed class Element(
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
+            Void(
+                tagName = "img",
+                callingContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(
+                    Attr.String("src"),
+                    Attr.String("alt"),
+                    Attr.String("width"),
+                    Attr.String("height")
+                )
+            ),
             Normal(
                 tagName = "li",
                 callingContext = Context.Ul,
@@ -161,10 +171,31 @@ sealed class Element(
                 callingContext = Context.Body,
                 childrenContext = Context.Select
             ),
+            Void(
+                tagName = "source",
+                callingContext = Context.Video,
+                supportedAttributes = listOf(
+                    Attr.String("src"),
+                    Attr.String("type")
+                )
+            ),
             Normal(
                 tagName = "span",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "video",
+                callingContext = Context.Body,
+                childrenContext = Context.Video,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(
+                    Attr.Boolean("muted"),
+                    Attr.Boolean("playsinline"),
+                    Attr.Boolean("autoplay"),
+                    Attr.Boolean("loop"),
+                    Attr.String("preload"),
+                    Attr.String("poster")
+                )
             ),
             Normal(
                 tagName = "ul",
@@ -205,6 +236,7 @@ enum class Context {
     Body,
     Select,
     Ul,
+    Video,
     ;
 
     val contextClassName: ClassName by lazy {

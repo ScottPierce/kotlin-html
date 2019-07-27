@@ -88,12 +88,30 @@ class StylePropertyTests {
     }
 
     @Test
+    fun boxShadow() {
+        val style = style {
+            boxShadow = "boo"
+            assertEquals("boo", boxShadow)
+        }
+        assertEquals("boo", style.boxShadow)
+    }
+
+    @Test
     fun color() {
         val style = style {
             color = color("#555555")
             assertEquals(color("#555555"), color)
         }
         assertEquals(color("#555555"), style.color)
+    }
+
+    @Test
+    fun content() {
+        val style = style {
+            content = "boo"
+            assertEquals("boo", content)
+        }
+        assertEquals("boo", style.content)
     }
 
     @Test
@@ -112,6 +130,15 @@ class StylePropertyTests {
             assertEquals(Display.BLOCK, display)
         }
         assertEquals(Display.BLOCK, style.display)
+    }
+
+    @Test
+    fun fill() {
+        val style = style {
+            fill = "boo"
+            assertEquals("boo", fill)
+        }
+        assertEquals("boo", style.fill)
     }
 
     @Test
@@ -243,10 +270,10 @@ class StylePropertyTests {
     @Test
     fun justifySelf() {
         val style = style {
-            justifySelf = JustifyContent.CENTER
-            assertEquals(JustifyContent.CENTER, justifySelf)
+            justifySelf = JustifySelf.CENTER
+            assertEquals(JustifySelf.CENTER, justifySelf)
         }
-        assertEquals(JustifyContent.CENTER, style.justifySelf)
+        assertEquals(JustifySelf.CENTER, style.justifySelf)
     }
 
     @Test
@@ -274,6 +301,15 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), letterSpacing)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.letterSpacing)
+    }
+
+    @Test
+    fun lineHeight() {
+        val style = style {
+            lineHeight = 100.0
+            assertEquals(100.0, lineHeight)
+        }
+        assertEquals(100.0, style.lineHeight)
     }
 
     @Test
@@ -358,6 +394,33 @@ class StylePropertyTests {
     }
 
     @Test
+    fun marginBlockEnd() {
+        val style = style {
+            marginBlockEnd = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBlockEnd)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBlockEnd)
+    }
+
+    @Test
+    fun marginBlockStart() {
+        val style = style {
+            marginBlockStart = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBlockStart)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBlockStart)
+    }
+
+    @Test
+    fun marginBottom() {
+        val style = style {
+            marginBottom = Dimension.Size(1f, DimensionUnit.PX)
+            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBottom)
+        }
+        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBottom)
+    }
+
+    @Test
     fun marginLeft() {
         val style = style {
             marginLeft = Dimension.Size(1f, DimensionUnit.PX)
@@ -382,15 +445,6 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginTop)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginTop)
-    }
-
-    @Test
-    fun marginBottom() {
-        val style = style {
-            marginBottom = Dimension.Size(1f, DimensionUnit.PX)
-            assertEquals(Dimension.Size(1f, DimensionUnit.PX), marginBottom)
-        }
-        assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.marginBottom)
     }
 
     @Test
@@ -427,6 +481,15 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), minWidth)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.minWidth)
+    }
+
+    @Test
+    fun overflow() {
+        val style = style {
+            overflow = "boo"
+            assertEquals("boo", overflow)
+        }
+        assertEquals("boo", style.overflow)
     }
 
     @Test
@@ -481,6 +544,24 @@ class StylePropertyTests {
             assertEquals(Dimension.Size(1f, DimensionUnit.PX), top)
         }
         assertEquals(Dimension.Size(1f, DimensionUnit.PX), style.top)
+    }
+
+    @Test
+    fun transition() {
+        val style = style {
+            transition = "boo"
+            assertEquals("boo", transition)
+        }
+        assertEquals("boo", style.transition)
+    }
+
+    @Test
+    fun transitionProperty() {
+        val style = style {
+            transitionProperty = "boo"
+            assertEquals("boo", transitionProperty)
+        }
+        assertEquals("boo", style.transitionProperty)
     }
 
     @Test

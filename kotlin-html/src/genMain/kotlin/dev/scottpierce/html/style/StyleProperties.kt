@@ -2,6 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.style
 
+import kotlin.Double
 import kotlin.Int
 import kotlin.String
 
@@ -86,6 +87,15 @@ var StyleBuilder.bottom: Dimension?
         properties["bottom"] = value
     }
 
+val Style.boxShadow: String?
+    get() = properties["box-shadow"] as String?
+
+var StyleBuilder.boxShadow: String?
+    get() = properties["box-shadow"] as String?
+    set(value) {
+        properties["box-shadow"] = value
+    }
+
 val Style.color: Color?
     get() = properties["color"] as Color?
 
@@ -93,6 +103,15 @@ var StyleBuilder.color: Color?
     get() = properties["color"] as Color?
     set(value) {
         properties["color"] = value
+    }
+
+val Style.content: String?
+    get() = properties["content"] as String?
+
+var StyleBuilder.content: String?
+    get() = properties["content"] as String?
+    set(value) {
+        properties["content"] = value
     }
 
 val Style.cursor: String?
@@ -111,6 +130,15 @@ var StyleBuilder.display: Display?
     get() = properties["display"] as Display?
     set(value) {
         properties["display"] = value
+    }
+
+val Style.fill: String?
+    get() = properties["fill"] as String?
+
+var StyleBuilder.fill: String?
+    get() = properties["fill"] as String?
+    set(value) {
+        properties["fill"] = value
     }
 
 val Style.flex: String?
@@ -239,11 +267,11 @@ var StyleBuilder.height: Dimension?
         properties["height"] = value
     }
 
-val Style.justifySelf: JustifyContent?
-    get() = properties["justify-self"] as JustifyContent?
+val Style.justifySelf: JustifySelf?
+    get() = properties["justify-self"] as JustifySelf?
 
-var StyleBuilder.justifySelf: JustifyContent?
-    get() = properties["justify-self"] as JustifyContent?
+var StyleBuilder.justifySelf: JustifySelf?
+    get() = properties["justify-self"] as JustifySelf?
     set(value) {
         properties["justify-self"] = value
     }
@@ -273,6 +301,15 @@ var StyleBuilder.letterSpacing: Dimension?
     get() = properties["letter-spacing"] as Dimension?
     set(value) {
         properties["letter-spacing"] = value
+    }
+
+val Style.lineHeight: Double?
+    get() = properties["line-height"] as Double?
+
+var StyleBuilder.lineHeight: Double?
+    get() = properties["line-height"] as Double?
+    set(value) {
+        properties["line-height"] = value
     }
 
 val Style.listStyle: ListStyle?
@@ -356,6 +393,33 @@ var StyleBuilder.margin: Dimension?
         properties["margin"] = value
     }
 
+val Style.marginBlockEnd: Dimension?
+    get() = properties["margin-block-end"] as Dimension?
+
+var StyleBuilder.marginBlockEnd: Dimension?
+    get() = properties["margin-block-end"] as Dimension?
+    set(value) {
+        properties["margin-block-end"] = value
+    }
+
+val Style.marginBlockStart: Dimension?
+    get() = properties["margin-block-start"] as Dimension?
+
+var StyleBuilder.marginBlockStart: Dimension?
+    get() = properties["margin-block-start"] as Dimension?
+    set(value) {
+        properties["margin-block-start"] = value
+    }
+
+val Style.marginBottom: Dimension?
+    get() = properties["margin-bottom"] as Dimension?
+
+var StyleBuilder.marginBottom: Dimension?
+    get() = properties["margin-bottom"] as Dimension?
+    set(value) {
+        properties["margin-bottom"] = value
+    }
+
 val Style.marginLeft: Dimension?
     get() = properties["margin-left"] as Dimension?
 
@@ -381,15 +445,6 @@ var StyleBuilder.marginTop: Dimension?
     get() = properties["margin-top"] as Dimension?
     set(value) {
         properties["margin-top"] = value
-    }
-
-val Style.marginBottom: Dimension?
-    get() = properties["margin-bottom"] as Dimension?
-
-var StyleBuilder.marginBottom: Dimension?
-    get() = properties["margin-bottom"] as Dimension?
-    set(value) {
-        properties["margin-bottom"] = value
     }
 
 val Style.maxHeight: Dimension?
@@ -426,6 +481,15 @@ var StyleBuilder.minWidth: Dimension?
     get() = properties["min-width"] as Dimension?
     set(value) {
         properties["min-width"] = value
+    }
+
+val Style.overflow: String?
+    get() = properties["overflow"] as String?
+
+var StyleBuilder.overflow: String?
+    get() = properties["overflow"] as String?
+    set(value) {
+        properties["overflow"] = value
     }
 
 val Style.right: Dimension?
@@ -480,6 +544,24 @@ var StyleBuilder.top: Dimension?
     get() = properties["top"] as Dimension?
     set(value) {
         properties["top"] = value
+    }
+
+val Style.transition: String?
+    get() = properties["transition"] as String?
+
+var StyleBuilder.transition: String?
+    get() = properties["transition"] as String?
+    set(value) {
+        properties["transition"] = value
+    }
+
+val Style.transitionProperty: String?
+    get() = properties["transition-property"] as String?
+
+var StyleBuilder.transitionProperty: String?
+    get() = properties["transition-property"] as String?
+    set(value) {
+        properties["transition-property"] = value
     }
 
 val Style.width: Dimension?

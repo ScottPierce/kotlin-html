@@ -124,6 +124,8 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.FLEX_DIRECTION -> CodeBlock.of("FlexDirection.COLUMN")
                     PropertyType.JUSTIFY_CONTENT -> CodeBlock.of("JustifyContent.CENTER")
                     PropertyType.INT -> CodeBlock.of("100")
+                    PropertyType.FLOAT -> CodeBlock.of("100f")
+                    PropertyType.DOUBLE -> CodeBlock.of("100.0")
                     PropertyType.STRING -> CodeBlock.of("\"boo\"")
                     PropertyType.POSITION -> CodeBlock.of("Position.STATIC")
                     PropertyType.LIST_STYLE -> CodeBlock.of("ListStyle(ListStyle.Type.DISC)")
@@ -131,6 +133,7 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.TEXT_TRANSFORM -> CodeBlock.of("TextTransform.NONE")
                     PropertyType.ALIGN_SELF -> CodeBlock.of("AlignSelf.AUTO")
                     PropertyType.TEXT_ALIGN -> CodeBlock.of("TextAlign.CENTER")
+                    PropertyType.JUSTIFY_SELF -> CodeBlock.of("JustifySelf.CENTER")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

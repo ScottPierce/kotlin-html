@@ -62,7 +62,7 @@ private fun HtmlWriter.internalWriteStyleSheet(styleSheet: StyleSheet) {
             }
 
             is MediaQuery -> {
-                write("@media (").write(selector).write(')')
+                write("@media ").write(selector)
                 if (!minifyStyles) write(' ')
                 write('{')
                 indent()

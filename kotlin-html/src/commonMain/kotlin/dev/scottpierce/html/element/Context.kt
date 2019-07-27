@@ -49,3 +49,6 @@ class SelectContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
 class UlContext(override val writer: HtmlWriter) : Context
+
+@HtmlDsl
+class VideoContext(override val writer: HtmlWriter) : Context

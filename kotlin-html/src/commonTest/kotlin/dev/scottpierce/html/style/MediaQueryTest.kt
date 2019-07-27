@@ -8,7 +8,7 @@ class MediaQueryTest {
     @Test
     fun basic() {
         writeStyleSheet {
-            media("max-width: 300px") {
+            media("(max-width: 300px)") {
                 style(".test") {
                     display = Display.NONE
                 }
