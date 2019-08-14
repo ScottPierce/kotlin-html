@@ -134,6 +134,8 @@ class GenerateStylePropertiesTask : Task {
                     PropertyType.ALIGN_SELF -> CodeBlock.of("AlignSelf.AUTO")
                     PropertyType.TEXT_ALIGN -> CodeBlock.of("TextAlign.CENTER")
                     PropertyType.JUSTIFY_SELF -> CodeBlock.of("JustifySelf.CENTER")
+                    PropertyType.FLEX_WRAP -> CodeBlock.of("FlexWrap.NO_WRAP")
+                    PropertyType.VISIBILITY -> CodeBlock.of("Visibility.VISIBLE")
                 }
 
                 beginControlFlow("val style = %M", STYLE_MEMBER)

@@ -187,6 +187,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun flexWrap() {
+        val style = style {
+            flexWrap = FlexWrap.NO_WRAP
+            assertEquals(FlexWrap.NO_WRAP, flexWrap)
+        }
+        assertEquals(FlexWrap.NO_WRAP, style.flexWrap)
+    }
+
+    @Test
     fun float() {
         val style = style {
             float = FloatDirection.LEFT
@@ -484,6 +493,15 @@ class StylePropertyTests {
     }
 
     @Test
+    fun outlineColor() {
+        val style = style {
+            outlineColor = color("#555555")
+            assertEquals(color("#555555"), outlineColor)
+        }
+        assertEquals(color("#555555"), style.outlineColor)
+    }
+
+    @Test
     fun overflow() {
         val style = style {
             overflow = "boo"
@@ -562,6 +580,15 @@ class StylePropertyTests {
             assertEquals("boo", transitionProperty)
         }
         assertEquals("boo", style.transitionProperty)
+    }
+
+    @Test
+    fun visibility() {
+        val style = style {
+            visibility = Visibility.VISIBLE
+            assertEquals(Visibility.VISIBLE, visibility)
+        }
+        assertEquals(Visibility.VISIBLE, style.visibility)
     }
 
     @Test

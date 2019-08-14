@@ -2,6 +2,7 @@ package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.STRING
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
@@ -16,7 +17,7 @@ sealed class Element(
                 tagName = "a",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
-                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href")
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target")
             ),
             Normal(
                 tagName = "body",
@@ -106,6 +107,12 @@ sealed class Element(
                     Attr.String("width"),
                     Attr.String("height")
                 )
+            ),
+            Normal(
+                tagName = "input",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("type") + Attr.String("maxLength") + Attr.String("value") + Attr.String("name") + Attr.String("placeholder")
             ),
             Normal(
                 tagName = "li",

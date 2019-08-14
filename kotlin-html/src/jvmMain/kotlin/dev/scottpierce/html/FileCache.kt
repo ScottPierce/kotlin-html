@@ -3,14 +3,15 @@ package dev.scottpierce.html
 import java.io.File
 import java.io.FileNotFoundException
 import java.util.LinkedHashMap
+import java.util.concurrent.ConcurrentHashMap
 
 object FileCache {
     var devMode = false
 
-    private val cache = LRUCache<File, List<String>>(100)
+    private val cache = ConcurrentHashMap<File, List<String>>(100)
 
     fun get(file: File): List<String> {
-        var fileText = if (devMode) null else cache[file]
+        var fileText = if (devMode) null else synchronized(cache) { cache[file] }
 
         if (fileText == null) {
             try {
@@ -26,7 +27,7 @@ object FileCache {
     }
 }
 
-internal class LRUCache<K, V>(
+class LruCache<K, V>(
     private val maxSize: Int
 ) : LinkedHashMap<K, V>(maxSize, 0.75f, true) {
     override fun removeEldestEntry(eldest: MutableMap.MutableEntry<K, V>?): Boolean {

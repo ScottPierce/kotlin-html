@@ -1,0 +1,168 @@
+// This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
+// `html-builder-generator` and run it again.
+package dev.scottpierce.html.element
+
+import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.write.HtmlWriter
+import kotlin.Pair
+import kotlin.String
+import kotlin.Unit
+import kotlin.collections.List
+
+@HtmlDsl
+inline fun HtmlWriter.input(
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeTag("input")
+    this.writeStandardAttributes(id, classes, style)
+    if (type != null) this.write(" type=\"").write(type).write('"')
+    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
+    if (name != null) this.write(" name=\"").write(name).write('"')
+    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    this.write('>')
+    this.indent()
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("input")
+}
+
+@HtmlDsl
+inline fun HtmlWriter.input(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeTag("input")
+    this.writeStandardAttributes(id, classes, style)
+    if (type != null) this.write(" type=\"").write(type).write('"')
+    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
+    if (name != null) this.write(" name=\"").write(name).write('"')
+    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    this.writeAttributes(attrs)
+    this.write('>')
+    this.indent()
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("input")
+}
+
+@HtmlDsl
+inline fun HtmlWriter.input(
+    attrs: List<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    this.writeTag("input")
+    this.writeStandardAttributes(id, classes, style)
+    if (type != null) this.write(" type=\"").write(type).write('"')
+    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) this.write(" value=\"").write(value).write('"')
+    if (name != null) this.write(" name=\"").write(name).write('"')
+    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    this.writeAttributes(attrs)
+    this.write('>')
+    this.indent()
+    BodyContext(this).apply(func)
+    this.writeNormalElementEnd("input")
+}
+
+@HtmlDsl
+inline fun BodyContext.input(
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeTag("input")
+    writer.writeStandardAttributes(id, classes, style)
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    writer.write('>')
+    writer.indent()
+    func()
+    writer.writeNormalElementEnd("input")
+}
+
+@HtmlDsl
+inline fun BodyContext.input(
+    vararg attrs: Pair<String, String?>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeTag("input")
+    writer.writeStandardAttributes(id, classes, style)
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
+    func()
+    writer.writeNormalElementEnd("input")
+}
+
+@HtmlDsl
+inline fun BodyContext.input(
+    attrs: List<Pair<String, String?>>,
+    id: String? = null,
+    classes: String? = null,
+    style: Style? = null,
+    type: String? = null,
+    maxLength: String? = null,
+    value: String? = null,
+    name: String? = null,
+    placeholder: String? = null,
+    func: BodyContext.() -> Unit = {}
+) {
+    writer.writeTag("input")
+    writer.writeStandardAttributes(id, classes, style)
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
+    func()
+    writer.writeNormalElementEnd("input")
+}

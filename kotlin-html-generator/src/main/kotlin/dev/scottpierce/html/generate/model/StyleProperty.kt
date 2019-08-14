@@ -29,6 +29,7 @@ enum class StyleProperty(
     FLEX_SHRINK("flex-shrink", PropertyType.STRING),
     FLEX_BASIS("flex-basis", PropertyType.STRING),
     FLEX_DIRECTION("flex-direction", PropertyType.FLEX_DIRECTION),
+    FLEX_WRAP("flex-wrap", PropertyType.FLEX_WRAP),
     FLOAT("float", PropertyType.FLOAT_DIRECTION),
     FONT_FAMILY("font-family", PropertyType.STRING),
     FONT_WEIGHT("font-weight", PropertyType.STRING),
@@ -62,6 +63,7 @@ enum class StyleProperty(
     MAX_WIDTH("max-width", PropertyType.DIMENSION),
     MIN_HEIGHT("min-height", PropertyType.DIMENSION),
     MIN_WIDTH("min-width", PropertyType.DIMENSION),
+    OUTLINE_COLOR("outline-color", PropertyType.COLOR),
     OVERFLOW("overflow", PropertyType.STRING),
     RIGHT("right", PropertyType.DIMENSION),
     TEXT_ALIGN("text-align", PropertyType.TEXT_ALIGN),
@@ -71,6 +73,7 @@ enum class StyleProperty(
     TOP("top", PropertyType.DIMENSION),
     TRANSITION("transition", PropertyType.STRING),
     TRANSITION_PROPERTY("transition-property", PropertyType.STRING),
+    VISIBILITY("visibility", PropertyType.VISIBILITY),
     WIDTH("width", PropertyType.DIMENSION),
     Z_INDEX("z-index", PropertyType.INT),
     ;
@@ -86,6 +89,7 @@ enum class PropertyType(val className: ClassName) {
     DISPLAY(ClassName("dev.scottpierce.html.style", "Display")),
     DOUBLE(com.squareup.kotlinpoet.DOUBLE),
     FLEX_DIRECTION(ClassName("dev.scottpierce.html.style", "FlexDirection")),
+    FLEX_WRAP(ClassName("dev.scottpierce.html.style", "FlexWrap")),
     FLOAT_DIRECTION(ClassName("dev.scottpierce.html.style", "FloatDirection")),
     FLOAT(com.squareup.kotlinpoet.FLOAT),
     INT(com.squareup.kotlinpoet.INT),
@@ -96,5 +100,6 @@ enum class PropertyType(val className: ClassName) {
     STRING(com.squareup.kotlinpoet.STRING),
     TEXT_ALIGN(ClassName("dev.scottpierce.html.style", "TextAlign")),
     TEXT_TRANSFORM(ClassName("dev.scottpierce.html.style", "TextTransform")),
+    VISIBILITY(ClassName("dev.scottpierce.html.style", "Visibility")),
     ;
 }

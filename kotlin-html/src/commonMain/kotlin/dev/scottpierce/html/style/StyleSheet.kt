@@ -11,14 +11,17 @@ interface StyleSheet {
 class StyleSheetBuilder : StyleSheet {
     override val styles: MutableList<Pair<String, StyleSheetElement>> = mutableListOf()
 
+    @HtmlDsl
     inline fun style(selector: String, func: StyleBuilder.() -> Unit) {
         styles += selector to StyleBuilder().apply(func)
     }
 
+    @HtmlDsl
     fun style(selector: String, style: Style) {
         styles += selector to style
     }
 
+    @HtmlDsl
     fun media(selector: String, func: StyleSheetBuilder.() -> Unit) {
         val styleSheet = styleSheet(func)
         styles += selector to MediaQuery(styleSheet)

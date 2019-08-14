@@ -15,11 +15,13 @@ inline fun HtmlWriter.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
     this.writeStandardAttributes(id, classes, style)
     if (href != null) this.write(" href=\"").write(href).write('"')
+    if (target != null) this.write(" target=\"").write(target).write('"')
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
@@ -33,11 +35,13 @@ inline fun HtmlWriter.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
     this.writeStandardAttributes(id, classes, style)
     if (href != null) this.write(" href=\"").write(href).write('"')
+    if (target != null) this.write(" target=\"").write(target).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -52,11 +56,13 @@ inline fun HtmlWriter.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
     this.writeStandardAttributes(id, classes, style)
     if (href != null) this.write(" href=\"").write(href).write('"')
+    if (target != null) this.write(" target=\"").write(target).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -70,11 +76,13 @@ inline fun BodyContext.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
     writer.writeStandardAttributes(id, classes, style)
     if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (target != null) writer.write(" target=\"").write(target).write('"')
     writer.write('>')
     writer.indent()
     func()
@@ -88,11 +96,13 @@ inline fun BodyContext.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
     writer.writeStandardAttributes(id, classes, style)
     if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (target != null) writer.write(" target=\"").write(target).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
@@ -107,11 +117,13 @@ inline fun BodyContext.a(
     classes: String? = null,
     style: Style? = null,
     href: String? = null,
+    target: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
     writer.writeStandardAttributes(id, classes, style)
     if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (target != null) writer.write(" target=\"").write(target).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()

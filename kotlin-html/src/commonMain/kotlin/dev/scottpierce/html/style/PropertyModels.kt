@@ -199,6 +199,15 @@ enum class FloatDirection(val value: String) {
     override fun toString() = value
 }
 
+enum class FlexWrap(val value: String) {
+    NO_WRAP("nowrap"),
+    WRAP("wrap"),
+    WRAP_REVERSE("wrap-reverse"),
+    ;
+
+    override fun toString() = value
+}
+
 enum class Position(val value: String) {
     STATIC("static"),
     RELATIVE("relative"),
@@ -256,6 +265,17 @@ enum class TextTransform(val value: String) {
     CAPITALIZE("capitalize"),
     UPPERCASE("uppercase"),
     LOWERCASE("lowercase"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
+    ;
+
+    override fun toString(): String = value
+}
+
+enum class Visibility(val value: String) {
+    VISIBLE("visible"),
+    HIDDEN("hidden"),
+    COLLAPSE("collapse"),
     INITIAL("initial"),
     INHERIT("inherit"),
     ;

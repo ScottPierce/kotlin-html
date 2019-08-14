@@ -186,6 +186,15 @@ var StyleBuilder.flexDirection: FlexDirection?
         properties["flex-direction"] = value
     }
 
+val Style.flexWrap: FlexWrap?
+    get() = properties["flex-wrap"] as FlexWrap?
+
+var StyleBuilder.flexWrap: FlexWrap?
+    get() = properties["flex-wrap"] as FlexWrap?
+    set(value) {
+        properties["flex-wrap"] = value
+    }
+
 val Style.float: FloatDirection?
     get() = properties["float"] as FloatDirection?
 
@@ -483,6 +492,15 @@ var StyleBuilder.minWidth: Dimension?
         properties["min-width"] = value
     }
 
+val Style.outlineColor: Color?
+    get() = properties["outline-color"] as Color?
+
+var StyleBuilder.outlineColor: Color?
+    get() = properties["outline-color"] as Color?
+    set(value) {
+        properties["outline-color"] = value
+    }
+
 val Style.overflow: String?
     get() = properties["overflow"] as String?
 
@@ -562,6 +580,15 @@ var StyleBuilder.transitionProperty: String?
     get() = properties["transition-property"] as String?
     set(value) {
         properties["transition-property"] = value
+    }
+
+val Style.visibility: Visibility?
+    get() = properties["visibility"] as Visibility?
+
+var StyleBuilder.visibility: Visibility?
+    get() = properties["visibility"] as Visibility?
+    set(value) {
+        properties["visibility"] = value
     }
 
 val Style.width: Dimension?
