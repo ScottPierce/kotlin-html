@@ -2,7 +2,6 @@ package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.STRING
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
