@@ -16,14 +16,14 @@ sealed class Element(
                 tagName = "a",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
-                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target")
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target") + Attr.String("rel")
             ),
             Normal(
                 tagName = "body",
                 callingContext = Context.Html,
                 childrenContext = Context.Body
             ),
-            Normal(
+            Normal( 
                 tagName = "button",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
