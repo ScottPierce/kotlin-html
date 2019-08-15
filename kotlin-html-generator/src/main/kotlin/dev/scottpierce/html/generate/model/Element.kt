@@ -23,7 +23,7 @@ sealed class Element(
                 callingContext = Context.Html,
                 childrenContext = Context.Body
             ),
-            Normal( 
+            Normal(
                 tagName = "button",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
