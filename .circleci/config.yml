@@ -109,6 +109,8 @@ jobs:
           command: |
             git config user.email "circleci@circleci.com"
             git config user.name "CircleCI"
+            git fetch origin
+            git pull
             git push --set-upstream origin master
 
       - run:
