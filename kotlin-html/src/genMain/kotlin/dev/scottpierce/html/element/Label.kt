@@ -10,111 +10,111 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+inline fun HtmlWriter.label(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
+    this.writeTag("label")
     this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) this.write(" for=\"").write(forId).write('"')
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    this.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+inline fun HtmlWriter.label(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
+    this.writeTag("label")
     this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) this.write(" for=\"").write(forId).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    this.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+inline fun HtmlWriter.label(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
+    this.writeTag("label")
     this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) this.write(" for=\"").write(forId).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    this.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
-inline fun BodyContext.button(
+inline fun BodyContext.label(
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
+    writer.writeTag("label")
     writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
     writer.write('>')
     writer.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    writer.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
-inline fun BodyContext.button(
+inline fun BodyContext.label(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
+    writer.writeTag("label")
     writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    writer.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
-inline fun BodyContext.button(
+inline fun BodyContext.label(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
     style: Style? = null,
-    ariaLabel: String? = null,
+    forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
+    writer.writeTag("label")
     writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    writer.writeNormalElementEnd("label")
 }

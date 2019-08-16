@@ -86,7 +86,7 @@ private fun createDslFunction(
 
     for (attr in element.supportedAttributes) {
         addParameter(
-            ParameterSpec.builder(attr.name.snakeCaseToCamelCase(), attr.className)
+            ParameterSpec.builder(attr.functionName, attr.className)
                 .defaultValue(attr.defaultValue)
                 .build()
         )
@@ -184,7 +184,7 @@ private fun createDslFunction(
             }
 
             for (remainingAttribute in supportedAttributes) {
-                val attrCodeName = remainingAttribute.name.snakeCaseToCamelCase()
+                val attrCodeName = remainingAttribute.functionName
 
                 when (remainingAttribute) {
                     is Attr.Boolean -> {

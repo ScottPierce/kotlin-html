@@ -19,6 +19,8 @@ inline fun HtmlWriter.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("input")
@@ -28,6 +30,8 @@ inline fun HtmlWriter.input(
     if (value != null) this.write(" value=\"").write(value).write('"')
     if (name != null) this.write(" name=\"").write(name).write('"')
     if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
@@ -45,6 +49,8 @@ inline fun HtmlWriter.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("input")
@@ -54,6 +60,8 @@ inline fun HtmlWriter.input(
     if (value != null) this.write(" value=\"").write(value).write('"')
     if (name != null) this.write(" name=\"").write(name).write('"')
     if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -72,6 +80,8 @@ inline fun HtmlWriter.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("input")
@@ -81,6 +91,8 @@ inline fun HtmlWriter.input(
     if (value != null) this.write(" value=\"").write(value).write('"')
     if (name != null) this.write(" name=\"").write(name).write('"')
     if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -98,6 +110,8 @@ inline fun BodyContext.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("input")
@@ -107,6 +121,8 @@ inline fun BodyContext.input(
     if (value != null) writer.write(" value=\"").write(value).write('"')
     if (name != null) writer.write(" name=\"").write(name).write('"')
     if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     writer.write('>')
     writer.indent()
     func()
@@ -124,6 +140,8 @@ inline fun BodyContext.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("input")
@@ -133,6 +151,8 @@ inline fun BodyContext.input(
     if (value != null) writer.write(" value=\"").write(value).write('"')
     if (name != null) writer.write(" name=\"").write(name).write('"')
     if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
@@ -151,6 +171,8 @@ inline fun BodyContext.input(
     value: String? = null,
     name: String? = null,
     placeholder: String? = null,
+    ariaLabel: String? = null,
+    ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("input")
@@ -160,6 +182,8 @@ inline fun BodyContext.input(
     if (value != null) writer.write(" value=\"").write(value).write('"')
     if (name != null) writer.write(" name=\"").write(name).write('"')
     if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()

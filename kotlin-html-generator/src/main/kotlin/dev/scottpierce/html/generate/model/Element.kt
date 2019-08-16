@@ -26,7 +26,8 @@ sealed class Element(
             Normal(
                 tagName = "button",
                 callingContext = Context.Body,
-                childrenContext = Context.Body
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("aria-label")
             ),
             Void(
                 tagName = "br",
@@ -111,7 +112,13 @@ sealed class Element(
                 tagName = "input",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
-                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("type") + Attr.String("maxLength") + Attr.String("value") + Attr.String("name") + Attr.String("placeholder")
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("type") + Attr.String("maxLength") + Attr.String("value") + Attr.String("name") + Attr.String("placeholder") + Attr.String("aria-label") + Attr.String(name = "aria-labelledby", functionName = "ariaLabelledBy")
+            ),
+            Normal(
+                tagName = "label",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String(name = "for", functionName = "forId")
             ),
             Normal(
                 tagName = "li",
@@ -255,20 +262,21 @@ enum class Context {
 
 sealed class Attr(
     val name: kotlin.String,
+    val functionName: kotlin.String,
     val className: ClassName,
     val defaultValue: kotlin.String
 ) {
     companion object {
         val ID = String("id")
         val CLASSES = String("classes")
-        val STYLE = Custom("style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true), "null")
+        val STYLE = Custom("style", "style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true), "null")
     }
 
     override fun toString(): kotlin.String = name
 
-    class String(name: kotlin.String) : Attr(name, STRING.copy(nullable = true), "null")
-    class Boolean(name: kotlin.String) : Attr(name, BOOLEAN, "false")
-    class Custom(name: kotlin.String, className: ClassName, defaultValue: kotlin.String) : Attr(name, className, defaultValue)
+    class String(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, STRING.copy(nullable = true), "null")
+    class Boolean(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, BOOLEAN, "false")
+    class Custom(name: kotlin.String, functionName: kotlin.String, className: ClassName, defaultValue: kotlin.String) : Attr(name, functionName, className, defaultValue)
 }
 
 val STANDARD_ATTRIBUTES: List<Attr> = listOf(
