@@ -16,7 +16,7 @@ sealed class Element(
                 tagName = "a",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
-                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target") + Attr.String("rel")
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target") + Attr.String("rel") + Attr.String("aria-label")
             ),
             Normal(
                 tagName = "body",

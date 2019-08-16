@@ -17,6 +17,7 @@ inline fun HtmlWriter.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
@@ -24,6 +25,7 @@ inline fun HtmlWriter.a(
     if (href != null) this.write(" href=\"").write(href).write('"')
     if (target != null) this.write(" target=\"").write(target).write('"')
     if (rel != null) this.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
     this.write('>')
     this.indent()
     BodyContext(this).apply(func)
@@ -39,6 +41,7 @@ inline fun HtmlWriter.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
@@ -46,6 +49,7 @@ inline fun HtmlWriter.a(
     if (href != null) this.write(" href=\"").write(href).write('"')
     if (target != null) this.write(" target=\"").write(target).write('"')
     if (rel != null) this.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -62,6 +66,7 @@ inline fun HtmlWriter.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeTag("a")
@@ -69,6 +74,7 @@ inline fun HtmlWriter.a(
     if (href != null) this.write(" href=\"").write(href).write('"')
     if (target != null) this.write(" target=\"").write(target).write('"')
     if (rel != null) this.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
     this.writeAttributes(attrs)
     this.write('>')
     this.indent()
@@ -84,6 +90,7 @@ inline fun BodyContext.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
@@ -91,6 +98,7 @@ inline fun BodyContext.a(
     if (href != null) writer.write(" href=\"").write(href).write('"')
     if (target != null) writer.write(" target=\"").write(target).write('"')
     if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
     writer.write('>')
     writer.indent()
     func()
@@ -106,6 +114,7 @@ inline fun BodyContext.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
@@ -113,6 +122,7 @@ inline fun BodyContext.a(
     if (href != null) writer.write(" href=\"").write(href).write('"')
     if (target != null) writer.write(" target=\"").write(target).write('"')
     if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
@@ -129,6 +139,7 @@ inline fun BodyContext.a(
     href: String? = null,
     target: String? = null,
     rel: String? = null,
+    ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeTag("a")
@@ -136,6 +147,7 @@ inline fun BodyContext.a(
     if (href != null) writer.write(" href=\"").write(href).write('"')
     if (target != null) writer.write(" target=\"").write(target).write('"')
     if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
