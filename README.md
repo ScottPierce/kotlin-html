@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
-[![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.2.9)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.2.9?tab=overview)
+[![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.2.10)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.2.10?tab=overview)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3.41-green.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
@@ -15,10 +15,10 @@ repositories {
 
 dependencies {
     // JVM version of the HTML library
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.2.9")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.2.10")
     
     // If you are using Ktor, you can use this as well
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.2.9")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.2.10")
 }
 ```
 
@@ -31,7 +31,7 @@ repositories {
 kotlin {
     commonMain {
         dependencies {
-            implementation("dev.scottpierce.kotlin-html:kotlin-html:0.2.9")
+            implementation("dev.scottpierce.kotlin-html:kotlin-html:0.2.10")
         }    
     }
 }
@@ -139,7 +139,7 @@ fun BodyContext.footer() {
 ## Integration with Ktor
 ``` Kotlin
 dependencies {
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.2.9")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.2.10")
 }
 ```
 
