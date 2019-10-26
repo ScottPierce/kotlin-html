@@ -24,6 +24,18 @@ sealed class Element(
                 childrenContext = Context.Body
             ),
             Normal(
+                tagName = "b",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = listOf()
+            ),
+            Normal(
+                tagName = "bold",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = listOf()
+            ),
+            Normal(
                 tagName = "button",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
@@ -37,6 +49,12 @@ sealed class Element(
                 tagName = "div",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "em",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = listOf()
             ),
             Normal(
                 tagName = "footer",
