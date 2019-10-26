@@ -1,5 +1,5 @@
 object Versions {
-    const val kotlin = "1.3.41"
+    const val kotlin = "1.3.50"
     const val ktor = "1.2.2"
 }
 
@@ -10,7 +10,7 @@ object Plugins {
 object Libs {
     val kotlin = KotlinDeps()
     val kotlinx = KotlinxDeps()
-    val kotlinPoet = "com.squareup:kotlinpoet:1.3.0"
+    val kotlinPoet = "com.squareup:kotlinpoet:1.4.1"
     val ktorServerCore = "io.ktor:ktor-server-core:${Versions.ktor}"
     val okio = "com.squareup.okio:okio:2.2.2"
 }
