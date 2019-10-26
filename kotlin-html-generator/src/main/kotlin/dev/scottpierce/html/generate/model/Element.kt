@@ -273,7 +273,7 @@ enum class Context {
     val contextClassName: ClassName by lazy {
         ClassName(
             packageName = "dev.scottpierce.html.element",
-            simpleName = if (this == Context) "Context" else "${name}Context"
+            simpleNames = listOf(if (this == Context) "Context" else "${name}Context")
         )
     }
 }
@@ -287,12 +287,12 @@ sealed class Attr(
     companion object {
         val ID = String("id")
         val CLASSES = String("classes")
-        val STYLE = Custom("style", "style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true), "null")
+        val STYLE = Custom("style", "style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true, tags = mapOf()), "null")
     }
 
     override fun toString(): kotlin.String = name
 
-    class String(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, STRING.copy(nullable = true), "null")
+    class String(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, STRING.copy(nullable = true, tags = mapOf()), "null")
     class Boolean(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, BOOLEAN, "false")
     class Custom(name: kotlin.String, functionName: kotlin.String, className: ClassName, defaultValue: kotlin.String) : Attr(name, functionName, className, defaultValue)
 }

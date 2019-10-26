@@ -10,7 +10,7 @@ object Plugins {
 object Libs {
     val kotlin = KotlinDeps()
     val kotlinx = KotlinxDeps()
-    val kotlinPoet = "com.squareup:kotlinpoet:1.3.0"
+    val kotlinPoet = "com.squareup:kotlinpoet:1.4.1"
     val ktorServerCore = "io.ktor:ktor-server-core:${Versions.ktor}"
     val okio = "com.squareup.okio:okio:2.2.2"
 }
