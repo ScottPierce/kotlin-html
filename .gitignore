@@ -7,6 +7,4 @@ out/
 .gradle
 
 /.idea/*
-
-# IDEA/Android Studio Ignore exceptions
 !/.idea/codeStyles
