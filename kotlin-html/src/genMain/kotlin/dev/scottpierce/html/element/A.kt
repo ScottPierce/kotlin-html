@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.a(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,
@@ -37,7 +37,7 @@ inline fun HtmlWriter.a(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,
@@ -62,7 +62,7 @@ inline fun HtmlWriter.a(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,
@@ -86,7 +86,7 @@ inline fun HtmlWriter.a(
 inline fun BodyContext.a(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,
@@ -110,7 +110,7 @@ inline fun BodyContext.a(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,
@@ -135,7 +135,7 @@ inline fun BodyContext.a(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     href: String? = null,
     target: String? = null,
     rel: String? = null,

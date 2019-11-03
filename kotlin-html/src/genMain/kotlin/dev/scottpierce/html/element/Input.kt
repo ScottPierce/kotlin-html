@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.input(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -43,7 +43,7 @@ inline fun HtmlWriter.input(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -74,7 +74,7 @@ inline fun HtmlWriter.input(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -104,7 +104,7 @@ inline fun HtmlWriter.input(
 inline fun BodyContext.input(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -134,7 +134,7 @@ inline fun BodyContext.input(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -165,7 +165,7 @@ inline fun BodyContext.input(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,

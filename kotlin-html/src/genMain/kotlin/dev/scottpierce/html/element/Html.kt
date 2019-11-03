@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -12,7 +12,7 @@ import kotlin.collections.List
 @HtmlDsl
 inline fun HtmlWriter.html(
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
@@ -29,7 +29,7 @@ inline fun HtmlWriter.html(
 inline fun HtmlWriter.html(
     vararg attrs: Pair<String, String?>,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
@@ -47,7 +47,7 @@ inline fun HtmlWriter.html(
 inline fun HtmlWriter.html(
     attrs: List<Pair<String, String?>>,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
@@ -64,7 +64,7 @@ inline fun HtmlWriter.html(
 @HtmlDsl
 inline fun FileContext.html(
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
@@ -81,7 +81,7 @@ inline fun FileContext.html(
 inline fun FileContext.html(
     vararg attrs: Pair<String, String?>,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
@@ -99,7 +99,7 @@ inline fun FileContext.html(
 inline fun FileContext.html(
     attrs: List<Pair<String, String?>>,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {

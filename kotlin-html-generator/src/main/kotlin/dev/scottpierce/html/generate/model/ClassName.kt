@@ -7,8 +7,10 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.STRING
 
 val HTML_WRITER = ClassName("dev.scottpierce.html.write", "HtmlWriter")
-val STYLE = ClassName("dev.scottpierce.html.style", "Style")
-val STYLE_BUILDER = ClassName("dev.scottpierce.html.style", "StyleBuilder")
+val INLINE_STYLE = ClassName("dev.scottpierce.html.style", "InlineStyle")
+val BASE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.style", "BaseStyleContext")
+val INLINE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.style", "InlineStyleContext")
+val INLINE_STYLE_LAMBDA = ClassName("dev.scottpierce.html.style", "InlineStyleLambda")
 val ATTRIBUTE = ClassName("kotlin", "Pair").parameterizedBy(STRING, STRING.copy(nullable = true))
 val ATTRIBUTE_LIST = LIST.parameterizedBy(ATTRIBUTE)
 val TEST = ClassName("kotlin.test", "Test")

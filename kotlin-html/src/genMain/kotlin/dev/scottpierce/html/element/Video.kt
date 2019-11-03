@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Boolean
 import kotlin.Pair
@@ -14,7 +14,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.video(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -42,7 +42,7 @@ inline fun HtmlWriter.video(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -71,7 +71,7 @@ inline fun HtmlWriter.video(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -99,7 +99,7 @@ inline fun HtmlWriter.video(
 inline fun BodyContext.video(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -127,7 +127,7 @@ inline fun BodyContext.video(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -156,7 +156,7 @@ inline fun BodyContext.video(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,

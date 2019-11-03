@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -12,7 +12,7 @@ import kotlin.collections.List
 fun HtmlWriter.img(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,
@@ -32,7 +32,7 @@ fun HtmlWriter.img(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,
@@ -53,7 +53,7 @@ fun HtmlWriter.img(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,
@@ -73,7 +73,7 @@ fun HtmlWriter.img(
 fun BodyContext.img(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,
@@ -93,7 +93,7 @@ fun BodyContext.img(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,
@@ -114,7 +114,7 @@ fun BodyContext.img(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    style: InlineStyleLambda? = null,
     src: String? = null,
     alt: String? = null,
     width: String? = null,

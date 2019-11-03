@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.option(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -31,7 +31,7 @@ inline fun HtmlWriter.option(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -50,7 +50,7 @@ inline fun HtmlWriter.option(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -68,7 +68,7 @@ inline fun HtmlWriter.option(
 inline fun SelectContext.option(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -86,7 +86,7 @@ inline fun SelectContext.option(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -105,7 +105,7 @@ inline fun SelectContext.option(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {

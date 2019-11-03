@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.ul(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("ul", id, classes, style)
@@ -26,7 +26,7 @@ inline fun HtmlWriter.ul(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("ul", id, classes, style, attrs)
@@ -39,7 +39,7 @@ inline fun HtmlWriter.ul(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("ul", id, classes, style, attrs)
@@ -51,7 +51,7 @@ inline fun HtmlWriter.ul(
 inline fun BodyContext.ul(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("ul", id, classes, style)
@@ -64,7 +64,7 @@ inline fun BodyContext.ul(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("ul", id, classes, style, attrs)
@@ -77,7 +77,7 @@ inline fun BodyContext.ul(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("ul", id, classes, style, attrs)

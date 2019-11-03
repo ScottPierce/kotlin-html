@@ -30,12 +30,9 @@ class StyleSheetBuilder : StyleSheet {
 
 inline fun styleSheet(func: StyleSheetBuilder.() -> Unit = {}): StyleSheet = StyleSheetBuilder().apply(func)
 
-sealed class StyleSheetElement
-
-@HtmlDsl
-abstract class Style : StyleSheetElement() {
-    abstract val properties: Map<String, Any?>
-}
-
 @HtmlDsl
 class MediaQuery(val styleSheet: StyleSheet) : StyleSheetElement()
+
+inline class StyleSelector(val value: String)
+inline class MediaQuerySelector(val value: String)
+inline class CssProperty(val value: String)

@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.button(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -31,7 +31,7 @@ inline fun HtmlWriter.button(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -50,7 +50,7 @@ inline fun HtmlWriter.button(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -68,7 +68,7 @@ inline fun HtmlWriter.button(
 inline fun BodyContext.button(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -86,7 +86,7 @@ inline fun BodyContext.button(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -105,7 +105,7 @@ inline fun BodyContext.button(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {

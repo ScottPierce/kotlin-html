@@ -7,14 +7,7 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.ASSERT_EQUALS
-import dev.scottpierce.html.generate.model.Constants
-import dev.scottpierce.html.generate.model.PropertyType
-import dev.scottpierce.html.generate.model.STYLE
-import dev.scottpierce.html.generate.model.STYLE_BUILDER
-import dev.scottpierce.html.generate.model.STYLE_MEMBER
-import dev.scottpierce.html.generate.model.StyleProperty
-import dev.scottpierce.html.generate.model.TEST
+import dev.scottpierce.html.generate.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
@@ -76,7 +69,7 @@ class GenerateStylePropertiesTask : Task {
         //     get() = properties["color"] as Color?
         file.addProperty(
             PropertySpec.builder(property.propertyName, propertyClassName)
-                .receiver(STYLE)
+                .receiver(INLINE_STYLE)
                 .getter(
                     FunSpec.getterBuilder()
                         .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)
@@ -93,7 +86,7 @@ class GenerateStylePropertiesTask : Task {
         file.addProperty(
             PropertySpec.builder(property.propertyName, propertyClassName)
                 .mutable(true)
-                .receiver(STYLE_BUILDER)
+                .receiver(BASE_STYLE_CONTEXT)
                 .getter(
                     FunSpec.getterBuilder()
                         .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)

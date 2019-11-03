@@ -1,14 +1,14 @@
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
-import dev.scottpierce.html.style.writeStyle
+import dev.scottpierce.html.style.InlineStyleContext
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 
 fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?
+    style: InlineStyleLambda?
 ) {
     writeTag(tag)
     writeStandardAttributes(id, classes, style)
@@ -20,7 +20,7 @@ fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?,
+    style: InlineStyleLambda?,
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -35,7 +35,7 @@ fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?,
+    style: InlineStyleLambda?,
     attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -56,7 +56,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?
+    style: InlineStyleLambda?
 ) {
     writeTag(tag)
     writeStandardAttributes(id, classes, style)
@@ -67,7 +67,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?,
+    style: InlineStyleLambda?,
     attrs: Array<out Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -80,7 +80,7 @@ fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
-    style: Style?,
+    style: InlineStyleLambda?,
     attrs: List<Pair<String, String?>>
 ) {
     writeTag(tag)
@@ -94,35 +94,34 @@ fun HtmlWriter.writeTag(tag: String) {
     write('<').write(tag)
 }
 
-fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: Style?) {
+fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
     if (id != null) write(" id=\"").write(id).write('"')
     if (classes != null) write(" class=\"").write(classes).write('"')
     if (style != null) {
         write(" style=\"")
-        writeStyle(style, true)
+        InlineStyleContext(this).style()
         write('"')
     }
 }
 
 fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
     for (attr in attrs) {
-        attr.checkAttributeKey()
-        write(' ').write(attr.first)
-        val value: String? = attr.second
-        if (value != null) {
-            write("=\"").write(value.escapeForHtml()).write('"')
-        }
+        writeAttribute(attr)
     }
 }
 
 fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
     for (attr in attrs) {
-        attr.checkAttributeKey()
-        write(' ').write(attr.first)
-        val value: String? = attr.second
-        if (value != null) {
-            write("=\"").write(value.escapeForHtml()).write('"')
-        }
+        writeAttribute(attr)
+    }
+}
+
+private fun HtmlWriter.writeAttribute(attr: Pair<String, String?>) {
+    attr.checkAttributeKey()
+    write(' ').write(attr.first)
+    val value: String? = attr.second
+    if (value != null) {
+        write("=\"").write(value.escapeForHtml()).write('"')
     }
 }
 

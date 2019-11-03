@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.element
 
-import dev.scottpierce.html.style.Style
+import dev.scottpierce.html.style.InlineStyleLambda
 import dev.scottpierce.html.write.HtmlWriter
 import kotlin.Pair
 import kotlin.String
@@ -13,7 +13,7 @@ import kotlin.collections.List
 inline fun HtmlWriter.h2(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("h2", id, classes, style)
@@ -26,7 +26,7 @@ inline fun HtmlWriter.h2(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("h2", id, classes, style, attrs)
@@ -39,7 +39,7 @@ inline fun HtmlWriter.h2(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     this.writeNormalElementStart("h2", id, classes, style, attrs)
@@ -51,7 +51,7 @@ inline fun HtmlWriter.h2(
 inline fun BodyContext.h2(
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("h2", id, classes, style)
@@ -64,7 +64,7 @@ inline fun BodyContext.h2(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("h2", id, classes, style, attrs)
@@ -77,7 +77,7 @@ inline fun BodyContext.h2(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: Style? = null,
+    noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     writer.writeNormalElementStart("h2", id, classes, style, attrs)

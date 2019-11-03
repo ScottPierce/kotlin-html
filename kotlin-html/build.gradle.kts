@@ -93,17 +93,12 @@ kotlin {
             dependsOn(linuxX64Main)
         }
     }
-}
-
-tasks.withType(KotlinCompile::class)
-    .forEach {
-        it.kotlinOptions {
-            freeCompilerArgs = listOf(
-                "-Xnew-inference",
-                "-XXLanguage:+InlineClasses"
-            )
+    sourceSets {
+        all {
+            languageSettings.enableLanguageFeature("InlineClasses")
         }
     }
+}
 
 tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     executionData(tasks.getByName("jvmTest"))

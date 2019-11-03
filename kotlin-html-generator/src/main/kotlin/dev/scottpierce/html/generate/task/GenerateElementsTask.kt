@@ -1,3 +1,5 @@
+@file:Suppress("UnnecessaryVariable")
+
 package dev.scottpierce.html.generate.task
 
 import com.squareup.kotlinpoet.*
@@ -40,6 +42,10 @@ class GenerateElementsTask : Task {
     }
 }
 
+val WRITE_TAG = MemberName("dev.scottpierce.html.element", "writeTag")
+val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeStandardAttributes")
+val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeAttributes")
+
 private fun createDslFunction(
     element: Element,
     isWriter: Boolean,
@@ -61,7 +67,9 @@ private fun createDslFunction(
     }
 
     // No reason to inline if there is no lambda
-    if (isParent) {
+    val isInline: Boolean = isParent
+
+    if (isInline) {
         addModifiers(KModifier.INLINE)
     }
 
@@ -85,9 +93,14 @@ private fun createDslFunction(
     }
 
     for (attr in element.supportedAttributes) {
+        val filteredModifiers = attr.modifiers.filter {
+            isInline && it === KModifier.NOINLINE
+        }
+
         addParameter(
             ParameterSpec.builder(attr.functionName, attr.className)
                 .defaultValue(attr.defaultValue)
+                .addModifiers(filteredModifiers)
                 .build()
         )
     }
@@ -95,7 +108,10 @@ private fun createDslFunction(
     when (element) {
         is Element.Normal -> {
             addParameter(
-                ParameterSpec.builder("func", LambdaTypeName.get(receiver = element.childrenContext.contextClassName, returnType = UNIT))
+                ParameterSpec.builder("func", LambdaTypeName.get(
+                    receiver = element.childrenContext.contextClassName,
+                    returnType = UNIT)
+                )
                     .defaultValue("{}")
                     .build()
             )
@@ -130,19 +146,6 @@ private fun createDslFunction(
 
         addCode(")\n")
     } else {
-        val WRITE_TAG = MemberName("dev.scottpierce.html.element", "writeTag")
-        val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeStandardAttributes")
-        val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeAttributes")
-
-        // writeTag("option")
-        // writeStandardAttributes(id, classes, style)
-        // // writeAttributes(attrs)
-        // // TODO write custom attributes
-        // write('>')
-        // indent()
-        // BodyContext(this).apply(func)
-        // writeNormalElementEnd("option")
-
         addStatement("$writer.%M(\"${element.tagName}\")", WRITE_TAG)
 
         run { // Supported Attributes

@@ -6,604 +6,604 @@ import kotlin.Double
 import kotlin.Int
 import kotlin.String
 
-val Style.alignItems: AlignItems?
+val InlineStyle.alignItems: AlignItems?
     get() = properties["align-items"] as AlignItems?
 
-var StyleBuilder.alignItems: AlignItems?
+var BaseStyleContext.alignItems: AlignItems?
     get() = properties["align-items"] as AlignItems?
     set(value) {
         properties["align-items"] = value
     }
 
-val Style.alignSelf: AlignSelf?
+val InlineStyle.alignSelf: AlignSelf?
     get() = properties["align-self"] as AlignSelf?
 
-var StyleBuilder.alignSelf: AlignSelf?
+var BaseStyleContext.alignSelf: AlignSelf?
     get() = properties["align-self"] as AlignSelf?
     set(value) {
         properties["align-self"] = value
     }
 
-val Style.animationName: String?
+val InlineStyle.animationName: String?
     get() = properties["animation-name"] as String?
 
-var StyleBuilder.animationName: String?
+var BaseStyleContext.animationName: String?
     get() = properties["animation-name"] as String?
     set(value) {
         properties["animation-name"] = value
     }
 
-val Style.animationDurationw: String?
+val InlineStyle.animationDurationw: String?
     get() = properties["animation-durationw"] as String?
 
-var StyleBuilder.animationDurationw: String?
+var BaseStyleContext.animationDurationw: String?
     get() = properties["animation-durationw"] as String?
     set(value) {
         properties["animation-durationw"] = value
     }
 
-val Style.background: String?
+val InlineStyle.background: String?
     get() = properties["background"] as String?
 
-var StyleBuilder.background: String?
+var BaseStyleContext.background: String?
     get() = properties["background"] as String?
     set(value) {
         properties["background"] = value
     }
 
-val Style.backgroundColor: Color?
+val InlineStyle.backgroundColor: Color?
     get() = properties["background-color"] as Color?
 
-var StyleBuilder.backgroundColor: Color?
+var BaseStyleContext.backgroundColor: Color?
     get() = properties["background-color"] as Color?
     set(value) {
         properties["background-color"] = value
     }
 
-val Style.border: String?
+val InlineStyle.border: String?
     get() = properties["border"] as String?
 
-var StyleBuilder.border: String?
+var BaseStyleContext.border: String?
     get() = properties["border"] as String?
     set(value) {
         properties["border"] = value
     }
 
-val Style.borderRadius: Dimension?
+val InlineStyle.borderRadius: Dimension?
     get() = properties["border-radius"] as Dimension?
 
-var StyleBuilder.borderRadius: Dimension?
+var BaseStyleContext.borderRadius: Dimension?
     get() = properties["border-radius"] as Dimension?
     set(value) {
         properties["border-radius"] = value
     }
 
-val Style.bottom: Dimension?
+val InlineStyle.bottom: Dimension?
     get() = properties["bottom"] as Dimension?
 
-var StyleBuilder.bottom: Dimension?
+var BaseStyleContext.bottom: Dimension?
     get() = properties["bottom"] as Dimension?
     set(value) {
         properties["bottom"] = value
     }
 
-val Style.boxShadow: String?
+val InlineStyle.boxShadow: String?
     get() = properties["box-shadow"] as String?
 
-var StyleBuilder.boxShadow: String?
+var BaseStyleContext.boxShadow: String?
     get() = properties["box-shadow"] as String?
     set(value) {
         properties["box-shadow"] = value
     }
 
-val Style.color: Color?
+val InlineStyle.color: Color?
     get() = properties["color"] as Color?
 
-var StyleBuilder.color: Color?
+var BaseStyleContext.color: Color?
     get() = properties["color"] as Color?
     set(value) {
         properties["color"] = value
     }
 
-val Style.content: String?
+val InlineStyle.content: String?
     get() = properties["content"] as String?
 
-var StyleBuilder.content: String?
+var BaseStyleContext.content: String?
     get() = properties["content"] as String?
     set(value) {
         properties["content"] = value
     }
 
-val Style.cursor: String?
+val InlineStyle.cursor: String?
     get() = properties["cursor"] as String?
 
-var StyleBuilder.cursor: String?
+var BaseStyleContext.cursor: String?
     get() = properties["cursor"] as String?
     set(value) {
         properties["cursor"] = value
     }
 
-val Style.display: Display?
+val InlineStyle.display: Display?
     get() = properties["display"] as Display?
 
-var StyleBuilder.display: Display?
+var BaseStyleContext.display: Display?
     get() = properties["display"] as Display?
     set(value) {
         properties["display"] = value
     }
 
-val Style.fill: String?
+val InlineStyle.fill: String?
     get() = properties["fill"] as String?
 
-var StyleBuilder.fill: String?
+var BaseStyleContext.fill: String?
     get() = properties["fill"] as String?
     set(value) {
         properties["fill"] = value
     }
 
-val Style.flex: String?
+val InlineStyle.flex: String?
     get() = properties["flex"] as String?
 
-var StyleBuilder.flex: String?
+var BaseStyleContext.flex: String?
     get() = properties["flex"] as String?
     set(value) {
         properties["flex"] = value
     }
 
-val Style.flexGrow: String?
+val InlineStyle.flexGrow: String?
     get() = properties["flex-grow"] as String?
 
-var StyleBuilder.flexGrow: String?
+var BaseStyleContext.flexGrow: String?
     get() = properties["flex-grow"] as String?
     set(value) {
         properties["flex-grow"] = value
     }
 
-val Style.flexShrink: String?
+val InlineStyle.flexShrink: String?
     get() = properties["flex-shrink"] as String?
 
-var StyleBuilder.flexShrink: String?
+var BaseStyleContext.flexShrink: String?
     get() = properties["flex-shrink"] as String?
     set(value) {
         properties["flex-shrink"] = value
     }
 
-val Style.flexBasis: String?
+val InlineStyle.flexBasis: String?
     get() = properties["flex-basis"] as String?
 
-var StyleBuilder.flexBasis: String?
+var BaseStyleContext.flexBasis: String?
     get() = properties["flex-basis"] as String?
     set(value) {
         properties["flex-basis"] = value
     }
 
-val Style.flexDirection: FlexDirection?
+val InlineStyle.flexDirection: FlexDirection?
     get() = properties["flex-direction"] as FlexDirection?
 
-var StyleBuilder.flexDirection: FlexDirection?
+var BaseStyleContext.flexDirection: FlexDirection?
     get() = properties["flex-direction"] as FlexDirection?
     set(value) {
         properties["flex-direction"] = value
     }
 
-val Style.flexWrap: FlexWrap?
+val InlineStyle.flexWrap: FlexWrap?
     get() = properties["flex-wrap"] as FlexWrap?
 
-var StyleBuilder.flexWrap: FlexWrap?
+var BaseStyleContext.flexWrap: FlexWrap?
     get() = properties["flex-wrap"] as FlexWrap?
     set(value) {
         properties["flex-wrap"] = value
     }
 
-val Style.float: FloatDirection?
+val InlineStyle.float: FloatDirection?
     get() = properties["float"] as FloatDirection?
 
-var StyleBuilder.float: FloatDirection?
+var BaseStyleContext.float: FloatDirection?
     get() = properties["float"] as FloatDirection?
     set(value) {
         properties["float"] = value
     }
 
-val Style.fontFamily: String?
+val InlineStyle.fontFamily: String?
     get() = properties["font-family"] as String?
 
-var StyleBuilder.fontFamily: String?
+var BaseStyleContext.fontFamily: String?
     get() = properties["font-family"] as String?
     set(value) {
         properties["font-family"] = value
     }
 
-val Style.fontWeight: String?
+val InlineStyle.fontWeight: String?
     get() = properties["font-weight"] as String?
 
-var StyleBuilder.fontWeight: String?
+var BaseStyleContext.fontWeight: String?
     get() = properties["font-weight"] as String?
     set(value) {
         properties["font-weight"] = value
     }
 
-val Style.fontSize: Dimension?
+val InlineStyle.fontSize: Dimension?
     get() = properties["font-size"] as Dimension?
 
-var StyleBuilder.fontSize: Dimension?
+var BaseStyleContext.fontSize: Dimension?
     get() = properties["font-size"] as Dimension?
     set(value) {
         properties["font-size"] = value
     }
 
-val Style.gridColumnGap: Dimension?
+val InlineStyle.gridColumnGap: Dimension?
     get() = properties["grid-column-gap"] as Dimension?
 
-var StyleBuilder.gridColumnGap: Dimension?
+var BaseStyleContext.gridColumnGap: Dimension?
     get() = properties["grid-column-gap"] as Dimension?
     set(value) {
         properties["grid-column-gap"] = value
     }
 
-val Style.gridRowGap: Dimension?
+val InlineStyle.gridRowGap: Dimension?
     get() = properties["grid-row-gap"] as Dimension?
 
-var StyleBuilder.gridRowGap: Dimension?
+var BaseStyleContext.gridRowGap: Dimension?
     get() = properties["grid-row-gap"] as Dimension?
     set(value) {
         properties["grid-row-gap"] = value
     }
 
-val Style.gridTemplateColumns: String?
+val InlineStyle.gridTemplateColumns: String?
     get() = properties["grid-template-columns"] as String?
 
-var StyleBuilder.gridTemplateColumns: String?
+var BaseStyleContext.gridTemplateColumns: String?
     get() = properties["grid-template-columns"] as String?
     set(value) {
         properties["grid-template-columns"] = value
     }
 
-val Style.gridTemplateRows: String?
+val InlineStyle.gridTemplateRows: String?
     get() = properties["grid-template-rows"] as String?
 
-var StyleBuilder.gridTemplateRows: String?
+var BaseStyleContext.gridTemplateRows: String?
     get() = properties["grid-template-rows"] as String?
     set(value) {
         properties["grid-template-rows"] = value
     }
 
-val Style.height: Dimension?
+val InlineStyle.height: Dimension?
     get() = properties["height"] as Dimension?
 
-var StyleBuilder.height: Dimension?
+var BaseStyleContext.height: Dimension?
     get() = properties["height"] as Dimension?
     set(value) {
         properties["height"] = value
     }
 
-val Style.justifySelf: JustifySelf?
+val InlineStyle.justifySelf: JustifySelf?
     get() = properties["justify-self"] as JustifySelf?
 
-var StyleBuilder.justifySelf: JustifySelf?
+var BaseStyleContext.justifySelf: JustifySelf?
     get() = properties["justify-self"] as JustifySelf?
     set(value) {
         properties["justify-self"] = value
     }
 
-val Style.justifyContent: JustifyContent?
+val InlineStyle.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
 
-var StyleBuilder.justifyContent: JustifyContent?
+var BaseStyleContext.justifyContent: JustifyContent?
     get() = properties["justify-content"] as JustifyContent?
     set(value) {
         properties["justify-content"] = value
     }
 
-val Style.left: Dimension?
+val InlineStyle.left: Dimension?
     get() = properties["left"] as Dimension?
 
-var StyleBuilder.left: Dimension?
+var BaseStyleContext.left: Dimension?
     get() = properties["left"] as Dimension?
     set(value) {
         properties["left"] = value
     }
 
-val Style.letterSpacing: Dimension?
+val InlineStyle.letterSpacing: Dimension?
     get() = properties["letter-spacing"] as Dimension?
 
-var StyleBuilder.letterSpacing: Dimension?
+var BaseStyleContext.letterSpacing: Dimension?
     get() = properties["letter-spacing"] as Dimension?
     set(value) {
         properties["letter-spacing"] = value
     }
 
-val Style.lineHeight: Double?
+val InlineStyle.lineHeight: Double?
     get() = properties["line-height"] as Double?
 
-var StyleBuilder.lineHeight: Double?
+var BaseStyleContext.lineHeight: Double?
     get() = properties["line-height"] as Double?
     set(value) {
         properties["line-height"] = value
     }
 
-val Style.listStyle: ListStyle?
+val InlineStyle.listStyle: ListStyle?
     get() = properties["list-style"] as ListStyle?
 
-var StyleBuilder.listStyle: ListStyle?
+var BaseStyleContext.listStyle: ListStyle?
     get() = properties["list-style"] as ListStyle?
     set(value) {
         properties["list-style"] = value
     }
 
-val Style.outline: String?
+val InlineStyle.outline: String?
     get() = properties["outline"] as String?
 
-var StyleBuilder.outline: String?
+var BaseStyleContext.outline: String?
     get() = properties["outline"] as String?
     set(value) {
         properties["outline"] = value
     }
 
-val Style.padding: Dimension?
+val InlineStyle.padding: Dimension?
     get() = properties["padding"] as Dimension?
 
-var StyleBuilder.padding: Dimension?
+var BaseStyleContext.padding: Dimension?
     get() = properties["padding"] as Dimension?
     set(value) {
         properties["padding"] = value
     }
 
-val Style.paddingLeft: Dimension?
+val InlineStyle.paddingLeft: Dimension?
     get() = properties["padding-left"] as Dimension?
 
-var StyleBuilder.paddingLeft: Dimension?
+var BaseStyleContext.paddingLeft: Dimension?
     get() = properties["padding-left"] as Dimension?
     set(value) {
         properties["padding-left"] = value
     }
 
-val Style.paddingRight: Dimension?
+val InlineStyle.paddingRight: Dimension?
     get() = properties["padding-right"] as Dimension?
 
-var StyleBuilder.paddingRight: Dimension?
+var BaseStyleContext.paddingRight: Dimension?
     get() = properties["padding-right"] as Dimension?
     set(value) {
         properties["padding-right"] = value
     }
 
-val Style.paddingTop: Dimension?
+val InlineStyle.paddingTop: Dimension?
     get() = properties["padding-top"] as Dimension?
 
-var StyleBuilder.paddingTop: Dimension?
+var BaseStyleContext.paddingTop: Dimension?
     get() = properties["padding-top"] as Dimension?
     set(value) {
         properties["padding-top"] = value
     }
 
-val Style.paddingBottom: Dimension?
+val InlineStyle.paddingBottom: Dimension?
     get() = properties["padding-bottom"] as Dimension?
 
-var StyleBuilder.paddingBottom: Dimension?
+var BaseStyleContext.paddingBottom: Dimension?
     get() = properties["padding-bottom"] as Dimension?
     set(value) {
         properties["padding-bottom"] = value
     }
 
-val Style.position: Position?
+val InlineStyle.position: Position?
     get() = properties["position"] as Position?
 
-var StyleBuilder.position: Position?
+var BaseStyleContext.position: Position?
     get() = properties["position"] as Position?
     set(value) {
         properties["position"] = value
     }
 
-val Style.margin: Dimension?
+val InlineStyle.margin: Dimension?
     get() = properties["margin"] as Dimension?
 
-var StyleBuilder.margin: Dimension?
+var BaseStyleContext.margin: Dimension?
     get() = properties["margin"] as Dimension?
     set(value) {
         properties["margin"] = value
     }
 
-val Style.marginBlockEnd: Dimension?
+val InlineStyle.marginBlockEnd: Dimension?
     get() = properties["margin-block-end"] as Dimension?
 
-var StyleBuilder.marginBlockEnd: Dimension?
+var BaseStyleContext.marginBlockEnd: Dimension?
     get() = properties["margin-block-end"] as Dimension?
     set(value) {
         properties["margin-block-end"] = value
     }
 
-val Style.marginBlockStart: Dimension?
+val InlineStyle.marginBlockStart: Dimension?
     get() = properties["margin-block-start"] as Dimension?
 
-var StyleBuilder.marginBlockStart: Dimension?
+var BaseStyleContext.marginBlockStart: Dimension?
     get() = properties["margin-block-start"] as Dimension?
     set(value) {
         properties["margin-block-start"] = value
     }
 
-val Style.marginBottom: Dimension?
+val InlineStyle.marginBottom: Dimension?
     get() = properties["margin-bottom"] as Dimension?
 
-var StyleBuilder.marginBottom: Dimension?
+var BaseStyleContext.marginBottom: Dimension?
     get() = properties["margin-bottom"] as Dimension?
     set(value) {
         properties["margin-bottom"] = value
     }
 
-val Style.marginLeft: Dimension?
+val InlineStyle.marginLeft: Dimension?
     get() = properties["margin-left"] as Dimension?
 
-var StyleBuilder.marginLeft: Dimension?
+var BaseStyleContext.marginLeft: Dimension?
     get() = properties["margin-left"] as Dimension?
     set(value) {
         properties["margin-left"] = value
     }
 
-val Style.marginRight: Dimension?
+val InlineStyle.marginRight: Dimension?
     get() = properties["margin-right"] as Dimension?
 
-var StyleBuilder.marginRight: Dimension?
+var BaseStyleContext.marginRight: Dimension?
     get() = properties["margin-right"] as Dimension?
     set(value) {
         properties["margin-right"] = value
     }
 
-val Style.marginTop: Dimension?
+val InlineStyle.marginTop: Dimension?
     get() = properties["margin-top"] as Dimension?
 
-var StyleBuilder.marginTop: Dimension?
+var BaseStyleContext.marginTop: Dimension?
     get() = properties["margin-top"] as Dimension?
     set(value) {
         properties["margin-top"] = value
     }
 
-val Style.maxHeight: Dimension?
+val InlineStyle.maxHeight: Dimension?
     get() = properties["max-height"] as Dimension?
 
-var StyleBuilder.maxHeight: Dimension?
+var BaseStyleContext.maxHeight: Dimension?
     get() = properties["max-height"] as Dimension?
     set(value) {
         properties["max-height"] = value
     }
 
-val Style.maxWidth: Dimension?
+val InlineStyle.maxWidth: Dimension?
     get() = properties["max-width"] as Dimension?
 
-var StyleBuilder.maxWidth: Dimension?
+var BaseStyleContext.maxWidth: Dimension?
     get() = properties["max-width"] as Dimension?
     set(value) {
         properties["max-width"] = value
     }
 
-val Style.minHeight: Dimension?
+val InlineStyle.minHeight: Dimension?
     get() = properties["min-height"] as Dimension?
 
-var StyleBuilder.minHeight: Dimension?
+var BaseStyleContext.minHeight: Dimension?
     get() = properties["min-height"] as Dimension?
     set(value) {
         properties["min-height"] = value
     }
 
-val Style.minWidth: Dimension?
+val InlineStyle.minWidth: Dimension?
     get() = properties["min-width"] as Dimension?
 
-var StyleBuilder.minWidth: Dimension?
+var BaseStyleContext.minWidth: Dimension?
     get() = properties["min-width"] as Dimension?
     set(value) {
         properties["min-width"] = value
     }
 
-val Style.outlineColor: Color?
+val InlineStyle.outlineColor: Color?
     get() = properties["outline-color"] as Color?
 
-var StyleBuilder.outlineColor: Color?
+var BaseStyleContext.outlineColor: Color?
     get() = properties["outline-color"] as Color?
     set(value) {
         properties["outline-color"] = value
     }
 
-val Style.overflow: String?
+val InlineStyle.overflow: String?
     get() = properties["overflow"] as String?
 
-var StyleBuilder.overflow: String?
+var BaseStyleContext.overflow: String?
     get() = properties["overflow"] as String?
     set(value) {
         properties["overflow"] = value
     }
 
-val Style.right: Dimension?
+val InlineStyle.right: Dimension?
     get() = properties["right"] as Dimension?
 
-var StyleBuilder.right: Dimension?
+var BaseStyleContext.right: Dimension?
     get() = properties["right"] as Dimension?
     set(value) {
         properties["right"] = value
     }
 
-val Style.textAlign: TextAlign?
+val InlineStyle.textAlign: TextAlign?
     get() = properties["text-align"] as TextAlign?
 
-var StyleBuilder.textAlign: TextAlign?
+var BaseStyleContext.textAlign: TextAlign?
     get() = properties["text-align"] as TextAlign?
     set(value) {
         properties["text-align"] = value
     }
 
-val Style.textDecoration: String?
+val InlineStyle.textDecoration: String?
     get() = properties["text-decoration"] as String?
 
-var StyleBuilder.textDecoration: String?
+var BaseStyleContext.textDecoration: String?
     get() = properties["text-decoration"] as String?
     set(value) {
         properties["text-decoration"] = value
     }
 
-val Style.textDecorationLine: String?
+val InlineStyle.textDecorationLine: String?
     get() = properties["text-decoration-line"] as String?
 
-var StyleBuilder.textDecorationLine: String?
+var BaseStyleContext.textDecorationLine: String?
     get() = properties["text-decoration-line"] as String?
     set(value) {
         properties["text-decoration-line"] = value
     }
 
-val Style.textTransform: TextTransform?
+val InlineStyle.textTransform: TextTransform?
     get() = properties["text-transform"] as TextTransform?
 
-var StyleBuilder.textTransform: TextTransform?
+var BaseStyleContext.textTransform: TextTransform?
     get() = properties["text-transform"] as TextTransform?
     set(value) {
         properties["text-transform"] = value
     }
 
-val Style.top: Dimension?
+val InlineStyle.top: Dimension?
     get() = properties["top"] as Dimension?
 
-var StyleBuilder.top: Dimension?
+var BaseStyleContext.top: Dimension?
     get() = properties["top"] as Dimension?
     set(value) {
         properties["top"] = value
     }
 
-val Style.transition: String?
+val InlineStyle.transition: String?
     get() = properties["transition"] as String?
 
-var StyleBuilder.transition: String?
+var BaseStyleContext.transition: String?
     get() = properties["transition"] as String?
     set(value) {
         properties["transition"] = value
     }
 
-val Style.transitionProperty: String?
+val InlineStyle.transitionProperty: String?
     get() = properties["transition-property"] as String?
 
-var StyleBuilder.transitionProperty: String?
+var BaseStyleContext.transitionProperty: String?
     get() = properties["transition-property"] as String?
     set(value) {
         properties["transition-property"] = value
     }
 
-val Style.visibility: Visibility?
+val InlineStyle.visibility: Visibility?
     get() = properties["visibility"] as Visibility?
 
-var StyleBuilder.visibility: Visibility?
+var BaseStyleContext.visibility: Visibility?
     get() = properties["visibility"] as Visibility?
     set(value) {
         properties["visibility"] = value
     }
 
-val Style.width: Dimension?
+val InlineStyle.width: Dimension?
     get() = properties["width"] as Dimension?
 
-var StyleBuilder.width: Dimension?
+var BaseStyleContext.width: Dimension?
     get() = properties["width"] as Dimension?
     set(value) {
         properties["width"] = value
     }
 
-val Style.zIndex: Int?
+val InlineStyle.zIndex: Int?
     get() = properties["z-index"] as Int?
 
-var StyleBuilder.zIndex: Int?
+var BaseStyleContext.zIndex: Int?
     get() = properties["z-index"] as Int?
     set(value) {
         properties["z-index"] = value

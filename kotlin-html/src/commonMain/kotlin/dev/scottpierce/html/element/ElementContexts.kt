@@ -30,25 +30,25 @@ interface HasText : Context {
 }
 
 @HtmlDsl
-class FileContext(override val writer: HtmlWriter) : Context
+inline class FileContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class HtmlContext(override val writer: HtmlWriter) : Context
+inline class HtmlContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class HeadContext(override val writer: HtmlWriter) : Context
+inline class HeadContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class ScriptContext(override val writer: HtmlWriter) : Context
+inline class ScriptContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class BodyContext(override val writer: HtmlWriter) : Context, HasText
+inline class BodyContext(override val writer: HtmlWriter) : Context, HasText
 
 @HtmlDsl
-class SelectContext(override val writer: HtmlWriter) : Context
+inline class SelectContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class UlContext(override val writer: HtmlWriter) : Context
+inline class UlContext(override val writer: HtmlWriter) : Context
 
 @HtmlDsl
-class VideoContext(override val writer: HtmlWriter) : Context
+inline class VideoContext(override val writer: HtmlWriter) : Context
