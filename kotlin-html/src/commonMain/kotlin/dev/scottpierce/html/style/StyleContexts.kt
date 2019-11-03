@@ -5,6 +5,9 @@ import dev.scottpierce.html.element.HtmlDsl
 import dev.scottpierce.html.write.HtmlWriter
 
 @HtmlDsl
+inline class StyleSheetContext(override val writer: HtmlWriter) : Context
+
+@HtmlDsl
 interface BaseStyleContext : Context
 
 @HtmlDsl
@@ -14,3 +17,5 @@ inline class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleCont
 inline class StyleContext(override val writer: HtmlWriter) : BaseStyleContext
 
 typealias InlineStyleLambda = InlineStyleContext.() -> Unit
+
+typealias StyleLambda = StyleContext.() -> Unit

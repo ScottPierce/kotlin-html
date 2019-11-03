@@ -15,6 +15,7 @@ val ATTRIBUTE = ClassName("kotlin", "Pair").parameterizedBy(STRING, STRING.copy(
 val ATTRIBUTE_LIST = LIST.parameterizedBy(ATTRIBUTE)
 val TEST = ClassName("kotlin.test", "Test")
 val HTML_DSL = ClassName("dev.scottpierce.html.element", "HtmlDsl")
+val UNSUPPORTED_OPERATION_EXCEPTION = ClassName("kotlin", "UnsupportedOperationException")
 
 val WRITE_NORMAL_ELEMENT_START = MemberName("dev.scottpierce.html.element", "writeNormalElementStart")
 val WRITE_NORMAL_ELEMENT_END = MemberName("dev.scottpierce.html.element", "writeNormalElementEnd")

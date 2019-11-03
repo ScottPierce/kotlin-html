@@ -2,609 +2,545 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.style
 
+import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
-
-val InlineStyle.alignItems: AlignItems?
-    get() = properties["align-items"] as AlignItems?
+import kotlin.UnsupportedOperationException
+import kotlin.jvm.JvmSynthetic
 
 var BaseStyleContext.alignItems: AlignItems?
-    get() = properties["align-items"] as AlignItems?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["align-items"] = value
+        writeStyleProperty("align-items", value.toString())
     }
-
-val InlineStyle.alignSelf: AlignSelf?
-    get() = properties["align-self"] as AlignSelf?
 
 var BaseStyleContext.alignSelf: AlignSelf?
-    get() = properties["align-self"] as AlignSelf?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["align-self"] = value
+        writeStyleProperty("align-self", value.toString())
     }
-
-val InlineStyle.animationName: String?
-    get() = properties["animation-name"] as String?
 
 var BaseStyleContext.animationName: String?
-    get() = properties["animation-name"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["animation-name"] = value
+        writeStyleProperty("animation-name", value.toString())
     }
 
-val InlineStyle.animationDurationw: String?
-    get() = properties["animation-durationw"] as String?
-
-var BaseStyleContext.animationDurationw: String?
-    get() = properties["animation-durationw"] as String?
+var BaseStyleContext.animationDuration: String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["animation-durationw"] = value
+        writeStyleProperty("animation-duration", value.toString())
     }
-
-val InlineStyle.background: String?
-    get() = properties["background"] as String?
 
 var BaseStyleContext.background: String?
-    get() = properties["background"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["background"] = value
+        writeStyleProperty("background", value.toString())
     }
-
-val InlineStyle.backgroundColor: Color?
-    get() = properties["background-color"] as Color?
 
 var BaseStyleContext.backgroundColor: Color?
-    get() = properties["background-color"] as Color?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["background-color"] = value
+        writeStyleProperty("background-color", value.toString())
     }
-
-val InlineStyle.border: String?
-    get() = properties["border"] as String?
 
 var BaseStyleContext.border: String?
-    get() = properties["border"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["border"] = value
+        writeStyleProperty("border", value.toString())
     }
-
-val InlineStyle.borderRadius: Dimension?
-    get() = properties["border-radius"] as Dimension?
 
 var BaseStyleContext.borderRadius: Dimension?
-    get() = properties["border-radius"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["border-radius"] = value
+        writeStyleProperty("border-radius", value.toString())
     }
-
-val InlineStyle.bottom: Dimension?
-    get() = properties["bottom"] as Dimension?
 
 var BaseStyleContext.bottom: Dimension?
-    get() = properties["bottom"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["bottom"] = value
+        writeStyleProperty("bottom", value.toString())
     }
-
-val InlineStyle.boxShadow: String?
-    get() = properties["box-shadow"] as String?
 
 var BaseStyleContext.boxShadow: String?
-    get() = properties["box-shadow"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["box-shadow"] = value
+        writeStyleProperty("box-shadow", value.toString())
     }
-
-val InlineStyle.color: Color?
-    get() = properties["color"] as Color?
 
 var BaseStyleContext.color: Color?
-    get() = properties["color"] as Color?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["color"] = value
+        writeStyleProperty("color", value.toString())
     }
-
-val InlineStyle.content: String?
-    get() = properties["content"] as String?
 
 var BaseStyleContext.content: String?
-    get() = properties["content"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["content"] = value
+        writeStyleProperty("content", value.toString())
     }
-
-val InlineStyle.cursor: String?
-    get() = properties["cursor"] as String?
 
 var BaseStyleContext.cursor: String?
-    get() = properties["cursor"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["cursor"] = value
+        writeStyleProperty("cursor", value.toString())
     }
-
-val InlineStyle.display: Display?
-    get() = properties["display"] as Display?
 
 var BaseStyleContext.display: Display?
-    get() = properties["display"] as Display?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["display"] = value
+        writeStyleProperty("display", value.toString())
     }
-
-val InlineStyle.fill: String?
-    get() = properties["fill"] as String?
 
 var BaseStyleContext.fill: String?
-    get() = properties["fill"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["fill"] = value
+        writeStyleProperty("fill", value.toString())
     }
-
-val InlineStyle.flex: String?
-    get() = properties["flex"] as String?
 
 var BaseStyleContext.flex: String?
-    get() = properties["flex"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex"] = value
+        writeStyleProperty("flex", value.toString())
     }
-
-val InlineStyle.flexGrow: String?
-    get() = properties["flex-grow"] as String?
 
 var BaseStyleContext.flexGrow: String?
-    get() = properties["flex-grow"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex-grow"] = value
+        writeStyleProperty("flex-grow", value.toString())
     }
-
-val InlineStyle.flexShrink: String?
-    get() = properties["flex-shrink"] as String?
 
 var BaseStyleContext.flexShrink: String?
-    get() = properties["flex-shrink"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex-shrink"] = value
+        writeStyleProperty("flex-shrink", value.toString())
     }
-
-val InlineStyle.flexBasis: String?
-    get() = properties["flex-basis"] as String?
 
 var BaseStyleContext.flexBasis: String?
-    get() = properties["flex-basis"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex-basis"] = value
+        writeStyleProperty("flex-basis", value.toString())
     }
-
-val InlineStyle.flexDirection: FlexDirection?
-    get() = properties["flex-direction"] as FlexDirection?
 
 var BaseStyleContext.flexDirection: FlexDirection?
-    get() = properties["flex-direction"] as FlexDirection?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex-direction"] = value
+        writeStyleProperty("flex-direction", value.toString())
     }
-
-val InlineStyle.flexWrap: FlexWrap?
-    get() = properties["flex-wrap"] as FlexWrap?
 
 var BaseStyleContext.flexWrap: FlexWrap?
-    get() = properties["flex-wrap"] as FlexWrap?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["flex-wrap"] = value
+        writeStyleProperty("flex-wrap", value.toString())
     }
-
-val InlineStyle.float: FloatDirection?
-    get() = properties["float"] as FloatDirection?
 
 var BaseStyleContext.float: FloatDirection?
-    get() = properties["float"] as FloatDirection?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["float"] = value
+        writeStyleProperty("float", value.toString())
     }
-
-val InlineStyle.fontFamily: String?
-    get() = properties["font-family"] as String?
 
 var BaseStyleContext.fontFamily: String?
-    get() = properties["font-family"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["font-family"] = value
+        writeStyleProperty("font-family", value.toString())
     }
-
-val InlineStyle.fontWeight: String?
-    get() = properties["font-weight"] as String?
 
 var BaseStyleContext.fontWeight: String?
-    get() = properties["font-weight"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["font-weight"] = value
+        writeStyleProperty("font-weight", value.toString())
     }
-
-val InlineStyle.fontSize: Dimension?
-    get() = properties["font-size"] as Dimension?
 
 var BaseStyleContext.fontSize: Dimension?
-    get() = properties["font-size"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["font-size"] = value
+        writeStyleProperty("font-size", value.toString())
     }
-
-val InlineStyle.gridColumnGap: Dimension?
-    get() = properties["grid-column-gap"] as Dimension?
 
 var BaseStyleContext.gridColumnGap: Dimension?
-    get() = properties["grid-column-gap"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["grid-column-gap"] = value
+        writeStyleProperty("grid-column-gap", value.toString())
     }
-
-val InlineStyle.gridRowGap: Dimension?
-    get() = properties["grid-row-gap"] as Dimension?
 
 var BaseStyleContext.gridRowGap: Dimension?
-    get() = properties["grid-row-gap"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["grid-row-gap"] = value
+        writeStyleProperty("grid-row-gap", value.toString())
     }
-
-val InlineStyle.gridTemplateColumns: String?
-    get() = properties["grid-template-columns"] as String?
 
 var BaseStyleContext.gridTemplateColumns: String?
-    get() = properties["grid-template-columns"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["grid-template-columns"] = value
+        writeStyleProperty("grid-template-columns", value.toString())
     }
-
-val InlineStyle.gridTemplateRows: String?
-    get() = properties["grid-template-rows"] as String?
 
 var BaseStyleContext.gridTemplateRows: String?
-    get() = properties["grid-template-rows"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["grid-template-rows"] = value
+        writeStyleProperty("grid-template-rows", value.toString())
     }
-
-val InlineStyle.height: Dimension?
-    get() = properties["height"] as Dimension?
 
 var BaseStyleContext.height: Dimension?
-    get() = properties["height"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["height"] = value
+        writeStyleProperty("height", value.toString())
     }
-
-val InlineStyle.justifySelf: JustifySelf?
-    get() = properties["justify-self"] as JustifySelf?
 
 var BaseStyleContext.justifySelf: JustifySelf?
-    get() = properties["justify-self"] as JustifySelf?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["justify-self"] = value
+        writeStyleProperty("justify-self", value.toString())
     }
-
-val InlineStyle.justifyContent: JustifyContent?
-    get() = properties["justify-content"] as JustifyContent?
 
 var BaseStyleContext.justifyContent: JustifyContent?
-    get() = properties["justify-content"] as JustifyContent?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["justify-content"] = value
+        writeStyleProperty("justify-content", value.toString())
     }
-
-val InlineStyle.left: Dimension?
-    get() = properties["left"] as Dimension?
 
 var BaseStyleContext.left: Dimension?
-    get() = properties["left"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["left"] = value
+        writeStyleProperty("left", value.toString())
     }
-
-val InlineStyle.letterSpacing: Dimension?
-    get() = properties["letter-spacing"] as Dimension?
 
 var BaseStyleContext.letterSpacing: Dimension?
-    get() = properties["letter-spacing"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["letter-spacing"] = value
+        writeStyleProperty("letter-spacing", value.toString())
     }
-
-val InlineStyle.lineHeight: Double?
-    get() = properties["line-height"] as Double?
 
 var BaseStyleContext.lineHeight: Double?
-    get() = properties["line-height"] as Double?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["line-height"] = value
+        writeStyleProperty("line-height", value.toString())
     }
-
-val InlineStyle.listStyle: ListStyle?
-    get() = properties["list-style"] as ListStyle?
 
 var BaseStyleContext.listStyle: ListStyle?
-    get() = properties["list-style"] as ListStyle?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["list-style"] = value
+        writeStyleProperty("list-style", value.toString())
     }
-
-val InlineStyle.outline: String?
-    get() = properties["outline"] as String?
 
 var BaseStyleContext.outline: String?
-    get() = properties["outline"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["outline"] = value
+        writeStyleProperty("outline", value.toString())
     }
-
-val InlineStyle.padding: Dimension?
-    get() = properties["padding"] as Dimension?
 
 var BaseStyleContext.padding: Dimension?
-    get() = properties["padding"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["padding"] = value
+        writeStyleProperty("padding", value.toString())
     }
-
-val InlineStyle.paddingLeft: Dimension?
-    get() = properties["padding-left"] as Dimension?
 
 var BaseStyleContext.paddingLeft: Dimension?
-    get() = properties["padding-left"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["padding-left"] = value
+        writeStyleProperty("padding-left", value.toString())
     }
-
-val InlineStyle.paddingRight: Dimension?
-    get() = properties["padding-right"] as Dimension?
 
 var BaseStyleContext.paddingRight: Dimension?
-    get() = properties["padding-right"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["padding-right"] = value
+        writeStyleProperty("padding-right", value.toString())
     }
-
-val InlineStyle.paddingTop: Dimension?
-    get() = properties["padding-top"] as Dimension?
 
 var BaseStyleContext.paddingTop: Dimension?
-    get() = properties["padding-top"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["padding-top"] = value
+        writeStyleProperty("padding-top", value.toString())
     }
-
-val InlineStyle.paddingBottom: Dimension?
-    get() = properties["padding-bottom"] as Dimension?
 
 var BaseStyleContext.paddingBottom: Dimension?
-    get() = properties["padding-bottom"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["padding-bottom"] = value
+        writeStyleProperty("padding-bottom", value.toString())
     }
-
-val InlineStyle.position: Position?
-    get() = properties["position"] as Position?
 
 var BaseStyleContext.position: Position?
-    get() = properties["position"] as Position?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["position"] = value
+        writeStyleProperty("position", value.toString())
     }
-
-val InlineStyle.margin: Dimension?
-    get() = properties["margin"] as Dimension?
 
 var BaseStyleContext.margin: Dimension?
-    get() = properties["margin"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin"] = value
+        writeStyleProperty("margin", value.toString())
     }
-
-val InlineStyle.marginBlockEnd: Dimension?
-    get() = properties["margin-block-end"] as Dimension?
 
 var BaseStyleContext.marginBlockEnd: Dimension?
-    get() = properties["margin-block-end"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-block-end"] = value
+        writeStyleProperty("margin-block-end", value.toString())
     }
-
-val InlineStyle.marginBlockStart: Dimension?
-    get() = properties["margin-block-start"] as Dimension?
 
 var BaseStyleContext.marginBlockStart: Dimension?
-    get() = properties["margin-block-start"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-block-start"] = value
+        writeStyleProperty("margin-block-start", value.toString())
     }
-
-val InlineStyle.marginBottom: Dimension?
-    get() = properties["margin-bottom"] as Dimension?
 
 var BaseStyleContext.marginBottom: Dimension?
-    get() = properties["margin-bottom"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-bottom"] = value
+        writeStyleProperty("margin-bottom", value.toString())
     }
-
-val InlineStyle.marginLeft: Dimension?
-    get() = properties["margin-left"] as Dimension?
 
 var BaseStyleContext.marginLeft: Dimension?
-    get() = properties["margin-left"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-left"] = value
+        writeStyleProperty("margin-left", value.toString())
     }
-
-val InlineStyle.marginRight: Dimension?
-    get() = properties["margin-right"] as Dimension?
 
 var BaseStyleContext.marginRight: Dimension?
-    get() = properties["margin-right"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-right"] = value
+        writeStyleProperty("margin-right", value.toString())
     }
-
-val InlineStyle.marginTop: Dimension?
-    get() = properties["margin-top"] as Dimension?
 
 var BaseStyleContext.marginTop: Dimension?
-    get() = properties["margin-top"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["margin-top"] = value
+        writeStyleProperty("margin-top", value.toString())
     }
-
-val InlineStyle.maxHeight: Dimension?
-    get() = properties["max-height"] as Dimension?
 
 var BaseStyleContext.maxHeight: Dimension?
-    get() = properties["max-height"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["max-height"] = value
+        writeStyleProperty("max-height", value.toString())
     }
-
-val InlineStyle.maxWidth: Dimension?
-    get() = properties["max-width"] as Dimension?
 
 var BaseStyleContext.maxWidth: Dimension?
-    get() = properties["max-width"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["max-width"] = value
+        writeStyleProperty("max-width", value.toString())
     }
-
-val InlineStyle.minHeight: Dimension?
-    get() = properties["min-height"] as Dimension?
 
 var BaseStyleContext.minHeight: Dimension?
-    get() = properties["min-height"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["min-height"] = value
+        writeStyleProperty("min-height", value.toString())
     }
-
-val InlineStyle.minWidth: Dimension?
-    get() = properties["min-width"] as Dimension?
 
 var BaseStyleContext.minWidth: Dimension?
-    get() = properties["min-width"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["min-width"] = value
+        writeStyleProperty("min-width", value.toString())
     }
-
-val InlineStyle.outlineColor: Color?
-    get() = properties["outline-color"] as Color?
 
 var BaseStyleContext.outlineColor: Color?
-    get() = properties["outline-color"] as Color?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["outline-color"] = value
+        writeStyleProperty("outline-color", value.toString())
     }
-
-val InlineStyle.overflow: String?
-    get() = properties["overflow"] as String?
 
 var BaseStyleContext.overflow: String?
-    get() = properties["overflow"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["overflow"] = value
+        writeStyleProperty("overflow", value.toString())
     }
-
-val InlineStyle.right: Dimension?
-    get() = properties["right"] as Dimension?
 
 var BaseStyleContext.right: Dimension?
-    get() = properties["right"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["right"] = value
+        writeStyleProperty("right", value.toString())
     }
-
-val InlineStyle.textAlign: TextAlign?
-    get() = properties["text-align"] as TextAlign?
 
 var BaseStyleContext.textAlign: TextAlign?
-    get() = properties["text-align"] as TextAlign?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["text-align"] = value
+        writeStyleProperty("text-align", value.toString())
     }
-
-val InlineStyle.textDecoration: String?
-    get() = properties["text-decoration"] as String?
 
 var BaseStyleContext.textDecoration: String?
-    get() = properties["text-decoration"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["text-decoration"] = value
+        writeStyleProperty("text-decoration", value.toString())
     }
-
-val InlineStyle.textDecorationLine: String?
-    get() = properties["text-decoration-line"] as String?
 
 var BaseStyleContext.textDecorationLine: String?
-    get() = properties["text-decoration-line"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["text-decoration-line"] = value
+        writeStyleProperty("text-decoration-line", value.toString())
     }
-
-val InlineStyle.textTransform: TextTransform?
-    get() = properties["text-transform"] as TextTransform?
 
 var BaseStyleContext.textTransform: TextTransform?
-    get() = properties["text-transform"] as TextTransform?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["text-transform"] = value
+        writeStyleProperty("text-transform", value.toString())
     }
-
-val InlineStyle.top: Dimension?
-    get() = properties["top"] as Dimension?
 
 var BaseStyleContext.top: Dimension?
-    get() = properties["top"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["top"] = value
+        writeStyleProperty("top", value.toString())
     }
-
-val InlineStyle.transition: String?
-    get() = properties["transition"] as String?
 
 var BaseStyleContext.transition: String?
-    get() = properties["transition"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["transition"] = value
+        writeStyleProperty("transition", value.toString())
     }
-
-val InlineStyle.transitionProperty: String?
-    get() = properties["transition-property"] as String?
 
 var BaseStyleContext.transitionProperty: String?
-    get() = properties["transition-property"] as String?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["transition-property"] = value
+        writeStyleProperty("transition-property", value.toString())
     }
-
-val InlineStyle.visibility: Visibility?
-    get() = properties["visibility"] as Visibility?
 
 var BaseStyleContext.visibility: Visibility?
-    get() = properties["visibility"] as Visibility?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["visibility"] = value
+        writeStyleProperty("visibility", value.toString())
     }
-
-val InlineStyle.width: Dimension?
-    get() = properties["width"] as Dimension?
 
 var BaseStyleContext.width: Dimension?
-    get() = properties["width"] as Dimension?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["width"] = value
+        writeStyleProperty("width", value.toString())
     }
 
-val InlineStyle.zIndex: Int?
-    get() = properties["z-index"] as Int?
-
 var BaseStyleContext.zIndex: Int?
-    get() = properties["z-index"] as Int?
+    @JvmSynthetic
+    @Deprecated("", level = DeprecationLevel.ERROR)
+    get() = throw UnsupportedOperationException()
     set(value) {
-        properties["z-index"] = value
+        writeStyleProperty("z-index", value.toString())
     }

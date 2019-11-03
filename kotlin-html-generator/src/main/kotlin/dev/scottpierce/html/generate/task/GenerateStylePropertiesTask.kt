@@ -1,11 +1,6 @@
 package dev.scottpierce.html.generate.task
 
-import com.squareup.kotlinpoet.CodeBlock
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.MemberName
-import com.squareup.kotlinpoet.PropertySpec
-import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.*
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.*
 import kotlinx.coroutines.Dispatchers
@@ -62,40 +57,37 @@ class GenerateStylePropertiesTask : Task {
         ).joinAll()
     }
 
+    private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.style", "writeStyleProperty")
+
     private fun generateProperty(file: FileSpec.Builder, property: StyleProperty) {
         val propertyClassName = property.type.className.copy(nullable = true)
 
-        // val Style.color: Color?
-        //     get() = properties["color"] as Color?
-        file.addProperty(
-            PropertySpec.builder(property.propertyName, propertyClassName)
-                .receiver(INLINE_STYLE)
-                .getter(
-                    FunSpec.getterBuilder()
-                        .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)
-                        .build()
-                )
-                .build()
-        )
-
-        // var StyleBuilder.color: Color?
-        //     get() = properties["color"] as Color?
-        //     set(value) {
-        //         properties["color"] = value
-        //     }
+        // @get:JvmSynthetic
+        // var BaseStyleContext.paddingY: Dimension
+        // @Deprecated("", level = DeprecationLevel.ERROR)
+        // get() = throw UnsupportedOperationException()
+        // set(value) {
+        //     writeStyleProperty("padding-top", value.toString())
+        // }
         file.addProperty(
             PropertySpec.builder(property.propertyName, propertyClassName)
                 .mutable(true)
                 .receiver(BASE_STYLE_CONTEXT)
                 .getter(
                     FunSpec.getterBuilder()
-                        .addStatement("return properties[\"${property.cssName}\"] as %T", propertyClassName)
+                        .addAnnotation(JvmSynthetic::class)
+                        .addAnnotation(
+                            AnnotationSpec.builder(Deprecated::class)
+                                .addMember("\"\", level = DeprecationLevel.ERROR")
+                                .build()
+                        )
+                        .addStatement("throw %T()", UNSUPPORTED_OPERATION_EXCEPTION)
                         .build()
                 )
                 .setter(
                     FunSpec.setterBuilder()
                         .addParameter("value", propertyClassName)
-                        .addStatement("properties[\"${property.cssName}\"] = value", propertyClassName)
+                        .addStatement("%M(\"${property.cssName}\", value.toString())", WRITE_STYLE_PROPERTY)
                         .build()
                 )
                 .build()

@@ -10,9 +10,7 @@ sealed class Dimension {
     }
 
     object Auto : Dimension() {
-        override fun toString(): String {
-            return "auto"
-        }
+        override fun toString(): String = "auto"
     }
 }
 

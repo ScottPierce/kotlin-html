@@ -34,12 +34,12 @@ class StylePropertyTests {
     }
 
     @Test
-    fun animationDurationw() {
+    fun animationDuration() {
         val style = style {
-            animationDurationw = "boo"
-            assertEquals("boo", animationDurationw)
+            animationDuration = "boo"
+            assertEquals("boo", animationDuration)
         }
-        assertEquals("boo", style.animationDurationw)
+        assertEquals("boo", style.animationDuration)
     }
 
     @Test

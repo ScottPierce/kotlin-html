@@ -2,10 +2,7 @@ package dev.scottpierce.html.util
 
 import dev.scottpierce.html.element.FileContext
 import dev.scottpierce.html.element.HtmlContext
-import dev.scottpierce.html.style.StyleBuilder
-import dev.scottpierce.html.style.StyleSheetBuilder
-import dev.scottpierce.html.style.writeStyle
-import dev.scottpierce.html.style.writeStyleSheet
+import dev.scottpierce.html.style.*
 import dev.scottpierce.html.write.StringBuilderHtmlWriter
 import dev.scottpierce.html.write.WriteOptions
 
@@ -37,22 +34,14 @@ infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
 
 fun writeStyle(
     options: WriteOptions = WriteOptions(indent = "    "),
-    func: StyleBuilder.() -> Unit
-): StringBuilderHtmlWriter {
-    val writer = StringBuilderHtmlWriter(options = options)
-    val style = StyleBuilder()
-    style.func()
-    writer.writeStyle(style, options.minifyStyles)
-    return writer
+    func: BaseStyleContext.() -> Unit
+): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = options).apply {
+    InlineStyleContext(this).apply(func)
 }
 
 fun writeStyleSheet(
     options: WriteOptions = WriteOptions(indent = "    "),
-    func: StyleSheetBuilder.() -> Unit
-): StringBuilderHtmlWriter {
-    val writer = StringBuilderHtmlWriter(options = options)
-    val styleSheet = StyleSheetBuilder()
-    styleSheet.func()
-    writer.writeStyleSheet(styleSheet)
-    return writer
+    func: StyleSheetContext.() -> Unit
+): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = options).apply {
+    styleSheet(func)
 }

@@ -1,5 +1,14 @@
+# OS
+.DS_Store
+
 # Build folders
 build/
+out/
 .gradle
-.idea
 kotlin-html-ktor/out
+
+/.idea/*
+
+# IDEA/Android Studio Ignore exceptions
+!/.idea/codeStyleSettings.xml
+!/.idea/codeStyles/codeStyleConfig.xml

@@ -9,32 +9,23 @@ class StyleTest {
     @Test
     fun basic() {
         writeStyle {
-            properties["blah"] = "blah"
+            marginX = 10.px
         } assertEquals {
-            "blah: blah;"
+            """
+                margin-left: 10px;
+                margin-right: 10px;
+            """.trimIndent()
         }
     }
 
     @Test
     fun basicMinified() {
         writeStyle(options = WriteOptions(minifyStyles = true)) {
-            properties["blah"] = "blah"
-        } assertEquals {
-            "blah:blah;"
-        }
-    }
-
-    @Test
-    fun addStyle() {
-        writeStyle {
-            properties["blah"] = "blah"
-            +style {
-                properties["blah2"] = "blah2"
-            }
+            marginX = 10.px
         } assertEquals {
             """
-            blah: blah;
-            blah2: blah2;
+                margin-left:10px;
+                margin-right:10px;
             """.trimIndent()
         }
     }

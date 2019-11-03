@@ -12,7 +12,7 @@ enum class StyleProperty(
     ALIGN_ITEMS("align-items", PropertyType.ALIGN_ITEMS),
     ALIGN_SELF("align-self", PropertyType.ALIGN_SELF),
     ANIMATION_NAME("animation-name", PropertyType.STRING),
-    ANIMATION_DURATION("animation-durationw", PropertyType.STRING),
+    ANIMATION_DURATION("animation-duration", PropertyType.STRING),
     BACKGROUND("background", PropertyType.STRING),
     BACKGROUND_COLOR("background-color", PropertyType.COLOR),
     BORDER("border", PropertyType.STRING),

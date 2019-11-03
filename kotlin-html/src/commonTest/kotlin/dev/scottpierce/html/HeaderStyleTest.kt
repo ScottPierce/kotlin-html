@@ -2,7 +2,9 @@ package dev.scottpierce.html
 
 import dev.scottpierce.html.element.head
 import dev.scottpierce.html.element.html
+import dev.scottpierce.html.style.style
 import dev.scottpierce.html.style.styleSheet
+import dev.scottpierce.html.style.writeStyleProperty
 import dev.scottpierce.html.util.assertEquals
 import dev.scottpierce.html.util.writeFile
 import kotlin.test.Test
@@ -13,7 +15,8 @@ class HeaderStyleTest {
         writeFile {
             html {
                 head {
-                    +styleSheet()
+                    styleSheet {
+                    }
                 }
             }
         } assertEquals {
@@ -33,9 +36,9 @@ class HeaderStyleTest {
         writeFile {
             html {
                 head {
-                    +styleSheet {
+                    styleSheet {
                         style(".example-class") {
-                            properties["example-property"] = "example-value"
+                            writeStyleProperty("example-property", "example-value")
                         }
                     }
                 }
@@ -60,15 +63,15 @@ class HeaderStyleTest {
         writeFile {
             html {
                 head {
-                    +styleSheet {
+                    styleSheet {
                         style(".example-class") {
-                            properties["example-property"] = "example-value"
-                            properties["example-property2"] = "example-value2"
+                            writeStyleProperty("example-property", "example-value")
+                            writeStyleProperty("example-property2", "example-value2")
                         }
 
                         style(".example-class2") {
-                            properties["example-property3"] = "example-value3"
-                            properties["example-property4"] = "example-value4"
+                            writeStyleProperty("example-property3", "example-value3")
+                            writeStyleProperty("example-property4", "example-value4")
                         }
                     }
                 }
