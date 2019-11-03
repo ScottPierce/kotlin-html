@@ -12,3 +12,4 @@ kotlin-html-ktor/out
 # IDEA/Android Studio Ignore exceptions
 !/.idea/codeStyleSettings.xml
 !/.idea/codeStyles/codeStyleConfig.xml
+!/.idea/codeStyles/Project.xml
