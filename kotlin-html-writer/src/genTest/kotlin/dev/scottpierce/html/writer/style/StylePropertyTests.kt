@@ -1,11 +1,11 @@
-//// This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
-//// `html-builder-generator` and run it again.
-//package dev.scottpierce.html.writer.style
+// // This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
+// // `html-builder-generator` and run it again.
+// package dev.scottpierce.html.writer.style
 //
-//import kotlin.test.Test
-//import kotlin.test.assertEquals
+// import kotlin.test.Test
+// import kotlin.test.assertEquals
 //
-//class StylePropertyTests {
+// class StylePropertyTests {
 //    @Test
 //    fun alignItems() {
 //        val style = style {
@@ -608,4 +608,4 @@
 //        }
 //        assertEquals(100, style.zIndex)
 //    }
-//}
+// }

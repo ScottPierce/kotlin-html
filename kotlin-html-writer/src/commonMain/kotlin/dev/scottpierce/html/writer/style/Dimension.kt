@@ -1,6 +1,6 @@
 package dev.scottpierce.html.writer.style
 
-//sealed class Dimension {
+// sealed class Dimension {
 //    data class Size(val value: Float, val unit: DimensionUnit) : Dimension() {
 //        override fun toString(): String = if (value == 0f) ZERO else "$value$unit"
 //    }
@@ -8,7 +8,7 @@ package dev.scottpierce.html.writer.style
 //    object Auto : Dimension() {
 //        override fun toString(): String = "auto"
 //    }
-//}
+// }
 
 inline class Dimension(val value: String) {
     companion object {

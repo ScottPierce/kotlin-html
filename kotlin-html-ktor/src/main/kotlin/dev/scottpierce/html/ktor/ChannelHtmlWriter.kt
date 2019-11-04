@@ -1,6 +1,5 @@
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.writer.style.Test
 import dev.scottpierce.html.writer.AbstractHtmlWriter
 import dev.scottpierce.html.writer.WriteOptions
 import java.io.BufferedWriter
