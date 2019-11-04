@@ -148,7 +148,7 @@ sealed class GeneratedElement(
             ),
             Void(
                 tagName = "link",
-                callingContext = Context.HtmlWriter,
+                callingContext = Context.BaseHtml,
                 supportedAttributes = listOf(
                     Attr.String("href"),
                     Attr.String("rel"),
@@ -186,7 +186,7 @@ sealed class GeneratedElement(
             ),
             Normal(
                 tagName = "script",
-                callingContext = Context.HtmlWriter,
+                callingContext = Context.BaseHtml,
                 childrenContext = Context.Script,
                 supportedAttributes = listOf(
                     Attr.Boolean("async"),
@@ -261,7 +261,7 @@ sealed class GeneratedElement(
 }
 
 enum class Context {
-    HtmlWriter,
+    BaseHtml,
     File,
     Html,
     Head,
