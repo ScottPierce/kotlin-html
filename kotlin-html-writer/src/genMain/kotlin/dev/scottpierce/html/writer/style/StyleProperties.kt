@@ -1,15 +1,17 @@
 // This file was generated using the `kotlin-html-generator` module. Instead of modifying it, modify the
 // `html-builder-generator` and run it again.
+@file:Suppress("unused")
+
 package dev.scottpierce.html.writer.style
 
 import kotlin.Deprecated
-import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import kotlin.Suppress
 import kotlin.UnsupportedOperationException
 import kotlin.jvm.JvmSynthetic
 
-var BaseStyleContext.alignItems: AlignItems?
+var BaseStyleContext.alignItems: AlignItems
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -17,7 +19,7 @@ var BaseStyleContext.alignItems: AlignItems?
         writeStyleProperty("align-items", value.toString())
     }
 
-var BaseStyleContext.alignSelf: AlignSelf?
+var BaseStyleContext.alignSelf: AlignSelf
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -25,31 +27,31 @@ var BaseStyleContext.alignSelf: AlignSelf?
         writeStyleProperty("align-self", value.toString())
     }
 
-var BaseStyleContext.animationName: String?
+var BaseStyleContext.animationName: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("animation-name", value.toString())
+        writeStyleProperty("animation-name", value)
     }
 
-var BaseStyleContext.animationDuration: String?
+var BaseStyleContext.animationDuration: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("animation-duration", value.toString())
+        writeStyleProperty("animation-duration", value)
     }
 
-var BaseStyleContext.background: String?
+var BaseStyleContext.background: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("background", value.toString())
+        writeStyleProperty("background", value)
     }
 
-var BaseStyleContext.backgroundColor: Color?
+var BaseStyleContext.backgroundColor: Color
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -57,15 +59,15 @@ var BaseStyleContext.backgroundColor: Color?
         writeStyleProperty("background-color", value.toString())
     }
 
-var BaseStyleContext.border: String?
+var BaseStyleContext.border: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("border", value.toString())
+        writeStyleProperty("border", value)
     }
 
-var BaseStyleContext.borderRadius: Dimension?
+var BaseStyleContext.borderRadius: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -73,7 +75,7 @@ var BaseStyleContext.borderRadius: Dimension?
         writeStyleProperty("border-radius", value.toString())
     }
 
-var BaseStyleContext.bottom: Dimension?
+var BaseStyleContext.bottom: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -81,15 +83,15 @@ var BaseStyleContext.bottom: Dimension?
         writeStyleProperty("bottom", value.toString())
     }
 
-var BaseStyleContext.boxShadow: String?
+var BaseStyleContext.boxShadow: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("box-shadow", value.toString())
+        writeStyleProperty("box-shadow", value)
     }
 
-var BaseStyleContext.color: Color?
+var BaseStyleContext.color: Color
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -97,23 +99,23 @@ var BaseStyleContext.color: Color?
         writeStyleProperty("color", value.toString())
     }
 
-var BaseStyleContext.content: String?
+var BaseStyleContext.content: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("content", value.toString())
+        writeStyleProperty("content", value)
     }
 
-var BaseStyleContext.cursor: String?
+var BaseStyleContext.cursor: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("cursor", value.toString())
+        writeStyleProperty("cursor", value)
     }
 
-var BaseStyleContext.display: Display?
+var BaseStyleContext.display: Display
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -121,47 +123,47 @@ var BaseStyleContext.display: Display?
         writeStyleProperty("display", value.toString())
     }
 
-var BaseStyleContext.fill: String?
+var BaseStyleContext.fill: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("fill", value.toString())
+        writeStyleProperty("fill", value)
     }
 
-var BaseStyleContext.flex: String?
+var BaseStyleContext.flex: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("flex", value.toString())
+        writeStyleProperty("flex", value)
     }
 
-var BaseStyleContext.flexGrow: String?
+var BaseStyleContext.flexGrow: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("flex-grow", value.toString())
+        writeStyleProperty("flex-grow", value)
     }
 
-var BaseStyleContext.flexShrink: String?
+var BaseStyleContext.flexShrink: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("flex-shrink", value.toString())
+        writeStyleProperty("flex-shrink", value)
     }
 
-var BaseStyleContext.flexBasis: String?
+var BaseStyleContext.flexBasis: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("flex-basis", value.toString())
+        writeStyleProperty("flex-basis", value)
     }
 
-var BaseStyleContext.flexDirection: FlexDirection?
+var BaseStyleContext.flexDirection: FlexDirection
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -169,7 +171,7 @@ var BaseStyleContext.flexDirection: FlexDirection?
         writeStyleProperty("flex-direction", value.toString())
     }
 
-var BaseStyleContext.flexWrap: FlexWrap?
+var BaseStyleContext.flexWrap: FlexWrap
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -177,7 +179,7 @@ var BaseStyleContext.flexWrap: FlexWrap?
         writeStyleProperty("flex-wrap", value.toString())
     }
 
-var BaseStyleContext.float: FloatDirection?
+var BaseStyleContext.float: FloatDirection
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -185,23 +187,23 @@ var BaseStyleContext.float: FloatDirection?
         writeStyleProperty("float", value.toString())
     }
 
-var BaseStyleContext.fontFamily: String?
+var BaseStyleContext.fontFamily: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("font-family", value.toString())
+        writeStyleProperty("font-family", value)
     }
 
-var BaseStyleContext.fontWeight: String?
+var BaseStyleContext.fontWeight: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("font-weight", value.toString())
+        writeStyleProperty("font-weight", value)
     }
 
-var BaseStyleContext.fontSize: Dimension?
+var BaseStyleContext.fontSize: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -209,7 +211,7 @@ var BaseStyleContext.fontSize: Dimension?
         writeStyleProperty("font-size", value.toString())
     }
 
-var BaseStyleContext.gridColumnGap: Dimension?
+var BaseStyleContext.gridColumnGap: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -217,7 +219,7 @@ var BaseStyleContext.gridColumnGap: Dimension?
         writeStyleProperty("grid-column-gap", value.toString())
     }
 
-var BaseStyleContext.gridRowGap: Dimension?
+var BaseStyleContext.gridRowGap: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -225,23 +227,23 @@ var BaseStyleContext.gridRowGap: Dimension?
         writeStyleProperty("grid-row-gap", value.toString())
     }
 
-var BaseStyleContext.gridTemplateColumns: String?
+var BaseStyleContext.gridTemplateColumns: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("grid-template-columns", value.toString())
+        writeStyleProperty("grid-template-columns", value)
     }
 
-var BaseStyleContext.gridTemplateRows: String?
+var BaseStyleContext.gridTemplateRows: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("grid-template-rows", value.toString())
+        writeStyleProperty("grid-template-rows", value)
     }
 
-var BaseStyleContext.height: Dimension?
+var BaseStyleContext.height: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -249,7 +251,7 @@ var BaseStyleContext.height: Dimension?
         writeStyleProperty("height", value.toString())
     }
 
-var BaseStyleContext.justifySelf: JustifySelf?
+var BaseStyleContext.justifySelf: JustifySelf
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -257,7 +259,7 @@ var BaseStyleContext.justifySelf: JustifySelf?
         writeStyleProperty("justify-self", value.toString())
     }
 
-var BaseStyleContext.justifyContent: JustifyContent?
+var BaseStyleContext.justifyContent: JustifyContent
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -265,7 +267,7 @@ var BaseStyleContext.justifyContent: JustifyContent?
         writeStyleProperty("justify-content", value.toString())
     }
 
-var BaseStyleContext.left: Dimension?
+var BaseStyleContext.left: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -273,7 +275,7 @@ var BaseStyleContext.left: Dimension?
         writeStyleProperty("left", value.toString())
     }
 
-var BaseStyleContext.letterSpacing: Dimension?
+var BaseStyleContext.letterSpacing: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -281,7 +283,7 @@ var BaseStyleContext.letterSpacing: Dimension?
         writeStyleProperty("letter-spacing", value.toString())
     }
 
-var BaseStyleContext.lineHeight: Double?
+var BaseStyleContext.lineHeight: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -289,7 +291,7 @@ var BaseStyleContext.lineHeight: Double?
         writeStyleProperty("line-height", value.toString())
     }
 
-var BaseStyleContext.listStyle: ListStyle?
+var BaseStyleContext.listStyle: ListStyle
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -297,15 +299,15 @@ var BaseStyleContext.listStyle: ListStyle?
         writeStyleProperty("list-style", value.toString())
     }
 
-var BaseStyleContext.outline: String?
+var BaseStyleContext.outline: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("outline", value.toString())
+        writeStyleProperty("outline", value)
     }
 
-var BaseStyleContext.padding: Dimension?
+var BaseStyleContext.padding: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -313,7 +315,7 @@ var BaseStyleContext.padding: Dimension?
         writeStyleProperty("padding", value.toString())
     }
 
-var BaseStyleContext.paddingLeft: Dimension?
+var BaseStyleContext.paddingLeft: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -321,7 +323,7 @@ var BaseStyleContext.paddingLeft: Dimension?
         writeStyleProperty("padding-left", value.toString())
     }
 
-var BaseStyleContext.paddingRight: Dimension?
+var BaseStyleContext.paddingRight: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -329,7 +331,7 @@ var BaseStyleContext.paddingRight: Dimension?
         writeStyleProperty("padding-right", value.toString())
     }
 
-var BaseStyleContext.paddingTop: Dimension?
+var BaseStyleContext.paddingTop: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -337,7 +339,7 @@ var BaseStyleContext.paddingTop: Dimension?
         writeStyleProperty("padding-top", value.toString())
     }
 
-var BaseStyleContext.paddingBottom: Dimension?
+var BaseStyleContext.paddingBottom: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -345,7 +347,7 @@ var BaseStyleContext.paddingBottom: Dimension?
         writeStyleProperty("padding-bottom", value.toString())
     }
 
-var BaseStyleContext.position: Position?
+var BaseStyleContext.position: Position
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -353,7 +355,7 @@ var BaseStyleContext.position: Position?
         writeStyleProperty("position", value.toString())
     }
 
-var BaseStyleContext.margin: Dimension?
+var BaseStyleContext.margin: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -361,7 +363,7 @@ var BaseStyleContext.margin: Dimension?
         writeStyleProperty("margin", value.toString())
     }
 
-var BaseStyleContext.marginBlockEnd: Dimension?
+var BaseStyleContext.marginBlockEnd: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -369,7 +371,7 @@ var BaseStyleContext.marginBlockEnd: Dimension?
         writeStyleProperty("margin-block-end", value.toString())
     }
 
-var BaseStyleContext.marginBlockStart: Dimension?
+var BaseStyleContext.marginBlockStart: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -377,7 +379,7 @@ var BaseStyleContext.marginBlockStart: Dimension?
         writeStyleProperty("margin-block-start", value.toString())
     }
 
-var BaseStyleContext.marginBottom: Dimension?
+var BaseStyleContext.marginBottom: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -385,7 +387,7 @@ var BaseStyleContext.marginBottom: Dimension?
         writeStyleProperty("margin-bottom", value.toString())
     }
 
-var BaseStyleContext.marginLeft: Dimension?
+var BaseStyleContext.marginLeft: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -393,7 +395,7 @@ var BaseStyleContext.marginLeft: Dimension?
         writeStyleProperty("margin-left", value.toString())
     }
 
-var BaseStyleContext.marginRight: Dimension?
+var BaseStyleContext.marginRight: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -401,7 +403,7 @@ var BaseStyleContext.marginRight: Dimension?
         writeStyleProperty("margin-right", value.toString())
     }
 
-var BaseStyleContext.marginTop: Dimension?
+var BaseStyleContext.marginTop: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -409,7 +411,7 @@ var BaseStyleContext.marginTop: Dimension?
         writeStyleProperty("margin-top", value.toString())
     }
 
-var BaseStyleContext.maxHeight: Dimension?
+var BaseStyleContext.maxHeight: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -417,7 +419,7 @@ var BaseStyleContext.maxHeight: Dimension?
         writeStyleProperty("max-height", value.toString())
     }
 
-var BaseStyleContext.maxWidth: Dimension?
+var BaseStyleContext.maxWidth: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -425,7 +427,7 @@ var BaseStyleContext.maxWidth: Dimension?
         writeStyleProperty("max-width", value.toString())
     }
 
-var BaseStyleContext.minHeight: Dimension?
+var BaseStyleContext.minHeight: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -433,7 +435,7 @@ var BaseStyleContext.minHeight: Dimension?
         writeStyleProperty("min-height", value.toString())
     }
 
-var BaseStyleContext.minWidth: Dimension?
+var BaseStyleContext.minWidth: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -441,7 +443,7 @@ var BaseStyleContext.minWidth: Dimension?
         writeStyleProperty("min-width", value.toString())
     }
 
-var BaseStyleContext.outlineColor: Color?
+var BaseStyleContext.outlineColor: Color
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -449,15 +451,15 @@ var BaseStyleContext.outlineColor: Color?
         writeStyleProperty("outline-color", value.toString())
     }
 
-var BaseStyleContext.overflow: String?
+var BaseStyleContext.overflow: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("overflow", value.toString())
+        writeStyleProperty("overflow", value)
     }
 
-var BaseStyleContext.right: Dimension?
+var BaseStyleContext.right: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -465,7 +467,7 @@ var BaseStyleContext.right: Dimension?
         writeStyleProperty("right", value.toString())
     }
 
-var BaseStyleContext.textAlign: TextAlign?
+var BaseStyleContext.textAlign: TextAlign
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -473,23 +475,23 @@ var BaseStyleContext.textAlign: TextAlign?
         writeStyleProperty("text-align", value.toString())
     }
 
-var BaseStyleContext.textDecoration: String?
+var BaseStyleContext.textDecoration: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("text-decoration", value.toString())
+        writeStyleProperty("text-decoration", value)
     }
 
-var BaseStyleContext.textDecorationLine: String?
+var BaseStyleContext.textDecorationLine: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("text-decoration-line", value.toString())
+        writeStyleProperty("text-decoration-line", value)
     }
 
-var BaseStyleContext.textTransform: TextTransform?
+var BaseStyleContext.textTransform: TextTransform
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -497,7 +499,7 @@ var BaseStyleContext.textTransform: TextTransform?
         writeStyleProperty("text-transform", value.toString())
     }
 
-var BaseStyleContext.top: Dimension?
+var BaseStyleContext.top: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -505,23 +507,23 @@ var BaseStyleContext.top: Dimension?
         writeStyleProperty("top", value.toString())
     }
 
-var BaseStyleContext.transition: String?
+var BaseStyleContext.transition: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("transition", value.toString())
+        writeStyleProperty("transition", value)
     }
 
-var BaseStyleContext.transitionProperty: String?
+var BaseStyleContext.transitionProperty: String
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("transition-property", value.toString())
+        writeStyleProperty("transition-property", value)
     }
 
-var BaseStyleContext.visibility: Visibility?
+var BaseStyleContext.visibility: Visibility
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -529,7 +531,7 @@ var BaseStyleContext.visibility: Visibility?
         writeStyleProperty("visibility", value.toString())
     }
 
-var BaseStyleContext.width: Dimension?
+var BaseStyleContext.width: Dimension
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
@@ -537,7 +539,7 @@ var BaseStyleContext.width: Dimension?
         writeStyleProperty("width", value.toString())
     }
 
-var BaseStyleContext.zIndex: Int?
+var BaseStyleContext.zIndex: Int
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()

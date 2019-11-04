@@ -43,7 +43,7 @@ enum class GeneratedStyleProperty(
     JUSTIFY_CONTENT("justify-content", PropertyType.JUSTIFY_CONTENT),
     LEFT("left", PropertyType.DIMENSION),
     LETTER_SPACING("letter-spacing", PropertyType.DIMENSION),
-    LINE_HEIGHT("line-height", PropertyType.DOUBLE),
+    LINE_HEIGHT("line-height", PropertyType.DIMENSION),
     LIST_STYLE("list-style", PropertyType.LIST_STYLE),
     OUTLINE("outline", PropertyType.STRING),
     PADDING("padding", PropertyType.DIMENSION),

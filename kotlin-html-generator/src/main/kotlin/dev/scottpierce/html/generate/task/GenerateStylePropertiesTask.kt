@@ -5,6 +5,7 @@ import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.STRING
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
@@ -36,6 +37,11 @@ class GenerateStylePropertiesTask : Task {
 
         val propertiesFile = FileSpec.builder(Constants.STYLE_PACKAGE, "StyleProperties")
             .indent("    ")
+            .addAnnotation(
+                AnnotationSpec.builder(Suppress::class)
+                    .addMember("\"unused\"")
+                    .build()
+            )
 
         // val propertyTestsFile = FileSpec.builder(Constants.STYLE_PACKAGE, "StylePropertyTests")
         //     .indent("    ")
@@ -67,7 +73,7 @@ class GenerateStylePropertiesTask : Task {
     private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
 
     private fun generateProperty(file: FileSpec.Builder, property: GeneratedStyleProperty) {
-        val propertyClassName = property.type.className.copy(nullable = true)
+        val propertyClassName = property.type.className
 
         // @get:JvmSynthetic
         // var BaseStyleContext.paddingY: Dimension
@@ -94,7 +100,13 @@ class GenerateStylePropertiesTask : Task {
                 .setter(
                     FunSpec.setterBuilder()
                         .addParameter("value", propertyClassName)
-                        .addStatement("%M(\"${property.cssName}\", value.toString())", WRITE_STYLE_PROPERTY)
+                        .apply {
+                            if (property.type.className == STRING) {
+                                addStatement("%M(\"${property.cssName}\", value)", WRITE_STYLE_PROPERTY)
+                            } else {
+                                addStatement("%M(\"${property.cssName}\", value.toString())", WRITE_STYLE_PROPERTY)
+                            }
+                        }
                         .build()
                 )
                 .build()
