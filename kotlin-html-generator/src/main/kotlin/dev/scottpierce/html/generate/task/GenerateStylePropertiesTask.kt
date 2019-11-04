@@ -10,11 +10,11 @@ import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.StyleProperty
 import dev.scottpierce.html.generate.model.UNSUPPORTED_OPERATION_EXCEPTION
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateStylePropertiesTask : Task {
     companion object {
