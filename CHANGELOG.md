@@ -2,6 +2,7 @@
 
 ## 0.4.0
 * `Context` renamed to `HtmlWriterContext`
+* `link` and `script` moved to `BaseHtmlContext`
 
 ## 0.3.0
 * Package changed from `dev.scottpierce.html` to `dev.scottpierce.html.writer`
