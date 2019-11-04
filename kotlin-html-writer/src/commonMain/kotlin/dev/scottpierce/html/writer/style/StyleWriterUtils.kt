@@ -1,6 +1,7 @@
 package dev.scottpierce.html.writer.style
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.element.BaseHtmlContext
 import dev.scottpierce.html.writer.element.HtmlWriterContext
 import dev.scottpierce.html.writer.element.HtmlDsl
 
@@ -19,7 +20,7 @@ inline fun HtmlWriter.styleSheet(func: StyleSheetContext.() -> Unit) {
 }
 
 @HtmlDsl
-inline fun HtmlWriterContext.styleSheet(func: StyleSheetContext.() -> Unit) = writer.styleSheet(func)
+inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) = writer.styleSheet(func)
 
 @HtmlDsl
 inline fun HtmlWriter.media(selector: String, func: StyleSheetContext.() -> Unit) {
