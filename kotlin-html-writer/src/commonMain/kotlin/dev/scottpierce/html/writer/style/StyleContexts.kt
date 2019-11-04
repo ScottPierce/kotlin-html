@@ -1,14 +1,17 @@
 package dev.scottpierce.html.writer.style
 
 import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.element.Context
+import dev.scottpierce.html.writer.element.HtmlWriterContext
 import dev.scottpierce.html.writer.element.HtmlDsl
 
 @HtmlDsl
-inline class StyleSheetContext(override val writer: HtmlWriter) : Context
+inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterContext
 
+/**
+ * A [HtmlWriterContext] applied to all style contexts.
+ */
 @HtmlDsl
-interface BaseStyleContext : Context
+interface BaseStyleContext : HtmlWriterContext
 
 @HtmlDsl
 inline class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleContext

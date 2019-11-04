@@ -11,6 +11,6 @@ fun HtmlWriter.inlineStyleSheet(file: File) {
     writeNormalElementEnd("style")
 }
 
-fun Context.inlineStyleSheet(file: File) {
+fun HtmlWriterContext.inlineStyleSheet(file: File) {
     writer.inlineStyleSheet(file = file)
 }

@@ -28,6 +28,6 @@ fun HtmlWriter.inlineFile(file: File) {
     }
 }
 
-fun Context.inlineFile(file: File) {
+fun HtmlWriterContext.inlineFile(file: File) {
     writer.inlineFile(file)
 }
