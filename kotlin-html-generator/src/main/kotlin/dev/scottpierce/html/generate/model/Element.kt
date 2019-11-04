@@ -1,6 +1,10 @@
 package dev.scottpierce.html.generate.model
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.BOOLEAN
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.STRING
+import com.squareup.kotlinpoet.TypeName
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
 sealed class Element(

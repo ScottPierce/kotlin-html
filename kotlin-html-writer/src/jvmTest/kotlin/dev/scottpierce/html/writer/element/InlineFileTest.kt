@@ -1,7 +1,7 @@
 package dev.scottpierce.html.writer.element
 
-import org.junit.Test
 import java.io.File
+import org.junit.Test
 
 class InlineFileTest {
     @Test

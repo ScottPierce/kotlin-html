@@ -1,8 +1,8 @@
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.style.InlineStyleContext
 import dev.scottpierce.html.writer.style.InlineStyleLambda
-import dev.scottpierce.html.writer.HtmlWriter
 
 fun HtmlWriter.writeNormalElementStart(
     tag: String,

@@ -1,10 +1,22 @@
 package dev.scottpierce.html.benchmark
 
-import kotlinx.html.*
+import kotlinx.html.a
+import kotlinx.html.body
+import kotlinx.html.button
+import kotlinx.html.div
 import kotlinx.html.dom.append
 import kotlinx.html.dom.document
 import kotlinx.html.dom.serialize
+import kotlinx.html.h1
+import kotlinx.html.h3
+import kotlinx.html.head
+import kotlinx.html.html
+import kotlinx.html.id
+import kotlinx.html.meta
+import kotlinx.html.section
+import kotlinx.html.span
 import kotlinx.html.stream.appendHTML
+import kotlinx.html.title
 
 fun kotlinxHtmlStreamPage(): String {
     val sb = StringBuilder()
@@ -42,7 +54,7 @@ fun kotlinxHtmlStreamPage(): String {
                     div {
                         id = "header-enroll-container"
 
-                        button() {
+                        button {
                             id = "header-enroll-button"
                             +"Enroll Today"
                         }

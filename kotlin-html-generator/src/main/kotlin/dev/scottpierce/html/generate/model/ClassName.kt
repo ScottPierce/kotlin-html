@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.STRING
 
-val HTML_WRITER = ClassName("dev.scottpierce.html.write", "HtmlWriter")
+val HTML_WRITER = ClassName("dev.scottpierce.html.writer", "HtmlWriter")
 val INLINE_STYLE = ClassName("dev.scottpierce.html.writer.style", "InlineStyle")
 val BASE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "BaseStyleContext")
 val INLINE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "InlineStyleContext")

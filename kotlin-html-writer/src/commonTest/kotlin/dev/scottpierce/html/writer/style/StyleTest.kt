@@ -1,8 +1,8 @@
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.util.assertEquals
 import dev.scottpierce.html.writer.util.writeStyle
-import dev.scottpierce.html.writer.WriteOptions
 import kotlin.test.Test
 
 class StyleTest {

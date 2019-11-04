@@ -1,13 +1,26 @@
 package dev.scottpierce.html.generate.task
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.CodeBlock
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.MemberName
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.*
+import dev.scottpierce.html.generate.model.ASSERT_EQUALS
+import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
+import dev.scottpierce.html.generate.model.Constants
+import dev.scottpierce.html.generate.model.PropertyType
+import dev.scottpierce.html.generate.model.STYLE_MEMBER
+import dev.scottpierce.html.generate.model.StyleProperty
+import dev.scottpierce.html.generate.model.TEST
+import dev.scottpierce.html.generate.model.UNSUPPORTED_OPERATION_EXCEPTION
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateStylePropertiesTask : Task {
     companion object {

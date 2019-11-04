@@ -4,6 +4,7 @@ import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Element
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import java.io.File
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -11,7 +12,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateElementTestsTask : Task {
     companion object {

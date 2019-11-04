@@ -3,10 +3,10 @@ package dev.scottpierce.html.generate
 import dev.scottpierce.html.generate.task.GenerateElementTestsTask
 import dev.scottpierce.html.generate.task.GenerateElementsTask
 import dev.scottpierce.html.generate.task.GenerateStylePropertiesTask
+import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlin.system.measureTimeMillis
 
 fun main() {
     // Generation tasks

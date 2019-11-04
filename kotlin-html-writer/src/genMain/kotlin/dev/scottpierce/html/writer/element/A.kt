@@ -2,8 +2,8 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit

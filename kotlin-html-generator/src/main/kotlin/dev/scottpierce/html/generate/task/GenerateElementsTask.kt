@@ -2,14 +2,31 @@
 
 package dev.scottpierce.html.generate.task
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.LambdaTypeName
+import com.squareup.kotlinpoet.MemberName
+import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.UNIT
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.*
+import dev.scottpierce.html.generate.model.ATTRIBUTE
+import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
+import dev.scottpierce.html.generate.model.Attr
+import dev.scottpierce.html.generate.model.Constants
+import dev.scottpierce.html.generate.model.Context
+import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.HTML_DSL
+import dev.scottpierce.html.generate.model.HTML_WRITER
+import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
+import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateElementsTask : Task {
     override val name: String = "Generate Elements"

@@ -1,10 +1,13 @@
 package dev.scottpierce.html.writer.util
 
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.style.*
 import dev.scottpierce.html.writer.StringBuilderHtmlWriter
 import dev.scottpierce.html.writer.WriteOptions
+import dev.scottpierce.html.writer.element.FileContext
+import dev.scottpierce.html.writer.element.HtmlContext
+import dev.scottpierce.html.writer.style.BaseStyleContext
+import dev.scottpierce.html.writer.style.InlineStyleContext
+import dev.scottpierce.html.writer.style.StyleSheetContext
+import dev.scottpierce.html.writer.style.styleSheet
 
 fun writeFile(
     options: WriteOptions = WriteOptions(indent = "    "),
