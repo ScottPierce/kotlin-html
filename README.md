@@ -43,8 +43,8 @@ kotlin {
 * Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
 need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
     * If you add an element, please make sure you add it via the generator module
-        * Add a [GeneratedElement](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedElement.kt)
-        * Add a [Style Property](./kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedStyleProperty.kt)
+        * Add a [GeneratedElement](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedElement.kt)
+        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedStyleProperty.kt)
 * You don't need a read / introspection API for the DOM.
     * Reading the DOM, and making decisions in your algorithm based 
     on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
