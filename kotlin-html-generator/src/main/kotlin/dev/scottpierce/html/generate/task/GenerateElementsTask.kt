@@ -1,13 +1,32 @@
+@file:Suppress("UnnecessaryVariable")
+
 package dev.scottpierce.html.generate.task
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.LambdaTypeName
+import com.squareup.kotlinpoet.MemberName
+import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.UNIT
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.*
+import dev.scottpierce.html.generate.model.ATTRIBUTE
+import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
+import dev.scottpierce.html.generate.model.Attr
+import dev.scottpierce.html.generate.model.Constants
+import dev.scottpierce.html.generate.model.Context
+import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.HTML_DSL
+import dev.scottpierce.html.generate.model.HTML_WRITER
+import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
+import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
+import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateElementsTask : Task {
     override val name: String = "Generate Elements"
@@ -40,6 +59,10 @@ class GenerateElementsTask : Task {
     }
 }
 
+val WRITE_TAG = MemberName("dev.scottpierce.html.writer.element", "writeTag")
+val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeStandardAttributes")
+val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeAttributes")
+
 private fun createDslFunction(
     element: Element,
     isWriter: Boolean,
@@ -61,7 +84,9 @@ private fun createDslFunction(
     }
 
     // No reason to inline if there is no lambda
-    if (isParent) {
+    val isInline: Boolean = isParent
+
+    if (isInline) {
         addModifiers(KModifier.INLINE)
     }
 
@@ -85,9 +110,14 @@ private fun createDslFunction(
     }
 
     for (attr in element.supportedAttributes) {
+        val filteredModifiers = attr.modifiers.filter {
+            isInline && it === KModifier.NOINLINE
+        }
+
         addParameter(
             ParameterSpec.builder(attr.functionName, attr.className)
                 .defaultValue(attr.defaultValue)
+                .addModifiers(filteredModifiers)
                 .build()
         )
     }
@@ -95,7 +125,10 @@ private fun createDslFunction(
     when (element) {
         is Element.Normal -> {
             addParameter(
-                ParameterSpec.builder("func", LambdaTypeName.get(receiver = element.childrenContext.contextClassName, returnType = UNIT))
+                ParameterSpec.builder("func", LambdaTypeName.get(
+                    receiver = element.childrenContext.contextClassName,
+                    returnType = UNIT)
+                )
                     .defaultValue("{}")
                     .build()
             )
@@ -130,19 +163,6 @@ private fun createDslFunction(
 
         addCode(")\n")
     } else {
-        val WRITE_TAG = MemberName("dev.scottpierce.html.element", "writeTag")
-        val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeStandardAttributes")
-        val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeAttributes")
-
-        // writeTag("option")
-        // writeStandardAttributes(id, classes, style)
-        // // writeAttributes(attrs)
-        // // TODO write custom attributes
-        // write('>')
-        // indent()
-        // BodyContext(this).apply(func)
-        // writeNormalElementEnd("option")
-
         addStatement("$writer.%M(\"${element.tagName}\")", WRITE_TAG)
 
         run { // Supported Attributes

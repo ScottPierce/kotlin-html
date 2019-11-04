@@ -2,13 +2,13 @@
 
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.element.DocType
-import dev.scottpierce.html.element.FileContext
-import dev.scottpierce.html.element.HtmlContext
-import dev.scottpierce.html.element.docType
-import dev.scottpierce.html.element.html
-import dev.scottpierce.html.write.HtmlWriter
-import dev.scottpierce.html.write.WriteOptions
+import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.WriteOptions
+import dev.scottpierce.html.writer.element.DocType
+import dev.scottpierce.html.writer.element.FileContext
+import dev.scottpierce.html.writer.element.HtmlContext
+import dev.scottpierce.html.writer.element.docType
+import dev.scottpierce.html.writer.element.html
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode

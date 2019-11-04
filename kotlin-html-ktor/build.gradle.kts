@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":kotlin-html"))
+    implementation(project(":kotlin-html-writer"))
 
     implementation(Libs.kotlin.stdlib.jvm)
     implementation(Libs.ktorServerCore)

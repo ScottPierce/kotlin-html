@@ -48,7 +48,7 @@ jobs:
           keys:
             - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :kotlin-html:assemble :kotlin-html-ktor:assemble :benchmark:assemble --stacktrace
+      - run: ./gradlew :kotlin-html-writer:assemble :kotlin-html-ktor:assemble :benchmark:assemble --stacktrace
 
       - save_cache:
           paths:
@@ -67,7 +67,7 @@ jobs:
 
       - run:
           name: Run Tests
-          command: ./gradlew :kotlin-html:jvmTest :kotlin-html:jsTest :kotlin-html:jvmCodeCoverageReport --stacktrace
+          command: ./gradlew :kotlin-html-writer:jvmTest :kotlin-html-writer:jsTest :kotlin-html-writer:jvmCodeCoverageReport --stacktrace
 
       - run:
           name: Upload to CodeCov
@@ -94,7 +94,7 @@ jobs:
 
       - run:
           name: Upload kotlin-html to Bintray
-          command: ./gradlew :kotlin-html:publishAllPublicationsToBintrayRepository
+          command: ./gradlew :kotlin-html-writer:publishAllPublicationsToBintrayRepository
 
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish

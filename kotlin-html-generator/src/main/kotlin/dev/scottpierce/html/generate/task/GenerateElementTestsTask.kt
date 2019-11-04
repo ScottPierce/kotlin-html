@@ -4,6 +4,7 @@ import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Element
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import java.io.File
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -11,11 +12,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateElementTestsTask : Task {
     companion object {
-        private val BASE_TEMPLATE_DIR = File("kotlin-html/src/commonTest/kotlin/dev/scottpierce/html/element")
+        private val BASE_TEMPLATE_DIR = File("kotlin-html-writer/src/commonTest/kotlin/dev/scottpierce/html/writer/element")
         private val TEMPLATE_NORMAL_FILE = File("$BASE_TEMPLATE_DIR/DivTest.kt")
         private val TEMPLATE_VOID_FILE = File("$BASE_TEMPLATE_DIR/BrTest.kt")
     }
@@ -24,7 +24,7 @@ class GenerateElementTestsTask : Task {
 
     override suspend fun execute() {
         val deleteJob: Job = GlobalScope.launch(Dispatchers.IO) {
-            File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/element/").deleteRecursively()
+            File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/writer/element/").deleteRecursively()
         }
 
         val normalTemplateDeferred: Deferred<String> = GlobalScope.async {
@@ -72,7 +72,7 @@ class GenerateElementTestsTask : Task {
             }
 
             writeFileJobs += GlobalScope.launch(Dispatchers.IO) {
-                File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/element/${capitalizedTag}Test.kt").apply {
+                File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/writer/element/${capitalizedTag}Test.kt").apply {
                     parentFile.mkdirs()
                     createNewFile()
                 }.bufferedWriter().use {

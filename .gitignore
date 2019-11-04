@@ -1,5 +1,10 @@
+# OS
+.DS_Store
+
 # Build folders
 build/
+out/
 .gradle
-.idea
-kotlin-html-ktor/out
+
+/.idea/*
+!/.idea/codeStyles

@@ -2,7 +2,9 @@ package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.STRING
+import com.squareup.kotlinpoet.TypeName
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
 sealed class Element(
@@ -272,7 +274,7 @@ enum class Context {
 
     val contextClassName: ClassName by lazy {
         ClassName(
-            packageName = "dev.scottpierce.html.element",
+            packageName = "dev.scottpierce.html.writer.element",
             simpleNames = listOf(if (this == Context) "Context" else "${name}Context")
         )
     }
@@ -281,20 +283,41 @@ enum class Context {
 sealed class Attr(
     val name: kotlin.String,
     val functionName: kotlin.String,
-    val className: ClassName,
-    val defaultValue: kotlin.String
+    val className: TypeName,
+    val defaultValue: kotlin.String,
+    val modifiers: List<KModifier>
 ) {
     companion object {
         val ID = String("id")
         val CLASSES = String("classes")
-        val STYLE = Custom("style", "style", dev.scottpierce.html.generate.model.STYLE.copy(nullable = true, tags = mapOf()), "null")
+        val STYLE = Custom(
+            name = "style",
+            functionName = "style",
+            typeName = INLINE_STYLE_LAMBDA.copy(nullable = true),
+            defaultValue = "null",
+            modifiers = listOf(KModifier.NOINLINE)
+        )
     }
 
     override fun toString(): kotlin.String = name
 
-    class String(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, STRING.copy(nullable = true, tags = mapOf()), "null")
-    class Boolean(name: kotlin.String, functionName: kotlin.String = name.snakeCaseToCamelCase()) : Attr(name, functionName, BOOLEAN, "false")
-    class Custom(name: kotlin.String, functionName: kotlin.String, className: ClassName, defaultValue: kotlin.String) : Attr(name, functionName, className, defaultValue)
+    class String(
+        name: kotlin.String,
+        functionName: kotlin.String = name.snakeCaseToCamelCase()
+    ) : Attr(name, functionName, STRING.copy(nullable = true, tags = mapOf()), "null", listOf())
+
+    class Boolean(
+        name: kotlin.String,
+        functionName: kotlin.String = name.snakeCaseToCamelCase()
+    ) : Attr(name, functionName, BOOLEAN, "false", listOf())
+
+    class Custom(
+        name: kotlin.String,
+        functionName: kotlin.String,
+        typeName: TypeName,
+        defaultValue: kotlin.String,
+        modifiers: List<KModifier> = listOf()
+    ) : Attr(name, functionName, typeName, defaultValue, modifiers)
 }
 
 val STANDARD_ATTRIBUTES: List<Attr> = listOf(

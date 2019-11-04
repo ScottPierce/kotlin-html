@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
     repositories {
         jcenter()
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     }
 
     dependencies {
@@ -34,6 +35,7 @@ subprojects {
         maven {
             url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
         }
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
         maven {
             url = uri("https://kotlin.bintray.com/ktor")
             content {
