@@ -57,7 +57,7 @@ class GenerateStylePropertiesTask : Task {
         ).joinAll()
     }
 
-    private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.style", "writeStyleProperty")
+    private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
 
     private fun generateProperty(file: FileSpec.Builder, property: StyleProperty) {
         val propertyClassName = property.type.className.copy(nullable = true)
@@ -99,7 +99,7 @@ class GenerateStylePropertiesTask : Task {
             FunSpec.builder(property.propertyName).apply {
                 addAnnotation(TEST)
 
-                val propertyMember = MemberName("dev.scottpierce.html.style", property.propertyName)
+                val propertyMember = MemberName("dev.scottpierce.html.writer.style", property.propertyName)
 
                 val expected: CodeBlock = when (property.type) {
                     PropertyType.COLOR -> CodeBlock.of("color(\"#555555\")")

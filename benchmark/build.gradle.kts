@@ -21,7 +21,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":kotlin-html"))
+                implementation(project(":kotlin-html-writer"))
                 implementation(Libs.kotlin.stdlib.common)
             }
         }

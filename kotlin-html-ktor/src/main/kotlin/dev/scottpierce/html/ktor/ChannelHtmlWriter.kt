@@ -1,8 +1,8 @@
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.style.Test
-import dev.scottpierce.html.write.AbstractHtmlWriter
-import dev.scottpierce.html.write.WriteOptions
+import dev.scottpierce.html.writer.style.Test
+import dev.scottpierce.html.writer.AbstractHtmlWriter
+import dev.scottpierce.html.writer.WriteOptions
 import java.io.BufferedWriter
 
 class ChannelHtmlWriter(

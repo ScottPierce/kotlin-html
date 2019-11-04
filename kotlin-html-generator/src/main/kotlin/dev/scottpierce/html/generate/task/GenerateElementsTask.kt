@@ -42,9 +42,9 @@ class GenerateElementsTask : Task {
     }
 }
 
-val WRITE_TAG = MemberName("dev.scottpierce.html.element", "writeTag")
-val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeStandardAttributes")
-val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.element", "writeAttributes")
+val WRITE_TAG = MemberName("dev.scottpierce.html.writer.element", "writeTag")
+val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeStandardAttributes")
+val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeAttributes")
 
 private fun createDslFunction(
     element: Element,

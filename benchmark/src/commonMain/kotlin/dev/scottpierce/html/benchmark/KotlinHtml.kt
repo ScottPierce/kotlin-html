@@ -1,8 +1,8 @@
 package dev.scottpierce.html.benchmark
 
-import dev.scottpierce.html.element.*
-import dev.scottpierce.html.write.StringBuilderHtmlWriter
-import dev.scottpierce.html.write.WriteOptions
+import dev.scottpierce.html.writer.element.*
+import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.WriteOptions
 
 fun kotlinHtmlPage(): String {
     val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {

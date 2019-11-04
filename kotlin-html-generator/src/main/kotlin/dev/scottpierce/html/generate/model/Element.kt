@@ -270,7 +270,7 @@ enum class Context {
 
     val contextClassName: ClassName by lazy {
         ClassName(
-            packageName = "dev.scottpierce.html.element",
+            packageName = "dev.scottpierce.html.writer.element",
             simpleNames = listOf(if (this == Context) "Context" else "${name}Context")
         )
     }
