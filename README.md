@@ -114,7 +114,7 @@ fun HtmlWriter.mainPage() {
 fun BodyContext.navigation() {
     div(
         id = "navigation",
-        style = style {
+        style = {
             // Inline style here
             margin = 1.rem
         }
@@ -130,7 +130,7 @@ fun BodyContext.aboutSection() {
 }
 
 fun BodyContext.footer() {
-    span(style = style { /* Inline span style here */ }) {
+    span(style = { /* Inline span style here */ }) {
         +"Footer Text"
     }
 }
