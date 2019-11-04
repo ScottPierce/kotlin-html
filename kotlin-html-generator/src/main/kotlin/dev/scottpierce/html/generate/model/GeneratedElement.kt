@@ -148,7 +148,7 @@ sealed class GeneratedElement(
             ),
             Void(
                 tagName = "link",
-                callingContext = Context.Context,
+                callingContext = Context.BaseHtml,
                 supportedAttributes = listOf(
                     Attr.String("href"),
                     Attr.String("rel"),
@@ -186,7 +186,7 @@ sealed class GeneratedElement(
             ),
             Normal(
                 tagName = "script",
-                callingContext = Context.Context,
+                callingContext = Context.BaseHtml,
                 childrenContext = Context.Script,
                 supportedAttributes = listOf(
                     Attr.Boolean("async"),
@@ -261,7 +261,7 @@ sealed class GeneratedElement(
 }
 
 enum class Context {
-    Context,
+    BaseHtml,
     File,
     Html,
     Head,
@@ -275,7 +275,7 @@ enum class Context {
     val contextClassName: ClassName by lazy {
         ClassName(
             packageName = "dev.scottpierce.html.writer.element",
-            simpleNames = listOf(if (this == Context) "Context" else "${name}Context")
+            simpleNames = listOf("${name}Context")
         )
     }
 }

@@ -35,7 +35,7 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun Context.inlineScript(
+fun HtmlWriterContext.inlineScript(
     async: Boolean = false,
     defer: Boolean = false,
     file: File
@@ -43,7 +43,7 @@ fun Context.inlineScript(
     writer.inlineScript(async = async, defer = defer, file = file)
 }
 
-fun Context.inlineScript(
+fun HtmlWriterContext.inlineScript(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -52,7 +52,7 @@ fun Context.inlineScript(
     writer.inlineScript(attrs = *attrs, async = async, defer = defer, file = file)
 }
 
-fun Context.inlineScript(
+fun HtmlWriterContext.inlineScript(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
