@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     // JVM version of the HTML library
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-jvm:0.2.10")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-writer-jvm:0.2.10")
     
     // If you are using Ktor, you can use this as well
     implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.2.10")
@@ -31,7 +31,7 @@ repositories {
 kotlin {
     commonMain {
         dependencies {
-            implementation("dev.scottpierce.kotlin-html:kotlin-html:0.2.10")
+            implementation("dev.scottpierce.kotlin-html:kotlin-html-writer:0.2.10")
         }    
     }
 }
