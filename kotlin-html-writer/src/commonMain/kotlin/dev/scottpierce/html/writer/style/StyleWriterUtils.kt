@@ -2,7 +2,6 @@ package dev.scottpierce.html.writer.style
 
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.element.BaseHtmlContext
-import dev.scottpierce.html.writer.element.HtmlWriterContext
 import dev.scottpierce.html.writer.element.HtmlDsl
 
 @HtmlDsl
