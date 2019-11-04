@@ -7,13 +7,13 @@ import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeName
 
 // https://www.w3.org/TR/html/syntax.html#void-elements
-sealed class Element(
+sealed class GeneratedElement(
     val tagName: String,
     val callingContext: Context,
     val supportedAttributes: List<Attr>
 ) {
     companion object {
-        val values: List<Element> = listOf(
+        val values: List<GeneratedElement> = listOf(
             Normal(
                 tagName = "a",
                 callingContext = Context.Body,
@@ -243,7 +243,7 @@ sealed class Element(
         callingContext: Context,
         val childrenContext: Context,
         supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
-    ) : Element(
+    ) : GeneratedElement(
         tagName,
         callingContext,
         supportedAttributes
@@ -253,7 +253,7 @@ sealed class Element(
         tagName: String,
         callingContext: Context,
         supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
-    ) : Element(
+    ) : GeneratedElement(
         tagName,
         callingContext,
         supportedAttributes

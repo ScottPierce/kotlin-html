@@ -15,7 +15,7 @@ import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
 import dev.scottpierce.html.generate.model.Attr
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.Context
-import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
@@ -36,7 +36,7 @@ class GenerateElementsTask : Task {
             File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element").deleteRecursively()
         }.join()
 
-        Element.values.map { element ->
+        GeneratedElement.values.map { element ->
             val elementName = element.tagName.capitalize()
 
             val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
@@ -64,7 +64,7 @@ val WRITE_STANDARD_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element"
 val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeAttributes")
 
 private fun createDslFunction(
-    element: Element,
+    element: GeneratedElement,
     isWriter: Boolean,
     functionType: DslFunction
 ): FunSpec = FunSpec.builder(element.tagName).apply {
@@ -123,7 +123,7 @@ private fun createDslFunction(
     }
 
     when (element) {
-        is Element.Normal -> {
+        is GeneratedElement.Normal -> {
             addParameter(
                 ParameterSpec.builder("func", LambdaTypeName.get(
                     receiver = element.childrenContext.contextClassName,
@@ -134,7 +134,7 @@ private fun createDslFunction(
             )
         }
 
-        is Element.Void -> {
+        is GeneratedElement.Void -> {
             // Do Nothing
         }
     }
@@ -150,8 +150,8 @@ private fun createDslFunction(
     // Write Tag Start
     if (hasOnlyStandardAttributes) {
         val tagStartMember: MemberName = when (element) {
-            is Element.Normal -> WRITE_NORMAL_ELEMENT_START
-            is Element.Void -> WRITE_VOID_ELEMENT
+            is GeneratedElement.Normal -> WRITE_NORMAL_ELEMENT_START
+            is GeneratedElement.Void -> WRITE_VOID_ELEMENT
         }
 
         // Write Tag Start
@@ -247,7 +247,7 @@ enum class DslFunction {
     ;
 }
 
-fun Element.childrenContext(): Context? = when (this) {
-    is Element.Normal -> childrenContext
-    is Element.Void -> null
+fun GeneratedElement.childrenContext(): Context? = when (this) {
+    is GeneratedElement.Normal -> childrenContext
+    is GeneratedElement.Void -> null
 }

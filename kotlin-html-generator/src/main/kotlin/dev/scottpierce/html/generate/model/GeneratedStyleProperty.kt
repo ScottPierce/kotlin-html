@@ -5,7 +5,7 @@ import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.STRING
 
 @Suppress("unused")
-enum class StyleProperty(
+enum class GeneratedStyleProperty(
     val cssName: String,
     val type: PropertyType
 ) {

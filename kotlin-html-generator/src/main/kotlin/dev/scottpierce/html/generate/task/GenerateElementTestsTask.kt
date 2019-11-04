@@ -2,7 +2,7 @@ package dev.scottpierce.html.generate.task
 
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.Constants
-import dev.scottpierce.html.generate.model.Element
+import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
 import java.io.File
 import kotlinx.coroutines.Deferred
@@ -41,8 +41,8 @@ class GenerateElementTestsTask : Task {
 
         val writeFileJobs = mutableListOf<Job>()
 
-        elementLoop@ for (i in Element.values.indices) {
-            val element = Element.values[i]
+        elementLoop@ for (i in GeneratedElement.values.indices) {
+            val element = GeneratedElement.values[i]
 
             if (!element.supportedAttributes.containsAll(STANDARD_ATTRIBUTES)) {
                 continue@elementLoop
@@ -56,14 +56,14 @@ class GenerateElementTestsTask : Task {
             val capitalizedTag = element.tagName.capitalize()
 
             val testString: String = when (element) {
-                is Element.Normal -> {
+                is GeneratedElement.Normal -> {
                     normalTemplate
                         .replace("Div", capitalizedTag)
                         .replace("div", element.tagName)
                         .replace("BodyContext", element.callingContext.contextClassName.simpleName)
                 }
 
-                is Element.Void -> {
+                is GeneratedElement.Void -> {
                     voidTemplate
                         .replace("Br", capitalizedTag)
                         .replace("br", element.tagName)

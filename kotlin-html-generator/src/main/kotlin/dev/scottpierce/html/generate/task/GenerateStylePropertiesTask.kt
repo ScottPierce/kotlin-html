@@ -8,7 +8,7 @@ import com.squareup.kotlinpoet.PropertySpec
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
-import dev.scottpierce.html.generate.model.StyleProperty
+import dev.scottpierce.html.generate.model.GeneratedStyleProperty
 import dev.scottpierce.html.generate.model.UNSUPPORTED_OPERATION_EXCEPTION
 import java.io.File
 import kotlinx.coroutines.Dispatchers
@@ -45,7 +45,7 @@ class GenerateStylePropertiesTask : Task {
 
         // val testClass: TypeSpec.Builder = TypeSpec.classBuilder("StylePropertyTests")
 
-        for (property in StyleProperty.values()) {
+        for (property in GeneratedStyleProperty.values()) {
             generateProperty(propertiesFile, property)
             // generatePropertyTests(testClass, property)
         }
@@ -66,7 +66,7 @@ class GenerateStylePropertiesTask : Task {
 
     private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
 
-    private fun generateProperty(file: FileSpec.Builder, property: StyleProperty) {
+    private fun generateProperty(file: FileSpec.Builder, property: GeneratedStyleProperty) {
         val propertyClassName = property.type.className.copy(nullable = true)
 
         // @get:JvmSynthetic
