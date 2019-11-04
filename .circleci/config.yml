@@ -48,7 +48,7 @@ jobs:
           keys:
             - build-{{ checksum "buildSrc/src/main/kotlin/Dependencies.kt" }}
 
-      - run: ./gradlew :kotlin-html-writer:assemble :kotlin-html-ktor:assemble :benchmark:assemble --stacktrace
+      - run: ./gradlew :kotlin-html-writer:assemble :kotlin-html-ktor:assemble --stacktrace
 
       - save_cache:
           paths:
