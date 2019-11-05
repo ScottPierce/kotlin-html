@@ -283,7 +283,7 @@ var BaseStyleContext.letterSpacing: Dimension
         writeStyleProperty("letter-spacing", value.toString())
     }
 
-var BaseStyleContext.lineHeight: Dimension
+var BaseStyleContext.lineHeight: LineHeight
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
