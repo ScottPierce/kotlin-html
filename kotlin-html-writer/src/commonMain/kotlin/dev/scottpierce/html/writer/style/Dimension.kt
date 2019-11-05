@@ -1,16 +1,20 @@
+@file:Suppress("unused")
+
 package dev.scottpierce.html.writer.style
 
 interface Dimension {
     companion object {
-        val ZERO: MeasurableDimension = MeasurableDimension("0")
+        val ZERO: MeasurableDimension = StringMeasurableDimension("0")
         val AUTO: Dimension = StringDimension("auto")
         val INHERIT: Dimension = StringDimension("inherit")
     }
 }
 
+interface MeasurableDimension : Dimension, LineHeight
+
 private inline class StringDimension(val value: String) : Dimension
 
-inline class MeasurableDimension(val value: String) : Dimension, LineHeight {
+private inline class StringMeasurableDimension(val value: String) : MeasurableDimension {
     override fun toString(): String = value
 }
 
@@ -37,7 +41,7 @@ private fun dimension(value: Int, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0) {
         Dimension.ZERO
     } else {
-        MeasurableDimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
@@ -45,7 +49,7 @@ private fun dimension(value: Float, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0f) {
         Dimension.ZERO
     } else {
-        MeasurableDimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
@@ -53,7 +57,7 @@ private fun dimension(value: Double, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0.0) {
         Dimension.ZERO
     } else {
-        MeasurableDimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
