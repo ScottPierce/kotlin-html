@@ -176,7 +176,7 @@ The test was performed by creating the same html page in kotlin-html and kotlinx
 times. Each test was run 50 times for warmup, and then 50 iterations to get an average. The reality is that both of the 
 libraries are fast enough that performance doesn't really matter for a normal use-case.
 
-[See the Benchmark Code](./benchmark/src/main/kotlin/dev/scottpierce/html/benchmark/ThreadedBenchmark.kt)<br>
+[See the Benchmark Code](https://github.com/ScottPierce/kotlin-html/blob/master/benchmark/src/jvmMain/kotlin/dev/scottpierce/html/benchmark/ThreadedBenchmark.kt)<br>
 [raw benchmark data](https://docs.google.com/spreadsheets/d/1Yx_RiqxU4Hm9MxfH71YqVj2fiklrUqYSDkiiFVbBKis/edit?usp=sharing)
 
 Benchmark Device:
