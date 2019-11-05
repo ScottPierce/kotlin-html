@@ -1,13 +1,16 @@
 package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.CodeBlock
+import com.squareup.kotlinpoet.DOUBLE
 import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.STRING
 
 @Suppress("unused")
 enum class GeneratedStyleProperty(
     val cssName: String,
-    val type: PropertyType
+    val type: PropertyType,
+    val specialCases: List<SpecialCase> = listOf()
 ) {
     ALIGN_ITEMS("align-items", PropertyType.ALIGN_ITEMS),
     ALIGN_SELF("align-self", PropertyType.ALIGN_SELF),
@@ -25,7 +28,22 @@ enum class GeneratedStyleProperty(
     DISPLAY("display", PropertyType.DISPLAY),
     FILL("fill", PropertyType.STRING),
     FLEX("flex", PropertyType.STRING),
-    FLEX_GROW("flex-grow", PropertyType.STRING),
+    FLEX_GROW(
+        "flex-grow",
+        PropertyType.DOUBLE,
+        specialCases = listOf(
+            SpecialCase(
+                name = "initial",
+                code = CodeBlock.of("%T.POSITIVE_INFINITY", DOUBLE),
+                serializedValue = "initial"
+            ),
+            SpecialCase(
+                name = "inherit",
+                code = CodeBlock.of("%T.NEGATIVE_INFINITY", DOUBLE),
+                serializedValue = "inherit"
+            )
+        )
+    ),
     FLEX_SHRINK("flex-shrink", PropertyType.STRING),
     FLEX_BASIS("flex-basis", PropertyType.STRING),
     FLEX_DIRECTION("flex-direction", PropertyType.FLEX_DIRECTION),
@@ -104,3 +122,9 @@ enum class PropertyType(val className: ClassName) {
     VISIBILITY(ClassName("dev.scottpierce.html.writer.style", "Visibility")),
     ;
 }
+
+data class SpecialCase(
+    val name: String,
+    val code: CodeBlock,
+    val serializedValue: String
+)

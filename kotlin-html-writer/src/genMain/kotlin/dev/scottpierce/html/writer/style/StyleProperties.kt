@@ -5,6 +5,7 @@
 package dev.scottpierce.html.writer.style
 
 import kotlin.Deprecated
+import kotlin.Double
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
@@ -139,13 +140,26 @@ var BaseStyleContext.flex: String
         writeStyleProperty("flex", value)
     }
 
-var BaseStyleContext.flexGrow: String
+var BaseStyleContext.flexGrow: Double
     @JvmSynthetic
     @Deprecated("", level = DeprecationLevel.ERROR)
     get() = throw UnsupportedOperationException()
     set(value) {
-        writeStyleProperty("flex-grow", value)
+        val v = when (value) {
+            Double.POSITIVE_INFINITY -> "initial"
+            Double.NEGATIVE_INFINITY -> "inherit"
+            else -> value.toString()
+        }
+        writeStyleProperty("flex-grow", v)
     }
+
+object FlexGrow {
+    val INITIAL: Double
+        get() = Double.POSITIVE_INFINITY
+
+    val INHERIT: Double
+        get() = Double.NEGATIVE_INFINITY
+}
 
 var BaseStyleContext.flexShrink: String
     @JvmSynthetic

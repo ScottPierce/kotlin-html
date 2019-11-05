@@ -1,11 +1,14 @@
 package dev.scottpierce.html.generate.task
 
 import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.STRING
+import com.squareup.kotlinpoet.TypeSpec
 import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
@@ -101,16 +104,58 @@ class GenerateStylePropertiesTask : Task {
                     FunSpec.setterBuilder()
                         .addParameter("value", propertyClassName)
                         .apply {
-                            if (property.type.className == STRING) {
-                                addStatement("%M(\"${property.cssName}\", value)", WRITE_STYLE_PROPERTY)
+                            if (property.specialCases.isEmpty()) {
+                                if (property.type.className == STRING) {
+                                    addStatement("%M(\"${property.cssName}\", value)", WRITE_STYLE_PROPERTY)
+                                } else {
+                                    addStatement("%M(\"${property.cssName}\", value.toString())", WRITE_STYLE_PROPERTY)
+                                }
                             } else {
-                                addStatement("%M(\"${property.cssName}\", value.toString())", WRITE_STYLE_PROPERTY)
+                                beginControlFlow("val v = when (value)")
+
+                                for (specialCase in property.specialCases) {
+                                    addCode(specialCase.code).addCode(" -> \"${specialCase.serializedValue}\"\n")
+                                }
+
+                                addCode("else -> ")
+                                if (property.type.className == STRING) {
+                                    addCode("value")
+                                } else {
+                                    addCode("value.toString()")
+                                }
+                                addCode("\n")
+                                endControlFlow()
+
+                                addStatement("%M(\"${property.cssName}\", v)", WRITE_STYLE_PROPERTY)
                             }
                         }
                         .build()
                 )
                 .build()
         )
+
+        if (property.specialCases.isNotEmpty()) {
+            file.addType(
+                TypeSpec.objectBuilder(property.propertyName.capitalize()).apply {
+
+                    for (specialCase in property.specialCases) {
+                        val constPropertyName = specialCase.name.toUpperCase().replace(' ', '_')
+                        addProperty(
+                            PropertySpec.builder(constPropertyName, property.type.className)
+                                .getter(
+                                    FunSpec.getterBuilder()
+                                        .addCode("return ")
+                                        .addCode(specialCase.code)
+                                        .addCode("\n")
+                                        .build()
+                                )
+                                .build()
+                        )
+                    }
+
+                }.build()
+            )
+        }
     }
 
 //    private fun generatePropertyTests(testClass: TypeSpec.Builder, property: StyleProperty) {
