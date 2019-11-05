@@ -1,12 +1,20 @@
+@file:Suppress("unused")
+
 package dev.scottpierce.html.writer.style
 
-inline class Dimension(val value: String) {
+interface Dimension {
     companion object {
-        val ZERO: Dimension = Dimension("0")
-        val AUTO: Dimension = Dimension("auto")
-        val INHERIT: Dimension = Dimension("inherit")
+        val ZERO: MeasurableDimension = StringMeasurableDimension("0")
+        val AUTO: Dimension = StringDimension("auto")
+        val INHERIT: Dimension = StringDimension("inherit")
     }
+}
 
+interface MeasurableDimension : Dimension, LineHeight
+
+private inline class StringDimension(val value: String) : Dimension
+
+private inline class StringMeasurableDimension(val value: String) : MeasurableDimension {
     override fun toString(): String = value
 }
 
@@ -29,71 +37,71 @@ enum class DimensionUnit(private val value: String) {
     override fun toString() = value
 }
 
-private fun dimension(value: Int, unit: DimensionUnit): Dimension {
+private fun dimension(value: Int, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0) {
         Dimension.ZERO
     } else {
-        Dimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
-private fun dimension(value: Float, unit: DimensionUnit): Dimension {
+private fun dimension(value: Float, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0f) {
         Dimension.ZERO
     } else {
-        Dimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
-private fun dimension(value: Double, unit: DimensionUnit): Dimension {
+private fun dimension(value: Double, unit: DimensionUnit): MeasurableDimension {
     return if (value == 0.0) {
         Dimension.ZERO
     } else {
-        Dimension("$value$unit")
+        StringMeasurableDimension("$value$unit")
     }
 }
 
-val Int.px: Dimension
+val Int.px: MeasurableDimension
     get() = dimension(this, DimensionUnit.PX)
 
-val Int.em: Dimension
+val Int.em: MeasurableDimension
     get() = dimension(this, DimensionUnit.EM)
 
-val Int.ex: Dimension
+val Int.ex: MeasurableDimension
     get() = dimension(this, DimensionUnit.EX)
 
-val Int.percent: Dimension
+val Int.percent: MeasurableDimension
     get() = dimension(this, DimensionUnit.PERCENT)
 
-val Int.rem: Dimension
+val Int.rem: MeasurableDimension
     get() = dimension(this, DimensionUnit.REM)
 
-val Float.px: Dimension
+val Float.px: MeasurableDimension
     get() = dimension(this, DimensionUnit.PX)
 
-val Float.em: Dimension
+val Float.em: MeasurableDimension
     get() = dimension(this, DimensionUnit.EM)
 
-val Float.ex: Dimension
+val Float.ex: MeasurableDimension
     get() = dimension(this, DimensionUnit.EX)
 
-val Float.percent: Dimension
+val Float.percent: MeasurableDimension
     get() = dimension(this, DimensionUnit.PERCENT)
 
-val Float.rem: Dimension
+val Float.rem: MeasurableDimension
     get() = dimension(this, DimensionUnit.REM)
 
-val Double.px: Dimension
+val Double.px: MeasurableDimension
     get() = dimension(this, DimensionUnit.PX)
 
-val Double.em: Dimension
+val Double.em: MeasurableDimension
     get() = dimension(this, DimensionUnit.EM)
 
-val Double.ex: Dimension
+val Double.ex: MeasurableDimension
     get() = dimension(this, DimensionUnit.EX)
 
-val Double.percent: Dimension
+val Double.percent: MeasurableDimension
     get() = dimension(this, DimensionUnit.PERCENT)
 
-val Double.rem: Dimension
+val Double.rem: MeasurableDimension
     get() = dimension(this, DimensionUnit.REM)

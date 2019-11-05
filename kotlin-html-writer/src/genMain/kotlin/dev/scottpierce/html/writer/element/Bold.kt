@@ -47,11 +47,8 @@ inline fun BodyContext.bold(func: BodyContext.() -> Unit = {}) {
 }
 
 @HtmlDsl
-inline fun BodyContext.bold(
-    vararg attrs: Pair<String, String?>,
-    func: BodyContext.() -> Unit =
-            {}
-) {
+inline fun BodyContext.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit =
+        {}) {
     writer.writeTag("bold")
     writer.writeAttributes(attrs)
     writer.write('>')
