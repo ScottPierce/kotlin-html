@@ -4,559 +4,486 @@
 
 package dev.scottpierce.html.writer.style
 
-import kotlin.Deprecated
 import kotlin.Double
+import kotlin.Float
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
-import kotlin.UnsupportedOperationException
-import kotlin.jvm.JvmSynthetic
 
-var BaseStyleContext.alignItems: AlignItems
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("align-items", value.toString())
-    }
-
-var BaseStyleContext.alignSelf: AlignSelf
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("align-self", value.toString())
-    }
-
-var BaseStyleContext.animationName: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("animation-name", value)
-    }
-
-var BaseStyleContext.animationDuration: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("animation-duration", value)
-    }
-
-var BaseStyleContext.background: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("background", value)
-    }
-
-var BaseStyleContext.backgroundColor: Color
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("background-color", value.toString())
-    }
-
-var BaseStyleContext.border: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("border", value)
-    }
-
-var BaseStyleContext.borderRadius: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("border-radius", value.toString())
-    }
-
-var BaseStyleContext.bottom: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("bottom", value.toString())
-    }
-
-var BaseStyleContext.boxShadow: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("box-shadow", value)
-    }
-
-var BaseStyleContext.color: Color
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("color", value.toString())
-    }
-
-var BaseStyleContext.content: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("content", value)
-    }
-
-var BaseStyleContext.cursor: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("cursor", value)
-    }
-
-var BaseStyleContext.display: Display
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("display", value.toString())
-    }
-
-var BaseStyleContext.fill: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("fill", value)
-    }
-
-var BaseStyleContext.flex: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("flex", value)
-    }
-
-var BaseStyleContext.flexGrow: Double
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        val v = when (value) {
-            Double.POSITIVE_INFINITY -> "initial"
-            Double.NEGATIVE_INFINITY -> "inherit"
-            else -> value.toString()
-        }
-        writeStyleProperty("flex-grow", v)
-    }
-
-object FlexGrow {
-    val INITIAL: Double
-        get() = Double.POSITIVE_INFINITY
-
-    val INHERIT: Double
-        get() = Double.NEGATIVE_INFINITY
+fun BaseStyleContext.alignItems(value: AlignItems) {
+    writeStyleProperty("align-items", value)
 }
 
-var BaseStyleContext.flexShrink: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("flex-shrink", value)
-    }
+fun BaseStyleContext.alignSelf(value: AlignSelf) {
+    writeStyleProperty("align-self", value)
+}
 
-var BaseStyleContext.flexBasis: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("flex-basis", value)
-    }
+fun BaseStyleContext.backgroundColor(value: Color) {
+    writeStyleProperty("background-color", value)
+}
 
-var BaseStyleContext.flexDirection: FlexDirection
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("flex-direction", value.toString())
-    }
+fun BaseStyleContext.backgroundColor(value: String) {
+    writeStyleProperty("background-color", Color.colorString(value))
+}
 
-var BaseStyleContext.flexWrap: FlexWrap
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("flex-wrap", value.toString())
-    }
+fun BaseStyleContext.backgroundColor(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("background-color", Color.colorString(r, g, b))
+}
 
-var BaseStyleContext.float: FloatDirection
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("float", value.toString())
-    }
+fun BaseStyleContext.backgroundColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Float
+) {
+    writeStyleProperty("background-color", Color.colorString(r, g, b, a))
+}
 
-var BaseStyleContext.fontFamily: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("font-family", value)
-    }
+fun BaseStyleContext.backgroundColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Double
+) {
+    writeStyleProperty("background-color", Color.colorString(r, g, b, a))
+}
 
-var BaseStyleContext.fontWeight: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("font-weight", value)
-    }
+fun BaseStyleContext.backgroundImage(url: String) {
+    writeStyleProperty("background-image", "url('$url')")
+}
 
-var BaseStyleContext.fontSize: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("font-size", value.toString())
-    }
+fun BaseStyleContext.backgroundImage(vararg urls: String) {
+    writeStyleProperty("background-image", writeBackgroundImages(urls))
+}
 
-var BaseStyleContext.gridColumnGap: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("grid-column-gap", value.toString())
-    }
+fun BaseStyleContext.borderRadius(value: Dimension) {
+    writeStyleProperty("border-radius", value)
+}
 
-var BaseStyleContext.gridRowGap: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("grid-row-gap", value.toString())
-    }
+fun BaseStyleContext.borderRadius(topLeftAndBottomRight: Dimension,
+        topRightAndBottomLeft: Dimension) {
+    writeStyleProperty("border-radius", "$topLeftAndBottomRight $topRightAndBottomLeft")
+}
 
-var BaseStyleContext.gridTemplateColumns: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("grid-template-columns", value)
-    }
+fun BaseStyleContext.borderRadius(
+    topLeft: Dimension,
+    topRightAndBottomLeft: Dimension,
+    bottomRight: Dimension
+) {
+    writeStyleProperty("border-radius", "$topLeft $topRightAndBottomLeft $bottomRight")
+}
 
-var BaseStyleContext.gridTemplateRows: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("grid-template-rows", value)
-    }
+fun BaseStyleContext.borderRadius(
+    topLeft: Dimension,
+    topRight: Dimension,
+    bottomRight: Dimension,
+    bottomLeft: Dimension
+) {
+    writeStyleProperty("border-radius", "$topLeft $topRight $bottomRight $bottomLeft")
+}
 
-var BaseStyleContext.height: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("height", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Int,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.justifySelf: JustifySelf
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("justify-self", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Int,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.justifyContent: JustifyContent
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("justify-content", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Float,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.left: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("left", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Float,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.letterSpacing: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("letter-spacing", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Double,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.lineHeight: LineHeight
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("line-height", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Int,
+    flexShrink: Double,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.listStyle: ListStyle
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("list-style", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Int,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.outline: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("outline", value)
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Int,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.padding: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("padding", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Float,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.paddingLeft: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("padding-left", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Float,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.paddingRight: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("padding-right", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Double,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.paddingTop: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("padding-top", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Float,
+    flexShrink: Double,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.paddingBottom: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("padding-bottom", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Int,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.position: Position
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("position", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Int,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.margin: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Float,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.marginBlockEnd: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-block-end", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Float,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.marginBlockStart: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-block-start", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Double,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.marginBottom: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-bottom", value.toString())
-    }
+fun BaseStyleContext.flex(
+    flexGrow: Double,
+    flexShrink: Double,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", "$flexGrow $flexShrink $flexBasis")
+}
 
-var BaseStyleContext.marginLeft: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-left", value.toString())
-    }
+sealed class Flex(
+    val value: String
+) {
+    override fun toString() = value
 
-var BaseStyleContext.marginRight: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-right", value.toString())
-    }
+    object Auto : Flex("auto")
 
-var BaseStyleContext.marginTop: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("margin-top", value.toString())
-    }
+    object Initial : Flex("initial")
 
-var BaseStyleContext.maxHeight: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("max-height", value.toString())
-    }
+    object Inherit : Flex("inherit")
 
-var BaseStyleContext.maxWidth: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("max-width", value.toString())
-    }
+    object None : Flex("none")
+}
 
-var BaseStyleContext.minHeight: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("min-height", value.toString())
-    }
+fun BaseStyleContext.flex(value: Flex) {
+    writeStyleProperty("flex", value)
+}
 
-var BaseStyleContext.minWidth: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("min-width", value.toString())
-    }
+fun BaseStyleContext.flexBasis(value: Int) {
+    writeStyleProperty("flex-basis", value)
+}
 
-var BaseStyleContext.outlineColor: Color
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("outline-color", value.toString())
-    }
+fun BaseStyleContext.flexBasis(value: Float) {
+    writeStyleProperty("flex-basis", value)
+}
 
-var BaseStyleContext.overflow: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("overflow", value)
-    }
+fun BaseStyleContext.flexBasis(value: Double) {
+    writeStyleProperty("flex-basis", value)
+}
 
-var BaseStyleContext.right: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("right", value.toString())
-    }
+sealed class FlexBasis(
+    val value: String
+) {
+    override fun toString() = value
 
-var BaseStyleContext.textAlign: TextAlign
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("text-align", value.toString())
-    }
+    object Auto : FlexBasis("auto")
 
-var BaseStyleContext.textDecoration: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("text-decoration", value)
-    }
+    object Initial : FlexBasis("initial")
 
-var BaseStyleContext.textDecorationLine: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("text-decoration-line", value)
-    }
+    object Inherit : FlexBasis("inherit")
+}
 
-var BaseStyleContext.textTransform: TextTransform
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("text-transform", value.toString())
-    }
+fun BaseStyleContext.flexBasis(value: FlexBasis) {
+    writeStyleProperty("flex-basis", value)
+}
 
-var BaseStyleContext.top: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("top", value.toString())
-    }
+fun BaseStyleContext.flexGrow(value: Int) {
+    writeStyleProperty("flex-grow", value)
+}
 
-var BaseStyleContext.transition: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("transition", value)
-    }
+fun BaseStyleContext.flexGrow(value: Float) {
+    writeStyleProperty("flex-grow", value)
+}
 
-var BaseStyleContext.transitionProperty: String
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("transition-property", value)
-    }
+fun BaseStyleContext.flexGrow(value: Double) {
+    writeStyleProperty("flex-grow", value)
+}
 
-var BaseStyleContext.visibility: Visibility
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("visibility", value.toString())
-    }
+fun BaseStyleContext.flexGrow(value: CssValue) {
+    writeStyleProperty("flex-grow", value)
+}
 
-var BaseStyleContext.width: Dimension
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("width", value.toString())
-    }
+fun BaseStyleContext.flexShrink(value: Int) {
+    writeStyleProperty("flex-shrink", value)
+}
 
-var BaseStyleContext.zIndex: Int
-    @JvmSynthetic
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        writeStyleProperty("z-index", value.toString())
-    }
+fun BaseStyleContext.flexShrink(value: Float) {
+    writeStyleProperty("flex-shrink", value)
+}
+
+fun BaseStyleContext.flexShrink(value: Double) {
+    writeStyleProperty("flex-shrink", value)
+}
+
+fun BaseStyleContext.flexShrink(value: CssValue) {
+    writeStyleProperty("flex-shrink", value)
+}
+
+fun BaseStyleContext.flexDirection(value: FlexDirection) {
+    writeStyleProperty("flex-direction", value)
+}
+
+fun BaseStyleContext.flexWrap(value: FlexWrap) {
+    writeStyleProperty("flex-wrap", value)
+}
+
+fun BaseStyleContext.float(value: FloatDirection) {
+    writeStyleProperty("float", value)
+}
+
+fun BaseStyleContext.fontFamily(value: String) {
+    writeStyleProperty("font-family", value)
+}
+
+fun BaseStyleContext.fontFamily(value: CssValue) {
+    writeStyleProperty("font-family", value)
+}
+
+fun BaseStyleContext.fontWeight(value: Int) {
+    writeStyleProperty("font-weight", value)
+}
+
+sealed class FontWeight(
+    val value: String
+) {
+    override fun toString() = value
+
+    object Normal : FontWeight("normal")
+
+    object Bold : FontWeight("bold")
+
+    object Bolder : FontWeight("bolder")
+
+    object Lighter : FontWeight("lighter")
+
+    object Inherit : FontWeight("inherit")
+
+    object Initial : FontWeight("initial")
+}
+
+fun BaseStyleContext.fontWeight(value: FontWeight) {
+    writeStyleProperty("font-weight", value)
+}
+
+fun BaseStyleContext.fontSize(value: Dimension) {
+    writeStyleProperty("font-size", value)
+}
+
+sealed class FontSize(
+    val value: String
+) {
+    override fun toString() = value
+
+    object XxSmall : FontSize("xx-small")
+
+    object XSmall : FontSize("x-small")
+
+    object Smaller : FontSize("smaller")
+
+    object Small : FontSize("small")
+
+    object Large : FontSize("large")
+
+    object Larger : FontSize("larger")
+
+    object XLarge : FontSize("x-large")
+
+    object XxLarge : FontSize("xx-large")
+
+    object Inherit : FontSize("inherit")
+
+    object Initial : FontSize("initial")
+}
+
+fun BaseStyleContext.fontSize(value: FontSize) {
+    writeStyleProperty("font-size", value)
+}
+
+fun BaseStyleContext.height(value: Dimension) {
+    writeStyleProperty("height", value)
+}
+
+sealed class Height(
+    val value: String
+) {
+    override fun toString() = value
+
+    object Auto : Height("auto")
+
+    object Initial : Height("initial")
+
+    object Inherit : Height("inherit")
+}
+
+fun BaseStyleContext.height(value: Height) {
+    writeStyleProperty("height", value)
+}
+
+fun BaseStyleContext.justifySelf(value: JustifySelf) {
+    writeStyleProperty("justify-self", value)
+}
+
+fun BaseStyleContext.justifyContent(value: JustifyContent) {
+    writeStyleProperty("justify-content", value)
+}
+
+fun BaseStyleContext.left(value: Dimension) {
+    writeStyleProperty("left", value)
+}
+
+sealed class Left(
+    val value: String
+) {
+    override fun toString() = value
+
+    object Auto : Left("auto")
+
+    object Initial : Left("initial")
+
+    object Inherit : Left("inherit")
+}
+
+fun BaseStyleContext.left(value: Left) {
+    writeStyleProperty("left", value)
+}
+
+fun BaseStyleContext.letterSpacing(value: Dimension) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+sealed class LetterSpacing(
+    val value: String
+) {
+    override fun toString() = value
+
+    object Normal : LetterSpacing("normal")
+
+    object Initial : LetterSpacing("initial")
+
+    object Inherit : LetterSpacing("inherit")
+}
+
+fun BaseStyleContext.letterSpacing(value: LetterSpacing) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun BaseStyleContext.lineHeight(multiplier: Int) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun BaseStyleContext.lineHeight(multiplier: Float) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun BaseStyleContext.lineHeight(multiplier: Double) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun BaseStyleContext.lineHeight(value: Dimension) {
+    writeStyleProperty("line-height", value)
+}
+
+sealed class LineHeight(
+    val value: String
+) {
+    override fun toString() = value
+
+    object Normal : LineHeight("normal")
+
+    object Initial : LineHeight("initial")
+
+    object Inherit : LineHeight("inherit")
+}
+
+fun BaseStyleContext.lineHeight(value: LineHeight) {
+    writeStyleProperty("line-height", value)
+}

@@ -2,12 +2,7 @@
 
 package dev.scottpierce.html.writer.style
 
-fun color(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color =
-    Color(red = red, green = green, blue = blue, alpha = alpha)
-
-fun color(hexString: String): Color = Color(hexString)
-
-inline class Color(val hexString: String) {
+class Color private constructor(val colorString: String, notUsed: Boolean) {
     companion object {
         fun toHexString(red: Int, green: Int, blue: Int, alpha: Float = 1f): String {
             val hexR = red.twoDigitHex()
@@ -18,17 +13,25 @@ inline class Color(val hexString: String) {
             return "#$hexR$hexG$hexB${hexA.orEmpty()}"
         }
 
-        private fun String.toHex(): String = this
+        internal fun colorString(r: Int, g: Int, b: Int): String = "rgb($r,$g,$b)"
+        internal fun colorString(r: Int, g: Int, b: Int, a: Float): String = "rgba($r,$g,$b,$a)"
+        internal fun colorString(r: Int, g: Int, b: Int, a: Double): String = "rgba($r,$g,$b,$a)"
+        internal fun colorString(hexString: String): String =
+            if (hexString.first() == '#') hexString else "#$hexString"
 
-        val WHITE = Color("#ffffff")
-        val BLACK = Color("#000000")
-        val INHERIT = Color("inherit")
+        val WHITE = Color("#ffffff", false)
+        val BLACK = Color("#000000", false)
+        val TRANSPARENT = Color("transparent", false)
+        val INHERIT = Color("inherit", false)
+        val INITIAL = Color("initial", false)
     }
 
-    constructor(red: Int, green: Int, blue: Int, alpha: Float = 1f) :
-            this(toHexString(red = red, green = green, blue = blue, alpha = alpha))
+    constructor(r: Int, g: Int, b: Int) : this(colorString(r, g, b), false)
+    constructor(r: Int, g: Int, b: Int, a: Float) : this(colorString(r, g, b, a), false)
+    constructor(r: Int, g: Int, b: Int, a: Double) : this(colorString(r, g, b, a), false)
+    constructor(hexString: String) : this(colorString(hexString), false)
 
-    override fun toString() = hexString.toHex()
+    override fun toString() = colorString
 }
 
 internal fun Int.twoDigitHex(): String {

@@ -41,7 +41,7 @@ inline fun HtmlWriter.media(selector: String, func: StyleSheetContext.() -> Unit
 inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() -> Unit) = writer.media(selector, func)
 
 @HtmlDsl
-inline fun HtmlWriter.style(selector: String, func: StyleContext.() -> Unit) {
+inline fun HtmlWriter.style(selector: String, func: StyleLambda) {
     if (!isEmpty) newLine()
 
     write(selector)
@@ -57,7 +57,7 @@ inline fun HtmlWriter.style(selector: String, func: StyleContext.() -> Unit) {
 }
 
 @HtmlDsl
-inline fun StyleSheetContext.style(selector: String, func: StyleContext.() -> Unit) = writer.style(selector, func)
+inline fun StyleSheetContext.style(selector: String, func: StyleLambda) = writer.style(selector, func)
 
 fun BaseStyleContext.writeStyleProperty(property: String, value: Any) {
     writer.apply {

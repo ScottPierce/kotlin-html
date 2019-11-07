@@ -2,6 +2,16 @@
 
 package dev.scottpierce.html.writer.style
 
+sealed class CssValue {
+    object Initial : CssValue() {
+        override fun toString(): String = "initial"
+    }
+
+    object Inherit : CssValue() {
+        override fun toString(): String = "inherit"
+    }
+}
+
 enum class AlignSelf(val value: String) {
     AUTO("auto"),
     BASELINE("baseline"),
@@ -64,10 +74,25 @@ enum class JustifyContent(val value: String) {
 }
 
 enum class JustifySelf(val value: String) {
+    AUTO("auto"),
+    NORMAL("normal"),
     STRETCH("stretch"),
     CENTER("center"),
     START("start"),
     END("end"),
+    FLEX_START("flex-start"),
+    FLEX_END("flex-end"),
+    SELF_START("self-start"),
+    SELF_END("self-end"),
+    LEFT("left"),
+    RIGHT("right"),
+    BASELINE("baseline"),
+    FIRST_BASELINE("first baseline"),
+    LAST_BASELINE("last baseline"),
+    SAFE_CENTER("safe center"),
+    UNSAFE_CENTER("unsafe center"),
+    INHERIT("inherit"),
+    INITIAL("initial"),
     ;
 
     override fun toString() = value
@@ -160,6 +185,8 @@ enum class AlignItems(val value: String) {
     FLEX_START("flex-start"),
     FLEX_END("flex-end"),
     STRETCH("stretch"),
+    INHERIT("inherit"),
+    INITIAL("initial"),
     ;
 
     override fun toString() = value
@@ -171,6 +198,7 @@ enum class TextAlign(val value: String) {
     CENTER("center"),
     JUSTIFY("justify"),
     INHERIT("inherit"),
+    INITIAL("initial"),
     ;
 
     override fun toString() = value
@@ -203,6 +231,8 @@ enum class FlexWrap(val value: String) {
     NO_WRAP("nowrap"),
     WRAP("wrap"),
     WRAP_REVERSE("wrap-reverse"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
     ;
 
     override fun toString() = value
