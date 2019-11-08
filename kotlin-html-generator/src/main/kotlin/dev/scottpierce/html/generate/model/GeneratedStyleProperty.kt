@@ -415,7 +415,71 @@ enum class GeneratedStyleProperty(
         )
     ),
     //    LIST_STYLE("list-style", PropertyType.LIST_STYLE),
-//    OUTLINE("outline", PropertyType.STRING),
+    OUTLINE(
+        cssName = "outline",
+        setters = listOf(
+            Setter(
+                template = "\"$$0 $$1\${if (color == null) \"\" else \" \$color\"}\"",
+                parameters = listOf(
+                    Parameter(DIMENSION, name = "width"),
+                    Parameter(styleClassName("OutlineStyle"), name = "style"),
+                    Parameter(
+                        dev.scottpierce.html.generate.model.COLOR.copy(nullable = true),
+                        name = "color",
+                        defaultValue = "null"
+                    )
+                )
+            ),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    OUTLINE_COLOR("outline-color", COLOR_SETTERS),
+    OUTLINE_OFFSET(
+        cssName = "outline-offset",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    OUTLINE_STYLE(
+        cssName = "outline-style",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset",
+                "initial", "inherit"
+            )))
+        )
+    ),
+    OUTLINE_WIDTH(
+        cssName = "outline-width",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(ParameterType.Generate("medium", "thin", "thick", "initial", "inherit")))
+        )
+    ),
+    OVERFLOW(
+        cssName = "overflow",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(ParameterType.Generate(
+                "visible", "hidden", "scroll", "auto", "initial", "inherit"
+            )))
+        )
+    ),
+    OVERFLOW_X(
+        cssName = "overflow-x",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("Overflow")))
+        )
+    ),
+    OVERFLOW_Y(
+        cssName = "overflow-y",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("Overflow")))
+        )
+    ),
     PADDING(
         cssName = "padding",
         setters = listOf(
@@ -473,28 +537,6 @@ enum class GeneratedStyleProperty(
         cssName = "position",
         setters = listOf(
             Setter(Parameter(styleClassName("Position")))
-        )
-    ),
-    OUTLINE_COLOR("outline-color", COLOR_SETTERS),
-    OVERFLOW(
-        cssName = "overflow",
-        setters = listOf(
-            Setter(Parameter(DIMENSION)),
-            Setter(Parameter(ParameterType.Generate("visible", "hidden", "scroll", "auto", "initial", "inherit")))
-        )
-    ),
-    OVERFLOW_X(
-        cssName = "overflow-x",
-        setters = listOf(
-            Setter(Parameter(DIMENSION)),
-            Setter(Parameter(styleClassName("Overflow")))
-        )
-    ),
-    OVERFLOW_Y(
-        cssName = "overflow-y",
-        setters = listOf(
-            Setter(Parameter(DIMENSION)),
-            Setter(Parameter(styleClassName("Overflow")))
         )
     ),
     RIGHT(
