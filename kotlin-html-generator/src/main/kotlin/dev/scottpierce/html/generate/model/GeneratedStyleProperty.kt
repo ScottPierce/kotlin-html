@@ -333,6 +333,53 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(ParameterType.Generate("normal", "initial", "inherit")))
         )
     ),
+    LIST_STYLE(
+        cssName = "list-style",
+        setters = listOf(
+            Setter(
+                template = "\"\$type \$position url('\$imageUrl')\"",
+                parameters = listOf(
+                    Parameter(styleClassName("ListStyleType"), "type"),
+                    Parameter(styleClassName("ListStylePosition"), "position"),
+                    Parameter(STRING, "imageUrl")
+                )
+            ),
+            Setter(
+                template = "\"\$type \$position \$image\"",
+                parameters = listOf(
+                    Parameter(styleClassName("ListStyleType"), "type"),
+                    Parameter(styleClassName("ListStylePosition"), "position"),
+                    Parameter(styleClassName("ListStyleImage"), "image")
+                )
+            ),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    LIST_STYLE_IMAGE(
+        cssName = "list-style-image",
+        setters = listOf(
+            Setter("\"url('\$imageUrl')\"", Parameter(STRING, "imageUrl")),
+            Setter(Parameter(ParameterType.Generate("none", "initial", "inherit")))
+        )
+    ),
+    LIST_STYLE_POSITION(
+        cssName = "list-style-position",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate("inside", "outside", "initial", "inherit")))
+        )
+    ),
+    //    LIST_STYLE("list-style", PropertyType.LIST_STYLE),
+    LIST_STYLE_TYPE(
+        cssName = "list-style-type",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "disc", "armenian", "circle", "cjk-ideographic", "decimal", "decimal-leading-zero", "georgian",
+                "hebrew", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "lower-alpha", "lower-greek",
+                "lower-latin", "lower-roman", "none", "square", "upper-alpha", "upper-greek", "upper-latin",
+                "upper-roman", "initial", "inherit"
+            )))
+        )
+    ),
     MARGIN(
         cssName = "margin",
         setters = listOf(
@@ -414,7 +461,6 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(CSS_VALUE))
         )
     ),
-    //    LIST_STYLE("list-style", PropertyType.LIST_STYLE),
     OUTLINE(
         cssName = "outline",
         setters = listOf(
