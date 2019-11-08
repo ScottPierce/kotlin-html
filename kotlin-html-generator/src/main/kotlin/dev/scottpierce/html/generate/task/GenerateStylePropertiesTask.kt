@@ -15,13 +15,12 @@ import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.GeneratedStyleProperty
-import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.ParameterType
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import java.io.File
 
 class GenerateStylePropertiesTask : Task {
     companion object {
@@ -103,7 +102,6 @@ class GenerateStylePropertiesTask : Task {
                     }
 
                     addStatement("%M(\"${property.cssName}\", $template)", WRITE_STYLE_PROPERTY)
-
                 }.build()
             )
         }

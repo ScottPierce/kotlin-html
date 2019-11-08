@@ -1,9 +1,9 @@
 package dev.scottpierce.html.generate.model
 
+import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.NUMBER
-import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeName
 
@@ -13,7 +13,7 @@ enum class GeneratedStyleProperty(
     val setters: List<Setter>
 ) {
     ALIGN_ITEMS("align-items", Setter(Parameter(styleClassName("AlignItems")))),
-    ALIGN_SELF("align-self", Setter(Parameter(styleClassName( "AlignSelf")))),
+    ALIGN_SELF("align-self", Setter(Parameter(styleClassName("AlignSelf")))),
     ANIMATION_NAME(
         cssName = "animation-name",
         setters = listOf(
