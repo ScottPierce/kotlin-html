@@ -4,8 +4,31 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.flexDirection(value: FlexDirection) {
     writeStyleProperty("flex-direction", value)
+}
+
+fun BaseStyleContext.flexDirection(value: FlexDirection) {
+    writeStyleProperty("flex-direction", value)
+}
+
+enum class FlexDirection(
+    val value: String
+) {
+    COLUMN("column"),
+
+    COLUMN_REVERSE("column-reverse"),
+
+    ROW_REVERSE("row-reverse"),
+
+    ROW("row"),
+
+    INITIAL("initial"),
+
+    INHERIT("inherit");
+
+    override fun toString() = value
 }

@@ -7,22 +7,18 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignItems(value: AlignItems) {
-    writeStyleProperty("align-items", value)
+fun BaseStyleContext.backgroundOrigin(value: BackgroundOrigin) {
+    writeStyleProperty("background-origin", value)
 }
 
-enum class AlignItems(
+enum class BackgroundOrigin(
     val value: String
 ) {
-    BASELINE("baseline"),
+    PADDING_BOX("padding-box"),
 
-    CENTER("center"),
+    BORDER_BOX("border-box"),
 
-    FLEX_START("flex-start"),
-
-    FLEX_END("flex-end"),
-
-    STRETCH("stretch"),
+    CONTENT_BOX("content-box"),
 
     INITIAL("initial"),
 

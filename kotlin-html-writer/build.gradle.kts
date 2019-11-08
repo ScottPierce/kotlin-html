@@ -125,3 +125,13 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
         html.destination = file("$buildDir/jacocoHtml")
     }
 }
+
+afterEvaluate {
+    kotlin.sourceSets.map {
+        it.apply {
+            languageSettings.apply {
+                useExperimentalAnnotation("kotlin.time.ExperimentalTime")
+            }
+        }
+    }
+}

@@ -101,7 +101,9 @@ class GenerateStylePropertiesTask : Task {
                         template = template.replace("$$i", parameter.name)
                     }
 
-                    addStatement("%M(\"${property.cssName}\", $template)", WRITE_STYLE_PROPERTY)
+                    val paramBreak: Char = if (template.length > 50) '\n' else ' '
+
+                    addStatement("%M(\"${property.cssName}\",$paramBreak$template)", WRITE_STYLE_PROPERTY)
                 }.build()
             )
         }

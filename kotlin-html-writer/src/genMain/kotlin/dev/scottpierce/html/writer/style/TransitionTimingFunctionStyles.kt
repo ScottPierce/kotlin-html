@@ -7,22 +7,22 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignItems(value: AlignItems) {
-    writeStyleProperty("align-items", value)
+fun BaseStyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
+    writeStyleProperty("transition-timing-function", value)
 }
 
-enum class AlignItems(
+enum class TransitionTimingFunction(
     val value: String
 ) {
-    BASELINE("baseline"),
+    LINEAR("linear"),
 
-    CENTER("center"),
+    EASE("ease"),
 
-    FLEX_START("flex-start"),
+    EASE_IN("ease-in"),
 
-    FLEX_END("flex-end"),
+    EASE_OUT("ease-out"),
 
-    STRETCH("stretch"),
+    EASE_IN_OUT("ease-in-out"),
 
     INITIAL("initial"),
 

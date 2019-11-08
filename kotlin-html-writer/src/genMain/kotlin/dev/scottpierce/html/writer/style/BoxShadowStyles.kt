@@ -13,7 +13,7 @@ fun BaseStyleContext.boxShadow(boxShadow: BoxShadow) {
 }
 
 fun BaseStyleContext.boxShadow(vararg boxShadows: BoxShadow) {
-    writeStyleProperty("box-shadow", writeBoxShadows(boxShadows))
+    writeStyleProperty("box-shadow", boxShadows.joinToString())
 }
 
 fun BaseStyleContext.boxShadow(
@@ -22,8 +22,8 @@ fun BaseStyleContext.boxShadow(
     color: Color,
     inset: Boolean = false
 ) {
-    writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-            inset = inset))
+    writeStyleProperty("box-shadow",
+            BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color, inset = inset))
 }
 
 fun BaseStyleContext.boxShadow(
@@ -34,6 +34,7 @@ fun BaseStyleContext.boxShadow(
     spread: Number? = null,
     inset: Boolean = false
 ) {
-    writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-            blur = blur, spread = spread, inset = inset))
+    writeStyleProperty("box-shadow",
+            BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color, blur = blur, spread =
+                    spread, inset = inset))
 }

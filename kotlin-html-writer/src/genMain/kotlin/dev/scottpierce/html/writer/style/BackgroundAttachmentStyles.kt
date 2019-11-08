@@ -7,22 +7,18 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignItems(value: AlignItems) {
-    writeStyleProperty("align-items", value)
+fun BaseStyleContext.backgroundAttachment(value: BackgroundAttachment) {
+    writeStyleProperty("background-attachment", value)
 }
 
-enum class AlignItems(
+enum class BackgroundAttachment(
     val value: String
 ) {
-    BASELINE("baseline"),
+    SCROLL("scroll"),
 
-    CENTER("center"),
+    FIXED("fixed"),
 
-    FLEX_START("flex-start"),
-
-    FLEX_END("flex-end"),
-
-    STRETCH("stretch"),
+    LOCAL("local"),
 
     INITIAL("initial"),
 

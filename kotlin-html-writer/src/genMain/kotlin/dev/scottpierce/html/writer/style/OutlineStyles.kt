@@ -11,7 +11,8 @@ fun BaseStyleContext.outline(
     style: OutlineStyle,
     color: Color? = null
 ) {
-    writeStyleProperty("outline", "$width $style${if (color == null) "" else " $color"}")
+    writeStyleProperty("outline",
+            "$width $style${if (color == null) "" else " $color"}")
 }
 
 fun BaseStyleContext.outline(value: CssValue) {

@@ -4,8 +4,31 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.justifyContent(value: JustifyContent) {
     writeStyleProperty("justify-content", value)
+}
+
+enum class JustifyContent(
+    val value: String
+) {
+    CENTER("center"),
+
+    FLEX_END("flex-end"),
+
+    FLEX_START("flex-start"),
+
+    SPACE_AROUND("space-around"),
+
+    SPACE_BETWEEN("space-between"),
+
+    SPACE_EVENLY("space-evenly"),
+
+    INITIAL("initial"),
+
+    INHERIT("inherit");
+
+    override fun toString() = value
 }

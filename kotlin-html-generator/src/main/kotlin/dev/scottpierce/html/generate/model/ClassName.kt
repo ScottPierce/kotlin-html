@@ -20,6 +20,7 @@ val DIMENSION = styleClassName("Dimension")
 val CSS_VALUE = styleClassName("CssValue")
 val FLEX_BASIS = ClassName(Constants.STYLE_PACKAGE, "FlexBasis")
 val COLOR = ClassName(Constants.STYLE_PACKAGE, "Color")
+val DURATION = ClassName("kotlin.time", "Duration")
 
 val WRITE_NORMAL_ELEMENT_START = MemberName("dev.scottpierce.html.writer.element", "writeNormalElementStart")
 val WRITE_NORMAL_ELEMENT_END = MemberName("dev.scottpierce.html.writer.element", "writeNormalElementEnd")

@@ -4,8 +4,29 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.position(value: Position) {
     writeStyleProperty("position", value)
+}
+
+enum class Position(
+    val value: String
+) {
+    STATIC("static"),
+
+    RELATIVE("relative"),
+
+    FIXED("fixed"),
+
+    ABSOLUTE("absolute"),
+
+    STICKY("sticky"),
+
+    INITIAL("initial"),
+
+    INHERIT("inherit");
+
+    override fun toString() = value
 }

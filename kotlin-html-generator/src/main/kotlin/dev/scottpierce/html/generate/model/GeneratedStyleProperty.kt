@@ -10,10 +10,20 @@ import com.squareup.kotlinpoet.TypeName
 @Suppress("unused")
 enum class GeneratedStyleProperty(
     val cssName: String,
-    val setters: List<Setter>
+    open val setters: List<Setter>
 ) {
-    ALIGN_ITEMS("align-items", Setter(Parameter(styleClassName("AlignItems")))),
-    ALIGN_SELF("align-self", Setter(Parameter(styleClassName("AlignSelf")))),
+    ALIGN_ITEMS(
+        "align-items",
+        Setter(Parameter(ParameterType.Generate(
+            "baseline", "center", "flex-start", "flex-end", "stretch", "initial", "inherit"
+        )))
+    ),
+    ALIGN_SELF(
+        "align-self",
+        Setter(Parameter(ParameterType.Generate(
+            "auto", "baseline", "center", "end", "flex-end", "flex-start", "start", "initial", "inherit"
+        )))
+    ),
     ANIMATION_NAME(
         cssName = "animation-name",
         setters = listOf(
@@ -28,7 +38,36 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(CSS_VALUE))
         )
     ),
-    //    BACKGROUND("background", PropertyType.STRING),
+    BACKGROUND(
+        cssName = "background",
+        setters = listOf(
+            Setter(Parameter(dev.scottpierce.html.generate.model.COLOR, name = "color")),
+            Setter(
+                template = "\"\$color \$image\"",
+                parameters = listOf(
+                    Parameter(dev.scottpierce.html.generate.model.COLOR, name = "color"),
+                    Parameter(styleClassName("BackgroundImage"), name = "image")
+                )
+            ),
+            Setter(Parameter(STRING, name = "color"))
+        )
+    ),
+    BACKGROUND_ATTACHMENT(
+        cssName = "background-attachment",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "scroll", "fixed", "local", "initial", "inherit"
+            )))
+        )
+    ),
+    BACKGROUND_CLIP(
+        cssName = "background-clip",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "border-box", "padding-box", "content-box", "initial", "inherit"
+            )))
+        )
+    ),
     BACKGROUND_COLOR("background-color", COLOR_SETTERS),
     BACKGROUND_IMAGE(
         "background-image",
@@ -37,9 +76,67 @@ enum class GeneratedStyleProperty(
                 "\"url('\$url')\"",
                 Parameter(STRING, "url")
             ),
-            Setter("writeBackgroundImages(urls)",
-                Parameter(STRING, isVararg = true, name = "urls")
+            Setter("image",
+                Parameter(styleClassName("BackgroundImage"), name = "image")
+            ),
+            Setter("\"\$image\${if (images.isEmpty()) \"\" else images.joinToString(prefix = \", \")}\"",
+                Parameter(styleClassName("BackgroundImage"), name = "image"),
+                Parameter(styleClassName("BackgroundImage"), isVararg = true, name = "images")
             )
+        )
+    ),
+    BACKGROUND_ORIGIN(
+        cssName = "background-origin",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "padding-box", "border-box", "content-box", "initial", "inherit"
+            )))
+        )
+    ),
+    BACKGROUND_POSITION(
+        cssName = "background-position",
+        setters = listOf(
+            Setter(
+                template = "\"\$x\${if (y == null) \"\" else \" \$y\"}\"",
+                parameters = listOf(
+                    Parameter(
+                        ParameterType.Generate("left", "right", "top", "bottom", "center"),
+                        name = "x"
+                    ),
+                    Parameter(
+                        styleClassName("BackgroundPosition").copy(nullable = true),
+                        name = "y",
+                        defaultValue = "null"
+                    )
+                )
+            ),
+            Setter(
+                template = "\"\$x\${if (y == null) \"\" else \" \$y\"}\"",
+                parameters = listOf(
+                    Parameter(DIMENSION, "x"),
+                    Parameter(
+                        DIMENSION.copy(nullable = true),
+                        name = "y",
+                        defaultValue = "null"
+                    )
+                )
+            ),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    BACKGROUND_REPEAT(
+        cssName = "background-repeat",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "repeat", "repeat-x", "repeat-y", "no-repeat", "space", "round", "initial", "inherit"
+            )))
+        )
+    ),
+    BACKGROUND_SIZE(
+        cssName = "background-size",
+        setters = listOf(
+            Setter(Parameter(DIMENSION)),
+            Setter(Parameter(ParameterType.Generate("auto", "cover", "contain", "initial", "inherit")))
         )
     ),
     BORDER(
@@ -114,7 +211,7 @@ enum class GeneratedStyleProperty(
         cssName = "box-shadow",
         setters = listOf(
             Setter(Parameter(styleClassName("BoxShadow"), name = "boxShadow")),
-            Setter("writeBoxShadows(boxShadows)",
+            Setter("boxShadows.joinToString()",
                 Parameter(styleClassName("BoxShadow"), isVararg = true, name = "boxShadows")
             ),
             Setter(
@@ -250,15 +347,18 @@ enum class GeneratedStyleProperty(
     ),
     FLEX_DIRECTION(
         "flex-direction",
-        Setter(Parameter(styleClassName("FlexDirection")))
+        Setter(Parameter(styleClassName("FlexDirection"))),
+        Setter(Parameter(ParameterType.Generate(
+            "column", "column-reverse", "row-reverse", "row", "initial", "inherit"
+        )))
     ),
     FLEX_WRAP(
         "flex-wrap",
-        Setter(Parameter(styleClassName("FlexWrap")))
+        Setter(Parameter(ParameterType.Generate("nowrap", "wrap", "wrap-reverse", "initial", "inherit")))
     ),
     FLOAT(
         "float",
-        Setter(Parameter(styleClassName("FloatDirection")))
+        Setter(Parameter(ParameterType.Generate("none", "left", "right", "initial", "inherit")))
     ),
     FONT_FAMILY(
         cssName = "font-family",
@@ -310,7 +410,12 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(ParameterType.Generate("auto", "initial", "inherit")))
         )
     ),
-    JUSTIFY_CONTENT("justify-content", Setter(Parameter(styleClassName("JustifyContent")))),
+    JUSTIFY_CONTENT(
+        "justify-content",
+        Setter(Parameter(ParameterType.Generate(
+            "center", "flex-end", "flex-start", "space-around", "space-between", "space-evenly", "initial", "inherit"
+        )))
+    ),
     LEFT(
         cssName = "left",
         setters = listOf(
@@ -368,7 +473,6 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(ParameterType.Generate("inside", "outside", "initial", "inherit")))
         )
     ),
-    //    LIST_STYLE("list-style", PropertyType.LIST_STYLE),
     LIST_STYLE_TYPE(
         cssName = "list-style-type",
         setters = listOf(
@@ -582,7 +686,9 @@ enum class GeneratedStyleProperty(
     POSITION(
         cssName = "position",
         setters = listOf(
-            Setter(Parameter(styleClassName("Position")))
+            Setter(Parameter(ParameterType.Generate(
+                "static", "relative", "fixed", "absolute", "sticky", "initial", "inherit"
+            )))
         )
     ),
     RIGHT(
@@ -618,8 +724,70 @@ enum class GeneratedStyleProperty(
             Setter(Parameter(ParameterType.Generate("auto", "initial", "inherit")))
         )
     ),
-    //    TRANSITION("transition", PropertyType.STRING),
-//    TRANSITION_PROPERTY("transition-property", PropertyType.STRING),
+    TRANSITION(
+        cssName = "transition",
+        setters = listOf(
+            Setter(
+                template = "\"\$property \${duration?.toCssString() ?: \"\"}\"",
+                parameters = listOf(
+                    Parameter(
+                        styleClassName("TransitionProperty"),
+                        name = "property"
+                    ),
+                    Parameter(DURATION.copy(nullable = true), name = "duration")
+                )
+            ),
+            Setter(
+                template = "\"\$property \${duration.toCssString()} \$timing \${delay?.toCssString() ?: \"\"}\"",
+                parameters = listOf(
+                    Parameter(
+                        styleClassName("TransitionProperty"),
+                        name = "property"
+                    ),
+                    Parameter(DURATION, name = "duration"),
+                    Parameter(
+                        styleClassName("TransitionTimingFunction"),
+                        name = "timing"
+                    ),
+                    Parameter(DURATION.copy(nullable = true), name = "delay")
+                )
+            ),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    TRANSITION_PROPERTY(
+        cssName = "transition-property",
+        setters = listOf(
+            Setter(
+                template = "transitionProperties.joinToString(separator = \",\")",
+                parameters = listOf(
+                    Parameter(
+                        styleClassName("TransitionProperty"),
+                        name = "transitionProperties",
+                        isVararg = true
+                    )
+                )
+            )
+        )
+    ) {
+        override val setters: List<Setter> by lazy {
+            val properties = values().map { it.cssName }
+
+            val setter = Setter(Parameter(ParameterType.Generate(
+                listOf("none", "all", "initial", "inherit") + properties
+            )))
+
+            listOf(setter) + super.setters
+        }
+    },
+    TRANSITION_TIMING_FUNCTION(
+        cssName = "transition-timing-function",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "linear", "ease", "ease-in", "ease-out", "ease-in-out", "initial", "inherit"
+            )))
+        )
+    ),
     VISIBILITY(
         cssName = "visibility",
         setters = listOf(

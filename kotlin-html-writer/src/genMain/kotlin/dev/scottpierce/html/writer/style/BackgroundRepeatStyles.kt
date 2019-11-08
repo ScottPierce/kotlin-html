@@ -7,22 +7,24 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignItems(value: AlignItems) {
-    writeStyleProperty("align-items", value)
+fun BaseStyleContext.backgroundRepeat(value: BackgroundRepeat) {
+    writeStyleProperty("background-repeat", value)
 }
 
-enum class AlignItems(
+enum class BackgroundRepeat(
     val value: String
 ) {
-    BASELINE("baseline"),
+    REPEAT("repeat"),
 
-    CENTER("center"),
+    REPEAT_X("repeat-x"),
 
-    FLEX_START("flex-start"),
+    REPEAT_Y("repeat-y"),
 
-    FLEX_END("flex-end"),
+    NO_REPEAT("no-repeat"),
 
-    STRETCH("stretch"),
+    SPACE("space"),
+
+    ROUND("round"),
 
     INITIAL("initial"),
 

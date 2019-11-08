@@ -4,8 +4,25 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.float(value: FloatDirection) {
+fun BaseStyleContext.float(value: Float) {
     writeStyleProperty("float", value)
+}
+
+enum class Float(
+    val value: String
+) {
+    NONE("none"),
+
+    LEFT("left"),
+
+    RIGHT("right"),
+
+    INITIAL("initial"),
+
+    INHERIT("inherit");
+
+    override fun toString() = value
 }

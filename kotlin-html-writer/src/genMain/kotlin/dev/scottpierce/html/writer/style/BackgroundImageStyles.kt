@@ -11,6 +11,11 @@ fun BaseStyleContext.backgroundImage(url: String) {
     writeStyleProperty("background-image", "url('$url')")
 }
 
-fun BaseStyleContext.backgroundImage(vararg urls: String) {
-    writeStyleProperty("background-image", writeBackgroundImages(urls))
+fun BaseStyleContext.backgroundImage(image: BackgroundImage) {
+    writeStyleProperty("background-image", image)
+}
+
+fun BaseStyleContext.backgroundImage(image: BackgroundImage, vararg images: BackgroundImage) {
+    writeStyleProperty("background-image",
+            "$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}")
 }

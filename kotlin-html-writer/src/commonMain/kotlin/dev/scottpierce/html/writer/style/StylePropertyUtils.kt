@@ -1,19 +1,13 @@
 package dev.scottpierce.html.writer.style
 
-internal fun writeBackgroundImages(urls: Array<out String>): String {
-    val sb = StringBuilder()
+import kotlin.time.Duration
 
-    urls.forEachIndexed { i, url ->
-        val isFirst = i == 0
-
-        if (!isFirst) {
-            sb.append(", ")
-        }
-
-        sb.append("url('").append(url).append("')")
+fun Duration.toCssString(): String {
+    val seconds = this.inSeconds
+    val secondsInt = seconds.toInt()
+    return if (seconds == secondsInt.toDouble()) {
+        "${seconds.toInt()}s"
+    } else {
+        "${toLongMilliseconds()}ms"
     }
-
-    return sb.toString()
 }
-
-internal fun writeBoxShadows(boxShadows: Array<out BoxShadow>): String = boxShadows.joinToString()
