@@ -10,7 +10,7 @@ interface Dimension {
     }
 }
 
-interface MeasurableDimension : Dimension, LineHeight
+interface MeasurableDimension : Dimension
 
 private inline class StringDimension(val value: String) : Dimension
 

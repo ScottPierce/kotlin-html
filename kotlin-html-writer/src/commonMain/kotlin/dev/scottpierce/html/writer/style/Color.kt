@@ -14,8 +14,7 @@ class Color private constructor(val colorString: String, notUsed: Boolean) {
         }
 
         internal fun colorString(r: Int, g: Int, b: Int): String = "rgb($r,$g,$b)"
-        internal fun colorString(r: Int, g: Int, b: Int, a: Float): String = "rgba($r,$g,$b,$a)"
-        internal fun colorString(r: Int, g: Int, b: Int, a: Double): String = "rgba($r,$g,$b,$a)"
+        internal fun colorString(r: Int, g: Int, b: Int, a: Number): String = "rgba($r,$g,$b,$a)"
         internal fun colorString(hexString: String): String =
             if (hexString.first() == '#') hexString else "#$hexString"
 
@@ -27,8 +26,7 @@ class Color private constructor(val colorString: String, notUsed: Boolean) {
     }
 
     constructor(r: Int, g: Int, b: Int) : this(colorString(r, g, b), false)
-    constructor(r: Int, g: Int, b: Int, a: Float) : this(colorString(r, g, b, a), false)
-    constructor(r: Int, g: Int, b: Int, a: Double) : this(colorString(r, g, b, a), false)
+    constructor(r: Int, g: Int, b: Int, a: Number) : this(colorString(r, g, b, a), false)
     constructor(hexString: String) : this(colorString(hexString), false)
 
     override fun toString() = colorString

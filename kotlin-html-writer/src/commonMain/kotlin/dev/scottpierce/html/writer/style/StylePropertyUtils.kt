@@ -15,3 +15,5 @@ internal fun writeBackgroundImages(urls: Array<out String>): String {
 
     return sb.toString()
 }
+
+internal fun writeBoxShadows(boxShadows: Array<out BoxShadow>): String = boxShadows.joinToString()

@@ -2,14 +2,11 @@
 
 package dev.scottpierce.html.writer.style
 
-sealed class CssValue {
-    object Initial : CssValue() {
-        override fun toString(): String = "initial"
-    }
+enum class CssValue(val value: String) {
+    INITIAL("initial"),
+    INHERIT("inherit");
 
-    object Inherit : CssValue() {
-        override fun toString(): String = "inherit"
-    }
+    override fun toString(): String = value
 }
 
 enum class AlignSelf(val value: String) {
@@ -28,37 +25,6 @@ enum class AlignSelf(val value: String) {
     override fun toString() = value
 }
 
-enum class Display(val value: String) {
-    INLINE("inline"),
-    BLOCK("block"),
-    CONTENTS("contents"),
-    FLEX("flex"),
-    GRID("grid"),
-    INLINE_BLOCK("inline-block"),
-    INLINE_FLEX("inline-flex"),
-    INLINE_GRID("inline-grid"),
-    INLINE_TABLE("inline-table"),
-    LIST_ITEM("list-item"),
-    RUN_IN("run-in"),
-    TABLE("table"),
-    TABLE_CAPTION("table-caption"),
-    TABLE_COLUMN_GROUP("table-column-group"),
-    TABLE_HEADER_GROUP("table-header-group"),
-    TABLE_FOOTER_GROUP("table-footer-group"),
-    TABLE_ROW_GROUP("table-row-group"),
-    TABLE_CELL("table-cell"),
-    TABLE_COLUMN("table-column"),
-    TABLE_ROW("table-row"),
-    NONE("none"),
-    INITIAL("initial"),
-    INHERIT("inherit"),
-    ;
-
-    override fun toString(): String {
-        return value
-    }
-}
-
 enum class JustifyContent(val value: String) {
     CENTER("center"),
     FLEX_END("flex-end"),
@@ -68,31 +34,6 @@ enum class JustifyContent(val value: String) {
     SPACE_AROUND("space-around"),
     SPACE_BETWEEN("space-between"),
     SPACE_EVENLY("space-evenly"),
-    ;
-
-    override fun toString() = value
-}
-
-enum class JustifySelf(val value: String) {
-    AUTO("auto"),
-    NORMAL("normal"),
-    STRETCH("stretch"),
-    CENTER("center"),
-    START("start"),
-    END("end"),
-    FLEX_START("flex-start"),
-    FLEX_END("flex-end"),
-    SELF_START("self-start"),
-    SELF_END("self-end"),
-    LEFT("left"),
-    RIGHT("right"),
-    BASELINE("baseline"),
-    FIRST_BASELINE("first baseline"),
-    LAST_BASELINE("last baseline"),
-    SAFE_CENTER("safe center"),
-    UNSAFE_CENTER("unsafe center"),
-    INHERIT("inherit"),
-    INITIAL("initial"),
     ;
 
     override fun toString() = value
@@ -192,18 +133,6 @@ enum class AlignItems(val value: String) {
     override fun toString() = value
 }
 
-enum class TextAlign(val value: String) {
-    LEFT("left"),
-    RIGHT("right"),
-    CENTER("center"),
-    JUSTIFY("justify"),
-    INHERIT("inherit"),
-    INITIAL("initial"),
-    ;
-
-    override fun toString() = value
-}
-
 enum class FlexDirection(val value: String) {
     COLUMN("column"),
     COLUMN_REVERSE("column-reverse"),
@@ -244,6 +173,8 @@ enum class Position(val value: String) {
     FIXED("fixed"),
     ABSOLUTE("absolute"),
     STICKY("sticky"),
+    INITIAL("initial"),
+    INHERIT("inherit"),
     ;
 
     override fun toString(): String = value
@@ -289,29 +220,6 @@ enum class Position(val value: String) {
 //        return sb.toString()
 //    }
 // }
-
-enum class TextTransform(val value: String) {
-    NONE("none"),
-    CAPITALIZE("capitalize"),
-    UPPERCASE("uppercase"),
-    LOWERCASE("lowercase"),
-    INITIAL("initial"),
-    INHERIT("inherit"),
-    ;
-
-    override fun toString(): String = value
-}
-
-enum class Visibility(val value: String) {
-    VISIBLE("visible"),
-    HIDDEN("hidden"),
-    COLLAPSE("collapse"),
-    INITIAL("initial"),
-    INHERIT("inherit"),
-    ;
-
-    override fun toString(): String = value
-}
 
 data class GridColumn internal constructor(
     val start: Int,

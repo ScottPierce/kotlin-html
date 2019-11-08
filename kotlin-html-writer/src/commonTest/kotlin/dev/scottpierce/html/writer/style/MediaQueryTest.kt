@@ -10,7 +10,7 @@ class MediaQueryTest {
         writeStyleSheet {
             media("(max-width: 300px)") {
                 style(".test") {
-                    display = Display.NONE
+                    display(Display.NONE)
                 }
             }
         } assertEquals {

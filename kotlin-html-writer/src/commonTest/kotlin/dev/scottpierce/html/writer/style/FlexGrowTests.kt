@@ -8,16 +8,16 @@ class FlexGrowTests {
     @Test
     fun basic() {
         writeStyle {
-            flexGrow = 1.0
+            flexGrow(1)
         } assertEquals {
-            "flex-grow: 1.0;"
+            "flex-grow: 1;"
         }
     }
 
     @Test
     fun inherit() {
         writeStyle {
-            flexGrow = FlexGrow.INHERIT
+            flexGrow(CssValue.INHERIT)
         } assertEquals {
             "flex-grow: inherit;"
         }
@@ -26,7 +26,7 @@ class FlexGrowTests {
     @Test
     fun initial() {
         writeStyle {
-            flexGrow = FlexGrow.INITIAL
+            flexGrow(CssValue.INITIAL)
         } assertEquals {
             "flex-grow: initial;"
         }
