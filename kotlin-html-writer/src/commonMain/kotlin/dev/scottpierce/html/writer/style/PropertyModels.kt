@@ -60,6 +60,3 @@ interface BackgroundImage {
 }
 
 internal inline class BackgroundImageString(val value: String) : BackgroundImage
-
-
-
