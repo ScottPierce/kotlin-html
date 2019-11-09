@@ -1,43 +1,23 @@
+@file:Suppress("unused")
+
 package dev.scottpierce.html.writer.style
 
-import kotlin.jvm.JvmSynthetic
+fun BaseStyleContext.marginX(value: Dimension) {
+    marginLeft(value)
+    marginRight(value)
+}
 
-@get:JvmSynthetic
-var BaseStyleContext.marginX: Dimension
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        val valueString = value.toString()
-        writeStyleProperty("margin-left", valueString)
-        writeStyleProperty("margin-right", valueString)
-    }
+fun BaseStyleContext.marginY(value: Dimension) {
+    marginTop(value)
+    marginBottom(value)
+}
 
-@get:JvmSynthetic
-var BaseStyleContext.marginY: Dimension
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        val valueString = value.toString()
-        writeStyleProperty("margin-top", valueString)
-        writeStyleProperty("margin-bottom", valueString)
-    }
+fun BaseStyleContext.paddingX(value: Dimension) {
+    paddingLeft(value)
+    paddingRight(value)
+}
 
-@get:JvmSynthetic
-var BaseStyleContext.paddingX: Dimension
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        val valueString = value.toString()
-        writeStyleProperty("padding-left", valueString)
-        writeStyleProperty("padding-right", valueString)
-    }
-
-@get:JvmSynthetic
-var BaseStyleContext.paddingY: Dimension
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    get() = throw UnsupportedOperationException()
-    set(value) {
-        val valueString = value.toString()
-        writeStyleProperty("padding-top", valueString)
-        writeStyleProperty("padding-bottom", valueString)
-    }
+fun BaseStyleContext.paddingY(value: Dimension) {
+    paddingTop(value)
+    paddingBottom(value)
+}
