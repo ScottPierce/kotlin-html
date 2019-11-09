@@ -327,7 +327,7 @@ enum class GeneratedStyleProperty(
     FLEX_BASIS(
         cssName = "flex-basis",
         setters = listOf(
-            Setter(Parameter(NUMBER)),
+            Setter(Parameter(DIMENSION)),
             Setter(Parameter(ParameterType.Generate("auto", "initial", "inherit")))
         )
     ),

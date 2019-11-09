@@ -4,11 +4,10 @@
 
 package dev.scottpierce.html.writer.style
 
-import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.flexBasis(value: Number) {
+fun BaseStyleContext.flexBasis(value: Dimension) {
     writeStyleProperty("flex-basis", value)
 }
 
