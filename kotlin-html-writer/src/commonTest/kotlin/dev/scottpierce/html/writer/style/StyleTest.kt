@@ -9,7 +9,7 @@ class StyleTest {
     @Test
     fun basic() {
         writeStyle {
-            marginX = 10.px
+            marginX(10.px)
         } assertEquals {
             """
                 margin-left: 10px;
@@ -21,7 +21,7 @@ class StyleTest {
     @Test
     fun basicMinified() {
         writeStyle(options = WriteOptions(minifyStyles = true)) {
-            marginX = 10.px
+            marginX(10.px)
         } assertEquals {
             """
                 margin-left:10px;
