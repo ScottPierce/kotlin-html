@@ -14,7 +14,7 @@ fun BaseStyleContext.outlineColor(color: Color) {
 }
 
 fun BaseStyleContext.outlineColor(hexString: String) {
-    writeStyleProperty("outline-color", Color.colorString(hexString))
+    writeStyleProperty("outline-color", Color(hexString))
 }
 
 fun BaseStyleContext.outlineColor(
@@ -22,7 +22,7 @@ fun BaseStyleContext.outlineColor(
     g: Int,
     b: Int
 ) {
-    writeStyleProperty("outline-color", Color.colorString(r, g, b))
+    writeStyleProperty("outline-color", Color(r, g, b))
 }
 
 fun BaseStyleContext.outlineColor(
@@ -31,5 +31,5 @@ fun BaseStyleContext.outlineColor(
     b: Int,
     a: Number
 ) {
-    writeStyleProperty("outline-color", Color.colorString(r, g, b, a))
+    writeStyleProperty("outline-color", Color(r, g, b, a))
 }

@@ -1,9 +1,19 @@
-@file:Suppress("EXPERIMENTAL_FEATURE_WARNING")
+@file:Suppress("EXPERIMENTAL_FEATURE_WARNING", "FunctionName")
 
 package dev.scottpierce.html.writer.style
 
-class Color private constructor(val colorString: String, notUsed: Boolean) {
+fun Color(r: Int, g: Int, b: Int): Color = ColorString("rgb($r,$g,$b)")
+fun Color(r: Int, g: Int, b: Int, a: Number): Color = ColorString("rgba($r,$g,$b,$a)")
+fun Color(hexString: String): Color = ColorString(if (hexString.first() == '#') hexString else "#$hexString")
+
+interface Color {
     companion object {
+        val WHITE: Color = ColorString("#ffffff")
+        val BLACK: Color = ColorString("#000000")
+        val TRANSPARENT: Color = ColorString("transparent")
+        val INHERIT: Color = ColorString("inherit")
+        val INITIAL: Color = ColorString("initial")
+
         fun toHexString(red: Int, green: Int, blue: Int, alpha: Float = 1f): String {
             val hexR = red.twoDigitHex()
             val hexG = green.twoDigitHex()
@@ -17,19 +27,11 @@ class Color private constructor(val colorString: String, notUsed: Boolean) {
         internal fun colorString(r: Int, g: Int, b: Int, a: Number): String = "rgba($r,$g,$b,$a)"
         internal fun colorString(hexString: String): String =
             if (hexString.first() == '#') hexString else "#$hexString"
-
-        val WHITE = Color("#ffffff", false)
-        val BLACK = Color("#000000", false)
-        val TRANSPARENT = Color("transparent", false)
-        val INHERIT = Color("inherit", false)
-        val INITIAL = Color("initial", false)
     }
+}
 
-    constructor(r: Int, g: Int, b: Int) : this(colorString(r, g, b), false)
-    constructor(r: Int, g: Int, b: Int, a: Number) : this(colorString(r, g, b, a), false)
-    constructor(hexString: String) : this(colorString(hexString), false)
-
-    override fun toString() = colorString
+internal inline class ColorString(val cssValue: String) : Color {
+    override fun toString() = cssValue
 }
 
 internal fun Int.twoDigitHex(): String {

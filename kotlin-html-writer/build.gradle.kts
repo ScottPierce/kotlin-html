@@ -126,12 +126,10 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
     }
 }
 
-afterEvaluate {
-    kotlin.sourceSets.map {
-        it.apply {
-            languageSettings.apply {
-                useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-            }
+kotlin.sourceSets.map {
+    it.apply {
+        languageSettings.apply {
+            useExperimentalAnnotation("kotlin.time.ExperimentalTime")
         }
     }
 }

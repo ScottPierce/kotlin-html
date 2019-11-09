@@ -61,5 +61,19 @@ interface BackgroundImage {
 
 internal inline class BackgroundImageString(val value: String) : BackgroundImage
 
+enum class FloatDirection(
+    val value: String
+) {
+    NONE("none"),
 
+    LEFT("left"),
+
+    RIGHT("right"),
+
+    INITIAL("initial"),
+
+    INHERIT("inherit");
+
+    override fun toString() = value
+}
 

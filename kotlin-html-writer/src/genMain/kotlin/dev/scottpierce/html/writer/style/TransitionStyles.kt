@@ -8,7 +8,8 @@ import kotlin.Suppress
 import kotlin.time.Duration
 
 fun BaseStyleContext.transition(property: TransitionProperty, duration: Duration?) {
-    writeStyleProperty("transition", "$property ${duration?.toCssString() ?: ""}")
+    writeStyleProperty("transition",
+            "$property${if (duration == null) "" else " ${duration.toCssString()}"}")
 }
 
 fun BaseStyleContext.transition(
@@ -18,7 +19,8 @@ fun BaseStyleContext.transition(
     delay: Duration?
 ) {
     writeStyleProperty("transition",
-            "$property ${duration.toCssString()} $timing ${delay?.toCssString() ?: ""}")
+            "$property ${duration.toCssString()} $timing${if (delay == null) "" else " " +
+                    delay.toCssString()}")
 }
 
 fun BaseStyleContext.transition(value: CssValue) {

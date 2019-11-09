@@ -14,7 +14,7 @@ fun BaseStyleContext.fill(color: Color) {
 }
 
 fun BaseStyleContext.fill(hexString: String) {
-    writeStyleProperty("fill", Color.colorString(hexString))
+    writeStyleProperty("fill", Color(hexString))
 }
 
 fun BaseStyleContext.fill(
@@ -22,7 +22,7 @@ fun BaseStyleContext.fill(
     g: Int,
     b: Int
 ) {
-    writeStyleProperty("fill", Color.colorString(r, g, b))
+    writeStyleProperty("fill", Color(r, g, b))
 }
 
 fun BaseStyleContext.fill(
@@ -31,5 +31,5 @@ fun BaseStyleContext.fill(
     b: Int,
     a: Number
 ) {
-    writeStyleProperty("fill", Color.colorString(r, g, b, a))
+    writeStyleProperty("fill", Color(r, g, b, a))
 }

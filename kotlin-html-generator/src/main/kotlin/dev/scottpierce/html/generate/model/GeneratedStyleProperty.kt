@@ -347,7 +347,6 @@ enum class GeneratedStyleProperty(
     ),
     FLEX_DIRECTION(
         "flex-direction",
-        Setter(Parameter(styleClassName("FlexDirection"))),
         Setter(Parameter(ParameterType.Generate(
             "column", "column-reverse", "row-reverse", "row", "initial", "inherit"
         )))
@@ -358,7 +357,7 @@ enum class GeneratedStyleProperty(
     ),
     FLOAT(
         "float",
-        Setter(Parameter(ParameterType.Generate("none", "left", "right", "initial", "inherit")))
+        Setter(Parameter(styleClassName("FloatDirection")))
     ),
     FONT_FAMILY(
         cssName = "font-family",
@@ -441,6 +440,17 @@ enum class GeneratedStyleProperty(
     LIST_STYLE(
         cssName = "list-style",
         setters = listOf(
+            Setter(
+                template = "\"\$type\${if (position == null) \"\" else \" \$position\"}\"",
+                parameters = listOf(
+                    Parameter(styleClassName("ListStyleType"), "type"),
+                    Parameter(
+                        styleClassName("ListStylePosition").copy(nullable = true),
+                        name = "position",
+                        defaultValue = "null"
+                    )
+                )
+            ),
             Setter(
                 template = "\"\$type \$position url('\$imageUrl')\"",
                 parameters = listOf(
@@ -728,7 +738,7 @@ enum class GeneratedStyleProperty(
         cssName = "transition",
         setters = listOf(
             Setter(
-                template = "\"\$property \${duration?.toCssString() ?: \"\"}\"",
+                template = "\"\$property\${if (duration == null) \"\" else \" \${duration.toCssString()}\"}\"",
                 parameters = listOf(
                     Parameter(
                         styleClassName("TransitionProperty"),
@@ -738,7 +748,8 @@ enum class GeneratedStyleProperty(
                 )
             ),
             Setter(
-                template = "\"\$property \${duration.toCssString()} \$timing \${delay?.toCssString() ?: \"\"}\"",
+                template = "\"\$property \${duration.toCssString()} \$timing\${if (delay == null) \"\" else \" \" " +
+                        "+ delay.toCssString()}\"",
                 parameters = listOf(
                     Parameter(
                         styleClassName("TransitionProperty"),
@@ -819,15 +830,15 @@ enum class GeneratedStyleProperty(
 
 private val COLOR_SETTERS = listOf(
     Setter("color", Parameter(styleClassName("Color"), name = "color")),
-    Setter("Color.colorString(hexString)", Parameter(STRING, name = "hexString")),
+    Setter("Color(hexString)", Parameter(STRING, name = "hexString")),
     Setter(
-        "Color.colorString(r, g, b)",
+        "Color(r, g, b)",
         Parameter(INT, name = "r"),
         Parameter(INT, name = "g"),
         Parameter(INT, name = "b")
     ),
     Setter(
-        "Color.colorString(r, g, b, a)",
+        "Color(r, g, b, a)",
         Parameter(INT, name = "r"),
         Parameter(INT, name = "g"),
         Parameter(INT, name = "b"),

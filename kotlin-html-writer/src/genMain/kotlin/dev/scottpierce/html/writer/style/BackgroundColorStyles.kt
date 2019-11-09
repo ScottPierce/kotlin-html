@@ -14,7 +14,7 @@ fun BaseStyleContext.backgroundColor(color: Color) {
 }
 
 fun BaseStyleContext.backgroundColor(hexString: String) {
-    writeStyleProperty("background-color", Color.colorString(hexString))
+    writeStyleProperty("background-color", Color(hexString))
 }
 
 fun BaseStyleContext.backgroundColor(
@@ -22,7 +22,7 @@ fun BaseStyleContext.backgroundColor(
     g: Int,
     b: Int
 ) {
-    writeStyleProperty("background-color", Color.colorString(r, g, b))
+    writeStyleProperty("background-color", Color(r, g, b))
 }
 
 fun BaseStyleContext.backgroundColor(
@@ -31,5 +31,5 @@ fun BaseStyleContext.backgroundColor(
     b: Int,
     a: Number
 ) {
-    writeStyleProperty("background-color", Color.colorString(r, g, b, a))
+    writeStyleProperty("background-color", Color(r, g, b, a))
 }

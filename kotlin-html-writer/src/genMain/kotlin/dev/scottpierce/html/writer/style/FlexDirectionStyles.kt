@@ -11,10 +11,6 @@ fun BaseStyleContext.flexDirection(value: FlexDirection) {
     writeStyleProperty("flex-direction", value)
 }
 
-fun BaseStyleContext.flexDirection(value: FlexDirection) {
-    writeStyleProperty("flex-direction", value)
-}
-
 enum class FlexDirection(
     val value: String
 ) {

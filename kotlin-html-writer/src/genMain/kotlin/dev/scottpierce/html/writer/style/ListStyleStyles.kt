@@ -7,6 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.listStyle(type: ListStyleType, position: ListStylePosition? = null) {
+    writeStyleProperty("list-style",
+            "$type${if (position == null) "" else " $position"}")
+}
+
 fun BaseStyleContext.listStyle(
     type: ListStyleType,
     position: ListStylePosition,
