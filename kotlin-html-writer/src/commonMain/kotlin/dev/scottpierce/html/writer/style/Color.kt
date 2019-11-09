@@ -1,14 +1,19 @@
-@file:Suppress("EXPERIMENTAL_FEATURE_WARNING")
+@file:Suppress("EXPERIMENTAL_FEATURE_WARNING", "FunctionName")
 
 package dev.scottpierce.html.writer.style
 
-fun color(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color =
-    Color(red = red, green = green, blue = blue, alpha = alpha)
+fun Color(r: Int, g: Int, b: Int): Color = ColorString("rgb($r,$g,$b)")
+fun Color(r: Int, g: Int, b: Int, a: Number): Color = ColorString("rgba($r,$g,$b,$a)")
+fun Color(hexString: String): Color = ColorString(if (hexString.first() == '#') hexString else "#$hexString")
 
-fun color(hexString: String): Color = Color(hexString)
-
-inline class Color(val hexString: String) {
+interface Color {
     companion object {
+        val WHITE: Color = ColorString("#ffffff")
+        val BLACK: Color = ColorString("#000000")
+        val TRANSPARENT: Color = ColorString("transparent")
+        val INHERIT: Color = ColorString("inherit")
+        val INITIAL: Color = ColorString("initial")
+
         fun toHexString(red: Int, green: Int, blue: Int, alpha: Float = 1f): String {
             val hexR = red.twoDigitHex()
             val hexG = green.twoDigitHex()
@@ -18,17 +23,15 @@ inline class Color(val hexString: String) {
             return "#$hexR$hexG$hexB${hexA.orEmpty()}"
         }
 
-        private fun String.toHex(): String = this
-
-        val WHITE = Color("#ffffff")
-        val BLACK = Color("#000000")
-        val INHERIT = Color("inherit")
+        internal fun colorString(r: Int, g: Int, b: Int): String = "rgb($r,$g,$b)"
+        internal fun colorString(r: Int, g: Int, b: Int, a: Number): String = "rgba($r,$g,$b,$a)"
+        internal fun colorString(hexString: String): String =
+            if (hexString.first() == '#') hexString else "#$hexString"
     }
+}
 
-    constructor(red: Int, green: Int, blue: Int, alpha: Float = 1f) :
-            this(toHexString(red = red, green = green, blue = blue, alpha = alpha))
-
-    override fun toString() = hexString.toHex()
+internal inline class ColorString(val cssValue: String) : Color {
+    override fun toString() = cssValue
 }
 
 internal fun Int.twoDigitHex(): String {

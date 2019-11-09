@@ -9,7 +9,7 @@ class LineHeightTests {
     @Test
     fun multiplier() {
         writeStyle {
-            lineHeight = LineHeight.multiplier(2)
+            lineHeight(2)
         } assertEquals {
             """line-height: 2;"""
         }
@@ -18,7 +18,7 @@ class LineHeightTests {
     @Test
     fun dimension() {
         writeStyle {
-            lineHeight = 2.px
+            lineHeight(2.px)
         } assertEquals {
             """line-height: 2px;"""
         }
@@ -27,7 +27,7 @@ class LineHeightTests {
     @Test
     fun inherit() {
         writeStyle {
-            lineHeight = LineHeight.INHERIT
+            lineHeight(LineHeight.INHERIT)
         } assertEquals {
             """line-height: inherit;"""
         }
@@ -36,7 +36,7 @@ class LineHeightTests {
     @Test
     fun normal() {
         writeStyle {
-            lineHeight = LineHeight.NORMAL
+            lineHeight(LineHeight.NORMAL)
         } assertEquals {
             """line-height: normal;"""
         }
@@ -45,7 +45,7 @@ class LineHeightTests {
     @Test
     fun minimal() {
         writeStyle(WriteOptions.minified) {
-            lineHeight = 2.px
+            lineHeight(2.px)
         } assertEquals {
             """line-height:2px;"""
         }
