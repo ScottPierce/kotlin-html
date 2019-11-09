@@ -7,7 +7,7 @@ package dev.scottpierce.html.writer.style
 import kotlin.Suppress
 import kotlin.time.Duration
 
-fun BaseStyleContext.transition(property: TransitionProperty, duration: Duration?) {
+fun BaseStyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
     writeStyleProperty("transition",
             "$property${if (duration == null) "" else " ${duration.toCssString()}"}")
 }

@@ -791,7 +791,7 @@ enum class GeneratedStyleProperty(
                         styleClassName("TransitionProperty"),
                         name = "property"
                     ),
-                    Parameter(DURATION.copy(nullable = true), name = "duration")
+                    Parameter(DURATION.copy(nullable = true), name = "duration", defaultValue = "null")
                 )
             ),
             Setter(
