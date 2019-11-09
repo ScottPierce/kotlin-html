@@ -12,23 +12,23 @@ fun BaseStyleContext.display(value: Display) {
 }
 
 fun BaseStyleContext.displayNone() {
-    writeStyleProperty("display", "display: none")
+    writeStyleProperty("display", Display.NONE)
 }
 
 fun BaseStyleContext.displayInline() {
-    writeStyleProperty("display", "display: inline")
+    writeStyleProperty("display", Display.INLINE)
 }
 
 fun BaseStyleContext.displayBlock() {
-    writeStyleProperty("display", "display: block")
+    writeStyleProperty("display", Display.BLOCK)
 }
 
 fun BaseStyleContext.displayFlex() {
-    writeStyleProperty("display", "display: flex")
+    writeStyleProperty("display", Display.FLEX)
 }
 
 fun BaseStyleContext.displayGrid() {
-    writeStyleProperty("display", "display: grid")
+    writeStyleProperty("display", Display.GRID)
 }
 
 enum class Display(

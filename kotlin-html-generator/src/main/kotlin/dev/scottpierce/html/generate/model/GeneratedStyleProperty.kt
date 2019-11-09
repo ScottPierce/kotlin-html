@@ -270,27 +270,27 @@ enum class GeneratedStyleProperty(
                 "table-row", "none", "initial", "inherit"
             ))),
             Setter(
-                template = "\"display: none\"",
+                template = "Display.NONE",
                 functionName = "displayNone",
                 parameters = listOf()
             ),
             Setter(
-                template = "\"display: inline\"",
+                template = "Display.INLINE",
                 functionName = "displayInline",
                 parameters = listOf()
             ),
             Setter(
-                template = "\"display: block\"",
+                template = "Display.BLOCK",
                 functionName = "displayBlock",
                 parameters = listOf()
             ),
             Setter(
-                template = "\"display: flex\"",
+                template = "Display.FLEX",
                 functionName = "displayFlex",
                 parameters = listOf()
             ),
             Setter(
-                template = "\"display: grid\"",
+                template = "Display.GRID",
                 functionName = "displayGrid",
                 parameters = listOf()
             )

@@ -12,7 +12,9 @@ interface Dimension {
 
 interface MeasurableDimension : Dimension
 
-private inline class StringDimension(val value: String) : Dimension
+private inline class StringDimension(val value: String) : Dimension {
+    override fun toString(): String = value
+}
 
 private inline class StringMeasurableDimension(val value: String) : MeasurableDimension {
     override fun toString(): String = value
