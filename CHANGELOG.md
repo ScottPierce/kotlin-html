@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+* Complete overhaul fo the style system, with a switch from properties to functions for styles.
+* Several css properties have had their type safety dramatically improved.
+
 ## 0.4.0
 * `Context` renamed to `HtmlWriterContext`
 * `link` and `script` moved to `BaseHtmlContext`
