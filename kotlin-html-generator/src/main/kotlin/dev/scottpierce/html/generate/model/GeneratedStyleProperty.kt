@@ -217,21 +217,21 @@ enum class GeneratedStyleProperty(
             Setter(
                 template = "BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color, inset = inset)",
                 parameters = listOf(
-                    Parameter(NUMBER, name = "hOffset"),
-                    Parameter(NUMBER, name = "vOffset"),
+                    Parameter(DIMENSION, name = "hOffset"),
+                    Parameter(DIMENSION, name = "vOffset"),
                     Parameter(dev.scottpierce.html.generate.model.COLOR, name = "color"),
                     Parameter(BOOLEAN, name = "inset", defaultValue = "false")
                 )
             ),
             Setter(
-                template = "BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color, blur = blur, " +
-                        "spread = spread, inset = inset)",
+                template = "BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur, " +
+                        "spread = spread, color = color, inset = inset)",
                 parameters = listOf(
-                    Parameter(NUMBER, name = "hOffset"),
-                    Parameter(NUMBER, name = "vOffset"),
+                    Parameter(DIMENSION, name = "hOffset"),
+                    Parameter(DIMENSION, name = "vOffset"),
+                    Parameter(DIMENSION, name = "blur"),
+                    Parameter(DIMENSION.copy(nullable = true), name = "spread", defaultValue = "null"),
                     Parameter(dev.scottpierce.html.generate.model.COLOR, name = "color"),
-                    Parameter(NUMBER, name = "blur"),
-                    Parameter(NUMBER.copy(nullable = true), name = "spread", defaultValue = "null"),
                     Parameter(BOOLEAN, name = "inset", defaultValue = "false")
                 )
             )

@@ -15,23 +15,24 @@ private inline class BoxShadowString(val styleString: String) : BoxShadow {
 }
 
 fun BoxShadow(
-    hOffset: Number,
-    vOffset: Number,
-    color: Color,
+    hOffset: Dimension,
+    vOffset: Dimension,
+    color: Color? = null,
     inset: Boolean = false
 ): BoxShadow = BoxShadowString("$hOffset $vOffset $color${if (inset) " inset" else ""}")
 
 fun BoxShadow(
-    hOffset: Number,
-    vOffset: Number,
-    color: Color,
-    blur: Number,
-    spread: Number? = null,
+    hOffset: Dimension,
+    vOffset: Dimension,
+    blur: Dimension,
+    spread: Dimension? = null,
+    color: Color? = null,
     inset: Boolean = false
 ): BoxShadow {
     return BoxShadowString(
-        "$hOffset $vOffset $color $blur" +
-                if (spread == null) "" else " $spread" +
-                        if (inset) " inset" else ""
+        "$hOffset $vOffset $blur" +
+                (if (spread == null) "" else " $spread") +
+                (if (color == null) "" else " $color") +
+                (if (inset) " inset" else "")
     )
 }

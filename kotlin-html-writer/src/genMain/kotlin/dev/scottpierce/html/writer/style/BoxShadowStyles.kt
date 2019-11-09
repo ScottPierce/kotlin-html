@@ -5,7 +5,6 @@
 package dev.scottpierce.html.writer.style
 
 import kotlin.Boolean
-import kotlin.Number
 import kotlin.Suppress
 
 fun BaseStyleContext.boxShadow(boxShadow: BoxShadow) {
@@ -17,8 +16,8 @@ fun BaseStyleContext.boxShadow(vararg boxShadows: BoxShadow) {
 }
 
 fun BaseStyleContext.boxShadow(
-    hOffset: Number,
-    vOffset: Number,
+    hOffset: Dimension,
+    vOffset: Dimension,
     color: Color,
     inset: Boolean = false
 ) {
@@ -27,14 +26,14 @@ fun BaseStyleContext.boxShadow(
 }
 
 fun BaseStyleContext.boxShadow(
-    hOffset: Number,
-    vOffset: Number,
+    hOffset: Dimension,
+    vOffset: Dimension,
+    blur: Dimension,
+    spread: Dimension? = null,
     color: Color,
-    blur: Number,
-    spread: Number? = null,
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow",
-            BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color, blur = blur, spread =
-                    spread, inset = inset))
+            BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur, spread = spread, color =
+                    color, inset = inset))
 }
