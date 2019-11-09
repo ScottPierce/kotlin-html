@@ -711,20 +711,67 @@ enum class GeneratedStyleProperty(
     TEXT_ALIGN(
         cssName = "text-align",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate("left", "right", "center", "justify", "initial", "inherit")))
+            Setter(Parameter(ParameterType.Generate(
+                "left", "right", "center", "justify", "initial", "inherit"
+            )))
         )
     ),
-    //    TEXT_DECORATION("text-decoration", PropertyType.STRING),
+    TEXT_DECORATION(
+        cssName = "text-decoration",
+        setters = listOf(
+            Setter(
+                template = "\"\${lines.joinToString(separator = \" \")}" +
+                        "\${if (color == null) \"\" else \" \$color\"}" +
+                        "\${if (style == null) \"\" else \" \$style\"}\"",
+                parameters = listOf(
+                    Parameter(styleClassName("TextDecorationLine"), isVararg = true, name = "lines"),
+                    Parameter(
+                        dev.scottpierce.html.generate.model.COLOR.copy(nullable = true),
+                        name = "color",
+                        defaultValue = "null"
+                    ),
+                    Parameter(
+                        styleClassName("TextDecorationStyle").copy(nullable = true),
+                        name = "style",
+                        defaultValue = "null"
+                    )
+                )
+            ),
+            Setter(Parameter(CSS_VALUE))
+        )
+    ),
+    TEXT_DECORATION_COLOR(
+        cssName = "text-decoration-color",
+        setters = COLOR_SETTERS
+    ),
     TEXT_DECORATION_LINE(
         cssName = "text-decoration-line",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate("none", "underline", "overline", "line-through", "initial", "inherit")))
+            Setter(Parameter(ParameterType.Generate(
+                "none", "underline", "overline", "line-through", "initial", "inherit"
+            ))),
+            Setter(
+                template = "lines.joinToString(separator = \" \")",
+                parameters = listOf(
+                    Parameter(styleClassName("TextDecorationLine"), isVararg = true, name = "lines")
+                )
+            )
+        )
+    ),
+    TEXT_DECORATION_STYLE(
+        cssName = "text-decoration-style",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "solid", "double", "dotted", "dashed", "wavy", "initial", "inherit"
+            )))
         )
     ),
     TEXT_TRANSFORM(
         cssName = "text-transform",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate("none", "capitalize", "uppercase", "lowercase", "initial", "inherit")))
+            Setter(Parameter(ParameterType.Generate(
+                "none", "capitalize", "uppercase", "lowercase", "initial", "inherit"
+            )))
         )
     ),
     TOP(

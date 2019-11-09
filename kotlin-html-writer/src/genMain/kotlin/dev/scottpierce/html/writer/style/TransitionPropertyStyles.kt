@@ -162,7 +162,13 @@ enum class TransitionProperty(
 
     TEXT_ALIGN("text-align"),
 
+    TEXT_DECORATION("text-decoration"),
+
+    TEXT_DECORATION_COLOR("text-decoration-color"),
+
     TEXT_DECORATION_LINE("text-decoration-line"),
+
+    TEXT_DECORATION_STYLE("text-decoration-style"),
 
     TEXT_TRANSFORM("text-transform"),
 

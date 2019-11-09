@@ -11,6 +11,10 @@ fun BaseStyleContext.textDecorationLine(value: TextDecorationLine) {
     writeStyleProperty("text-decoration-line", value)
 }
 
+fun BaseStyleContext.textDecorationLine(vararg lines: TextDecorationLine) {
+    writeStyleProperty("text-decoration-line", lines.joinToString(separator = " "))
+}
+
 enum class TextDecorationLine(
     val value: String
 ) {
