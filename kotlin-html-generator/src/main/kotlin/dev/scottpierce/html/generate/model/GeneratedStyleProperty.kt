@@ -807,7 +807,7 @@ enum class GeneratedStyleProperty(
                         styleClassName("TransitionTimingFunction"),
                         name = "timing"
                     ),
-                    Parameter(DURATION.copy(nullable = true), name = "delay")
+                    Parameter(DURATION.copy(nullable = true), name = "delay", defaultValue = "null")
                 )
             ),
             Setter(Parameter(CSS_VALUE))

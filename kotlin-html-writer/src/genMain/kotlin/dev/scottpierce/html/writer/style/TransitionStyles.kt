@@ -16,7 +16,7 @@ fun BaseStyleContext.transition(
     property: TransitionProperty,
     duration: Duration,
     timing: TransitionTimingFunction,
-    delay: Duration?
+    delay: Duration? = null
 ) {
     writeStyleProperty("transition",
             "$property ${duration.toCssString()} $timing${if (delay == null) "" else " " +
