@@ -47,7 +47,7 @@ fun HtmlWriter.writeNormalElementStart(
 }
 
 fun HtmlWriter.writeNormalElementEnd(tag: String) {
-    deindent()
+    unindent()
     newLine()
     write("</").write(tag).write('>')
 }

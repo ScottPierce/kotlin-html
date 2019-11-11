@@ -13,7 +13,7 @@ inline fun HtmlWriter.styleSheet(func: StyleSheetContext.() -> Unit) {
 
     StyleSheetContext(this).apply(func)
 
-    deindent()
+    unindent()
     newLine()
     write("</style>")
 }
@@ -32,7 +32,7 @@ inline fun HtmlWriter.media(selector: String, func: StyleSheetContext.() -> Unit
 
     StyleSheetContext(this).apply(func)
 
-    deindent()
+    unindent()
     newLine()
     write('}')
 }
@@ -51,7 +51,7 @@ inline fun HtmlWriter.style(selector: String, func: StyleLambda) {
 
     StyleContext(this).apply(func)
 
-    deindent()
+    unindent()
     newLine()
     write('}')
 }

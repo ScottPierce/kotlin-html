@@ -11,7 +11,7 @@ interface HtmlWriter {
     fun write(code: CharSequence): HtmlWriter
     fun newLine(): HtmlWriter
     fun indent()
-    fun deindent()
+    fun unindent()
 }
 
 abstract class AbstractHtmlWriter(final override val options: WriteOptions) : HtmlWriter {
@@ -40,7 +40,7 @@ abstract class AbstractHtmlWriter(final override val options: WriteOptions) : Ht
         indent++
     }
 
-    final override fun deindent() {
+    final override fun unindent() {
         indent--
     }
 
