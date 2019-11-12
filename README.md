@@ -94,12 +94,12 @@ fun HtmlWriter.mainPage() {
         head {
             styleSheet {
                 style("body") {
-                    margin = 0.px
-                    padding = 0.px
-                    color = color(100, 100, 100)
+                    margin(0.px)
+                    padding(0.px)
+                    color = Color(100, 100, 100)
                 }
                 style(".class2") {
-                    background = color("#555555")
+                    background = Color("#555555")
                 }
             }
         }
@@ -116,7 +116,7 @@ fun BodyContext.navigation() {
         id = "navigation",
         style = {
             // Inline style here
-            margin = 1.rem
+            margin(1.rem)
         }
     ) {
         // Navigation HTML here
