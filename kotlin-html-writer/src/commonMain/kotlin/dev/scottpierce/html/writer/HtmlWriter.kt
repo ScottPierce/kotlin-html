@@ -8,12 +8,13 @@ interface HtmlWriter {
     val isEmpty: Boolean
 
     fun write(c: Char): HtmlWriter
-    fun write(code: CharSequence): HtmlWriter
+    fun write(code: String): HtmlWriter
     fun newLine(): HtmlWriter
     fun indent()
     fun unindent()
 }
 
+@HtmlDsl
 abstract class AbstractHtmlWriter(final override val options: WriteOptions) : HtmlWriter {
     private var indent = 0
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
@@ -50,14 +51,14 @@ abstract class AbstractHtmlWriter(final override val options: WriteOptions) : Ht
         return this
     }
 
-    final override fun write(code: CharSequence): HtmlWriter {
+    final override fun write(code: String): HtmlWriter {
         isEmpty = false
-        writeCharSequence(code)
+        writeString(code)
         return this
     }
 
     abstract fun writeChar(c: Char)
-    abstract fun writeCharSequence(code: CharSequence)
+    abstract fun writeString(code: String)
 }
 
 class StringBuilderHtmlWriter(
@@ -70,7 +71,7 @@ class StringBuilderHtmlWriter(
         sb.append(c)
     }
 
-    override fun writeCharSequence(code: CharSequence) {
+    override fun writeString(code: String) {
         sb.append(code)
     }
 

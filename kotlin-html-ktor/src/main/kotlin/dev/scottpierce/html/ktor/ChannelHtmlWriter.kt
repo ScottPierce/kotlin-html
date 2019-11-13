@@ -12,7 +12,7 @@ class ChannelHtmlWriter(
         writer.append(c)
     }
 
-    override fun writeCharSequence(code: CharSequence) {
+    override fun writeString(code: String) {
         writer.append(code)
     }
 }
