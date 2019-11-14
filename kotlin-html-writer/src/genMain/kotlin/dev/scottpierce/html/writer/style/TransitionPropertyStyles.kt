@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.transitionProperty(value: TransitionProperty) {
+fun StyleContext.transitionProperty(value: TransitionProperty) {
     writeStyleProperty("transition-property", value)
 }
 
-fun BaseStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
+fun StyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
+    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","))
+}
+
+fun InlineStyleContext.transitionProperty(value: TransitionProperty) {
+    writeStyleProperty("transition-property", value)
+}
+
+fun InlineStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
     writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","))
 }
 

@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.flexDirection(value: FlexDirection) {
+fun StyleContext.flexDirection(value: FlexDirection) {
+    writeStyleProperty("flex-direction", value)
+}
+
+fun InlineStyleContext.flexDirection(value: FlexDirection) {
     writeStyleProperty("flex-direction", value)
 }
 

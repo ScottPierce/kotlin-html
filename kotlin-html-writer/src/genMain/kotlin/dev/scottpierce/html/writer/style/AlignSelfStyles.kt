@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignSelf(value: AlignSelf) {
+fun StyleContext.alignSelf(value: AlignSelf) {
+    writeStyleProperty("align-self", value)
+}
+
+fun InlineStyleContext.alignSelf(value: AlignSelf) {
     writeStyleProperty("align-self", value)
 }
 

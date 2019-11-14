@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.listStylePosition(value: ListStylePosition) {
+fun StyleContext.listStylePosition(value: ListStylePosition) {
+    writeStyleProperty("list-style-position", value)
+}
+
+fun InlineStyleContext.listStylePosition(value: ListStylePosition) {
     writeStyleProperty("list-style-position", value)
 }
 

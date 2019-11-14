@@ -44,9 +44,7 @@ class LabelTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).label(id = "test-id", classes = "test-class")
-
+        writer.label(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <label id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class LabelTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).label("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.label("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class LabelTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).label(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.label(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <label id="test-id" class="test-class" custom-attr="custom-attr-value">

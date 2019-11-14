@@ -44,9 +44,7 @@ class H3Test {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).h3(id = "test-id", classes = "test-class")
-
+        writer.h3(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <h3 id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class H3Test {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).h3("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.h3("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class H3Test {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).h3(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.h3(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <h3 id="test-id" class="test-class" custom-attr="custom-attr-value">

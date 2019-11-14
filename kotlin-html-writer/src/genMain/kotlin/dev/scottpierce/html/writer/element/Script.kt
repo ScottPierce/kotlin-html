@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Boolean
 import kotlin.Pair
 import kotlin.String
@@ -16,14 +17,16 @@ inline fun HtmlWriter.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    pageWriterScope(this) {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl
@@ -34,15 +37,17 @@ inline fun HtmlWriter.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    pageWriterScope(this) {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl
@@ -53,15 +58,17 @@ inline fun HtmlWriter.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    pageWriterScope(this) {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl

@@ -2,22 +2,42 @@
 
 package dev.scottpierce.html.writer.style
 
-fun BaseStyleContext.marginX(value: Dimension) {
+fun StyleContext.marginX(value: Dimension) {
     marginLeft(value)
     marginRight(value)
 }
 
-fun BaseStyleContext.marginY(value: Dimension) {
+fun InlineStyleContext.marginX(value: Dimension) {
+    marginLeft(value)
+    marginRight(value)
+}
+
+fun StyleContext.marginY(value: Dimension) {
     marginTop(value)
     marginBottom(value)
 }
 
-fun BaseStyleContext.paddingX(value: Dimension) {
+fun InlineStyleContext.marginY(value: Dimension) {
+    marginTop(value)
+    marginBottom(value)
+}
+
+fun StyleContext.paddingX(value: Dimension) {
     paddingLeft(value)
     paddingRight(value)
 }
 
-fun BaseStyleContext.paddingY(value: Dimension) {
+fun InlineStyleContext.paddingX(value: Dimension) {
+    paddingLeft(value)
+    paddingRight(value)
+}
+
+fun StyleContext.paddingY(value: Dimension) {
+    paddingTop(value)
+    paddingBottom(value)
+}
+
+fun InlineStyleContext.paddingY(value: Dimension) {
     paddingTop(value)
     paddingBottom(value)
 }

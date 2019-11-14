@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.outlineOffset(value: Dimension) {
+fun StyleContext.outlineOffset(value: Dimension) {
     writeStyleProperty("outline-offset", value)
 }
 
-fun BaseStyleContext.outlineOffset(value: CssValue) {
+fun StyleContext.outlineOffset(value: CssValue) {
+    writeStyleProperty("outline-offset", value)
+}
+
+fun InlineStyleContext.outlineOffset(value: Dimension) {
+    writeStyleProperty("outline-offset", value)
+}
+
+fun InlineStyleContext.outlineOffset(value: CssValue) {
     writeStyleProperty("outline-offset", value)
 }

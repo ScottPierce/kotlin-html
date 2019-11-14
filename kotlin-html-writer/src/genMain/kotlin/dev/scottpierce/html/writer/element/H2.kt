@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,9 +17,11 @@ inline fun HtmlWriter.h2(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("h2", id, classes, style)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("h2")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("h2", id, classes, style)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("h2")
+    }
 }
 
 @HtmlDsl
@@ -29,9 +32,11 @@ inline fun HtmlWriter.h2(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("h2", id, classes, style, attrs)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("h2")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("h2", id, classes, style, attrs)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("h2")
+    }
 }
 
 @HtmlDsl
@@ -42,9 +47,11 @@ inline fun HtmlWriter.h2(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("h2", id, classes, style, attrs)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("h2")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("h2", id, classes, style, attrs)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("h2")
+    }
 }
 
 @HtmlDsl

@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.visibility(value: Visibility) {
+fun StyleContext.visibility(value: Visibility) {
+    writeStyleProperty("visibility", value)
+}
+
+fun InlineStyleContext.visibility(value: Visibility) {
     writeStyleProperty("visibility", value)
 }
 

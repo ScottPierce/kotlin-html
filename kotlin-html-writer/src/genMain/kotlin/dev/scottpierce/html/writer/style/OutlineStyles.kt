@@ -6,15 +6,26 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.outline(
+fun StyleContext.outline(
     width: Dimension,
     style: OutlineStyle,
     color: Color? = null
 ) {
-    writeStyleProperty("outline",
-            "$width $style${if (color == null) "" else " $color"}")
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
 }
 
-fun BaseStyleContext.outline(value: CssValue) {
+fun StyleContext.outline(value: CssValue) {
+    writeStyleProperty("outline", value)
+}
+
+fun InlineStyleContext.outline(
+    width: Dimension,
+    style: OutlineStyle,
+    color: Color? = null
+) {
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+}
+
+fun InlineStyleContext.outline(value: CssValue) {
     writeStyleProperty("outline", value)
 }

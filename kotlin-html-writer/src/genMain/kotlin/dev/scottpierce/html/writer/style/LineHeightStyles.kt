@@ -8,15 +8,27 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.lineHeight(multiplier: Number) {
+fun StyleContext.lineHeight(multiplier: Number) {
     writeStyleProperty("line-height", multiplier)
 }
 
-fun BaseStyleContext.lineHeight(value: Dimension) {
+fun StyleContext.lineHeight(value: Dimension) {
     writeStyleProperty("line-height", value)
 }
 
-fun BaseStyleContext.lineHeight(value: LineHeight) {
+fun StyleContext.lineHeight(value: LineHeight) {
+    writeStyleProperty("line-height", value)
+}
+
+fun InlineStyleContext.lineHeight(multiplier: Number) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun InlineStyleContext.lineHeight(value: Dimension) {
+    writeStyleProperty("line-height", value)
+}
+
+fun InlineStyleContext.lineHeight(value: LineHeight) {
     writeStyleProperty("line-height", value)
 }
 

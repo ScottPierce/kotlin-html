@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.marginLeft(value: Dimension) {
+fun StyleContext.marginLeft(value: Dimension) {
     writeStyleProperty("margin-left", value)
 }
 
-fun BaseStyleContext.marginLeft(value: CssValue) {
+fun StyleContext.marginLeft(value: CssValue) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun InlineStyleContext.marginLeft(value: Dimension) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun InlineStyleContext.marginLeft(value: CssValue) {
     writeStyleProperty("margin-left", value)
 }

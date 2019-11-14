@@ -44,9 +44,7 @@ class SelectTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).select(id = "test-id", classes = "test-class")
-
+        writer.select(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <select id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class SelectTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).select("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.select("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class SelectTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).select(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.select(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <select id="test-id" class="test-class" custom-attr="custom-attr-value">

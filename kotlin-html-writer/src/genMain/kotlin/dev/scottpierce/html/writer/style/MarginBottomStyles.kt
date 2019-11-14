@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.marginBottom(value: Dimension) {
+fun StyleContext.marginBottom(value: Dimension) {
     writeStyleProperty("margin-bottom", value)
 }
 
-fun BaseStyleContext.marginBottom(value: CssValue) {
+fun StyleContext.marginBottom(value: CssValue) {
+    writeStyleProperty("margin-bottom", value)
+}
+
+fun InlineStyleContext.marginBottom(value: Dimension) {
+    writeStyleProperty("margin-bottom", value)
+}
+
+fun InlineStyleContext.marginBottom(value: CssValue) {
     writeStyleProperty("margin-bottom", value)
 }

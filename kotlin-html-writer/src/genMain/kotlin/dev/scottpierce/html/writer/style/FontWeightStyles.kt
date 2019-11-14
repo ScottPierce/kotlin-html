@@ -8,11 +8,19 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.fontWeight(value: Int) {
+fun StyleContext.fontWeight(value: Int) {
     writeStyleProperty("font-weight", value)
 }
 
-fun BaseStyleContext.fontWeight(value: FontWeight) {
+fun StyleContext.fontWeight(value: FontWeight) {
+    writeStyleProperty("font-weight", value)
+}
+
+fun InlineStyleContext.fontWeight(value: Int) {
+    writeStyleProperty("font-weight", value)
+}
+
+fun InlineStyleContext.fontWeight(value: FontWeight) {
     writeStyleProperty("font-weight", value)
 }
 

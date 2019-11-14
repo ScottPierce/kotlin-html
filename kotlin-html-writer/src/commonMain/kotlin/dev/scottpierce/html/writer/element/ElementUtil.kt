@@ -1,10 +1,10 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.PageWriter
 import dev.scottpierce.html.writer.style.InlineStyleContext
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 
-fun HtmlWriter.writeNormalElementStart(
+fun PageWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -16,7 +16,7 @@ fun HtmlWriter.writeNormalElementStart(
     indent()
 }
 
-fun HtmlWriter.writeNormalElementStart(
+fun PageWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -31,7 +31,7 @@ fun HtmlWriter.writeNormalElementStart(
     indent()
 }
 
-fun HtmlWriter.writeNormalElementStart(
+fun PageWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -46,13 +46,13 @@ fun HtmlWriter.writeNormalElementStart(
     indent()
 }
 
-fun HtmlWriter.writeNormalElementEnd(tag: String) {
+fun PageWriter.writeNormalElementEnd(tag: String) {
     unindent()
     newLine()
     write("</").write(tag).write('>')
 }
 
-fun HtmlWriter.writeVoidElement(
+fun PageWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -63,7 +63,7 @@ fun HtmlWriter.writeVoidElement(
     write('>')
 }
 
-fun HtmlWriter.writeVoidElement(
+fun PageWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -76,7 +76,7 @@ fun HtmlWriter.writeVoidElement(
     write('>')
 }
 
-fun HtmlWriter.writeVoidElement(
+fun PageWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -89,12 +89,12 @@ fun HtmlWriter.writeVoidElement(
     write('>')
 }
 
-fun HtmlWriter.writeTag(tag: String) {
+fun PageWriter.writeTag(tag: String) {
     if (!isEmpty) newLine()
     write('<').write(tag)
 }
 
-fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
+fun PageWriter.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
     if (id != null) write(" id=\"").write(id).write('"')
     if (classes != null) write(" class=\"").write(classes).write('"')
     if (style != null) {
@@ -104,19 +104,19 @@ fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: Inl
     }
 }
 
-fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
+fun PageWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
     for (attr in attrs) {
         writeAttribute(attr)
     }
 }
 
-fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
+fun PageWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
     for (attr in attrs) {
         writeAttribute(attr)
     }
 }
 
-private fun HtmlWriter.writeAttribute(attr: Pair<String, String?>) {
+private fun PageWriter.writeAttribute(attr: Pair<String, String?>) {
     attr.checkAttributeKey()
     write(' ').write(attr.first)
     val value: String? = attr.second
@@ -128,15 +128,11 @@ private fun HtmlWriter.writeAttribute(attr: Pair<String, String?>) {
 fun Pair<String, String?>.checkAttributeKey() {
     val attributeKey = first
 
-    if (attributeKey.isEmpty()) {
-        throw IllegalArgumentException("Attribute name must not be empty. Has value: '$second'")
-    }
+    require(attributeKey.isNotEmpty()) { "Attribute name must not be empty. Has value: '$second'" }
 
     for (c in attributeKey) {
-        if (c.isWhitespace()) {
-            throw IllegalArgumentException("Attribute name must not contain whitespace character. Attribute: " +
-                    "'$attributeKey' with value: '$second'")
-        }
+        require(!c.isWhitespace()) { "Attribute name must not contain whitespace character. Attribute: " +
+            "'$attributeKey' with value: '$second'" }
     }
 }
 

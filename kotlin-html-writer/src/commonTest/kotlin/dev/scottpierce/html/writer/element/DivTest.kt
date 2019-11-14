@@ -44,9 +44,7 @@ class DivTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).div(id = "test-id", classes = "test-class")
-
+        writer.div(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <div id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class DivTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).div("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.div("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class DivTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).div(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.div(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <div id="test-id" class="test-class" custom-attr="custom-attr-value">

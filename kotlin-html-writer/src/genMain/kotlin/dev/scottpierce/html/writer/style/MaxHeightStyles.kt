@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.maxHeight(value: Dimension) {
+fun StyleContext.maxHeight(value: Dimension) {
     writeStyleProperty("max-height", value)
 }
 
-fun BaseStyleContext.maxHeight(value: MaxHeight) {
+fun StyleContext.maxHeight(value: MaxHeight) {
+    writeStyleProperty("max-height", value)
+}
+
+fun InlineStyleContext.maxHeight(value: Dimension) {
+    writeStyleProperty("max-height", value)
+}
+
+fun InlineStyleContext.maxHeight(value: MaxHeight) {
     writeStyleProperty("max-height", value)
 }
 

@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.content(value: String) {
+fun StyleContext.content(value: String) {
     writeStyleProperty("content", value)
 }
 
-fun BaseStyleContext.content(value: Content) {
+fun StyleContext.content(value: Content) {
+    writeStyleProperty("content", value)
+}
+
+fun InlineStyleContext.content(value: String) {
+    writeStyleProperty("content", value)
+}
+
+fun InlineStyleContext.content(value: Content) {
     writeStyleProperty("content", value)
 }
 

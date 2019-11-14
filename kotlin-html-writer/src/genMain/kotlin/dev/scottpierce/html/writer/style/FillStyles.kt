@@ -9,15 +9,15 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.fill(color: Color) {
+fun StyleContext.fill(color: Color) {
     writeStyleProperty("fill", color)
 }
 
-fun BaseStyleContext.fill(hexString: String) {
+fun StyleContext.fill(hexString: String) {
     writeStyleProperty("fill", Color(hexString))
 }
 
-fun BaseStyleContext.fill(
+fun StyleContext.fill(
     r: Int,
     g: Int,
     b: Int
@@ -25,7 +25,32 @@ fun BaseStyleContext.fill(
     writeStyleProperty("fill", Color(r, g, b))
 }
 
-fun BaseStyleContext.fill(
+fun StyleContext.fill(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("fill", Color(r, g, b, a))
+}
+
+fun InlineStyleContext.fill(color: Color) {
+    writeStyleProperty("fill", color)
+}
+
+fun InlineStyleContext.fill(hexString: String) {
+    writeStyleProperty("fill", Color(hexString))
+}
+
+fun InlineStyleContext.fill(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("fill", Color(r, g, b))
+}
+
+fun InlineStyleContext.fill(
     r: Int,
     g: Int,
     b: Int,

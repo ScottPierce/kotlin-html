@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.minWidth(value: Dimension) {
+fun StyleContext.minWidth(value: Dimension) {
     writeStyleProperty("min-width", value)
 }
 
-fun BaseStyleContext.minWidth(value: CssValue) {
+fun StyleContext.minWidth(value: CssValue) {
+    writeStyleProperty("min-width", value)
+}
+
+fun InlineStyleContext.minWidth(value: Dimension) {
+    writeStyleProperty("min-width", value)
+}
+
+fun InlineStyleContext.minWidth(value: CssValue) {
     writeStyleProperty("min-width", value)
 }

@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignItems(value: AlignItems) {
+fun StyleContext.alignItems(value: AlignItems) {
+    writeStyleProperty("align-items", value)
+}
+
+fun InlineStyleContext.alignItems(value: AlignItems) {
     writeStyleProperty("align-items", value)
 }
 

@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Boolean
 import kotlin.Pair
@@ -23,18 +24,20 @@ inline fun HtmlWriter.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    this.writeTag("video")
-    this.writeStandardAttributes(id, classes, style)
-    if (muted) this.write(" muted")
-    if (playsinline) this.write(" playsinline")
-    if (autoplay) this.write(" autoplay")
-    if (loop) this.write(" loop")
-    if (preload != null) this.write(" preload=\"").write(preload).write('"')
-    if (poster != null) this.write(" poster=\"").write(poster).write('"')
-    this.write('>')
-    this.indent()
-    VideoContext(this).apply(func)
-    this.writeNormalElementEnd("video")
+    pageWriterScope(this) {
+        this.writeTag("video")
+        this.writeStandardAttributes(id, classes, style)
+        if (muted) this.write(" muted")
+        if (playsinline) this.write(" playsinline")
+        if (autoplay) this.write(" autoplay")
+        if (loop) this.write(" loop")
+        if (preload != null) this.write(" preload=\"").write(preload).write('"')
+        if (poster != null) this.write(" poster=\"").write(poster).write('"')
+        this.write('>')
+        this.indent()
+        VideoContext(this).apply(func)
+        this.writeNormalElementEnd("video")
+    }
 }
 
 @HtmlDsl
@@ -51,19 +54,21 @@ inline fun HtmlWriter.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    this.writeTag("video")
-    this.writeStandardAttributes(id, classes, style)
-    if (muted) this.write(" muted")
-    if (playsinline) this.write(" playsinline")
-    if (autoplay) this.write(" autoplay")
-    if (loop) this.write(" loop")
-    if (preload != null) this.write(" preload=\"").write(preload).write('"')
-    if (poster != null) this.write(" poster=\"").write(poster).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    VideoContext(this).apply(func)
-    this.writeNormalElementEnd("video")
+    pageWriterScope(this) {
+        this.writeTag("video")
+        this.writeStandardAttributes(id, classes, style)
+        if (muted) this.write(" muted")
+        if (playsinline) this.write(" playsinline")
+        if (autoplay) this.write(" autoplay")
+        if (loop) this.write(" loop")
+        if (preload != null) this.write(" preload=\"").write(preload).write('"')
+        if (poster != null) this.write(" poster=\"").write(poster).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        VideoContext(this).apply(func)
+        this.writeNormalElementEnd("video")
+    }
 }
 
 @HtmlDsl
@@ -80,19 +85,21 @@ inline fun HtmlWriter.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    this.writeTag("video")
-    this.writeStandardAttributes(id, classes, style)
-    if (muted) this.write(" muted")
-    if (playsinline) this.write(" playsinline")
-    if (autoplay) this.write(" autoplay")
-    if (loop) this.write(" loop")
-    if (preload != null) this.write(" preload=\"").write(preload).write('"')
-    if (poster != null) this.write(" poster=\"").write(poster).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    VideoContext(this).apply(func)
-    this.writeNormalElementEnd("video")
+    pageWriterScope(this) {
+        this.writeTag("video")
+        this.writeStandardAttributes(id, classes, style)
+        if (muted) this.write(" muted")
+        if (playsinline) this.write(" playsinline")
+        if (autoplay) this.write(" autoplay")
+        if (loop) this.write(" loop")
+        if (preload != null) this.write(" preload=\"").write(preload).write('"')
+        if (poster != null) this.write(" poster=\"").write(poster).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        VideoContext(this).apply(func)
+        this.writeNormalElementEnd("video")
+    }
 }
 
 @HtmlDsl

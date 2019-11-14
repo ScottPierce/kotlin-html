@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.cursor(value: Cursor) {
+fun StyleContext.cursor(value: Cursor) {
+    writeStyleProperty("cursor", value)
+}
+
+fun InlineStyleContext.cursor(value: Cursor) {
     writeStyleProperty("cursor", value)
 }
 

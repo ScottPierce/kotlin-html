@@ -7,23 +7,43 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.border(
+fun StyleContext.border(
     width: Dimension,
     style: BorderStyle,
     color: Color
 ) {
-    writeStyleProperty("border", "$width $style $color")
+    writeStyleProperty("border", """$width $style $color""")
 }
 
-fun BaseStyleContext.border(
+fun StyleContext.border(
     width: BorderWidth,
     style: BorderStyle,
     color: Color
 ) {
-    writeStyleProperty("border", "$width $style $color")
+    writeStyleProperty("border", """$width $style $color""")
 }
 
-fun BaseStyleContext.border(value: Border) {
+fun StyleContext.border(value: Border) {
+    writeStyleProperty("border", value)
+}
+
+fun InlineStyleContext.border(
+    width: Dimension,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun InlineStyleContext.border(
+    width: BorderWidth,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun InlineStyleContext.border(value: Border) {
     writeStyleProperty("border", value)
 }
 

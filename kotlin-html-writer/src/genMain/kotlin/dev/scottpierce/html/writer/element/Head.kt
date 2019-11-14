@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,9 +17,11 @@ inline fun HtmlWriter.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("head", id, classes, style)
-    HeadContext(this).apply(func)
-    this.writeNormalElementEnd("head")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("head", id, classes, style)
+        HeadContext(this).apply(func)
+        this.writeNormalElementEnd("head")
+    }
 }
 
 @HtmlDsl
@@ -29,9 +32,11 @@ inline fun HtmlWriter.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("head", id, classes, style, attrs)
-    HeadContext(this).apply(func)
-    this.writeNormalElementEnd("head")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("head", id, classes, style, attrs)
+        HeadContext(this).apply(func)
+        this.writeNormalElementEnd("head")
+    }
 }
 
 @HtmlDsl
@@ -42,9 +47,11 @@ inline fun HtmlWriter.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("head", id, classes, style, attrs)
-    HeadContext(this).apply(func)
-    this.writeNormalElementEnd("head")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("head", id, classes, style, attrs)
+        HeadContext(this).apply(func)
+        this.writeNormalElementEnd("head")
+    }
 }
 
 @HtmlDsl

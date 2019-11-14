@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.minHeight(value: Dimension) {
+fun StyleContext.minHeight(value: Dimension) {
     writeStyleProperty("min-height", value)
 }
 
-fun BaseStyleContext.minHeight(value: CssValue) {
+fun StyleContext.minHeight(value: CssValue) {
+    writeStyleProperty("min-height", value)
+}
+
+fun InlineStyleContext.minHeight(value: Dimension) {
+    writeStyleProperty("min-height", value)
+}
+
+fun InlineStyleContext.minHeight(value: CssValue) {
     writeStyleProperty("min-height", value)
 }

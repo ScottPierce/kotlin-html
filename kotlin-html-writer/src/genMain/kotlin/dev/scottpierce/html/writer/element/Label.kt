@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -17,13 +18,15 @@ inline fun HtmlWriter.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("label")
-    this.writeStandardAttributes(id, classes, style)
-    if (forId != null) this.write(" for=\"").write(forId).write('"')
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("label")
+    pageWriterScope(this) {
+        this.writeTag("label")
+        this.writeStandardAttributes(id, classes, style)
+        if (forId != null) this.write(" for=\"").write(forId).write('"')
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("label")
+    }
 }
 
 @HtmlDsl
@@ -35,14 +38,16 @@ inline fun HtmlWriter.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("label")
-    this.writeStandardAttributes(id, classes, style)
-    if (forId != null) this.write(" for=\"").write(forId).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("label")
+    pageWriterScope(this) {
+        this.writeTag("label")
+        this.writeStandardAttributes(id, classes, style)
+        if (forId != null) this.write(" for=\"").write(forId).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("label")
+    }
 }
 
 @HtmlDsl
@@ -54,14 +59,16 @@ inline fun HtmlWriter.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("label")
-    this.writeStandardAttributes(id, classes, style)
-    if (forId != null) this.write(" for=\"").write(forId).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("label")
+    pageWriterScope(this) {
+        this.writeTag("label")
+        this.writeStandardAttributes(id, classes, style)
+        if (forId != null) this.write(" for=\"").write(forId).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("label")
+    }
 }
 
 @HtmlDsl

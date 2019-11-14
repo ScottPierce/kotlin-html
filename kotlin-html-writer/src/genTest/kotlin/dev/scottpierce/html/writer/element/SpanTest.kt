@@ -44,9 +44,7 @@ class SpanTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).span(id = "test-id", classes = "test-class")
-
+        writer.span(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <span id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class SpanTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).span("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.span("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class SpanTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).span(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.span(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <span id="test-id" class="test-class" custom-attr="custom-attr-value">

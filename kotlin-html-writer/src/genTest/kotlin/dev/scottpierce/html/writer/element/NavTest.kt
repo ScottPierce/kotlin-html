@@ -44,9 +44,7 @@ class NavTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).nav(id = "test-id", classes = "test-class")
-
+        writer.nav(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <nav id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class NavTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).nav("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.nav("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class NavTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).nav(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.nav(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <nav id="test-id" class="test-class" custom-attr="custom-attr-value">

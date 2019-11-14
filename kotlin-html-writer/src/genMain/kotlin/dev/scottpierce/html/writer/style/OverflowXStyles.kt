@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.overflowX(value: Dimension) {
+fun StyleContext.overflowX(value: Dimension) {
     writeStyleProperty("overflow-x", value)
 }
 
-fun BaseStyleContext.overflowX(value: Overflow) {
+fun StyleContext.overflowX(value: Overflow) {
+    writeStyleProperty("overflow-x", value)
+}
+
+fun InlineStyleContext.overflowX(value: Dimension) {
+    writeStyleProperty("overflow-x", value)
+}
+
+fun InlineStyleContext.overflowX(value: Overflow) {
     writeStyleProperty("overflow-x", value)
 }

@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -10,31 +11,37 @@ import kotlin.collections.List
 
 @HtmlDsl
 inline fun HtmlWriter.em(func: BodyContext.() -> Unit = {}) {
-    this.writeTag("em")
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("em")
+    pageWriterScope(this) {
+        this.writeTag("em")
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("em")
+    }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.em(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("em")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("em")
+    pageWriterScope(this) {
+        this.writeTag("em")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("em")
+    }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.em(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("em")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("em")
+    pageWriterScope(this) {
+        this.writeTag("em")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("em")
+    }
 }
 
 @HtmlDsl

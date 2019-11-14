@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.width(value: Dimension) {
+fun StyleContext.width(value: Dimension) {
     writeStyleProperty("width", value)
 }
 
-fun BaseStyleContext.width(value: Width) {
+fun StyleContext.width(value: Width) {
+    writeStyleProperty("width", value)
+}
+
+fun InlineStyleContext.width(value: Dimension) {
+    writeStyleProperty("width", value)
+}
+
+fun InlineStyleContext.width(value: Width) {
     writeStyleProperty("width", value)
 }
 

@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
@@ -14,12 +15,14 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeTag("meta")
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (content != null) this.write(" content=\"").write(content).write('"')
-    if (charset != null) this.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("meta")
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (content != null) this.write(" content=\"").write(content).write('"')
+        if (charset != null) this.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -30,13 +33,15 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeTag("meta")
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (content != null) this.write(" content=\"").write(content).write('"')
-    if (charset != null) this.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("meta")
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (content != null) this.write(" content=\"").write(content).write('"')
+        if (charset != null) this.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -47,13 +52,15 @@ fun HtmlWriter.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    this.writeTag("meta")
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (content != null) this.write(" content=\"").write(content).write('"')
-    if (charset != null) this.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("meta")
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (content != null) this.write(" content=\"").write(content).write('"')
+        if (charset != null) this.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl

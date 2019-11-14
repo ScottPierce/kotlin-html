@@ -3,16 +3,19 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
 @HtmlDsl
 fun HtmlWriter.source(src: String? = null, type: String? = null) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -21,11 +24,13 @@ fun HtmlWriter.source(
     src: String? = null,
     type: String? = null
 ) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -34,11 +39,13 @@ fun HtmlWriter.source(
     src: String? = null,
     type: String? = null
 ) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl

@@ -7,10 +7,18 @@ package dev.scottpierce.html.writer.style
 import kotlin.Number
 import kotlin.Suppress
 
-fun BaseStyleContext.flexGrow(value: Number) {
+fun StyleContext.flexGrow(value: Number) {
     writeStyleProperty("flex-grow", value)
 }
 
-fun BaseStyleContext.flexGrow(value: CssValue) {
+fun StyleContext.flexGrow(value: CssValue) {
+    writeStyleProperty("flex-grow", value)
+}
+
+fun InlineStyleContext.flexGrow(value: Number) {
+    writeStyleProperty("flex-grow", value)
+}
+
+fun InlineStyleContext.flexGrow(value: CssValue) {
     writeStyleProperty("flex-grow", value)
 }

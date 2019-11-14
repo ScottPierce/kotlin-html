@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -17,13 +18,15 @@ inline fun HtmlWriter.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    pageWriterScope(this) {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl
@@ -35,14 +38,16 @@ inline fun HtmlWriter.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    pageWriterScope(this) {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl
@@ -54,14 +59,16 @@ inline fun HtmlWriter.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    pageWriterScope(this) {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl

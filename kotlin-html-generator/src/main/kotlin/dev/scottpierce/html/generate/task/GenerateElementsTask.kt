@@ -18,6 +18,8 @@ import dev.scottpierce.html.generate.model.Context
 import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
+import dev.scottpierce.html.generate.model.PAGE_WRITER
+import dev.scottpierce.html.generate.model.PAGE_WRITER_SCOPE
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
@@ -71,11 +73,7 @@ private fun createDslFunction(
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val writer: String = if (isWriter) {
-        "this"
-    } else {
-        "writer"
-    }
+    val writer: String = if (isWriter) "this" else "writer"
 
     if (isWriter) {
         receiver(HTML_WRITER)
@@ -147,6 +145,10 @@ private fun createDslFunction(
     val hasOnlyStandardAttributes = STANDARD_ATTRIBUTES.size == element.supportedAttributes.size &&
             STANDARD_ATTRIBUTES.containsAll(element.supportedAttributes)
 
+    if (isWriter) {
+        beginControlFlow("%M(this)", PAGE_WRITER_SCOPE)
+    }
+
     // Write Tag Start
     if (hasOnlyStandardAttributes) {
         val tagStartMember: MemberName = when (element) {
@@ -208,11 +210,11 @@ private fun createDslFunction(
 
                 when (remainingAttribute) {
                     is Attr.Boolean -> {
-                        addStatement("""if ($attrCodeName) $writer.write(" ${remainingAttribute.name}")""")
+                        addStatement("""if ($attrCodeName) $writer.write(%S)""", " ${remainingAttribute.name}")
                     }
 
                     else -> {
-                        addStatement("""if ($attrCodeName != null) $writer.write(" ${remainingAttribute.name}=\"").write($attrCodeName).write('"')""")
+                        addStatement("""if ($attrCodeName != null) $writer.write(%S).write($attrCodeName).write('"')""", " ${remainingAttribute.name}=\"")
                     }
                 }
             }
@@ -237,6 +239,10 @@ private fun createDslFunction(
         }
 
         addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
+    }
+
+    if (isWriter) {
+        endControlFlow()
     }
 }.build()
 

@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundClip(value: BackgroundClip) {
+fun StyleContext.backgroundClip(value: BackgroundClip) {
+    writeStyleProperty("background-clip", value)
+}
+
+fun InlineStyleContext.backgroundClip(value: BackgroundClip) {
     writeStyleProperty("background-clip", value)
 }
 

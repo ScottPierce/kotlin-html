@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.paddingRight(value: Dimension) {
+fun StyleContext.paddingRight(value: Dimension) {
     writeStyleProperty("padding-right", value)
 }
 
-fun BaseStyleContext.paddingRight(value: CssValue) {
+fun StyleContext.paddingRight(value: CssValue) {
+    writeStyleProperty("padding-right", value)
+}
+
+fun InlineStyleContext.paddingRight(value: Dimension) {
+    writeStyleProperty("padding-right", value)
+}
+
+fun InlineStyleContext.paddingRight(value: CssValue) {
     writeStyleProperty("padding-right", value)
 }

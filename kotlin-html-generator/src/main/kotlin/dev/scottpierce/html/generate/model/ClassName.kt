@@ -7,8 +7,10 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.STRING
 
 val HTML_WRITER = ClassName("dev.scottpierce.html.writer", "HtmlWriter")
+val PAGE_WRITER = ClassName("dev.scottpierce.html.writer", "PageWriter")
 val INLINE_STYLE = ClassName("dev.scottpierce.html.writer.style", "InlineStyle")
 val BASE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "BaseStyleContext")
+val STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "StyleContext")
 val INLINE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "InlineStyleContext")
 val INLINE_STYLE_LAMBDA = ClassName("dev.scottpierce.html.writer.style", "InlineStyleLambda")
 val ATTRIBUTE = ClassName("kotlin", "Pair").parameterizedBy(STRING, STRING.copy(nullable = true))
@@ -27,5 +29,6 @@ val WRITE_NORMAL_ELEMENT_END = MemberName("dev.scottpierce.html.writer.element",
 val WRITE_VOID_ELEMENT = MemberName("dev.scottpierce.html.writer.element", "writeVoidElement")
 val STYLE_MEMBER = MemberName("dev.scottpierce.html.writer.style", "style")
 val ASSERT_EQUALS = MemberName("kotlin.test", "assertEquals")
+val PAGE_WRITER_SCOPE = MemberName("dev.scottpierce.html.writer", "pageWriterScope")
 
 fun styleClassName(simpleName: String): ClassName = ClassName(Constants.STYLE_PACKAGE, simpleName)

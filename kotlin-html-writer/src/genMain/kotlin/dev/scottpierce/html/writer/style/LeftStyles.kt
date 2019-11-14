@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.left(value: Dimension) {
+fun StyleContext.left(value: Dimension) {
     writeStyleProperty("left", value)
 }
 
-fun BaseStyleContext.left(value: Left) {
+fun StyleContext.left(value: Left) {
+    writeStyleProperty("left", value)
+}
+
+fun InlineStyleContext.left(value: Dimension) {
+    writeStyleProperty("left", value)
+}
+
+fun InlineStyleContext.left(value: Left) {
     writeStyleProperty("left", value)
 }
 

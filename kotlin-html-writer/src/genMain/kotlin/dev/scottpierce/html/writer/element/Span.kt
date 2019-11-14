@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,9 +17,11 @@ inline fun HtmlWriter.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("span", id, classes, style)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("span")
+    }
 }
 
 @HtmlDsl
@@ -29,9 +32,11 @@ inline fun HtmlWriter.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style, attrs)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("span", id, classes, style, attrs)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("span")
+    }
 }
 
 @HtmlDsl
@@ -42,9 +47,11 @@ inline fun HtmlWriter.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("span", id, classes, style, attrs)
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("span")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("span", id, classes, style, attrs)
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("span")
+    }
 }
 
 @HtmlDsl

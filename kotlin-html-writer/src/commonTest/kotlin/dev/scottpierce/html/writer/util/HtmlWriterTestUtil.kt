@@ -4,9 +4,12 @@ import dev.scottpierce.html.writer.StringBuilderHtmlWriter
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.FileContext
 import dev.scottpierce.html.writer.element.HtmlContext
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.BaseStyleContext
 import dev.scottpierce.html.writer.style.InlineStyleContext
+import dev.scottpierce.html.writer.style.StyleContext
 import dev.scottpierce.html.writer.style.StyleSheetContext
+import dev.scottpierce.html.writer.style.style
 import dev.scottpierce.html.writer.style.styleSheet
 
 fun writeFile(
@@ -14,7 +17,9 @@ fun writeFile(
     func: FileContext.() -> Unit
 ): StringBuilderHtmlWriter {
     val writer = StringBuilderHtmlWriter(options = options)
-    FileContext(writer).apply(func)
+    pageWriterScope(writer) {
+        FileContext(this).apply(func)
+    }
     return writer
 }
 
@@ -23,7 +28,9 @@ fun writeHtml(
     func: HtmlContext.() -> Unit
 ): StringBuilderHtmlWriter {
     val writer = StringBuilderHtmlWriter(options = options)
-    HtmlContext(writer).apply(func)
+    pageWriterScope(writer) {
+        HtmlContext(this).apply(func)
+    }
     return writer
 }
 
@@ -37,9 +44,13 @@ infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
 
 fun writeStyle(
     options: WriteOptions = WriteOptions(indent = "    "),
-    func: BaseStyleContext.() -> Unit
-): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = options).apply {
-    InlineStyleContext(this).apply(func)
+    func: StyleContext.() -> Unit
+): StringBuilderHtmlWriter {
+    val writer = StringBuilderHtmlWriter(options = options)
+    pageWriterScope(writer) {
+        StyleContext(this).apply(func)
+    }
+    return writer
 }
 
 fun writeStyleSheet(

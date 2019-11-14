@@ -7,14 +7,26 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.background(color: Color) {
+fun StyleContext.background(color: Color) {
     writeStyleProperty("background", color)
 }
 
-fun BaseStyleContext.background(color: Color, image: BackgroundImage) {
-    writeStyleProperty("background", "$color $image")
+fun StyleContext.background(color: Color, image: BackgroundImage) {
+    writeStyleProperty("background", """$color $image""")
 }
 
-fun BaseStyleContext.background(color: String) {
+fun StyleContext.background(color: String) {
+    writeStyleProperty("background", color)
+}
+
+fun InlineStyleContext.background(color: Color) {
+    writeStyleProperty("background", color)
+}
+
+fun InlineStyleContext.background(color: Color, image: BackgroundImage) {
+    writeStyleProperty("background", """$color $image""")
+}
+
+fun InlineStyleContext.background(color: String) {
     writeStyleProperty("background", color)
 }

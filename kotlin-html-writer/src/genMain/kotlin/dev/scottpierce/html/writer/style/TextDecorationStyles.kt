@@ -6,16 +6,28 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.textDecoration(
+fun StyleContext.textDecoration(
     vararg lines: TextDecorationLine,
     color: Color? = null,
     style: TextDecorationStyle? = null
 ) {
     writeStyleProperty("text-decoration",
-            "${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if
-                    (style == null) "" else " $style"}")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
 }
 
-fun BaseStyleContext.textDecoration(value: CssValue) {
+fun StyleContext.textDecoration(value: CssValue) {
+    writeStyleProperty("text-decoration", value)
+}
+
+fun InlineStyleContext.textDecoration(
+    vararg lines: TextDecorationLine,
+    color: Color? = null,
+    style: TextDecorationStyle? = null
+) {
+    writeStyleProperty("text-decoration",
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+}
+
+fun InlineStyleContext.textDecoration(value: CssValue) {
     writeStyleProperty("text-decoration", value)
 }

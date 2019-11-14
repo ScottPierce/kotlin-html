@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -14,7 +15,9 @@ fun HtmlWriter.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    this.writeVoidElement("br", id, classes, style)
+    pageWriterScope(this) {
+        this.writeVoidElement("br", id, classes, style)
+    }
 }
 
 @HtmlDsl
@@ -24,7 +27,9 @@ fun HtmlWriter.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    this.writeVoidElement("br", id, classes, style, attrs)
+    pageWriterScope(this) {
+        this.writeVoidElement("br", id, classes, style, attrs)
+    }
 }
 
 @HtmlDsl
@@ -34,7 +39,9 @@ fun HtmlWriter.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    this.writeVoidElement("br", id, classes, style, attrs)
+    pageWriterScope(this) {
+        this.writeVoidElement("br", id, classes, style, attrs)
+    }
 }
 
 @HtmlDsl

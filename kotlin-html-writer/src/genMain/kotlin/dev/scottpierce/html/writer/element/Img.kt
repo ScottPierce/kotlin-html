@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -18,13 +19,15 @@ fun HtmlWriter.img(
     width: String? = null,
     height: String? = null
 ) {
-    this.writeTag("img")
-    this.writeStandardAttributes(id, classes, style)
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (alt != null) this.write(" alt=\"").write(alt).write('"')
-    if (width != null) this.write(" width=\"").write(width).write('"')
-    if (height != null) this.write(" height=\"").write(height).write('"')
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("img")
+        this.writeStandardAttributes(id, classes, style)
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (alt != null) this.write(" alt=\"").write(alt).write('"')
+        if (width != null) this.write(" width=\"").write(width).write('"')
+        if (height != null) this.write(" height=\"").write(height).write('"')
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -38,14 +41,16 @@ fun HtmlWriter.img(
     width: String? = null,
     height: String? = null
 ) {
-    this.writeTag("img")
-    this.writeStandardAttributes(id, classes, style)
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (alt != null) this.write(" alt=\"").write(alt).write('"')
-    if (width != null) this.write(" width=\"").write(width).write('"')
-    if (height != null) this.write(" height=\"").write(height).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("img")
+        this.writeStandardAttributes(id, classes, style)
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (alt != null) this.write(" alt=\"").write(alt).write('"')
+        if (width != null) this.write(" width=\"").write(width).write('"')
+        if (height != null) this.write(" height=\"").write(height).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl
@@ -59,14 +64,16 @@ fun HtmlWriter.img(
     width: String? = null,
     height: String? = null
 ) {
-    this.writeTag("img")
-    this.writeStandardAttributes(id, classes, style)
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (alt != null) this.write(" alt=\"").write(alt).write('"')
-    if (width != null) this.write(" width=\"").write(width).write('"')
-    if (height != null) this.write(" height=\"").write(height).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    pageWriterScope(this) {
+        this.writeTag("img")
+        this.writeStandardAttributes(id, classes, style)
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (alt != null) this.write(" alt=\"").write(alt).write('"')
+        if (width != null) this.write(" width=\"").write(width).write('"')
+        if (height != null) this.write(" height=\"").write(height).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl

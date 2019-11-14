@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
+fun StyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
+    writeStyleProperty("transition-timing-function", value)
+}
+
+fun InlineStyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
     writeStyleProperty("transition-timing-function", value)
 }
 

@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -10,31 +11,37 @@ import kotlin.collections.List
 
 @HtmlDsl
 inline fun HtmlWriter.bold(func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+    pageWriterScope(this) {
+        this.writeTag("bold")
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+    pageWriterScope(this) {
+        this.writeTag("bold")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+    pageWriterScope(this) {
+        this.writeTag("bold")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl

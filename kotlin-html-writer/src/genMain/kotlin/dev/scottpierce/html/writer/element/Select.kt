@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,9 +17,11 @@ inline fun HtmlWriter.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("select", id, classes, style)
-    SelectContext(this).apply(func)
-    this.writeNormalElementEnd("select")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("select", id, classes, style)
+        SelectContext(this).apply(func)
+        this.writeNormalElementEnd("select")
+    }
 }
 
 @HtmlDsl
@@ -29,9 +32,11 @@ inline fun HtmlWriter.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("select", id, classes, style, attrs)
-    SelectContext(this).apply(func)
-    this.writeNormalElementEnd("select")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("select", id, classes, style, attrs)
+        SelectContext(this).apply(func)
+        this.writeNormalElementEnd("select")
+    }
 }
 
 @HtmlDsl
@@ -42,9 +47,11 @@ inline fun HtmlWriter.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("select", id, classes, style, attrs)
-    SelectContext(this).apply(func)
-    this.writeNormalElementEnd("select")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("select", id, classes, style, attrs)
+        SelectContext(this).apply(func)
+        this.writeNormalElementEnd("select")
+    }
 }
 
 @HtmlDsl

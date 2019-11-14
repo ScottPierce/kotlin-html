@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.borderWidth(value: Dimension) {
+fun StyleContext.borderWidth(value: Dimension) {
     writeStyleProperty("border-width", value)
 }
 
-fun BaseStyleContext.borderWidth(value: BorderWidth) {
+fun StyleContext.borderWidth(value: BorderWidth) {
+    writeStyleProperty("border-width", value)
+}
+
+fun InlineStyleContext.borderWidth(value: Dimension) {
+    writeStyleProperty("border-width", value)
+}
+
+fun InlineStyleContext.borderWidth(value: BorderWidth) {
     writeStyleProperty("border-width", value)
 }
 

@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,13 +17,15 @@ inline fun HtmlWriter.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeTag("html")
-    this.writeStandardAttributes(null, classes, style)
-    if (lang != null) this.write(" lang=\"").write(lang).write('"')
-    this.write('>')
-    this.indent()
-    HtmlContext(this).apply(func)
-    this.writeNormalElementEnd("html")
+    pageWriterScope(this) {
+        this.writeTag("html")
+        this.writeStandardAttributes(null, classes, style)
+        if (lang != null) this.write(" lang=\"").write(lang).write('"')
+        this.write('>')
+        this.indent()
+        HtmlContext(this).apply(func)
+        this.writeNormalElementEnd("html")
+    }
 }
 
 @HtmlDsl
@@ -33,14 +36,16 @@ inline fun HtmlWriter.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeTag("html")
-    this.writeStandardAttributes(null, classes, style)
-    if (lang != null) this.write(" lang=\"").write(lang).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    HtmlContext(this).apply(func)
-    this.writeNormalElementEnd("html")
+    pageWriterScope(this) {
+        this.writeTag("html")
+        this.writeStandardAttributes(null, classes, style)
+        if (lang != null) this.write(" lang=\"").write(lang).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        HtmlContext(this).apply(func)
+        this.writeNormalElementEnd("html")
+    }
 }
 
 @HtmlDsl
@@ -51,14 +56,16 @@ inline fun HtmlWriter.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    this.writeTag("html")
-    this.writeStandardAttributes(null, classes, style)
-    if (lang != null) this.write(" lang=\"").write(lang).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    HtmlContext(this).apply(func)
-    this.writeNormalElementEnd("html")
+    pageWriterScope(this) {
+        this.writeTag("html")
+        this.writeStandardAttributes(null, classes, style)
+        if (lang != null) this.write(" lang=\"").write(lang).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        HtmlContext(this).apply(func)
+        this.writeNormalElementEnd("html")
+    }
 }
 
 @HtmlDsl

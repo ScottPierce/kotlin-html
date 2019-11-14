@@ -44,9 +44,7 @@ class HeaderTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).header(id = "test-id", classes = "test-class")
-
+        writer.header(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <header id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class HeaderTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).header("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.header("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class HeaderTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).header(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.header(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <header id="test-id" class="test-class" custom-attr="custom-attr-value">

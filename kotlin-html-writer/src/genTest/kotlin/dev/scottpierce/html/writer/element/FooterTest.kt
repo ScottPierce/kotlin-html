@@ -44,9 +44,7 @@ class FooterTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).footer(id = "test-id", classes = "test-class")
-
+        writer.footer(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <footer id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class FooterTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).footer("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.footer("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class FooterTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).footer(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.footer(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <footer id="test-id" class="test-class" custom-attr="custom-attr-value">

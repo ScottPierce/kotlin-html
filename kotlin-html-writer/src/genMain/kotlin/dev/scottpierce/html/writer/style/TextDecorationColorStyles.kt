@@ -9,15 +9,15 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.textDecorationColor(color: Color) {
+fun StyleContext.textDecorationColor(color: Color) {
     writeStyleProperty("text-decoration-color", color)
 }
 
-fun BaseStyleContext.textDecorationColor(hexString: String) {
+fun StyleContext.textDecorationColor(hexString: String) {
     writeStyleProperty("text-decoration-color", Color(hexString))
 }
 
-fun BaseStyleContext.textDecorationColor(
+fun StyleContext.textDecorationColor(
     r: Int,
     g: Int,
     b: Int
@@ -25,7 +25,32 @@ fun BaseStyleContext.textDecorationColor(
     writeStyleProperty("text-decoration-color", Color(r, g, b))
 }
 
-fun BaseStyleContext.textDecorationColor(
+fun StyleContext.textDecorationColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("text-decoration-color", Color(r, g, b, a))
+}
+
+fun InlineStyleContext.textDecorationColor(color: Color) {
+    writeStyleProperty("text-decoration-color", color)
+}
+
+fun InlineStyleContext.textDecorationColor(hexString: String) {
+    writeStyleProperty("text-decoration-color", Color(hexString))
+}
+
+fun InlineStyleContext.textDecorationColor(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("text-decoration-color", Color(r, g, b))
+}
+
+fun InlineStyleContext.textDecorationColor(
     r: Int,
     g: Int,
     b: Int,

@@ -44,9 +44,7 @@ class SectionTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).section(id = "test-id", classes = "test-class")
-
+        writer.section(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <section id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class SectionTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).section("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.section("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class SectionTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).section(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.section(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <section id="test-id" class="test-class" custom-attr="custom-attr-value">

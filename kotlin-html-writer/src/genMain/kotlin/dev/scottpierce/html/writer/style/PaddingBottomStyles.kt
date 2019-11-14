@@ -6,10 +6,18 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
-fun BaseStyleContext.paddingBottom(value: Dimension) {
+fun StyleContext.paddingBottom(value: Dimension) {
     writeStyleProperty("padding-bottom", value)
 }
 
-fun BaseStyleContext.paddingBottom(value: CssValue) {
+fun StyleContext.paddingBottom(value: CssValue) {
+    writeStyleProperty("padding-bottom", value)
+}
+
+fun InlineStyleContext.paddingBottom(value: Dimension) {
+    writeStyleProperty("padding-bottom", value)
+}
+
+fun InlineStyleContext.paddingBottom(value: CssValue) {
     writeStyleProperty("padding-bottom", value)
 }

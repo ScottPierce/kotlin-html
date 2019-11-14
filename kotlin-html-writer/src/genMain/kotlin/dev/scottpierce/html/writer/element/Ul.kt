@@ -3,6 +3,7 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
@@ -16,9 +17,11 @@ inline fun HtmlWriter.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("ul", id, classes, style)
-    UlContext(this).apply(func)
-    this.writeNormalElementEnd("ul")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("ul", id, classes, style)
+        UlContext(this).apply(func)
+        this.writeNormalElementEnd("ul")
+    }
 }
 
 @HtmlDsl
@@ -29,9 +32,11 @@ inline fun HtmlWriter.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(this).apply(func)
-    this.writeNormalElementEnd("ul")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("ul", id, classes, style, attrs)
+        UlContext(this).apply(func)
+        this.writeNormalElementEnd("ul")
+    }
 }
 
 @HtmlDsl
@@ -42,9 +47,11 @@ inline fun HtmlWriter.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    this.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(this).apply(func)
-    this.writeNormalElementEnd("ul")
+    pageWriterScope(this) {
+        this.writeNormalElementStart("ul", id, classes, style, attrs)
+        UlContext(this).apply(func)
+        this.writeNormalElementEnd("ul")
+    }
 }
 
 @HtmlDsl

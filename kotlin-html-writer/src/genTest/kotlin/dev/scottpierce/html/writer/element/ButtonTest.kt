@@ -44,9 +44,7 @@ class ButtonTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).button(id = "test-id", classes = "test-class")
-
+        writer.button(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <button id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class ButtonTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).button("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.button("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class ButtonTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).button(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.button(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <button id="test-id" class="test-class" custom-attr="custom-attr-value">

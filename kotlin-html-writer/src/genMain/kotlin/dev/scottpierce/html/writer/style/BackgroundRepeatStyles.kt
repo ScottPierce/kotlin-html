@@ -7,7 +7,11 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundRepeat(value: BackgroundRepeat) {
+fun StyleContext.backgroundRepeat(value: BackgroundRepeat) {
+    writeStyleProperty("background-repeat", value)
+}
+
+fun InlineStyleContext.backgroundRepeat(value: BackgroundRepeat) {
     writeStyleProperty("background-repeat", value)
 }
 

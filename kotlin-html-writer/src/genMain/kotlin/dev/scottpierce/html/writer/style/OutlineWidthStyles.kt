@@ -7,11 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.outlineWidth(value: Dimension) {
+fun StyleContext.outlineWidth(value: Dimension) {
     writeStyleProperty("outline-width", value)
 }
 
-fun BaseStyleContext.outlineWidth(value: OutlineWidth) {
+fun StyleContext.outlineWidth(value: OutlineWidth) {
+    writeStyleProperty("outline-width", value)
+}
+
+fun InlineStyleContext.outlineWidth(value: Dimension) {
+    writeStyleProperty("outline-width", value)
+}
+
+fun InlineStyleContext.outlineWidth(value: OutlineWidth) {
     writeStyleProperty("outline-width", value)
 }
 
