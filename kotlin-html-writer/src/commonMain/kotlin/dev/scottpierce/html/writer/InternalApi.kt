@@ -9,6 +9,7 @@ package dev.scottpierce.html.writer
  */
 object InternalApi {
     fun PageWriter(htmlWriter: HtmlWriter): PageWriter = dev.scottpierce.html.writer.PageWriter(htmlWriter)
+
     fun closePageWriter(pageWriter: PageWriter) {
         pageWriter.close()
     }
