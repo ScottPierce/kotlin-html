@@ -7,6 +7,8 @@ This entire library is inline functions, and Jacoco doesn't show inline function
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
 -->
 
+# Kotlin HTML
+
 ## JVM Usage
 ```Kotlin
 repositories {
