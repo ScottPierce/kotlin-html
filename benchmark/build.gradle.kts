@@ -2,6 +2,10 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
 }
 
+repositories {
+    mavenLocal()
+}
+
 kotlin {
     jvm()
     macosX64 {
@@ -40,6 +44,9 @@ kotlin {
         }
 
         val macosX64Main by getting {
+            dependencies {
+                implementation(Libs.kotlinx.coroutines.native)
+            }
         }
 
         val linuxX64Main by getting {

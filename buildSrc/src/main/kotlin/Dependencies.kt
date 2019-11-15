@@ -42,5 +42,6 @@ class KotlinxDeps internal constructor() {
 }
 
 class CoroutineDeps internal constructor() {
-    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-M2"
+    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
+    val native = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.2-native-mt-SNAPSHOT"
 }
