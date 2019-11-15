@@ -1,7 +1,8 @@
 package dev.scottpierce.html.benchmark
 
 object SimpleBenchmarkMain {
-    @JvmStatic fun main(args: Array<String>) {
+    @JvmStatic
+    fun main(args: Array<String>) {
         // Warm-up
         SimpleBenchmark.run(false)
         SimpleBenchmark.run(false)
@@ -10,3 +11,4 @@ object SimpleBenchmarkMain {
         SimpleBenchmark.run(true)
     }
 }
+
