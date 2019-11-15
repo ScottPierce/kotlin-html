@@ -29,7 +29,6 @@ class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
             }
         }
 
-
     private var bufferedSegments: MutableList<BufferedPageSegment>? = null
     private var isClosed = false
 

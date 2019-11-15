@@ -18,7 +18,6 @@ import dev.scottpierce.html.generate.model.Context
 import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
-import dev.scottpierce.html.generate.model.PAGE_WRITER
 import dev.scottpierce.html.generate.model.PAGE_WRITER_SCOPE
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END

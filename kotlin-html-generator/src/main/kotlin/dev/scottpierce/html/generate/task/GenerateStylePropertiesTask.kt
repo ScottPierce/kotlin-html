@@ -12,7 +12,6 @@ import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.TypeSpec
 import dev.scottpierce.html.generate.Task
-import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.GeneratedStyleProperty
 import dev.scottpierce.html.generate.model.INLINE_STYLE_CONTEXT
@@ -119,7 +118,6 @@ class GenerateStylePropertiesTask : Task {
                     }.build()
                 )
             }
-
         }
 
         for ((_, typeSpec) in generatedClasses) {

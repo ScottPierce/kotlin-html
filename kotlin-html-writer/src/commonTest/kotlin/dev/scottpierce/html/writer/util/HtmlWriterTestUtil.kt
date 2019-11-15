@@ -5,11 +5,8 @@ import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.FileContext
 import dev.scottpierce.html.writer.element.HtmlContext
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.BaseStyleContext
-import dev.scottpierce.html.writer.style.InlineStyleContext
 import dev.scottpierce.html.writer.style.StyleContext
 import dev.scottpierce.html.writer.style.StyleSheetContext
-import dev.scottpierce.html.writer.style.style
 import dev.scottpierce.html.writer.style.styleSheet
 
 fun writeFile(
