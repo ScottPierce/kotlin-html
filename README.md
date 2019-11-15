@@ -1,11 +1,13 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
 [![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.5.7)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.5.7?tab=overview)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.50-green.svg)](https://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.60-green.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
 This entire library is inline functions, and Jacoco doesn't show inline functions code coverage correctly: https://github.com/jacoco/jacoco/issues/654
 [![codecov](https://codecov.io/gh/ScottPierce/kotlin-html/branch/master/graph/badge.svg)](https://codecov.io/gh/ScottPierce/kotlin-html)
 -->
+
+# Kotlin HTML
 
 ## JVM Usage
 ```Kotlin
