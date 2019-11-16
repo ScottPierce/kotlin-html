@@ -86,13 +86,13 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    writer.writeTag("img")
-    writer.writeStandardAttributes(id, classes, style)
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
-    if (width != null) writer.write(" width=\"").write(width).write('"')
-    if (height != null) writer.write(" height=\"").write(height).write('"')
-    writer.write('>')
+    page.writeTag("img")
+    page.writeStandardAttributes(id, classes, style)
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (alt != null) page.write(" alt=\"").write(alt).write('"')
+    if (width != null) page.write(" width=\"").write(width).write('"')
+    if (height != null) page.write(" height=\"").write(height).write('"')
+    page.write('>')
 }
 
 @HtmlDsl
@@ -106,14 +106,14 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    writer.writeTag("img")
-    writer.writeStandardAttributes(id, classes, style)
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
-    if (width != null) writer.write(" width=\"").write(width).write('"')
-    if (height != null) writer.write(" height=\"").write(height).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("img")
+    page.writeStandardAttributes(id, classes, style)
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (alt != null) page.write(" alt=\"").write(alt).write('"')
+    if (width != null) page.write(" width=\"").write(width).write('"')
+    if (height != null) page.write(" height=\"").write(height).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }
 
 @HtmlDsl
@@ -127,12 +127,12 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    writer.writeTag("img")
-    writer.writeStandardAttributes(id, classes, style)
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
-    if (width != null) writer.write(" width=\"").write(width).write('"')
-    if (height != null) writer.write(" height=\"").write(height).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("img")
+    page.writeStandardAttributes(id, classes, style)
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (alt != null) page.write(" alt=\"").write(alt).write('"')
+    if (width != null) page.write(" width=\"").write(width).write('"')
+    if (height != null) page.write(" height=\"").write(height).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }

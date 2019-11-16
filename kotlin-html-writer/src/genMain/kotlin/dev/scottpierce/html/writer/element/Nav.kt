@@ -61,9 +61,9 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("nav", id, classes, style)
+    page.writeNormalElementStart("nav", id, classes, style)
     func()
-    writer.writeNormalElementEnd("nav")
+    page.writeNormalElementEnd("nav")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("nav", id, classes, style, attrs)
+    page.writeNormalElementStart("nav", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("nav")
+    page.writeNormalElementEnd("nav")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("nav", id, classes, style, attrs)
+    page.writeNormalElementStart("nav", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("nav")
+    page.writeNormalElementEnd("nav")
 }

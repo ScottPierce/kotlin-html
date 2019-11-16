@@ -61,9 +61,9 @@ inline fun BodyContext.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("select", id, classes, style)
-    SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("select")
+    page.writeNormalElementStart("select", id, classes, style)
+    SelectContext(page).apply(func)
+    page.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("select", id, classes, style, attrs)
-    SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("select")
+    page.writeNormalElementStart("select", id, classes, style, attrs)
+    SelectContext(page).apply(func)
+    page.writeNormalElementEnd("select")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.select(
     noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("select", id, classes, style, attrs)
-    SelectContext(writer).apply(func)
-    writer.writeNormalElementEnd("select")
+    page.writeNormalElementStart("select", id, classes, style, attrs)
+    SelectContext(page).apply(func)
+    page.writeNormalElementEnd("select")
 }

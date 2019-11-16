@@ -15,21 +15,21 @@ fun HtmlWriter.inlineFile(file: File) {
 fun HtmlWriterContext.inlineFile(file: File) {
     val fileLines = FileCache.get(file)
 
-    val writerUsesLineSeparator = writer.options.newLine == System.lineSeparator()
+    val writerUsesLineSeparator = page.options.newLine == System.lineSeparator()
     val lastIndex = fileLines.lastIndex
 
-    writer.newLine()
+    page.newLine()
 
     for (i in fileLines.indices) {
         val line = fileLines[i]
 
-        writer.write(line)
+        page.write(line)
 
         if (i != lastIndex) {
             if (writerUsesLineSeparator) {
-                writer.newLine()
+                page.newLine()
             } else {
-                writer.write(PlatformWriter.lineSeparator)
+                page.write(PlatformWriter.lineSeparator)
             }
         }
     }

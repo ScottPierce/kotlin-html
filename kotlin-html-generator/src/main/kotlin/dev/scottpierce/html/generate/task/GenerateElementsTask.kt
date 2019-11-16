@@ -72,7 +72,7 @@ private fun createDslFunction(
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val writer: String = if (isWriter) "this" else "writer"
+    val writer: String = if (isWriter) "this" else "page"
 
     if (isWriter) {
         receiver(HTML_WRITER)

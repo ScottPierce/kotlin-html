@@ -1,17 +1,17 @@
 package dev.scottpierce.html.writer
 
 /**
- * Creates a [PageWriter], and handles it's lifecycle.
+ * Creates a [Page], and handles it's lifecycle.
  *
- * A [PageWriter] should only be accessed inside of the given lambda, and shouldn't be saved for later.
+ * A [Page] should only be accessed inside of the given lambda, and shouldn't be saved for later.
  */
-inline fun pageWriterScope(htmlWriter: HtmlWriter, func: PageWriter.() -> Unit) {
-    InternalApi.closePageWriter(
-        InternalApi.PageWriter(htmlWriter).apply(func)
+inline fun pageWriterScope(htmlWriter: HtmlWriter, func: Page.() -> Unit) {
+    InternalApi.closePage(
+        InternalApi.Page(htmlWriter).apply(func)
     )
 }
 
-class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
+class Page internal constructor(private val primaryWriter: HtmlWriter) {
     private var indent = 0
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
     private val newLineString: String? = if (options.newLine.isEmpty()) null else options.newLine
@@ -32,13 +32,22 @@ class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
     private var bufferedSegments: MutableList<BufferedPageSegment>? = null
     private var isClosed = false
 
+    private var _state: MutableMap<String, Any>? = null
+
+    val state: MutableMap<String, Any>
+        get() = _state ?: run {
+            val state = HashMap<String, Any>(8)
+            _state = state
+            state
+        }
+
     val options: WriteOptions
         get() = primaryWriter.options
 
     var isEmpty: Boolean = true
         private set
 
-    fun newLine(): PageWriter {
+    fun newLine(): Page {
         if (newLineString != null) {
             write(newLineString)
         }
@@ -60,7 +69,7 @@ class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
         indent--
     }
 
-    fun write(c: Char): PageWriter {
+    fun write(c: Char): Page {
         throwIfClosed()
         isEmpty = false
 
@@ -68,14 +77,14 @@ class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
         return this
     }
 
-    fun write(code: String): PageWriter {
+    fun write(code: String): Page {
         throwIfClosed()
         isEmpty = false
         currentWriter.write(code)
         return this
     }
 
-    fun defer(write: PageWriter.() -> Unit) {
+    fun defer(write: Page.() -> Unit) {
         val bufferedSegments: MutableList<BufferedPageSegment> = bufferedSegments
             ?: ArrayList<BufferedPageSegment>(2).also { bufferedSegments = it }
 
@@ -111,6 +120,6 @@ class PageWriter internal constructor(private val primaryWriter: HtmlWriter) {
 }
 
 private sealed class BufferedPageSegment {
-    class Deferred(val write: PageWriter.() -> Unit) : BufferedPageSegment()
+    class Deferred(val write: Page.() -> Unit) : BufferedPageSegment()
     class Written(val writer: StringBuilderHtmlWriter) : BufferedPageSegment()
 }

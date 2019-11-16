@@ -70,12 +70,12 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeTag("meta")
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (content != null) writer.write(" content=\"").write(content).write('"')
-    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
-    writer.write('>')
+    page.writeTag("meta")
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (content != null) page.write(" content=\"").write(content).write('"')
+    if (charset != null) page.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+    page.write('>')
 }
 
 @HtmlDsl
@@ -86,13 +86,13 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeTag("meta")
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (content != null) writer.write(" content=\"").write(content).write('"')
-    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("meta")
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (content != null) page.write(" content=\"").write(content).write('"')
+    if (charset != null) page.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }
 
 @HtmlDsl
@@ -103,11 +103,11 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    writer.writeTag("meta")
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (content != null) writer.write(" content=\"").write(content).write('"')
-    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("meta")
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (content != null) page.write(" content=\"").write(content).write('"')
+    if (charset != null) page.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }

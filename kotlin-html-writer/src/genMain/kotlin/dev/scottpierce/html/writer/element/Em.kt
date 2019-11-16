@@ -46,29 +46,29 @@ inline fun HtmlWriter.em(attrs: List<Pair<String, String?>>, func: BodyContext.(
 
 @HtmlDsl
 inline fun BodyContext.em(func: BodyContext.() -> Unit = {}) {
-    writer.writeTag("em")
-    writer.write('>')
-    writer.indent()
+    page.writeTag("em")
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("em")
+    page.writeNormalElementEnd("em")
 }
 
 @HtmlDsl
 inline fun BodyContext.em(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    writer.writeTag("em")
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("em")
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("em")
+    page.writeNormalElementEnd("em")
 }
 
 @HtmlDsl
 inline fun BodyContext.em(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    writer.writeTag("em")
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("em")
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("em")
+    page.writeNormalElementEnd("em")
 }

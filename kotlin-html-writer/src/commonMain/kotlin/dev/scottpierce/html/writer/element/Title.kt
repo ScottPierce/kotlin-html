@@ -12,6 +12,6 @@ fun HtmlWriter.title(title: String) {
 
 @HtmlDsl
 fun HeadContext.title(title: String) {
-    writer.newLine()
-    writer.write("<title>").write(title).write("</title>")
+    page.newLine()
+    page.write("<title>").write(title).write("</title>")
 }

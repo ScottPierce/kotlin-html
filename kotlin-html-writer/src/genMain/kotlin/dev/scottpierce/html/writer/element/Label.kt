@@ -79,13 +79,13 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("label")
-    writer.writeStandardAttributes(id, classes, style)
-    if (forId != null) writer.write(" for=\"").write(forId).write('"')
-    writer.write('>')
-    writer.indent()
+    page.writeTag("label")
+    page.writeStandardAttributes(id, classes, style)
+    if (forId != null) page.write(" for=\"").write(forId).write('"')
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("label")
+    page.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -97,14 +97,14 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("label")
-    writer.writeStandardAttributes(id, classes, style)
-    if (forId != null) writer.write(" for=\"").write(forId).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("label")
+    page.writeStandardAttributes(id, classes, style)
+    if (forId != null) page.write(" for=\"").write(forId).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("label")
+    page.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -116,12 +116,12 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("label")
-    writer.writeStandardAttributes(id, classes, style)
-    if (forId != null) writer.write(" for=\"").write(forId).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("label")
+    page.writeStandardAttributes(id, classes, style)
+    if (forId != null) page.write(" for=\"").write(forId).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("label")
+    page.writeNormalElementEnd("label")
 }

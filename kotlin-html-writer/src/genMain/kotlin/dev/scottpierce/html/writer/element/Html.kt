@@ -75,13 +75,13 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeTag("html")
-    writer.writeStandardAttributes(null, classes, style)
-    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
-    writer.write('>')
-    writer.indent()
-    HtmlContext(writer).apply(func)
-    writer.writeNormalElementEnd("html")
+    page.writeTag("html")
+    page.writeStandardAttributes(null, classes, style)
+    if (lang != null) page.write(" lang=\"").write(lang).write('"')
+    page.write('>')
+    page.indent()
+    HtmlContext(page).apply(func)
+    page.writeNormalElementEnd("html")
 }
 
 @HtmlDsl
@@ -92,14 +92,14 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeTag("html")
-    writer.writeStandardAttributes(null, classes, style)
-    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
-    HtmlContext(writer).apply(func)
-    writer.writeNormalElementEnd("html")
+    page.writeTag("html")
+    page.writeStandardAttributes(null, classes, style)
+    if (lang != null) page.write(" lang=\"").write(lang).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
+    HtmlContext(page).apply(func)
+    page.writeNormalElementEnd("html")
 }
 
 @HtmlDsl
@@ -110,12 +110,12 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    writer.writeTag("html")
-    writer.writeStandardAttributes(null, classes, style)
-    if (lang != null) writer.write(" lang=\"").write(lang).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
-    HtmlContext(writer).apply(func)
-    writer.writeNormalElementEnd("html")
+    page.writeTag("html")
+    page.writeStandardAttributes(null, classes, style)
+    if (lang != null) page.write(" lang=\"").write(lang).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
+    HtmlContext(page).apply(func)
+    page.writeNormalElementEnd("html")
 }

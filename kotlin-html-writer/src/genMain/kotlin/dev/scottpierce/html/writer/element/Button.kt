@@ -79,13 +79,13 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
-    writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    writer.write('>')
-    writer.indent()
+    page.writeTag("button")
+    page.writeStandardAttributes(id, classes, style)
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    page.writeNormalElementEnd("button")
 }
 
 @HtmlDsl
@@ -97,14 +97,14 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
-    writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("button")
+    page.writeStandardAttributes(id, classes, style)
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    page.writeNormalElementEnd("button")
 }
 
 @HtmlDsl
@@ -116,12 +116,12 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("button")
-    writer.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("button")
+    page.writeStandardAttributes(id, classes, style)
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("button")
+    page.writeNormalElementEnd("button")
 }

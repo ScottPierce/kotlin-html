@@ -61,9 +61,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("ul", id, classes, style)
-    UlContext(writer).apply(func)
-    writer.writeNormalElementEnd("ul")
+    page.writeNormalElementStart("ul", id, classes, style)
+    UlContext(page).apply(func)
+    page.writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(writer).apply(func)
-    writer.writeNormalElementEnd("ul")
+    page.writeNormalElementStart("ul", id, classes, style, attrs)
+    UlContext(page).apply(func)
+    page.writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(writer).apply(func)
-    writer.writeNormalElementEnd("ul")
+    page.writeNormalElementStart("ul", id, classes, style, attrs)
+    UlContext(page).apply(func)
+    page.writeNormalElementEnd("ul")
 }

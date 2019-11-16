@@ -61,9 +61,9 @@ inline fun BodyContext.h3(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("h3", id, classes, style)
+    page.writeNormalElementStart("h3", id, classes, style)
     func()
-    writer.writeNormalElementEnd("h3")
+    page.writeNormalElementEnd("h3")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.h3(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("h3", id, classes, style, attrs)
+    page.writeNormalElementStart("h3", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("h3")
+    page.writeNormalElementEnd("h3")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.h3(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("h3", id, classes, style, attrs)
+    page.writeNormalElementStart("h3", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("h3")
+    page.writeNormalElementEnd("h3")
 }

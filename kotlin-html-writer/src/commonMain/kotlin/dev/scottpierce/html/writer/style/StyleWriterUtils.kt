@@ -15,7 +15,7 @@ inline fun HtmlWriter.styleSheet(func: StyleSheetContext.() -> Unit) {
 
 @HtmlDsl
 inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
-    writer.apply {
+    page.apply {
         if (!isEmpty) newLine()
 
         write("<style type=\"text/css\">")
@@ -38,7 +38,7 @@ inline fun HtmlWriter.media(selector: String, func: StyleSheetContext.() -> Unit
 
 @HtmlDsl
 inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() -> Unit) {
-    writer.apply {
+    page.apply {
         if (!isEmpty) newLine()
 
         write("@media ").write(selector)
@@ -63,7 +63,7 @@ inline fun HtmlWriter.style(selector: String, func: StyleLambda) {
 
 @HtmlDsl
 inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
-    writer.apply {
+    page.apply {
         if (!isEmpty) newLine()
 
         write(selector)
@@ -80,7 +80,7 @@ inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
 }
 
 fun BaseStyleContext.writeStyleProperty(property: String, value: Any) {
-    writer.apply {
+    page.apply {
         if (!isEmpty) newLine()
 
         write(property).write(':')

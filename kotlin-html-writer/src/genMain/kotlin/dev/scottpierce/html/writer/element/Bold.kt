@@ -46,30 +46,30 @@ inline fun HtmlWriter.bold(attrs: List<Pair<String, String?>>, func: BodyContext
 
 @HtmlDsl
 inline fun BodyContext.bold(func: BodyContext.() -> Unit = {}) {
-    writer.writeTag("bold")
-    writer.write('>')
-    writer.indent()
+    page.writeTag("bold")
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("bold")
+    page.writeNormalElementEnd("bold")
 }
 
 @HtmlDsl
 inline fun BodyContext.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit =
         {}) {
-    writer.writeTag("bold")
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("bold")
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("bold")
+    page.writeNormalElementEnd("bold")
 }
 
 @HtmlDsl
 inline fun BodyContext.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    writer.writeTag("bold")
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("bold")
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("bold")
+    page.writeNormalElementEnd("bold")
 }

@@ -8,9 +8,9 @@ package dev.scottpierce.html.writer
  * You probably shouldn't touch things here.
  */
 object InternalApi {
-    fun PageWriter(htmlWriter: HtmlWriter): PageWriter = dev.scottpierce.html.writer.PageWriter(htmlWriter)
+    fun Page(htmlWriter: HtmlWriter): Page = dev.scottpierce.html.writer.Page(htmlWriter)
 
-    fun closePageWriter(pageWriter: PageWriter) {
-        pageWriter.close()
+    fun closePage(page: Page) {
+        page.close()
     }
 }

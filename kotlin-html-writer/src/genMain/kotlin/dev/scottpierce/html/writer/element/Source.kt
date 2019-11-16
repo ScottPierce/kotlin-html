@@ -50,10 +50,10 @@ fun HtmlWriter.source(
 
 @HtmlDsl
 fun VideoContext.source(src: String? = null, type: String? = null) {
-    writer.writeTag("source")
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    writer.write('>')
+    page.writeTag("source")
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    page.write('>')
 }
 
 @HtmlDsl
@@ -62,11 +62,11 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    writer.writeTag("source")
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("source")
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }
 
 @HtmlDsl
@@ -75,9 +75,9 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    writer.writeTag("source")
-    if (src != null) writer.write(" src=\"").write(src).write('"')
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
+    page.writeTag("source")
+    if (src != null) page.write(" src=\"").write(src).write('"')
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
 }

@@ -12,7 +12,7 @@ fun HtmlWriter.docType(docType: DocType) {
 
 @HtmlDsl
 fun FileContext.docType(docType: DocType) {
-    writer.write("<!DOCTYPE ").write(docType.type!!).write('>')
+    page.write("<!DOCTYPE ").write(docType.type!!).write('>')
 }
 
 sealed class DocType(val type: String?) {

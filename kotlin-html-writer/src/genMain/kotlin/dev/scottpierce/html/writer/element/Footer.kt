@@ -61,9 +61,9 @@ inline fun BodyContext.footer(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("footer", id, classes, style)
+    page.writeNormalElementStart("footer", id, classes, style)
     func()
-    writer.writeNormalElementEnd("footer")
+    page.writeNormalElementEnd("footer")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.footer(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("footer", id, classes, style, attrs)
+    page.writeNormalElementStart("footer", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("footer")
+    page.writeNormalElementEnd("footer")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.footer(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("footer", id, classes, style, attrs)
+    page.writeNormalElementStart("footer", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("footer")
+    page.writeNormalElementEnd("footer")
 }

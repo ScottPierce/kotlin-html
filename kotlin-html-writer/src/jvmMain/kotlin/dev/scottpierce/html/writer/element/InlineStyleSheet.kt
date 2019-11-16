@@ -11,7 +11,7 @@ fun HtmlWriter.inlineStyleSheet(file: File) {
 }
 
 fun HtmlWriterContext.inlineStyleSheet(file: File) {
-    writer.apply {
+    page.apply {
         writeTag("style")
         write('>')
         indent()

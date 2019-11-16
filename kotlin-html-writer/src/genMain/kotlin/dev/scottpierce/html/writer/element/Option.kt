@@ -79,13 +79,13 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("option")
-    writer.writeStandardAttributes(id, classes, style)
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    writer.write('>')
-    writer.indent()
-    BodyContext(writer).apply(func)
-    writer.writeNormalElementEnd("option")
+    page.writeTag("option")
+    page.writeStandardAttributes(id, classes, style)
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    page.write('>')
+    page.indent()
+    BodyContext(page).apply(func)
+    page.writeNormalElementEnd("option")
 }
 
 @HtmlDsl
@@ -97,14 +97,14 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("option")
-    writer.writeStandardAttributes(id, classes, style)
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
-    BodyContext(writer).apply(func)
-    writer.writeNormalElementEnd("option")
+    page.writeTag("option")
+    page.writeStandardAttributes(id, classes, style)
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
+    BodyContext(page).apply(func)
+    page.writeNormalElementEnd("option")
 }
 
 @HtmlDsl
@@ -116,12 +116,12 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("option")
-    writer.writeStandardAttributes(id, classes, style)
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
-    BodyContext(writer).apply(func)
-    writer.writeNormalElementEnd("option")
+    page.writeTag("option")
+    page.writeStandardAttributes(id, classes, style)
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
+    BodyContext(page).apply(func)
+    page.writeNormalElementEnd("option")
 }

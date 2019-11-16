@@ -61,9 +61,9 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style)
+    page.writeNormalElementStart("section", id, classes, style)
     func()
-    writer.writeNormalElementEnd("section")
+    page.writeNormalElementEnd("section")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    page.writeNormalElementStart("section", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("section")
+    page.writeNormalElementEnd("section")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeNormalElementStart("section", id, classes, style, attrs)
+    page.writeNormalElementStart("section", id, classes, style, attrs)
     func()
-    writer.writeNormalElementEnd("section")
+    page.writeNormalElementEnd("section")
 }

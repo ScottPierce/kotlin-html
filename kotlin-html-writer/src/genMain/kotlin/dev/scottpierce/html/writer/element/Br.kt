@@ -50,7 +50,7 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    writer.writeVoidElement("br", id, classes, style)
+    page.writeVoidElement("br", id, classes, style)
 }
 
 @HtmlDsl
@@ -60,7 +60,7 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    writer.writeVoidElement("br", id, classes, style, attrs)
+    page.writeVoidElement("br", id, classes, style, attrs)
 }
 
 @HtmlDsl
@@ -70,5 +70,5 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    writer.writeVoidElement("br", id, classes, style, attrs)
+    page.writeVoidElement("br", id, classes, style, attrs)
 }

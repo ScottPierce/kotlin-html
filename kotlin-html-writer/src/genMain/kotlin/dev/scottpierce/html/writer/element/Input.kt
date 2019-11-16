@@ -124,19 +124,19 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("input")
-    writer.writeStandardAttributes(id, classes, style)
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    writer.write('>')
-    writer.indent()
+    page.writeTag("input")
+    page.writeStandardAttributes(id, classes, style)
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("input")
+    page.writeNormalElementEnd("input")
 }
 
 @HtmlDsl
@@ -154,20 +154,20 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("input")
-    writer.writeStandardAttributes(id, classes, style)
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("input")
+    page.writeStandardAttributes(id, classes, style)
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("input")
+    page.writeNormalElementEnd("input")
 }
 
 @HtmlDsl
@@ -185,18 +185,18 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    writer.writeTag("input")
-    writer.writeStandardAttributes(id, classes, style)
-    if (type != null) writer.write(" type=\"").write(type).write('"')
-    if (maxLength != null) writer.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) writer.write(" value=\"").write(value).write('"')
-    if (name != null) writer.write(" name=\"").write(name).write('"')
-    if (placeholder != null) writer.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) writer.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) writer.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    writer.writeAttributes(attrs)
-    writer.write('>')
-    writer.indent()
+    page.writeTag("input")
+    page.writeStandardAttributes(id, classes, style)
+    if (type != null) page.write(" type=\"").write(type).write('"')
+    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) page.write(" value=\"").write(value).write('"')
+    if (name != null) page.write(" name=\"").write(name).write('"')
+    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    page.writeAttributes(attrs)
+    page.write('>')
+    page.indent()
     func()
-    writer.writeNormalElementEnd("input")
+    page.writeNormalElementEnd("input")
 }
