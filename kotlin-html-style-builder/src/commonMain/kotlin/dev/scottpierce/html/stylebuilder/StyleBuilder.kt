@@ -2,7 +2,6 @@ package dev.scottpierce.html.stylebuilder
 
 import dev.scottpierce.html.writer.element.BaseHtmlContext
 import dev.scottpierce.html.writer.element.HtmlDsl
-import dev.scottpierce.html.writer.style.StyleLambda
 
 @HtmlDsl
 fun BaseHtmlContext.style(selector: String, func: StyleBuilderLambda) {
