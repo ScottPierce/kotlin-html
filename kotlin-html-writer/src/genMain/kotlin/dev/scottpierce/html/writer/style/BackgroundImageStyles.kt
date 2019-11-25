@@ -7,6 +7,19 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.backgroundImage(url: String) {
+    writeStyleProperty("background-image", """url('$url')""")
+}
+
+fun BaseStyleContext.backgroundImage(image: BackgroundImage) {
+    writeStyleProperty("background-image", image)
+}
+
+fun BaseStyleContext.backgroundImage(image: BackgroundImage, vararg images: BackgroundImage) {
+    writeStyleProperty("background-image",
+            """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
+}
+
 fun StyleContext.backgroundImage(url: String) {
     writeStyleProperty("background-image", """url('$url')""")
 }

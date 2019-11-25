@@ -9,6 +9,31 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.outlineColor(color: Color) {
+    writeStyleProperty("outline-color", color)
+}
+
+fun BaseStyleContext.outlineColor(hexString: String) {
+    writeStyleProperty("outline-color", Color(hexString))
+}
+
+fun BaseStyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("outline-color", Color(r, g, b))
+}
+
+fun BaseStyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("outline-color", Color(r, g, b, a))
+}
+
 fun StyleContext.outlineColor(color: Color) {
     writeStyleProperty("outline-color", color)
 }

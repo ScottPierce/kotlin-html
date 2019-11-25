@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.position(value: Position) {
+    writeStyleProperty("position", value)
+}
+
 fun StyleContext.position(value: Position) {
     writeStyleProperty("position", value)
 }

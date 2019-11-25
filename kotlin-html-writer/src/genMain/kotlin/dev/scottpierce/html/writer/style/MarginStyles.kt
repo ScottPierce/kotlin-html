@@ -6,6 +6,35 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
+fun BaseStyleContext.margin(value: Dimension) {
+    writeStyleProperty("margin", value)
+}
+
+fun BaseStyleContext.margin(y: Dimension, x: Dimension) {
+    writeStyleProperty("margin", """$y $x""")
+}
+
+fun BaseStyleContext.margin(
+    top: Dimension,
+    x: Dimension,
+    bottom: Dimension
+) {
+    writeStyleProperty("margin", """$top $x $bottom""")
+}
+
+fun BaseStyleContext.margin(
+    top: Dimension,
+    right: Dimension,
+    bottom: Dimension,
+    left: Dimension
+) {
+    writeStyleProperty("margin", """$top $right $bottom $left""")
+}
+
+fun BaseStyleContext.margin(value: CssValue) {
+    writeStyleProperty("margin", value)
+}
+
 fun StyleContext.margin(value: Dimension) {
     writeStyleProperty("margin", value)
 }

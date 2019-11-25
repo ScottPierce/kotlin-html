@@ -9,6 +9,7 @@ import com.squareup.kotlinpoet.STRING
 val HTML_WRITER = ClassName("dev.scottpierce.html.writer", "HtmlWriter")
 val PAGE_WRITER = ClassName("dev.scottpierce.html.writer", "PageWriter")
 val INLINE_STYLE = ClassName("dev.scottpierce.html.writer.style", "InlineStyle")
+val BASE_HTML_CONTEXT = ClassName("dev.scottpierce.html.writer.element", "BaseHtmlContext")
 val BASE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "BaseStyleContext")
 val STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "StyleContext")
 val INLINE_STYLE_CONTEXT = ClassName("dev.scottpierce.html.writer.style", "InlineStyleContext")
@@ -30,5 +31,6 @@ val WRITE_VOID_ELEMENT = MemberName("dev.scottpierce.html.writer.element", "writ
 val STYLE_MEMBER = MemberName("dev.scottpierce.html.writer.style", "style")
 val ASSERT_EQUALS = MemberName("kotlin.test", "assertEquals")
 val PAGE_WRITER_SCOPE = MemberName("dev.scottpierce.html.writer", "pageWriterScope")
+val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
 
 fun styleClassName(simpleName: String): ClassName = ClassName(Constants.STYLE_PACKAGE, simpleName)

@@ -9,6 +9,31 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.color(color: Color) {
+    writeStyleProperty("color", color)
+}
+
+fun BaseStyleContext.color(hexString: String) {
+    writeStyleProperty("color", Color(hexString))
+}
+
+fun BaseStyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("color", Color(r, g, b))
+}
+
+fun BaseStyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("color", Color(r, g, b, a))
+}
+
 fun StyleContext.color(color: Color) {
     writeStyleProperty("color", color)
 }

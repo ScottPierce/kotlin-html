@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.fontFamily(value: String) {
+    writeStyleProperty("font-family", value)
+}
+
+fun BaseStyleContext.fontFamily(value: CssValue) {
+    writeStyleProperty("font-family", value)
+}
+
 fun StyleContext.fontFamily(value: String) {
     writeStyleProperty("font-family", value)
 }

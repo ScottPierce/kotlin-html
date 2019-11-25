@@ -7,6 +7,18 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.backgroundPosition(x: BackgroundPosition, y: BackgroundPosition? = null) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+}
+
+fun BaseStyleContext.backgroundPosition(x: Dimension, y: Dimension? = null) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+}
+
+fun BaseStyleContext.backgroundPosition(value: CssValue) {
+    writeStyleProperty("background-position", value)
+}
+
 fun StyleContext.backgroundPosition(x: BackgroundPosition, y: BackgroundPosition? = null) {
     writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
 }

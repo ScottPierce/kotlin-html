@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.outlineStyle(value: OutlineStyle) {
+    writeStyleProperty("outline-style", value)
+}
+
 fun StyleContext.outlineStyle(value: OutlineStyle) {
     writeStyleProperty("outline-style", value)
 }

@@ -6,6 +6,14 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
+fun BaseStyleContext.paddingLeft(value: Dimension) {
+    writeStyleProperty("padding-left", value)
+}
+
+fun BaseStyleContext.paddingLeft(value: CssValue) {
+    writeStyleProperty("padding-left", value)
+}
+
 fun StyleContext.paddingLeft(value: Dimension) {
     writeStyleProperty("padding-left", value)
 }

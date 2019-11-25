@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.textDecorationStyle(value: TextDecorationStyle) {
+    writeStyleProperty("text-decoration-style", value)
+}
+
 fun StyleContext.textDecorationStyle(value: TextDecorationStyle) {
     writeStyleProperty("text-decoration-style", value)
 }

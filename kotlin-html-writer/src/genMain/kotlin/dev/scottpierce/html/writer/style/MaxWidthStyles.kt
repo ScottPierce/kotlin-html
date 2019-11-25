@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.maxWidth(value: Dimension) {
+    writeStyleProperty("max-width", value)
+}
+
+fun BaseStyleContext.maxWidth(value: MaxWidth) {
+    writeStyleProperty("max-width", value)
+}
+
 fun StyleContext.maxWidth(value: Dimension) {
     writeStyleProperty("max-width", value)
 }

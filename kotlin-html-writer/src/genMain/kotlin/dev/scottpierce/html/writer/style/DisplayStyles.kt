@@ -7,6 +7,30 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.display(value: Display) {
+    writeStyleProperty("display", value)
+}
+
+fun BaseStyleContext.displayNone() {
+    writeStyleProperty("display", Display.NONE)
+}
+
+fun BaseStyleContext.displayInline() {
+    writeStyleProperty("display", Display.INLINE)
+}
+
+fun BaseStyleContext.displayBlock() {
+    writeStyleProperty("display", Display.BLOCK)
+}
+
+fun BaseStyleContext.displayFlex() {
+    writeStyleProperty("display", Display.FLEX)
+}
+
+fun BaseStyleContext.displayGrid() {
+    writeStyleProperty("display", Display.GRID)
+}
+
 fun StyleContext.display(value: Display) {
     writeStyleProperty("display", value)
 }

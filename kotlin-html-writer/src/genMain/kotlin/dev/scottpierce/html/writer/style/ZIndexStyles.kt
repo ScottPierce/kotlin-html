@@ -8,6 +8,14 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.zIndex(value: Int) {
+    writeStyleProperty("z-index", value)
+}
+
+fun BaseStyleContext.zIndex(value: ZIndex) {
+    writeStyleProperty("z-index", value)
+}
+
 fun StyleContext.zIndex(value: Int) {
     writeStyleProperty("z-index", value)
 }

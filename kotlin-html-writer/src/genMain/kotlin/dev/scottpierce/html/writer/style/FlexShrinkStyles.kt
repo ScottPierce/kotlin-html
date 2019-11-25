@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.Number
 import kotlin.Suppress
 
+fun BaseStyleContext.flexShrink(value: Number) {
+    writeStyleProperty("flex-shrink", value)
+}
+
+fun BaseStyleContext.flexShrink(value: CssValue) {
+    writeStyleProperty("flex-shrink", value)
+}
+
 fun StyleContext.flexShrink(value: Number) {
     writeStyleProperty("flex-shrink", value)
 }

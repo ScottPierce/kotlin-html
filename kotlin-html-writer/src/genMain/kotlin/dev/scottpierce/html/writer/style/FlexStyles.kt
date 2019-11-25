@@ -8,6 +8,26 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.flex(
+    flexGrow: Number,
+    flexShrink: Number,
+    flexBasis: Dimension
+) {
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+}
+
+fun BaseStyleContext.flex(
+    flexGrow: Number,
+    flexShrink: Number,
+    flexBasis: FlexBasis
+) {
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+}
+
+fun BaseStyleContext.flex(value: Flex) {
+    writeStyleProperty("flex", value)
+}
+
 fun StyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,

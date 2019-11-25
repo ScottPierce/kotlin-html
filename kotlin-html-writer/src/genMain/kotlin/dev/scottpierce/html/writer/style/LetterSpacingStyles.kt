@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.letterSpacing(value: Dimension) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun BaseStyleContext.letterSpacing(value: LetterSpacing) {
+    writeStyleProperty("letter-spacing", value)
+}
+
 fun StyleContext.letterSpacing(value: Dimension) {
     writeStyleProperty("letter-spacing", value)
 }

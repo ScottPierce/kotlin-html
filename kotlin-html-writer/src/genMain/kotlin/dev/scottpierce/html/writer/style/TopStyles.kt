@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.top(value: Dimension) {
+    writeStyleProperty("top", value)
+}
+
+fun BaseStyleContext.top(value: Top) {
+    writeStyleProperty("top", value)
+}
+
 fun StyleContext.top(value: Dimension) {
     writeStyleProperty("top", value)
 }

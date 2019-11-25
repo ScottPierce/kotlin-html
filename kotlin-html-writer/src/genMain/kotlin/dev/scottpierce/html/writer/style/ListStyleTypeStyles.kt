@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.listStyleType(value: ListStyleType) {
+    writeStyleProperty("list-style-type", value)
+}
+
 fun StyleContext.listStyleType(value: ListStyleType) {
     writeStyleProperty("list-style-type", value)
 }

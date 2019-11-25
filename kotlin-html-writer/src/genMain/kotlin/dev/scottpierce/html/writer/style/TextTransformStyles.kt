@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.textTransform(value: TextTransform) {
+    writeStyleProperty("text-transform", value)
+}
+
 fun StyleContext.textTransform(value: TextTransform) {
     writeStyleProperty("text-transform", value)
 }

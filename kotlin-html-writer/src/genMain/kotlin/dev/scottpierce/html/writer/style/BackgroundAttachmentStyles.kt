@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.backgroundAttachment(value: BackgroundAttachment) {
+    writeStyleProperty("background-attachment", value)
+}
+
 fun StyleContext.backgroundAttachment(value: BackgroundAttachment) {
     writeStyleProperty("background-attachment", value)
 }

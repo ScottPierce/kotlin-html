@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.fontSize(value: Dimension) {
+    writeStyleProperty("font-size", value)
+}
+
+fun BaseStyleContext.fontSize(value: FontSize) {
+    writeStyleProperty("font-size", value)
+}
+
 fun StyleContext.fontSize(value: Dimension) {
     writeStyleProperty("font-size", value)
 }

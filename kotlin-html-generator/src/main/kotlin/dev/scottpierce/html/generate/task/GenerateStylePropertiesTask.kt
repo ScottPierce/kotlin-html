@@ -12,11 +12,13 @@ import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.TypeSpec
 import dev.scottpierce.html.generate.Task
+import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.GeneratedStyleProperty
 import dev.scottpierce.html.generate.model.INLINE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.ParameterType
 import dev.scottpierce.html.generate.model.STYLE_CONTEXT
+import dev.scottpierce.html.generate.model.WRITE_STYLE_PROPERTY
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,8 +29,7 @@ class GenerateStylePropertiesTask : Task {
     companion object {
         private val STYLE_PROPERTIES_FILE = File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/writer/style")
         private val STYLE_PROPERTY_TESTS_FILE = File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/writer/style")
-        private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
-        private val STYLE_CONTEXTS = listOf(STYLE_CONTEXT, INLINE_STYLE_CONTEXT)
+        private val STYLE_CONTEXTS = listOf(BASE_STYLE_CONTEXT, STYLE_CONTEXT, INLINE_STYLE_CONTEXT)
     }
 
     override val name: String = "Generate Style Properties"

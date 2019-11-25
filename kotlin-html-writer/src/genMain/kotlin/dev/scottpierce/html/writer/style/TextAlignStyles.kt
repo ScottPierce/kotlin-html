@@ -7,6 +7,10 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.textAlign(value: TextAlign) {
+    writeStyleProperty("text-align", value)
+}
+
 fun StyleContext.textAlign(value: TextAlign) {
     writeStyleProperty("text-align", value)
 }

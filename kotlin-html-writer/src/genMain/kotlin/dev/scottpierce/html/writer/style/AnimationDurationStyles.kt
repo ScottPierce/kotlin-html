@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.animationDuration(value: String) {
+    writeStyleProperty("animation-duration", value)
+}
+
+fun BaseStyleContext.animationDuration(value: CssValue) {
+    writeStyleProperty("animation-duration", value)
+}
+
 fun StyleContext.animationDuration(value: String) {
     writeStyleProperty("animation-duration", value)
 }

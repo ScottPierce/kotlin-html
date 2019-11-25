@@ -7,6 +7,14 @@ package dev.scottpierce.html.writer.style
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.flexBasis(value: Dimension) {
+    writeStyleProperty("flex-basis", value)
+}
+
+fun BaseStyleContext.flexBasis(value: FlexBasis) {
+    writeStyleProperty("flex-basis", value)
+}
+
 fun StyleContext.flexBasis(value: Dimension) {
     writeStyleProperty("flex-basis", value)
 }

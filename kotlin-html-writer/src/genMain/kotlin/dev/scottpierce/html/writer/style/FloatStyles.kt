@@ -6,6 +6,10 @@ package dev.scottpierce.html.writer.style
 
 import kotlin.Suppress
 
+fun BaseStyleContext.float(value: FloatDirection) {
+    writeStyleProperty("float", value)
+}
+
 fun StyleContext.float(value: FloatDirection) {
     writeStyleProperty("float", value)
 }
