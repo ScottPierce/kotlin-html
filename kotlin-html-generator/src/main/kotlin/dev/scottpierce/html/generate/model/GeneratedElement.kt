@@ -274,7 +274,7 @@ enum class Context {
 
     val contextClassName: ClassName by lazy {
         ClassName(
-            packageName = "dev.scottpierce.html.writer.element",
+            packageName = "dev.scottpierce.html.writer",
             simpleNames = listOf("${name}Context")
         )
     }

@@ -1,12 +1,14 @@
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.FileContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
 fun HtmlWriter.docType(docType: DocType) {
     pageWriterScope(this) {
-        FileContext(this).docType(docType)
+        docType(docType)
     }
 }
 

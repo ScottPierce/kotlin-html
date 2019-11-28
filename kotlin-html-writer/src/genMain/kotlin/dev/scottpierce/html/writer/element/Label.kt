@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -19,13 +21,13 @@ inline fun HtmlWriter.label(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("label")
-        this.writeStandardAttributes(id, classes, style)
-        if (forId != null) this.write(" for=\"").write(forId).write('"')
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("label")
+        writeTag("label")
+        writeStandardAttributes(id, classes, style)
+        if (forId != null) page.write(" for=\"").write(forId).write('"')
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("label")
     }
 }
 
@@ -39,14 +41,14 @@ inline fun HtmlWriter.label(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("label")
-        this.writeStandardAttributes(id, classes, style)
-        if (forId != null) this.write(" for=\"").write(forId).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("label")
+        writeTag("label")
+        writeStandardAttributes(id, classes, style)
+        if (forId != null) page.write(" for=\"").write(forId).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("label")
     }
 }
 
@@ -60,14 +62,14 @@ inline fun HtmlWriter.label(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("label")
-        this.writeStandardAttributes(id, classes, style)
-        if (forId != null) this.write(" for=\"").write(forId).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("label")
+        writeTag("label")
+        writeStandardAttributes(id, classes, style)
+        if (forId != null) page.write(" for=\"").write(forId).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("label")
     }
 }
 
@@ -79,13 +81,13 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("label")
+    writeStandardAttributes(id, classes, style)
     if (forId != null) page.write(" for=\"").write(forId).write('"')
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("label")
+    writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -97,14 +99,14 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("label")
+    writeStandardAttributes(id, classes, style)
     if (forId != null) page.write(" for=\"").write(forId).write('"')
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("label")
+    writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -116,12 +118,12 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("label")
+    writeStandardAttributes(id, classes, style)
     if (forId != null) page.write(" for=\"").write(forId).write('"')
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("label")
+    writeNormalElementEnd("label")
 }

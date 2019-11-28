@@ -2,6 +2,8 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
@@ -16,12 +18,12 @@ fun HtmlWriter.meta(
     httpEquiv: String? = null
 ) {
     pageWriterScope(this) {
-        this.writeTag("meta")
-        if (name != null) this.write(" name=\"").write(name).write('"')
-        if (content != null) this.write(" content=\"").write(content).write('"')
-        if (charset != null) this.write(" charset=\"").write(charset).write('"')
-        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-        this.write('>')
+        writeTag("meta")
+        if (name != null) page.write(" name=\"").write(name).write('"')
+        if (content != null) page.write(" content=\"").write(content).write('"')
+        if (charset != null) page.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+        page.write('>')
     }
 }
 
@@ -34,13 +36,13 @@ fun HtmlWriter.meta(
     httpEquiv: String? = null
 ) {
     pageWriterScope(this) {
-        this.writeTag("meta")
-        if (name != null) this.write(" name=\"").write(name).write('"')
-        if (content != null) this.write(" content=\"").write(content).write('"')
-        if (charset != null) this.write(" charset=\"").write(charset).write('"')
-        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
+        writeTag("meta")
+        if (name != null) page.write(" name=\"").write(name).write('"')
+        if (content != null) page.write(" content=\"").write(content).write('"')
+        if (charset != null) page.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
     }
 }
 
@@ -53,13 +55,13 @@ fun HtmlWriter.meta(
     httpEquiv: String? = null
 ) {
     pageWriterScope(this) {
-        this.writeTag("meta")
-        if (name != null) this.write(" name=\"").write(name).write('"')
-        if (content != null) this.write(" content=\"").write(content).write('"')
-        if (charset != null) this.write(" charset=\"").write(charset).write('"')
-        if (httpEquiv != null) this.write(" http-equiv=\"").write(httpEquiv).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
+        writeTag("meta")
+        if (name != null) page.write(" name=\"").write(name).write('"')
+        if (content != null) page.write(" content=\"").write(content).write('"')
+        if (charset != null) page.write(" charset=\"").write(charset).write('"')
+        if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
     }
 }
 
@@ -70,7 +72,7 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
+    writeTag("meta")
     if (name != null) page.write(" name=\"").write(name).write('"')
     if (content != null) page.write(" content=\"").write(content).write('"')
     if (charset != null) page.write(" charset=\"").write(charset).write('"')
@@ -86,7 +88,7 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
+    writeTag("meta")
     if (name != null) page.write(" name=\"").write(name).write('"')
     if (content != null) page.write(" content=\"").write(content).write('"')
     if (charset != null) page.write(" charset=\"").write(charset).write('"')
@@ -103,7 +105,7 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
+    writeTag("meta")
     if (name != null) page.write(" name=\"").write(name).write('"')
     if (content != null) page.write(" content=\"").write(content).write('"')
     if (charset != null) page.write(" charset=\"").write(charset).write('"')

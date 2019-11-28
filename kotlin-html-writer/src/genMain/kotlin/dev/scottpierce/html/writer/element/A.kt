@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -22,16 +24,16 @@ inline fun HtmlWriter.a(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("a")
-        this.writeStandardAttributes(id, classes, style)
-        if (href != null) this.write(" href=\"").write(href).write('"')
-        if (target != null) this.write(" target=\"").write(target).write('"')
-        if (rel != null) this.write(" rel=\"").write(rel).write('"')
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("a")
+        writeTag("a")
+        writeStandardAttributes(id, classes, style)
+        if (href != null) page.write(" href=\"").write(href).write('"')
+        if (target != null) page.write(" target=\"").write(target).write('"')
+        if (rel != null) page.write(" rel=\"").write(rel).write('"')
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("a")
     }
 }
 
@@ -48,17 +50,17 @@ inline fun HtmlWriter.a(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("a")
-        this.writeStandardAttributes(id, classes, style)
-        if (href != null) this.write(" href=\"").write(href).write('"')
-        if (target != null) this.write(" target=\"").write(target).write('"')
-        if (rel != null) this.write(" rel=\"").write(rel).write('"')
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("a")
+        writeTag("a")
+        writeStandardAttributes(id, classes, style)
+        if (href != null) page.write(" href=\"").write(href).write('"')
+        if (target != null) page.write(" target=\"").write(target).write('"')
+        if (rel != null) page.write(" rel=\"").write(rel).write('"')
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("a")
     }
 }
 
@@ -75,17 +77,17 @@ inline fun HtmlWriter.a(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("a")
-        this.writeStandardAttributes(id, classes, style)
-        if (href != null) this.write(" href=\"").write(href).write('"')
-        if (target != null) this.write(" target=\"").write(target).write('"')
-        if (rel != null) this.write(" rel=\"").write(rel).write('"')
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("a")
+        writeTag("a")
+        writeStandardAttributes(id, classes, style)
+        if (href != null) page.write(" href=\"").write(href).write('"')
+        if (target != null) page.write(" target=\"").write(target).write('"')
+        if (rel != null) page.write(" rel=\"").write(rel).write('"')
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("a")
     }
 }
 
@@ -100,8 +102,8 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("a")
+    writeStandardAttributes(id, classes, style)
     if (href != null) page.write(" href=\"").write(href).write('"')
     if (target != null) page.write(" target=\"").write(target).write('"')
     if (rel != null) page.write(" rel=\"").write(rel).write('"')
@@ -109,7 +111,7 @@ inline fun BodyContext.a(
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("a")
+    writeNormalElementEnd("a")
 }
 
 @HtmlDsl
@@ -124,8 +126,8 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("a")
+    writeStandardAttributes(id, classes, style)
     if (href != null) page.write(" href=\"").write(href).write('"')
     if (target != null) page.write(" target=\"").write(target).write('"')
     if (rel != null) page.write(" rel=\"").write(rel).write('"')
@@ -134,7 +136,7 @@ inline fun BodyContext.a(
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("a")
+    writeNormalElementEnd("a")
 }
 
 @HtmlDsl
@@ -149,8 +151,8 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("a")
+    writeStandardAttributes(id, classes, style)
     if (href != null) page.write(" href=\"").write(href).write('"')
     if (target != null) page.write(" target=\"").write(target).write('"')
     if (rel != null) page.write(" rel=\"").write(rel).write('"')
@@ -159,5 +161,5 @@ inline fun BodyContext.a(
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("a")
+    writeNormalElementEnd("a")
 }

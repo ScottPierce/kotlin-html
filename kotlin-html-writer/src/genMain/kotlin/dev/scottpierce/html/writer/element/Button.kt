@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -19,13 +21,13 @@ inline fun HtmlWriter.button(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("button")
-        this.writeStandardAttributes(id, classes, style)
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("button")
+        writeTag("button")
+        writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("button")
     }
 }
 
@@ -39,14 +41,14 @@ inline fun HtmlWriter.button(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("button")
-        this.writeStandardAttributes(id, classes, style)
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("button")
+        writeTag("button")
+        writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("button")
     }
 }
 
@@ -60,14 +62,14 @@ inline fun HtmlWriter.button(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("button")
-        this.writeStandardAttributes(id, classes, style)
-        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("button")
+        writeTag("button")
+        writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("button")
     }
 }
 
@@ -79,13 +81,13 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("button")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("button")
+    writeStandardAttributes(id, classes, style)
     if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("button")
+    writeNormalElementEnd("button")
 }
 
 @HtmlDsl
@@ -97,14 +99,14 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("button")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("button")
+    writeStandardAttributes(id, classes, style)
     if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("button")
+    writeNormalElementEnd("button")
 }
 
 @HtmlDsl
@@ -116,12 +118,12 @@ inline fun BodyContext.button(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("button")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("button")
+    writeStandardAttributes(id, classes, style)
     if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("button")
+    writeNormalElementEnd("button")
 }

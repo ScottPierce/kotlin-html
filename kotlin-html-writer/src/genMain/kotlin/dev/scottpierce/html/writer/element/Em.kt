@@ -2,6 +2,8 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
@@ -12,63 +14,63 @@ import kotlin.collections.List
 @HtmlDsl
 inline fun HtmlWriter.em(func: BodyContext.() -> Unit = {}) {
     pageWriterScope(this) {
-        this.writeTag("em")
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("em")
+        writeTag("em")
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("em")
     }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.em(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
     pageWriterScope(this) {
-        this.writeTag("em")
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("em")
+        writeTag("em")
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("em")
     }
 }
 
 @HtmlDsl
 inline fun HtmlWriter.em(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
     pageWriterScope(this) {
-        this.writeTag("em")
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("em")
+        writeTag("em")
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("em")
     }
 }
 
 @HtmlDsl
 inline fun BodyContext.em(func: BodyContext.() -> Unit = {}) {
-    page.writeTag("em")
+    writeTag("em")
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("em")
+    writeNormalElementEnd("em")
 }
 
 @HtmlDsl
 inline fun BodyContext.em(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    page.writeTag("em")
+    writeTag("em")
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("em")
+    writeNormalElementEnd("em")
 }
 
 @HtmlDsl
 inline fun BodyContext.em(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    page.writeTag("em")
+    writeTag("em")
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
     func()
-    page.writeNormalElementEnd("em")
+    writeNormalElementEnd("em")
 }

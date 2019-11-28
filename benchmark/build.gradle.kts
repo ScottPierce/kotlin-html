@@ -22,20 +22,20 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":kotlin-html-writer"))
-                implementation(Libs.kotlin.stdlib.common)
+                implementation(Deps.kotlin.stdlib.common)
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                implementation(Libs.kotlin.stdlib.jvm)
-                implementation(Libs.kotlinx.html)
+                implementation(Deps.kotlin.stdlib.jvm)
+                implementation(Deps.kotlinx.html)
             }
         }
 
         val jvmTest by getting {
             dependencies {
-                implementation(Libs.kotlin.test.jvm)
+                implementation(Deps.kotlin.test.jvm)
             }
         }
 

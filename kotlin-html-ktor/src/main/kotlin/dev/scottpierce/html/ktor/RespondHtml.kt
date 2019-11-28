@@ -5,8 +5,8 @@ package dev.scottpierce.html.ktor
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.DocType
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
+import dev.scottpierce.html.writer.FileContext
+import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.element.docType
 import dev.scottpierce.html.writer.element.html
 import io.ktor.application.ApplicationCall

@@ -1,7 +1,5 @@
 package dev.scottpierce.html.writer
 
-import dev.scottpierce.html.writer.element.HtmlDsl
-
 @HtmlDsl
 interface HtmlWriter {
     val options: WriteOptions

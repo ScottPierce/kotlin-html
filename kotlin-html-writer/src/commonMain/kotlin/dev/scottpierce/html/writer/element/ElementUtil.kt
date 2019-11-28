@@ -1,10 +1,67 @@
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HtmlWriterContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.Page
-import dev.scottpierce.html.writer.style.InlineStyleContext
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 
-fun Page.writeNormalElementStart(
+fun HtmlWriterContext.writeNormalElementStart(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: InlineStyleLambda?
+) {
+    page.apply {
+        writeTag(tag)
+        writeStandardAttributes(id, classes, style)
+        write('>')
+        indent()
+    }
+}
+
+fun HtmlWriterContext.writeNormalElementStart(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: InlineStyleLambda?,
+    attrs: Array<out Pair<String, String?>>
+) {
+    page.apply {
+        writeTag(tag)
+        writeStandardAttributes(id, classes, style)
+        writeAttributes(attrs)
+
+        write('>')
+        indent()
+    }
+}
+
+fun HtmlWriterContext.writeNormalElementStart(
+    tag: String,
+    id: String?,
+    classes: String?,
+    style: InlineStyleLambda?,
+    attrs: List<Pair<String, String?>>
+) {
+    page.apply {
+        writeTag(tag)
+        writeStandardAttributes(id, classes, style)
+        writeAttributes(attrs)
+
+        write('>')
+        indent()
+    }
+}
+
+fun HtmlWriterContext.writeNormalElementEnd(tag: String) {
+    page.apply {
+        unindent()
+        newLine()
+        write("</").write(tag).write('>')
+    }
+}
+
+fun HtmlWriterContext.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -12,95 +69,55 @@ fun Page.writeNormalElementStart(
 ) {
     writeTag(tag)
     writeStandardAttributes(id, classes, style)
-    write('>')
-    indent()
+    page.write('>')
 }
 
-fun Page.writeNormalElementStart(
+fun HtmlWriterContext.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
     style: InlineStyleLambda?,
     attrs: Array<out Pair<String, String?>>
 ) {
-    writeTag(tag)
-    writeStandardAttributes(id, classes, style)
-    writeAttributes(attrs)
-
-    write('>')
-    indent()
+    page.apply {
+        writeTag(tag)
+        writeStandardAttributes(id, classes, style)
+        writeAttributes(attrs)
+        write('>')
+    }
 }
 
-fun Page.writeNormalElementStart(
+fun HtmlWriterContext.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
     style: InlineStyleLambda?,
     attrs: List<Pair<String, String?>>
 ) {
-    writeTag(tag)
-    writeStandardAttributes(id, classes, style)
-    writeAttributes(attrs)
-
-    write('>')
-    indent()
+    page.apply {
+        writeTag(tag)
+        writeStandardAttributes(id, classes, style)
+        writeAttributes(attrs)
+        write('>')
+    }
 }
 
-fun Page.writeNormalElementEnd(tag: String) {
-    unindent()
-    newLine()
-    write("</").write(tag).write('>')
+fun HtmlWriterContext.writeTag(tag: String) {
+    page.apply {
+        if (!isEmpty) newLine()
+        write('<').write(tag)
+    }
 }
 
-fun Page.writeVoidElement(
-    tag: String,
-    id: String?,
-    classes: String?,
-    style: InlineStyleLambda?
-) {
-    writeTag(tag)
-    writeStandardAttributes(id, classes, style)
-    write('>')
-}
-
-fun Page.writeVoidElement(
-    tag: String,
-    id: String?,
-    classes: String?,
-    style: InlineStyleLambda?,
-    attrs: Array<out Pair<String, String?>>
-) {
-    writeTag(tag)
-    writeStandardAttributes(id, classes, style)
-    writeAttributes(attrs)
-    write('>')
-}
-
-fun Page.writeVoidElement(
-    tag: String,
-    id: String?,
-    classes: String?,
-    style: InlineStyleLambda?,
-    attrs: List<Pair<String, String?>>
-) {
-    writeTag(tag)
-    writeStandardAttributes(id, classes, style)
-    writeAttributes(attrs)
-    write('>')
-}
-
-fun Page.writeTag(tag: String) {
-    if (!isEmpty) newLine()
-    write('<').write(tag)
-}
-
-fun Page.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
-    if (id != null) write(" id=\"").write(id).write('"')
-    if (classes != null) write(" class=\"").write(classes).write('"')
-    if (style != null) {
-        write(" style=\"")
-        InlineStyleContext(this).style()
-        write('"')
+fun HtmlWriterContext.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
+    page.apply {
+        if (id != null) write(" id=\"").write(id).write('"')
+        if (classes != null) write(" class=\"").write(classes).write('"')
+        if (style != null) {
+            write(" style=\"")
+            (this@writeStandardAttributes as InlineStyleContext).style()
+            write('"')
+        }
     }
 }
 

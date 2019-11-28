@@ -1,13 +1,13 @@
 object Versions {
-    const val kotlin = "1.3.60"
-    const val ktor = "1.2.2"
+    const val kotlin = "1.3.61"
+    const val ktor = "1.2.6"
 }
 
 object Plugins {
     val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
-object Libs {
+object Deps {
     val kotlin = KotlinDeps()
     val kotlinx = KotlinxDeps()
     val kotlinPoet = "com.squareup:kotlinpoet:1.4.3"
@@ -16,17 +16,17 @@ object Libs {
 }
 
 class KotlinDeps internal constructor() {
-    val stdlib = KotlinStdLibLibs()
-    val test = KotlinTestLibs()
+    val stdlib = KotlinStdLibDeps()
+    val test = KotlinTestDeps()
 }
 
-class KotlinStdLibLibs internal constructor() {
+class KotlinStdLibDeps internal constructor() {
     val common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
     val jvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     val js = "org.jetbrains.kotlin:kotlin-stdlib-js:${Versions.kotlin}"
 }
 
-class KotlinTestLibs internal constructor() {
+class KotlinTestDeps internal constructor() {
     val common: List<String> = listOf(
         "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}",
         "org.jetbrains.kotlin:kotlin-test-annotations-common:${Versions.kotlin}"

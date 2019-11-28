@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -18,9 +20,9 @@ inline fun HtmlWriter.span(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("span", id, classes, style)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("span")
+        writeNormalElementStart("span", id, classes, style)
+        func()
+        writeNormalElementEnd("span")
     }
 }
 
@@ -33,9 +35,9 @@ inline fun HtmlWriter.span(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("span", id, classes, style, attrs)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("span")
+        writeNormalElementStart("span", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("span")
     }
 }
 
@@ -48,9 +50,9 @@ inline fun HtmlWriter.span(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("span", id, classes, style, attrs)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("span")
+        writeNormalElementStart("span", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("span")
     }
 }
 
@@ -61,9 +63,9 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style)
+    writeNormalElementStart("span", id, classes, style)
     func()
-    page.writeNormalElementEnd("span")
+    writeNormalElementEnd("span")
 }
 
 @HtmlDsl
@@ -74,9 +76,9 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style, attrs)
+    writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("span")
+    writeNormalElementEnd("span")
 }
 
 @HtmlDsl
@@ -87,7 +89,7 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style, attrs)
+    writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("span")
+    writeNormalElementEnd("span")
 }

@@ -2,9 +2,12 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -18,9 +21,9 @@ inline fun HtmlWriter.body(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("body", id, classes, style)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("body")
+        writeNormalElementStart("body", id, classes, style)
+        func()
+        writeNormalElementEnd("body")
     }
 }
 
@@ -33,9 +36,9 @@ inline fun HtmlWriter.body(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("body", id, classes, style, attrs)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("body")
+        writeNormalElementStart("body", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("body")
     }
 }
 
@@ -48,9 +51,9 @@ inline fun HtmlWriter.body(
     func: BodyContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("body", id, classes, style, attrs)
-        BodyContext(this).apply(func)
-        this.writeNormalElementEnd("body")
+        writeNormalElementStart("body", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("body")
     }
 }
 
@@ -61,9 +64,9 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    writeNormalElementStart("body", id, classes, style)
+    (this as BodyContext).apply(func)
+    writeNormalElementEnd("body")
 }
 
 @HtmlDsl
@@ -74,9 +77,9 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style, attrs)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    writeNormalElementStart("body", id, classes, style, attrs)
+    (this as BodyContext).apply(func)
+    writeNormalElementEnd("body")
 }
 
 @HtmlDsl
@@ -87,7 +90,7 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style, attrs)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    writeNormalElementStart("body", id, classes, style, attrs)
+    (this as BodyContext).apply(func)
+    writeNormalElementEnd("body")
 }

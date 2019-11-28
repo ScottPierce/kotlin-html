@@ -2,8 +2,8 @@ package dev.scottpierce.html.writer.util
 
 import dev.scottpierce.html.writer.StringBuilderHtmlWriter
 import dev.scottpierce.html.writer.WriteOptions
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
+import dev.scottpierce.html.writer.FileContext
+import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.StyleContext
 import dev.scottpierce.html.writer.style.StyleSheetContext

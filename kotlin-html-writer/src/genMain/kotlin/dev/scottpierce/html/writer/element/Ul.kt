@@ -2,9 +2,12 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.UlContext
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -18,9 +21,9 @@ inline fun HtmlWriter.ul(
     func: UlContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("ul", id, classes, style)
-        UlContext(this).apply(func)
-        this.writeNormalElementEnd("ul")
+        writeNormalElementStart("ul", id, classes, style)
+        func()
+        writeNormalElementEnd("ul")
     }
 }
 
@@ -33,9 +36,9 @@ inline fun HtmlWriter.ul(
     func: UlContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("ul", id, classes, style, attrs)
-        UlContext(this).apply(func)
-        this.writeNormalElementEnd("ul")
+        writeNormalElementStart("ul", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("ul")
     }
 }
 
@@ -48,9 +51,9 @@ inline fun HtmlWriter.ul(
     func: UlContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("ul", id, classes, style, attrs)
-        UlContext(this).apply(func)
-        this.writeNormalElementEnd("ul")
+        writeNormalElementStart("ul", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("ul")
     }
 }
 
@@ -61,9 +64,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    writeNormalElementStart("ul", id, classes, style)
+    (this as UlContext).apply(func)
+    writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -74,9 +77,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    writeNormalElementStart("ul", id, classes, style, attrs)
+    (this as UlContext).apply(func)
+    writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -87,7 +90,7 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    writeNormalElementStart("ul", id, classes, style, attrs)
+    (this as UlContext).apply(func)
+    writeNormalElementEnd("ul")
 }

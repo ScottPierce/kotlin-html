@@ -10,6 +10,7 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.UNIT
 import dev.scottpierce.html.generate.Task
+import dev.scottpierce.html.generate.model.AMALGAM_CONTEXT
 import dev.scottpierce.html.generate.model.ATTRIBUTE
 import dev.scottpierce.html.generate.model.ATTRIBUTE_LIST
 import dev.scottpierce.html.generate.model.Attr
@@ -72,7 +73,7 @@ private fun createDslFunction(
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val writer: String = if (isWriter) "this" else "page"
+    val writer: String = if (isWriter) "page" else "page"
 
     if (isWriter) {
         receiver(HTML_WRITER)
@@ -156,7 +157,7 @@ private fun createDslFunction(
         }
 
         // Write Tag Start
-        addCode("$writer.%M(\"${element.tagName}\", id, classes, style", tagStartMember)
+        addCode("%M(\"${element.tagName}\", id, classes, style", tagStartMember)
 
         if (functionType != DslFunction.NO_ATTR) {
             addCode(", attrs")
@@ -164,7 +165,7 @@ private fun createDslFunction(
 
         addCode(")\n")
     } else {
-        addStatement("$writer.%M(\"${element.tagName}\")", WRITE_TAG)
+        addStatement("%M(\"${element.tagName}\")", WRITE_TAG)
 
         run { // Supported Attributes
             val supportedAttributes = element.supportedAttributes.toMutableList()
@@ -181,7 +182,7 @@ private fun createDslFunction(
             }
 
             if (hasStandardAttributes) {
-                addCode("$writer.%M(", WRITE_STANDARD_ATTRIBUTES)
+                addCode("%M(", WRITE_STANDARD_ATTRIBUTES)
 
                 if (supportedAttributes.remove(Attr.ID)) {
                     addCode("id")
@@ -232,12 +233,12 @@ private fun createDslFunction(
     // Write Content and End
     if (isParent) {
         when {
-            isWriter -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
+            isWriter -> addStatement("func()", AMALGAM_CONTEXT)
             childrenContext == element.callingContext -> addStatement("func()")
-            else -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
+            else -> addStatement("(this as %T).apply(func)", childrenContext!!.contextClassName)
         }
 
-        addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
+        addStatement("%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
     }
 
     if (isWriter) {

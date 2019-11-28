@@ -2,9 +2,12 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.VideoContext
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Boolean
 import kotlin.Pair
 import kotlin.String
@@ -25,18 +28,18 @@ inline fun HtmlWriter.video(
     func: VideoContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("video")
-        this.writeStandardAttributes(id, classes, style)
-        if (muted) this.write(" muted")
-        if (playsinline) this.write(" playsinline")
-        if (autoplay) this.write(" autoplay")
-        if (loop) this.write(" loop")
-        if (preload != null) this.write(" preload=\"").write(preload).write('"')
-        if (poster != null) this.write(" poster=\"").write(poster).write('"')
-        this.write('>')
-        this.indent()
-        VideoContext(this).apply(func)
-        this.writeNormalElementEnd("video")
+        writeTag("video")
+        writeStandardAttributes(id, classes, style)
+        if (muted) page.write(" muted")
+        if (playsinline) page.write(" playsinline")
+        if (autoplay) page.write(" autoplay")
+        if (loop) page.write(" loop")
+        if (preload != null) page.write(" preload=\"").write(preload).write('"')
+        if (poster != null) page.write(" poster=\"").write(poster).write('"')
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("video")
     }
 }
 
@@ -55,19 +58,19 @@ inline fun HtmlWriter.video(
     func: VideoContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("video")
-        this.writeStandardAttributes(id, classes, style)
-        if (muted) this.write(" muted")
-        if (playsinline) this.write(" playsinline")
-        if (autoplay) this.write(" autoplay")
-        if (loop) this.write(" loop")
-        if (preload != null) this.write(" preload=\"").write(preload).write('"')
-        if (poster != null) this.write(" poster=\"").write(poster).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        VideoContext(this).apply(func)
-        this.writeNormalElementEnd("video")
+        writeTag("video")
+        writeStandardAttributes(id, classes, style)
+        if (muted) page.write(" muted")
+        if (playsinline) page.write(" playsinline")
+        if (autoplay) page.write(" autoplay")
+        if (loop) page.write(" loop")
+        if (preload != null) page.write(" preload=\"").write(preload).write('"')
+        if (poster != null) page.write(" poster=\"").write(poster).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("video")
     }
 }
 
@@ -86,19 +89,19 @@ inline fun HtmlWriter.video(
     func: VideoContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeTag("video")
-        this.writeStandardAttributes(id, classes, style)
-        if (muted) this.write(" muted")
-        if (playsinline) this.write(" playsinline")
-        if (autoplay) this.write(" autoplay")
-        if (loop) this.write(" loop")
-        if (preload != null) this.write(" preload=\"").write(preload).write('"')
-        if (poster != null) this.write(" poster=\"").write(poster).write('"')
-        this.writeAttributes(attrs)
-        this.write('>')
-        this.indent()
-        VideoContext(this).apply(func)
-        this.writeNormalElementEnd("video")
+        writeTag("video")
+        writeStandardAttributes(id, classes, style)
+        if (muted) page.write(" muted")
+        if (playsinline) page.write(" playsinline")
+        if (autoplay) page.write(" autoplay")
+        if (loop) page.write(" loop")
+        if (preload != null) page.write(" preload=\"").write(preload).write('"')
+        if (poster != null) page.write(" poster=\"").write(poster).write('"')
+        page.writeAttributes(attrs)
+        page.write('>')
+        page.indent()
+        func()
+        writeNormalElementEnd("video")
     }
 }
 
@@ -115,8 +118,8 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("video")
+    writeStandardAttributes(id, classes, style)
     if (muted) page.write(" muted")
     if (playsinline) page.write(" playsinline")
     if (autoplay) page.write(" autoplay")
@@ -125,8 +128,8 @@ inline fun BodyContext.video(
     if (poster != null) page.write(" poster=\"").write(poster).write('"')
     page.write('>')
     page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    (this as VideoContext).apply(func)
+    writeNormalElementEnd("video")
 }
 
 @HtmlDsl
@@ -143,8 +146,8 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("video")
+    writeStandardAttributes(id, classes, style)
     if (muted) page.write(" muted")
     if (playsinline) page.write(" playsinline")
     if (autoplay) page.write(" autoplay")
@@ -154,8 +157,8 @@ inline fun BodyContext.video(
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    (this as VideoContext).apply(func)
+    writeNormalElementEnd("video")
 }
 
 @HtmlDsl
@@ -172,8 +175,8 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
+    writeTag("video")
+    writeStandardAttributes(id, classes, style)
     if (muted) page.write(" muted")
     if (playsinline) page.write(" playsinline")
     if (autoplay) page.write(" autoplay")
@@ -183,6 +186,6 @@ inline fun BodyContext.video(
     page.writeAttributes(attrs)
     page.write('>')
     page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    (this as VideoContext).apply(func)
+    writeNormalElementEnd("video")
 }

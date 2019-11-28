@@ -2,9 +2,12 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.InlineStyleLambda
 import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -18,9 +21,9 @@ inline fun HtmlWriter.head(
     func: HeadContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("head", id, classes, style)
-        HeadContext(this).apply(func)
-        this.writeNormalElementEnd("head")
+        writeNormalElementStart("head", id, classes, style)
+        func()
+        writeNormalElementEnd("head")
     }
 }
 
@@ -33,9 +36,9 @@ inline fun HtmlWriter.head(
     func: HeadContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("head", id, classes, style, attrs)
-        HeadContext(this).apply(func)
-        this.writeNormalElementEnd("head")
+        writeNormalElementStart("head", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("head")
     }
 }
 
@@ -48,9 +51,9 @@ inline fun HtmlWriter.head(
     func: HeadContext.() -> Unit = {}
 ) {
     pageWriterScope(this) {
-        this.writeNormalElementStart("head", id, classes, style, attrs)
-        HeadContext(this).apply(func)
-        this.writeNormalElementEnd("head")
+        writeNormalElementStart("head", id, classes, style, attrs)
+        func()
+        writeNormalElementEnd("head")
     }
 }
 
@@ -61,9 +64,9 @@ inline fun HtmlContext.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("head", id, classes, style)
-    HeadContext(page).apply(func)
-    page.writeNormalElementEnd("head")
+    writeNormalElementStart("head", id, classes, style)
+    (this as HeadContext).apply(func)
+    writeNormalElementEnd("head")
 }
 
 @HtmlDsl
@@ -74,9 +77,9 @@ inline fun HtmlContext.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("head", id, classes, style, attrs)
-    HeadContext(page).apply(func)
-    page.writeNormalElementEnd("head")
+    writeNormalElementStart("head", id, classes, style, attrs)
+    (this as HeadContext).apply(func)
+    writeNormalElementEnd("head")
 }
 
 @HtmlDsl
@@ -87,7 +90,7 @@ inline fun HtmlContext.head(
     noinline style: InlineStyleLambda? = null,
     func: HeadContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("head", id, classes, style, attrs)
-    HeadContext(page).apply(func)
-    page.writeNormalElementEnd("head")
+    writeNormalElementStart("head", id, classes, style, attrs)
+    (this as HeadContext).apply(func)
+    writeNormalElementEnd("head")
 }

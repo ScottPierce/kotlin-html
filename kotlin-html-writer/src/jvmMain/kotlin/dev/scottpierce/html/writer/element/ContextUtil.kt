@@ -1,14 +1,16 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.FileCache
+import dev.scottpierce.html.writer.FileContext
 import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlWriterContext
 import dev.scottpierce.html.writer.PlatformWriter
 import dev.scottpierce.html.writer.pageWriterScope
 import java.io.File
 
 fun HtmlWriter.inlineFile(file: File) {
     pageWriterScope(this) {
-        FileContext(this).inlineFile(file)
+        inlineFile(file)
     }
 }
 

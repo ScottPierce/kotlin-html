@@ -1,5 +1,6 @@
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BaseHtmlContext
 import dev.scottpierce.html.writer.HtmlWriter
 import java.io.File
 

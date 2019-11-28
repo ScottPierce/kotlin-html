@@ -1,12 +1,17 @@
+@file:Suppress("unused")
+
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.AmalgamContext
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
 fun HtmlWriter.metaTitle(title: String) {
     pageWriterScope(this) {
-        HeadContext(this).metaTitle(title)
+        metaTitle(title)
     }
 }
 
@@ -18,7 +23,7 @@ fun HeadContext.metaTitle(title: String) {
 @HtmlDsl
 fun HtmlWriter.metaDescription(description: String) {
     pageWriterScope(this) {
-        HeadContext(this).metaDescription(description)
+        metaDescription(description)
     }
 }
 
@@ -30,7 +35,7 @@ fun HeadContext.metaDescription(description: String) {
 @HtmlDsl
 fun HtmlWriter.metaCharset(charset: String) {
     pageWriterScope(this) {
-        HeadContext(this).metaCharset(charset)
+        metaCharset(charset)
     }
 }
 
@@ -42,7 +47,7 @@ fun HeadContext.metaCharset(charset: String) {
 @HtmlDsl
 fun HtmlWriter.metaViewport(viewport: String) {
     pageWriterScope(this) {
-        HeadContext(this).metaViewport(viewport)
+        metaViewport(viewport)
     }
 }
 
@@ -54,7 +59,7 @@ fun HeadContext.metaViewport(viewport: String) {
 @HtmlDsl
 fun HtmlWriter.metaCharsetUtf8() {
     pageWriterScope(this) {
-        HeadContext(this).metaCharsetUtf8()
+        metaCharsetUtf8()
     }
 }
 

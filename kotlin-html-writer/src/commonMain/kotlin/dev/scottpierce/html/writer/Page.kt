@@ -5,10 +5,11 @@ package dev.scottpierce.html.writer
  *
  * A [Page] should only be accessed inside of the given lambda, and shouldn't be saved for later.
  */
-inline fun pageWriterScope(htmlWriter: HtmlWriter, func: Page.() -> Unit) {
-    InternalApi.closePage(
-        InternalApi.Page(htmlWriter).apply(func)
-    )
+inline fun pageWriterScope(htmlWriter: HtmlWriter, func: AmalgamContext.() -> Unit) {
+    val page = InternalApi.Page(htmlWriter)
+    val context = AmalgamContext(page)
+    context.func()
+    InternalApi.closePage(page)
 }
 
 class Page internal constructor(private val primaryWriter: HtmlWriter) {

@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(Libs.kotlin.stdlib.jvm)
-    implementation(Libs.kotlinPoet)
-    implementation(Libs.kotlinx.coroutines.jvm)
+    implementation(Deps.kotlin.stdlib.jvm)
+    implementation(Deps.kotlinPoet)
+    implementation(Deps.kotlinx.coroutines.jvm)
 }

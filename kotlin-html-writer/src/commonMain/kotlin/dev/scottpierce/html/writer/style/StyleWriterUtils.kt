@@ -1,15 +1,20 @@
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.AmalgamContext
 import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.element.BaseHtmlContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.element.HtmlDsl
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.StyleContext
+import dev.scottpierce.html.writer.StyleLambda
+import dev.scottpierce.html.writer.StyleSheetContext
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
 inline fun HtmlWriter.styleSheet(func: StyleSheetContext.() -> Unit) {
     pageWriterScope(this) {
-        HtmlContext(this).styleSheet(func)
+        styleSheet(func)
     }
 }
 
@@ -21,7 +26,7 @@ inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
         write("<style type=\"text/css\">")
         indent()
 
-        StyleSheetContext(this).apply(func)
+        (this@styleSheet as StyleSheetContext).apply(func)
 
         unindent()
         newLine()
@@ -32,7 +37,7 @@ inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
 @HtmlDsl
 inline fun HtmlWriter.media(selector: String, func: StyleSheetContext.() -> Unit) {
     pageWriterScope(this) {
-        StyleSheetContext(this).media(selector, func)
+        media(selector, func)
     }
 }
 
@@ -46,7 +51,7 @@ inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() 
         write('{')
         indent()
 
-        StyleSheetContext(this).apply(func)
+        func()
 
         unindent()
         newLine()
@@ -57,7 +62,7 @@ inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() 
 @HtmlDsl
 inline fun HtmlWriter.style(selector: String, func: StyleLambda) {
     pageWriterScope(this) {
-        StyleSheetContext(this).style(selector, func)
+        style(selector, func)
     }
 }
 
@@ -71,7 +76,7 @@ inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
         write('{')
         indent()
 
-        StyleContext(this).apply(func)
+        (this@style as StyleContext).apply(func)
 
         unindent()
         newLine()
