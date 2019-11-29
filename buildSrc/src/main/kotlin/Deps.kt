@@ -1,13 +1,13 @@
 object Versions {
-    const val kotlin = "1.3.60"
-    const val ktor = "1.2.2"
+    const val kotlin = "1.3.61"
+    const val ktor = "1.2.6"
 }
 
 object Plugins {
     val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
-object Libs {
+object Deps {
     val kotlin = KotlinDeps()
     val kotlinx = KotlinxDeps()
     val kotlinPoet = "com.squareup:kotlinpoet:1.4.3"

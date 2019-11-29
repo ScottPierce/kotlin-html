@@ -7,8 +7,8 @@ plugins {
 dependencies {
     implementation(project(":kotlin-html-writer"))
 
-    implementation(Libs.kotlin.stdlib.jvm)
-    implementation(Libs.ktorServerCore)
+    implementation(Deps.kotlin.stdlib.jvm)
+    implementation(Deps.ktorServerCore)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
