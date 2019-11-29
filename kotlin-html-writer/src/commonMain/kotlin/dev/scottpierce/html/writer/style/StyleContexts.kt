@@ -5,7 +5,9 @@ import dev.scottpierce.html.writer.element.HtmlDsl
 import dev.scottpierce.html.writer.element.HtmlWriterContext
 
 @HtmlDsl
-inline class StyleSheetContext(override val page: Page) : HtmlWriterContext
+inline class StyleSheetContext(override val page: Page) : HtmlWriterContext {
+    fun String.invoke(func: StyleLambda) = style(this, func)
+}
 
 /**
  * A [HtmlWriterContext] applied to all style contexts.
