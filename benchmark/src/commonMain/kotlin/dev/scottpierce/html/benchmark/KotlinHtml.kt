@@ -17,6 +17,9 @@ import dev.scottpierce.html.writer.element.metaViewport
 import dev.scottpierce.html.writer.element.section
 import dev.scottpierce.html.writer.element.span
 import dev.scottpierce.html.writer.element.title
+import dev.scottpierce.html.writer.style.backgroundColor
+import dev.scottpierce.html.writer.style.style
+import dev.scottpierce.html.writer.style.styleSheet
 
 fun kotlinHtmlPage(): String {
     val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
@@ -30,6 +33,117 @@ fun kotlinHtmlPage(): String {
                 metaTitle(title)
 
                 metaDescription("8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA")
+
+                styleSheet {
+                    ".style1" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style2" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style3" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style4" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style5" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style6" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style7" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style8" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style9" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style1" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style2" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style3" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style4" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style5" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style6" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style7" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style8" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                    ".style9" {
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                        backgroundColor(100, 100, 100)
+                    }
+                }
             }
 
             body {

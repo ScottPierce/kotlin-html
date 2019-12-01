@@ -17,7 +17,7 @@ fun BaseStyleContext.backgroundImage(image: BackgroundImage) {
 
 fun BaseStyleContext.backgroundImage(image: BackgroundImage, vararg images: BackgroundImage) {
     writeStyleProperty("background-image",
-            """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
+        """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
 }
 
 fun StyleContext.backgroundImage(url: String) {
@@ -30,7 +30,7 @@ fun StyleContext.backgroundImage(image: BackgroundImage) {
 
 fun StyleContext.backgroundImage(image: BackgroundImage, vararg images: BackgroundImage) {
     writeStyleProperty("background-image",
-            """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
+        """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
 }
 
 fun InlineStyleContext.backgroundImage(url: String) {
@@ -43,5 +43,5 @@ fun InlineStyleContext.backgroundImage(image: BackgroundImage) {
 
 fun InlineStyleContext.backgroundImage(image: BackgroundImage, vararg images: BackgroundImage) {
     writeStyleProperty("background-image",
-            """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
+        """$image${if (images.isEmpty()) "" else images.joinToString(prefix = ", ")}""")
 }

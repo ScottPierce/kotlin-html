@@ -32,16 +32,6 @@ kotlin {
             }
         }
 
-        val genTest by creating {
-            dependsOn(commonMain)
-
-            dependencies {
-                for (lib in Deps.kotlin.test.common) {
-                    implementation(lib)
-                }
-            }
-        }
-
         val jvmMain by getting {
             dependencies {
                 implementation(Deps.kotlin.stdlib.jvm)
@@ -49,9 +39,6 @@ kotlin {
         }
 
         val jvmTest by getting {
-            dependsOn(jvmMain)
-            dependsOn(genTest)
-
             dependencies {
                 implementation(Deps.kotlin.test.jvm)
             }
@@ -64,9 +51,6 @@ kotlin {
         }
 
         val jsTest by getting {
-            dependsOn(jsMain)
-            dependsOn(genTest)
-
             dependencies {
                 implementation(Deps.kotlin.test.js)
             }

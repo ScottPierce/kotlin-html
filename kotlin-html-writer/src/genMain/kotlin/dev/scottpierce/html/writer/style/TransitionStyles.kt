@@ -9,7 +9,7 @@ import kotlin.time.Duration
 
 fun BaseStyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+        """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
 }
 
 fun BaseStyleContext.transition(
@@ -19,7 +19,7 @@ fun BaseStyleContext.transition(
     delay: Duration? = null
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+        """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
 }
 
 fun BaseStyleContext.transition(value: CssValue) {
@@ -28,7 +28,7 @@ fun BaseStyleContext.transition(value: CssValue) {
 
 fun StyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+        """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
 }
 
 fun StyleContext.transition(
@@ -38,7 +38,7 @@ fun StyleContext.transition(
     delay: Duration? = null
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+        """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
 }
 
 fun StyleContext.transition(value: CssValue) {
@@ -47,7 +47,7 @@ fun StyleContext.transition(value: CssValue) {
 
 fun InlineStyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+        """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
 }
 
 fun InlineStyleContext.transition(
@@ -57,7 +57,7 @@ fun InlineStyleContext.transition(
     delay: Duration? = null
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+        """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
 }
 
 fun InlineStyleContext.transition(value: CssValue) {
