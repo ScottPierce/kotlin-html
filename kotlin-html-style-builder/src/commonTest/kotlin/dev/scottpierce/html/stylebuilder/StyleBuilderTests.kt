@@ -54,4 +54,45 @@ class StyleBuilderTests {
             """.trimIndent()
         }
     }
+
+    @Test
+    fun basicMediaQuery() {
+        StringBuilderHtmlWriter().apply {
+            html {
+                defer {
+                    styleSheet(page.styleSheet)
+                }
+                style(".test") {
+                    backgroundColor(1, 1, 1)
+
+                    media("minWidth < 100px") {
+                        backgroundColor(2, 2, 2)
+                    }
+                    media("minWidth < 200px") {
+                        backgroundColor(3, 3, 3)
+                    }
+                }
+            }
+        } assertEquals {
+            """
+            <html>
+                <style type="text/css">
+                    .test {
+                        background-color: rgb(1,1,1);
+                    }
+                    @media minWidth < 100px {
+                        .test {
+                            background-color: rgb(2,2,2);
+                        }
+                    }
+                    @media minWidth < 200px {
+                        .test {
+                            background-color: rgb(3,3,3);
+                        }
+                    }
+                </style>
+            </html>
+            """.trimIndent()
+        }
+    }
 }
