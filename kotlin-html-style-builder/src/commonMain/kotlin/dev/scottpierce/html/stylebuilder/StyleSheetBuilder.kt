@@ -20,7 +20,6 @@ class StyleSheetBuilder(private val indent: Int) {
 
 @HtmlDsl
 inline fun style(selector: String, func: StyleLambda) {
-
 }
 
 @HtmlDsl
