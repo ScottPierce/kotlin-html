@@ -9,8 +9,8 @@ import kotlin.jvm.Volatile
  * A [HtmlWriter] should only be accessed inside of the given lambda, and shouldn't be saved for later.
  */
 @HtmlDsl
-fun HtmlOutput.toWriter(options: WriteOptions = WriteOptions.default): HtmlWriter
-        = HtmlWriter(output = this, options = options)
+fun HtmlOutput.toWriter(options: WriteOptions = WriteOptions.default): HtmlWriter =
+        HtmlWriter(output = this, options = options)
 
 class HtmlWriter internal constructor(
     private val output: HtmlOutput,
