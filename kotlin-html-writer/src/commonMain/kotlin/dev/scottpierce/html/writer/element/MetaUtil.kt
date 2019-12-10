@@ -1,10 +1,10 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
-fun HtmlWriter.metaTitle(title: String) {
+fun HtmlOutput.metaTitle(title: String) {
     pageWriterScope(this) {
         HeadContext(this).metaTitle(title)
     }
@@ -16,7 +16,7 @@ fun HeadContext.metaTitle(title: String) {
 }
 
 @HtmlDsl
-fun HtmlWriter.metaDescription(description: String) {
+fun HtmlOutput.metaDescription(description: String) {
     pageWriterScope(this) {
         HeadContext(this).metaDescription(description)
     }
@@ -28,7 +28,7 @@ fun HeadContext.metaDescription(description: String) {
 }
 
 @HtmlDsl
-fun HtmlWriter.metaCharset(charset: String) {
+fun HtmlOutput.metaCharset(charset: String) {
     pageWriterScope(this) {
         HeadContext(this).metaCharset(charset)
     }
@@ -40,7 +40,7 @@ fun HeadContext.metaCharset(charset: String) {
 }
 
 @HtmlDsl
-fun HtmlWriter.metaViewport(viewport: String) {
+fun HtmlOutput.metaViewport(viewport: String) {
     pageWriterScope(this) {
         HeadContext(this).metaViewport(viewport)
     }
@@ -52,7 +52,7 @@ fun HeadContext.metaViewport(viewport: String) {
 }
 
 @HtmlDsl
-fun HtmlWriter.metaCharsetUtf8() {
+fun HtmlOutput.metaCharsetUtf8() {
     pageWriterScope(this) {
         HeadContext(this).metaCharsetUtf8()
     }

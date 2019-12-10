@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlOutput.a(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -36,7 +36,7 @@ inline fun HtmlWriter.a(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlOutput.a(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -63,7 +63,7 @@ inline fun HtmlWriter.a(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.a(
+inline fun HtmlOutput.a(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -100,16 +100,16 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
-    if (href != null) page.write(" href=\"").write(href).write('"')
-    if (target != null) page.write(" target=\"").write(target).write('"')
-    if (rel != null) page.write(" rel=\"").write(rel).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("a")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
+    if (target != null) htmlWriter.write(" target=\"").write(target).write('"')
+    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("a")
+    htmlWriter.writeNormalElementEnd("a")
 }
 
 @HtmlDsl
@@ -124,17 +124,17 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
-    if (href != null) page.write(" href=\"").write(href).write('"')
-    if (target != null) page.write(" target=\"").write(target).write('"')
-    if (rel != null) page.write(" rel=\"").write(rel).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("a")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
+    if (target != null) htmlWriter.write(" target=\"").write(target).write('"')
+    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("a")
+    htmlWriter.writeNormalElementEnd("a")
 }
 
 @HtmlDsl
@@ -149,15 +149,15 @@ inline fun BodyContext.a(
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("a")
-    page.writeStandardAttributes(id, classes, style)
-    if (href != null) page.write(" href=\"").write(href).write('"')
-    if (target != null) page.write(" target=\"").write(target).write('"')
-    if (rel != null) page.write(" rel=\"").write(rel).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("a")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
+    if (target != null) htmlWriter.write(" target=\"").write(target).write('"')
+    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("a")
+    htmlWriter.writeNormalElementEnd("a")
 }

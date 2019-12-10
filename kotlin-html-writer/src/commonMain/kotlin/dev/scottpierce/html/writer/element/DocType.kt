@@ -1,10 +1,10 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
-fun HtmlWriter.docType(docType: DocType) {
+fun HtmlOutput.docType(docType: DocType) {
     pageWriterScope(this) {
         FileContext(this).docType(docType)
     }
@@ -12,7 +12,7 @@ fun HtmlWriter.docType(docType: DocType) {
 
 @HtmlDsl
 fun FileContext.docType(docType: DocType) {
-    page.write("<!DOCTYPE ").write(docType.type!!).write('>')
+    htmlWriter.write("<!DOCTYPE ").write(docType.type!!).write('>')
 }
 
 sealed class DocType(val type: String?) {

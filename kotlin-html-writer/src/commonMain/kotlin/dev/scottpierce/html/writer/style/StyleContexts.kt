@@ -1,11 +1,11 @@
 package dev.scottpierce.html.writer.style
 
-import dev.scottpierce.html.writer.Page
+import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.element.HtmlDsl
 import dev.scottpierce.html.writer.element.HtmlWriterContext
 
 @HtmlDsl
-inline class StyleSheetContext(override val page: Page) : HtmlWriterContext {
+inline class StyleSheetContext(val htmlWriter: HtmlWriter) : HtmlWriterContext {
     operator fun String.invoke(func: StyleLambda) = style(this, func)
 }
 
@@ -16,10 +16,10 @@ inline class StyleSheetContext(override val page: Page) : HtmlWriterContext {
 interface BaseStyleContext : HtmlWriterContext
 
 @HtmlDsl
-inline class InlineStyleContext(override val page: Page) : BaseStyleContext
+inline class InlineStyleContext(override val htmlWriter: HtmlWriter) : BaseStyleContext
 
 @HtmlDsl
-inline class StyleContext(override val page: Page) : BaseStyleContext
+inline class StyleContext(override val htmlWriter: HtmlWriter) : BaseStyleContext
 
 typealias InlineStyleLambda = InlineStyleContext.() -> Unit
 

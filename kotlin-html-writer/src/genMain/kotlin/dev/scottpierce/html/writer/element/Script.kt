@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Boolean
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+inline fun HtmlOutput.script(
     async: Boolean = false,
     defer: Boolean = false,
     src: String? = null,
@@ -30,7 +30,7 @@ inline fun HtmlWriter.script(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+inline fun HtmlOutput.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -51,7 +51,7 @@ inline fun HtmlWriter.script(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+inline fun HtmlOutput.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -78,14 +78,14 @@ inline fun BaseHtmlContext.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    page.writeTag("script")
-    if (async) page.write(" async")
-    if (defer) page.write(" defer")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    page.write('>')
-    page.indent()
-    ScriptContext(page).apply(func)
-    page.writeNormalElementEnd("script")
+    htmlWriter.writeTag("script")
+    if (async) htmlWriter.write(" async")
+    if (defer) htmlWriter.write(" defer")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    ScriptContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("script")
 }
 
 @HtmlDsl
@@ -96,15 +96,15 @@ inline fun BaseHtmlContext.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    page.writeTag("script")
-    if (async) page.write(" async")
-    if (defer) page.write(" defer")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    ScriptContext(page).apply(func)
-    page.writeNormalElementEnd("script")
+    htmlWriter.writeTag("script")
+    if (async) htmlWriter.write(" async")
+    if (defer) htmlWriter.write(" defer")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    ScriptContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("script")
 }
 
 @HtmlDsl
@@ -115,13 +115,13 @@ inline fun BaseHtmlContext.script(
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    page.writeTag("script")
-    if (async) page.write(" async")
-    if (defer) page.write(" defer")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    ScriptContext(page).apply(func)
-    page.writeNormalElementEnd("script")
+    htmlWriter.writeTag("script")
+    if (async) htmlWriter.write(" async")
+    if (defer) htmlWriter.write(" defer")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    ScriptContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("script")
 }

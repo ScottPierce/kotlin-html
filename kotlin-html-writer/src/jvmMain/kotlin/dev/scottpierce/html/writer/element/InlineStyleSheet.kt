@@ -1,17 +1,17 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import java.io.File
 
-fun HtmlWriter.inlineStyleSheet(file: File) {
+fun HtmlOutput.inlineStyleSheet(file: File) {
     pageWriterScope(this) {
         HtmlContext(this).inlineStyleSheet(file)
     }
 }
 
 fun HtmlWriterContext.inlineStyleSheet(file: File) {
-    page.apply {
+    htmlWriter.apply {
         writeTag("style")
         write('>')
         indent()

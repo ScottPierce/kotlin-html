@@ -1,12 +1,12 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.FileCache
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.PlatformWriter
 import dev.scottpierce.html.writer.pageWriterScope
 import java.io.File
 
-fun HtmlWriter.inlineFile(file: File) {
+fun HtmlOutput.inlineFile(file: File) {
     pageWriterScope(this) {
         FileContext(this).inlineFile(file)
     }
@@ -15,21 +15,21 @@ fun HtmlWriter.inlineFile(file: File) {
 fun HtmlWriterContext.inlineFile(file: File) {
     val fileLines = FileCache.get(file)
 
-    val writerUsesLineSeparator = page.options.newLine == System.lineSeparator()
+    val writerUsesLineSeparator = htmlWriter.options.newLine == System.lineSeparator()
     val lastIndex = fileLines.lastIndex
 
-    page.newLine()
+    htmlWriter.newLine()
 
     for (i in fileLines.indices) {
         val line = fileLines[i]
 
-        page.write(line)
+        htmlWriter.write(line)
 
         if (i != lastIndex) {
             if (writerUsesLineSeparator) {
-                page.newLine()
+                htmlWriter.newLine()
             } else {
-                page.write(PlatformWriter.lineSeparator)
+                htmlWriter.write(PlatformWriter.lineSeparator)
             }
         }
     }

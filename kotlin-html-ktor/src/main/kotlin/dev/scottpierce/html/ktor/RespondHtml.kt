@@ -2,7 +2,7 @@
 
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.DocType
 import dev.scottpierce.html.writer.element.FileContext
@@ -26,14 +26,14 @@ internal val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charset
 class HtmlWriterOutgoingContent(
     override val status: HttpStatusCode? = null,
     private val options: WriteOptions,
-    private val func: suspend HtmlWriter.() -> Unit
+    private val func: suspend HtmlOutput.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
         get() = CONTENT_TYPE_HTML_UTF_8
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlWriter(it, options).func()
+            ChannelHtmlOutput(it, options).func()
         }
     }
 }
@@ -51,7 +51,7 @@ class HtmlFileOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            FileContext(ChannelHtmlWriter(it, options)).func()
+            FileContext(ChannelHtmlOutput(it, options)).func()
         }
     }
 }
@@ -69,7 +69,7 @@ class HtmlOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlWriter(it, options).apply {
+            ChannelHtmlOutput(it, options).apply {
                 docType(DocType.Html)
                 html {
                     func()
@@ -103,5 +103,5 @@ suspend fun ApplicationCall.respondHtml(
 suspend fun ApplicationCall.respondHtmlWriter(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.default,
-    func: suspend HtmlWriter.() -> Unit
+    func: suspend HtmlOutput.() -> Unit
 ): Unit = respond(HtmlWriterOutgoingContent(status, options, func))

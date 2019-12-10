@@ -1,14 +1,14 @@
 package dev.scottpierce.html.stylebuilder
 
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.Page
 import dev.scottpierce.html.writer.element.BaseHtmlContext
 import dev.scottpierce.html.writer.element.HtmlContext
 import dev.scottpierce.html.writer.element.HtmlDsl
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
-fun HtmlWriter.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
+fun HtmlOutput.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
     pageWriterScope(this) {
         HtmlContext(this).styleSheet(styleSheetBuilder)
     }
@@ -16,7 +16,7 @@ fun HtmlWriter.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
 
 @HtmlDsl
 fun BaseHtmlContext.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
-    page.apply {
+    htmlWriter.apply {
         if (!isEmpty) newLine()
 
         write("<style type=\"text/css\">")
@@ -30,11 +30,11 @@ fun BaseHtmlContext.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
     }
 }
 
-private fun writeStyleSheetBuilder(ssb: StyleSheetBuilder, page: Page) {
+private fun writeStyleSheetBuilder(ssb: StyleSheetBuilder, htmlWriter: HtmlWriter) {
     val styles = ssb._styles
     if (styles != null) {
         for ((selector, style) in styles) {
-            page.apply {
+            htmlWriter.apply {
                 newLine()
 
                 write(selector)
@@ -42,7 +42,7 @@ private fun writeStyleSheetBuilder(ssb: StyleSheetBuilder, page: Page) {
                 write('{')
                 indent()
 
-                val context = StyleBuilderContext(page, selector, ssb)
+                val context = StyleBuilderContext(htmlWriter, selector, ssb)
                 context.style()
 
                 unindent()
@@ -55,7 +55,7 @@ private fun writeStyleSheetBuilder(ssb: StyleSheetBuilder, page: Page) {
     val mediaQueries = ssb._mediaQueries
     if (mediaQueries != null) {
         for ((selector, mediaSsb) in mediaQueries) {
-            page.apply {
+            htmlWriter.apply {
                 newLine()
 
                 write("@media ").write(selector)
@@ -63,7 +63,7 @@ private fun writeStyleSheetBuilder(ssb: StyleSheetBuilder, page: Page) {
                 write('{')
                 indent()
 
-                writeStyleSheetBuilder(mediaSsb, page)
+                writeStyleSheetBuilder(mediaSsb, htmlWriter)
 
                 unindent()
                 newLine()

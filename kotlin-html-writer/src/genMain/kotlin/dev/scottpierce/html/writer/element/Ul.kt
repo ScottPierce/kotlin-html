@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.ul(
+inline fun HtmlOutput.ul(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -25,7 +25,7 @@ inline fun HtmlWriter.ul(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.ul(
+inline fun HtmlOutput.ul(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -40,7 +40,7 @@ inline fun HtmlWriter.ul(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.ul(
+inline fun HtmlOutput.ul(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -61,9 +61,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    htmlWriter.writeNormalElementStart("ul", id, classes, style)
+    UlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    htmlWriter.writeNormalElementStart("ul", id, classes, style, attrs)
+    UlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("ul")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.ul(
     noinline style: InlineStyleLambda? = null,
     func: UlContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("ul", id, classes, style, attrs)
-    UlContext(page).apply(func)
-    page.writeNormalElementEnd("ul")
+    htmlWriter.writeNormalElementStart("ul", id, classes, style, attrs)
+    UlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("ul")
 }

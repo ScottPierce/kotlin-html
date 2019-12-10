@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.body(
+inline fun HtmlOutput.body(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -25,7 +25,7 @@ inline fun HtmlWriter.body(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.body(
+inline fun HtmlOutput.body(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -40,7 +40,7 @@ inline fun HtmlWriter.body(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.body(
+inline fun HtmlOutput.body(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -61,9 +61,9 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    htmlWriter.writeNormalElementStart("body", id, classes, style)
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("body")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style, attrs)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    htmlWriter.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("body")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun HtmlContext.body(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("body", id, classes, style, attrs)
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("body")
+    htmlWriter.writeNormalElementStart("body", id, classes, style, attrs)
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("body")
 }

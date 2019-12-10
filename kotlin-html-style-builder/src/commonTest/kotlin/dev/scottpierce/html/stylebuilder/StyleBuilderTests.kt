@@ -1,11 +1,10 @@
 package dev.scottpierce.html.stylebuilder
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.defer
 import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.style.backgroundColor
-import dev.scottpierce.html.writer.style.styleSheet
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -17,7 +16,7 @@ class StyleBuilderTests {
 
     @Test
     fun empty() {
-        StringBuilderHtmlWriter().apply {
+        StringHtmlOutput().apply {
             html {
                 style(".test") {
                     backgroundColor(1, 1, 1)
@@ -33,10 +32,10 @@ class StyleBuilderTests {
 
     @Test
     fun basic() {
-        StringBuilderHtmlWriter().apply {
+        StringHtmlOutput().apply {
             html {
                 defer {
-                    styleSheet(page.styleSheet)
+                    styleSheet(htmlWriter.styleSheet)
                 }
                 style(".test") {
                     backgroundColor(1, 1, 1)
@@ -57,10 +56,10 @@ class StyleBuilderTests {
 
     @Test
     fun basicMediaQuery() {
-        StringBuilderHtmlWriter().apply {
+        StringHtmlOutput().apply {
             html {
                 defer {
-                    styleSheet(page.styleSheet)
+                    styleSheet(htmlWriter.styleSheet)
                 }
                 style(".test") {
                     backgroundColor(1, 1, 1)

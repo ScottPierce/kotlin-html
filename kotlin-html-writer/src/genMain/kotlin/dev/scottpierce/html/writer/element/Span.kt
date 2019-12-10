@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.span(
+inline fun HtmlOutput.span(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -25,7 +25,7 @@ inline fun HtmlWriter.span(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.span(
+inline fun HtmlOutput.span(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -40,7 +40,7 @@ inline fun HtmlWriter.span(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.span(
+inline fun HtmlOutput.span(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -61,9 +61,9 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style)
+    htmlWriter.writeNormalElementStart("span", id, classes, style)
     func()
-    page.writeNormalElementEnd("span")
+    htmlWriter.writeNormalElementEnd("span")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style, attrs)
+    htmlWriter.writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("span")
+    htmlWriter.writeNormalElementEnd("span")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.span(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("span", id, classes, style, attrs)
+    htmlWriter.writeNormalElementStart("span", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("span")
+    htmlWriter.writeNormalElementEnd("span")
 }

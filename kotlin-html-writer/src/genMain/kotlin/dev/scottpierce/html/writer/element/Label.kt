@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.label(
+inline fun HtmlOutput.label(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -30,7 +30,7 @@ inline fun HtmlWriter.label(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.label(
+inline fun HtmlOutput.label(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -51,7 +51,7 @@ inline fun HtmlWriter.label(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.label(
+inline fun HtmlOutput.label(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -79,13 +79,13 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
-    if (forId != null) page.write(" for=\"").write(forId).write('"')
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("label")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("label")
+    htmlWriter.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -97,14 +97,14 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
-    if (forId != null) page.write(" for=\"").write(forId).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("label")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("label")
+    htmlWriter.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -116,12 +116,12 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("label")
-    page.writeStandardAttributes(id, classes, style)
-    if (forId != null) page.write(" for=\"").write(forId).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("label")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("label")
+    htmlWriter.writeNormalElementEnd("label")
 }

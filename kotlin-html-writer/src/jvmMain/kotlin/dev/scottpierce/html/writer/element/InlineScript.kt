@@ -1,9 +1,9 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import java.io.File
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     async: Boolean = false,
     defer: Boolean = false,
     file: File
@@ -13,7 +13,7 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -24,7 +24,7 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,

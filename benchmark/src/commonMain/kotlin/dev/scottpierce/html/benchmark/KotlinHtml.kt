@@ -1,6 +1,6 @@
 package dev.scottpierce.html.benchmark
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.a
 import dev.scottpierce.html.writer.element.body
@@ -21,7 +21,7 @@ import dev.scottpierce.html.writer.style.backgroundColor
 import dev.scottpierce.html.writer.style.styleSheet
 
 fun kotlinHtmlPage(): String {
-    val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
+    val writer = StringHtmlOutput(options = WriteOptions.minified).apply {
         html {
             head {
                 metaCharsetUtf8()

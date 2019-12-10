@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Boolean
@@ -12,7 +12,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.video(
+inline fun HtmlOutput.video(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -41,7 +41,7 @@ inline fun HtmlWriter.video(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.video(
+inline fun HtmlOutput.video(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -72,7 +72,7 @@ inline fun HtmlWriter.video(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.video(
+inline fun HtmlOutput.video(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -115,18 +115,18 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
-    if (muted) page.write(" muted")
-    if (playsinline) page.write(" playsinline")
-    if (autoplay) page.write(" autoplay")
-    if (loop) page.write(" loop")
-    if (preload != null) page.write(" preload=\"").write(preload).write('"')
-    if (poster != null) page.write(" poster=\"").write(poster).write('"')
-    page.write('>')
-    page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    htmlWriter.writeTag("video")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (muted) htmlWriter.write(" muted")
+    if (playsinline) htmlWriter.write(" playsinline")
+    if (autoplay) htmlWriter.write(" autoplay")
+    if (loop) htmlWriter.write(" loop")
+    if (preload != null) htmlWriter.write(" preload=\"").write(preload).write('"')
+    if (poster != null) htmlWriter.write(" poster=\"").write(poster).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    VideoContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("video")
 }
 
 @HtmlDsl
@@ -143,19 +143,19 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
-    if (muted) page.write(" muted")
-    if (playsinline) page.write(" playsinline")
-    if (autoplay) page.write(" autoplay")
-    if (loop) page.write(" loop")
-    if (preload != null) page.write(" preload=\"").write(preload).write('"')
-    if (poster != null) page.write(" poster=\"").write(poster).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    htmlWriter.writeTag("video")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (muted) htmlWriter.write(" muted")
+    if (playsinline) htmlWriter.write(" playsinline")
+    if (autoplay) htmlWriter.write(" autoplay")
+    if (loop) htmlWriter.write(" loop")
+    if (preload != null) htmlWriter.write(" preload=\"").write(preload).write('"')
+    if (poster != null) htmlWriter.write(" poster=\"").write(poster).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    VideoContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("video")
 }
 
 @HtmlDsl
@@ -172,17 +172,17 @@ inline fun BodyContext.video(
     poster: String? = null,
     func: VideoContext.() -> Unit = {}
 ) {
-    page.writeTag("video")
-    page.writeStandardAttributes(id, classes, style)
-    if (muted) page.write(" muted")
-    if (playsinline) page.write(" playsinline")
-    if (autoplay) page.write(" autoplay")
-    if (loop) page.write(" loop")
-    if (preload != null) page.write(" preload=\"").write(preload).write('"')
-    if (poster != null) page.write(" poster=\"").write(poster).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    VideoContext(page).apply(func)
-    page.writeNormalElementEnd("video")
+    htmlWriter.writeTag("video")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (muted) htmlWriter.write(" muted")
+    if (playsinline) htmlWriter.write(" playsinline")
+    if (autoplay) htmlWriter.write(" autoplay")
+    if (loop) htmlWriter.write(" loop")
+    if (preload != null) htmlWriter.write(" preload=\"").write(preload).write('"')
+    if (poster != null) htmlWriter.write(" poster=\"").write(poster).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    VideoContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("video")
 }

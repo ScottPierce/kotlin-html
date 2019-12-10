@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.html(
+inline fun HtmlOutput.html(
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
     lang: String? = null,
@@ -29,7 +29,7 @@ inline fun HtmlWriter.html(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.html(
+inline fun HtmlOutput.html(
     vararg attrs: Pair<String, String?>,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -49,7 +49,7 @@ inline fun HtmlWriter.html(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.html(
+inline fun HtmlOutput.html(
     attrs: List<Pair<String, String?>>,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -75,13 +75,13 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    page.writeTag("html")
-    page.writeStandardAttributes(null, classes, style)
-    if (lang != null) page.write(" lang=\"").write(lang).write('"')
-    page.write('>')
-    page.indent()
-    HtmlContext(page).apply(func)
-    page.writeNormalElementEnd("html")
+    htmlWriter.writeTag("html")
+    htmlWriter.writeStandardAttributes(null, classes, style)
+    if (lang != null) htmlWriter.write(" lang=\"").write(lang).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    HtmlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("html")
 }
 
 @HtmlDsl
@@ -92,14 +92,14 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    page.writeTag("html")
-    page.writeStandardAttributes(null, classes, style)
-    if (lang != null) page.write(" lang=\"").write(lang).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    HtmlContext(page).apply(func)
-    page.writeNormalElementEnd("html")
+    htmlWriter.writeTag("html")
+    htmlWriter.writeStandardAttributes(null, classes, style)
+    if (lang != null) htmlWriter.write(" lang=\"").write(lang).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    HtmlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("html")
 }
 
 @HtmlDsl
@@ -110,12 +110,12 @@ inline fun FileContext.html(
     lang: String? = null,
     func: HtmlContext.() -> Unit = {}
 ) {
-    page.writeTag("html")
-    page.writeStandardAttributes(null, classes, style)
-    if (lang != null) page.write(" lang=\"").write(lang).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    HtmlContext(page).apply(func)
-    page.writeNormalElementEnd("html")
+    htmlWriter.writeTag("html")
+    htmlWriter.writeStandardAttributes(null, classes, style)
+    if (lang != null) htmlWriter.write(" lang=\"").write(lang).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    HtmlContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("html")
 }

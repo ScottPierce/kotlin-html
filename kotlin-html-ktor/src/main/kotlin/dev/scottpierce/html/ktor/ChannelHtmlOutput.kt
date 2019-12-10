@@ -1,13 +1,13 @@
 package dev.scottpierce.html.ktor
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import java.io.BufferedWriter
 
-class ChannelHtmlWriter(
+class ChannelHtmlOutput(
     private val writer: BufferedWriter,
     override val options: WriteOptions = WriteOptions.default
-) : HtmlWriter {
+) : HtmlOutput {
     override fun write(c: Char) {
         writer.append(c)
     }

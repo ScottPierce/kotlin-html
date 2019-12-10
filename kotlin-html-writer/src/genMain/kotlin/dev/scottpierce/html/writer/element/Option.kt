@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.option(
+inline fun HtmlOutput.option(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -30,7 +30,7 @@ inline fun HtmlWriter.option(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.option(
+inline fun HtmlOutput.option(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -51,7 +51,7 @@ inline fun HtmlWriter.option(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.option(
+inline fun HtmlOutput.option(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -79,13 +79,13 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("option")
-    page.writeStandardAttributes(id, classes, style)
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    page.write('>')
-    page.indent()
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("option")
+    htmlWriter.writeTag("option")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("option")
 }
 
 @HtmlDsl
@@ -97,14 +97,14 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("option")
-    page.writeStandardAttributes(id, classes, style)
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("option")
+    htmlWriter.writeTag("option")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("option")
 }
 
 @HtmlDsl
@@ -116,12 +116,12 @@ inline fun SelectContext.option(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("option")
-    page.writeStandardAttributes(id, classes, style)
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
-    BodyContext(page).apply(func)
-    page.writeNormalElementEnd("option")
+    htmlWriter.writeTag("option")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
+    BodyContext(htmlWriter).apply(func)
+    htmlWriter.writeNormalElementEnd("option")
 }

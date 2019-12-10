@@ -1,10 +1,10 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.Page
+import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.style.InlineStyleContext
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 
-fun Page.writeNormalElementStart(
+fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -16,7 +16,7 @@ fun Page.writeNormalElementStart(
     indent()
 }
 
-fun Page.writeNormalElementStart(
+fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -31,7 +31,7 @@ fun Page.writeNormalElementStart(
     indent()
 }
 
-fun Page.writeNormalElementStart(
+fun HtmlWriter.writeNormalElementStart(
     tag: String,
     id: String?,
     classes: String?,
@@ -46,13 +46,13 @@ fun Page.writeNormalElementStart(
     indent()
 }
 
-fun Page.writeNormalElementEnd(tag: String) {
+fun HtmlWriter.writeNormalElementEnd(tag: String) {
     unindent()
     newLine()
     write("</").write(tag).write('>')
 }
 
-fun Page.writeVoidElement(
+fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -63,7 +63,7 @@ fun Page.writeVoidElement(
     write('>')
 }
 
-fun Page.writeVoidElement(
+fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -76,7 +76,7 @@ fun Page.writeVoidElement(
     write('>')
 }
 
-fun Page.writeVoidElement(
+fun HtmlWriter.writeVoidElement(
     tag: String,
     id: String?,
     classes: String?,
@@ -89,12 +89,12 @@ fun Page.writeVoidElement(
     write('>')
 }
 
-fun Page.writeTag(tag: String) {
+fun HtmlWriter.writeTag(tag: String) {
     if (!isEmpty) newLine()
     write('<').write(tag)
 }
 
-fun Page.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
+fun HtmlWriter.writeStandardAttributes(id: String?, classes: String?, style: InlineStyleLambda?) {
     if (id != null) write(" id=\"").write(id).write('"')
     if (classes != null) write(" class=\"").write(classes).write('"')
     if (style != null) {
@@ -104,19 +104,19 @@ fun Page.writeStandardAttributes(id: String?, classes: String?, style: InlineSty
     }
 }
 
-fun Page.writeAttributes(attrs: Array<out Pair<String, String?>>) {
+fun HtmlWriter.writeAttributes(attrs: Array<out Pair<String, String?>>) {
     for (attr in attrs) {
         writeAttribute(attr)
     }
 }
 
-fun Page.writeAttributes(attrs: List<Pair<String, String?>>) {
+fun HtmlWriter.writeAttributes(attrs: List<Pair<String, String?>>) {
     for (attr in attrs) {
         writeAttribute(attr)
     }
 }
 
-private fun Page.writeAttribute(attr: Pair<String, String?>) {
+private fun HtmlWriter.writeAttribute(attr: Pair<String, String?>) {
     attr.checkAttributeKey()
     write(' ').write(attr.first)
     val value: String? = attr.second

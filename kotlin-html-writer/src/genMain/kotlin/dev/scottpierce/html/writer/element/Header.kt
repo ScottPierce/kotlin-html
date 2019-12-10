@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.header(
+inline fun HtmlOutput.header(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -25,7 +25,7 @@ inline fun HtmlWriter.header(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.header(
+inline fun HtmlOutput.header(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -40,7 +40,7 @@ inline fun HtmlWriter.header(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.header(
+inline fun HtmlOutput.header(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -61,9 +61,9 @@ inline fun BodyContext.header(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("header", id, classes, style)
+    htmlWriter.writeNormalElementStart("header", id, classes, style)
     func()
-    page.writeNormalElementEnd("header")
+    htmlWriter.writeNormalElementEnd("header")
 }
 
 @HtmlDsl
@@ -74,9 +74,9 @@ inline fun BodyContext.header(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("header", id, classes, style, attrs)
+    htmlWriter.writeNormalElementStart("header", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("header")
+    htmlWriter.writeNormalElementEnd("header")
 }
 
 @HtmlDsl
@@ -87,7 +87,7 @@ inline fun BodyContext.header(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeNormalElementStart("header", id, classes, style, attrs)
+    htmlWriter.writeNormalElementStart("header", id, classes, style, attrs)
     func()
-    page.writeNormalElementEnd("header")
+    htmlWriter.writeNormalElementEnd("header")
 }

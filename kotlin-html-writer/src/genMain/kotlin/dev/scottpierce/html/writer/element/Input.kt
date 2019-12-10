@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import dev.scottpierce.html.writer.style.InlineStyleLambda
 import kotlin.Pair
@@ -11,7 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+inline fun HtmlOutput.input(
     id: String? = null,
     classes: String? = null,
     noinline style: InlineStyleLambda? = null,
@@ -43,7 +43,7 @@ inline fun HtmlWriter.input(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+inline fun HtmlOutput.input(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -77,7 +77,7 @@ inline fun HtmlWriter.input(
 }
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+inline fun HtmlOutput.input(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
@@ -124,19 +124,19 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("input")
-    page.writeStandardAttributes(id, classes, style)
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("input")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    if (maxLength != null) htmlWriter.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (placeholder != null) htmlWriter.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) htmlWriter.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("input")
+    htmlWriter.writeNormalElementEnd("input")
 }
 
 @HtmlDsl
@@ -154,20 +154,20 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("input")
-    page.writeStandardAttributes(id, classes, style)
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("input")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    if (maxLength != null) htmlWriter.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (placeholder != null) htmlWriter.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) htmlWriter.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("input")
+    htmlWriter.writeNormalElementEnd("input")
 }
 
 @HtmlDsl
@@ -185,18 +185,18 @@ inline fun BodyContext.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    page.writeTag("input")
-    page.writeStandardAttributes(id, classes, style)
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    if (maxLength != null) page.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) page.write(" value=\"").write(value).write('"')
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (placeholder != null) page.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) page.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) page.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
-    page.indent()
+    htmlWriter.writeTag("input")
+    htmlWriter.writeStandardAttributes(id, classes, style)
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    if (maxLength != null) htmlWriter.write(" maxLength=\"").write(maxLength).write('"')
+    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (placeholder != null) htmlWriter.write(" placeholder=\"").write(placeholder).write('"')
+    if (ariaLabel != null) htmlWriter.write(" aria-label=\"").write(ariaLabel).write('"')
+    if (ariaLabelledBy != null) htmlWriter.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
+    htmlWriter.indent()
     func()
-    page.writeNormalElementEnd("input")
+    htmlWriter.writeNormalElementEnd("input")
 }

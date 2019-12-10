@@ -2,14 +2,14 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlWriter.source(src: String? = null, type: String? = null) {
+fun HtmlOutput.source(src: String? = null, type: String? = null) {
     pageWriterScope(this) {
         this.writeTag("source")
         if (src != null) this.write(" src=\"").write(src).write('"')
@@ -19,7 +19,7 @@ fun HtmlWriter.source(src: String? = null, type: String? = null) {
 }
 
 @HtmlDsl
-fun HtmlWriter.source(
+fun HtmlOutput.source(
     vararg attrs: Pair<String, String?>,
     src: String? = null,
     type: String? = null
@@ -34,7 +34,7 @@ fun HtmlWriter.source(
 }
 
 @HtmlDsl
-fun HtmlWriter.source(
+fun HtmlOutput.source(
     attrs: List<Pair<String, String?>>,
     src: String? = null,
     type: String? = null
@@ -50,10 +50,10 @@ fun HtmlWriter.source(
 
 @HtmlDsl
 fun VideoContext.source(src: String? = null, type: String? = null) {
-    page.writeTag("source")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    page.write('>')
+    htmlWriter.writeTag("source")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    htmlWriter.write('>')
 }
 
 @HtmlDsl
@@ -62,11 +62,11 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    page.writeTag("source")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
+    htmlWriter.writeTag("source")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
 }
 
 @HtmlDsl
@@ -75,9 +75,9 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    page.writeTag("source")
-    if (src != null) page.write(" src=\"").write(src).write('"')
-    if (type != null) page.write(" type=\"").write(type).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
+    htmlWriter.writeTag("source")
+    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
+    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
 }

@@ -2,14 +2,14 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.pageWriterScope
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlWriter.meta(
+fun HtmlOutput.meta(
     name: String? = null,
     content: String? = null,
     charset: String? = null,
@@ -26,7 +26,7 @@ fun HtmlWriter.meta(
 }
 
 @HtmlDsl
-fun HtmlWriter.meta(
+fun HtmlOutput.meta(
     vararg attrs: Pair<String, String?>,
     name: String? = null,
     content: String? = null,
@@ -45,7 +45,7 @@ fun HtmlWriter.meta(
 }
 
 @HtmlDsl
-fun HtmlWriter.meta(
+fun HtmlOutput.meta(
     attrs: List<Pair<String, String?>>,
     name: String? = null,
     content: String? = null,
@@ -70,12 +70,12 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (content != null) page.write(" content=\"").write(content).write('"')
-    if (charset != null) page.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
-    page.write('>')
+    htmlWriter.writeTag("meta")
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
+    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
+    htmlWriter.write('>')
 }
 
 @HtmlDsl
@@ -86,13 +86,13 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (content != null) page.write(" content=\"").write(content).write('"')
-    if (charset != null) page.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
+    htmlWriter.writeTag("meta")
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
+    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
 }
 
 @HtmlDsl
@@ -103,11 +103,11 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    page.writeTag("meta")
-    if (name != null) page.write(" name=\"").write(name).write('"')
-    if (content != null) page.write(" content=\"").write(content).write('"')
-    if (charset != null) page.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) page.write(" http-equiv=\"").write(httpEquiv).write('"')
-    page.writeAttributes(attrs)
-    page.write('>')
+    htmlWriter.writeTag("meta")
+    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
+    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
+    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
+    htmlWriter.writeAttributes(attrs)
+    htmlWriter.write('>')
 }
