@@ -1,28 +1,26 @@
 package dev.scottpierce.html.stylebuilder
 
+import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.Page
+import dev.scottpierce.html.writer.StringBuilderHtmlWriter
 import dev.scottpierce.html.writer.element.HtmlDsl
 import dev.scottpierce.html.writer.style.BaseStyleContext
+import dev.scottpierce.html.writer.style.StyleLambda
 
-class StyleSheetBuilder {
-    internal var _styles: MutableMap<String, StyleBuilderLambda>? = null
+class StyleSheetBuilder(private val indent: Int) {
+    internal val writer: HtmlWriter = StringBuilderHtmlWriter()
     internal var _mediaQueries: MutableMap<String, StyleSheetBuilder>? = null
 
-    private val styles: MutableMap<String, StyleBuilderLambda>
-        get() = _styles ?: LinkedHashMap<String, StyleBuilderLambda>().apply { _styles = this }
     private val mediaQueries: MutableMap<String, StyleSheetBuilder>
-        get() = _mediaQueries ?: LinkedHashMap<String, StyleSheetBuilder>().apply { _mediaQueries = this }
+        get() = _mediaQueries ?: LinkedHashMap<String, StyleSheetBuilder>(6).apply { _mediaQueries = this }
 
     @HtmlDsl
-    fun style(selector: String, func: StyleBuilderLambda) {
-        val oldValue = styles.put(selector, func)
-        check(oldValue == null) {
-            "Style '$selector' has already been set. Styles must be declared once in a single location."
-        }
-    }
+    fun media(selector: String): StyleSheetBuilder = mediaQueries.getOrPut(selector) { StyleSheetBuilder(indent + 1) }
+}
 
-    @HtmlDsl
-    fun media(selector: String): StyleSheetBuilder = mediaQueries.getOrPut(selector) { StyleSheetBuilder() }
+@HtmlDsl
+inline fun style(selector: String, func: StyleLambda) {
+
 }
 
 @HtmlDsl

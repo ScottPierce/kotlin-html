@@ -15,7 +15,7 @@ inline fun pageWriterScope(htmlWriter: HtmlWriter, func: Page.() -> Unit) {
     )
 }
 
-class Page internal constructor(private val primaryWriter: HtmlWriter) {
+class Page(private val primaryWriter: HtmlWriter) : Closeable {
     val options: WriteOptions = primaryWriter.options
     private var indent = 0
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
@@ -23,14 +23,14 @@ class Page internal constructor(private val primaryWriter: HtmlWriter) {
 
     private var currentWriter: HtmlWriter = primaryWriter
 
-    private var bufferedSegments: MutableList<BufferedPageSegment>? = null
+    private var additionalWriters: MutableList<StringBuilderHtmlWriter?>? = null
     private var isClosed = false
 
     private var _state: MutableMap<String, Any>? = null
 
     val state: MutableMap<String, Any>
         get() = _state ?: run {
-            val state = HashMap<String, Any>(8)
+            val state = LinkedHashMap<String, Any>(8)
             _state = state
             state
         }
@@ -87,26 +87,18 @@ class Page internal constructor(private val primaryWriter: HtmlWriter) {
         currentWriter = newWriter
     }
 
-    internal fun close() {
+    override fun close() {
         if (isClosed) return
+        isClosed = true
 
         currentWriter = primaryWriter
-
-        bufferedSegments?.let { bufferedSegments ->
-            for (bufferedSegment in bufferedSegments) {
-                when (bufferedSegment) {
-                    is BufferedPageSegment.Deferred<*> -> {
-                        indent = bufferedSegment.indent
-                        bufferedSegment.performWrite()
-                    }
-                    is BufferedPageSegment.Written -> {
-                        primaryWriter.write(bufferedSegment.writer.asCharSequence())
-                    }
-                }
+        additionalWriters?.let { additionalWriters ->
+            for (i in additionalWriters.indices) {
+                val writer = additionalWriters[i]!!
+                primaryWriter.write(writer.charSequence)
+                additionalWriters[i] = null
             }
         }
-
-        isClosed = true
     }
 
     private fun throwIfClosed() {
@@ -116,16 +108,3 @@ class Page internal constructor(private val primaryWriter: HtmlWriter) {
 
 @HtmlDsl
 fun <T : HtmlWriterContext> T.defer(write: T.() -> Unit) = page.defer(this, write)
-
-private sealed class BufferedPageSegment {
-    class Deferred<T : HtmlWriterContext>(
-        val context: T,
-        val write: T.() -> Unit,
-        val indent: Int
-    ) : BufferedPageSegment() {
-        fun performWrite() {
-            context.write()
-        }
-    }
-    class Written(val writer: StringBuilderHtmlWriter) : BufferedPageSegment()
-}

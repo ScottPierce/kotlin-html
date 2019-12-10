@@ -69,8 +69,7 @@ kotlin {
         val linuxX64Test by getting {
             dependsOn(linuxX64Main)
         }
-    }
-    sourceSets {
+
         all {
             languageSettings.enableLanguageFeature("InlineClasses")
         }

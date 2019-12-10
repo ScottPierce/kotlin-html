@@ -15,6 +15,15 @@ class StringBuilderHtmlWriter(
 ) : HtmlWriter {
     private val sb = StringBuilder(initialCapacity)
 
+    /**
+     * A [CharSequence] of everything that's been written to this [HtmlWriter].
+     *
+     * This is exposed to save the underlying data from having to be converted to a [String], especially since the
+     * html written can be quite large.
+     */
+    val charSequence: CharSequence
+        get() = sb
+
     override fun write(c: Char) {
         sb.append(c)
     }
@@ -23,9 +32,13 @@ class StringBuilderHtmlWriter(
         sb.append(code)
     }
 
-    override fun toString(): String = sb.toString()
+    fun replace(regex: Regex, replacement: String) {
+        val newString = sb.replace(regex, replacement)
+        sb.clear()
+        sb.append(newString)
+    }
 
-    fun asCharSequence(): CharSequence = sb
+    override fun toString(): String = sb.toString()
 }
 
 data class WriteOptions(

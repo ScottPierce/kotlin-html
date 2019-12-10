@@ -18,6 +18,8 @@ import io.ktor.response.respond
 import io.ktor.util.cio.bufferedWriter
 import kotlinx.coroutines.io.ByteWriteChannel
 
+internal val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charsets.UTF_8)
+
 /**
  * Represents an [OutgoingContent] using `dev.scottpierce.html`
  */
@@ -27,7 +29,7 @@ class HtmlWriterOutgoingContent(
     private val func: suspend HtmlWriter.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
-        get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
+        get() = CONTENT_TYPE_HTML_UTF_8
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
@@ -45,7 +47,7 @@ class HtmlFileOutgoingContent(
     private val func: suspend FileContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
-        get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
+        get() = CONTENT_TYPE_HTML_UTF_8
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
@@ -63,7 +65,7 @@ class HtmlOutgoingContent(
     private val func: suspend HtmlContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
-        get() = ContentType.Text.Html.withCharset(Charsets.UTF_8)
+        get() = CONTENT_TYPE_HTML_UTF_8
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
