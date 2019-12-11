@@ -1,11 +1,14 @@
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.WriteOptions
+import dev.scottpierce.html.writer.writer
 
 @HtmlDsl
 fun HtmlOutput.metaTitle(title: String) {
-    pageWriterScope(this) {
+    writer {
         HeadContext(this).metaTitle(title)
     }
 }
@@ -17,7 +20,7 @@ fun HeadContext.metaTitle(title: String) {
 
 @HtmlDsl
 fun HtmlOutput.metaDescription(description: String) {
-    pageWriterScope(this) {
+    writer {
         HeadContext(this).metaDescription(description)
     }
 }
@@ -29,7 +32,7 @@ fun HeadContext.metaDescription(description: String) {
 
 @HtmlDsl
 fun HtmlOutput.metaCharset(charset: String) {
-    pageWriterScope(this) {
+    writer {
         HeadContext(this).metaCharset(charset)
     }
 }
@@ -41,7 +44,7 @@ fun HeadContext.metaCharset(charset: String) {
 
 @HtmlDsl
 fun HtmlOutput.metaViewport(viewport: String) {
-    pageWriterScope(this) {
+    writer {
         HeadContext(this).metaViewport(viewport)
     }
 }
@@ -53,7 +56,7 @@ fun HeadContext.metaViewport(viewport: String) {
 
 @HtmlDsl
 fun HtmlOutput.metaCharsetUtf8() {
-    pageWriterScope(this) {
+    writer {
         HeadContext(this).metaCharsetUtf8()
     }
 }

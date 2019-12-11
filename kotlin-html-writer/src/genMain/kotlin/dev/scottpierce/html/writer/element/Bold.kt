@@ -2,16 +2,18 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("bold")
         this.write('>')
         this.indent()
@@ -21,8 +23,8 @@ inline fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
 }
 
 @HtmlDsl
-inline fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("bold")
         this.writeAttributes(attrs)
         this.write('>')
@@ -33,8 +35,8 @@ inline fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContex
 }
 
 @HtmlDsl
-inline fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("bold")
         this.writeAttributes(attrs)
         this.write('>')
@@ -46,30 +48,30 @@ inline fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext
 
 @HtmlDsl
 inline fun BodyContext.bold(func: BodyContext.() -> Unit = {}) {
-    htmlWriter.writeTag("bold")
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("bold")
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("bold")
+    writer.writeNormalElementEnd("bold")
 }
 
 @HtmlDsl
 inline fun BodyContext.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit =
         {}) {
-    htmlWriter.writeTag("bold")
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("bold")
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("bold")
+    writer.writeNormalElementEnd("bold")
 }
 
 @HtmlDsl
 inline fun BodyContext.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    htmlWriter.writeTag("bold")
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("bold")
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("bold")
+    writer.writeNormalElementEnd("bold")
 }

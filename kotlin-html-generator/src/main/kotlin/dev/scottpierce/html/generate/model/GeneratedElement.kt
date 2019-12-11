@@ -103,16 +103,16 @@ sealed class GeneratedElement(
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
-            Normal(
-                tagName = "html",
-                callingContext = Context.File,
-                childrenContext = Context.Html,
-                supportedAttributes = listOf(
-                    Attr.CLASSES,
-                    Attr.STYLE,
-                    Attr.String("lang")
-                )
-            ),
+//            Normal(
+//                tagName = "html",
+//                callingContext = Context.File,
+//                childrenContext = Context.Html,
+//                supportedAttributes = listOf(
+//                    Attr.CLASSES,
+//                    Attr.STYLE,
+//                    Attr.String("lang")
+//                )
+//            ),
             Normal(
                 tagName = "i",
                 callingContext = Context.Body,
@@ -274,7 +274,7 @@ enum class Context {
 
     val contextClassName: ClassName by lazy {
         ClassName(
-            packageName = "dev.scottpierce.html.writer.element",
+            packageName = "dev.scottpierce.html.writer",
             simpleNames = listOf("${name}Context")
         )
     }

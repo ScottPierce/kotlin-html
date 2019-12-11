@@ -35,7 +35,7 @@ class StyleBuilderTests {
         StringHtmlOutput().apply {
             html {
                 defer {
-                    styleSheet(htmlWriter.styleSheet)
+                    styleSheet(writer.styleSheet)
                 }
                 style(".test") {
                     backgroundColor(1, 1, 1)
@@ -59,7 +59,7 @@ class StyleBuilderTests {
         StringHtmlOutput().apply {
             html {
                 defer {
-                    styleSheet(htmlWriter.styleSheet)
+                    styleSheet(writer.styleSheet)
                 }
                 style(".test") {
                     backgroundColor(1, 1, 1)

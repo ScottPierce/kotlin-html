@@ -1,21 +1,25 @@
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.element.BaseHtmlContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.element.HtmlDsl
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.StyleContext
+import dev.scottpierce.html.writer.StyleLambda
+import dev.scottpierce.html.writer.StyleSheetContext
+import dev.scottpierce.html.writer.writer
 
 @HtmlDsl
 inline fun HtmlOutput.styleSheet(func: StyleSheetContext.() -> Unit) {
-    pageWriterScope(this) {
+    writer {
         HtmlContext(this).styleSheet(func)
     }
 }
 
 @HtmlDsl
 inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
-    htmlWriter.apply {
+    writer.apply {
         if (!isEmpty) newLine()
 
         write("<style type=\"text/css\">")
@@ -30,19 +34,21 @@ inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
 }
 
 @HtmlDsl
-inline fun HtmlOutput.media(selector: String, func: StyleSheetContext.() -> Unit) {
-    pageWriterScope(this) {
+inline fun HtmlOutput.media(
+    selector: String,
+    func: StyleSheetContext.() -> Unit) {
+    writer {
         StyleSheetContext(this).media(selector, func)
     }
 }
 
 @HtmlDsl
 inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() -> Unit) {
-    htmlWriter.apply {
+    writer.apply {
         if (!isEmpty) newLine()
 
         write("@media ").write(selector)
-        if (!options.minifyStyles) write(' ')
+        if (!writer.options.minifyStyles) write(' ')
         write('{')
         indent()
 
@@ -56,14 +62,14 @@ inline fun StyleSheetContext.media(selector: String, func: StyleSheetContext.() 
 
 @HtmlDsl
 inline fun HtmlOutput.style(selector: String, func: StyleLambda) {
-    pageWriterScope(this) {
+    writer {
         StyleSheetContext(this).style(selector, func)
     }
 }
 
 @HtmlDsl
 inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
-    htmlWriter.apply {
+    writer.apply {
         if (!isEmpty) newLine()
 
         write(selector)
@@ -80,7 +86,7 @@ inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
 }
 
 fun BaseStyleContext.writeStyleProperty(property: String, value: Any) {
-    htmlWriter.apply {
+    writer.apply {
         if (!isEmpty) newLine()
 
         write(property).write(':')

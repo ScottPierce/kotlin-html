@@ -2,15 +2,17 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.VideoContext
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
 @HtmlDsl
 fun HtmlOutput.source(src: String? = null, type: String? = null) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("source")
         if (src != null) this.write(" src=\"").write(src).write('"')
         if (type != null) this.write(" type=\"").write(type).write('"')
@@ -24,7 +26,7 @@ fun HtmlOutput.source(
     src: String? = null,
     type: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("source")
         if (src != null) this.write(" src=\"").write(src).write('"')
         if (type != null) this.write(" type=\"").write(type).write('"')
@@ -39,7 +41,7 @@ fun HtmlOutput.source(
     src: String? = null,
     type: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("source")
         if (src != null) this.write(" src=\"").write(src).write('"')
         if (type != null) this.write(" type=\"").write(type).write('"')
@@ -50,10 +52,10 @@ fun HtmlOutput.source(
 
 @HtmlDsl
 fun VideoContext.source(src: String? = null, type: String? = null) {
-    htmlWriter.writeTag("source")
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    htmlWriter.write('>')
+    writer.writeTag("source")
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -62,11 +64,11 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    htmlWriter.writeTag("source")
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("source")
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -75,9 +77,9 @@ fun VideoContext.source(
     src: String? = null,
     type: String? = null
 ) {
-    htmlWriter.writeTag("source")
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("source")
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }

@@ -2,9 +2,9 @@ package dev.scottpierce.html.stylebuilder
 
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.element.BaseHtmlContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.element.HtmlDsl
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.pageWriterScope
 
 @HtmlDsl
@@ -16,7 +16,7 @@ fun HtmlOutput.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
 
 @HtmlDsl
 fun BaseHtmlContext.styleSheet(styleSheetBuilder: StyleSheetBuilder) {
-    htmlWriter.apply {
+    writer.apply {
         if (!isEmpty) newLine()
 
         write("<style type=\"text/css\">")

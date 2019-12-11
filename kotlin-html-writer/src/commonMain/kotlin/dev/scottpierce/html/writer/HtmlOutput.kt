@@ -1,14 +1,14 @@
 package dev.scottpierce.html.writer
 
-import dev.scottpierce.html.writer.element.HtmlDsl
-
 @HtmlDsl
 interface HtmlOutput {
+    val options: WriteOptions
     fun write(c: Char)
     fun write(code: CharSequence)
 }
 
 class StringHtmlOutput(
+    override val options: WriteOptions = WriteOptions.default,
     initialCapacity: Int = 128
 ) : HtmlOutput {
     private val sb = StringBuilder(initialCapacity)
@@ -28,12 +28,6 @@ class StringHtmlOutput(
 
     override fun write(code: CharSequence) {
         sb.append(code)
-    }
-
-    fun replace(regex: Regex, replacement: String) {
-        val newString = sb.replace(regex, replacement)
-        sb.clear()
-        sb.append(newString)
     }
 
     override fun toString(): String = sb.toString()

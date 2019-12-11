@@ -1,6 +1,5 @@
 package dev.scottpierce.html.writer
 
-import dev.scottpierce.html.writer.element.HtmlDsl
 import kotlin.jvm.Volatile
 
 /**
@@ -8,17 +7,21 @@ import kotlin.jvm.Volatile
  *
  * A [HtmlWriter] should only be accessed inside of the given lambda, and shouldn't be saved for later.
  */
-@HtmlDsl
-fun HtmlOutput.toWriter(options: WriteOptions = WriteOptions.default): HtmlWriter
-        = HtmlWriter(output = this, options = options)
+inline fun HtmlOutput.writer(func: HtmlWriter.() -> Unit): HtmlWriter {
+    val writer = HtmlWriter(this).apply(func)
+    writer.close()
+    return writer
+}
 
 class HtmlWriter internal constructor(
     private val output: HtmlOutput,
-    private val options: WriteOptions = WriteOptions.default,
     private var indent: Int
-) : Closeable {
-    constructor(output: HtmlOutput, options: WriteOptions = WriteOptions.default) : this(output, options, 0)
+) {
+    constructor(
+        output: HtmlOutput
+    ) : this(output, 0)
 
+    val options = output.options
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
     private val newLineString: String? = if (options.newLine.isEmpty()) null else options.newLine
 
@@ -32,7 +35,7 @@ class HtmlWriter internal constructor(
     var isEmpty: Boolean = true
         private set
 
-    override fun close() {
+    fun close() {
         if (isClosed) return
         isClosed = true
 
@@ -54,11 +57,15 @@ class HtmlWriter internal constructor(
     fun insertWriter(name: String) {
         val childWriters = childWriters ?: HashMap<String, HtmlWriter>(8).also { childWriters = it }
 
-        childWriters[name] = HtmlWriter(
-            output = StringHtmlOutput(),
-            options = options,
-            indent = indent
+        val previous = childWriters.put(
+            key = name,
+            value = HtmlWriter(
+                output = StringHtmlOutput(options = options),
+                indent = indent
+            )
         )
+
+        check(previous == null) { "A writer with the name '$name' has already been inserted." }
     }
 
     fun writer(name: String): HtmlWriter {

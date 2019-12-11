@@ -2,22 +2,24 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.nav(
+fun HtmlOutput.nav(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("nav", id, classes, style)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("nav")
@@ -25,14 +27,14 @@ inline fun HtmlOutput.nav(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.nav(
+fun HtmlOutput.nav(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("nav", id, classes, style, attrs)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("nav")
@@ -40,14 +42,14 @@ inline fun HtmlOutput.nav(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.nav(
+fun HtmlOutput.nav(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("nav", id, classes, style, attrs)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("nav")
@@ -61,9 +63,9 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("nav", id, classes, style)
+    writer.writeNormalElementStart("nav", id, classes, style)
     func()
-    htmlWriter.writeNormalElementEnd("nav")
+    writer.writeNormalElementEnd("nav")
 }
 
 @HtmlDsl
@@ -74,9 +76,9 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("nav", id, classes, style, attrs)
+    writer.writeNormalElementStart("nav", id, classes, style, attrs)
     func()
-    htmlWriter.writeNormalElementEnd("nav")
+    writer.writeNormalElementEnd("nav")
 }
 
 @HtmlDsl
@@ -87,7 +89,7 @@ inline fun BodyContext.nav(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("nav", id, classes, style, attrs)
+    writer.writeNormalElementStart("nav", id, classes, style, attrs)
     func()
-    htmlWriter.writeNormalElementEnd("nav")
+    writer.writeNormalElementEnd("nav")
 }

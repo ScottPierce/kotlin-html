@@ -2,33 +2,21 @@ package dev.scottpierce.html.writer.util
 
 import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.StyleContext
-import dev.scottpierce.html.writer.style.StyleSheetContext
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.StyleContext
+import dev.scottpierce.html.writer.StyleSheetContext
 import dev.scottpierce.html.writer.style.styleSheet
-
-fun writeFile(
-    options: WriteOptions = WriteOptions(indent = "    "),
-    func: FileContext.() -> Unit
-): StringHtmlOutput {
-    val writer = StringHtmlOutput(options = options)
-    pageWriterScope(writer) {
-        FileContext(this).apply(func)
-    }
-    return writer
-}
+import dev.scottpierce.html.writer.writer
 
 fun writeHtml(
     options: WriteOptions = WriteOptions(indent = "    "),
     func: HtmlContext.() -> Unit
 ): StringHtmlOutput {
-    val writer = StringHtmlOutput(options = options)
-    pageWriterScope(writer) {
+    val output = StringHtmlOutput()
+    output.writer {
         HtmlContext(this).apply(func)
     }
-    return writer
+    return output
 }
 
 fun StringHtmlOutput.assertEquals(expected: String) {
@@ -43,16 +31,15 @@ fun writeStyle(
     options: WriteOptions = WriteOptions(indent = "    "),
     func: StyleContext.() -> Unit
 ): StringHtmlOutput {
-    val writer = StringHtmlOutput(options = options)
-    pageWriterScope(writer) {
+    val output = StringHtmlOutput()
+    output.writer {
         StyleContext(this).apply(func)
     }
-    return writer
+    return output
 }
 
 fun writeStyleSheet(
-    options: WriteOptions = WriteOptions(indent = "    "),
     func: StyleSheetContext.() -> Unit
-): StringHtmlOutput = StringHtmlOutput(options = options).apply {
+): StringHtmlOutput = StringHtmlOutput().apply {
     styleSheet(func)
 }

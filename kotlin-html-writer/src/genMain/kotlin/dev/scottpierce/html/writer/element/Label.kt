@@ -2,23 +2,25 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.label(
+fun HtmlOutput.label(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("label")
         this.writeStandardAttributes(id, classes, style)
         if (forId != null) this.write(" for=\"").write(forId).write('"')
@@ -30,15 +32,15 @@ inline fun HtmlOutput.label(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.label(
+fun HtmlOutput.label(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("label")
         this.writeStandardAttributes(id, classes, style)
         if (forId != null) this.write(" for=\"").write(forId).write('"')
@@ -51,15 +53,15 @@ inline fun HtmlOutput.label(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.label(
+fun HtmlOutput.label(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("label")
         this.writeStandardAttributes(id, classes, style)
         if (forId != null) this.write(" for=\"").write(forId).write('"')
@@ -79,13 +81,13 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("label")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("label")
+    writer.writeStandardAttributes(id, classes, style)
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("label")
+    writer.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -97,14 +99,14 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("label")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("label")
+    writer.writeStandardAttributes(id, classes, style)
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("label")
+    writer.writeNormalElementEnd("label")
 }
 
 @HtmlDsl
@@ -116,12 +118,12 @@ inline fun BodyContext.label(
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("label")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (forId != null) htmlWriter.write(" for=\"").write(forId).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("label")
+    writer.writeStandardAttributes(id, classes, style)
+    if (forId != null) writer.write(" for=\"").write(forId).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("label")
+    writer.writeNormalElementEnd("label")
 }

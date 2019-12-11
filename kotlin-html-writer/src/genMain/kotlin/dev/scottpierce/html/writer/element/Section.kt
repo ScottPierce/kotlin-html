@@ -2,22 +2,24 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.section(
+fun HtmlOutput.section(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("section", id, classes, style)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("section")
@@ -25,14 +27,14 @@ inline fun HtmlOutput.section(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.section(
+fun HtmlOutput.section(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("section", id, classes, style, attrs)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("section")
@@ -40,14 +42,14 @@ inline fun HtmlOutput.section(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.section(
+fun HtmlOutput.section(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeNormalElementStart("section", id, classes, style, attrs)
         BodyContext(this).apply(func)
         this.writeNormalElementEnd("section")
@@ -61,9 +63,9 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("section", id, classes, style)
+    writer.writeNormalElementStart("section", id, classes, style)
     func()
-    htmlWriter.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("section")
 }
 
 @HtmlDsl
@@ -74,9 +76,9 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("section", id, classes, style, attrs)
     func()
-    htmlWriter.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("section")
 }
 
 @HtmlDsl
@@ -87,7 +89,7 @@ inline fun BodyContext.section(
     noinline style: InlineStyleLambda? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeNormalElementStart("section", id, classes, style, attrs)
+    writer.writeNormalElementStart("section", id, classes, style, attrs)
     func()
-    htmlWriter.writeNormalElementEnd("section")
+    writer.writeNormalElementEnd("section")
 }

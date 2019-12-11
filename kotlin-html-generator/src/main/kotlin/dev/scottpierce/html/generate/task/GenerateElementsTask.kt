@@ -18,10 +18,11 @@ import dev.scottpierce.html.generate.model.Context
 import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
-import dev.scottpierce.html.generate.model.PAGE_WRITER_SCOPE
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
+import dev.scottpierce.html.generate.model.WRITE_OPTIONS
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
 import java.io.File
 import kotlinx.coroutines.Dispatchers
@@ -45,10 +46,10 @@ class GenerateElementsTask : Task {
                 .addComment(Constants.GENERATED_FILE_COMMENT)
 
             for (i in 0..1) {
-                val isWriter = (i % 2) == 0
+                val isOutput = (i % 2) == 0
 
                 for (type in DslFunction.values()) {
-                    file.addFunction(createDslFunction(element, isWriter, type))
+                    file.addFunction(createDslFunction(element, isOutput, type))
                 }
             }
 
@@ -66,22 +67,22 @@ val WRITE_ATTRIBUTES = MemberName("dev.scottpierce.html.writer.element", "writeA
 
 private fun createDslFunction(
     element: GeneratedElement,
-    isWriter: Boolean,
+    isOutput: Boolean,
     functionType: DslFunction
 ): FunSpec = FunSpec.builder(element.tagName).apply {
     val childrenContext: Context? = element.childrenContext()
     val isParent = childrenContext != null
 
-    val writer: String = if (isWriter) "this" else "page"
+    val writer: String = if (isOutput) "this" else "writer"
 
-    if (isWriter) {
+    if (isOutput) {
         receiver(HTML_WRITER)
     } else {
         receiver(element.callingContext.contextClassName)
     }
 
     // No reason to inline if there is no lambda
-    val isInline: Boolean = isParent
+    val isInline: Boolean = isParent && !isOutput
 
     if (isInline) {
         addModifiers(KModifier.INLINE)
@@ -144,8 +145,8 @@ private fun createDslFunction(
     val hasOnlyStandardAttributes = STANDARD_ATTRIBUTES.size == element.supportedAttributes.size &&
             STANDARD_ATTRIBUTES.containsAll(element.supportedAttributes)
 
-    if (isWriter) {
-        beginControlFlow("%M(this)", PAGE_WRITER_SCOPE)
+    if (isOutput) {
+        beginControlFlow("%M", TO_WRITER)
     }
 
     // Write Tag Start
@@ -232,7 +233,7 @@ private fun createDslFunction(
     // Write Content and End
     if (isParent) {
         when {
-            isWriter -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
+            isOutput -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
             childrenContext == element.callingContext -> addStatement("func()")
             else -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
         }
@@ -240,7 +241,7 @@ private fun createDslFunction(
         addStatement("$writer.%M(\"${element.tagName}\")", WRITE_NORMAL_ELEMENT_END)
     }
 
-    if (isWriter) {
+    if (isOutput) {
         endControlFlow()
     }
 }.build()

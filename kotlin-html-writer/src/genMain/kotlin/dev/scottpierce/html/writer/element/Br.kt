@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
@@ -15,7 +17,7 @@ fun HtmlOutput.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeVoidElement("br", id, classes, style)
     }
 }
@@ -27,7 +29,7 @@ fun HtmlOutput.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeVoidElement("br", id, classes, style, attrs)
     }
 }
@@ -39,7 +41,7 @@ fun HtmlOutput.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeVoidElement("br", id, classes, style, attrs)
     }
 }
@@ -50,7 +52,7 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    htmlWriter.writeVoidElement("br", id, classes, style)
+    writer.writeVoidElement("br", id, classes, style)
 }
 
 @HtmlDsl
@@ -60,7 +62,7 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    htmlWriter.writeVoidElement("br", id, classes, style, attrs)
+    writer.writeVoidElement("br", id, classes, style, attrs)
 }
 
 @HtmlDsl
@@ -70,5 +72,5 @@ fun BodyContext.br(
     classes: String? = null,
     style: InlineStyleLambda? = null
 ) {
-    htmlWriter.writeVoidElement("br", id, classes, style, attrs)
+    writer.writeVoidElement("br", id, classes, style, attrs)
 }

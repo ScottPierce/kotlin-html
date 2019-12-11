@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Boolean
 import kotlin.Suppress
 
@@ -22,7 +25,7 @@ fun BaseStyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-        inset = inset))
+            inset = inset))
 }
 
 fun BaseStyleContext.boxShadow(
@@ -34,7 +37,7 @@ fun BaseStyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-        spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset))
 }
 
 fun StyleContext.boxShadow(boxShadow: BoxShadow) {
@@ -52,7 +55,7 @@ fun StyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-        inset = inset))
+            inset = inset))
 }
 
 fun StyleContext.boxShadow(
@@ -64,7 +67,7 @@ fun StyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-        spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset))
 }
 
 fun InlineStyleContext.boxShadow(boxShadow: BoxShadow) {
@@ -82,7 +85,7 @@ fun InlineStyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-        inset = inset))
+            inset = inset))
 }
 
 fun InlineStyleContext.boxShadow(
@@ -94,5 +97,5 @@ fun InlineStyleContext.boxShadow(
     inset: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-        spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset))
 }

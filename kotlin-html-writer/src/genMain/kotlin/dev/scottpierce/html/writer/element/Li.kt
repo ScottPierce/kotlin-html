@@ -2,23 +2,26 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.UlContext
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.li(
+fun HtmlOutput.li(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("li")
         this.writeStandardAttributes(id, classes, style)
         if (value != null) this.write(" value=\"").write(value).write('"')
@@ -30,15 +33,15 @@ inline fun HtmlOutput.li(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.li(
+fun HtmlOutput.li(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("li")
         this.writeStandardAttributes(id, classes, style)
         if (value != null) this.write(" value=\"").write(value).write('"')
@@ -51,15 +54,15 @@ inline fun HtmlOutput.li(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.li(
+fun HtmlOutput.li(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("li")
         this.writeStandardAttributes(id, classes, style)
         if (value != null) this.write(" value=\"").write(value).write('"')
@@ -79,13 +82,13 @@ inline fun UlContext.li(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("li")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
-    htmlWriter.write('>')
-    htmlWriter.indent()
-    BodyContext(htmlWriter).apply(func)
-    htmlWriter.writeNormalElementEnd("li")
+    writer.writeTag("li")
+    writer.writeStandardAttributes(id, classes, style)
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    writer.write('>')
+    writer.indent()
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
@@ -97,14 +100,14 @@ inline fun UlContext.li(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("li")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
-    BodyContext(htmlWriter).apply(func)
-    htmlWriter.writeNormalElementEnd("li")
+    writer.writeTag("li")
+    writer.writeStandardAttributes(id, classes, style)
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }
 
 @HtmlDsl
@@ -116,12 +119,12 @@ inline fun UlContext.li(
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    htmlWriter.writeTag("li")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (value != null) htmlWriter.write(" value=\"").write(value).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
-    BodyContext(htmlWriter).apply(func)
-    htmlWriter.writeNormalElementEnd("li")
+    writer.writeTag("li")
+    writer.writeStandardAttributes(id, classes, style)
+    if (value != null) writer.write(" value=\"").write(value).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
+    BodyContext(writer).apply(func)
+    writer.writeNormalElementEnd("li")
 }

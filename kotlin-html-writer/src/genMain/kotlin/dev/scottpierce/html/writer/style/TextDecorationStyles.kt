@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Suppress
 
 fun BaseStyleContext.textDecoration(
@@ -12,7 +15,7 @@ fun BaseStyleContext.textDecoration(
     style: TextDecorationStyle? = null
 ) {
     writeStyleProperty("text-decoration",
-        """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
 }
 
 fun BaseStyleContext.textDecoration(value: CssValue) {
@@ -25,7 +28,7 @@ fun StyleContext.textDecoration(
     style: TextDecorationStyle? = null
 ) {
     writeStyleProperty("text-decoration",
-        """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
 }
 
 fun StyleContext.textDecoration(value: CssValue) {
@@ -38,7 +41,7 @@ fun InlineStyleContext.textDecoration(
     style: TextDecorationStyle? = null
 ) {
     writeStyleProperty("text-decoration",
-        """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
 }
 
 fun InlineStyleContext.textDecoration(value: CssValue) {

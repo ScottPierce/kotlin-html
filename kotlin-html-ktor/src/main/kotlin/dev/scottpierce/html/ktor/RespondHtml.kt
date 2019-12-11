@@ -4,10 +4,8 @@ package dev.scottpierce.html.ktor
 
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
+import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.element.DocType
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.element.docType
 import dev.scottpierce.html.writer.element.html
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
@@ -25,7 +23,6 @@ internal val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charset
  */
 class HtmlWriterOutgoingContent(
     override val status: HttpStatusCode? = null,
-    private val options: WriteOptions,
     private val func: suspend HtmlOutput.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
@@ -33,25 +30,7 @@ class HtmlWriterOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlOutput(it, options).func()
-        }
-    }
-}
-
-/**
- * Represents an [OutgoingContent] using `dev.scottpierce.html`
- */
-class HtmlFileOutgoingContent(
-    override val status: HttpStatusCode? = null,
-    private val options: WriteOptions,
-    private val func: suspend FileContext.() -> Unit
-) : OutgoingContent.WriteChannelContent() {
-    override val contentType: ContentType
-        get() = CONTENT_TYPE_HTML_UTF_8
-
-    override suspend fun writeTo(channel: ByteWriteChannel) {
-        channel.bufferedWriter().use {
-            FileContext(ChannelHtmlOutput(it, options)).func()
+            ChannelHtmlOutput(it).func()
         }
     }
 }
@@ -60,8 +39,9 @@ class HtmlFileOutgoingContent(
  * Represents an [OutgoingContent] using `dev.scottpierce.html`
  */
 class HtmlOutgoingContent(
-    override val status: HttpStatusCode? = null,
-    private val options: WriteOptions,
+    override val status: HttpStatusCode? = HttpStatusCode.OK,
+    private val options: WriteOptions = WriteOptions.default,
+    private val docType: DocType? = DocType.Html,
     private val func: suspend HtmlContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
@@ -69,12 +49,7 @@ class HtmlOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlOutput(it, options).apply {
-                docType(DocType.Html)
-                html {
-                    func()
-                }
-            }
+            ChannelHtmlOutput(it).html(options, docType) { func() }
         }
     }
 }
@@ -82,26 +57,17 @@ class HtmlOutgoingContent(
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
  */
-suspend fun ApplicationCall.respondHtmlFile(
-    status: HttpStatusCode = HttpStatusCode.OK,
-    options: WriteOptions = WriteOptions.default,
-    func: suspend FileContext.() -> Unit
-): Unit = respond(HtmlFileOutgoingContent(status, options, func))
-
-/**
- * Responds to a client with a HTML response, using specified [func] to build an HTML page
- */
 suspend fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.default,
+    docType: DocType? = DocType.Html,
     func: suspend HtmlContext.() -> Unit
-): Unit = respond(HtmlOutgoingContent(status, options, func))
+): Unit = respond(HtmlOutgoingContent(status, options, docType, func))
 
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
  */
-suspend fun ApplicationCall.respondHtmlWriter(
+suspend fun ApplicationCall.respondHtmlOptions(
     status: HttpStatusCode = HttpStatusCode.OK,
-    options: WriteOptions = WriteOptions.default,
     func: suspend HtmlOutput.() -> Unit
-): Unit = respond(HtmlWriterOutgoingContent(status, options, func))
+): Unit = respond(HtmlWriterOutgoingContent(status, func))

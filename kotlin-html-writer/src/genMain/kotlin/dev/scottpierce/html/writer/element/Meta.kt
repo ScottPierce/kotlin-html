@@ -2,8 +2,10 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
@@ -15,7 +17,7 @@ fun HtmlOutput.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("meta")
         if (name != null) this.write(" name=\"").write(name).write('"')
         if (content != null) this.write(" content=\"").write(content).write('"')
@@ -33,7 +35,7 @@ fun HtmlOutput.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("meta")
         if (name != null) this.write(" name=\"").write(name).write('"')
         if (content != null) this.write(" content=\"").write(content).write('"')
@@ -52,7 +54,7 @@ fun HtmlOutput.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("meta")
         if (name != null) this.write(" name=\"").write(name).write('"')
         if (content != null) this.write(" content=\"").write(content).write('"')
@@ -70,12 +72,12 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    htmlWriter.writeTag("meta")
-    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
-    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
-    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
-    htmlWriter.write('>')
+    writer.writeTag("meta")
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (content != null) writer.write(" content=\"").write(content).write('"')
+    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -86,13 +88,13 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    htmlWriter.writeTag("meta")
-    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
-    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
-    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("meta")
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (content != null) writer.write(" content=\"").write(content).write('"')
+    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -103,11 +105,11 @@ fun HeadContext.meta(
     charset: String? = null,
     httpEquiv: String? = null
 ) {
-    htmlWriter.writeTag("meta")
-    if (name != null) htmlWriter.write(" name=\"").write(name).write('"')
-    if (content != null) htmlWriter.write(" content=\"").write(content).write('"')
-    if (charset != null) htmlWriter.write(" charset=\"").write(charset).write('"')
-    if (httpEquiv != null) htmlWriter.write(" http-equiv=\"").write(httpEquiv).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("meta")
+    if (name != null) writer.write(" name=\"").write(name).write('"')
+    if (content != null) writer.write(" content=\"").write(content).write('"')
+    if (charset != null) writer.write(" charset=\"").write(charset).write('"')
+    if (httpEquiv != null) writer.write(" http-equiv=\"").write(httpEquiv).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }

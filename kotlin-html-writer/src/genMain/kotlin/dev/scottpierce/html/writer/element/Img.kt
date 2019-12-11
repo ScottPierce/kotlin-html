@@ -2,9 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
@@ -19,7 +21,7 @@ fun HtmlOutput.img(
     width: String? = null,
     height: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("img")
         this.writeStandardAttributes(id, classes, style)
         if (src != null) this.write(" src=\"").write(src).write('"')
@@ -41,7 +43,7 @@ fun HtmlOutput.img(
     width: String? = null,
     height: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("img")
         this.writeStandardAttributes(id, classes, style)
         if (src != null) this.write(" src=\"").write(src).write('"')
@@ -64,7 +66,7 @@ fun HtmlOutput.img(
     width: String? = null,
     height: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("img")
         this.writeStandardAttributes(id, classes, style)
         if (src != null) this.write(" src=\"").write(src).write('"')
@@ -86,13 +88,13 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    htmlWriter.writeTag("img")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (alt != null) htmlWriter.write(" alt=\"").write(alt).write('"')
-    if (width != null) htmlWriter.write(" width=\"").write(width).write('"')
-    if (height != null) htmlWriter.write(" height=\"").write(height).write('"')
-    htmlWriter.write('>')
+    writer.writeTag("img")
+    writer.writeStandardAttributes(id, classes, style)
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
+    if (width != null) writer.write(" width=\"").write(width).write('"')
+    if (height != null) writer.write(" height=\"").write(height).write('"')
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -106,14 +108,14 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    htmlWriter.writeTag("img")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (alt != null) htmlWriter.write(" alt=\"").write(alt).write('"')
-    if (width != null) htmlWriter.write(" width=\"").write(width).write('"')
-    if (height != null) htmlWriter.write(" height=\"").write(height).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("img")
+    writer.writeStandardAttributes(id, classes, style)
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
+    if (width != null) writer.write(" width=\"").write(width).write('"')
+    if (height != null) writer.write(" height=\"").write(height).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -127,12 +129,12 @@ fun BodyContext.img(
     width: String? = null,
     height: String? = null
 ) {
-    htmlWriter.writeTag("img")
-    htmlWriter.writeStandardAttributes(id, classes, style)
-    if (src != null) htmlWriter.write(" src=\"").write(src).write('"')
-    if (alt != null) htmlWriter.write(" alt=\"").write(alt).write('"')
-    if (width != null) htmlWriter.write(" width=\"").write(width).write('"')
-    if (height != null) htmlWriter.write(" height=\"").write(height).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("img")
+    writer.writeStandardAttributes(id, classes, style)
+    if (src != null) writer.write(" src=\"").write(src).write('"')
+    if (alt != null) writer.write(" alt=\"").write(alt).write('"')
+    if (width != null) writer.write(" width=\"").write(width).write('"')
+    if (height != null) writer.write(" height=\"").write(height).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }

@@ -2,16 +2,18 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("b")
         this.write('>')
         this.indent()
@@ -21,8 +23,8 @@ inline fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
 }
 
 @HtmlDsl
-inline fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("b")
         this.writeAttributes(attrs)
         this.write('>')
@@ -33,8 +35,8 @@ inline fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.(
 }
 
 @HtmlDsl
-inline fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    pageWriterScope(this) {
+fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+    writer {
         this.writeTag("b")
         this.writeAttributes(attrs)
         this.write('>')
@@ -46,29 +48,29 @@ inline fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.()
 
 @HtmlDsl
 inline fun BodyContext.b(func: BodyContext.() -> Unit = {}) {
-    htmlWriter.writeTag("b")
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("b")
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("b")
+    writer.writeNormalElementEnd("b")
 }
 
 @HtmlDsl
 inline fun BodyContext.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    htmlWriter.writeTag("b")
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("b")
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("b")
+    writer.writeNormalElementEnd("b")
 }
 
 @HtmlDsl
 inline fun BodyContext.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    htmlWriter.writeTag("b")
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
-    htmlWriter.indent()
+    writer.writeTag("b")
+    writer.writeAttributes(attrs)
+    writer.write('>')
+    writer.indent()
     func()
-    htmlWriter.writeNormalElementEnd("b")
+    writer.writeNormalElementEnd("b")
 }

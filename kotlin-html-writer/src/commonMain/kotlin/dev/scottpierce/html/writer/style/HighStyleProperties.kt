@@ -2,6 +2,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
+
 fun StyleContext.marginX(value: Dimension) {
     marginLeft(value)
     marginRight(value)

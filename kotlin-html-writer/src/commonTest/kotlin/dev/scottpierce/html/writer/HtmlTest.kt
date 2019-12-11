@@ -8,6 +8,7 @@ import dev.scottpierce.html.writer.element.head
 import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.util.assertEquals
 import dev.scottpierce.html.writer.util.writeFile
+import dev.scottpierce.html.writer.util.writeHtml
 import kotlin.test.Test
 
 class HtmlTest {
@@ -34,8 +35,8 @@ class HtmlTest {
 
     @Test
     fun docTypeCustomTest() {
-        writeFile(options = WriteOptions.minified) {
-            docType(DocType.Custom("custom"))
+        StringHtmlOutput().html(docType = DocType.Custom("custom")) {  }
+        writeHtml(options = WriteOptions.minified) {
             html()
         } assertEquals {
             """
@@ -46,9 +47,7 @@ class HtmlTest {
 
     @Test
     fun debugTest() {
-        writeFile {
-            html {
-            }
+        writeHtml {
         } assertEquals {
             """
             <html>
@@ -59,12 +58,10 @@ class HtmlTest {
 
     @Test
     fun debugWithChildTest() {
-        writeFile {
-            html {
-                head()
-                body {
-                    div()
-                }
+        writeHtml {
+            head()
+            body {
+                div()
             }
         } assertEquals {
             """

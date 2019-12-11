@@ -1,12 +1,12 @@
 package dev.scottpierce.html.stylebuilder
 
-import dev.scottpierce.html.writer.element.BaseHtmlContext
-import dev.scottpierce.html.writer.element.HtmlDsl
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 
 @HtmlDsl
 fun BaseHtmlContext.style(selector: String, func: StyleBuilderContext.() -> Unit) {
-    htmlWriter.styleSheet.style(selector, func)
+    writer.styleSheet.style(selector, func)
 }
 
 @HtmlDsl
-fun BaseHtmlContext.media(mediaSelector: String): StyleSheetBuilder = htmlWriter.styleSheet.media(mediaSelector)
+fun BaseHtmlContext.media(mediaSelector: String): StyleSheetBuilder = writer.styleSheet.media(mediaSelector)

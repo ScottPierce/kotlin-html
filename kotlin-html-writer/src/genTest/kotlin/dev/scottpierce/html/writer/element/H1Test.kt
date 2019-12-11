@@ -80,7 +80,7 @@ class H1Test {
     }
 
     private fun createWriter(): StringHtmlOutput {
-        return StringHtmlOutput(options = WriteOptions(indent = "    "))
+        return StringHtmlOutput()
     }
 
     private infix fun StringHtmlOutput.assertEquals(expected: () -> String) {

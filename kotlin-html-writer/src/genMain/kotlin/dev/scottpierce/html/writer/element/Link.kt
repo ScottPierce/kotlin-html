@@ -2,8 +2,10 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.pageWriterScope
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
@@ -17,7 +19,7 @@ fun HtmlOutput.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("link")
         if (href != null) this.write(" href=\"").write(href).write('"')
         if (rel != null) this.write(" rel=\"").write(rel).write('"')
@@ -39,7 +41,7 @@ fun HtmlOutput.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("link")
         if (href != null) this.write(" href=\"").write(href).write('"')
         if (rel != null) this.write(" rel=\"").write(rel).write('"')
@@ -62,7 +64,7 @@ fun HtmlOutput.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    pageWriterScope(this) {
+    writer {
         this.writeTag("link")
         if (href != null) this.write(" href=\"").write(href).write('"')
         if (rel != null) this.write(" rel=\"").write(rel).write('"')
@@ -84,14 +86,14 @@ fun BaseHtmlContext.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    htmlWriter.writeTag("link")
-    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
-    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
-    if (hreflang != null) htmlWriter.write(" hreflang=\"").write(hreflang).write('"')
-    if (media != null) htmlWriter.write(" media=\"").write(media).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    if (sizes != null) htmlWriter.write(" sizes=\"").write(sizes).write('"')
-    htmlWriter.write('>')
+    writer.writeTag("link")
+    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (hreflang != null) writer.write(" hreflang=\"").write(hreflang).write('"')
+    if (media != null) writer.write(" media=\"").write(media).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (sizes != null) writer.write(" sizes=\"").write(sizes).write('"')
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -104,15 +106,15 @@ fun BaseHtmlContext.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    htmlWriter.writeTag("link")
-    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
-    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
-    if (hreflang != null) htmlWriter.write(" hreflang=\"").write(hreflang).write('"')
-    if (media != null) htmlWriter.write(" media=\"").write(media).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    if (sizes != null) htmlWriter.write(" sizes=\"").write(sizes).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("link")
+    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (hreflang != null) writer.write(" hreflang=\"").write(hreflang).write('"')
+    if (media != null) writer.write(" media=\"").write(media).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (sizes != null) writer.write(" sizes=\"").write(sizes).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
 
 @HtmlDsl
@@ -125,13 +127,13 @@ fun BaseHtmlContext.link(
     type: String? = null,
     sizes: String? = null
 ) {
-    htmlWriter.writeTag("link")
-    if (href != null) htmlWriter.write(" href=\"").write(href).write('"')
-    if (rel != null) htmlWriter.write(" rel=\"").write(rel).write('"')
-    if (hreflang != null) htmlWriter.write(" hreflang=\"").write(hreflang).write('"')
-    if (media != null) htmlWriter.write(" media=\"").write(media).write('"')
-    if (type != null) htmlWriter.write(" type=\"").write(type).write('"')
-    if (sizes != null) htmlWriter.write(" sizes=\"").write(sizes).write('"')
-    htmlWriter.writeAttributes(attrs)
-    htmlWriter.write('>')
+    writer.writeTag("link")
+    if (href != null) writer.write(" href=\"").write(href).write('"')
+    if (rel != null) writer.write(" rel=\"").write(rel).write('"')
+    if (hreflang != null) writer.write(" hreflang=\"").write(hreflang).write('"')
+    if (media != null) writer.write(" media=\"").write(media).write('"')
+    if (type != null) writer.write(" type=\"").write(type).write('"')
+    if (sizes != null) writer.write(" sizes=\"").write(sizes).write('"')
+    writer.writeAttributes(attrs)
+    writer.write('>')
 }
