@@ -6,13 +6,13 @@ import dev.scottpierce.html.writer.style.style
 import dev.scottpierce.html.writer.style.styleSheet
 import dev.scottpierce.html.writer.style.writeStyleProperty
 import dev.scottpierce.html.writer.util.assertEquals
-import dev.scottpierce.html.writer.util.writeFile
+import dev.scottpierce.html.writer.util.write
 import kotlin.test.Test
 
 class HeaderStyleTest {
     @Test
     fun emptyStyleSheet() {
-        writeFile {
+        write {
             html {
                 head {
                     styleSheet {
@@ -33,7 +33,7 @@ class HeaderStyleTest {
 
     @Test
     fun simpleStyleSheet() {
-        writeFile {
+        write {
             html {
                 head {
                     styleSheet {
@@ -60,7 +60,7 @@ class HeaderStyleTest {
 
     @Test
     fun dualStyles() {
-        writeFile {
+        write {
             html {
                 head {
                     styleSheet {

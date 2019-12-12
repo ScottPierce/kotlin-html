@@ -4,7 +4,7 @@ import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 
 fun createWriter(): StringHtmlOutput {
-    return StringHtmlOutput()
+    return StringHtmlOutput(WriteOptions.readable.copy(indent = "    "))
 }
 
 infix fun StringHtmlOutput.assertEquals(expected: () -> String) {

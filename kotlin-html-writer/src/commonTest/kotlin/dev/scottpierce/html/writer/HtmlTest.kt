@@ -3,19 +3,16 @@ package dev.scottpierce.html.writer
 import dev.scottpierce.html.writer.element.DocType
 import dev.scottpierce.html.writer.element.body
 import dev.scottpierce.html.writer.element.div
-import dev.scottpierce.html.writer.element.docType
 import dev.scottpierce.html.writer.element.head
 import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.util.assertEquals
-import dev.scottpierce.html.writer.util.writeFile
 import dev.scottpierce.html.writer.util.writeHtml
 import kotlin.test.Test
 
 class HtmlTest {
     @Test
     fun emptyHtmlTest() {
-        writeFile(options = WriteOptions.minified) {
-            html()
+        writeHtml(options = WriteOptions.minified) {
         } assertEquals {
             "<html></html>"
         }
@@ -23,9 +20,7 @@ class HtmlTest {
 
     @Test
     fun docTypeHtmlTest() {
-        writeFile(options = WriteOptions.minified) {
-            docType(DocType.Html)
-            html()
+        writeHtml(options = WriteOptions.minified, docType = DocType.Html) {
         } assertEquals {
             """
             <!DOCTYPE html><html></html>
@@ -35,9 +30,7 @@ class HtmlTest {
 
     @Test
     fun docTypeCustomTest() {
-        StringHtmlOutput().html(docType = DocType.Custom("custom")) {  }
-        writeHtml(options = WriteOptions.minified) {
-            html()
+        writeHtml(options = WriteOptions.minified, docType = DocType.Custom("custom")) {
         } assertEquals {
             """
             <!DOCTYPE custom><html></html>

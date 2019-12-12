@@ -22,7 +22,6 @@ import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
 import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
-import dev.scottpierce.html.generate.model.WRITE_OPTIONS
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
 import java.io.File
 import kotlinx.coroutines.Dispatchers

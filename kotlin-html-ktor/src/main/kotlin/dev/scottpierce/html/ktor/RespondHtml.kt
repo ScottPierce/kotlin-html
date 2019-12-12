@@ -2,9 +2,9 @@
 
 package dev.scottpierce.html.ktor
 
+import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
-import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.element.DocType
 import dev.scottpierce.html.writer.element.html
 import io.ktor.application.ApplicationCall

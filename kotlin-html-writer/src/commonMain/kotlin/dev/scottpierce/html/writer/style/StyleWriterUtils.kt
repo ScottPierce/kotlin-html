@@ -36,7 +36,8 @@ inline fun BaseHtmlContext.styleSheet(func: StyleSheetContext.() -> Unit) {
 @HtmlDsl
 inline fun HtmlOutput.media(
     selector: String,
-    func: StyleSheetContext.() -> Unit) {
+    func: StyleSheetContext.() -> Unit
+) {
     writer {
         StyleSheetContext(this).media(selector, func)
     }

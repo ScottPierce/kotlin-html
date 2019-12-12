@@ -4,7 +4,6 @@ import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.InlineStyleLambda
-import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String

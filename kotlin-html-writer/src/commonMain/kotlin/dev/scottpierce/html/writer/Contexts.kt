@@ -8,6 +8,8 @@ annotation class HtmlDsl
 @HtmlDsl
 interface HtmlWriterContext {
     val writer: HtmlWriter
+
+    fun withWriter(writer: HtmlWriter): HtmlWriterContext
 }
 
 /**
@@ -17,10 +19,14 @@ interface HtmlWriterContext {
 interface BaseHtmlContext : HtmlWriterContext
 
 @HtmlDsl
-inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext
+inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext {
+    override fun withWriter(writer: HtmlWriter): HtmlContext = HtmlContext(writer)
+}
 
 @HtmlDsl
-inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext
+inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext {
+    override fun withWriter(writer: HtmlWriter): HeadContext = HeadContext(writer)
+}
 
 @HtmlDsl
 inline class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext

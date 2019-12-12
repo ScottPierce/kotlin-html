@@ -80,7 +80,7 @@ class H3Test {
     }
 
     private fun createWriter(): StringHtmlOutput {
-        return StringHtmlOutput()
+        return StringHtmlOutput(WriteOptions.readable.copy(indent = "    "))
     }
 
     private infix fun StringHtmlOutput.assertEquals(expected: () -> String) {

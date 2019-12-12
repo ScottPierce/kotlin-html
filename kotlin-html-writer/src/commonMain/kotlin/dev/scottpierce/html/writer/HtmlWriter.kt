@@ -8,9 +8,10 @@ import kotlin.jvm.Volatile
  * A [HtmlWriter] should only be accessed inside of the given lambda, and shouldn't be saved for later.
  */
 inline fun HtmlOutput.writer(func: HtmlWriter.() -> Unit): HtmlWriter {
-    val writer = HtmlWriter(this).apply(func)
-    writer.close()
-    return writer
+    return HtmlWriter(this).apply {
+        func()
+        close()
+    }
 }
 
 class HtmlWriter internal constructor(
@@ -54,18 +55,18 @@ class HtmlWriter internal constructor(
         }
     }
 
-    fun insertWriter(name: String) {
+    fun insertWriter(name: String): HtmlWriter {
         val childWriters = childWriters ?: HashMap<String, HtmlWriter>(8).also { childWriters = it }
 
-        val previous = childWriters.put(
-            key = name,
-            value = HtmlWriter(
-                output = StringHtmlOutput(options = options),
-                indent = indent
-            )
+        val writer = HtmlWriter(
+            output = StringHtmlOutput(options = options),
+            indent = indent
         )
 
+        val previous = childWriters.put(name, writer)
         check(previous == null) { "A writer with the name '$name' has already been inserted." }
+
+        return writer
     }
 
     fun writer(name: String): HtmlWriter {
@@ -113,6 +114,12 @@ class HtmlWriter internal constructor(
     private fun throwIfClosed() {
         check(!isClosed) { "PageWriter is closed, and can no longer be used." }
     }
+}
+
+inline fun <T : HtmlWriterContext> T.insertWriter(name: String, func: T.() -> Unit = {}) {
+    val insertedWriter = writer.insertWriter(name)
+    @Suppress("UNCHECKED_CAST")
+    (withWriter(insertedWriter) as T).func()
 }
 
 data class WriteOptions(

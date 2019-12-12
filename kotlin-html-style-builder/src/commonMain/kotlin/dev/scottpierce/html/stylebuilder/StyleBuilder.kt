@@ -5,8 +5,8 @@ import dev.scottpierce.html.writer.HtmlDsl
 
 @HtmlDsl
 fun BaseHtmlContext.style(selector: String, func: StyleBuilderContext.() -> Unit) {
-    writer.styleSheet.style(selector, func)
+//    writer.styleSheet.style(selector, func)
 }
 
-@HtmlDsl
-fun BaseHtmlContext.media(mediaSelector: String): StyleSheetBuilder = writer.styleSheet.media(mediaSelector)
+// @HtmlDsl
+// fun BaseHtmlContext.media(mediaSelector: String): StyleSheetBuilder = writer.styleSheet.media(mediaSelector)

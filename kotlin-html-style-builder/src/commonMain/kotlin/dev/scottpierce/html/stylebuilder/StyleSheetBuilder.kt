@@ -1,10 +1,10 @@
 package dev.scottpierce.html.stylebuilder
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.HtmlWriter
 import dev.scottpierce.html.writer.StringHtmlOutput
-import dev.scottpierce.html.writer.HtmlDsl
-import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.StyleLambda
 
 class StyleSheetBuilder(private val indent: Int) {
@@ -31,7 +31,7 @@ class StyleBuilderContext(
     @HtmlDsl
     fun media(selector: String, func: StyleBuilderLambda) {
         val mediaBuilder = styleSheetBuilder.media(selector)
-        mediaBuilder.style(this.selector, func)
+//        mediaBuilder.style(this.selector, func)
     }
 }
 

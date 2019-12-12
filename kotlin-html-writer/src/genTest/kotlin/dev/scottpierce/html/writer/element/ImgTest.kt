@@ -1,7 +1,6 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.StringHtmlOutput
-import dev.scottpierce.html.writer.WriteOptions
 import kotlin.test.Test
 
 class ImgTest {
