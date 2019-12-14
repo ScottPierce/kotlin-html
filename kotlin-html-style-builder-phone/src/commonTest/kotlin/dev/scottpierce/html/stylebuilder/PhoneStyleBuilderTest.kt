@@ -3,10 +3,8 @@ package dev.scottpierce.html.stylebuilder
 import dev.scottpierce.html.writer.element.body
 import dev.scottpierce.html.writer.element.head
 import dev.scottpierce.html.writer.element.html
-import dev.scottpierce.html.writer.insertWriter
 import dev.scottpierce.html.writer.style.backgroundColor
 import dev.scottpierce.html.writer.style.media
-import dev.scottpierce.html.writer.style.styleSheet
 import kotlin.test.Test
 
 class PhoneStyleBuilderTest {
