@@ -17,8 +17,6 @@ import dev.scottpierce.html.writer.element.metaViewport
 import dev.scottpierce.html.writer.element.section
 import dev.scottpierce.html.writer.element.span
 import dev.scottpierce.html.writer.element.title
-import dev.scottpierce.html.writer.style.backgroundColor
-import dev.scottpierce.html.writer.style.styleSheet
 
 fun kotlinHtmlPage(): String {
     val writer = StringHtmlOutput(options = WriteOptions.minified).apply {
