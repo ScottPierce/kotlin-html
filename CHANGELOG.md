@@ -7,6 +7,7 @@
 * Added a new artifact - Style Builder. Style Builder can be used to write to a single stylesheet in the `head` of your
 document from anywhere in your document. It can also be used to write to various media queries with a much nicer syntax
 than CSS provides.
+* Contexts were all moved to the `dev.scottpierce.html.writer` package.
 
 ## 0.5.0
 * Complete overhaul fo the style system, with a switch from properties to functions for styles.
