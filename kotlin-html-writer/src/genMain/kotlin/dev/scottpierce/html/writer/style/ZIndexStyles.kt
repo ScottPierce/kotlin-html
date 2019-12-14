@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
@@ -13,6 +16,22 @@ fun BaseStyleContext.zIndex(value: Int) {
 }
 
 fun BaseStyleContext.zIndex(value: ZIndex) {
+    writeStyleProperty("z-index", value)
+}
+
+fun StyleContext.zIndex(value: Int) {
+    writeStyleProperty("z-index", value)
+}
+
+fun StyleContext.zIndex(value: ZIndex) {
+    writeStyleProperty("z-index", value)
+}
+
+fun InlineStyleContext.zIndex(value: Int) {
+    writeStyleProperty("z-index", value)
+}
+
+fun InlineStyleContext.zIndex(value: ZIndex) {
     writeStyleProperty("z-index", value)
 }
 

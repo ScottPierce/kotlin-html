@@ -2,39 +2,48 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.bold(func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("bold")
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("bold")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("bold")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("bold")
+fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("bold")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("bold")
+    }
 }
 
 @HtmlDsl

@@ -39,60 +39,21 @@ kotlin {
 }
 ```
 
-## Should I use this Library?
-**You should only use this library if you are comfortable with the following:**
-* Potential API Changes - Until 1.0 the API is potentially unstable
-* Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
-need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
-    * If you add an element, please make sure you add it via the generator module
-        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedElement.kt)
-        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedStyleProperty.kt)
-* You don't need a read / introspection API for the DOM.
-    * Reading the DOM, and making decisions in your algorithm based 
-    on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
-    containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
-    model
-
-## Features
-* HTML DSL
-    * Explicit support for common html attributes in element functions for a cleaner api (i.e. id, classes, and attr)
-    * Lightweight streaming API
-        * Doesn't create a lot of unnecessary objects to represent the DOM. i.e. DOM introspection isn't possible
-* Style DSL
-    * Allows inlining style to the header or individual elements
-    * CSS
-* Multi-platform
-* Integration with [Ktor](https://ktor.io/)
-* Simple Architecture - easy to understand and contribute to, especially relative to kotlinx.html
-    
-## Pull Requests Welcome
-* If the HTML element or CSS Property you need doesn't exist, you can add it yourself via the generation module, 
-or you can create an issue
-* Please create an issue to discuss any major changes / refactors
-
-## Why does this library exist when kotlinx.html exists?
-There is a need for a simple Kotlin HTML templating DSL. kotlinx.html exposes an API that can be a little clunky at 
-times, lacks features that many users need (i.e. styles), and lacks features that many users want. 
-The community filed issues for some of these issues [years ago](https://github.com/Kotlin/kotlinx.html/issues/31), 
-and no progress had been made. The values and goals of this library differentiate enough that it constituted a fresh 
-start instead of attempting contribution.
-
 # Basic Sample
 ```Kotlin
 fun main() {
-    // Choose a HtmlWriter implementation. StringBuilderHtmlWriter is good for testing.
-    val writer: HtmlWriter = StringBuilderHtmlWriter(options = WriteOptions.default)
+    // Choose a HtmlOutput implementation. StringHtmlOutput is good for testing.
+    val output: HtmlOutput = StringHtmlOutput(options = WriteOptions.readable)
 
-    // Writes the main page to the HtmlWriter
+    // Writes the main page to the HtmlOutput
     writer.mainPage()
 
     // Prints out the written page
     println(writer)
 }
 
-fun HtmlWriter.mainPage() {
-    docType(DocType.Html)
-    html {
+fun HtmlOutput.mainPage() {
+    html(DocType.Html) {
         head {
             styleSheet {
                 style("body") {
@@ -137,6 +98,104 @@ fun BodyContext.footer() {
     }
 }
 ```
+
+# Style Builder
+
+While the kotlin html writer allows for working with CSS directly, the style builder artifacts offer a more convenient
+way of dealing with style sheets and media queries. Style builder allows you to write to a single style sheet from anywhere
+in your HTML document. This means you can keep your styles closer to your elements, and also makes it easier to only write
+the styles if you are using them. It also offers a much more convenient syntax for interacting with media queries by
+allowing you to embed media query styles within already defined styles, keeping everything in one place.
+
+1. Import the style builder artifacts:
+```Kotlin
+dependencies {
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder:0.5.7")
+}
+```
+
+Style Builders allow you name media queries. It's easy to make your own, but we provide some prebuild ones for the names
+`phone`, `tablet`, and `desktop`. Import what you want to use.
+```Kotlin
+dependencies {
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-phone:0.5.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-tablet:0.5.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-desktop:0.5.7")
+}
+```
+
+2. Specify where in your `head` that you want your style builder inserted
+```Kotlin
+html {
+    head {
+        insertStyleBuilder {
+            insertMedia(StyleBuilder.TABLET, "(min-width: 481px) and (max-width: 767px)")
+            insertMedia(StyleBuilder.PHONE, "(min-width: 320px) and (max-width: 480px)")
+        }
+    }
+    // ...
+}
+```
+
+3. Build your style from anywhere in your HTML document:
+```Kotlin
+html {
+    // ...
+    body {
+
+        style("#example") {
+            backgroundColor(255, 255, 255)
+            phone {
+                backgroundColor(0, 0, 0)            
+            }
+            tablet {
+                backgroundColor(55, 55, 55)
+            }
+        }
+
+        div(id = "example") {
+        }
+    }
+}
+```
+
+## Should I use this Library?
+**You should only use this library if you are comfortable with the following:**
+* Potential API Changes - Until 1.0 the API is potentially unstable
+* Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
+need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
+    * If you add an element, please make sure you add it via the generator module
+        * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedElement.kt)
+        * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedStyleProperty.kt)
+* You don't need a read / introspection API for the DOM.
+    * Reading the DOM, and making decisions in your algorithm based 
+    on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
+    containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
+    model
+
+## Features
+* HTML DSL
+    * Explicit support for common html attributes in element functions for a cleaner api (i.e. id, classes, and attr)
+    * Lightweight streaming API
+        * Doesn't create a lot of unnecessary objects to represent the DOM. i.e. DOM introspection isn't possible
+* Style DSL
+    * Allows inlining style to the header or individual elements
+    * CSS
+* Multi-platform
+* Integration with [Ktor](https://ktor.io/)
+* Simple Architecture - easy to understand and contribute to, especially relative to kotlinx.html
+    
+## Pull Requests Welcome
+* If the HTML element or CSS Property you need doesn't exist, you can add it yourself via the generation module, 
+or you can create an issue
+* Please create an issue to discuss any major changes / refactors
+
+## Why does this library exist when kotlinx.html exists?
+There is a need for a simple Kotlin HTML templating DSL. kotlinx.html exposes an API that can be a little clunky at 
+times, lacks features that many users need (i.e. styles), and lacks features that many users want. 
+The community filed issues for some of these issues [years ago](https://github.com/Kotlin/kotlinx.html/issues/31), 
+and no progress had been made. The values and goals of this library differentiate enough that it constituted a fresh 
+start instead of attempting contribution.
 
 ## Integration with Ktor
 ``` Kotlin

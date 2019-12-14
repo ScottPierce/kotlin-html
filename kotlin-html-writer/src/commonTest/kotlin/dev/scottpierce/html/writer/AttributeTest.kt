@@ -5,14 +5,14 @@ import dev.scottpierce.html.writer.element.div
 import dev.scottpierce.html.writer.element.head
 import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.util.assertEquals
-import dev.scottpierce.html.writer.util.writeFile
+import dev.scottpierce.html.writer.util.write
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class AttributeTest {
     @Test
     fun singleAttribute() {
-        writeFile {
+        write {
             html {
                 head(id = "head")
                 body(id = "body") {
@@ -36,7 +36,7 @@ class AttributeTest {
     @Test
     fun noWhitespaceInAttributes() {
         val errorThrown: Boolean = try {
-            writeFile {
+            write {
                 html {
                     head("foo bar" to "test")
                 }
@@ -52,7 +52,7 @@ class AttributeTest {
     @Test
     fun emptyAttribute() {
         val errorThrown: Boolean = try {
-            writeFile {
+            write {
                 html {
                     head("" to "test")
                 }
@@ -68,7 +68,7 @@ class AttributeTest {
     @Test
     fun blankAttribute() {
         val errorThrown: Boolean = try {
-            writeFile {
+            write {
                 html {
                     head("   " to "test")
                 }
@@ -83,7 +83,7 @@ class AttributeTest {
 
     @Test
     fun multipleAttributes() {
-        writeFile {
+        write {
             html {
                 head("test1" to "value1", id = "head")
                 body("test2" to "value2", id = "body") {
@@ -106,7 +106,7 @@ class AttributeTest {
 
     @Test
     fun multipleListAttributes() {
-        writeFile {
+        write {
             html {
                 head(listOf("test1" to "value1"), id = "head")
                 body(listOf("test2" to "value2"), id = "body") {

@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.backgroundSize(value: Dimension) {
 }
 
 fun BaseStyleContext.backgroundSize(value: BackgroundSize) {
+    writeStyleProperty("background-size", value)
+}
+
+fun StyleContext.backgroundSize(value: Dimension) {
+    writeStyleProperty("background-size", value)
+}
+
+fun StyleContext.backgroundSize(value: BackgroundSize) {
+    writeStyleProperty("background-size", value)
+}
+
+fun InlineStyleContext.backgroundSize(value: Dimension) {
+    writeStyleProperty("background-size", value)
+}
+
+fun InlineStyleContext.backgroundSize(value: BackgroundSize) {
     writeStyleProperty("background-size", value)
 }
 

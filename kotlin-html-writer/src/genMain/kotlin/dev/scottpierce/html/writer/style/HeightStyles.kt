@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.height(value: Dimension) {
 }
 
 fun BaseStyleContext.height(value: Height) {
+    writeStyleProperty("height", value)
+}
+
+fun StyleContext.height(value: Dimension) {
+    writeStyleProperty("height", value)
+}
+
+fun StyleContext.height(value: Height) {
+    writeStyleProperty("height", value)
+}
+
+fun InlineStyleContext.height(value: Dimension) {
+    writeStyleProperty("height", value)
+}
+
+fun InlineStyleContext.height(value: Height) {
     writeStyleProperty("height", value)
 }
 

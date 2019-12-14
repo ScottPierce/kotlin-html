@@ -2,43 +2,52 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.VideoContext
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlWriter.source(src: String? = null, type: String? = null) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.write('>')
+fun HtmlOutput.source(src: String? = null, type: String? = null) {
+    writer {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.write('>')
+    }
 }
 
 @HtmlDsl
-fun HtmlWriter.source(
+fun HtmlOutput.source(
     vararg attrs: Pair<String, String?>,
     src: String? = null,
     type: String? = null
 ) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    writer {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl
-fun HtmlWriter.source(
+fun HtmlOutput.source(
     attrs: List<Pair<String, String?>>,
     src: String? = null,
     type: String? = null
 ) {
-    this.writeTag("source")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
+    writer {
+        this.writeTag("source")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+    }
 }
 
 @HtmlDsl

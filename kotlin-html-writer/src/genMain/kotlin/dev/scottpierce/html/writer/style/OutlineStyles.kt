@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Suppress
 
 fun BaseStyleContext.outline(
@@ -11,10 +14,33 @@ fun BaseStyleContext.outline(
     style: OutlineStyle,
     color: Color? = null
 ) {
-    writeStyleProperty("outline",
-            "$width $style${if (color == null) "" else " $color"}")
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
 }
 
 fun BaseStyleContext.outline(value: CssValue) {
+    writeStyleProperty("outline", value)
+}
+
+fun StyleContext.outline(
+    width: Dimension,
+    style: OutlineStyle,
+    color: Color? = null
+) {
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+}
+
+fun StyleContext.outline(value: CssValue) {
+    writeStyleProperty("outline", value)
+}
+
+fun InlineStyleContext.outline(
+    width: Dimension,
+    style: OutlineStyle,
+    color: Color? = null
+) {
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+}
+
+fun InlineStyleContext.outline(value: CssValue) {
     writeStyleProperty("outline", value)
 }

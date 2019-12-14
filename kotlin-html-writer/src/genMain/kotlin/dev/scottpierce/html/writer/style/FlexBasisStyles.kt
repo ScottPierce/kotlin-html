@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.flexBasis(value: Dimension) {
 }
 
 fun BaseStyleContext.flexBasis(value: FlexBasis) {
+    writeStyleProperty("flex-basis", value)
+}
+
+fun StyleContext.flexBasis(value: Dimension) {
+    writeStyleProperty("flex-basis", value)
+}
+
+fun StyleContext.flexBasis(value: FlexBasis) {
+    writeStyleProperty("flex-basis", value)
+}
+
+fun InlineStyleContext.flexBasis(value: Dimension) {
+    writeStyleProperty("flex-basis", value)
+}
+
+fun InlineStyleContext.flexBasis(value: FlexBasis) {
     writeStyleProperty("flex-basis", value)
 }
 

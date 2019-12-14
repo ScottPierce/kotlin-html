@@ -1,9 +1,10 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlOutput
 import java.io.File
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     async: Boolean = false,
     defer: Boolean = false,
     file: File
@@ -13,7 +14,7 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -24,7 +25,7 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun HtmlWriter.inlineScript(
+fun HtmlOutput.inlineScript(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -35,28 +36,34 @@ fun HtmlWriter.inlineScript(
     }
 }
 
-fun HtmlWriterContext.inlineScript(
+fun BaseHtmlContext.inlineScript(
     async: Boolean = false,
     defer: Boolean = false,
     file: File
 ) {
-    writer.inlineScript(async = async, defer = defer, file = file)
+    script(async = async, defer = defer) {
+        inlineFile(file)
+    }
 }
 
-fun HtmlWriterContext.inlineScript(
+fun BaseHtmlContext.inlineScript(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
     file: File
 ) {
-    writer.inlineScript(attrs = *attrs, async = async, defer = defer, file = file)
+    script(attrs = *attrs, async = async, defer = defer) {
+        inlineFile(file)
+    }
 }
 
-fun HtmlWriterContext.inlineScript(
+fun BaseHtmlContext.inlineScript(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
     file: File
 ) {
-    writer.inlineScript(attrs = attrs, async = async, defer = defer, file = file)
+    script(attrs = attrs, async = async, defer = defer) {
+        inlineFile(file)
+    }
 }

@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.textDecorationStyle(value: TextDecorationStyle) {
+    writeStyleProperty("text-decoration-style", value)
+}
+
+fun StyleContext.textDecorationStyle(value: TextDecorationStyle) {
+    writeStyleProperty("text-decoration-style", value)
+}
+
+fun InlineStyleContext.textDecorationStyle(value: TextDecorationStyle) {
     writeStyleProperty("text-decoration-style", value)
 }
 

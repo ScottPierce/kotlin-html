@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,7 +15,7 @@ fun BaseStyleContext.border(
     style: BorderStyle,
     color: Color
 ) {
-    writeStyleProperty("border", "$width $style $color")
+    writeStyleProperty("border", """$width $style $color""")
 }
 
 fun BaseStyleContext.border(
@@ -20,10 +23,50 @@ fun BaseStyleContext.border(
     style: BorderStyle,
     color: Color
 ) {
-    writeStyleProperty("border", "$width $style $color")
+    writeStyleProperty("border", """$width $style $color""")
 }
 
 fun BaseStyleContext.border(value: Border) {
+    writeStyleProperty("border", value)
+}
+
+fun StyleContext.border(
+    width: Dimension,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun StyleContext.border(
+    width: BorderWidth,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun StyleContext.border(value: Border) {
+    writeStyleProperty("border", value)
+}
+
+fun InlineStyleContext.border(
+    width: Dimension,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun InlineStyleContext.border(
+    width: BorderWidth,
+    style: BorderStyle,
+    color: Color
+) {
+    writeStyleProperty("border", """$width $style $color""")
+}
+
+fun InlineStyleContext.border(value: Border) {
     writeStyleProperty("border", value)
 }
 

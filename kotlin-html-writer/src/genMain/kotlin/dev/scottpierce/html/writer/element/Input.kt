@@ -2,18 +2,21 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+fun HtmlOutput.input(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -23,27 +26,30 @@ inline fun HtmlWriter.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("input")
-    this.writeStandardAttributes(id, classes, style)
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) this.write(" value=\"").write(value).write('"')
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("input")
+    writer {
+        this.writeTag("input")
+        this.writeStandardAttributes(id, classes, style)
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+        if (value != null) this.write(" value=\"").write(value).write('"')
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        if (ariaLabelledBy != null)
+                this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("input")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+fun HtmlOutput.input(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -53,28 +59,31 @@ inline fun HtmlWriter.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("input")
-    this.writeStandardAttributes(id, classes, style)
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) this.write(" value=\"").write(value).write('"')
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("input")
+    writer {
+        this.writeTag("input")
+        this.writeStandardAttributes(id, classes, style)
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+        if (value != null) this.write(" value=\"").write(value).write('"')
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        if (ariaLabelledBy != null)
+                this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("input")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.input(
+fun HtmlOutput.input(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -84,20 +93,23 @@ inline fun HtmlWriter.input(
     ariaLabelledBy: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("input")
-    this.writeStandardAttributes(id, classes, style)
-    if (type != null) this.write(" type=\"").write(type).write('"')
-    if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
-    if (value != null) this.write(" value=\"").write(value).write('"')
-    if (name != null) this.write(" name=\"").write(name).write('"')
-    if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    if (ariaLabelledBy != null) this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("input")
+    writer {
+        this.writeTag("input")
+        this.writeStandardAttributes(id, classes, style)
+        if (type != null) this.write(" type=\"").write(type).write('"')
+        if (maxLength != null) this.write(" maxLength=\"").write(maxLength).write('"')
+        if (value != null) this.write(" value=\"").write(value).write('"')
+        if (name != null) this.write(" name=\"").write(name).write('"')
+        if (placeholder != null) this.write(" placeholder=\"").write(placeholder).write('"')
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        if (ariaLabelledBy != null)
+                this.write(" aria-labelledby=\"").write(ariaLabelledBy).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("input")
+    }
 }
 
 @HtmlDsl

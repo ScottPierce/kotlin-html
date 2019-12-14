@@ -1,7 +1,6 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
-import dev.scottpierce.html.writer.WriteOptions
+import dev.scottpierce.html.writer.StringHtmlOutput
 import kotlin.test.Test
 
 class ImgTest {
@@ -41,9 +40,7 @@ class ImgTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).img(id = "test-id", classes = "test-class")
-
+        writer.img(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
                 <img id="test-id" class="test-class">
@@ -54,9 +51,7 @@ class ImgTest {
     @Test
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).img("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
-
+        writer.img("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
         writer assertEquals {
             """
                 <img id="test-id" class="test-class" custom-attr="custom-attr-value">
@@ -67,9 +62,7 @@ class ImgTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).img(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.img(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
                 <img id="test-id" class="test-class" custom-attr="custom-attr-value">
@@ -77,11 +70,11 @@ class ImgTest {
         }
     }
 
-    private fun createWriter(): StringBuilderHtmlWriter {
-        return StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))
+    private fun createWriter(): StringHtmlOutput {
+        return StringHtmlOutput()
     }
 
-    private infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
+    private infix fun StringHtmlOutput.assertEquals(expected: () -> String) {
         kotlin.test.assertEquals(expected(), this.toString())
     }
 }

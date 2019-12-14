@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.textDecorationLine(value: TextDecorationLine) {
 }
 
 fun BaseStyleContext.textDecorationLine(vararg lines: TextDecorationLine) {
+    writeStyleProperty("text-decoration-line", lines.joinToString(separator = " "))
+}
+
+fun StyleContext.textDecorationLine(value: TextDecorationLine) {
+    writeStyleProperty("text-decoration-line", value)
+}
+
+fun StyleContext.textDecorationLine(vararg lines: TextDecorationLine) {
+    writeStyleProperty("text-decoration-line", lines.joinToString(separator = " "))
+}
+
+fun InlineStyleContext.textDecorationLine(value: TextDecorationLine) {
+    writeStyleProperty("text-decoration-line", value)
+}
+
+fun InlineStyleContext.textDecorationLine(vararg lines: TextDecorationLine) {
     writeStyleProperty("text-decoration-line", lines.joinToString(separator = " "))
 }
 

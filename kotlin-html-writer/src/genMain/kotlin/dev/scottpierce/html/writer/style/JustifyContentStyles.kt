@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.justifyContent(value: JustifyContent) {
+    writeStyleProperty("justify-content", value)
+}
+
+fun StyleContext.justifyContent(value: JustifyContent) {
+    writeStyleProperty("justify-content", value)
+}
+
+fun InlineStyleContext.justifyContent(value: JustifyContent) {
     writeStyleProperty("justify-content", value)
 }
 

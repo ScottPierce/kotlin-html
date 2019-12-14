@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.listStyleType(value: ListStyleType) {
+    writeStyleProperty("list-style-type", value)
+}
+
+fun StyleContext.listStyleType(value: ListStyleType) {
+    writeStyleProperty("list-style-type", value)
+}
+
+fun InlineStyleContext.listStyleType(value: ListStyleType) {
     writeStyleProperty("list-style-type", value)
 }
 

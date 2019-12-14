@@ -1,6 +1,6 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import kotlin.test.Test
 
@@ -44,9 +44,7 @@ class H4Test {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).h4(id = "test-id", classes = "test-class")
-
+        writer.h4(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <h4 id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class H4Test {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        BodyContext(writer).h4("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.h4("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class H4Test {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        BodyContext(writer).h4(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.h4(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <h4 id="test-id" class="test-class" custom-attr="custom-attr-value">
@@ -83,11 +79,11 @@ class H4Test {
         }
     }
 
-    private fun createWriter(): StringBuilderHtmlWriter {
-        return StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))
+    private fun createWriter(): StringHtmlOutput {
+        return StringHtmlOutput(WriteOptions.readable.copy(indent = "    "))
     }
 
-    private infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
+    private infix fun StringHtmlOutput.assertEquals(expected: () -> String) {
         kotlin.test.assertEquals(expected(), this.toString())
     }
 }

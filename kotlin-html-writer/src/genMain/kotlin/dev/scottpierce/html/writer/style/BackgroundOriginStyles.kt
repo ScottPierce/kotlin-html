@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.backgroundOrigin(value: BackgroundOrigin) {
+    writeStyleProperty("background-origin", value)
+}
+
+fun StyleContext.backgroundOrigin(value: BackgroundOrigin) {
+    writeStyleProperty("background-origin", value)
+}
+
+fun InlineStyleContext.backgroundOrigin(value: BackgroundOrigin) {
     writeStyleProperty("background-origin", value)
 }
 

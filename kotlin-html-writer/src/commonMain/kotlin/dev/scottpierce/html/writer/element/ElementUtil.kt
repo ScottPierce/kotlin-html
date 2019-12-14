@@ -1,8 +1,8 @@
 package dev.scottpierce.html.writer.element
 
 import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.style.InlineStyleContext
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.InlineStyleLambda
 
 fun HtmlWriter.writeNormalElementStart(
     tag: String,
@@ -128,15 +128,11 @@ private fun HtmlWriter.writeAttribute(attr: Pair<String, String?>) {
 fun Pair<String, String?>.checkAttributeKey() {
     val attributeKey = first
 
-    if (attributeKey.isEmpty()) {
-        throw IllegalArgumentException("Attribute name must not be empty. Has value: '$second'")
-    }
+    require(attributeKey.isNotEmpty()) { "Attribute name must not be empty. Has value: '$second'" }
 
     for (c in attributeKey) {
-        if (c.isWhitespace()) {
-            throw IllegalArgumentException("Attribute name must not contain whitespace character. Attribute: " +
-                    "'$attributeKey' with value: '$second'")
-        }
+        require(!c.isWhitespace()) { "Attribute name must not contain whitespace character. Attribute: " +
+            "'$attributeKey' with value: '$second'" }
     }
 }
 

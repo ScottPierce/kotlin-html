@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -28,6 +31,54 @@ fun BaseStyleContext.displayFlex() {
 }
 
 fun BaseStyleContext.displayGrid() {
+    writeStyleProperty("display", Display.GRID)
+}
+
+fun StyleContext.display(value: Display) {
+    writeStyleProperty("display", value)
+}
+
+fun StyleContext.displayNone() {
+    writeStyleProperty("display", Display.NONE)
+}
+
+fun StyleContext.displayInline() {
+    writeStyleProperty("display", Display.INLINE)
+}
+
+fun StyleContext.displayBlock() {
+    writeStyleProperty("display", Display.BLOCK)
+}
+
+fun StyleContext.displayFlex() {
+    writeStyleProperty("display", Display.FLEX)
+}
+
+fun StyleContext.displayGrid() {
+    writeStyleProperty("display", Display.GRID)
+}
+
+fun InlineStyleContext.display(value: Display) {
+    writeStyleProperty("display", value)
+}
+
+fun InlineStyleContext.displayNone() {
+    writeStyleProperty("display", Display.NONE)
+}
+
+fun InlineStyleContext.displayInline() {
+    writeStyleProperty("display", Display.INLINE)
+}
+
+fun InlineStyleContext.displayBlock() {
+    writeStyleProperty("display", Display.BLOCK)
+}
+
+fun InlineStyleContext.displayFlex() {
+    writeStyleProperty("display", Display.FLEX)
+}
+
+fun InlineStyleContext.displayGrid() {
     writeStyleProperty("display", Display.GRID)
 }
 

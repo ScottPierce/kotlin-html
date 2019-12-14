@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.letterSpacing(value: Dimension) {
 }
 
 fun BaseStyleContext.letterSpacing(value: LetterSpacing) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun StyleContext.letterSpacing(value: Dimension) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun StyleContext.letterSpacing(value: LetterSpacing) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun InlineStyleContext.letterSpacing(value: Dimension) {
+    writeStyleProperty("letter-spacing", value)
+}
+
+fun InlineStyleContext.letterSpacing(value: LetterSpacing) {
     writeStyleProperty("letter-spacing", value)
 }
 

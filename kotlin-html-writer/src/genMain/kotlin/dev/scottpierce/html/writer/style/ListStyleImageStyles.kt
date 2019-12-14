@@ -4,14 +4,33 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.listStyleImage(imageUrl: String) {
-    writeStyleProperty("list-style-image", "url('$imageUrl')")
+    writeStyleProperty("list-style-image", """url('$imageUrl')""")
 }
 
 fun BaseStyleContext.listStyleImage(value: ListStyleImage) {
+    writeStyleProperty("list-style-image", value)
+}
+
+fun StyleContext.listStyleImage(imageUrl: String) {
+    writeStyleProperty("list-style-image", """url('$imageUrl')""")
+}
+
+fun StyleContext.listStyleImage(value: ListStyleImage) {
+    writeStyleProperty("list-style-image", value)
+}
+
+fun InlineStyleContext.listStyleImage(imageUrl: String) {
+    writeStyleProperty("list-style-image", """url('$imageUrl')""")
+}
+
+fun InlineStyleContext.listStyleImage(value: ListStyleImage) {
     writeStyleProperty("list-style-image", value)
 }
 

@@ -2,39 +2,48 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.b(func: BodyContext.() -> Unit = {}) {
-    this.writeTag("b")
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("b")
+fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("b")
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("b")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("b")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("b")
+fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("b")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("b")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
-    this.writeTag("b")
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("b")
+fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+    writer {
+        this.writeTag("b")
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("b")
+    }
 }
 
 @HtmlDsl

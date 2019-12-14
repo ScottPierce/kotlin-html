@@ -1,53 +1,66 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.writer
 
 @HtmlDsl
-fun HtmlWriter.metaTitle(title: String) {
-    meta(name = "title", content = title)
+fun HtmlOutput.metaTitle(title: String) {
+    writer {
+        HeadContext(this).metaTitle(title)
+    }
 }
 
 @HtmlDsl
 fun HeadContext.metaTitle(title: String) {
-    writer.metaTitle(title)
+    meta(name = "title", content = title)
 }
 
 @HtmlDsl
-fun HtmlWriter.metaDescription(description: String) {
-    meta(name = "description", content = description)
+fun HtmlOutput.metaDescription(description: String) {
+    writer {
+        HeadContext(this).metaDescription(description)
+    }
 }
 
 @HtmlDsl
 fun HeadContext.metaDescription(description: String) {
-    writer.metaDescription(description)
+    meta(name = "description", content = description)
 }
 
 @HtmlDsl
-fun HtmlWriter.metaCharset(charset: String) {
-    meta(charset = charset)
+fun HtmlOutput.metaCharset(charset: String) {
+    writer {
+        HeadContext(this).metaCharset(charset)
+    }
 }
 
 @HtmlDsl
 fun HeadContext.metaCharset(charset: String) {
-    writer.metaCharset(charset)
+    meta(charset = charset)
 }
 
 @HtmlDsl
-fun HtmlWriter.metaViewport(viewport: String) {
-    meta(name = "viewport", content = viewport)
+fun HtmlOutput.metaViewport(viewport: String) {
+    writer {
+        HeadContext(this).metaViewport(viewport)
+    }
 }
 
 @HtmlDsl
 fun HeadContext.metaViewport(viewport: String) {
-    writer.metaViewport(viewport)
+    meta(name = "viewport", content = viewport)
 }
 
 @HtmlDsl
-fun HtmlWriter.metaCharsetUtf8() {
-    metaCharset("utf-8")
+fun HtmlOutput.metaCharsetUtf8() {
+    writer {
+        HeadContext(this).metaCharsetUtf8()
+    }
 }
 
 @HtmlDsl
 fun HeadContext.metaCharsetUtf8() {
-    writer.metaCharsetUtf8()
+    metaCharset("utf-8")
 }

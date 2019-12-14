@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Int
 import kotlin.Number
 import kotlin.String
@@ -26,6 +29,56 @@ fun BaseStyleContext.color(
 }
 
 fun BaseStyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("color", Color(r, g, b, a))
+}
+
+fun StyleContext.color(color: Color) {
+    writeStyleProperty("color", color)
+}
+
+fun StyleContext.color(hexString: String) {
+    writeStyleProperty("color", Color(hexString))
+}
+
+fun StyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("color", Color(r, g, b))
+}
+
+fun StyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("color", Color(r, g, b, a))
+}
+
+fun InlineStyleContext.color(color: Color) {
+    writeStyleProperty("color", color)
+}
+
+fun InlineStyleContext.color(hexString: String) {
+    writeStyleProperty("color", Color(hexString))
+}
+
+fun InlineStyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("color", Color(r, g, b))
+}
+
+fun InlineStyleContext.color(
     r: Int,
     g: Int,
     b: Int,

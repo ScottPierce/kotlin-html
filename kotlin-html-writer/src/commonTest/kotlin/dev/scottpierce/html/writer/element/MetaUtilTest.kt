@@ -1,12 +1,12 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.util.writeHtml
+import dev.scottpierce.html.writer.util.write
 import kotlin.test.Test
 
 class MetaUtilTest {
     @Test
     fun description() {
-        writeHtml {
+        write {
             head {
                 metaDescription("test")
             }
@@ -21,7 +21,7 @@ class MetaUtilTest {
 
     @Test
     fun title() {
-        writeHtml {
+        write {
             head {
                 metaTitle("test")
             }
@@ -36,7 +36,7 @@ class MetaUtilTest {
 
     @Test
     fun charset() {
-        writeHtml {
+        write {
             head {
                 metaCharset("utf-8")
             }
@@ -51,7 +51,7 @@ class MetaUtilTest {
 
     @Test
     fun charsetUtf8() {
-        writeHtml {
+        write {
             head {
                 metaCharsetUtf8()
             }

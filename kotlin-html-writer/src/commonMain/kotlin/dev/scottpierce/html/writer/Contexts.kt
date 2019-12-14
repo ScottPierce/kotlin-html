@@ -1,6 +1,6 @@
-package dev.scottpierce.html.writer.element
+package dev.scottpierce.html.writer
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.style.style
 
 @DslMarker
 annotation class HtmlDsl
@@ -9,9 +9,6 @@ annotation class HtmlDsl
 interface HtmlWriterContext {
     val writer: HtmlWriter
 }
-
-@HtmlDsl
-inline class FileContext(override val writer: HtmlWriter) : HtmlWriterContext
 
 /**
  * A [HtmlWriterContext] applied to all HTML contexts.
@@ -43,7 +40,30 @@ inline class VideoContext(override val writer: HtmlWriter) : BaseHtmlContext
 @HtmlDsl
 interface HasText : HtmlWriterContext {
     operator fun String.unaryPlus() {
-        writer.newLine()
-        writer.write(this)
+        writer.apply {
+            newLine()
+            write(this@unaryPlus)
+        }
     }
 }
+
+@HtmlDsl
+inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterContext {
+    inline operator fun String.invoke(func: StyleLambda) = style(this, func)
+}
+
+/**
+ * A [HtmlWriterContext] applied to all style contexts.
+ */
+@HtmlDsl
+interface BaseStyleContext : HtmlWriterContext
+
+@HtmlDsl
+inline class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleContext
+
+@HtmlDsl
+inline class StyleContext(override val writer: HtmlWriter) : BaseStyleContext
+
+typealias InlineStyleLambda = InlineStyleContext.() -> Unit
+
+typealias StyleLambda = StyleContext.() -> Unit

@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.flexWrap(value: FlexWrap) {
+    writeStyleProperty("flex-wrap", value)
+}
+
+fun StyleContext.flexWrap(value: FlexWrap) {
+    writeStyleProperty("flex-wrap", value)
+}
+
+fun InlineStyleContext.flexWrap(value: FlexWrap) {
     writeStyleProperty("flex-wrap", value)
 }
 

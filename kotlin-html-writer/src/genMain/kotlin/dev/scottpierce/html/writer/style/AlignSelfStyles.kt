@@ -4,10 +4,21 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.alignSelf(value: AlignSelf) {
+    writeStyleProperty("align-self", value)
+}
+
+fun StyleContext.alignSelf(value: AlignSelf) {
+    writeStyleProperty("align-self", value)
+}
+
+fun InlineStyleContext.alignSelf(value: AlignSelf) {
     writeStyleProperty("align-self", value)
 }
 

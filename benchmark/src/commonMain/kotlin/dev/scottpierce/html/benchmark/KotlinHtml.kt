@@ -1,6 +1,6 @@
 package dev.scottpierce.html.benchmark
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.a
 import dev.scottpierce.html.writer.element.body
@@ -19,7 +19,7 @@ import dev.scottpierce.html.writer.element.span
 import dev.scottpierce.html.writer.element.title
 
 fun kotlinHtmlPage(): String {
-    val writer = StringBuilderHtmlWriter(options = WriteOptions.minified).apply {
+    val writer = StringHtmlOutput(options = WriteOptions.minified).apply {
         html {
             head {
                 metaCharsetUtf8()
@@ -30,6 +30,117 @@ fun kotlinHtmlPage(): String {
                 metaTitle(title)
 
                 metaDescription("8 Hour Driver Improvement Course with ARSEL Driving School in Gainesville VA, Haymarket VA, Manassas VA, Centreville VA, Fairfax VA, Warrenton VA, Bristow VA")
+
+//                styleSheet {
+//                    ".style1" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style2" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style3" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style4" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style5" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style6" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style7" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style8" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style9" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style1" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style2" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style3" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style4" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style5" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style6" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style7" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style8" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                    ".style9" {
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                        backgroundColor(100, 100, 100)
+//                    }
+//                }
             }
 
             body {

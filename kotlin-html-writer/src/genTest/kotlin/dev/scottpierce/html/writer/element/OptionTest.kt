@@ -1,6 +1,6 @@
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import kotlin.test.Test
 
@@ -44,9 +44,7 @@ class OptionTest {
     @Test
     fun contextNoCustomAttributeTest() {
         val writer = createWriter()
-
-        SelectContext(writer).option(id = "test-id", classes = "test-class")
-
+        writer.option(id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <option id="test-id" class="test-class">
@@ -59,7 +57,7 @@ class OptionTest {
     fun contextVarArgAttributeTest() {
         val writer = createWriter()
 
-        SelectContext(writer).option("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
+        writer.option("custom-attr" to "custom-attr-value", id = "test-id", classes = "test-class")
 
         writer assertEquals {
             """
@@ -72,9 +70,7 @@ class OptionTest {
     @Test
     fun contextListAttributeTest() {
         val writer = createWriter()
-
-        SelectContext(writer).option(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
-
+        writer.option(attrs = listOf("custom-attr" to "custom-attr-value"), id = "test-id", classes = "test-class")
         writer assertEquals {
             """
             <option id="test-id" class="test-class" custom-attr="custom-attr-value">
@@ -83,11 +79,11 @@ class OptionTest {
         }
     }
 
-    private fun createWriter(): StringBuilderHtmlWriter {
-        return StringBuilderHtmlWriter(options = WriteOptions(indent = "    "))
+    private fun createWriter(): StringHtmlOutput {
+        return StringHtmlOutput(WriteOptions.readable.copy(indent = "    "))
     }
 
-    private infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
+    private infix fun StringHtmlOutput.assertEquals(expected: () -> String) {
         kotlin.test.assertEquals(expected(), this.toString())
     }
 }

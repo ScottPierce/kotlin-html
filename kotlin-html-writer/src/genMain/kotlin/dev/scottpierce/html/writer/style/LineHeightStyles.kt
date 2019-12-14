@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
@@ -17,6 +20,30 @@ fun BaseStyleContext.lineHeight(value: Dimension) {
 }
 
 fun BaseStyleContext.lineHeight(value: LineHeight) {
+    writeStyleProperty("line-height", value)
+}
+
+fun StyleContext.lineHeight(multiplier: Number) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun StyleContext.lineHeight(value: Dimension) {
+    writeStyleProperty("line-height", value)
+}
+
+fun StyleContext.lineHeight(value: LineHeight) {
+    writeStyleProperty("line-height", value)
+}
+
+fun InlineStyleContext.lineHeight(multiplier: Number) {
+    writeStyleProperty("line-height", multiplier)
+}
+
+fun InlineStyleContext.lineHeight(value: Dimension) {
+    writeStyleProperty("line-height", value)
+}
+
+fun InlineStyleContext.lineHeight(value: LineHeight) {
     writeStyleProperty("line-height", value)
 }
 

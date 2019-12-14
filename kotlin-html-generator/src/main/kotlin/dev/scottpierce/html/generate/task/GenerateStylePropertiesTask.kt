@@ -5,7 +5,6 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.STRING
@@ -15,7 +14,10 @@ import dev.scottpierce.html.generate.Task
 import dev.scottpierce.html.generate.model.BASE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.Constants
 import dev.scottpierce.html.generate.model.GeneratedStyleProperty
+import dev.scottpierce.html.generate.model.INLINE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.ParameterType
+import dev.scottpierce.html.generate.model.STYLE_CONTEXT
+import dev.scottpierce.html.generate.model.WRITE_STYLE_PROPERTY
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,7 +28,7 @@ class GenerateStylePropertiesTask : Task {
     companion object {
         private val STYLE_PROPERTIES_FILE = File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/writer/style")
         private val STYLE_PROPERTY_TESTS_FILE = File("${Constants.BASE_GEN_TEST_DIR}/dev/scottpierce/html/writer/style")
-        private val WRITE_STYLE_PROPERTY = MemberName("dev.scottpierce.html.writer.style", "writeStyleProperty")
+        private val STYLE_CONTEXTS = listOf(BASE_STYLE_CONTEXT, STYLE_CONTEXT, INLINE_STYLE_CONTEXT)
     }
 
     override val name: String = "Generate Style Properties"
@@ -65,47 +67,57 @@ class GenerateStylePropertiesTask : Task {
 
         val generatedClasses: MutableMap<ClassName, TypeSpec> = LinkedHashMap()
 
-        for (setter in property.setters) {
-            val functionName = setter.functionName ?: property.propertyName
+        for (receiverContext in STYLE_CONTEXTS) {
 
-            file.addFunction(
-                FunSpec.builder(functionName).apply {
-                    receiver(BASE_STYLE_CONTEXT)
-                    // addAnnotation(HTML_DSL)
+            for (setter in property.setters) {
+                val functionName = setter.functionName ?: property.propertyName
 
-                    var template = setter.template
+                file.addFunction(
+                    FunSpec.builder(functionName).apply {
+                        receiver(receiverContext)
+                        // addAnnotation(HTML_DSL)
 
-                    setter.parameters.forEachIndexed { i, parameter ->
-                        val typeName: TypeName = when (parameter.type) {
-                            is ParameterType.Exists -> parameter.type.type
-                            is ParameterType.Generate -> generateTypeForProperty(
-                                generatedClasses = generatedClasses,
-                                property = property,
-                                parameterType = parameter.type
+                        var template = setter.template
+
+                        setter.parameters.forEachIndexed { i, parameter ->
+                            val typeName: TypeName = when (parameter.type) {
+                                is ParameterType.Exists -> parameter.type.type
+                                is ParameterType.Generate -> generateTypeForProperty(
+                                    generatedClasses = generatedClasses,
+                                    property = property,
+                                    parameterType = parameter.type
+                                )
+                            }
+
+                            val modifiers: MutableList<KModifier> = mutableListOf()
+                            if (parameter.isVararg) {
+                                modifiers += KModifier.VARARG
+                            }
+
+                            addParameter(
+                                ParameterSpec.builder(
+                                    name = parameter.name,
+                                    type = typeName,
+                                    modifiers = modifiers
+                                ).apply {
+                                    if (parameter.defaultValue != null) {
+                                        defaultValue(parameter.defaultValue)
+                                    }
+                                }.build()
                             )
+
+                            template = template.replace("$$i", parameter.name)
                         }
 
-                        val modifiers: MutableList<KModifier> = mutableListOf()
-                        if (parameter.isVararg) {
-                            modifiers += KModifier.VARARG
+                        if (template.startsWith('"')) {
+                            val strippedTemplate = template.removeSurrounding("\"")
+                            addStatement("%M(\"${property.cssName}\", %P)", WRITE_STYLE_PROPERTY, strippedTemplate)
+                        } else {
+                            addStatement("%M(\"${property.cssName}\", $template)", WRITE_STYLE_PROPERTY)
                         }
-
-                        addParameter(
-                            ParameterSpec.builder(name = parameter.name, type = typeName, modifiers = modifiers).apply {
-                                if (parameter.defaultValue != null) {
-                                    defaultValue(parameter.defaultValue)
-                                }
-                            }.build()
-                        )
-
-                        template = template.replace("$$i", parameter.name)
-                    }
-
-                    val paramBreak: Char = if (template.length > 50) '\n' else ' '
-
-                    addStatement("%M(\"${property.cssName}\",$paramBreak$template)", WRITE_STYLE_PROPERTY)
-                }.build()
-            )
+                    }.build()
+                )
+            }
         }
 
         for ((_, typeSpec) in generatedClasses) {

@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Suppress
 
 fun BaseStyleContext.paddingLeft(value: Dimension) {
@@ -11,5 +14,21 @@ fun BaseStyleContext.paddingLeft(value: Dimension) {
 }
 
 fun BaseStyleContext.paddingLeft(value: CssValue) {
+    writeStyleProperty("padding-left", value)
+}
+
+fun StyleContext.paddingLeft(value: Dimension) {
+    writeStyleProperty("padding-left", value)
+}
+
+fun StyleContext.paddingLeft(value: CssValue) {
+    writeStyleProperty("padding-left", value)
+}
+
+fun InlineStyleContext.paddingLeft(value: Dimension) {
+    writeStyleProperty("padding-left", value)
+}
+
+fun InlineStyleContext.paddingLeft(value: CssValue) {
     writeStyleProperty("padding-left", value)
 }

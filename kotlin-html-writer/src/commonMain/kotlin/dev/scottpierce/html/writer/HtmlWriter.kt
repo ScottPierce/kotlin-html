@@ -1,29 +1,80 @@
 package dev.scottpierce.html.writer
 
-import dev.scottpierce.html.writer.element.HtmlDsl
+import kotlin.jvm.Volatile
 
-@HtmlDsl
-interface HtmlWriter {
-    val options: WriteOptions
-    val isEmpty: Boolean
-
-    fun write(c: Char): HtmlWriter
-    fun write(code: String): HtmlWriter
-    fun newLine(): HtmlWriter
-    fun indent()
-    fun unindent()
+/**
+ * Creates a [HtmlWriter], and handles it's lifecycle.
+ *
+ * A [HtmlWriter] should only be accessed inside of the given lambda, and shouldn't be saved for later.
+ */
+inline fun HtmlOutput.writer(func: HtmlWriter.() -> Unit): HtmlWriter {
+    return HtmlWriter(this).apply {
+        func()
+        close()
+    }
 }
 
-@HtmlDsl
-abstract class AbstractHtmlWriter(final override val options: WriteOptions) : HtmlWriter {
-    private var indent = 0
+class HtmlWriter internal constructor(
+    private val output: HtmlOutput,
+    private var indent: Int,
+    isEmpty: Boolean = true
+) {
+    constructor(
+        output: HtmlOutput
+    ) : this(output, 0)
+
+    val options = output.options
     private val indentString: String? = if (options.indent.isEmpty()) null else options.indent
     private val newLineString: String? = if (options.newLine.isEmpty()) null else options.newLine
 
-    final override var isEmpty: Boolean = true
+    private var currentOutput: HtmlOutput = output
+
+    private var childOutputs: MutableList<StringHtmlOutput?>? = null
+    private var isClosed = false
+
+    private var childWriters: MutableMap<String, HtmlWriter>? = null
+
+    var isEmpty: Boolean = isEmpty
         private set
 
-    final override fun newLine(): HtmlWriter {
+    fun close() {
+        if (isClosed) return
+        isClosed = true
+
+        childWriters?.forEach { it.value.close() }
+
+        // Allow writers and outputs to be GC as they are written
+        childWriters = null
+        currentOutput = output
+
+        childOutputs?.let { childOutputs ->
+            for (i in childOutputs.indices) {
+                val childOutput = childOutputs[i]!!
+                output.write(childOutput.charSequence)
+                childOutputs[i] = null // Free for GC
+            }
+        }
+    }
+
+    fun insertWriter(id: HtmlWriterId) {
+        val childWriters = childWriters ?: HashMap<String, HtmlWriter>(8).also { childWriters = it }
+        val childOutputs = childOutputs ?: ArrayList<StringHtmlOutput?>(8).also { childOutputs = it }
+
+        val newWriter = HtmlWriter(output = currentOutput, indent = indent, isEmpty = false)
+        val newOutput = StringHtmlOutput(options = options)
+        currentOutput = newOutput
+        childOutputs += newOutput
+        val previous = childWriters.put(id, newWriter)
+
+        check(previous == null) { "A writer with the name '$id' has already been inserted." }
+    }
+
+    fun writer(name: HtmlWriterId): HtmlWriter {
+        return childWriters?.get(name)
+            ?: throw IllegalArgumentException("Writer '$name' was retrieved before it was inserted.")
+    }
+
+    fun newLine(): HtmlWriter {
         if (newLineString != null) {
             write(newLineString)
         }
@@ -37,45 +88,38 @@ abstract class AbstractHtmlWriter(final override val options: WriteOptions) : Ht
         return this
     }
 
-    final override fun indent() {
+    fun indent() {
         indent++
     }
 
-    final override fun unindent() {
+    fun unindent() {
         indent--
     }
 
-    final override fun write(c: Char): HtmlWriter {
+    fun write(c: Char): HtmlWriter {
+        throwIfClosed()
         isEmpty = false
-        writeChar(c)
+
+        currentOutput.write(c)
         return this
     }
 
-    final override fun write(code: String): HtmlWriter {
+    fun write(code: String): HtmlWriter {
+        throwIfClosed()
         isEmpty = false
-        writeString(code)
+        currentOutput.write(code)
         return this
     }
 
-    abstract fun writeChar(c: Char)
-    abstract fun writeString(code: String)
+    private fun throwIfClosed() {
+        check(!isClosed) { "PageWriter is closed, and can no longer be used." }
+    }
 }
 
-class StringBuilderHtmlWriter(
-    initialCapacity: Int = 128,
-    options: WriteOptions = WriteOptions.default
-) : AbstractHtmlWriter(options) {
-    private val sb = StringBuilder(initialCapacity)
+typealias HtmlWriterId = String
 
-    override fun writeChar(c: Char) {
-        sb.append(c)
-    }
-
-    override fun writeString(code: String) {
-        sb.append(code)
-    }
-
-    override fun toString(): String = sb.toString()
+fun <T : HtmlWriterContext> T.insertWriter(id: HtmlWriterId) {
+    writer.insertWriter(id)
 }
 
 data class WriteOptions(
@@ -87,6 +131,8 @@ data class WriteOptions(
         val readable = WriteOptions()
         val minified = WriteOptions(indent = "", newLine = "", minifyStyles = true)
 
+        // TODO use atomicfu for Kotlin/native
+        @Volatile
         var default = minified
     }
 }

@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.String
 import kotlin.Suppress
 
@@ -12,6 +15,22 @@ fun BaseStyleContext.animationName(value: String) {
 }
 
 fun BaseStyleContext.animationName(value: AnimationName) {
+    writeStyleProperty("animation-name", value)
+}
+
+fun StyleContext.animationName(value: String) {
+    writeStyleProperty("animation-name", value)
+}
+
+fun StyleContext.animationName(value: AnimationName) {
+    writeStyleProperty("animation-name", value)
+}
+
+fun InlineStyleContext.animationName(value: String) {
+    writeStyleProperty("animation-name", value)
+}
+
+fun InlineStyleContext.animationName(value: AnimationName) {
     writeStyleProperty("animation-name", value)
 }
 

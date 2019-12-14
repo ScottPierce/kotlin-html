@@ -1,50 +1,57 @@
 package dev.scottpierce.html.writer.util
 
-import dev.scottpierce.html.writer.StringBuilderHtmlWriter
+import dev.scottpierce.html.writer.HtmlContext
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.StringHtmlOutput
+import dev.scottpierce.html.writer.StyleContext
+import dev.scottpierce.html.writer.StyleSheetContext
 import dev.scottpierce.html.writer.WriteOptions
-import dev.scottpierce.html.writer.element.FileContext
-import dev.scottpierce.html.writer.element.HtmlContext
-import dev.scottpierce.html.writer.style.BaseStyleContext
-import dev.scottpierce.html.writer.style.InlineStyleContext
-import dev.scottpierce.html.writer.style.StyleSheetContext
+import dev.scottpierce.html.writer.element.DocType
+import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.style.styleSheet
-
-fun writeFile(
-    options: WriteOptions = WriteOptions(indent = "    "),
-    func: FileContext.() -> Unit
-): StringBuilderHtmlWriter {
-    val writer = StringBuilderHtmlWriter(options = options)
-    FileContext(writer).apply(func)
-    return writer
-}
+import dev.scottpierce.html.writer.writer
 
 fun writeHtml(
     options: WriteOptions = WriteOptions(indent = "    "),
+    docType: DocType? = null,
     func: HtmlContext.() -> Unit
-): StringBuilderHtmlWriter {
-    val writer = StringBuilderHtmlWriter(options = options)
-    HtmlContext(writer).apply(func)
-    return writer
+): StringHtmlOutput {
+    return StringHtmlOutput(options).apply {
+        html(docType) {
+            func()
+        }
+    }
 }
 
-fun StringBuilderHtmlWriter.assertEquals(expected: String) {
+fun write(
+    options: WriteOptions = WriteOptions(indent = "    "),
+    func: HtmlOutput.() -> Unit
+): StringHtmlOutput {
+    return StringHtmlOutput(options).apply(func)
+}
+
+fun StringHtmlOutput.assertEquals(expected: String) {
     kotlin.test.assertEquals(expected, this.toString())
 }
 
-infix fun StringBuilderHtmlWriter.assertEquals(expected: () -> String) {
+infix fun StringHtmlOutput.assertEquals(expected: () -> String) {
     kotlin.test.assertEquals(expected(), this.toString())
 }
 
 fun writeStyle(
     options: WriteOptions = WriteOptions(indent = "    "),
-    func: BaseStyleContext.() -> Unit
-): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = options).apply {
-    InlineStyleContext(this).apply(func)
+    func: StyleContext.() -> Unit
+): StringHtmlOutput {
+    val output = StringHtmlOutput(options)
+    output.writer {
+        StyleContext(this).apply(func)
+    }
+    return output
 }
 
 fun writeStyleSheet(
     options: WriteOptions = WriteOptions(indent = "    "),
     func: StyleSheetContext.() -> Unit
-): StringBuilderHtmlWriter = StringBuilderHtmlWriter(options = options).apply {
+): StringHtmlOutput = StringHtmlOutput(options).apply {
     styleSheet(func)
 }

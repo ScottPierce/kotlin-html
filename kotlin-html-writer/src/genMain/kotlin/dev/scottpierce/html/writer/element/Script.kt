@@ -2,7 +2,11 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.ScriptContext
+import dev.scottpierce.html.writer.writer
 import kotlin.Boolean
 import kotlin.Pair
 import kotlin.String
@@ -10,58 +14,64 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+fun HtmlOutput.script(
     async: Boolean = false,
     defer: Boolean = false,
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    writer {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+fun HtmlOutput.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    writer {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.script(
+fun HtmlOutput.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
     src: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
-    this.writeTag("script")
-    if (async) this.write(" async")
-    if (defer) this.write(" defer")
-    if (src != null) this.write(" src=\"").write(src).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    ScriptContext(this).apply(func)
-    this.writeNormalElementEnd("script")
+    writer {
+        this.writeTag("script")
+        if (async) this.write(" async")
+        if (defer) this.write(" defer")
+        if (src != null) this.write(" src=\"").write(src).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        ScriptContext(this).apply(func)
+        this.writeNormalElementEnd("script")
+    }
 }
 
 @HtmlDsl

@@ -2,66 +2,75 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HtmlWriter
-import dev.scottpierce.html.writer.style.InlineStyleLambda
+import dev.scottpierce.html.writer.BodyContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.InlineStyleLambda
+import dev.scottpierce.html.writer.writer
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+fun HtmlOutput.button(
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    writer {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+fun HtmlOutput.button(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    writer {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl
-inline fun HtmlWriter.button(
+fun HtmlOutput.button(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    noinline style: InlineStyleLambda? = null,
+    style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
-    this.writeTag("button")
-    this.writeStandardAttributes(id, classes, style)
-    if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
-    this.writeAttributes(attrs)
-    this.write('>')
-    this.indent()
-    BodyContext(this).apply(func)
-    this.writeNormalElementEnd("button")
+    writer {
+        this.writeTag("button")
+        this.writeStandardAttributes(id, classes, style)
+        if (ariaLabel != null) this.write(" aria-label=\"").write(ariaLabel).write('"')
+        this.writeAttributes(attrs)
+        this.write('>')
+        this.indent()
+        BodyContext(this).apply(func)
+        this.writeNormalElementEnd("button")
+    }
 }
 
 @HtmlDsl

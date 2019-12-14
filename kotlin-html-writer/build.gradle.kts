@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("jacoco")
@@ -27,13 +25,13 @@ kotlin {
             )
 
             dependencies {
-                implementation(Libs.kotlin.stdlib.common)
+                implementation(Deps.kotlin.stdlib.common)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                for (lib in Libs.kotlin.test.common) {
+                for (lib in Deps.kotlin.test.common) {
                     implementation(lib)
                 }
             }
@@ -43,7 +41,7 @@ kotlin {
             dependsOn(commonMain)
 
             dependencies {
-                for (lib in Libs.kotlin.test.common) {
+                for (lib in Deps.kotlin.test.common) {
                     implementation(lib)
                 }
             }
@@ -51,7 +49,7 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-                implementation(Libs.kotlin.stdlib.jvm)
+                implementation(Deps.kotlin.stdlib.jvm)
             }
         }
 
@@ -60,13 +58,13 @@ kotlin {
             dependsOn(genTest)
 
             dependencies {
-                implementation(Libs.kotlin.test.jvm)
+                implementation(Deps.kotlin.test.jvm)
             }
         }
 
         val jsMain by getting {
             dependencies {
-                implementation(Libs.kotlin.stdlib.js)
+                implementation(Deps.kotlin.stdlib.js)
             }
         }
 
@@ -75,7 +73,7 @@ kotlin {
             dependsOn(genTest)
 
             dependencies {
-                implementation(Libs.kotlin.test.js)
+                implementation(Deps.kotlin.test.js)
             }
         }
 

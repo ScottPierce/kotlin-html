@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Suppress
 
 fun BaseStyleContext.marginLeft(value: Dimension) {
@@ -11,5 +14,21 @@ fun BaseStyleContext.marginLeft(value: Dimension) {
 }
 
 fun BaseStyleContext.marginLeft(value: CssValue) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun StyleContext.marginLeft(value: Dimension) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun StyleContext.marginLeft(value: CssValue) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun InlineStyleContext.marginLeft(value: Dimension) {
+    writeStyleProperty("margin-left", value)
+}
+
+fun InlineStyleContext.marginLeft(value: CssValue) {
     writeStyleProperty("margin-left", value)
 }

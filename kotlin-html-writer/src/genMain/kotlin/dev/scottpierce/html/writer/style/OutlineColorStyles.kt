@@ -4,6 +4,9 @@
 
 package dev.scottpierce.html.writer.style
 
+import dev.scottpierce.html.writer.BaseStyleContext
+import dev.scottpierce.html.writer.InlineStyleContext
+import dev.scottpierce.html.writer.StyleContext
 import kotlin.Int
 import kotlin.Number
 import kotlin.String
@@ -26,6 +29,56 @@ fun BaseStyleContext.outlineColor(
 }
 
 fun BaseStyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("outline-color", Color(r, g, b, a))
+}
+
+fun StyleContext.outlineColor(color: Color) {
+    writeStyleProperty("outline-color", color)
+}
+
+fun StyleContext.outlineColor(hexString: String) {
+    writeStyleProperty("outline-color", Color(hexString))
+}
+
+fun StyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("outline-color", Color(r, g, b))
+}
+
+fun StyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number
+) {
+    writeStyleProperty("outline-color", Color(r, g, b, a))
+}
+
+fun InlineStyleContext.outlineColor(color: Color) {
+    writeStyleProperty("outline-color", color)
+}
+
+fun InlineStyleContext.outlineColor(hexString: String) {
+    writeStyleProperty("outline-color", Color(hexString))
+}
+
+fun InlineStyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int
+) {
+    writeStyleProperty("outline-color", Color(r, g, b))
+}
+
+fun InlineStyleContext.outlineColor(
     r: Int,
     g: Int,
     b: Int,
