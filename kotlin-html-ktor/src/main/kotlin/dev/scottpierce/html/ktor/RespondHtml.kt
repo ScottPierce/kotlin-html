@@ -49,7 +49,7 @@ class HtmlOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlOutput(it).html(options, docType) { func() }
+            ChannelHtmlOutput(it, options).html(docType) { func() }
         }
     }
 }
