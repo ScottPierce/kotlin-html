@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0
+* `HtmlWriter` has been trimmed down to just the write methods, and it's name has been changed to `HtmlOutput`.
+`HtmlWriter`, is instead used for something else.
+* Added the ability for `HtmlWriter`s to split into named sub-writers.
+* Added a new artifact - Style Builder. Style Builder can be used to write to a single stylesheet in the `head` of your
+document from anywhere in your document. It can also be used to write to various media queries with a much nicer syntax
+than CSS provides.
+
 ## 0.5.0
 * Complete overhaul fo the style system, with a switch from properties to functions for styles.
 * Several css properties have had their type safety dramatically improved.
