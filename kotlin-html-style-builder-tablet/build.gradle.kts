@@ -19,7 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":kotlin-html-writer"))
+                api(project(":kotlin-html-style-builder"))
                 implementation(Deps.kotlin.stdlib.common)
             }
         }

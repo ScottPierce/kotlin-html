@@ -8,8 +8,6 @@ annotation class HtmlDsl
 @HtmlDsl
 interface HtmlWriterContext {
     val writer: HtmlWriter
-
-    fun withWriter(writer: HtmlWriter): HtmlWriterContext
 }
 
 /**
@@ -19,14 +17,10 @@ interface HtmlWriterContext {
 interface BaseHtmlContext : HtmlWriterContext
 
 @HtmlDsl
-inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext {
-    override fun withWriter(writer: HtmlWriter): HtmlContext = HtmlContext(writer)
-}
+inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext {
-    override fun withWriter(writer: HtmlWriter): HeadContext = HeadContext(writer)
-}
+inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
 inline class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext
@@ -55,7 +49,7 @@ interface HasText : HtmlWriterContext {
 
 @HtmlDsl
 inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterContext {
-    operator fun String.invoke(func: StyleLambda) = style(this, func)
+    inline operator fun String.invoke(func: StyleLambda) = style(this, func)
 }
 
 /**
@@ -65,12 +59,10 @@ inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterCont
 interface BaseStyleContext : HtmlWriterContext
 
 @HtmlDsl
-inline class InlineStyleContext(override val writer: HtmlWriter) :
-    BaseStyleContext
+inline class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleContext
 
 @HtmlDsl
-inline class StyleContext(override val writer: HtmlWriter) :
-    BaseStyleContext
+inline class StyleContext(override val writer: HtmlWriter) : BaseStyleContext
 
 typealias InlineStyleLambda = InlineStyleContext.() -> Unit
 

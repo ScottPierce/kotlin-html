@@ -1,0 +1,25 @@
+package dev.scottpierce.html.stylebuilder
+
+import dev.scottpierce.html.writer.BaseHtmlContext
+import dev.scottpierce.html.writer.HtmlDsl
+import dev.scottpierce.html.writer.StyleSheetContext
+import dev.scottpierce.html.writer.insertWriter
+import dev.scottpierce.html.writer.style.media
+import dev.scottpierce.html.writer.style.styleSheet
+
+@HtmlDsl
+inline fun BaseHtmlContext.styleBuilder(func: StyleBuilderInsertionContext.() -> Unit) {
+    styleSheet {
+        insertWriter(StyleBuilder.NORMAL.writerId)
+        StyleBuilderInsertionContext(this).func()
+    }
+}
+
+@HtmlDsl
+inline class StyleBuilderInsertionContext(private val baseContext: StyleSheetContext) {
+    fun media(id: StyleBuilderId, querySelector: String) {
+        baseContext.media(querySelector) {
+            insertWriter(id.writerId)
+        }
+    }
+}

@@ -16,7 +16,8 @@ inline fun HtmlOutput.writer(func: HtmlWriter.() -> Unit): HtmlWriter {
 
 class HtmlWriter internal constructor(
     private val output: HtmlOutput,
-    private var indent: Int
+    private var indent: Int,
+    isEmpty: Boolean = true
 ) {
     constructor(
         output: HtmlOutput
@@ -33,7 +34,7 @@ class HtmlWriter internal constructor(
 
     private var childWriters: MutableMap<String, HtmlWriter>? = null
 
-    var isEmpty: Boolean = true
+    var isEmpty: Boolean = isEmpty
         private set
 
     fun close() {
@@ -48,25 +49,26 @@ class HtmlWriter internal constructor(
 
         childOutputs?.let { childOutputs ->
             for (i in childOutputs.indices) {
-                val output = childOutputs[i]!!
-                output.write(output.charSequence)
+                val childOutput = childOutputs[i]!!
+                output.write(childOutput.charSequence)
                 childOutputs[i] = null // Free for GC
             }
         }
     }
 
-    fun insertWriter(name: String): HtmlWriter {
+    fun insertWriter(id: HtmlWriterId): HtmlWriter {
         val childWriters = childWriters ?: HashMap<String, HtmlWriter>(8).also { childWriters = it }
+        val childOutputs = childOutputs ?: ArrayList<StringHtmlOutput?>(8).also { childOutputs = it }
 
-        val writer = HtmlWriter(
-            output = StringHtmlOutput(options = options),
-            indent = indent
-        )
+        val newWriter = HtmlWriter(output = currentOutput, indent = indent, isEmpty = false)
+        val newOutput = StringHtmlOutput(options = options)
+        currentOutput = newOutput
+        childOutputs += newOutput
+        val previous = childWriters.put(id, newWriter)
 
-        val previous = childWriters.put(name, writer)
-        check(previous == null) { "A writer with the name '$name' has already been inserted." }
+        check(previous == null) { "A writer with the name '$id' has already been inserted." }
 
-        return writer
+        return newWriter
     }
 
     fun writer(name: String): HtmlWriter {
@@ -116,10 +118,10 @@ class HtmlWriter internal constructor(
     }
 }
 
-inline fun <T : HtmlWriterContext> T.insertWriter(name: String, func: T.() -> Unit = {}) {
-    val insertedWriter = writer.insertWriter(name)
-    @Suppress("UNCHECKED_CAST")
-    (withWriter(insertedWriter) as T).func()
+typealias HtmlWriterId = String
+
+fun <T : HtmlWriterContext> T.insertWriter(id: HtmlWriterId): HtmlWriter {
+    return writer.insertWriter(id)
 }
 
 data class WriteOptions(
