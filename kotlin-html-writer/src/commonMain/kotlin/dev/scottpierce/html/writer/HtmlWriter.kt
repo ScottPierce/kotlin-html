@@ -56,7 +56,7 @@ class HtmlWriter internal constructor(
         }
     }
 
-    fun insertWriter(id: HtmlWriterId): HtmlWriter {
+    fun insertWriter(id: HtmlWriterId) {
         val childWriters = childWriters ?: HashMap<String, HtmlWriter>(8).also { childWriters = it }
         val childOutputs = childOutputs ?: ArrayList<StringHtmlOutput?>(8).also { childOutputs = it }
 
@@ -67,11 +67,9 @@ class HtmlWriter internal constructor(
         val previous = childWriters.put(id, newWriter)
 
         check(previous == null) { "A writer with the name '$id' has already been inserted." }
-
-        return newWriter
     }
 
-    fun writer(name: String): HtmlWriter {
+    fun writer(name: HtmlWriterId): HtmlWriter {
         return childWriters?.get(name)
             ?: throw IllegalArgumentException("Writer '$name' was retrieved before it was inserted.")
     }
@@ -120,8 +118,8 @@ class HtmlWriter internal constructor(
 
 typealias HtmlWriterId = String
 
-fun <T : HtmlWriterContext> T.insertWriter(id: HtmlWriterId): HtmlWriter {
-    return writer.insertWriter(id)
+fun <T : HtmlWriterContext> T.insertWriter(id: HtmlWriterId) {
+    writer.insertWriter(id)
 }
 
 data class WriteOptions(
