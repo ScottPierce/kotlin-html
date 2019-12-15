@@ -94,7 +94,7 @@ jobs:
 
       - run:
           name: Upload kotlin-html to Bintray
-          command: ./gradlew :kotlin-html-writer:publishAllPublicationsToBintrayRepository
+          command: ./gradlew publishAllPublicationsToBintrayRepository
 
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
