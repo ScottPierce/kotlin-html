@@ -81,7 +81,8 @@ jobs:
 
   upload:
     <<: *job_config
-    GRADLE_OPTS: -Xmx1536m
+    environment:
+      GRADLE_OPTS: -Xmx1536m
     steps:
       - checkout
 
