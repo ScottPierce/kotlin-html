@@ -21,7 +21,7 @@ internal val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charset
 /**
  * Represents an [OutgoingContent] using `dev.scottpierce.html`
  */
-class HtmlWriterOutgoingContent(
+class HtmlOutputOutgoingContent(
     override val status: HttpStatusCode? = null,
     private val func: suspend HtmlOutput.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
@@ -67,7 +67,7 @@ suspend fun ApplicationCall.respondHtml(
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
  */
-suspend fun ApplicationCall.respondHtmlOptions(
+suspend fun ApplicationCall.respondHtmlOutput(
     status: HttpStatusCode = HttpStatusCode.OK,
     func: suspend HtmlOutput.() -> Unit
-): Unit = respond(HtmlWriterOutgoingContent(status, func))
+): Unit = respond(HtmlOutputOutgoingContent(status, func))
