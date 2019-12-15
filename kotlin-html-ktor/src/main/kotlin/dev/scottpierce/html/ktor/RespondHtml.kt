@@ -42,6 +42,7 @@ class HtmlOutgoingContent(
     override val status: HttpStatusCode? = HttpStatusCode.OK,
     private val options: WriteOptions = WriteOptions.default,
     private val docType: DocType? = DocType.Html,
+    private val lang: String? = null,
     private val func: suspend HtmlContext.() -> Unit
 ) : OutgoingContent.WriteChannelContent() {
     override val contentType: ContentType
@@ -49,7 +50,9 @@ class HtmlOutgoingContent(
 
     override suspend fun writeTo(channel: ByteWriteChannel) {
         channel.bufferedWriter().use {
-            ChannelHtmlOutput(it, options).html(docType) { func() }
+            ChannelHtmlOutput(it, options).html(docType = docType, lang = lang) {
+                func()
+            }
         }
     }
 }
@@ -61,8 +64,9 @@ suspend fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.default,
     docType: DocType? = DocType.Html,
+    lang: String? = null,
     func: suspend HtmlContext.() -> Unit
-): Unit = respond(HtmlOutgoingContent(status, options, docType, func))
+): Unit = respond(HtmlOutgoingContent(status, options, docType, lang, func))
 
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
