@@ -69,17 +69,5 @@ kotlin {
         val linuxX64Test by getting {
             dependsOn(linuxX64Main)
         }
-
-        all {
-            languageSettings.enableLanguageFeature("InlineClasses")
-        }
-    }
-}
-
-kotlin.sourceSets.map {
-    it.apply {
-        languageSettings.apply {
-            useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-        }
     }
 }
