@@ -81,6 +81,7 @@ jobs:
 
   upload:
     <<: *job_config
+    resource_class: medium+
     steps:
       - checkout
 
