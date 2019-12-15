@@ -2,7 +2,7 @@ import org.gradle.api.publish.PublishingExtension
 import org.gradle.kotlin.dsl.maven
 
 fun PublishingExtension.configureBintray() {
-    repositories.maven("https://api.bintray.com/maven/scottpierce/maven/kotlin-html/;publish=0;override=1") {
+    repositories.maven("https://api.bintray.com/maven/scottpierce/maven/kotlin-html/;publish=0") {
         name = "bintray"
 
         credentials {
