@@ -8,6 +8,7 @@
 document from anywhere in your document. It can also be used to write to various media queries with a much nicer syntax
 than CSS provides.
 * Contexts were all moved to the `dev.scottpierce.html.writer` package.
+* `FileContext` was removed, and the `docType` was added as a parameter to the `html` functions.
 
 ## 0.5.0
 * Complete overhaul fo the style system, with a switch from properties to functions for styles.
