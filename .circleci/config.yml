@@ -81,7 +81,7 @@ jobs:
 
   upload:
     <<: *job_config
-    resource_class: medium+
+    GRADLE_OPTS: -Xmx1536m
     steps:
       - checkout
 
@@ -95,7 +95,7 @@ jobs:
 
       - run:
           name: Upload kotlin-html to Bintray
-          command: ./gradlew publishAllPublicationsToBintrayRepository
+          command: ./gradlew :kotlin-html-writer:publishAllPublicationsToBintrayRepository
 
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
