@@ -16,7 +16,7 @@ object StyleBuilder {
 inline class StyleBuilderId(val writerId: HtmlWriterId)
 
 @HtmlDsl
-fun BaseHtmlContext.style(selector: String, func: StyleBuilderContext.() -> Unit) {
+fun BaseHtmlContext.style(selector: String, func: StyleBuilderLambda) {
     val rootWriter = writer
     val styleSheetWriter = writer.writer(StyleBuilder.NORMAL.writerId)
 
@@ -40,3 +40,5 @@ class StyleBuilderContext(
         StyleSheetContext(rootWriter.writer(name)).style(selector, func)
     }
 }
+
+typealias StyleBuilderLambda = StyleBuilderContext.() -> Unit

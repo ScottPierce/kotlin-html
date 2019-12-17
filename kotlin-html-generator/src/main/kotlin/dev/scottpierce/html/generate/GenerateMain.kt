@@ -1,7 +1,8 @@
 package dev.scottpierce.html.generate
 
 import dev.scottpierce.html.generate.task.GenerateElementTestsTask
-import dev.scottpierce.html.generate.task.GenerateElementsTask
+import dev.scottpierce.html.generate.task.GenerateElementDslTask
+import dev.scottpierce.html.generate.task.GenerateStyleBuilderDslTask
 import dev.scottpierce.html.generate.task.GenerateStylePropertiesTask
 import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.GlobalScope
@@ -11,7 +12,8 @@ import kotlinx.coroutines.runBlocking
 fun main() {
     // Generation tasks
     val tasks: List<Task> = listOf(
-        GenerateElementsTask(),
+        GenerateElementDslTask(),
+        GenerateStyleBuilderDslTask(),
         GenerateElementTestsTask(),
         GenerateStylePropertiesTask()
     )

@@ -19,6 +19,7 @@ import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.HTML_WRITER
 import dev.scottpierce.html.generate.model.STANDARD_ATTRIBUTES
+import dev.scottpierce.html.generate.model.STYLE_BUILDER_LAMBDA
 import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
@@ -26,21 +27,21 @@ import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 
-class GenerateElementsTask : Task {
-    override val name: String = "Generate Elements"
+class GenerateElementDslTask : Task {
+    override val name: String = "Generate Elements DSL"
 
     override suspend fun execute() {
         GlobalScope.launch(Dispatchers.IO) {
-            File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/element").deleteRecursively()
+            File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/writer/element").deleteRecursively()
         }.join()
 
         GeneratedElement.values.map { element ->
-            val elementName = element.tagName.capitalize()
-
-            val file = FileSpec.builder(Constants.ELEMENT_PACKAGE, elementName)
+            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, "${element.tagName.capitalize()}Dsl")
                 .indent("    ")
                 .addComment(Constants.GENERATED_FILE_COMMENT)
 
@@ -48,13 +49,15 @@ class GenerateElementsTask : Task {
                 val isOutput = (i % 2) == 0
 
                 for (type in DslFunction.values()) {
-                    file.addFunction(createDslFunction(element, isOutput, type))
+                    writerFile.addFunction(createDslFunction(element, isOutput, type))
                 }
             }
 
-            GlobalScope.launch(Dispatchers.IO) {
-                file.build()
-                    .writeTo(Constants.BASE_GEN_DIR)
+            (GlobalScope + NonCancellable).launch {
+                launch(Dispatchers.IO) {
+                    writerFile.build()
+                        .writeTo(Constants.BASE_GEN_DIR)
+                }
             }
         }.joinAll()
     }
@@ -112,10 +115,12 @@ private fun createDslFunction(
         }
 
         addParameter(
-            ParameterSpec.builder(attr.functionName, attr.className)
-                .defaultValue(attr.defaultValue)
-                .addModifiers(filteredModifiers)
-                .build()
+            ParameterSpec.builder(attr.functionName, attr.className).apply {
+                if (attr.defaultValue != null) {
+                    defaultValue(attr.defaultValue)
+                }
+                addModifiers(filteredModifiers)
+            }.build()
         )
     }
 
@@ -167,11 +172,12 @@ private fun createDslFunction(
         addStatement("$writer.%M(\"${element.tagName}\")", WRITE_TAG)
 
         run { // Supported Attributes
-            val supportedAttributes = element.supportedAttributes.toMutableList()
+            val supportedAttributes: MutableList<Attr> = element.supportedAttributes.toMutableList()
+
             val hasStandardAttributes: Boolean = run {
                 var hasStandardAttributes = false
 
-                for (attr in supportedAttributes) {
+                for (attr in element.supportedAttributes) {
                     if (STANDARD_ATTRIBUTES.contains(attr)) {
                         hasStandardAttributes = true
                     }
@@ -229,7 +235,7 @@ private fun createDslFunction(
         }
     }
 
-    // Write Content and End
+// Write Content and End
     if (isParent) {
         when {
             isOutput -> addStatement("%T($writer).apply(func)", childrenContext!!.contextClassName)
