@@ -18,6 +18,11 @@ kotlin {
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
         val commonMain by getting {
+            kotlin.srcDirs(
+                project.file("src/commonMain/kotlin"),
+                project.file("src/genMain/kotlin")
+            )
+
             dependencies {
                 api(project(":kotlin-html-writer"))
                 implementation(Deps.kotlin.stdlib.common)
@@ -68,6 +73,10 @@ kotlin {
 
         val linuxX64Test by getting {
             dependsOn(linuxX64Main)
+        }
+
+        all {
+            languageSettings.enableLanguageFeature("InlineClasses")
         }
     }
 }

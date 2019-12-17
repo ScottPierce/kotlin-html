@@ -284,7 +284,7 @@ sealed class Attr(
     val name: kotlin.String,
     val functionName: kotlin.String,
     val className: TypeName,
-    val defaultValue: kotlin.String,
+    val defaultValue: kotlin.String?,
     val modifiers: List<KModifier>
 ) {
     companion object {
@@ -303,8 +303,10 @@ sealed class Attr(
 
     class String(
         name: kotlin.String,
-        functionName: kotlin.String = name.snakeCaseToCamelCase()
-    ) : Attr(name, functionName, STRING.copy(nullable = true, tags = mapOf()), "null", listOf())
+        functionName: kotlin.String = name.snakeCaseToCamelCase(),
+        isNullable: kotlin.Boolean = true,
+        defaultValue: kotlin.String? = "null"
+    ) : Attr(name, functionName, STRING.copy(nullable = isNullable, tags = mapOf()), defaultValue, listOf())
 
     class Boolean(
         name: kotlin.String,
@@ -315,7 +317,7 @@ sealed class Attr(
         name: kotlin.String,
         functionName: kotlin.String,
         typeName: TypeName,
-        defaultValue: kotlin.String,
+        defaultValue: kotlin.String?,
         modifiers: List<KModifier> = listOf()
     ) : Attr(name, functionName, typeName, defaultValue, modifiers)
 }
