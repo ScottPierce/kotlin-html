@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
-[![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.6.7)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.6.7?tab=overview)
+[![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.6.8)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.6.8?tab=overview)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3.60-green.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
@@ -17,10 +17,10 @@ repositories {
 
 dependencies {
     // JVM version of the HTML library
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-writer-jvm:0.6.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-writer-jvm:0.6.8")
     
     // If you are using Ktor, you can use this as well
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.6.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.6.8")
 }
 ```
 
@@ -33,7 +33,7 @@ repositories {
 kotlin {
     commonMain {
         dependencies {
-            implementation("dev.scottpierce.kotlin-html:kotlin-html-writer:0.6.7")
+            implementation("dev.scottpierce.kotlin-html:kotlin-html-writer:0.6.8")
         }    
     }
 }
@@ -110,7 +110,7 @@ allowing you to embed media query styles within already defined styles, keeping 
 1. Import the style builder artifacts:
 ```Kotlin
 dependencies {
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder:0.6.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder:0.6.8")
 }
 ```
 
@@ -118,9 +118,9 @@ Style Builders allow you name media queries. It's easy to make your own, but we 
 `phone`, `tablet`, and `desktop`. Import what you want to use.
 ```Kotlin
 dependencies {
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-phone:0.6.7")
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-tablet:0.6.7")
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-desktop:0.6.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-phone:0.6.8")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-tablet:0.6.8")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-style-builder-desktop:0.6.8")
 }
 ```
 
@@ -200,7 +200,7 @@ start instead of attempting contribution.
 ## Integration with Ktor
 ``` Kotlin
 dependencies {
-    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.6.7")
+    implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.6.8")
 }
 ```
 
