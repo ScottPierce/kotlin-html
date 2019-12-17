@@ -22,7 +22,7 @@ class StyleBuilderTest {
                         insertWriter(StyleBuilder.NORMAL.writerId)
 
                         media("(width < 400px)") {
-                            insertWriter(phoneId.writerId )
+                            insertWriter(phoneId.writerId)
                         }
                     }
                 }
