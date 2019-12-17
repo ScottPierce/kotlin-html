@@ -11,5 +11,5 @@ val StyleBuilder.DESKTOP: StyleBuilderId
 
 @HtmlDsl
 inline fun StyleBuilderContext.desktop(func: StyleLambda) {
-    media(StyleBuilder.DESKTOP.writerId, func)
+    media(StyleBuilder.DESKTOP, func)
 }

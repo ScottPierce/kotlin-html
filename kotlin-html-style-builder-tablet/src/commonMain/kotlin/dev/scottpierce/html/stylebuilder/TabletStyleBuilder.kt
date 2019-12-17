@@ -11,5 +11,5 @@ val StyleBuilder.TABLET: StyleBuilderId
 
 @HtmlDsl
 inline fun StyleBuilderContext.tablet(func: StyleLambda) {
-    media(StyleBuilder.TABLET.writerId, func)
+    media(StyleBuilder.TABLET, func)
 }

@@ -36,8 +36,8 @@ class StyleBuilderContext(
     val rootWriter: HtmlWriter
 ) : BaseStyleContext {
     @HtmlDsl
-    inline fun media(name: HtmlWriterId, func: StyleLambda) {
-        StyleSheetContext(rootWriter.writer(name)).style(selector, func)
+    inline fun media(name: StyleBuilderId, func: StyleLambda) {
+        StyleSheetContext(rootWriter.writer(name.writerId)).style(selector, func)
     }
 }
 

@@ -11,5 +11,5 @@ val StyleBuilder.PHONE: StyleBuilderId
 
 @HtmlDsl
 inline fun StyleBuilderContext.phone(func: StyleLambda) {
-    media(StyleBuilder.PHONE.writerId, func)
+    media(StyleBuilder.PHONE, func)
 }
