@@ -12,7 +12,7 @@ class TabletStyleBuilderTest {
         testWriter {
             html {
                 head {
-                    styleBuilder {
+                    insertStyleBuilder {
                         media(StyleBuilder.TABLET, "(minWidth < 400px)")
                     }
                 }

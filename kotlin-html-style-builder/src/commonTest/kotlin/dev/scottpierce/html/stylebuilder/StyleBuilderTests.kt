@@ -10,7 +10,7 @@ import dev.scottpierce.html.writer.style.media
 import dev.scottpierce.html.writer.style.styleSheet
 import kotlin.test.Test
 
-class StyleBuilderTest {
+class StyleBuilderTests {
     private val phoneId = StyleBuilderId("StyleBuilder-phone")
 
     @Test
@@ -68,7 +68,7 @@ class StyleBuilderTest {
         testWriter {
             html {
                 head {
-                    styleBuilder {
+                    insertStyleBuilder {
                         media(phoneId, "(width < 400px)")
                     }
                 }

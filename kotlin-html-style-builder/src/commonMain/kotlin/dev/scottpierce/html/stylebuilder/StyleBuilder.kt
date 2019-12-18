@@ -19,11 +19,21 @@ inline class StyleBuilderId(val writerId: HtmlWriterId)
  * Adds a style to the previously inserted style builder.
  *
  * @param selector the css selector
+ */
+@HtmlDsl
+fun BaseHtmlContext.style(selector: String, func: StyleBuilderLambda) {
+    style(selector, false, func)
+}
+
+/**
+ * Adds a style to the previously inserted style builder.
+ *
+ * @param selector the css selector
  * @param writeOnce if true the selector will be tracked, and any further write once write requests with
  * this selector will be ignored.
  */
 @HtmlDsl
-fun BaseHtmlContext.style(selector: String, writeOnce: Boolean = false, func: StyleBuilderLambda) {
+fun BaseHtmlContext.style(selector: String, writeOnce: Boolean, func: StyleBuilderLambda) {
     val rootWriter = writer
     val styleSheetWriter = writer.writer(StyleBuilder.NORMAL.writerId)
 

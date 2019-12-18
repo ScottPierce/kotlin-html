@@ -4,7 +4,6 @@ import dev.scottpierce.html.writer.element.body
 import dev.scottpierce.html.writer.element.head
 import dev.scottpierce.html.writer.element.html
 import dev.scottpierce.html.writer.style.backgroundColor
-import dev.scottpierce.html.writer.style.media
 import kotlin.test.Test
 
 class PhoneStyleBuilderTest {
@@ -13,7 +12,7 @@ class PhoneStyleBuilderTest {
         testWriter {
             html {
                 head {
-                    styleBuilder {
+                    insertStyleBuilder {
                         media(StyleBuilder.PHONE, "(minWidth < 400px)")
                     }
                 }

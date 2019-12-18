@@ -8,7 +8,7 @@ import dev.scottpierce.html.writer.style.media
 import dev.scottpierce.html.writer.style.styleSheet
 
 @HtmlDsl
-inline fun BaseHtmlContext.styleBuilder(func: StyleBuilderInsertionContext.() -> Unit) {
+inline fun BaseHtmlContext.insertStyleBuilder(func: StyleBuilderInsertionContext.() -> Unit) {
     styleSheet {
         insertWriter(StyleBuilder.NORMAL.writerId)
         StyleBuilderInsertionContext(this).func()
