@@ -33,6 +33,7 @@ class HtmlWriter internal constructor(
     private var isClosed = false
 
     private var childWriters: MutableMap<String, HtmlWriter>? = null
+    private var states: MutableMap<String, Any>? = null
 
     var isEmpty: Boolean = isEmpty
         private set
@@ -73,6 +74,20 @@ class HtmlWriter internal constructor(
         return childWriters?.get(name)
             ?: throw IllegalArgumentException("Writer '$name' was retrieved before it was inserted.")
     }
+
+    fun putState(key: String, state: Any?) {
+        val states = states ?: HashMap<String, Any>().also { states = it }
+
+        if (state == null) {
+            removeState(key)
+        } else {
+            states[key] = state
+        }
+    }
+
+    fun getState(key: String): Any? = states?.get(key)
+
+    fun removeState(key: String): Any? = states?.remove(key)
 
     fun newLine(): HtmlWriter {
         if (newLineString != null) {
@@ -120,6 +135,17 @@ typealias HtmlWriterId = String
 
 fun <T : HtmlWriterContext> T.insertWriter(id: HtmlWriterId) {
     writer.insertWriter(id)
+}
+
+inline fun HtmlWriter.getStateOrPut(key: String, defaultValue: () -> Any): Any {
+    val value = getState(key)
+    return if (value == null) {
+        val answer = defaultValue()
+        putState(key, answer)
+        answer
+    } else {
+        value
+    }
 }
 
 data class WriteOptions(
