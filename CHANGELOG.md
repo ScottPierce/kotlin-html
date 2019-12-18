@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.0
+* `styleBuilder` is renamed to `insertStyleBuilder`.
+
 ## 0.6.0
 * `HtmlWriter` has been trimmed down to just the write methods, and it's name has been changed to `HtmlOutput`.
 `HtmlWriter`, is instead used for something else.
