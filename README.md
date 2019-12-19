@@ -181,17 +181,15 @@ html {
 
 ## Should I use this Library?
 **You should only use this library if you are comfortable with the following:**
-* Potential API Changes - Until 1.0 the API is potentially unstable
+* Potential API Changes - Until 1.0 the API is potentially unstable, although there have been a few major API revisions 
+so far, and we're feeling more confident.
 * Missing HTML Elements / Style Properties - Until this library hits 1.0 there is a good chance there are missing html elements that you
 need. You may need to contribute a PR or two. I'll do my best to be responsive and won't let a PR sit for weeks.
     * If you add an element, please make sure you add it via the generator module
         * Add an [Element](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedElement.kt)
         * Add a [Style Property](https://github.com/ScottPierce/kotlin-html/blob/master/kotlin-html-generator/src/main/kotlin/dev/scottpierce/html/generate/model/GeneratedStyleProperty.kt)
 * You don't need a read / introspection API for the DOM.
-    * Reading the DOM, and making decisions in your algorithm based 
-    on previously added elements is an anti-pattern that leads to unmaintainable code. Instead, you should establish a model
-    containing all the data your html creation algorithm needs, and then create your HTML based on the information in that 
-    model
+    * This isn't something we plan to add, as we believe introspecting the DOM during generation is an anti-pattern.
 
 ## Features
 * HTML DSL
