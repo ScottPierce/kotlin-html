@@ -129,8 +129,8 @@ dependencies {
 html {
     head {
         insertStyleBuilder {
-            insertMedia(StyleBuilder.TABLET, "(min-width: 481px) and (max-width: 767px)")
-            insertMedia(StyleBuilder.PHONE, "(min-width: 320px) and (max-width: 480px)")
+            media(StyleBuilder.TABLET, "(min-width: 481px) and (max-width: 767px)")
+            media(StyleBuilder.PHONE, "(min-width: 320px) and (max-width: 480px)")
         }
     }
     // ...
@@ -143,17 +143,37 @@ html {
     // ...
     body {
 
-        style("#example") {
+        style(".example1") {
             backgroundColor(255, 255, 255)
+
             phone {
                 backgroundColor(0, 0, 0)            
             }
+
             tablet {
                 backgroundColor(55, 55, 55)
             }
         }
 
-        div(id = "example") {
+        div(classes = "example1") {
+            // ...
+        }
+
+        div(
+            id = "example2", 
+            styleBuilder = {
+                backgroundColor(255, 255, 255)
+               
+                phone {
+                    backgroundColor(0, 0, 0)            
+                }
+    
+                tablet {
+                    backgroundColor(55, 55, 55)
+                }         
+            }
+        ) {
+            // ...
         }
     }
 }
