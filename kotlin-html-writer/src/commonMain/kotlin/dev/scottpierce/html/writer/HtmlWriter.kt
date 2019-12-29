@@ -114,12 +114,11 @@ class HtmlWriter internal constructor(
     fun write(c: Char): HtmlWriter {
         throwIfClosed()
         isEmpty = false
-
         currentOutput.write(c)
         return this
     }
 
-    fun write(code: String): HtmlWriter {
+    fun write(code: CharSequence): HtmlWriter {
         throwIfClosed()
         isEmpty = false
         currentOutput.write(code)

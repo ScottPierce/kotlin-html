@@ -23,7 +23,7 @@ inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext
 inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext
+inline class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
 
 @HtmlDsl
 inline class BodyContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
@@ -39,7 +39,7 @@ inline class VideoContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
 interface HasText : HtmlWriterContext {
-    operator fun String.unaryPlus() {
+    operator fun CharSequence.unaryPlus() {
         writer.apply {
             newLine()
             write(this@unaryPlus)
