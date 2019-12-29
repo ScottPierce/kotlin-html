@@ -6,12 +6,10 @@ import dev.scottpierce.html.writer.BaseHtmlContext
 import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
-import dev.scottpierce.html.writer.ScriptContext
 import dev.scottpierce.html.writer.writer
 import kotlin.Boolean
 import kotlin.Pair
 import kotlin.String
-import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
