@@ -96,23 +96,7 @@ jobs:
 
       - run:
           name: Upload kotlin-html-writer to Bintray
-          command: ./gradlew :kotlin-html-writer:publishAllPublicationsToBintrayRepository
-
-      - run:
-          name: Upload kotlin-html-style-builder to Bintray
-          command: ./gradlew :kotlin-html-style-builder:publishAllPublicationsToBintrayRepository
-
-      - run:
-          name: Upload kotlin-html-style-builder-desktop to Bintray
-          command: ./gradlew :kotlin-html-style-builder-desktop:publishAllPublicationsToBintrayRepository
-
-      - run:
-          name: Upload kotlin-html-style-builder-phone to Bintray
-          command: ./gradlew :kotlin-html-style-builder-phone:publishAllPublicationsToBintrayRepository
-
-      - run:
-          name: Upload kotlin-html-style-builder-tablet to Bintray
-          command: ./gradlew :kotlin-html-style-builder-tablet:publishAllPublicationsToBintrayRepository
+          command: ./gradlew publishAllPublicationsToBintrayRepository
 
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
