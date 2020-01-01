@@ -13,8 +13,6 @@ kotlin {
         }
     }
     js()
-    macosX64()
-    linuxX64()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
@@ -77,19 +75,19 @@ kotlin {
             }
         }
 
-        val macosX64Main by getting {
-        }
-
-        val macosX64Test by getting {
-            dependsOn(macosX64Main)
-        }
-
-        val linuxX64Main by getting {
-        }
-
-        val linuxX64Test by getting {
-            dependsOn(linuxX64Main)
-        }
+//        val macosX64Main by getting {
+//        }
+//
+//        val macosX64Test by getting {
+//            dependsOn(macosX64Main)
+//        }
+//
+//        val linuxX64Main by getting {
+//        }
+//
+//        val linuxX64Test by getting {
+//            dependsOn(linuxX64Main)
+//        }
     }
     sourceSets {
         all {

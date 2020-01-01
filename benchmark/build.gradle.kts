@@ -10,12 +10,12 @@ kotlin {
             }
         }
     }
-    linuxX64 {
-        binaries {
-            executable {
-            }
-        }
-    }
+//    linuxX64 {
+//        binaries {
+//            executable {
+//            }
+//        }
+//    }
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
@@ -39,10 +39,10 @@ kotlin {
             }
         }
 
-        val macosX64Main by getting {
-        }
-
-        val linuxX64Main by getting {
-        }
+//        val macosX64Main by getting {
+//        }
+//
+//        val linuxX64Main by getting {
+//        }
     }
 }
