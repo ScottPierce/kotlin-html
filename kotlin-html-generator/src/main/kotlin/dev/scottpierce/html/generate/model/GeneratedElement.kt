@@ -10,7 +10,8 @@ import com.squareup.kotlinpoet.TypeName
 sealed class GeneratedElement(
     val tagName: String,
     val callingContext: Context,
-    val supportedAttributes: List<Attr>
+    val supportedAttributes: List<Attr>,
+    val fileName: String
 ) {
     companion object {
         val values: List<GeneratedElement> = listOf(
@@ -168,6 +169,15 @@ sealed class GeneratedElement(
                     Attr.String("http-equiv")
                 )
             ),
+            Void(
+                tagName = "meta",
+                callingContext = Context.Body,
+                supportedAttributes = listOf(
+                    Attr.String("itemprop"),
+                    Attr.String("content")
+                ),
+                fileName = "MetaBodyDsl"
+            ),
             Normal(
                 tagName = "nav",
                 callingContext = Context.Body,
@@ -241,21 +251,25 @@ sealed class GeneratedElement(
         tagName: String,
         callingContext: Context,
         val childrenContext: Context,
-        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
+        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES,
+        fileName: String = "${tagName.capitalize()}Dsl"
     ) : GeneratedElement(
         tagName,
         callingContext,
-        supportedAttributes
+        supportedAttributes,
+        fileName = fileName
     )
 
     class Void(
         tagName: String,
         callingContext: Context,
-        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES
+        supportedAttributes: List<Attr> = STANDARD_ATTRIBUTES,
+        fileName: String = "${tagName.capitalize()}Dsl"
     ) : GeneratedElement(
         tagName,
         callingContext,
-        supportedAttributes
+        supportedAttributes,
+        fileName = fileName
     )
 }
 

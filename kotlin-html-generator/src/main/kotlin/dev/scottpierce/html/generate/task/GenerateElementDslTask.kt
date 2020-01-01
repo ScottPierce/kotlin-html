@@ -40,7 +40,7 @@ class GenerateElementDslTask : Task {
         }.join()
 
         GeneratedElement.values.map { element ->
-            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, "${element.tagName.capitalize()}Dsl")
+            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, element.fileName)
                 .indent("    ")
                 .addComment(Constants.GENERATED_FILE_COMMENT)
 
