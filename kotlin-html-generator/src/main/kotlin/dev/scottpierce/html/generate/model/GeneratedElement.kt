@@ -171,6 +171,15 @@ sealed class GeneratedElement(
             ),
             Void(
                 tagName = "meta",
+                callingContext = Context.Head,
+                supportedAttributes = listOf(
+                    Attr.String("itemprop", isNullable = false, defaultValue = null),
+                    Attr.String("content", isNullable = false, defaultValue = null)
+                ),
+                fileName = "MetaHeadSchemaDsl"
+            ),
+            Void(
+                tagName = "meta",
                 callingContext = Context.Body,
                 supportedAttributes = listOf(
                     Attr.String("itemprop"),
