@@ -17,12 +17,14 @@ import kotlin.collections.List
 fun HtmlOutput.script(
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer {
         this.writeTag("script")
         if (async) this.write(" async")
         if (defer) this.write(" defer")
+        if (type != null) this.write(" type=\"").write(type).write('"')
         this.write('>')
         this.indent()
         ScriptContext(this).apply(func)
@@ -35,12 +37,14 @@ fun HtmlOutput.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer {
         this.writeTag("script")
         if (async) this.write(" async")
         if (defer) this.write(" defer")
+        if (type != null) this.write(" type=\"").write(type).write('"')
         this.writeAttributes(attrs)
         this.write('>')
         this.indent()
@@ -54,12 +58,14 @@ fun HtmlOutput.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer {
         this.writeTag("script")
         if (async) this.write(" async")
         if (defer) this.write(" defer")
+        if (type != null) this.write(" type=\"").write(type).write('"')
         this.writeAttributes(attrs)
         this.write('>')
         this.indent()
@@ -72,11 +78,13 @@ fun HtmlOutput.script(
 inline fun BaseHtmlContext.script(
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer.writeTag("script")
     if (async) writer.write(" async")
     if (defer) writer.write(" defer")
+    if (type != null) writer.write(" type=\"").write(type).write('"')
     writer.write('>')
     writer.indent()
     ScriptContext(writer).apply(func)
@@ -88,11 +96,13 @@ inline fun BaseHtmlContext.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer.writeTag("script")
     if (async) writer.write(" async")
     if (defer) writer.write(" defer")
+    if (type != null) writer.write(" type=\"").write(type).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()
@@ -105,11 +115,13 @@ inline fun BaseHtmlContext.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,
+    type: String? = null,
     func: ScriptContext.() -> Unit = {}
 ) {
     writer.writeTag("script")
     if (async) writer.write(" async")
     if (defer) writer.write(" defer")
+    if (type != null) writer.write(" type=\"").write(type).write('"')
     writer.writeAttributes(attrs)
     writer.write('>')
     writer.indent()

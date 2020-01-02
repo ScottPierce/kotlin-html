@@ -209,7 +209,8 @@ sealed class GeneratedElement(
                 childrenContext = Context.Script,
                 supportedAttributes = listOf(
                     Attr.Boolean("async"),
-                    Attr.Boolean("defer")
+                    Attr.Boolean("defer"),
+                    Attr.String("type")
                 )
             ),
             Normal(
