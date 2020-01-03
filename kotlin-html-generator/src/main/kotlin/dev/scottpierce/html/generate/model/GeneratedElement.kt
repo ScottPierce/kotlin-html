@@ -49,6 +49,11 @@ sealed class GeneratedElement(
                 callingContext = Context.Body
             ),
             Normal(
+                tagName = "details",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
                 tagName = "div",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
@@ -233,6 +238,11 @@ sealed class GeneratedElement(
             ),
             Normal(
                 tagName = "span",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "summary",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
