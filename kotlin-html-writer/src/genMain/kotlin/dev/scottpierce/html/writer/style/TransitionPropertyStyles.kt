@@ -75,11 +75,35 @@ enum class TransitionProperty(
 
     BORDER_BOTTOM("border-bottom"),
 
+    BORDER_BOTTOM_COLOR("border-bottom-color"),
+
+    BORDER_BOTTOM_STYLE("border-bottom-style"),
+
+    BORDER_BOTTOM_WIDTH("border-bottom-width"),
+
     BORDER_LEFT("border-left"),
+
+    BORDER_LEFT_COLOR("border-left-color"),
+
+    BORDER_LEFT_STYLE("border-left-style"),
+
+    BORDER_LEFT_WIDTH("border-left-width"),
 
     BORDER_RIGHT("border-right"),
 
+    BORDER_RIGHT_COLOR("border-right-color"),
+
+    BORDER_RIGHT_STYLE("border-right-style"),
+
+    BORDER_RIGHT_WIDTH("border-right-width"),
+
     BORDER_TOP("border-top"),
+
+    BORDER_TOP_COLOR("border-top-color"),
+
+    BORDER_TOP_STYLE("border-top-style"),
+
+    BORDER_TOP_WIDTH("border-top-width"),
 
     BORDER_RADIUS("border-radius"),
 

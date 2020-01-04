@@ -181,6 +181,23 @@ enum class GeneratedStyleProperty(
             setters
         }
     ),
+    BORDER_BOTTOM_COLOR(
+        cssName = "border-bottom-color",
+        setters = COLOR_SETTERS
+    ),
+    BORDER_BOTTOM_STYLE(
+        cssName = "border-bottom-style",
+        setters = listOf(
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
+    BORDER_BOTTOM_WIDTH(
+        cssName = "border-bottom-width",
+        setters = listOf(
+            Setter("$0", Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
     BORDER_LEFT(
         cssName = "border-left",
         setters = listOf()
@@ -188,6 +205,23 @@ enum class GeneratedStyleProperty(
         override val setters: List<Setter>
             get() = BORDER_BOTTOM.setters
     },
+    BORDER_LEFT_COLOR(
+        cssName = "border-left-color",
+        setters = COLOR_SETTERS
+    ),
+    BORDER_LEFT_STYLE(
+        cssName = "border-left-style",
+        setters = listOf(
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
+    BORDER_LEFT_WIDTH(
+        cssName = "border-left-width",
+        setters = listOf(
+            Setter("$0", Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
     BORDER_RIGHT(
         cssName = "border-right",
         setters = listOf()
@@ -195,6 +229,23 @@ enum class GeneratedStyleProperty(
         override val setters: List<Setter>
             get() = BORDER_BOTTOM.setters
     },
+    BORDER_RIGHT_COLOR(
+        cssName = "border-right-color",
+        setters = COLOR_SETTERS
+    ),
+    BORDER_RIGHT_STYLE(
+        cssName = "border-right-style",
+        setters = listOf(
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
+    BORDER_RIGHT_WIDTH(
+        cssName = "border-right-width",
+        setters = listOf(
+            Setter("$0", Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
     BORDER_TOP(
         cssName = "border-top",
         setters = listOf()
@@ -202,6 +253,23 @@ enum class GeneratedStyleProperty(
         override val setters: List<Setter>
             get() = BORDER_BOTTOM.setters
     },
+    BORDER_TOP_COLOR(
+        cssName = "border-top-color",
+        setters = COLOR_SETTERS
+    ),
+    BORDER_TOP_STYLE(
+        cssName = "border-top-style",
+        setters = listOf(
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
+    BORDER_TOP_WIDTH(
+        cssName = "border-top-width",
+        setters = listOf(
+            Setter("$0", Parameter(DIMENSION)),
+            Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
     BORDER_RADIUS(
         cssName = "border-radius",
         setters = listOf(
