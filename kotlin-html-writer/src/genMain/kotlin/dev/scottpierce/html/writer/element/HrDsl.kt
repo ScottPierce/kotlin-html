@@ -2,7 +2,7 @@
 // `html-builder-generator` and run it again.
 package dev.scottpierce.html.writer.element
 
-import dev.scottpierce.html.writer.HeadContext
+import dev.scottpierce.html.writer.BodyContext
 import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.HtmlOutput
 import dev.scottpierce.html.writer.InlineStyleLambda
@@ -47,7 +47,7 @@ fun HtmlOutput.hr(
 }
 
 @HtmlDsl
-fun HeadContext.hr(
+fun BodyContext.hr(
     id: String? = null,
     classes: String? = null,
     style: InlineStyleLambda? = null
@@ -56,7 +56,7 @@ fun HeadContext.hr(
 }
 
 @HtmlDsl
-fun HeadContext.hr(
+fun BodyContext.hr(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
@@ -66,7 +66,7 @@ fun HeadContext.hr(
 }
 
 @HtmlDsl
-fun HeadContext.hr(
+fun BodyContext.hr(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
