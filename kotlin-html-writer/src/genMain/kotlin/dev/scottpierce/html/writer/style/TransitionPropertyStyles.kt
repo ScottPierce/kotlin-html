@@ -73,6 +73,14 @@ enum class TransitionProperty(
 
     BORDER("border"),
 
+    BORDER_BOTTOM("border-bottom"),
+
+    BORDER_LEFT("border-left"),
+
+    BORDER_RIGHT("border-right"),
+
+    BORDER_TOP("border-top"),
+
     BORDER_RADIUS("border-radius"),
 
     BORDER_STYLE("border-style"),

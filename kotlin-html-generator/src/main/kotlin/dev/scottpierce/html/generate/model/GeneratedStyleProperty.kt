@@ -160,6 +160,48 @@ enum class GeneratedStyleProperty(
             setters
         }
     ),
+    BORDER_BOTTOM(
+        cssName = "border-bottom",
+        setters = run {
+            val setters = mutableListOf<Setter>()
+
+            for (param1: ClassName in listOf(DIMENSION, styleClassName("BorderWidth"))) {
+                setters += Setter(
+                    template = "\"$$0 $$1 $$2\"",
+                    parameters = listOf(
+                        Parameter(param1, name = "width"),
+                        Parameter(styleClassName("BorderStyle"), name = "style"),
+                        Parameter(dev.scottpierce.html.generate.model.COLOR, name = "color")
+                    )
+                )
+            }
+
+            setters += Setter(Parameter(ParameterType.Exists(styleClassName("Border"))))
+
+            setters
+        }
+    ),
+    BORDER_LEFT(
+        cssName = "border-left",
+        setters = listOf()
+    ) {
+        override val setters: List<Setter>
+            get() = BORDER_BOTTOM.setters
+    },
+    BORDER_RIGHT(
+        cssName = "border-right",
+        setters = listOf()
+    ) {
+        override val setters: List<Setter>
+            get() = BORDER_BOTTOM.setters
+    },
+    BORDER_TOP(
+        cssName = "border-top",
+        setters = listOf()
+    ) {
+        override val setters: List<Setter>
+            get() = BORDER_BOTTOM.setters
+    },
     BORDER_RADIUS(
         cssName = "border-radius",
         setters = listOf(
