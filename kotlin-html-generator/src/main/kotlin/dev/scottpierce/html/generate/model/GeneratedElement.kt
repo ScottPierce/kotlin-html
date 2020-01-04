@@ -111,7 +111,7 @@ sealed class GeneratedElement(
             ),
             Void(
                 tagName = "hr",
-                callingContext = Context.Head
+                callingContext = Context.Body
             ),
 //            Normal(
 //                tagName = "html",
