@@ -93,9 +93,8 @@ fun BaseStyleContext.writeStyleProperty(property: String, value: Any, important:
         write(property).write(':')
         if (!options.minifyStyles) write(' ')
         write(value.toString())
-        write(' ')
         if (important) {
-            write("!important")
+            write(" !important")
         }
         write(';')
     }
