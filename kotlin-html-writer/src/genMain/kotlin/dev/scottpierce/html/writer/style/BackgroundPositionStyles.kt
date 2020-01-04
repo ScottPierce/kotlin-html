@@ -7,43 +7,68 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundPosition(x: BackgroundPosition, y: BackgroundPosition? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun BaseStyleContext.backgroundPosition(
+    x: BackgroundPosition,
+    y: BackgroundPosition? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun BaseStyleContext.backgroundPosition(x: Dimension, y: Dimension? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun BaseStyleContext.backgroundPosition(
+    x: Dimension,
+    y: Dimension? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun BaseStyleContext.backgroundPosition(value: CssValue) {
-    writeStyleProperty("background-position", value)
+fun BaseStyleContext.backgroundPosition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("background-position", value, important)
 }
 
-fun StyleContext.backgroundPosition(x: BackgroundPosition, y: BackgroundPosition? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun StyleContext.backgroundPosition(
+    x: BackgroundPosition,
+    y: BackgroundPosition? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun StyleContext.backgroundPosition(x: Dimension, y: Dimension? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun StyleContext.backgroundPosition(
+    x: Dimension,
+    y: Dimension? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun StyleContext.backgroundPosition(value: CssValue) {
-    writeStyleProperty("background-position", value)
+fun StyleContext.backgroundPosition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("background-position", value, important)
 }
 
-fun InlineStyleContext.backgroundPosition(x: BackgroundPosition, y: BackgroundPosition? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun InlineStyleContext.backgroundPosition(
+    x: BackgroundPosition,
+    y: BackgroundPosition? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun InlineStyleContext.backgroundPosition(x: Dimension, y: Dimension? = null) {
-    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""")
+fun InlineStyleContext.backgroundPosition(
+    x: Dimension,
+    y: Dimension? = null,
+    important: Boolean = false
+) {
+    writeStyleProperty("background-position", """$x${if (y == null) "" else " $y"}""", important)
 }
 
-fun InlineStyleContext.backgroundPosition(value: CssValue) {
-    writeStyleProperty("background-position", value)
+fun InlineStyleContext.backgroundPosition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("background-position", value, important)
 }
 
 enum class BackgroundPosition(

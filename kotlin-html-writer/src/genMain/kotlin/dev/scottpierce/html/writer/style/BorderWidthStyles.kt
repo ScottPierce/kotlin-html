@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.borderWidth(value: Dimension) {
-    writeStyleProperty("border-width", value)
+fun BaseStyleContext.borderWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
-fun BaseStyleContext.borderWidth(value: BorderWidth) {
-    writeStyleProperty("border-width", value)
+fun BaseStyleContext.borderWidth(value: BorderWidth, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
-fun StyleContext.borderWidth(value: Dimension) {
-    writeStyleProperty("border-width", value)
+fun StyleContext.borderWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
-fun StyleContext.borderWidth(value: BorderWidth) {
-    writeStyleProperty("border-width", value)
+fun StyleContext.borderWidth(value: BorderWidth, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
-fun InlineStyleContext.borderWidth(value: Dimension) {
-    writeStyleProperty("border-width", value)
+fun InlineStyleContext.borderWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
-fun InlineStyleContext.borderWidth(value: BorderWidth) {
-    writeStyleProperty("border-width", value)
+fun InlineStyleContext.borderWidth(value: BorderWidth, important: Boolean = false) {
+    writeStyleProperty("border-width", value, important)
 }
 
 enum class BorderWidth(

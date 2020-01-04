@@ -7,82 +7,89 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Int
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.outlineColor(color: Color) {
-    writeStyleProperty("outline-color", color)
+fun BaseStyleContext.outlineColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("outline-color", color, important)
 }
 
-fun BaseStyleContext.outlineColor(hexString: String) {
-    writeStyleProperty("outline-color", Color(hexString))
-}
-
-fun BaseStyleContext.outlineColor(
-    r: Int,
-    g: Int,
-    b: Int
-) {
-    writeStyleProperty("outline-color", Color(r, g, b))
+fun BaseStyleContext.outlineColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("outline-color", Color(hexString), important)
 }
 
 fun BaseStyleContext.outlineColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline-color", Color(r, g, b, a))
+    writeStyleProperty("outline-color", Color(r, g, b), important)
 }
 
-fun StyleContext.outlineColor(color: Color) {
-    writeStyleProperty("outline-color", color)
-}
-
-fun StyleContext.outlineColor(hexString: String) {
-    writeStyleProperty("outline-color", Color(hexString))
-}
-
-fun StyleContext.outlineColor(
+fun BaseStyleContext.outlineColor(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline-color", Color(r, g, b))
+    writeStyleProperty("outline-color", Color(r, g, b, a), important)
+}
+
+fun StyleContext.outlineColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("outline-color", color, important)
+}
+
+fun StyleContext.outlineColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("outline-color", Color(hexString), important)
 }
 
 fun StyleContext.outlineColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline-color", Color(r, g, b, a))
+    writeStyleProperty("outline-color", Color(r, g, b), important)
 }
 
-fun InlineStyleContext.outlineColor(color: Color) {
-    writeStyleProperty("outline-color", color)
-}
-
-fun InlineStyleContext.outlineColor(hexString: String) {
-    writeStyleProperty("outline-color", Color(hexString))
-}
-
-fun InlineStyleContext.outlineColor(
+fun StyleContext.outlineColor(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline-color", Color(r, g, b))
+    writeStyleProperty("outline-color", Color(r, g, b, a), important)
+}
+
+fun InlineStyleContext.outlineColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("outline-color", color, important)
+}
+
+fun InlineStyleContext.outlineColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("outline-color", Color(hexString), important)
 }
 
 fun InlineStyleContext.outlineColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline-color", Color(r, g, b, a))
+    writeStyleProperty("outline-color", Color(r, g, b), important)
+}
+
+fun InlineStyleContext.outlineColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("outline-color", Color(r, g, b, a), important)
 }

@@ -7,67 +7,74 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
 fun BaseStyleContext.border(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
 fun BaseStyleContext.border(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
-fun BaseStyleContext.border(value: Border) {
-    writeStyleProperty("border", value)
+fun BaseStyleContext.border(value: Border, important: Boolean = false) {
+    writeStyleProperty("border", value, important)
 }
 
 fun StyleContext.border(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
 fun StyleContext.border(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
-fun StyleContext.border(value: Border) {
-    writeStyleProperty("border", value)
+fun StyleContext.border(value: Border, important: Boolean = false) {
+    writeStyleProperty("border", value, important)
 }
 
 fun InlineStyleContext.border(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
 fun InlineStyleContext.border(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border", """$width $style $color""")
+    writeStyleProperty("border", """$width $style $color""", important)
 }
 
-fun InlineStyleContext.border(value: Border) {
-    writeStyleProperty("border", value)
+fun InlineStyleContext.border(value: Border, important: Boolean = false) {
+    writeStyleProperty("border", value, important)
 }
 
 enum class Border(

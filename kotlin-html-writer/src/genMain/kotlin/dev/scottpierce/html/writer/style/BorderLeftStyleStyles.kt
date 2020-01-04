@@ -7,16 +7,17 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderLeftStyle(value: BorderStyle) {
-    writeStyleProperty("border-left-style", value)
+fun BaseStyleContext.borderLeftStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-left-style", value, important)
 }
 
-fun StyleContext.borderLeftStyle(value: BorderStyle) {
-    writeStyleProperty("border-left-style", value)
+fun StyleContext.borderLeftStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-left-style", value, important)
 }
 
-fun InlineStyleContext.borderLeftStyle(value: BorderStyle) {
-    writeStyleProperty("border-left-style", value)
+fun InlineStyleContext.borderLeftStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-left-style", value, important)
 }

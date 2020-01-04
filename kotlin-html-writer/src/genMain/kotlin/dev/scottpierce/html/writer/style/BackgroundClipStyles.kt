@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundClip(value: BackgroundClip) {
-    writeStyleProperty("background-clip", value)
+fun BaseStyleContext.backgroundClip(value: BackgroundClip, important: Boolean = false) {
+    writeStyleProperty("background-clip", value, important)
 }
 
-fun StyleContext.backgroundClip(value: BackgroundClip) {
-    writeStyleProperty("background-clip", value)
+fun StyleContext.backgroundClip(value: BackgroundClip, important: Boolean = false) {
+    writeStyleProperty("background-clip", value, important)
 }
 
-fun InlineStyleContext.backgroundClip(value: BackgroundClip) {
-    writeStyleProperty("background-clip", value)
+fun InlineStyleContext.backgroundClip(value: BackgroundClip, important: Boolean = false) {
+    writeStyleProperty("background-clip", value, important)
 }
 
 enum class BackgroundClip(

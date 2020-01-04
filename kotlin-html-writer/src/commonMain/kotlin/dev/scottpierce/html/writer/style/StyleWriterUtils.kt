@@ -86,13 +86,16 @@ inline fun StyleSheetContext.style(selector: String, func: StyleLambda) {
     }
 }
 
-fun BaseStyleContext.writeStyleProperty(property: String, value: Any) {
+fun BaseStyleContext.writeStyleProperty(property: String, value: Any, important: Boolean = false) {
     writer.apply {
         if (!isEmpty) newLine()
 
         write(property).write(':')
         if (!options.minifyStyles) write(' ')
         write(value.toString())
+        if (important) {
+            write(" !important")
+        }
         write(';')
     }
 }

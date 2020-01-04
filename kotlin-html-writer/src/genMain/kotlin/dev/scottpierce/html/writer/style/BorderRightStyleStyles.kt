@@ -7,16 +7,17 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderRightStyle(value: BorderStyle) {
-    writeStyleProperty("border-right-style", value)
+fun BaseStyleContext.borderRightStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-style", value, important)
 }
 
-fun StyleContext.borderRightStyle(value: BorderStyle) {
-    writeStyleProperty("border-right-style", value)
+fun StyleContext.borderRightStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-style", value, important)
 }
 
-fun InlineStyleContext.borderRightStyle(value: BorderStyle) {
-    writeStyleProperty("border-right-style", value)
+fun InlineStyleContext.borderRightStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-style", value, important)
 }

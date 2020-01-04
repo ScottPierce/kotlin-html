@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.alignSelf(value: AlignSelf) {
-    writeStyleProperty("align-self", value)
+fun BaseStyleContext.alignSelf(value: AlignSelf, important: Boolean = false) {
+    writeStyleProperty("align-self", value, important)
 }
 
-fun StyleContext.alignSelf(value: AlignSelf) {
-    writeStyleProperty("align-self", value)
+fun StyleContext.alignSelf(value: AlignSelf, important: Boolean = false) {
+    writeStyleProperty("align-self", value, important)
 }
 
-fun InlineStyleContext.alignSelf(value: AlignSelf) {
-    writeStyleProperty("align-self", value)
+fun InlineStyleContext.alignSelf(value: AlignSelf, important: Boolean = false) {
+    writeStyleProperty("align-self", value, important)
 }
 
 enum class AlignSelf(

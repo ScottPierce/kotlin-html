@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.right(value: Dimension) {
-    writeStyleProperty("right", value)
+fun BaseStyleContext.right(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
-fun BaseStyleContext.right(value: Right) {
-    writeStyleProperty("right", value)
+fun BaseStyleContext.right(value: Right, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
-fun StyleContext.right(value: Dimension) {
-    writeStyleProperty("right", value)
+fun StyleContext.right(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
-fun StyleContext.right(value: Right) {
-    writeStyleProperty("right", value)
+fun StyleContext.right(value: Right, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
-fun InlineStyleContext.right(value: Dimension) {
-    writeStyleProperty("right", value)
+fun InlineStyleContext.right(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
-fun InlineStyleContext.right(value: Right) {
-    writeStyleProperty("right", value)
+fun InlineStyleContext.right(value: Right, important: Boolean = false) {
+    writeStyleProperty("right", value, important)
 }
 
 enum class Right(

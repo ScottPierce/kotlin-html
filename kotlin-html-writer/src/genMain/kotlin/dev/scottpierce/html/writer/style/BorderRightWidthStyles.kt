@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderRightWidth(value: Dimension) {
-    writeStyleProperty("border-right-width", value)
+fun BaseStyleContext.borderRightWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }
 
-fun BaseStyleContext.borderRightWidth(value: BorderStyle) {
-    writeStyleProperty("border-right-width", value)
+fun BaseStyleContext.borderRightWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }
 
-fun StyleContext.borderRightWidth(value: Dimension) {
-    writeStyleProperty("border-right-width", value)
+fun StyleContext.borderRightWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }
 
-fun StyleContext.borderRightWidth(value: BorderStyle) {
-    writeStyleProperty("border-right-width", value)
+fun StyleContext.borderRightWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }
 
-fun InlineStyleContext.borderRightWidth(value: Dimension) {
-    writeStyleProperty("border-right-width", value)
+fun InlineStyleContext.borderRightWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }
 
-fun InlineStyleContext.borderRightWidth(value: BorderStyle) {
-    writeStyleProperty("border-right-width", value)
+fun InlineStyleContext.borderRightWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-right-width", value, important)
 }

@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.top(value: Dimension) {
-    writeStyleProperty("top", value)
+fun BaseStyleContext.top(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
-fun BaseStyleContext.top(value: Top) {
-    writeStyleProperty("top", value)
+fun BaseStyleContext.top(value: Top, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
-fun StyleContext.top(value: Dimension) {
-    writeStyleProperty("top", value)
+fun StyleContext.top(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
-fun StyleContext.top(value: Top) {
-    writeStyleProperty("top", value)
+fun StyleContext.top(value: Top, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
-fun InlineStyleContext.top(value: Dimension) {
-    writeStyleProperty("top", value)
+fun InlineStyleContext.top(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
-fun InlineStyleContext.top(value: Top) {
-    writeStyleProperty("top", value)
+fun InlineStyleContext.top(value: Top, important: Boolean = false) {
+    writeStyleProperty("top", value, important)
 }
 
 enum class Top(

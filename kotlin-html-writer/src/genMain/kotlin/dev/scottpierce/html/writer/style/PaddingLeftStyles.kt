@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.paddingLeft(value: Dimension) {
-    writeStyleProperty("padding-left", value)
+fun BaseStyleContext.paddingLeft(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }
 
-fun BaseStyleContext.paddingLeft(value: CssValue) {
-    writeStyleProperty("padding-left", value)
+fun BaseStyleContext.paddingLeft(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }
 
-fun StyleContext.paddingLeft(value: Dimension) {
-    writeStyleProperty("padding-left", value)
+fun StyleContext.paddingLeft(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }
 
-fun StyleContext.paddingLeft(value: CssValue) {
-    writeStyleProperty("padding-left", value)
+fun StyleContext.paddingLeft(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }
 
-fun InlineStyleContext.paddingLeft(value: Dimension) {
-    writeStyleProperty("padding-left", value)
+fun InlineStyleContext.paddingLeft(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }
 
-fun InlineStyleContext.paddingLeft(value: CssValue) {
-    writeStyleProperty("padding-left", value)
+fun InlineStyleContext.paddingLeft(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-left", value, important)
 }

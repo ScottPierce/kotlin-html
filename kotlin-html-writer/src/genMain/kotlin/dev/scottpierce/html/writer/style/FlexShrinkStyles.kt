@@ -7,29 +7,30 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Number
 import kotlin.Suppress
 
-fun BaseStyleContext.flexShrink(value: Number) {
-    writeStyleProperty("flex-shrink", value)
+fun BaseStyleContext.flexShrink(value: Number, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }
 
-fun BaseStyleContext.flexShrink(value: CssValue) {
-    writeStyleProperty("flex-shrink", value)
+fun BaseStyleContext.flexShrink(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }
 
-fun StyleContext.flexShrink(value: Number) {
-    writeStyleProperty("flex-shrink", value)
+fun StyleContext.flexShrink(value: Number, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }
 
-fun StyleContext.flexShrink(value: CssValue) {
-    writeStyleProperty("flex-shrink", value)
+fun StyleContext.flexShrink(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }
 
-fun InlineStyleContext.flexShrink(value: Number) {
-    writeStyleProperty("flex-shrink", value)
+fun InlineStyleContext.flexShrink(value: Number, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }
 
-fun InlineStyleContext.flexShrink(value: CssValue) {
-    writeStyleProperty("flex-shrink", value)
+fun InlineStyleContext.flexShrink(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("flex-shrink", value, important)
 }

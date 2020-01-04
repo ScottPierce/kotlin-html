@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.listStyleType(value: ListStyleType) {
-    writeStyleProperty("list-style-type", value)
+fun BaseStyleContext.listStyleType(value: ListStyleType, important: Boolean = false) {
+    writeStyleProperty("list-style-type", value, important)
 }
 
-fun StyleContext.listStyleType(value: ListStyleType) {
-    writeStyleProperty("list-style-type", value)
+fun StyleContext.listStyleType(value: ListStyleType, important: Boolean = false) {
+    writeStyleProperty("list-style-type", value, important)
 }
 
-fun InlineStyleContext.listStyleType(value: ListStyleType) {
-    writeStyleProperty("list-style-type", value)
+fun InlineStyleContext.listStyleType(value: ListStyleType, important: Boolean = false) {
+    writeStyleProperty("list-style-type", value, important)
 }
 
 enum class ListStyleType(

@@ -7,64 +7,71 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
 fun BaseStyleContext.borderBottom(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
 fun BaseStyleContext.borderBottom(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
-fun BaseStyleContext.borderBottom(value: Border) {
-    writeStyleProperty("border-bottom", value)
+fun BaseStyleContext.borderBottom(value: Border, important: Boolean = false) {
+    writeStyleProperty("border-bottom", value, important)
 }
 
 fun StyleContext.borderBottom(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
 fun StyleContext.borderBottom(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
-fun StyleContext.borderBottom(value: Border) {
-    writeStyleProperty("border-bottom", value)
+fun StyleContext.borderBottom(value: Border, important: Boolean = false) {
+    writeStyleProperty("border-bottom", value, important)
 }
 
 fun InlineStyleContext.borderBottom(
     width: Dimension,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
 fun InlineStyleContext.borderBottom(
     width: BorderWidth,
     style: BorderStyle,
-    color: Color
+    color: Color,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-bottom", """$width $style $color""")
+    writeStyleProperty("border-bottom", """$width $style $color""", important)
 }
 
-fun InlineStyleContext.borderBottom(value: Border) {
-    writeStyleProperty("border-bottom", value)
+fun InlineStyleContext.borderBottom(value: Border, important: Boolean = false) {
+    writeStyleProperty("border-bottom", value, important)
 }

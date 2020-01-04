@@ -7,32 +7,33 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.fontWeight(value: Int) {
-    writeStyleProperty("font-weight", value)
+fun BaseStyleContext.fontWeight(value: Int, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
-fun BaseStyleContext.fontWeight(value: FontWeight) {
-    writeStyleProperty("font-weight", value)
+fun BaseStyleContext.fontWeight(value: FontWeight, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
-fun StyleContext.fontWeight(value: Int) {
-    writeStyleProperty("font-weight", value)
+fun StyleContext.fontWeight(value: Int, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
-fun StyleContext.fontWeight(value: FontWeight) {
-    writeStyleProperty("font-weight", value)
+fun StyleContext.fontWeight(value: FontWeight, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
-fun InlineStyleContext.fontWeight(value: Int) {
-    writeStyleProperty("font-weight", value)
+fun InlineStyleContext.fontWeight(value: Int, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
-fun InlineStyleContext.fontWeight(value: FontWeight) {
-    writeStyleProperty("font-weight", value)
+fun InlineStyleContext.fontWeight(value: FontWeight, important: Boolean = false) {
+    writeStyleProperty("font-weight", value, important)
 }
 
 enum class FontWeight(

@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.letterSpacing(value: Dimension) {
-    writeStyleProperty("letter-spacing", value)
+fun BaseStyleContext.letterSpacing(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
-fun BaseStyleContext.letterSpacing(value: LetterSpacing) {
-    writeStyleProperty("letter-spacing", value)
+fun BaseStyleContext.letterSpacing(value: LetterSpacing, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
-fun StyleContext.letterSpacing(value: Dimension) {
-    writeStyleProperty("letter-spacing", value)
+fun StyleContext.letterSpacing(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
-fun StyleContext.letterSpacing(value: LetterSpacing) {
-    writeStyleProperty("letter-spacing", value)
+fun StyleContext.letterSpacing(value: LetterSpacing, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
-fun InlineStyleContext.letterSpacing(value: Dimension) {
-    writeStyleProperty("letter-spacing", value)
+fun InlineStyleContext.letterSpacing(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
-fun InlineStyleContext.letterSpacing(value: LetterSpacing) {
-    writeStyleProperty("letter-spacing", value)
+fun InlineStyleContext.letterSpacing(value: LetterSpacing, important: Boolean = false) {
+    writeStyleProperty("letter-spacing", value, important)
 }
 
 enum class LetterSpacing(

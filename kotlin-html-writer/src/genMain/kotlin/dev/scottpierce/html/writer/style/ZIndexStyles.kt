@@ -7,32 +7,33 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.zIndex(value: Int) {
-    writeStyleProperty("z-index", value)
+fun BaseStyleContext.zIndex(value: Int, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
-fun BaseStyleContext.zIndex(value: ZIndex) {
-    writeStyleProperty("z-index", value)
+fun BaseStyleContext.zIndex(value: ZIndex, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
-fun StyleContext.zIndex(value: Int) {
-    writeStyleProperty("z-index", value)
+fun StyleContext.zIndex(value: Int, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
-fun StyleContext.zIndex(value: ZIndex) {
-    writeStyleProperty("z-index", value)
+fun StyleContext.zIndex(value: ZIndex, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
-fun InlineStyleContext.zIndex(value: Int) {
-    writeStyleProperty("z-index", value)
+fun InlineStyleContext.zIndex(value: Int, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
-fun InlineStyleContext.zIndex(value: ZIndex) {
-    writeStyleProperty("z-index", value)
+fun InlineStyleContext.zIndex(value: ZIndex, important: Boolean = false) {
+    writeStyleProperty("z-index", value, important)
 }
 
 enum class ZIndex(

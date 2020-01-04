@@ -7,16 +7,17 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderTopStyle(value: BorderStyle) {
-    writeStyleProperty("border-top-style", value)
+fun BaseStyleContext.borderTopStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-style", value, important)
 }
 
-fun StyleContext.borderTopStyle(value: BorderStyle) {
-    writeStyleProperty("border-top-style", value)
+fun StyleContext.borderTopStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-style", value, important)
 }
 
-fun InlineStyleContext.borderTopStyle(value: BorderStyle) {
-    writeStyleProperty("border-top-style", value)
+fun InlineStyleContext.borderTopStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-style", value, important)
 }

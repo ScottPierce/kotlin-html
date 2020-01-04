@@ -7,44 +7,45 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.lineHeight(multiplier: Number) {
-    writeStyleProperty("line-height", multiplier)
+fun BaseStyleContext.lineHeight(multiplier: Number, important: Boolean = false) {
+    writeStyleProperty("line-height", multiplier, important)
 }
 
-fun BaseStyleContext.lineHeight(value: Dimension) {
-    writeStyleProperty("line-height", value)
+fun BaseStyleContext.lineHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
-fun BaseStyleContext.lineHeight(value: LineHeight) {
-    writeStyleProperty("line-height", value)
+fun BaseStyleContext.lineHeight(value: LineHeight, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
-fun StyleContext.lineHeight(multiplier: Number) {
-    writeStyleProperty("line-height", multiplier)
+fun StyleContext.lineHeight(multiplier: Number, important: Boolean = false) {
+    writeStyleProperty("line-height", multiplier, important)
 }
 
-fun StyleContext.lineHeight(value: Dimension) {
-    writeStyleProperty("line-height", value)
+fun StyleContext.lineHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
-fun StyleContext.lineHeight(value: LineHeight) {
-    writeStyleProperty("line-height", value)
+fun StyleContext.lineHeight(value: LineHeight, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
-fun InlineStyleContext.lineHeight(multiplier: Number) {
-    writeStyleProperty("line-height", multiplier)
+fun InlineStyleContext.lineHeight(multiplier: Number, important: Boolean = false) {
+    writeStyleProperty("line-height", multiplier, important)
 }
 
-fun InlineStyleContext.lineHeight(value: Dimension) {
-    writeStyleProperty("line-height", value)
+fun InlineStyleContext.lineHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
-fun InlineStyleContext.lineHeight(value: LineHeight) {
-    writeStyleProperty("line-height", value)
+fun InlineStyleContext.lineHeight(value: LineHeight, important: Boolean = false) {
+    writeStyleProperty("line-height", value, important)
 }
 
 enum class LineHeight(

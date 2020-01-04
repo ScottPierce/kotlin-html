@@ -7,79 +7,80 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.display(value: Display) {
-    writeStyleProperty("display", value)
+fun BaseStyleContext.display(value: Display, important: Boolean = false) {
+    writeStyleProperty("display", value, important)
 }
 
-fun BaseStyleContext.displayNone() {
-    writeStyleProperty("display", Display.NONE)
+fun BaseStyleContext.displayNone(important: Boolean = false) {
+    writeStyleProperty("display", Display.NONE, important)
 }
 
-fun BaseStyleContext.displayInline() {
-    writeStyleProperty("display", Display.INLINE)
+fun BaseStyleContext.displayInline(important: Boolean = false) {
+    writeStyleProperty("display", Display.INLINE, important)
 }
 
-fun BaseStyleContext.displayBlock() {
-    writeStyleProperty("display", Display.BLOCK)
+fun BaseStyleContext.displayBlock(important: Boolean = false) {
+    writeStyleProperty("display", Display.BLOCK, important)
 }
 
-fun BaseStyleContext.displayFlex() {
-    writeStyleProperty("display", Display.FLEX)
+fun BaseStyleContext.displayFlex(important: Boolean = false) {
+    writeStyleProperty("display", Display.FLEX, important)
 }
 
-fun BaseStyleContext.displayGrid() {
-    writeStyleProperty("display", Display.GRID)
+fun BaseStyleContext.displayGrid(important: Boolean = false) {
+    writeStyleProperty("display", Display.GRID, important)
 }
 
-fun StyleContext.display(value: Display) {
-    writeStyleProperty("display", value)
+fun StyleContext.display(value: Display, important: Boolean = false) {
+    writeStyleProperty("display", value, important)
 }
 
-fun StyleContext.displayNone() {
-    writeStyleProperty("display", Display.NONE)
+fun StyleContext.displayNone(important: Boolean = false) {
+    writeStyleProperty("display", Display.NONE, important)
 }
 
-fun StyleContext.displayInline() {
-    writeStyleProperty("display", Display.INLINE)
+fun StyleContext.displayInline(important: Boolean = false) {
+    writeStyleProperty("display", Display.INLINE, important)
 }
 
-fun StyleContext.displayBlock() {
-    writeStyleProperty("display", Display.BLOCK)
+fun StyleContext.displayBlock(important: Boolean = false) {
+    writeStyleProperty("display", Display.BLOCK, important)
 }
 
-fun StyleContext.displayFlex() {
-    writeStyleProperty("display", Display.FLEX)
+fun StyleContext.displayFlex(important: Boolean = false) {
+    writeStyleProperty("display", Display.FLEX, important)
 }
 
-fun StyleContext.displayGrid() {
-    writeStyleProperty("display", Display.GRID)
+fun StyleContext.displayGrid(important: Boolean = false) {
+    writeStyleProperty("display", Display.GRID, important)
 }
 
-fun InlineStyleContext.display(value: Display) {
-    writeStyleProperty("display", value)
+fun InlineStyleContext.display(value: Display, important: Boolean = false) {
+    writeStyleProperty("display", value, important)
 }
 
-fun InlineStyleContext.displayNone() {
-    writeStyleProperty("display", Display.NONE)
+fun InlineStyleContext.displayNone(important: Boolean = false) {
+    writeStyleProperty("display", Display.NONE, important)
 }
 
-fun InlineStyleContext.displayInline() {
-    writeStyleProperty("display", Display.INLINE)
+fun InlineStyleContext.displayInline(important: Boolean = false) {
+    writeStyleProperty("display", Display.INLINE, important)
 }
 
-fun InlineStyleContext.displayBlock() {
-    writeStyleProperty("display", Display.BLOCK)
+fun InlineStyleContext.displayBlock(important: Boolean = false) {
+    writeStyleProperty("display", Display.BLOCK, important)
 }
 
-fun InlineStyleContext.displayFlex() {
-    writeStyleProperty("display", Display.FLEX)
+fun InlineStyleContext.displayFlex(important: Boolean = false) {
+    writeStyleProperty("display", Display.FLEX, important)
 }
 
-fun InlineStyleContext.displayGrid() {
-    writeStyleProperty("display", Display.GRID)
+fun InlineStyleContext.displayGrid(important: Boolean = false) {
+    writeStyleProperty("display", Display.GRID, important)
 }
 
 enum class Display(

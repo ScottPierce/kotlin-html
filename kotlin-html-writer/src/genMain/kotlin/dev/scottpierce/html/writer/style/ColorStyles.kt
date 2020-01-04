@@ -7,82 +7,89 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Int
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.color(color: Color) {
-    writeStyleProperty("color", color)
+fun BaseStyleContext.color(color: Color, important: Boolean = false) {
+    writeStyleProperty("color", color, important)
 }
 
-fun BaseStyleContext.color(hexString: String) {
-    writeStyleProperty("color", Color(hexString))
-}
-
-fun BaseStyleContext.color(
-    r: Int,
-    g: Int,
-    b: Int
-) {
-    writeStyleProperty("color", Color(r, g, b))
+fun BaseStyleContext.color(hexString: String, important: Boolean = false) {
+    writeStyleProperty("color", Color(hexString), important)
 }
 
 fun BaseStyleContext.color(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("color", Color(r, g, b, a))
+    writeStyleProperty("color", Color(r, g, b), important)
 }
 
-fun StyleContext.color(color: Color) {
-    writeStyleProperty("color", color)
-}
-
-fun StyleContext.color(hexString: String) {
-    writeStyleProperty("color", Color(hexString))
-}
-
-fun StyleContext.color(
+fun BaseStyleContext.color(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("color", Color(r, g, b))
+    writeStyleProperty("color", Color(r, g, b, a), important)
+}
+
+fun StyleContext.color(color: Color, important: Boolean = false) {
+    writeStyleProperty("color", color, important)
+}
+
+fun StyleContext.color(hexString: String, important: Boolean = false) {
+    writeStyleProperty("color", Color(hexString), important)
 }
 
 fun StyleContext.color(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("color", Color(r, g, b, a))
+    writeStyleProperty("color", Color(r, g, b), important)
 }
 
-fun InlineStyleContext.color(color: Color) {
-    writeStyleProperty("color", color)
-}
-
-fun InlineStyleContext.color(hexString: String) {
-    writeStyleProperty("color", Color(hexString))
-}
-
-fun InlineStyleContext.color(
+fun StyleContext.color(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("color", Color(r, g, b))
+    writeStyleProperty("color", Color(r, g, b, a), important)
+}
+
+fun InlineStyleContext.color(color: Color, important: Boolean = false) {
+    writeStyleProperty("color", color, important)
+}
+
+fun InlineStyleContext.color(hexString: String, important: Boolean = false) {
+    writeStyleProperty("color", Color(hexString), important)
 }
 
 fun InlineStyleContext.color(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("color", Color(r, g, b, a))
+    writeStyleProperty("color", Color(r, g, b), important)
+}
+
+fun InlineStyleContext.color(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("color", Color(r, g, b, a), important)
 }

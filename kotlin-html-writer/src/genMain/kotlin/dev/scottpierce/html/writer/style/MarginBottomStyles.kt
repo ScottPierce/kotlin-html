@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.marginBottom(value: Dimension) {
-    writeStyleProperty("margin-bottom", value)
+fun BaseStyleContext.marginBottom(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }
 
-fun BaseStyleContext.marginBottom(value: CssValue) {
-    writeStyleProperty("margin-bottom", value)
+fun BaseStyleContext.marginBottom(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }
 
-fun StyleContext.marginBottom(value: Dimension) {
-    writeStyleProperty("margin-bottom", value)
+fun StyleContext.marginBottom(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }
 
-fun StyleContext.marginBottom(value: CssValue) {
-    writeStyleProperty("margin-bottom", value)
+fun StyleContext.marginBottom(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }
 
-fun InlineStyleContext.marginBottom(value: Dimension) {
-    writeStyleProperty("margin-bottom", value)
+fun InlineStyleContext.marginBottom(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }
 
-fun InlineStyleContext.marginBottom(value: CssValue) {
-    writeStyleProperty("margin-bottom", value)
+fun InlineStyleContext.marginBottom(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-bottom", value, important)
 }

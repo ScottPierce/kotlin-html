@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.outlineWidth(value: Dimension) {
-    writeStyleProperty("outline-width", value)
+fun BaseStyleContext.outlineWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
-fun BaseStyleContext.outlineWidth(value: OutlineWidth) {
-    writeStyleProperty("outline-width", value)
+fun BaseStyleContext.outlineWidth(value: OutlineWidth, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
-fun StyleContext.outlineWidth(value: Dimension) {
-    writeStyleProperty("outline-width", value)
+fun StyleContext.outlineWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
-fun StyleContext.outlineWidth(value: OutlineWidth) {
-    writeStyleProperty("outline-width", value)
+fun StyleContext.outlineWidth(value: OutlineWidth, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
-fun InlineStyleContext.outlineWidth(value: Dimension) {
-    writeStyleProperty("outline-width", value)
+fun InlineStyleContext.outlineWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
-fun InlineStyleContext.outlineWidth(value: OutlineWidth) {
-    writeStyleProperty("outline-width", value)
+fun InlineStyleContext.outlineWidth(value: OutlineWidth, important: Boolean = false) {
+    writeStyleProperty("outline-width", value, important)
 }
 
 enum class OutlineWidth(

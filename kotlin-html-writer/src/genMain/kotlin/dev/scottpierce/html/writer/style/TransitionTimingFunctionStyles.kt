@@ -7,19 +7,23 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
-    writeStyleProperty("transition-timing-function", value)
+fun BaseStyleContext.transitionTimingFunction(value: TransitionTimingFunction, important: Boolean =
+        false) {
+    writeStyleProperty("transition-timing-function", value, important)
 }
 
-fun StyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
-    writeStyleProperty("transition-timing-function", value)
+fun StyleContext.transitionTimingFunction(value: TransitionTimingFunction, important: Boolean =
+        false) {
+    writeStyleProperty("transition-timing-function", value, important)
 }
 
-fun InlineStyleContext.transitionTimingFunction(value: TransitionTimingFunction) {
-    writeStyleProperty("transition-timing-function", value)
+fun InlineStyleContext.transitionTimingFunction(value: TransitionTimingFunction, important: Boolean
+        = false) {
+    writeStyleProperty("transition-timing-function", value, important)
 }
 
 enum class TransitionTimingFunction(

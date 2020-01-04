@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.flexWrap(value: FlexWrap) {
-    writeStyleProperty("flex-wrap", value)
+fun BaseStyleContext.flexWrap(value: FlexWrap, important: Boolean = false) {
+    writeStyleProperty("flex-wrap", value, important)
 }
 
-fun StyleContext.flexWrap(value: FlexWrap) {
-    writeStyleProperty("flex-wrap", value)
+fun StyleContext.flexWrap(value: FlexWrap, important: Boolean = false) {
+    writeStyleProperty("flex-wrap", value, important)
 }
 
-fun InlineStyleContext.flexWrap(value: FlexWrap) {
-    writeStyleProperty("flex-wrap", value)
+fun InlineStyleContext.flexWrap(value: FlexWrap, important: Boolean = false) {
+    writeStyleProperty("flex-wrap", value, important)
 }
 
 enum class FlexWrap(

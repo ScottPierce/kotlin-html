@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.minWidth(value: Dimension) {
-    writeStyleProperty("min-width", value)
+fun BaseStyleContext.minWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }
 
-fun BaseStyleContext.minWidth(value: CssValue) {
-    writeStyleProperty("min-width", value)
+fun BaseStyleContext.minWidth(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }
 
-fun StyleContext.minWidth(value: Dimension) {
-    writeStyleProperty("min-width", value)
+fun StyleContext.minWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }
 
-fun StyleContext.minWidth(value: CssValue) {
-    writeStyleProperty("min-width", value)
+fun StyleContext.minWidth(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }
 
-fun InlineStyleContext.minWidth(value: Dimension) {
-    writeStyleProperty("min-width", value)
+fun InlineStyleContext.minWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }
 
-fun InlineStyleContext.minWidth(value: CssValue) {
-    writeStyleProperty("min-width", value)
+fun InlineStyleContext.minWidth(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("min-width", value, important)
 }

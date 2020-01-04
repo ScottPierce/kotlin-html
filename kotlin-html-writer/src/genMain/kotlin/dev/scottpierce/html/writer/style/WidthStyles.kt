@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.width(value: Dimension) {
-    writeStyleProperty("width", value)
+fun BaseStyleContext.width(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
-fun BaseStyleContext.width(value: Width) {
-    writeStyleProperty("width", value)
+fun BaseStyleContext.width(value: Width, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
-fun StyleContext.width(value: Dimension) {
-    writeStyleProperty("width", value)
+fun StyleContext.width(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
-fun StyleContext.width(value: Width) {
-    writeStyleProperty("width", value)
+fun StyleContext.width(value: Width, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
-fun InlineStyleContext.width(value: Dimension) {
-    writeStyleProperty("width", value)
+fun InlineStyleContext.width(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
-fun InlineStyleContext.width(value: Width) {
-    writeStyleProperty("width", value)
+fun InlineStyleContext.width(value: Width, important: Boolean = false) {
+    writeStyleProperty("width", value, important)
 }
 
 enum class Width(

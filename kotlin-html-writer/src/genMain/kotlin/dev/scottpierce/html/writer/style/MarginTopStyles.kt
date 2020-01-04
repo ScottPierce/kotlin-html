@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.marginTop(value: Dimension) {
-    writeStyleProperty("margin-top", value)
+fun BaseStyleContext.marginTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }
 
-fun BaseStyleContext.marginTop(value: CssValue) {
-    writeStyleProperty("margin-top", value)
+fun BaseStyleContext.marginTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }
 
-fun StyleContext.marginTop(value: Dimension) {
-    writeStyleProperty("margin-top", value)
+fun StyleContext.marginTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }
 
-fun StyleContext.marginTop(value: CssValue) {
-    writeStyleProperty("margin-top", value)
+fun StyleContext.marginTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }
 
-fun InlineStyleContext.marginTop(value: Dimension) {
-    writeStyleProperty("margin-top", value)
+fun InlineStyleContext.marginTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }
 
-fun InlineStyleContext.marginTop(value: CssValue) {
-    writeStyleProperty("margin-top", value)
+fun InlineStyleContext.marginTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin-top", value, important)
 }

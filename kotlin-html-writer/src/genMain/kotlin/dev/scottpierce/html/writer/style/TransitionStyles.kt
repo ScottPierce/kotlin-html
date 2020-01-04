@@ -7,62 +7,81 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 import kotlin.time.Duration
 
-fun BaseStyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
+fun BaseStyleContext.transition(
+    property: TransitionProperty,
+    duration: Duration? = null,
+    important: Boolean = false
+) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""", important)
 }
 
 fun BaseStyleContext.transition(
     property: TransitionProperty,
     duration: Duration,
     timing: TransitionTimingFunction,
-    delay: Duration? = null
+    delay: Duration? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""",
+            important)
 }
 
-fun BaseStyleContext.transition(value: CssValue) {
-    writeStyleProperty("transition", value)
+fun BaseStyleContext.transition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("transition", value, important)
 }
 
-fun StyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
+fun StyleContext.transition(
+    property: TransitionProperty,
+    duration: Duration? = null,
+    important: Boolean = false
+) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""", important)
 }
 
 fun StyleContext.transition(
     property: TransitionProperty,
     duration: Duration,
     timing: TransitionTimingFunction,
-    delay: Duration? = null
+    delay: Duration? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""",
+            important)
 }
 
-fun StyleContext.transition(value: CssValue) {
-    writeStyleProperty("transition", value)
+fun StyleContext.transition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("transition", value, important)
 }
 
-fun InlineStyleContext.transition(property: TransitionProperty, duration: Duration? = null) {
+fun InlineStyleContext.transition(
+    property: TransitionProperty,
+    duration: Duration? = null,
+    important: Boolean = false
+) {
     writeStyleProperty("transition",
-            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""")
+            """$property${if (duration == null) "" else " ${duration.toCssString()}"}""", important)
 }
 
 fun InlineStyleContext.transition(
     property: TransitionProperty,
     duration: Duration,
     timing: TransitionTimingFunction,
-    delay: Duration? = null
+    delay: Duration? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("transition",
-            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""")
+            """$property ${duration.toCssString()} $timing${if (delay == null) "" else " " + delay.toCssString()}""",
+            important)
 }
 
-fun InlineStyleContext.transition(value: CssValue) {
-    writeStyleProperty("transition", value)
+fun InlineStyleContext.transition(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("transition", value, important)
 }

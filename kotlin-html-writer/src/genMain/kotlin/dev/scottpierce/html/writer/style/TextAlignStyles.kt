@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.textAlign(value: TextAlign) {
-    writeStyleProperty("text-align", value)
+fun BaseStyleContext.textAlign(value: TextAlign, important: Boolean = false) {
+    writeStyleProperty("text-align", value, important)
 }
 
-fun StyleContext.textAlign(value: TextAlign) {
-    writeStyleProperty("text-align", value)
+fun StyleContext.textAlign(value: TextAlign, important: Boolean = false) {
+    writeStyleProperty("text-align", value, important)
 }
 
-fun InlineStyleContext.textAlign(value: TextAlign) {
-    writeStyleProperty("text-align", value)
+fun InlineStyleContext.textAlign(value: TextAlign, important: Boolean = false) {
+    writeStyleProperty("text-align", value, important)
 }
 
 enum class TextAlign(
