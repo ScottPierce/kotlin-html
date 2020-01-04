@@ -109,6 +109,10 @@ sealed class GeneratedElement(
                 callingContext = Context.Body,
                 childrenContext = Context.Body
             ),
+            Void(
+                tagName = "hr",
+                callingContext = Context.Head
+            ),
 //            Normal(
 //                tagName = "html",
 //                callingContext = Context.File,
