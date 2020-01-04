@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.overflowY(value: Dimension) {
-    writeStyleProperty("overflow-y", value)
+fun BaseStyleContext.overflowY(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }
 
-fun BaseStyleContext.overflowY(value: Overflow) {
-    writeStyleProperty("overflow-y", value)
+fun BaseStyleContext.overflowY(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }
 
-fun StyleContext.overflowY(value: Dimension) {
-    writeStyleProperty("overflow-y", value)
+fun StyleContext.overflowY(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }
 
-fun StyleContext.overflowY(value: Overflow) {
-    writeStyleProperty("overflow-y", value)
+fun StyleContext.overflowY(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }
 
-fun InlineStyleContext.overflowY(value: Dimension) {
-    writeStyleProperty("overflow-y", value)
+fun InlineStyleContext.overflowY(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }
 
-fun InlineStyleContext.overflowY(value: Overflow) {
-    writeStyleProperty("overflow-y", value)
+fun InlineStyleContext.overflowY(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow-y", value, important)
 }

@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.paddingTop(value: Dimension) {
-    writeStyleProperty("padding-top", value)
+fun BaseStyleContext.paddingTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }
 
-fun BaseStyleContext.paddingTop(value: CssValue) {
-    writeStyleProperty("padding-top", value)
+fun BaseStyleContext.paddingTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }
 
-fun StyleContext.paddingTop(value: Dimension) {
-    writeStyleProperty("padding-top", value)
+fun StyleContext.paddingTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }
 
-fun StyleContext.paddingTop(value: CssValue) {
-    writeStyleProperty("padding-top", value)
+fun StyleContext.paddingTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }
 
-fun InlineStyleContext.paddingTop(value: Dimension) {
-    writeStyleProperty("padding-top", value)
+fun InlineStyleContext.paddingTop(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }
 
-fun InlineStyleContext.paddingTop(value: CssValue) {
-    writeStyleProperty("padding-top", value)
+fun InlineStyleContext.paddingTop(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("padding-top", value, important)
 }

@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.cursor(value: Cursor) {
-    writeStyleProperty("cursor", value)
+fun BaseStyleContext.cursor(value: Cursor, important: Boolean = false) {
+    writeStyleProperty("cursor", value, important)
 }
 
-fun StyleContext.cursor(value: Cursor) {
-    writeStyleProperty("cursor", value)
+fun StyleContext.cursor(value: Cursor, important: Boolean = false) {
+    writeStyleProperty("cursor", value, important)
 }
 
-fun InlineStyleContext.cursor(value: Cursor) {
-    writeStyleProperty("cursor", value)
+fun InlineStyleContext.cursor(value: Cursor, important: Boolean = false) {
+    writeStyleProperty("cursor", value, important)
 }
 
 enum class Cursor(

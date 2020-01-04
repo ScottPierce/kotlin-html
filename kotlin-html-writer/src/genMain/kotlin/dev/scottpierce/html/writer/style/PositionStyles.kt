@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.position(value: Position) {
-    writeStyleProperty("position", value)
+fun BaseStyleContext.position(value: Position, important: Boolean = false) {
+    writeStyleProperty("position", value, important)
 }
 
-fun StyleContext.position(value: Position) {
-    writeStyleProperty("position", value)
+fun StyleContext.position(value: Position, important: Boolean = false) {
+    writeStyleProperty("position", value, important)
 }
 
-fun InlineStyleContext.position(value: Position) {
-    writeStyleProperty("position", value)
+fun InlineStyleContext.position(value: Position, important: Boolean = false) {
+    writeStyleProperty("position", value, important)
 }
 
 enum class Position(

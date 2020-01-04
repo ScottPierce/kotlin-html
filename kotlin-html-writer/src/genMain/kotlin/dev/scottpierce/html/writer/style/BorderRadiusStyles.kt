@@ -7,81 +7,107 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderRadius(value: Dimension) {
-    writeStyleProperty("border-radius", value)
+fun BaseStyleContext.borderRadius(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-radius", value, important)
 }
 
-fun BaseStyleContext.borderRadius(topLeftAndBottomRight: Dimension,
-        topRightAndBottomLeft: Dimension) {
-    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""")
+fun BaseStyleContext.borderRadius(
+    topLeftAndBottomRight: Dimension,
+    topRightAndBottomLeft: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""",
+            important)
 }
 
 fun BaseStyleContext.borderRadius(
     topLeft: Dimension,
     topRightAndBottomLeft: Dimension,
-    bottomRight: Dimension
+    bottomRight: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""")
+    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""",
+            important)
 }
 
 fun BaseStyleContext.borderRadius(
     topLeft: Dimension,
     topRight: Dimension,
     bottomRight: Dimension,
-    bottomLeft: Dimension
+    bottomLeft: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""")
+    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""",
+            important)
 }
 
-fun StyleContext.borderRadius(value: Dimension) {
-    writeStyleProperty("border-radius", value)
+fun StyleContext.borderRadius(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-radius", value, important)
 }
 
-fun StyleContext.borderRadius(topLeftAndBottomRight: Dimension, topRightAndBottomLeft: Dimension) {
-    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""")
+fun StyleContext.borderRadius(
+    topLeftAndBottomRight: Dimension,
+    topRightAndBottomLeft: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""",
+            important)
 }
 
 fun StyleContext.borderRadius(
     topLeft: Dimension,
     topRightAndBottomLeft: Dimension,
-    bottomRight: Dimension
+    bottomRight: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""")
+    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""",
+            important)
 }
 
 fun StyleContext.borderRadius(
     topLeft: Dimension,
     topRight: Dimension,
     bottomRight: Dimension,
-    bottomLeft: Dimension
+    bottomLeft: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""")
+    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""",
+            important)
 }
 
-fun InlineStyleContext.borderRadius(value: Dimension) {
-    writeStyleProperty("border-radius", value)
+fun InlineStyleContext.borderRadius(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-radius", value, important)
 }
 
-fun InlineStyleContext.borderRadius(topLeftAndBottomRight: Dimension,
-        topRightAndBottomLeft: Dimension) {
-    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""")
+fun InlineStyleContext.borderRadius(
+    topLeftAndBottomRight: Dimension,
+    topRightAndBottomLeft: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("border-radius", """$topLeftAndBottomRight $topRightAndBottomLeft""",
+            important)
 }
 
 fun InlineStyleContext.borderRadius(
     topLeft: Dimension,
     topRightAndBottomLeft: Dimension,
-    bottomRight: Dimension
+    bottomRight: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""")
+    writeStyleProperty("border-radius", """$topLeft $topRightAndBottomLeft $bottomRight""",
+            important)
 }
 
 fun InlineStyleContext.borderRadius(
     topLeft: Dimension,
     topRight: Dimension,
     bottomRight: Dimension,
-    bottomLeft: Dimension
+    bottomLeft: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""")
+    writeStyleProperty("border-radius", """$topLeft $topRight $bottomRight $bottomLeft""",
+            important)
 }

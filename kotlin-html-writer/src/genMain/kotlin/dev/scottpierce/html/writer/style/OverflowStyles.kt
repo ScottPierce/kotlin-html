@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.overflow(value: Dimension) {
-    writeStyleProperty("overflow", value)
+fun BaseStyleContext.overflow(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
-fun BaseStyleContext.overflow(value: Overflow) {
-    writeStyleProperty("overflow", value)
+fun BaseStyleContext.overflow(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
-fun StyleContext.overflow(value: Dimension) {
-    writeStyleProperty("overflow", value)
+fun StyleContext.overflow(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
-fun StyleContext.overflow(value: Overflow) {
-    writeStyleProperty("overflow", value)
+fun StyleContext.overflow(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
-fun InlineStyleContext.overflow(value: Dimension) {
-    writeStyleProperty("overflow", value)
+fun InlineStyleContext.overflow(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
-fun InlineStyleContext.overflow(value: Overflow) {
-    writeStyleProperty("overflow", value)
+fun InlineStyleContext.overflow(value: Overflow, important: Boolean = false) {
+    writeStyleProperty("overflow", value, important)
 }
 
 enum class Overflow(

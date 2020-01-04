@@ -7,91 +7,110 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.margin(value: Dimension) {
-    writeStyleProperty("margin", value)
+fun BaseStyleContext.margin(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }
 
-fun BaseStyleContext.margin(y: Dimension, x: Dimension) {
-    writeStyleProperty("margin", """$y $x""")
+fun BaseStyleContext.margin(
+    y: Dimension,
+    x: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("margin", """$y $x""", important)
 }
 
 fun BaseStyleContext.margin(
     top: Dimension,
     x: Dimension,
-    bottom: Dimension
+    bottom: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $x $bottom""")
+    writeStyleProperty("margin", """$top $x $bottom""", important)
 }
 
 fun BaseStyleContext.margin(
     top: Dimension,
     right: Dimension,
     bottom: Dimension,
-    left: Dimension
+    left: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $right $bottom $left""")
+    writeStyleProperty("margin", """$top $right $bottom $left""", important)
 }
 
-fun BaseStyleContext.margin(value: CssValue) {
-    writeStyleProperty("margin", value)
+fun BaseStyleContext.margin(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }
 
-fun StyleContext.margin(value: Dimension) {
-    writeStyleProperty("margin", value)
+fun StyleContext.margin(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }
 
-fun StyleContext.margin(y: Dimension, x: Dimension) {
-    writeStyleProperty("margin", """$y $x""")
+fun StyleContext.margin(
+    y: Dimension,
+    x: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("margin", """$y $x""", important)
 }
 
 fun StyleContext.margin(
     top: Dimension,
     x: Dimension,
-    bottom: Dimension
+    bottom: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $x $bottom""")
+    writeStyleProperty("margin", """$top $x $bottom""", important)
 }
 
 fun StyleContext.margin(
     top: Dimension,
     right: Dimension,
     bottom: Dimension,
-    left: Dimension
+    left: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $right $bottom $left""")
+    writeStyleProperty("margin", """$top $right $bottom $left""", important)
 }
 
-fun StyleContext.margin(value: CssValue) {
-    writeStyleProperty("margin", value)
+fun StyleContext.margin(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }
 
-fun InlineStyleContext.margin(value: Dimension) {
-    writeStyleProperty("margin", value)
+fun InlineStyleContext.margin(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }
 
-fun InlineStyleContext.margin(y: Dimension, x: Dimension) {
-    writeStyleProperty("margin", """$y $x""")
+fun InlineStyleContext.margin(
+    y: Dimension,
+    x: Dimension,
+    important: Boolean = false
+) {
+    writeStyleProperty("margin", """$y $x""", important)
 }
 
 fun InlineStyleContext.margin(
     top: Dimension,
     x: Dimension,
-    bottom: Dimension
+    bottom: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $x $bottom""")
+    writeStyleProperty("margin", """$top $x $bottom""", important)
 }
 
 fun InlineStyleContext.margin(
     top: Dimension,
     right: Dimension,
     bottom: Dimension,
-    left: Dimension
+    left: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("margin", """$top $right $bottom $left""")
+    writeStyleProperty("margin", """$top $right $bottom $left""", important)
 }
 
-fun InlineStyleContext.margin(value: CssValue) {
-    writeStyleProperty("margin", value)
+fun InlineStyleContext.margin(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("margin", value, important)
 }

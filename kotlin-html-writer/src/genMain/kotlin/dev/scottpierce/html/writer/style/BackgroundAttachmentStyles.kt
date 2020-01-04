@@ -7,19 +7,21 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundAttachment(value: BackgroundAttachment) {
-    writeStyleProperty("background-attachment", value)
+fun BaseStyleContext.backgroundAttachment(value: BackgroundAttachment, important: Boolean = false) {
+    writeStyleProperty("background-attachment", value, important)
 }
 
-fun StyleContext.backgroundAttachment(value: BackgroundAttachment) {
-    writeStyleProperty("background-attachment", value)
+fun StyleContext.backgroundAttachment(value: BackgroundAttachment, important: Boolean = false) {
+    writeStyleProperty("background-attachment", value, important)
 }
 
-fun InlineStyleContext.backgroundAttachment(value: BackgroundAttachment) {
-    writeStyleProperty("background-attachment", value)
+fun InlineStyleContext.backgroundAttachment(value: BackgroundAttachment, important: Boolean =
+        false) {
+    writeStyleProperty("background-attachment", value, important)
 }
 
 enum class BackgroundAttachment(

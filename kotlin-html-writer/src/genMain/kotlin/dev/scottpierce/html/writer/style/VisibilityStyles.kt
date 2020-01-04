@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.visibility(value: Visibility) {
-    writeStyleProperty("visibility", value)
+fun BaseStyleContext.visibility(value: Visibility, important: Boolean = false) {
+    writeStyleProperty("visibility", value, important)
 }
 
-fun StyleContext.visibility(value: Visibility) {
-    writeStyleProperty("visibility", value)
+fun StyleContext.visibility(value: Visibility, important: Boolean = false) {
+    writeStyleProperty("visibility", value, important)
 }
 
-fun InlineStyleContext.visibility(value: Visibility) {
-    writeStyleProperty("visibility", value)
+fun InlineStyleContext.visibility(value: Visibility, important: Boolean = false) {
+    writeStyleProperty("visibility", value, important)
 }
 
 enum class Visibility(

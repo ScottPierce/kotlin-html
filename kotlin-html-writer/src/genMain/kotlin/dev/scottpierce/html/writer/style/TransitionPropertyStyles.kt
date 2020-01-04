@@ -7,31 +7,38 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.transitionProperty(value: TransitionProperty) {
-    writeStyleProperty("transition-property", value)
+fun BaseStyleContext.transitionProperty(value: TransitionProperty, important: Boolean = false) {
+    writeStyleProperty("transition-property", value, important)
 }
 
-fun BaseStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
-    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","))
+fun BaseStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty,
+        important: Boolean = false) {
+    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","),
+            important)
 }
 
-fun StyleContext.transitionProperty(value: TransitionProperty) {
-    writeStyleProperty("transition-property", value)
+fun StyleContext.transitionProperty(value: TransitionProperty, important: Boolean = false) {
+    writeStyleProperty("transition-property", value, important)
 }
 
-fun StyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
-    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","))
+fun StyleContext.transitionProperty(vararg transitionProperties: TransitionProperty,
+        important: Boolean = false) {
+    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","),
+            important)
 }
 
-fun InlineStyleContext.transitionProperty(value: TransitionProperty) {
-    writeStyleProperty("transition-property", value)
+fun InlineStyleContext.transitionProperty(value: TransitionProperty, important: Boolean = false) {
+    writeStyleProperty("transition-property", value, important)
 }
 
-fun InlineStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty) {
-    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","))
+fun InlineStyleContext.transitionProperty(vararg transitionProperties: TransitionProperty,
+        important: Boolean = false) {
+    writeStyleProperty("transition-property", transitionProperties.joinToString(separator = ","),
+            important)
 }
 
 enum class TransitionProperty(

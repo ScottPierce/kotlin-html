@@ -7,82 +7,89 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Int
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.borderRightColor(color: Color) {
-    writeStyleProperty("border-right-color", color)
+fun BaseStyleContext.borderRightColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("border-right-color", color, important)
 }
 
-fun BaseStyleContext.borderRightColor(hexString: String) {
-    writeStyleProperty("border-right-color", Color(hexString))
-}
-
-fun BaseStyleContext.borderRightColor(
-    r: Int,
-    g: Int,
-    b: Int
-) {
-    writeStyleProperty("border-right-color", Color(r, g, b))
+fun BaseStyleContext.borderRightColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("border-right-color", Color(hexString), important)
 }
 
 fun BaseStyleContext.borderRightColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-right-color", Color(r, g, b, a))
+    writeStyleProperty("border-right-color", Color(r, g, b), important)
 }
 
-fun StyleContext.borderRightColor(color: Color) {
-    writeStyleProperty("border-right-color", color)
-}
-
-fun StyleContext.borderRightColor(hexString: String) {
-    writeStyleProperty("border-right-color", Color(hexString))
-}
-
-fun StyleContext.borderRightColor(
+fun BaseStyleContext.borderRightColor(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-right-color", Color(r, g, b))
+    writeStyleProperty("border-right-color", Color(r, g, b, a), important)
+}
+
+fun StyleContext.borderRightColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("border-right-color", color, important)
+}
+
+fun StyleContext.borderRightColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("border-right-color", Color(hexString), important)
 }
 
 fun StyleContext.borderRightColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-right-color", Color(r, g, b, a))
+    writeStyleProperty("border-right-color", Color(r, g, b), important)
 }
 
-fun InlineStyleContext.borderRightColor(color: Color) {
-    writeStyleProperty("border-right-color", color)
-}
-
-fun InlineStyleContext.borderRightColor(hexString: String) {
-    writeStyleProperty("border-right-color", Color(hexString))
-}
-
-fun InlineStyleContext.borderRightColor(
+fun StyleContext.borderRightColor(
     r: Int,
     g: Int,
-    b: Int
+    b: Int,
+    a: Number,
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-right-color", Color(r, g, b))
+    writeStyleProperty("border-right-color", Color(r, g, b, a), important)
+}
+
+fun InlineStyleContext.borderRightColor(color: Color, important: Boolean = false) {
+    writeStyleProperty("border-right-color", color, important)
+}
+
+fun InlineStyleContext.borderRightColor(hexString: String, important: Boolean = false) {
+    writeStyleProperty("border-right-color", Color(hexString), important)
 }
 
 fun InlineStyleContext.borderRightColor(
     r: Int,
     g: Int,
     b: Int,
-    a: Number
+    important: Boolean = false
 ) {
-    writeStyleProperty("border-right-color", Color(r, g, b, a))
+    writeStyleProperty("border-right-color", Color(r, g, b), important)
+}
+
+fun InlineStyleContext.borderRightColor(
+    r: Int,
+    g: Int,
+    b: Int,
+    a: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("border-right-color", Color(r, g, b, a), important)
 }

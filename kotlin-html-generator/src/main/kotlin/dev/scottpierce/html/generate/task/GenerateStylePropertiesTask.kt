@@ -1,6 +1,7 @@
 package dev.scottpierce.html.generate.task
 
 import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
@@ -109,11 +110,17 @@ class GenerateStylePropertiesTask : Task {
                             template = template.replace("$$i", parameter.name)
                         }
 
+                        addParameter(
+                            ParameterSpec.builder("important", BOOLEAN)
+                                .defaultValue("false")
+                                .build()
+                        )
+
                         if (template.startsWith('"')) {
                             val strippedTemplate = template.removeSurrounding("\"")
-                            addStatement("%M(\"${property.cssName}\", %P)", WRITE_STYLE_PROPERTY, strippedTemplate)
+                            addStatement("%M(\"${property.cssName}\", %P, important)", WRITE_STYLE_PROPERTY, strippedTemplate)
                         } else {
-                            addStatement("%M(\"${property.cssName}\", $template)", WRITE_STYLE_PROPERTY)
+                            addStatement("%M(\"${property.cssName}\", $template, important)", WRITE_STYLE_PROPERTY)
                         }
                     }.build()
                 )

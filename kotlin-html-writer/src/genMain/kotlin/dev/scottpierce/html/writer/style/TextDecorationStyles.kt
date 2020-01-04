@@ -7,43 +7,50 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
 fun BaseStyleContext.textDecoration(
     vararg lines: TextDecorationLine,
     color: Color? = null,
-    style: TextDecorationStyle? = null
+    style: TextDecorationStyle? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("text-decoration",
-            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""",
+            important)
 }
 
-fun BaseStyleContext.textDecoration(value: CssValue) {
-    writeStyleProperty("text-decoration", value)
+fun BaseStyleContext.textDecoration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("text-decoration", value, important)
 }
 
 fun StyleContext.textDecoration(
     vararg lines: TextDecorationLine,
     color: Color? = null,
-    style: TextDecorationStyle? = null
+    style: TextDecorationStyle? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("text-decoration",
-            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""",
+            important)
 }
 
-fun StyleContext.textDecoration(value: CssValue) {
-    writeStyleProperty("text-decoration", value)
+fun StyleContext.textDecoration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("text-decoration", value, important)
 }
 
 fun InlineStyleContext.textDecoration(
     vararg lines: TextDecorationLine,
     color: Color? = null,
-    style: TextDecorationStyle? = null
+    style: TextDecorationStyle? = null,
+    important: Boolean = false
 ) {
     writeStyleProperty("text-decoration",
-            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""")
+            """${lines.joinToString(separator = " ")}${if (color == null) "" else " $color"}${if (style == null) "" else " $style"}""",
+            important)
 }
 
-fun InlineStyleContext.textDecoration(value: CssValue) {
-    writeStyleProperty("text-decoration", value)
+fun InlineStyleContext.textDecoration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("text-decoration", value, important)
 }

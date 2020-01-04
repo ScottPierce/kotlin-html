@@ -7,6 +7,7 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
@@ -14,61 +15,67 @@ import kotlin.Suppress
 fun BaseStyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: Dimension
+    flexBasis: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
 fun BaseStyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: FlexBasis
+    flexBasis: FlexBasis,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
-fun BaseStyleContext.flex(value: Flex) {
-    writeStyleProperty("flex", value)
+fun BaseStyleContext.flex(value: Flex, important: Boolean = false) {
+    writeStyleProperty("flex", value, important)
 }
 
 fun StyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: Dimension
+    flexBasis: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
 fun StyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: FlexBasis
+    flexBasis: FlexBasis,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
-fun StyleContext.flex(value: Flex) {
-    writeStyleProperty("flex", value)
+fun StyleContext.flex(value: Flex, important: Boolean = false) {
+    writeStyleProperty("flex", value, important)
 }
 
 fun InlineStyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: Dimension
+    flexBasis: Dimension,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
 fun InlineStyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
-    flexBasis: FlexBasis
+    flexBasis: FlexBasis,
+    important: Boolean = false
 ) {
-    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""")
+    writeStyleProperty("flex", """$flexGrow $flexShrink $flexBasis""", important)
 }
 
-fun InlineStyleContext.flex(value: Flex) {
-    writeStyleProperty("flex", value)
+fun InlineStyleContext.flex(value: Flex, important: Boolean = false) {
+    writeStyleProperty("flex", value, important)
 }
 
 enum class Flex(

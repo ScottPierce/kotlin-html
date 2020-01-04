@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.content(value: String) {
-    writeStyleProperty("content", value)
+fun BaseStyleContext.content(value: String, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
-fun BaseStyleContext.content(value: Content) {
-    writeStyleProperty("content", value)
+fun BaseStyleContext.content(value: Content, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
-fun StyleContext.content(value: String) {
-    writeStyleProperty("content", value)
+fun StyleContext.content(value: String, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
-fun StyleContext.content(value: Content) {
-    writeStyleProperty("content", value)
+fun StyleContext.content(value: Content, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
-fun InlineStyleContext.content(value: String) {
-    writeStyleProperty("content", value)
+fun InlineStyleContext.content(value: String, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
-fun InlineStyleContext.content(value: Content) {
-    writeStyleProperty("content", value)
+fun InlineStyleContext.content(value: Content, important: Boolean = false) {
+    writeStyleProperty("content", value, important)
 }
 
 enum class Content(

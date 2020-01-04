@@ -7,28 +7,29 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderTopWidth(value: Dimension) {
-    writeStyleProperty("border-top-width", value)
+fun BaseStyleContext.borderTopWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }
 
-fun BaseStyleContext.borderTopWidth(value: BorderStyle) {
-    writeStyleProperty("border-top-width", value)
+fun BaseStyleContext.borderTopWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }
 
-fun StyleContext.borderTopWidth(value: Dimension) {
-    writeStyleProperty("border-top-width", value)
+fun StyleContext.borderTopWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }
 
-fun StyleContext.borderTopWidth(value: BorderStyle) {
-    writeStyleProperty("border-top-width", value)
+fun StyleContext.borderTopWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }
 
-fun InlineStyleContext.borderTopWidth(value: Dimension) {
-    writeStyleProperty("border-top-width", value)
+fun InlineStyleContext.borderTopWidth(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }
 
-fun InlineStyleContext.borderTopWidth(value: BorderStyle) {
-    writeStyleProperty("border-top-width", value)
+fun InlineStyleContext.borderTopWidth(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-top-width", value, important)
 }

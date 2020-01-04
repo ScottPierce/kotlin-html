@@ -7,16 +7,17 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.borderBottomStyle(value: BorderStyle) {
-    writeStyleProperty("border-bottom-style", value)
+fun BaseStyleContext.borderBottomStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-bottom-style", value, important)
 }
 
-fun StyleContext.borderBottomStyle(value: BorderStyle) {
-    writeStyleProperty("border-bottom-style", value)
+fun StyleContext.borderBottomStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-bottom-style", value, important)
 }
 
-fun InlineStyleContext.borderBottomStyle(value: BorderStyle) {
-    writeStyleProperty("border-bottom-style", value)
+fun InlineStyleContext.borderBottomStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-bottom-style", value, important)
 }

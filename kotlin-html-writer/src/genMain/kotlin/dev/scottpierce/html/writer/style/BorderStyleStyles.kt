@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.borderStyle(value: BorderStyle) {
-    writeStyleProperty("border-style", value)
+fun BaseStyleContext.borderStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-style", value, important)
 }
 
-fun StyleContext.borderStyle(value: BorderStyle) {
-    writeStyleProperty("border-style", value)
+fun StyleContext.borderStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-style", value, important)
 }
 
-fun InlineStyleContext.borderStyle(value: BorderStyle) {
-    writeStyleProperty("border-style", value)
+fun InlineStyleContext.borderStyle(value: BorderStyle, important: Boolean = false) {
+    writeStyleProperty("border-style", value, important)
 }
 
 enum class BorderStyle(

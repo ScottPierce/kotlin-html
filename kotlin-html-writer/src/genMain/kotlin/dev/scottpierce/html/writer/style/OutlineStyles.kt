@@ -7,40 +7,47 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.Suppress
 
 fun BaseStyleContext.outline(
     width: Dimension,
     style: OutlineStyle,
-    color: Color? = null
+    color: Color? = null,
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""",
+            important)
 }
 
-fun BaseStyleContext.outline(value: CssValue) {
-    writeStyleProperty("outline", value)
+fun BaseStyleContext.outline(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("outline", value, important)
 }
 
 fun StyleContext.outline(
     width: Dimension,
     style: OutlineStyle,
-    color: Color? = null
+    color: Color? = null,
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""",
+            important)
 }
 
-fun StyleContext.outline(value: CssValue) {
-    writeStyleProperty("outline", value)
+fun StyleContext.outline(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("outline", value, important)
 }
 
 fun InlineStyleContext.outline(
     width: Dimension,
     style: OutlineStyle,
-    color: Color? = null
+    color: Color? = null,
+    important: Boolean = false
 ) {
-    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""")
+    writeStyleProperty("outline", """$width $style${if (color == null) "" else " $color"}""",
+            important)
 }
 
-fun InlineStyleContext.outline(value: CssValue) {
-    writeStyleProperty("outline", value)
+fun InlineStyleContext.outline(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("outline", value, important)
 }

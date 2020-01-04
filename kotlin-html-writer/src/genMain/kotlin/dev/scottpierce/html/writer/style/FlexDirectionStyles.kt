@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.flexDirection(value: FlexDirection) {
-    writeStyleProperty("flex-direction", value)
+fun BaseStyleContext.flexDirection(value: FlexDirection, important: Boolean = false) {
+    writeStyleProperty("flex-direction", value, important)
 }
 
-fun StyleContext.flexDirection(value: FlexDirection) {
-    writeStyleProperty("flex-direction", value)
+fun StyleContext.flexDirection(value: FlexDirection, important: Boolean = false) {
+    writeStyleProperty("flex-direction", value, important)
 }
 
-fun InlineStyleContext.flexDirection(value: FlexDirection) {
-    writeStyleProperty("flex-direction", value)
+fun InlineStyleContext.flexDirection(value: FlexDirection, important: Boolean = false) {
+    writeStyleProperty("flex-direction", value, important)
 }
 
 enum class FlexDirection(

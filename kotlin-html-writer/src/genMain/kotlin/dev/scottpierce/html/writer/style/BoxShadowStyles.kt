@@ -10,22 +10,23 @@ import dev.scottpierce.html.writer.StyleContext
 import kotlin.Boolean
 import kotlin.Suppress
 
-fun BaseStyleContext.boxShadow(boxShadow: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadow)
+fun BaseStyleContext.boxShadow(boxShadow: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadow, important)
 }
 
-fun BaseStyleContext.boxShadow(vararg boxShadows: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadows.joinToString())
+fun BaseStyleContext.boxShadow(vararg boxShadows: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadows.joinToString(), important)
 }
 
 fun BaseStyleContext.boxShadow(
     hOffset: Dimension,
     vOffset: Dimension,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-            inset = inset))
+            inset = inset), important)
 }
 
 fun BaseStyleContext.boxShadow(
@@ -34,28 +35,30 @@ fun BaseStyleContext.boxShadow(
     blur: Dimension,
     spread: Dimension? = null,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-            spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset), important)
 }
 
-fun StyleContext.boxShadow(boxShadow: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadow)
+fun StyleContext.boxShadow(boxShadow: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadow, important)
 }
 
-fun StyleContext.boxShadow(vararg boxShadows: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadows.joinToString())
+fun StyleContext.boxShadow(vararg boxShadows: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadows.joinToString(), important)
 }
 
 fun StyleContext.boxShadow(
     hOffset: Dimension,
     vOffset: Dimension,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-            inset = inset))
+            inset = inset), important)
 }
 
 fun StyleContext.boxShadow(
@@ -64,28 +67,30 @@ fun StyleContext.boxShadow(
     blur: Dimension,
     spread: Dimension? = null,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-            spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset), important)
 }
 
-fun InlineStyleContext.boxShadow(boxShadow: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadow)
+fun InlineStyleContext.boxShadow(boxShadow: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadow, important)
 }
 
-fun InlineStyleContext.boxShadow(vararg boxShadows: BoxShadow) {
-    writeStyleProperty("box-shadow", boxShadows.joinToString())
+fun InlineStyleContext.boxShadow(vararg boxShadows: BoxShadow, important: Boolean = false) {
+    writeStyleProperty("box-shadow", boxShadows.joinToString(), important)
 }
 
 fun InlineStyleContext.boxShadow(
     hOffset: Dimension,
     vOffset: Dimension,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, color = color,
-            inset = inset))
+            inset = inset), important)
 }
 
 fun InlineStyleContext.boxShadow(
@@ -94,8 +99,9 @@ fun InlineStyleContext.boxShadow(
     blur: Dimension,
     spread: Dimension? = null,
     color: Color,
-    inset: Boolean = false
+    inset: Boolean = false,
+    important: Boolean = false
 ) {
     writeStyleProperty("box-shadow", BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur,
-            spread = spread, color = color, inset = inset))
+            spread = spread, color = color, inset = inset), important)
 }

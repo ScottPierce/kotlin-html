@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.textTransform(value: TextTransform) {
-    writeStyleProperty("text-transform", value)
+fun BaseStyleContext.textTransform(value: TextTransform, important: Boolean = false) {
+    writeStyleProperty("text-transform", value, important)
 }
 
-fun StyleContext.textTransform(value: TextTransform) {
-    writeStyleProperty("text-transform", value)
+fun StyleContext.textTransform(value: TextTransform, important: Boolean = false) {
+    writeStyleProperty("text-transform", value, important)
 }
 
-fun InlineStyleContext.textTransform(value: TextTransform) {
-    writeStyleProperty("text-transform", value)
+fun InlineStyleContext.textTransform(value: TextTransform, important: Boolean = false) {
+    writeStyleProperty("text-transform", value, important)
 }
 
 enum class TextTransform(

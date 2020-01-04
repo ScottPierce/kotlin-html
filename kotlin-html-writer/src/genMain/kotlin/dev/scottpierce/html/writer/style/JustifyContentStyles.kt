@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.justifyContent(value: JustifyContent) {
-    writeStyleProperty("justify-content", value)
+fun BaseStyleContext.justifyContent(value: JustifyContent, important: Boolean = false) {
+    writeStyleProperty("justify-content", value, important)
 }
 
-fun StyleContext.justifyContent(value: JustifyContent) {
-    writeStyleProperty("justify-content", value)
+fun StyleContext.justifyContent(value: JustifyContent, important: Boolean = false) {
+    writeStyleProperty("justify-content", value, important)
 }
 
-fun InlineStyleContext.justifyContent(value: JustifyContent) {
-    writeStyleProperty("justify-content", value)
+fun InlineStyleContext.justifyContent(value: JustifyContent, important: Boolean = false) {
+    writeStyleProperty("justify-content", value, important)
 }
 
 enum class JustifyContent(

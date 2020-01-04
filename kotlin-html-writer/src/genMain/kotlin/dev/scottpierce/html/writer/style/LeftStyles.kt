@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.left(value: Dimension) {
-    writeStyleProperty("left", value)
+fun BaseStyleContext.left(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
-fun BaseStyleContext.left(value: Left) {
-    writeStyleProperty("left", value)
+fun BaseStyleContext.left(value: Left, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
-fun StyleContext.left(value: Dimension) {
-    writeStyleProperty("left", value)
+fun StyleContext.left(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
-fun StyleContext.left(value: Left) {
-    writeStyleProperty("left", value)
+fun StyleContext.left(value: Left, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
-fun InlineStyleContext.left(value: Dimension) {
-    writeStyleProperty("left", value)
+fun InlineStyleContext.left(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
-fun InlineStyleContext.left(value: Left) {
-    writeStyleProperty("left", value)
+fun InlineStyleContext.left(value: Left, important: Boolean = false) {
+    writeStyleProperty("left", value, important)
 }
 
 enum class Left(

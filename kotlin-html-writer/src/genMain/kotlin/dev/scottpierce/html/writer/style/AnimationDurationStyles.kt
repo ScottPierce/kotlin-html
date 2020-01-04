@@ -7,29 +7,30 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.animationDuration(value: String) {
-    writeStyleProperty("animation-duration", value)
+fun BaseStyleContext.animationDuration(value: String, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }
 
-fun BaseStyleContext.animationDuration(value: CssValue) {
-    writeStyleProperty("animation-duration", value)
+fun BaseStyleContext.animationDuration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }
 
-fun StyleContext.animationDuration(value: String) {
-    writeStyleProperty("animation-duration", value)
+fun StyleContext.animationDuration(value: String, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }
 
-fun StyleContext.animationDuration(value: CssValue) {
-    writeStyleProperty("animation-duration", value)
+fun StyleContext.animationDuration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }
 
-fun InlineStyleContext.animationDuration(value: String) {
-    writeStyleProperty("animation-duration", value)
+fun InlineStyleContext.animationDuration(value: String, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }
 
-fun InlineStyleContext.animationDuration(value: CssValue) {
-    writeStyleProperty("animation-duration", value)
+fun InlineStyleContext.animationDuration(value: CssValue, important: Boolean = false) {
+    writeStyleProperty("animation-duration", value, important)
 }

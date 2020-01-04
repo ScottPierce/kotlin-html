@@ -7,31 +7,32 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.maxHeight(value: Dimension) {
-    writeStyleProperty("max-height", value)
+fun BaseStyleContext.maxHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
-fun BaseStyleContext.maxHeight(value: MaxHeight) {
-    writeStyleProperty("max-height", value)
+fun BaseStyleContext.maxHeight(value: MaxHeight, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
-fun StyleContext.maxHeight(value: Dimension) {
-    writeStyleProperty("max-height", value)
+fun StyleContext.maxHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
-fun StyleContext.maxHeight(value: MaxHeight) {
-    writeStyleProperty("max-height", value)
+fun StyleContext.maxHeight(value: MaxHeight, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
-fun InlineStyleContext.maxHeight(value: Dimension) {
-    writeStyleProperty("max-height", value)
+fun InlineStyleContext.maxHeight(value: Dimension, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
-fun InlineStyleContext.maxHeight(value: MaxHeight) {
-    writeStyleProperty("max-height", value)
+fun InlineStyleContext.maxHeight(value: MaxHeight, important: Boolean = false) {
+    writeStyleProperty("max-height", value, important)
 }
 
 enum class MaxHeight(

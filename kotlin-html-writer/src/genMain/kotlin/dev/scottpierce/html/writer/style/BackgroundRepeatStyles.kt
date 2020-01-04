@@ -7,19 +7,20 @@ package dev.scottpierce.html.writer.style
 import dev.scottpierce.html.writer.BaseStyleContext
 import dev.scottpierce.html.writer.InlineStyleContext
 import dev.scottpierce.html.writer.StyleContext
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Suppress
 
-fun BaseStyleContext.backgroundRepeat(value: BackgroundRepeat) {
-    writeStyleProperty("background-repeat", value)
+fun BaseStyleContext.backgroundRepeat(value: BackgroundRepeat, important: Boolean = false) {
+    writeStyleProperty("background-repeat", value, important)
 }
 
-fun StyleContext.backgroundRepeat(value: BackgroundRepeat) {
-    writeStyleProperty("background-repeat", value)
+fun StyleContext.backgroundRepeat(value: BackgroundRepeat, important: Boolean = false) {
+    writeStyleProperty("background-repeat", value, important)
 }
 
-fun InlineStyleContext.backgroundRepeat(value: BackgroundRepeat) {
-    writeStyleProperty("background-repeat", value)
+fun InlineStyleContext.backgroundRepeat(value: BackgroundRepeat, important: Boolean = false) {
+    writeStyleProperty("background-repeat", value, important)
 }
 
 enum class BackgroundRepeat(
