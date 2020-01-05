@@ -23,13 +23,13 @@ import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
-import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
+import java.io.File
 
 class GenerateElementDslTask : Task {
     override val name: String = "Generate Elements DSL"
@@ -39,16 +39,31 @@ class GenerateElementDslTask : Task {
             File("${Constants.BASE_GEN_DIR}/dev/scottpierce/html/writer/element").deleteRecursively()
         }.join()
 
-        GeneratedElement.values.map { element ->
-            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, element.fileName)
+        val elementMap = mutableMapOf<String, MutableList<GeneratedElement>>().apply {
+            for (element in GeneratedElement.values) {
+                getOrPut(element.fileName) { mutableListOf() }.add(element)
+            }
+        }
+
+        elementMap.map { (fileName, elements) ->
+            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, fileName )
                 .indent("    ")
                 .addComment(Constants.GENERATED_FILE_COMMENT)
 
-            for (i in 0..1) {
-                val isOutput = (i % 2) == 0
+            val functions = mutableSetOf<FunSpec>()
 
-                for (type in DslFunction.values()) {
-                    writerFile.addFunction(createDslFunction(element, isOutput, type))
+            for (element in elements) {
+                for (i in 0..1) {
+                    val isOutput = (i % 2) == 0
+
+                    for (type in DslFunction.values()) {
+                        val function = createDslFunction(element, isOutput, type)
+
+                        if (!functions.contains(function)) {
+                            functions += function
+                            writerFile.addFunction(function)
+                        }
+                    }
                 }
             }
 
@@ -215,6 +230,10 @@ private fun createDslFunction(
                 when (remainingAttribute) {
                     is Attr.Boolean -> {
                         addStatement("""if ($attrCodeName) $writer.write(%S)""", " ${remainingAttribute.name}")
+                    }
+
+                    is Attr.Int -> {
+                        addStatement("""if ($attrCodeName != null) $writer.write(%S).write($attrCodeName.toString()).write('"')""", " ${remainingAttribute.name}=\"")
                     }
 
                     else -> {

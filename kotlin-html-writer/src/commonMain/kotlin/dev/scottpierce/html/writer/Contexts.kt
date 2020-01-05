@@ -32,6 +32,18 @@ inline class BodyContext(override val writer: HtmlWriter) : BaseHtmlContext, Has
 inline class SelectContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
+inline class TableContext(override val writer: HtmlWriter) : BaseHtmlContext
+
+@HtmlDsl
+inline class ColGroupContext(override val writer: HtmlWriter) : BaseHtmlContext
+
+@HtmlDsl
+inline class ColContext(override val writer: HtmlWriter) : BaseHtmlContext
+
+@HtmlDsl
+inline class TableRowContext(override val writer: HtmlWriter) : BaseHtmlContext
+
+@HtmlDsl
 inline class UlContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl

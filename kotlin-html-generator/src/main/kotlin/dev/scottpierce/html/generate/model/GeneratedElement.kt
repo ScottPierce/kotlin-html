@@ -2,6 +2,7 @@ package dev.scottpierce.html.generate.model
 
 import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.INT
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeName
@@ -47,6 +48,27 @@ sealed class GeneratedElement(
             Void(
                 tagName = "br",
                 callingContext = Context.Body
+            ),
+            Normal(
+                tagName = "caption",
+                callingContext = Context.Table,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "colgroup",
+                callingContext = Context.Table,
+                childrenContext = Context.ColGroup,
+                supportedAttributes = listOf()
+            ),
+            Void(
+                tagName = "col",
+                callingContext = Context.Table,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.Int("span"))
+            ),
+            Void(
+                tagName = "col",
+                callingContext = Context.ColGroup,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.Int("span"))
             ),
             Normal(
                 tagName = "details",
@@ -248,6 +270,41 @@ sealed class GeneratedElement(
                 childrenContext = Context.Body
             ),
             Normal(
+                tagName = "table",
+                callingContext = Context.Body,
+                childrenContext = Context.Table
+            ),
+            Normal(
+                tagName = "tbody",
+                callingContext = Context.Table,
+                childrenContext = Context.Table
+            ),
+            Normal(
+                tagName = "tfoot",
+                callingContext = Context.Table,
+                childrenContext = Context.Table
+            ),
+            Normal(
+                tagName = "th",
+                callingContext = Context.TableRow,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "thead",
+                callingContext = Context.Table,
+                childrenContext = Context.Table
+            ),
+            Normal(
+                tagName = "tr",
+                callingContext = Context.Table,
+                childrenContext = Context.TableRow
+            ),
+            Normal(
+                tagName = "td",
+                callingContext = Context.TableRow,
+                childrenContext = Context.Body
+            ),
+            Normal(
                 tagName = "video",
                 callingContext = Context.Body,
                 childrenContext = Context.Video,
@@ -296,12 +353,15 @@ sealed class GeneratedElement(
 
 enum class Context {
     BaseHtml,
-    File,
+    Body,
+    ColGroup,
+    Col,
     Html,
     Head,
     Script,
-    Body,
     Select,
+    Table,
+    TableRow,
     Ul,
     Video,
     ;
@@ -346,6 +406,11 @@ sealed class Attr(
         name: kotlin.String,
         functionName: kotlin.String = name.snakeCaseToCamelCase()
     ) : Attr(name, functionName, BOOLEAN, "false", listOf())
+
+    class Int(
+        name: kotlin.String,
+        functionName: kotlin.String = name.snakeCaseToCamelCase()
+    ) : Attr(name, functionName, INT.copy(nullable = true), defaultValue = "null", modifiers = listOf())
 
     class Custom(
         name: kotlin.String,
