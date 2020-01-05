@@ -237,6 +237,12 @@ sealed class GeneratedElement(
                 childrenContext = Context.Body
             ),
             Normal(
+                tagName = "strong",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = listOf()
+            ),
+            Normal(
                 tagName = "summary",
                 callingContext = Context.Body,
                 childrenContext = Context.Body
