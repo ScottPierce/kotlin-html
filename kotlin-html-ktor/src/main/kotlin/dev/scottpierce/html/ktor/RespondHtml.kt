@@ -4,74 +4,50 @@ package dev.scottpierce.html.ktor
 
 import dev.scottpierce.html.writer.HtmlContext
 import dev.scottpierce.html.writer.HtmlOutput
+import dev.scottpierce.html.writer.StringHtmlOutput
 import dev.scottpierce.html.writer.WriteOptions
 import dev.scottpierce.html.writer.element.DocType
 import dev.scottpierce.html.writer.element.html
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
-import io.ktor.http.content.OutgoingContent
 import io.ktor.http.withCharset
-import io.ktor.response.respond
-import io.ktor.util.cio.bufferedWriter
-import kotlinx.coroutines.io.ByteWriteChannel
+import io.ktor.response.respondText
 
-internal val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charsets.UTF_8)
-
-/**
- * Represents an [OutgoingContent] using `dev.scottpierce.html`
- */
-class HtmlOutputOutgoingContent(
-    override val status: HttpStatusCode? = null,
-    private val func: suspend HtmlOutput.() -> Unit
-) : OutgoingContent.WriteChannelContent() {
-    override val contentType: ContentType
-        get() = CONTENT_TYPE_HTML_UTF_8
-
-    override suspend fun writeTo(channel: ByteWriteChannel) {
-        channel.bufferedWriter().use {
-            ChannelHtmlOutput(it).func()
-        }
-    }
-}
-
-/**
- * Represents an [OutgoingContent] using `dev.scottpierce.html`
- */
-class HtmlOutgoingContent(
-    override val status: HttpStatusCode? = HttpStatusCode.OK,
-    private val options: WriteOptions = WriteOptions.default,
-    private val docType: DocType? = DocType.Html,
-    private val lang: String? = null,
-    private val func: suspend HtmlContext.() -> Unit
-) : OutgoingContent.WriteChannelContent() {
-    override val contentType: ContentType
-        get() = CONTENT_TYPE_HTML_UTF_8
-
-    override suspend fun writeTo(channel: ByteWriteChannel) {
-        channel.bufferedWriter().use {
-            ChannelHtmlOutput(it, options).html(docType = docType, lang = lang) {
-                func()
-            }
-        }
-    }
+object RespondHtml {
+    val CONTENT_TYPE_HTML_UTF_8 = ContentType.Text.Html.withCharset(Charsets.UTF_8)
 }
 
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
  */
-suspend fun ApplicationCall.respondHtml(
+suspend inline fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
     options: WriteOptions = WriteOptions.default,
     docType: DocType? = DocType.Html,
     lang: String? = null,
-    func: suspend HtmlContext.() -> Unit
-): Unit = respond(HtmlOutgoingContent(status, options, docType, lang, func))
+    func: HtmlContext.() -> Unit
+) {
+    val output = StringHtmlOutput(options, 1024)
+    output.html(docType = docType, lang = lang) {
+        func()
+    }
+    respondText(RespondHtml.CONTENT_TYPE_HTML_UTF_8, status) {
+        output.toString()
+    }
+}
 
 /**
  * Responds to a client with a HTML response, using specified [func] to build an HTML page
  */
-suspend fun ApplicationCall.respondHtmlOutput(
+suspend inline fun ApplicationCall.respondHtmlOutput(
     status: HttpStatusCode = HttpStatusCode.OK,
-    func: suspend HtmlOutput.() -> Unit
-): Unit = respond(HtmlOutputOutgoingContent(status, func))
+    options: WriteOptions = WriteOptions.default,
+    func: HtmlOutput.() -> Unit
+) {
+    val output = StringHtmlOutput(options, 1024)
+    output.func()
+    respondText(RespondHtml.CONTENT_TYPE_HTML_UTF_8, status) {
+        output.toString()
+    }
+}
