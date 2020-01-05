@@ -46,10 +46,10 @@ fun main() {
     val output: HtmlOutput = StringHtmlOutput(options = WriteOptions.readable)
 
     // Writes the main page to the HtmlOutput
-    writer.mainPage()
+    output.mainPage()
 
     // Prints out the written page
-    println(writer)
+    println(output)
 }
 
 fun HtmlOutput.mainPage() {
@@ -59,10 +59,10 @@ fun HtmlOutput.mainPage() {
                 style("body") {
                     margin(0.px)
                     padding(0.px)
-                    color = Color(100, 100, 100)
+                    color(r = 100, g = 100, b = 100)
                 }
                 style(".class2") {
-                    background = Color("#555555")
+                    backgroundColor(Color("#555555"))
                 }
             }
         }
