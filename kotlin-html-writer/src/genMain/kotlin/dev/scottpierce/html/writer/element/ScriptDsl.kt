@@ -14,7 +14,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.script(
+inline fun HtmlOutput.script(
     async: Boolean = false,
     defer: Boolean = false,
     type: String? = null,
@@ -33,7 +33,7 @@ fun HtmlOutput.script(
 }
 
 @HtmlDsl
-fun HtmlOutput.script(
+inline fun HtmlOutput.script(
     vararg attrs: Pair<String, String?>,
     async: Boolean = false,
     defer: Boolean = false,
@@ -54,7 +54,7 @@ fun HtmlOutput.script(
 }
 
 @HtmlDsl
-fun HtmlOutput.script(
+inline fun HtmlOutput.script(
     attrs: List<Pair<String, String?>>,
     async: Boolean = false,
     defer: Boolean = false,

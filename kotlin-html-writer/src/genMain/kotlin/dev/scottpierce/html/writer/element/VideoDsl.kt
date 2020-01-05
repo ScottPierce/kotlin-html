@@ -15,10 +15,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.video(
+inline fun HtmlOutput.video(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -44,11 +44,11 @@ fun HtmlOutput.video(
 }
 
 @HtmlDsl
-fun HtmlOutput.video(
+inline fun HtmlOutput.video(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,
@@ -75,11 +75,11 @@ fun HtmlOutput.video(
 }
 
 @HtmlDsl
-fun HtmlOutput.video(
+inline fun HtmlOutput.video(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     muted: Boolean = false,
     playsinline: Boolean = false,
     autoplay: Boolean = false,

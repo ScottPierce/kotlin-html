@@ -13,10 +13,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.button(
+inline fun HtmlOutput.button(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -32,11 +32,11 @@ fun HtmlOutput.button(
 }
 
 @HtmlDsl
-fun HtmlOutput.button(
+inline fun HtmlOutput.button(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -53,11 +53,11 @@ fun HtmlOutput.button(
 }
 
 @HtmlDsl
-fun HtmlOutput.button(
+inline fun HtmlOutput.button(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     ariaLabel: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
