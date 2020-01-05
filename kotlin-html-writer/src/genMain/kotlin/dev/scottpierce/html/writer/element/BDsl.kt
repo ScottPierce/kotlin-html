@@ -12,7 +12,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("b")
         this.write('>')
@@ -23,7 +23,7 @@ fun HtmlOutput.b(func: BodyContext.() -> Unit = {}) {
 }
 
 @HtmlDsl
-fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("b")
         this.writeAttributes(attrs)
@@ -35,7 +35,7 @@ fun HtmlOutput.b(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Un
 }
 
 @HtmlDsl
-fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.b(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("b")
         this.writeAttributes(attrs)

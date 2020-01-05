@@ -83,7 +83,7 @@ private fun createDslFunction(
     }
 
     // No reason to inline if there is no lambda
-    val isInline: Boolean = isParent && !isOutput
+    val isInline: Boolean = isParent
 
     if (isInline) {
         addModifiers(KModifier.INLINE)

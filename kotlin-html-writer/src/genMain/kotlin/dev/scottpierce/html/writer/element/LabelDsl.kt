@@ -13,10 +13,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.label(
+inline fun HtmlOutput.label(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -32,11 +32,11 @@ fun HtmlOutput.label(
 }
 
 @HtmlDsl
-fun HtmlOutput.label(
+inline fun HtmlOutput.label(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -53,11 +53,11 @@ fun HtmlOutput.label(
 }
 
 @HtmlDsl
-fun HtmlOutput.label(
+inline fun HtmlOutput.label(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     forId: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {

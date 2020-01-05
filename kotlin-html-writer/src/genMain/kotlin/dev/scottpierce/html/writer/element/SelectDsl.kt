@@ -14,10 +14,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.select(
+inline fun HtmlOutput.select(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
     writer {
@@ -28,11 +28,11 @@ fun HtmlOutput.select(
 }
 
 @HtmlDsl
-fun HtmlOutput.select(
+inline fun HtmlOutput.select(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
     writer {
@@ -43,11 +43,11 @@ fun HtmlOutput.select(
 }
 
 @HtmlDsl
-fun HtmlOutput.select(
+inline fun HtmlOutput.select(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     func: SelectContext.() -> Unit = {}
 ) {
     writer {

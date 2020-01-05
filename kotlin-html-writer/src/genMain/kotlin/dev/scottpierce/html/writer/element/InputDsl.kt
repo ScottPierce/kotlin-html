@@ -13,10 +13,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.input(
+inline fun HtmlOutput.input(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -45,11 +45,11 @@ fun HtmlOutput.input(
 }
 
 @HtmlDsl
-fun HtmlOutput.input(
+inline fun HtmlOutput.input(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,
@@ -79,11 +79,11 @@ fun HtmlOutput.input(
 }
 
 @HtmlDsl
-fun HtmlOutput.input(
+inline fun HtmlOutput.input(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     type: String? = null,
     maxLength: String? = null,
     value: String? = null,

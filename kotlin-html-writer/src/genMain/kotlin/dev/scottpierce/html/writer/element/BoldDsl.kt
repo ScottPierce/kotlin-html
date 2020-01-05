@@ -12,7 +12,7 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("bold")
         this.write('>')
@@ -23,7 +23,7 @@ fun HtmlOutput.bold(func: BodyContext.() -> Unit = {}) {
 }
 
 @HtmlDsl
-fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("bold")
         this.writeAttributes(attrs)
@@ -35,7 +35,7 @@ fun HtmlOutput.bold(vararg attrs: Pair<String, String?>, func: BodyContext.() ->
 }
 
 @HtmlDsl
-fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
+inline fun HtmlOutput.bold(attrs: List<Pair<String, String?>>, func: BodyContext.() -> Unit = {}) {
     writer {
         this.writeTag("bold")
         this.writeAttributes(attrs)

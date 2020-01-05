@@ -14,10 +14,10 @@ import kotlin.Unit
 import kotlin.collections.List
 
 @HtmlDsl
-fun HtmlOutput.li(
+inline fun HtmlOutput.li(
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -33,11 +33,11 @@ fun HtmlOutput.li(
 }
 
 @HtmlDsl
-fun HtmlOutput.li(
+inline fun HtmlOutput.li(
     vararg attrs: Pair<String, String?>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
@@ -54,11 +54,11 @@ fun HtmlOutput.li(
 }
 
 @HtmlDsl
-fun HtmlOutput.li(
+inline fun HtmlOutput.li(
     attrs: List<Pair<String, String?>>,
     id: String? = null,
     classes: String? = null,
-    style: InlineStyleLambda? = null,
+    noinline style: InlineStyleLambda? = null,
     value: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
