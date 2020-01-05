@@ -23,13 +23,13 @@ import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
-import java.io.File
 
 class GenerateElementDslTask : Task {
     override val name: String = "Generate Elements DSL"
@@ -46,7 +46,7 @@ class GenerateElementDslTask : Task {
         }
 
         elementMap.map { (fileName, elements) ->
-            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, fileName )
+            val writerFile = FileSpec.builder(Constants.ELEMENT_PACKAGE, fileName)
                 .indent("    ")
                 .addComment(Constants.GENERATED_FILE_COMMENT)
 
