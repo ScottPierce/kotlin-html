@@ -34,12 +34,6 @@ sealed class GeneratedElement(
                 supportedAttributes = listOf()
             ),
             Normal(
-                tagName = "bold",
-                callingContext = Context.Body,
-                childrenContext = Context.Body,
-                supportedAttributes = listOf()
-            ),
-            Normal(
                 tagName = "button",
                 callingContext = Context.Body,
                 childrenContext = Context.Body,
