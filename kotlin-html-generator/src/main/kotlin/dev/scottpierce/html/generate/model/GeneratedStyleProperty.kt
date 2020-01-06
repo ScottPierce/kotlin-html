@@ -185,6 +185,14 @@ enum class GeneratedStyleProperty(
         cssName = "border-bottom-color",
         setters = COLOR_SETTERS
     ),
+    BORDER_BOTTOM_LEFT_RADIUS(
+        "border-bottom-left-radius",
+        Setter(Parameter(DIMENSION))
+    ),
+    BORDER_BOTTOM_RIGHT_RADIUS(
+        "border-bottom-right-radius",
+        Setter(Parameter(DIMENSION))
+    ),
     BORDER_BOTTOM_STYLE(
         cssName = "border-bottom-style",
         setters = listOf(
@@ -196,6 +204,14 @@ enum class GeneratedStyleProperty(
         setters = listOf(
             Setter("$0", Parameter(DIMENSION)),
             Setter(Parameter(styleClassName("BorderStyle")))
+        )
+    ),
+    BORDER_COLLAPSE(
+        cssName = "border-collapse",
+        setters = listOf(
+            Setter(Parameter(ParameterType.Generate(
+                "separate", "collapse", "initial", "inherit"
+            )))
         )
     ),
     BORDER_LEFT(
@@ -245,6 +261,10 @@ enum class GeneratedStyleProperty(
             Setter("$0", Parameter(DIMENSION)),
             Setter(Parameter(styleClassName("BorderStyle")))
         )
+    ),
+    BORDER_SPACING(
+        "border-spacing",
+        Setter(Parameter(DIMENSION))
     ),
     BORDER_TOP(
         cssName = "border-top",
@@ -303,6 +323,14 @@ enum class GeneratedStyleProperty(
             )))
         )
     ),
+    BORDER_TOP_LEFT_RADIUS(
+        "border-top-left-radius",
+        Setter(Parameter(DIMENSION))
+    ),
+    BORDER_TOP_RIGHT_RADIUS(
+        "border-top-right-radius",
+        Setter(Parameter(DIMENSION))
+    ),
     BORDER_WIDTH(
         cssName = "border-width",
         setters = listOf(
@@ -346,6 +374,12 @@ enum class GeneratedStyleProperty(
                 )
             )
         )
+    ),
+    CAPTION_SIDE(
+        "caption",
+        Setter(Parameter(ParameterType.Generate(
+            "top", "bottom", "initial", "inherit"
+        )))
     ),
     COLOR("color", COLOR_SETTERS),
     CONTENT(
