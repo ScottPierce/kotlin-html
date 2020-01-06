@@ -63,12 +63,12 @@ sealed class GeneratedElement(
             Void(
                 tagName = "col",
                 callingContext = Context.Table,
-                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.Int("span"))
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.IntString("span"))
             ),
             Void(
                 tagName = "col",
                 callingContext = Context.ColGroup,
-                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.Int("span"))
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(Attr.IntString("span"))
             ),
             Normal(
                 tagName = "details",
@@ -287,7 +287,15 @@ sealed class GeneratedElement(
             Normal(
                 tagName = "th",
                 callingContext = Context.TableRow,
-                childrenContext = Context.Body
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(
+                    Attr.IntString("colspan"),
+                    Attr.IntString("rowspan"),
+                    Attr.String("abbr"),
+                    Attr.String("headers"),
+                    Attr.String("scope"),
+                    Attr.String("sorted")
+                )
             ),
             Normal(
                 tagName = "thead",
@@ -302,7 +310,12 @@ sealed class GeneratedElement(
             Normal(
                 tagName = "td",
                 callingContext = Context.TableRow,
-                childrenContext = Context.Body
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + listOf(
+                    Attr.IntString("colspan"),
+                    Attr.IntString("rowspan"),
+                    Attr.String("headers")
+                )
             ),
             Normal(
                 tagName = "video",
@@ -407,7 +420,7 @@ sealed class Attr(
         functionName: kotlin.String = name.snakeCaseToCamelCase()
     ) : Attr(name, functionName, BOOLEAN, "false", listOf())
 
-    class Int(
+    class IntString(
         name: kotlin.String,
         functionName: kotlin.String = name.snakeCaseToCamelCase()
     ) : Attr(name, functionName, INT.copy(nullable = true), defaultValue = "null", modifiers = listOf())

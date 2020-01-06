@@ -232,7 +232,7 @@ private fun createDslFunction(
                         addStatement("""if ($attrCodeName) $writer.write(%S)""", " ${remainingAttribute.name}")
                     }
 
-                    is Attr.Int -> {
+                    is Attr.IntString -> {
                         addStatement("""if ($attrCodeName != null) $writer.write(%S).write($attrCodeName.toString()).write('"')""", " ${remainingAttribute.name}=\"")
                     }
 

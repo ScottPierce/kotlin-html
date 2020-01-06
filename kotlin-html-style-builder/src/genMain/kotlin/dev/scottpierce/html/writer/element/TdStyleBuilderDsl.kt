@@ -7,6 +7,7 @@ import dev.scottpierce.html.stylebuilder.style
 import dev.scottpierce.html.writer.BodyContext
 import dev.scottpierce.html.writer.HtmlDsl
 import dev.scottpierce.html.writer.TableRowContext
+import kotlin.Int
 import kotlin.Pair
 import kotlin.String
 import kotlin.Unit
@@ -17,10 +18,14 @@ inline fun TableRowContext.td(
     id: String,
     classes: String? = null,
     noinline styleBuilder: StyleBuilderLambda,
+    colspan: Int? = null,
+    rowspan: Int? = null,
+    headers: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    td(id = id, classes = classes, style = null, func = func)
+    td(id = id, classes = classes, style = null, colspan = colspan, rowspan = rowspan, headers =
+            headers, func = func)
 }
 
 @HtmlDsl
@@ -29,10 +34,14 @@ inline fun TableRowContext.td(
     id: String,
     classes: String? = null,
     noinline styleBuilder: StyleBuilderLambda,
+    colspan: Int? = null,
+    rowspan: Int? = null,
+    headers: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    td(attrs = *attrs, id = id, classes = classes, style = null, func = func)
+    td(attrs = *attrs, id = id, classes = classes, style = null, colspan = colspan, rowspan =
+            rowspan, headers = headers, func = func)
 }
 
 @HtmlDsl
@@ -41,8 +50,12 @@ inline fun TableRowContext.td(
     id: String,
     classes: String? = null,
     noinline styleBuilder: StyleBuilderLambda,
+    colspan: Int? = null,
+    rowspan: Int? = null,
+    headers: String? = null,
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    td(attrs = attrs, id = id, classes = classes, style = null, func = func)
+    td(attrs = attrs, id = id, classes = classes, style = null, colspan = colspan, rowspan =
+            rowspan, headers = headers, func = func)
 }
