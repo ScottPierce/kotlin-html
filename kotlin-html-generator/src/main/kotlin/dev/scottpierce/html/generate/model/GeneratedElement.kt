@@ -23,6 +23,17 @@ sealed class GeneratedElement(
                 supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("href") + Attr.String("target") + Attr.String("rel") + Attr.String("aria-label")
             ),
             Normal(
+                tagName = "article",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "aside",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+
+            Normal(
                 tagName = "body",
                 callingContext = Context.Html,
                 childrenContext = Context.Body
@@ -80,6 +91,17 @@ sealed class GeneratedElement(
                 childrenContext = Context.Body,
                 supportedAttributes = listOf()
             ),
+            Normal(
+                tagName = "figcaption",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "figure",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+
             Normal(
                 tagName = "footer",
                 callingContext = Context.Body,
@@ -184,6 +206,17 @@ sealed class GeneratedElement(
                     Attr.String("sizes")
                 )
             ),
+            Normal(
+                tagName = "mark",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+            Normal(
+                tagName = "main",
+                callingContext = Context.Body,
+                childrenContext = Context.Body
+            ),
+
             Void(
                 tagName = "meta",
                 callingContext = Context.Head,
@@ -295,6 +328,12 @@ sealed class GeneratedElement(
                 tagName = "thead",
                 callingContext = Context.Table,
                 childrenContext = Context.Table
+            ),
+            Normal(
+                tagName = "time",
+                callingContext = Context.Body,
+                childrenContext = Context.Body,
+                supportedAttributes = STANDARD_ATTRIBUTES + Attr.String("datetime")
             ),
             Normal(
                 tagName = "tr",
