@@ -448,6 +448,15 @@ enum class GeneratedStyleProperty(
 
             val setters = mutableListOf<Setter>()
 
+            setters += Setter(Parameter(NUMBER, name = "flexGrow"))
+            setters += Setter(
+                template = "\"$$0 $$1\"",
+                parameters = listOf(
+                    Parameter(NUMBER, name = "flexGrow"),
+                    Parameter(NUMBER, name = "flexShrink")
+                )
+            )
+
             for (param1: ClassName in listOf(NUMBER)) {
                 for (param2: ClassName in listOf(NUMBER)) {
                     for (param3: ClassName in listOf(DIMENSION, dev.scottpierce.html.generate.model.FLEX_BASIS)) {

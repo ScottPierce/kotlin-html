@@ -12,6 +12,18 @@ import kotlin.Number
 import kotlin.String
 import kotlin.Suppress
 
+fun BaseStyleContext.flex(flexGrow: Number, important: Boolean = false) {
+    writeStyleProperty("flex", flexGrow, important)
+}
+
+fun BaseStyleContext.flex(
+    flexGrow: Number,
+    flexShrink: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("flex", """$flexGrow $flexShrink""", important)
+}
+
 fun BaseStyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
@@ -34,6 +46,18 @@ fun BaseStyleContext.flex(value: Flex, important: Boolean = false) {
     writeStyleProperty("flex", value, important)
 }
 
+fun StyleContext.flex(flexGrow: Number, important: Boolean = false) {
+    writeStyleProperty("flex", flexGrow, important)
+}
+
+fun StyleContext.flex(
+    flexGrow: Number,
+    flexShrink: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("flex", """$flexGrow $flexShrink""", important)
+}
+
 fun StyleContext.flex(
     flexGrow: Number,
     flexShrink: Number,
@@ -54,6 +78,18 @@ fun StyleContext.flex(
 
 fun StyleContext.flex(value: Flex, important: Boolean = false) {
     writeStyleProperty("flex", value, important)
+}
+
+fun InlineStyleContext.flex(flexGrow: Number, important: Boolean = false) {
+    writeStyleProperty("flex", flexGrow, important)
+}
+
+fun InlineStyleContext.flex(
+    flexGrow: Number,
+    flexShrink: Number,
+    important: Boolean = false
+) {
+    writeStyleProperty("flex", """$flexGrow $flexShrink""", important)
 }
 
 fun InlineStyleContext.flex(
