@@ -13,6 +13,7 @@ kotlin {
         }
     }
     js()
+    macosX64()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
