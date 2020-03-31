@@ -1,6 +1,6 @@
 object Versions {
-    const val kotlin = "1.3.60"
-    const val ktor = "1.2.2"
+    const val kotlin = "1.3.71"
+    const val ktor = "1.3.2"
 }
 
 object Plugins {
@@ -42,6 +42,6 @@ class KotlinxDeps internal constructor() {
 }
 
 class CoroutineDeps internal constructor() {
-    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
-    val native = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.2-native-mt-SNAPSHOT"
+    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5"
+    val native = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.5-native-mt"
 }
