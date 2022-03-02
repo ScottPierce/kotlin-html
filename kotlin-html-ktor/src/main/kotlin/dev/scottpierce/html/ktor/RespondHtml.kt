@@ -19,7 +19,7 @@ object RespondHtml {
 }
 
 /**
- * Responds to a client with a HTML response, using specified [func] to build an HTML page
+ * Responds to a client with an HTML response, using specified [func] to build an HTML page
  */
 suspend inline fun ApplicationCall.respondHtml(
     status: HttpStatusCode = HttpStatusCode.OK,
@@ -38,7 +38,7 @@ suspend inline fun ApplicationCall.respondHtml(
 }
 
 /**
- * Responds to a client with a HTML response, using specified [func] to build an HTML page
+ * Responds to a client with an HTML response, using specified [func] to build an HTML page
  */
 suspend inline fun ApplicationCall.respondHtmlOutput(
     status: HttpStatusCode = HttpStatusCode.OK,

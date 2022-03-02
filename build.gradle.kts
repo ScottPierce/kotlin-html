@@ -3,8 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
-        jcenter()
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+        mavenCentral()
     }
 
     dependencies {
@@ -31,25 +30,13 @@ allprojects {
 
 subprojects {
     repositories {
-        jcenter()
-        maven {
-            url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
-        }
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
-        maven {
-            url = uri("https://kotlin.bintray.com/ktor")
-            content {
-                includeGroup("io.ktor")
-            }
-        }
+        mavenCentral()
     }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
 
-        kotlinOptions.freeCompilerArgs += listOf(
-            "-Xuse-experimental=kotlin.tim.ExperimentalTime"
-        )
+        kotlinOptions.freeCompilerArgs += listOf()
     }
 }
 
