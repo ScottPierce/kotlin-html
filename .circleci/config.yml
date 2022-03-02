@@ -10,10 +10,6 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
-
       - run:
           name: Configure GIT
           command: |
@@ -85,10 +81,6 @@ jobs:
       GRADLE_OPTS: -Xmx1536m
     steps:
       - checkout
-
-      - add_ssh_keys:
-          fingerprints:
-            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
 
       - restore_cache:
           keys:
