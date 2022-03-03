@@ -131,8 +131,10 @@ fun Pair<String, String?>.checkAttributeKey() {
     require(attributeKey.isNotEmpty()) { "Attribute name must not be empty. Has value: '$second'" }
 
     for (c in attributeKey) {
-        require(!c.isWhitespace()) { "Attribute name must not contain whitespace character. Attribute: " +
-            "'$attributeKey' with value: '$second'" }
+        require(!c.isWhitespace()) {
+            "Attribute name must not contain whitespace character. Attribute: " +
+                "'$attributeKey' with value: '$second'"
+        }
     }
 }
 

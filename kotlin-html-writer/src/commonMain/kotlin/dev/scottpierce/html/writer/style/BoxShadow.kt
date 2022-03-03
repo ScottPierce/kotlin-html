@@ -34,8 +34,8 @@ fun BoxShadow(
 ): BoxShadow {
     return BoxShadowString(
         "$hOffset $vOffset $blur" +
-                (if (spread == null) "" else " $spread") +
-                (if (color == null) "" else " $color") +
-                (if (inset) " inset" else "")
+            (if (spread == null) "" else " $spread") +
+            (if (color == null) "" else " $color") +
+            (if (inset) " inset" else "")
     )
 }

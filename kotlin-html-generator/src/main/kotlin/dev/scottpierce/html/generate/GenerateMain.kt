@@ -4,10 +4,10 @@ import dev.scottpierce.html.generate.task.GenerateElementDslTask
 import dev.scottpierce.html.generate.task.GenerateElementTestsTask
 import dev.scottpierce.html.generate.task.GenerateStyleBuilderDslTask
 import dev.scottpierce.html.generate.task.GenerateStylePropertiesTask
-import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlin.system.measureTimeMillis
 
 fun main() {
     // Generation tasks

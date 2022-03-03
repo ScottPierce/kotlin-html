@@ -18,8 +18,10 @@ object FileCache {
                 fileText = file.bufferedReader().readLines()
                 cache[file] = fileText
             } catch (e: FileNotFoundException) {
-                throw FileNotFoundException(e.message?.replace(file.toString(), file.absolutePath)
-                    ?: "File Not found: ${file.absolutePath}")
+                throw FileNotFoundException(
+                    e.message?.replace(file.toString(), file.absolutePath)
+                        ?: "File Not found: ${file.absolutePath}"
+                )
             }
         }
 

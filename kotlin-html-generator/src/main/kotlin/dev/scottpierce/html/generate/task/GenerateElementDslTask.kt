@@ -23,13 +23,13 @@ import dev.scottpierce.html.generate.model.TO_WRITER
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_END
 import dev.scottpierce.html.generate.model.WRITE_NORMAL_ELEMENT_START
 import dev.scottpierce.html.generate.model.WRITE_VOID_ELEMENT
-import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
+import java.io.File
 
 class GenerateElementDslTask : Task {
     override val name: String = "Generate Elements DSL"
@@ -141,9 +141,12 @@ private fun createDslFunction(
     when (element) {
         is GeneratedElement.Normal -> {
             addParameter(
-                ParameterSpec.builder("func", LambdaTypeName.get(
-                    receiver = element.childrenContext.contextClassName,
-                    returnType = UNIT)
+                ParameterSpec.builder(
+                    "func",
+                    LambdaTypeName.get(
+                        receiver = element.childrenContext.contextClassName,
+                        returnType = UNIT
+                    )
                 )
                     .defaultValue("{}")
                     .build()
@@ -161,7 +164,7 @@ private fun createDslFunction(
     // }
 
     val hasOnlyStandardAttributes = STANDARD_ATTRIBUTES.size == element.supportedAttributes.size &&
-            STANDARD_ATTRIBUTES.containsAll(element.supportedAttributes)
+        STANDARD_ATTRIBUTES.containsAll(element.supportedAttributes)
 
     if (isOutput) {
         beginControlFlow("%M", TO_WRITER)
