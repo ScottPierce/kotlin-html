@@ -12,13 +12,6 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Configure GIT
-          command: |
-            git config user.email "circleci@circleci.com"
-            git config user.name "CircleCI"
-            git push --set-upstream origin ${CIRCLE_BRANCH}
-
       - restore_cache:
           keys:
             - codestyle-{{ checksum "buildSrc/src/main/kotlin/Deps.kt" }}
