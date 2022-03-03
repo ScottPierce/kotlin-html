@@ -1,5 +1,4 @@
 [![CircleCI](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master.svg?style=svg)](https://circleci.com/gh/ScottPierce/kotlin-html/tree/master)
-[![jcenter](https://api.bintray.com/packages/scottpierce/maven/kotlin-html/images/download.svg?version=0.7.24)](https://bintray.com/beta/#/scottpierce/maven/kotlin-html/0.7.24?tab=overview)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3.70-green.svg)](https://kotlinlang.org/)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 <!---
