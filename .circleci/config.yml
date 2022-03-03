@@ -12,10 +12,6 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
-
       - run:
           name: Configure GIT
           command: |
@@ -29,11 +25,7 @@ jobs:
 
       - run:
           name: Perform code style check
-          command: ./gradlew ktlintFormat
-
-      - run:
-          name: Commit code style changes
-          command: scripts/git-commit-if-changes.sh "code style"
+          command: ./gradlew ktlint
 
       - save_cache:
           paths:
@@ -89,10 +81,6 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - b8:e3:f1:7e:67:7d:04:92:2f:be:8b:e4:93:b6:79:1d
-
       - restore_cache:
           keys:
             - upload-{{ checksum "buildSrc/src/main/kotlin/Deps.kt" }}
@@ -120,27 +108,6 @@ jobs:
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
           command: ./gradlew :kotlin-html-ktor:bintrayUpload
-
-      - run:
-          name: Checkout Master
-          command: git checkout main
-
-      - run:
-          name: Configure GIT
-          command: |
-            git config user.email "circleci@circleci.com"
-            git config user.name "CircleCI"
-            git fetch origin
-            git pull
-            git push --set-upstream origin master
-
-      - run:
-          name: Update version in documentation
-          command: ./gradlew updateVersionInDocumentation
-
-      - run:
-          name: Commit documentation changes
-          command: scripts/git-commit-if-changes.sh "version update for release"
 
       - save_cache:
           paths:
