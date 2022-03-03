@@ -1,7 +1,7 @@
 job_config: &job_config
   working_directory: ~/workspace
   docker:
-    - image: circleci/openjdk:17.0-jdk-stretch
+    - image: circleci/openjdk:17.0
 
 version: 2.1
 jobs:
