@@ -4,6 +4,8 @@ job_config: &job_config
     - image: cimg/openjdk:17.0-browsers
 
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1
 jobs:
   code style:
     <<: *job_config
