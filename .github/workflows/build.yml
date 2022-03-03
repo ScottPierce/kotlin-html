@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  pull_request:
+
+jobs:
+  code-style:
+    name: Code Style
+    runs-on: ubuntu-latest
+    container:
+      image: cimg/openjdk:11.0-browsers
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+
+      - name: Kotlin Code Style
+        run: ./gradlew ktlintFormat
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: code style
