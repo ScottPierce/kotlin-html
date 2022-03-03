@@ -1,7 +1,7 @@
 job_config: &job_config
   working_directory: ~/workspace
   docker:
-    - image: cimg/openjdk:16.0-browsers
+    - image: cimg/openjdk:17.0-browsers
 
 version: 2.1
 jobs:
