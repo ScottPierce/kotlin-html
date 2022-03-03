@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0
+* Deploy to maven central
+* Update to Kotlin 1.6.10
+
 ## 0.7.0
 * `styleBuilder` is renamed to `insertStyleBuilder`.
 
