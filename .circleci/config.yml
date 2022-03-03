@@ -1,7 +1,7 @@
 job_config: &job_config
   working_directory: ~/workspace
   docker:
-    - image: circleci/openjdk:8u212-jdk-stretch
+    - image: circleci/openjdk:17.0-jdk-stretch
 
 version: 2.1
 jobs:
@@ -10,24 +10,17 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Configure GIT
-          command: |
-            git config user.email "circleci@circleci.com"
-            git config user.name "CircleCI"
-            git push --set-upstream origin ${CIRCLE_BRANCH}
-
       - restore_cache:
           keys:
             - codestyle-{{ checksum "buildSrc/src/main/kotlin/Deps.kt" }}
 
       - run:
           name: Perform code style check
-          command: ./gradlew ktlintFormat
+          command: ./gradlew ktlint
 
-      - run:
-          name: Commit code style changes
-          command: scripts/git-commit-if-changes.sh "code style"
+#      - run:
+#          name: Commit code style changes
+#          command: scripts/git-commit-if-changes.sh "code style"
 
       - save_cache:
           paths:

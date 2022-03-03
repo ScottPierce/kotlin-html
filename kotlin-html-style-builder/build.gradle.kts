@@ -11,7 +11,10 @@ kotlin {
             kotlinOptions.jvmTarget = "1.8"
         }
     }
-    js()
+    js {
+        browser()
+        nodejs()
+    }
 //    macosX64()
 //    linuxX64()
 
