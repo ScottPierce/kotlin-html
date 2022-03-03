@@ -8,7 +8,7 @@ jobs:
     name: Code Style
     runs-on: ubuntu-latest
     container:
-      image: cimg/openjdk:11.0-browsers
+      image: nathanfriend/java-node-git:11-slim
 
     permissions:
       contents: write
