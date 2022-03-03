@@ -1,7 +1,7 @@
 job_config: &job_config
   working_directory: ~/workspace
   docker:
-    - image: cimg/openjdk:17.0-node
+    - image: cimg/openjdk:16.0-node
 
 version: 2.1
 jobs:
@@ -102,6 +102,27 @@ jobs:
       - run:
           name: Upload kotlin-html-ktor to Bintray and Publish
           command: ./gradlew :kotlin-html-ktor:bintrayUpload
+
+#      - run:
+#          name: Checkout Master
+#          command: git checkout main
+#
+#      - run:
+#          name: Configure GIT
+#          command: |
+#            git config user.email "circleci@circleci.com"
+#            git config user.name "CircleCI"
+#            git fetch origin
+#            git pull
+#            git push --set-upstream origin master
+#
+#      - run:
+#          name: Update version in documentation
+#          command: ./gradlew updateVersionInDocumentation
+#
+#      - run:
+#          name: Commit documentation changes
+#          command: scripts/git-commit-if-changes.sh "version update for release"
 
       - save_cache:
           paths:
