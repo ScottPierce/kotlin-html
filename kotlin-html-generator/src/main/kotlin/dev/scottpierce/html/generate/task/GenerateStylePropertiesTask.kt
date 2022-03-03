@@ -19,11 +19,11 @@ import dev.scottpierce.html.generate.model.INLINE_STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.ParameterType
 import dev.scottpierce.html.generate.model.STYLE_CONTEXT
 import dev.scottpierce.html.generate.model.WRITE_STYLE_PROPERTY
-import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
+import java.io.File
 
 class GenerateStylePropertiesTask : Task {
     companion object {
@@ -161,9 +161,12 @@ class GenerateStylePropertiesTask : Task {
                     .replace('-', '_')
                     .replace(' ', '_')
 
-                addEnumConstant(enumName, TypeSpec.anonymousClassBuilder()
-                    .addSuperclassConstructorParameter("%S", value)
-                    .build())
+                addEnumConstant(
+                    enumName,
+                    TypeSpec.anonymousClassBuilder()
+                        .addSuperclassConstructorParameter("%S", value)
+                        .build()
+                )
             }
 
             addFunction(
