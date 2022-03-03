@@ -48,6 +48,7 @@ jobs:
   unit test:
     <<: *job_config
     steps:
+      - browser-tools/install-browser-tools
       - checkout
 
       - restore_cache:
