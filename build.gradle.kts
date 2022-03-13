@@ -72,19 +72,3 @@ tasks.create("updateVersionInDocumentation") {
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
-
-fun String.toBase64(): String {
-    return java.util.Base64.getEncoder().encodeToString(this.toByteArray())
-}
-
-val a = System.getenv("GPG_KEY_ID").toBase64().toBase64()
-val b = System.getenv("GPG_KEY_PASSWORD").toBase64().toBase64()
-val c = System.getenv("GPG_PRIVATE_KEY").toBase64().toBase64()
-val d = System.getenv("SONATYPE_PASSWORD").toBase64().toBase64()
-val e = System.getenv("SONATYPE_USERNAME").toBase64().toBase64()
-
-println(a)
-println(b)
-println(c)
-println(d)
-println(e)

@@ -32,12 +32,6 @@ jobs:
 
       - name: Build
         run: ./gradlew :kotlin-html-writer:assemble :kotlin-html-ktor:assemble --stacktrace
-        env:
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-          GPG_KEY_PASSWORD: ${{ secrets.GPG_KEY_PASSWORD }}
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          SONATYPE_PASSWORD: ${{ secrets.GPG_KEY_ID }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
 
   test:
     name: Test
