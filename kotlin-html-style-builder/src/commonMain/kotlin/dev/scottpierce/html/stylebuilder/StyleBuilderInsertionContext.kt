@@ -6,6 +6,7 @@ import dev.scottpierce.html.writer.StyleSheetContext
 import dev.scottpierce.html.writer.insertWriter
 import dev.scottpierce.html.writer.style.media
 import dev.scottpierce.html.writer.style.styleSheet
+import kotlin.jvm.JvmInline
 
 @HtmlDsl
 inline fun BaseHtmlContext.insertStyleBuilder(func: StyleBuilderInsertionContext.() -> Unit) {
@@ -16,7 +17,8 @@ inline fun BaseHtmlContext.insertStyleBuilder(func: StyleBuilderInsertionContext
 }
 
 @HtmlDsl
-inline class StyleBuilderInsertionContext(private val baseContext: StyleSheetContext) {
+@JvmInline
+value class StyleBuilderInsertionContext(private val baseContext: StyleSheetContext) {
     fun media(id: StyleBuilderId, querySelector: String) {
         baseContext.media(querySelector) {
             insertWriter(id.writerId)

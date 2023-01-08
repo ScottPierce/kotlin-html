@@ -1,9 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform")
+    kotlin("multiplatform")
     `maven-publish`
 }
-
-publishing.configureBintray()
 
 kotlin {
     jvm {
@@ -11,7 +9,16 @@ kotlin {
             kotlinOptions.jvmTarget = "1.8"
         }
     }
-    js()
+    js {
+        browser {
+            testTask {
+                useKarma {
+                    useChrome()
+                }
+            }
+        }
+        nodejs()
+    }
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {

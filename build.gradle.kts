@@ -3,12 +3,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
-        jcenter()
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+        mavenCentral()
     }
 
     dependencies {
         classpath(Plugins.kotlin)
+        classpath(Plugins.gradleMavenPublish)
     }
 }
 
@@ -31,25 +31,36 @@ allprojects {
 
 subprojects {
     repositories {
-        jcenter()
-        maven {
-            url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
-        }
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
-        maven {
-            url = uri("https://kotlin.bintray.com/ktor")
-            content {
-                includeGroup("io.ktor")
-            }
-        }
+        mavenCentral()
     }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
+    }
 
-        kotlinOptions.freeCompilerArgs += listOf(
-            "-Xuse-experimental=kotlin.tim.ExperimentalTime"
-        )
+    plugins.withId("maven-publish") {
+        extensions.getByType<PublishingExtension>().apply {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/ScottPierce/kotlin-html")
+                    credentials {
+                        username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                        password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+                    }
+                }
+            }
+        }
+    }
+
+    plugins.withId("org.jetbrains.kotlin.multiplatform") {
+        configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
+            sourceSets.configureEach {
+                languageSettings.apply {
+                    optIn("kotlin.time.ExperimentalTime")
+                }
+            }
+        }
     }
 }
 

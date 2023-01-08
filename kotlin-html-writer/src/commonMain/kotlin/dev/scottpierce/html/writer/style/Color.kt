@@ -1,6 +1,8 @@
-@file:Suppress("EXPERIMENTAL_FEATURE_WARNING", "FunctionName")
+@file:Suppress("EXPERIMENTAL_FEATURE_WARNING", "FunctionName", "unused")
 
 package dev.scottpierce.html.writer.style
+
+import kotlin.jvm.JvmInline
 
 fun Color(r: Int, g: Int, b: Int): Color = ColorString("rgb($r,$g,$b)")
 fun Color(r: Int, g: Int, b: Int, a: Number): Color = ColorString("rgba($r,$g,$b,$a)")
@@ -30,7 +32,8 @@ interface Color {
     }
 }
 
-internal inline class ColorString(val cssValue: String) : Color {
+@JvmInline
+internal value class ColorString(val cssValue: String) : Color {
     override fun toString() = cssValue
 }
 

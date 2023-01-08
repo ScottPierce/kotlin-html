@@ -40,7 +40,7 @@ inline fun BodyContext.a(
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    a(attrs = *attrs, id = id, classes = classes, style = null, href = href, target = target, rel =
+    a(attrs = attrs, id = id, classes = classes, style = null, href = href, target = target, rel =
             rel, ariaLabel = ariaLabel, func = func)
 }
 

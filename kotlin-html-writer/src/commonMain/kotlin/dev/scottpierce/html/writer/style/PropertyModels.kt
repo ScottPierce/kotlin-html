@@ -2,6 +2,8 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.jvm.JvmInline
+
 enum class CssValue(val value: String) {
     INITIAL("initial"),
     INHERIT("inherit");
@@ -59,7 +61,8 @@ interface BackgroundImage {
     }
 }
 
-internal inline class BackgroundImageString(val value: String) : BackgroundImage
+@JvmInline
+internal value class BackgroundImageString(val value: String) : BackgroundImage
 
 enum class FloatDirection(
     val value: String

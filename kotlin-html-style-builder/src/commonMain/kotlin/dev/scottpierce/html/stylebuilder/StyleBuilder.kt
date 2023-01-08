@@ -8,12 +8,14 @@ import dev.scottpierce.html.writer.HtmlWriterId
 import dev.scottpierce.html.writer.StyleLambda
 import dev.scottpierce.html.writer.StyleSheetContext
 import dev.scottpierce.html.writer.style.style
+import kotlin.jvm.JvmInline
 
 object StyleBuilder {
     val NORMAL = StyleBuilderId("StyleBuilder-normal")
 }
 
-inline class StyleBuilderId(val writerId: HtmlWriterId)
+@JvmInline
+value class StyleBuilderId(val writerId: HtmlWriterId)
 
 /**
  * Adds a style to the previously inserted style builder.

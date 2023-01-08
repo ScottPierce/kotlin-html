@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  pull_request:
+
+jobs:
+  code-style:
+    name: Code Style
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk:11-slim
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Kotlin Code Style
+        run: ./gradlew ktlint
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk:17-slim
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: ./gradlew :kotlin-html-writer:assemble :kotlin-html-ktor:assemble --stacktrace
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container:
+      image: markhobson/maven-chrome:jdk-17
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Test
+        run: ./gradlew :kotlin-html-writer:jvmTest :kotlin-html-writer:jvmCodeCoverageReport --stacktrace

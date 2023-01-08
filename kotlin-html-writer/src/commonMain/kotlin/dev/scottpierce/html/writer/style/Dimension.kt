@@ -2,6 +2,8 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.jvm.JvmInline
+
 interface Dimension {
     companion object {
         val ZERO: MeasurableDimension = StringMeasurableDimension("0")
@@ -12,11 +14,13 @@ interface Dimension {
 
 interface MeasurableDimension : Dimension
 
-private inline class StringDimension(val value: String) : Dimension {
+@JvmInline
+private value class StringDimension(val value: String) : Dimension {
     override fun toString(): String = value
 }
 
-private inline class StringMeasurableDimension(val value: String) : MeasurableDimension {
+@JvmInline
+private value class StringMeasurableDimension(val value: String) : MeasurableDimension {
     override fun toString(): String = value
 }
 

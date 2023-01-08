@@ -1,6 +1,7 @@
 package dev.scottpierce.html.writer
 
 import dev.scottpierce.html.writer.style.style
+import kotlin.jvm.JvmInline
 
 @DslMarker
 annotation class HtmlDsl
@@ -17,37 +18,48 @@ interface HtmlWriterContext {
 interface BaseHtmlContext : HtmlWriterContext
 
 @HtmlDsl
-inline class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class HtmlContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class HeadContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
+@JvmInline
+value class ScriptContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
 
 @HtmlDsl
-inline class BodyContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
+@JvmInline
+value class BodyContext(override val writer: HtmlWriter) : BaseHtmlContext, HasText
 
 @HtmlDsl
-inline class SelectContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class SelectContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class TableContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class TableContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class ColGroupContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class ColGroupContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class ColContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class ColContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class TableRowContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class TableRowContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class UlContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class UlContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
-inline class VideoContext(override val writer: HtmlWriter) : BaseHtmlContext
+@JvmInline
+value class VideoContext(override val writer: HtmlWriter) : BaseHtmlContext
 
 @HtmlDsl
 interface HasText : HtmlWriterContext {
@@ -60,7 +72,8 @@ interface HasText : HtmlWriterContext {
 }
 
 @HtmlDsl
-inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterContext {
+@JvmInline
+value class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterContext {
     inline operator fun String.invoke(func: StyleLambda) = style(this, func)
 }
 
@@ -71,10 +84,12 @@ inline class StyleSheetContext(override val writer: HtmlWriter) : HtmlWriterCont
 interface BaseStyleContext : HtmlWriterContext
 
 @HtmlDsl
-inline class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleContext
+@JvmInline
+value class InlineStyleContext(override val writer: HtmlWriter) : BaseStyleContext
 
 @HtmlDsl
-inline class StyleContext(override val writer: HtmlWriter) : BaseStyleContext
+@JvmInline
+value class StyleContext(override val writer: HtmlWriter) : BaseStyleContext
 
 typealias InlineStyleLambda = InlineStyleContext.() -> Unit
 

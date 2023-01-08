@@ -15,7 +15,6 @@ import dev.scottpierce.html.generate.model.GeneratedElement
 import dev.scottpierce.html.generate.model.HTML_DSL
 import dev.scottpierce.html.generate.model.STYLE_BUILDER_LAMBDA
 import dev.scottpierce.html.generate.model.STYLE_BUILDER_STYLE
-import java.io.File
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -24,6 +23,7 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
+import java.io.File
 
 class GenerateStyleBuilderDslTask : Task {
     override val name: String = "Generate Style Builder DSL"
@@ -127,9 +127,12 @@ private fun createStyleBuilderDslFunction(
 
     paramNames += "func"
     addParameter(
-        ParameterSpec.builder("func", LambdaTypeName.get(
-            receiver = element.childrenContext.contextClassName,
-            returnType = UNIT)
+        ParameterSpec.builder(
+            "func",
+            LambdaTypeName.get(
+                receiver = element.childrenContext.contextClassName,
+                returnType = UNIT
+            )
         )
             .defaultValue("{}")
             .build()
@@ -160,6 +163,6 @@ private fun createStyleBuilderDslFunction(
 
 private fun GeneratedElement.shouldGenStyleBuilderDsl(): Boolean {
     return this is GeneratedElement.Normal &&
-            supportedAttributes.find { it.name == "id" } != null &&
-            supportedAttributes.find { it.name == "style" } != null
+        supportedAttributes.find { it.name == "id" } != null &&
+        supportedAttributes.find { it.name == "style" } != null
 }

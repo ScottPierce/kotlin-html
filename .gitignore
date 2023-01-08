@@ -8,3 +8,4 @@ out/
 
 /.idea/*
 !/.idea/codeStyles
+local.properties

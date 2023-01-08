@@ -31,7 +31,7 @@ inline fun BodyContext.article(
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    article(attrs = *attrs, id = id, classes = classes, style = null, func = func)
+    article(attrs = attrs, id = id, classes = classes, style = null, func = func)
 }
 
 @HtmlDsl

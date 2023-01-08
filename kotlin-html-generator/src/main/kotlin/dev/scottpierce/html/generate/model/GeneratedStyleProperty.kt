@@ -14,15 +14,23 @@ enum class GeneratedStyleProperty(
 ) {
     ALIGN_ITEMS(
         "align-items",
-        Setter(Parameter(ParameterType.Generate(
-            "baseline", "center", "flex-start", "flex-end", "stretch", "initial", "inherit"
-        )))
+        Setter(
+            Parameter(
+                ParameterType.Generate(
+                    "baseline", "center", "flex-start", "flex-end", "stretch", "initial", "inherit"
+                )
+            )
+        )
     ),
     ALIGN_SELF(
         "align-self",
-        Setter(Parameter(ParameterType.Generate(
-            "auto", "baseline", "center", "end", "flex-end", "flex-start", "start", "initial", "inherit"
-        )))
+        Setter(
+            Parameter(
+                ParameterType.Generate(
+                    "auto", "baseline", "center", "end", "flex-end", "flex-start", "start", "initial", "inherit"
+                )
+            )
+        )
     ),
     ANIMATION_NAME(
         cssName = "animation-name",
@@ -55,17 +63,25 @@ enum class GeneratedStyleProperty(
     BACKGROUND_ATTACHMENT(
         cssName = "background-attachment",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "scroll", "fixed", "local", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "scroll", "fixed", "local", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BACKGROUND_CLIP(
         cssName = "background-clip",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "border-box", "padding-box", "content-box", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "border-box", "padding-box", "content-box", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BACKGROUND_COLOR("background-color", COLOR_SETTERS),
@@ -76,10 +92,12 @@ enum class GeneratedStyleProperty(
                 "\"url('\$url')\"",
                 Parameter(STRING, "url")
             ),
-            Setter("image",
+            Setter(
+                "image",
                 Parameter(styleClassName("BackgroundImage"), name = "image")
             ),
-            Setter("\"\$image\${if (images.isEmpty()) \"\" else images.joinToString(prefix = \", \")}\"",
+            Setter(
+                "\"\$image\${if (images.isEmpty()) \"\" else images.joinToString(prefix = \", \")}\"",
                 Parameter(styleClassName("BackgroundImage"), name = "image"),
                 Parameter(styleClassName("BackgroundImage"), isVararg = true, name = "images")
             )
@@ -88,9 +106,13 @@ enum class GeneratedStyleProperty(
     BACKGROUND_ORIGIN(
         cssName = "background-origin",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "padding-box", "border-box", "content-box", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "padding-box", "border-box", "content-box", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BACKGROUND_POSITION(
@@ -127,9 +149,13 @@ enum class GeneratedStyleProperty(
     BACKGROUND_REPEAT(
         cssName = "background-repeat",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "repeat", "repeat-x", "repeat-y", "no-repeat", "space", "round", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "repeat", "repeat-x", "repeat-y", "no-repeat", "space", "round", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BACKGROUND_SIZE(
@@ -209,9 +235,13 @@ enum class GeneratedStyleProperty(
     BORDER_COLLAPSE(
         cssName = "border-collapse",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "separate", "collapse", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "separate", "collapse", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BORDER_LEFT(
@@ -317,10 +347,14 @@ enum class GeneratedStyleProperty(
     BORDER_STYLE(
         cssName = "border-style",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset",
-                "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset",
+                        "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     BORDER_TOP_LEFT_RADIUS(
@@ -349,7 +383,8 @@ enum class GeneratedStyleProperty(
         cssName = "box-shadow",
         setters = listOf(
             Setter(Parameter(styleClassName("BoxShadow"), name = "boxShadow")),
-            Setter("boxShadows.joinToString()",
+            Setter(
+                "boxShadows.joinToString()",
                 Parameter(styleClassName("BoxShadow"), isVararg = true, name = "boxShadows")
             ),
             Setter(
@@ -363,7 +398,7 @@ enum class GeneratedStyleProperty(
             ),
             Setter(
                 template = "BoxShadow(hOffset = hOffset, vOffset = vOffset, blur = blur, " +
-                        "spread = spread, color = color, inset = inset)",
+                    "spread = spread, color = color, inset = inset)",
                 parameters = listOf(
                     Parameter(DIMENSION, name = "hOffset"),
                     Parameter(DIMENSION, name = "vOffset"),
@@ -377,42 +412,58 @@ enum class GeneratedStyleProperty(
     ),
     CAPTION_SIDE(
         "caption",
-        Setter(Parameter(ParameterType.Generate(
-            "top", "bottom", "initial", "inherit"
-        )))
+        Setter(
+            Parameter(
+                ParameterType.Generate(
+                    "top", "bottom", "initial", "inherit"
+                )
+            )
+        )
     ),
     COLOR("color", COLOR_SETTERS),
     CONTENT(
         cssName = "content",
         setters = listOf(
             Setter(Parameter(STRING)),
-            Setter(Parameter(ParameterType.Generate(
-                "normal", "none", "counter", "attr", "open-quote", "close-quote", "no-open-quote", "no-close-quote",
-                "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "normal", "none", "counter", "attr", "open-quote", "close-quote", "no-open-quote", "no-close-quote",
+                        "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     CURSOR(
         cssName = "cursor",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "alias", "all-scroll", "auto", "cell", "context-menu", "col-resize", "copy", "crosshair", "default",
-                "e-resize", "ew-resize", "grab", "grabbing", "help", "move", "n-resize", "ne-resize", "nesw-resize",
-                "ns-resize", "nw-resize", "nwse-resize", "no-drop", "none", "not-allowed", "pointer", "progress",
-                "row-resize", "s-resize", "se-resize", "sw-resize", "text", "vertical-text", "w-resize", "wait",
-                "zoom-in", "zoom-out", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "alias", "all-scroll", "auto", "cell", "context-menu", "col-resize", "copy", "crosshair", "default",
+                        "e-resize", "ew-resize", "grab", "grabbing", "help", "move", "n-resize", "ne-resize", "nesw-resize",
+                        "ns-resize", "nw-resize", "nwse-resize", "no-drop", "none", "not-allowed", "pointer", "progress",
+                        "row-resize", "s-resize", "se-resize", "sw-resize", "text", "vertical-text", "w-resize", "wait",
+                        "zoom-in", "zoom-out", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     DISPLAY(
         cssName = "display",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "inline", "block", "contents", "flex", "grid", "inline-block", "inline-flex", "inline-grid",
-                "inline-table", "list-item", "run-in", "table", "table-caption", "table-column-group",
-                "table-header-group", "table-footer-group", "table-row-group", "table-cell", "table-column",
-                "table-row", "none", "initial", "inherit"
-            ))),
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "inline", "block", "contents", "flex", "grid", "inline-block", "inline-flex", "inline-grid",
+                        "inline-table", "list-item", "run-in", "table", "table-caption", "table-column-group",
+                        "table-header-group", "table-footer-group", "table-row-group", "table-cell", "table-column",
+                        "table-row", "none", "initial", "inherit"
+                    )
+                )
+            ),
             Setter(
                 template = "Display.NONE",
                 functionName = "displayNone",
@@ -500,9 +551,13 @@ enum class GeneratedStyleProperty(
     ),
     FLEX_DIRECTION(
         "flex-direction",
-        Setter(Parameter(ParameterType.Generate(
-            "column", "column-reverse", "row-reverse", "row", "initial", "inherit"
-        )))
+        Setter(
+            Parameter(
+                ParameterType.Generate(
+                    "column", "column-reverse", "row-reverse", "row", "initial", "inherit"
+                )
+            )
+        )
     ),
     FLEX_WRAP(
         "flex-wrap",
@@ -523,32 +578,40 @@ enum class GeneratedStyleProperty(
         cssName = "font-weight",
         setters = listOf(
             Setter(Parameter(INT)),
-            Setter(Parameter(ParameterType.Generate(
-                "normal",
-                "bold",
-                "bolder",
-                "lighter",
-                "inherit",
-                "initial"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "normal",
+                        "bold",
+                        "bolder",
+                        "lighter",
+                        "inherit",
+                        "initial"
+                    )
+                )
+            )
         )
     ),
     FONT_SIZE(
         cssName = "font-size",
         setters = listOf(
             Setter(Parameter(DIMENSION)),
-            Setter(Parameter(ParameterType.Generate(
-                "xx-small",
-                "x-small",
-                "smaller",
-                "small",
-                "large",
-                "larger",
-                "x-large",
-                "xx-large",
-                "inherit",
-                "initial"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "xx-small",
+                        "x-small",
+                        "smaller",
+                        "small",
+                        "large",
+                        "larger",
+                        "x-large",
+                        "xx-large",
+                        "inherit",
+                        "initial"
+                    )
+                )
+            )
         )
     ),
     //    GRID_COLUMN_GAP("grid-column-gap", PropertyType.DIMENSION),
@@ -564,9 +627,13 @@ enum class GeneratedStyleProperty(
     ),
     JUSTIFY_CONTENT(
         "justify-content",
-        Setter(Parameter(ParameterType.Generate(
-            "center", "flex-end", "flex-start", "space-around", "space-between", "space-evenly", "initial", "inherit"
-        )))
+        Setter(
+            Parameter(
+                ParameterType.Generate(
+                    "center", "flex-end", "flex-start", "space-around", "space-between", "space-evenly", "initial", "inherit"
+                )
+            )
+        )
     ),
     LEFT(
         cssName = "left",
@@ -639,12 +706,16 @@ enum class GeneratedStyleProperty(
     LIST_STYLE_TYPE(
         cssName = "list-style-type",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "disc", "armenian", "circle", "cjk-ideographic", "decimal", "decimal-leading-zero", "georgian",
-                "hebrew", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "lower-alpha", "lower-greek",
-                "lower-latin", "lower-roman", "none", "square", "upper-alpha", "upper-greek", "upper-latin",
-                "upper-roman", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "disc", "armenian", "circle", "cjk-ideographic", "decimal", "decimal-leading-zero", "georgian",
+                        "hebrew", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "lower-alpha", "lower-greek",
+                        "lower-latin", "lower-roman", "none", "square", "upper-alpha", "upper-greek", "upper-latin",
+                        "upper-roman", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     MARGIN(
@@ -757,10 +828,14 @@ enum class GeneratedStyleProperty(
     OUTLINE_STYLE(
         cssName = "outline-style",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset",
-                "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset",
+                        "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     OUTLINE_WIDTH(
@@ -774,9 +849,13 @@ enum class GeneratedStyleProperty(
         cssName = "overflow",
         setters = listOf(
             Setter(Parameter(DIMENSION)),
-            Setter(Parameter(ParameterType.Generate(
-                "visible", "hidden", "scroll", "auto", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "visible", "hidden", "scroll", "auto", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     OVERFLOW_X(
@@ -849,9 +928,13 @@ enum class GeneratedStyleProperty(
     POSITION(
         cssName = "position",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "static", "relative", "fixed", "absolute", "sticky", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "static", "relative", "fixed", "absolute", "sticky", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     RIGHT(
@@ -864,9 +947,13 @@ enum class GeneratedStyleProperty(
     TEXT_ALIGN(
         cssName = "text-align",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "left", "right", "center", "justify", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "left", "right", "center", "justify", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     TEXT_DECORATION(
@@ -874,8 +961,8 @@ enum class GeneratedStyleProperty(
         setters = listOf(
             Setter(
                 template = "\"\${lines.joinToString(separator = \" \")}" +
-                        "\${if (color == null) \"\" else \" \$color\"}" +
-                        "\${if (style == null) \"\" else \" \$style\"}\"",
+                    "\${if (color == null) \"\" else \" \$color\"}" +
+                    "\${if (style == null) \"\" else \" \$style\"}\"",
                 parameters = listOf(
                     Parameter(styleClassName("TextDecorationLine"), isVararg = true, name = "lines"),
                     Parameter(
@@ -900,9 +987,13 @@ enum class GeneratedStyleProperty(
     TEXT_DECORATION_LINE(
         cssName = "text-decoration-line",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "none", "underline", "overline", "line-through", "initial", "inherit"
-            ))),
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "none", "underline", "overline", "line-through", "initial", "inherit"
+                    )
+                )
+            ),
             Setter(
                 template = "lines.joinToString(separator = \" \")",
                 parameters = listOf(
@@ -914,17 +1005,25 @@ enum class GeneratedStyleProperty(
     TEXT_DECORATION_STYLE(
         cssName = "text-decoration-style",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "solid", "double", "dotted", "dashed", "wavy", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "solid", "double", "dotted", "dashed", "wavy", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     TEXT_TRANSFORM(
         cssName = "text-transform",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "none", "capitalize", "uppercase", "lowercase", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "none", "capitalize", "uppercase", "lowercase", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     TOP(
@@ -949,7 +1048,7 @@ enum class GeneratedStyleProperty(
             ),
             Setter(
                 template = "\"\$property \${duration.toCssString()} \$timing\${if (delay == null) \"\" else \" \" " +
-                        "+ delay.toCssString()}\"",
+                    "+ delay.toCssString()}\"",
                 parameters = listOf(
                     Parameter(
                         styleClassName("TransitionProperty"),
@@ -984,9 +1083,13 @@ enum class GeneratedStyleProperty(
         override val setters: List<Setter> by lazy {
             val properties = values().map { it.cssName }
 
-            val setter = Setter(Parameter(ParameterType.Generate(
-                listOf("none", "all", "initial", "inherit") + properties
-            )))
+            val setter = Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        listOf("none", "all", "initial", "inherit") + properties
+                    )
+                )
+            )
 
             listOf(setter) + super.setters
         }
@@ -994,9 +1097,13 @@ enum class GeneratedStyleProperty(
     TRANSITION_TIMING_FUNCTION(
         cssName = "transition-timing-function",
         setters = listOf(
-            Setter(Parameter(ParameterType.Generate(
-                "linear", "ease", "ease-in", "ease-out", "ease-in-out", "initial", "inherit"
-            )))
+            Setter(
+                Parameter(
+                    ParameterType.Generate(
+                        "linear", "ease", "ease-in", "ease-out", "ease-in-out", "initial", "inherit"
+                    )
+                )
+            )
         )
     ),
     VISIBILITY(

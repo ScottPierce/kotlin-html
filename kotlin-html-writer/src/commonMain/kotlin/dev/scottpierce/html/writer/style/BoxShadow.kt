@@ -2,6 +2,8 @@
 
 package dev.scottpierce.html.writer.style
 
+import kotlin.jvm.JvmInline
+
 interface BoxShadow {
     companion object {
         val NONE: BoxShadow = BoxShadowString("none")
@@ -10,7 +12,8 @@ interface BoxShadow {
     }
 }
 
-private inline class BoxShadowString(val styleString: String) : BoxShadow {
+@JvmInline
+private value class BoxShadowString(val styleString: String) : BoxShadow {
     override fun toString(): String = styleString
 }
 
@@ -31,8 +34,8 @@ fun BoxShadow(
 ): BoxShadow {
     return BoxShadowString(
         "$hOffset $vOffset $blur" +
-                (if (spread == null) "" else " $spread") +
-                (if (color == null) "" else " $color") +
-                (if (inset) " inset" else "")
+            (if (spread == null) "" else " $spread") +
+            (if (color == null) "" else " $color") +
+            (if (inset) " inset" else "")
     )
 }
