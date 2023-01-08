@@ -8,6 +8,7 @@ buildscript {
 
     dependencies {
         classpath(Plugins.kotlin)
+        classpath(Plugins.gradleMavenPublish)
     }
 }
 
@@ -35,8 +36,31 @@ subprojects {
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
+    }
 
-        kotlinOptions.freeCompilerArgs += listOf()
+    plugins.withId("maven-publish") {
+        extensions.getByType<PublishingExtension>().apply {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/ScottPierce/kotlin-html")
+                    credentials {
+                        username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                        password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+                    }
+                }
+            }
+        }
+    }
+
+    plugins.withId("org.jetbrains.kotlin.multiplatform") {
+        configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
+            sourceSets.configureEach {
+                languageSettings.apply {
+                    optIn("kotlin.time.ExperimentalTime")
+                }
+            }
+        }
     }
 }
 

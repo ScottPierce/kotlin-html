@@ -1,9 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform")
+    kotlin("multiplatform")
     `maven-publish`
 }
-
-publishing.configureBintray()
 
 kotlin {
     jvm {

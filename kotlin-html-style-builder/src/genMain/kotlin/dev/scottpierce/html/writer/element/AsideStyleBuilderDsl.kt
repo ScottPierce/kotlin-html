@@ -31,7 +31,7 @@ inline fun BodyContext.aside(
     func: BodyContext.() -> Unit = {}
 ) {
     style("#$id", styleBuilder)
-    aside(attrs = *attrs, id = id, classes = classes, style = null, func = func)
+    aside(attrs = attrs, id = id, classes = classes, style = null, func = func)
 }
 
 @HtmlDsl

@@ -1,10 +1,8 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform")
+    kotlin("multiplatform")
     id("jacoco")
     `maven-publish`
 }
-
-publishing.configureBintray()
 
 kotlin {
     jvm {
@@ -129,13 +127,5 @@ tasks.register<JacocoReport>("jvmCodeCoverageReport") {
         xml.destination = file("${rootProject.buildDir}/jacoco/kotlin-html-jvm.xml")
         html.isEnabled = true
         html.destination = file("$buildDir/jacocoHtml")
-    }
-}
-
-kotlin.sourceSets.map {
-    it.apply {
-        languageSettings.apply {
-            useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-        }
     }
 }

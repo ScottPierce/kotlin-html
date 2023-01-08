@@ -20,7 +20,7 @@ fun HtmlOutput.inlineScript(
     defer: Boolean = false,
     file: File
 ) {
-    script(attrs = *attrs, async = async, defer = defer) {
+    script(attrs = attrs, async = async, defer = defer) {
         inlineFile(file)
     }
 }
@@ -52,7 +52,7 @@ fun BaseHtmlContext.inlineScript(
     defer: Boolean = false,
     file: File
 ) {
-    script(attrs = *attrs, async = async, defer = defer) {
+    script(attrs = attrs, async = async, defer = defer) {
         inlineFile(file)
     }
 }

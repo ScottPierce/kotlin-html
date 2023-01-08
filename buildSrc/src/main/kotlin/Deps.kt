@@ -1,10 +1,11 @@
 object Versions {
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.7.21"
     const val ktor = "1.6.7"
 }
 
 object Plugins {
-    val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val gradleMavenPublish = "com.vanniktech:gradle-maven-publish-plugin:0.19.0"
 }
 
 object Deps {
@@ -38,9 +39,9 @@ class KotlinTestLibs internal constructor() {
 
 class KotlinxDeps internal constructor() {
     val coroutines = CoroutineDeps()
-    val html = "org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.12"
+    val html = "org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3"
 }
 
 class CoroutineDeps internal constructor() {
-    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+    val jvm = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 }
